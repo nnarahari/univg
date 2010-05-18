@@ -1,0 +1,31 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+This page describes how to build the UnivGiggle application.
+
+
+= Details =
+
+==Prerequisite:==
+   *) Java SDK 
+   *) Apache - Maven
+   *) SVN Client to check out this project source.
+
+==To build from command line==
+
+ #) Checkout project source from https://univg.googlecode.com/svn/trunk/UnivGiggle-Master
+ #) Go to UnivGiggle-Master folder 
+ #) execute *mvn clean install*
+ #) To skip the test cases use, *mvn clean install -Dmaven.test.skip*
+ #) You will get the univgiggle.war file in  * UnivGiggle-Master/UnivGiggle-Server/target * folder
+
+== Use the source from eclipse ==
+ #) Download the latest eclipse IDE and install 
+ #) Install SVN plugin from this link * http://subclipse.tigris.org/update_1.6.x *
+ #) Install Maven plugin from this link * http://m2eclipse.sonatype.org/sites/m2e *
+ #  Check out UnivGiggle-Master project as a maven project.
+
+ 
+
+
