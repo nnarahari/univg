@@ -1,0 +1,25 @@
+<assembly>
+    <id>resources</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <!-- package the compiled flash into the zip archive -->
+        <fileSet>
+            <directory>target</directory>
+            <includes>
+                <include>*.swf</include>
+            </includes>
+            <outputDirectory/>
+        </fileSet>
+        <!-- package the html-wrapper-mojo generated files into the zip archive -->
+        <fileSet>
+            <directory>target/flexHtml</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <outputDirectory/>
+        </fileSet>
+    </fileSets>
+</assembly>
