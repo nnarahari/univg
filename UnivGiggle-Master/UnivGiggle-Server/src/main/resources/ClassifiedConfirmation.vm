@@ -1,0 +1,11 @@
+<html>
+<body>
+<h3>Hi ${classified.firstName} ${classified.lastName} , welcome to the UnivGiggle!</h3>
+
+<div>
+   To Activate your classified please click the following link.
+   <a href="http://localhost:8080/univgiggle/MailConfirmServlet?key=Classified&id=${classified.id}">http://localhost:8080/univgiggle/MailConfirmServlet?key=Classified&id=${classified.id}</a>.
+</div>
+</body>
+
+</html>

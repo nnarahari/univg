@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:view="com.views.*" backgroundColor="white" creationComplete="applicationInit();">
+<mx:Script>
+	<![CDATA[
+		import com.events.ClassifiedConfirmEvent;
+		import com.events.ClassifiedPostEvent;
+		import com.events.ClassifiedEvent;
+		import com.events.LoginEvt;
+		import com.events.HomePageEvent;
+		
+		private function applicationInit():void
+		{
+			login.addEventListener(LoginEvt.LOGIN,onLoginHandler,false,0,true);
+			home.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
+			postClassified.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
+			confirmClassified.addEventListener(ClassifiedConfirmEvent.CLASSIFIEDCONFIRM,goToPostSuccess,false,0,true);
+			postSuccess.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			postSuccess.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
+		}
+		
+		private function onLoginHandler(event:LoginEvt):void
+		{
+			univGiggleStack.selectedChild = home;
+		}
+		
+		private function goToPostClassifieds(event:ClassifiedEvent):void
+		{
+			univGiggleStack.selectedChild = postClassified;
+		}
+		
+		private function goToConfirmClassified(event:ClassifiedPostEvent):void
+		{
+			univGiggleStack.selectedChild = confirmClassified;
+		}
+		
+		private function goToPostSuccess(event:ClassifiedConfirmEvent):void
+		{
+			univGiggleStack.selectedChild = postSuccess;
+		}
+		
+		private function goToHomePage(event:HomePageEvent):void
+		{
+			univGiggleStack.selectedChild = home;
+		}
+	]]>
+</mx:Script>	
+	<mx:ViewStack id="univGiggleStack" width="100%" height="100%">
+		<view:Login id="login"/>
+		<view:HomePage id="home"/>
+		<view:PostClassified id="postClassified"/>
+		<view:ConfirmClassified id="confirmClassified"/>
+		<view:PostedSuccess id="postSuccess"/>
+	</mx:ViewStack>
+</mx:Application>

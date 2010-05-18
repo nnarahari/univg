@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" creationComplete="applicationInit();">
+<mx:Script source="../as/PostClassified.as"/>
+	<mx:Grid id="postClassified" width="100%" height="100%">
+		<mx:GridRow id="heading" width="100%">
+			<mx:GridItem>
+				<mx:Label text="CLASSIFIEDS:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="Post your advertisement"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow  width="100%">
+			<mx:GridItem>
+				<mx:Label text="Select Location" width="100%"/>	
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem >
+				<mx:Label text="Country:"/>
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:ComboBox id="ccode" text="US" width="5%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="State:"/>
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:ComboBox id="state" text="Connecticut" width="20%"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Label text="University:"/>
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:ComboBox id="univ" text="Mitchell College" width="25%"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:FormItem label="Personal Information" width="100%" />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="FirstName:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="fname" width="15%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="LastName:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="lname" width="15%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="Show Personal Information:"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:RadioButton id="yes" label="Yes" groupName="PersonalInfo"/>
+				<mx:RadioButton id="no" label="No" groupName="PersonalInfo"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="E-Mail:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="email" width="15%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="Contact No:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="contact" width="15%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="Time to Contact:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:ComboBox id="time" text="Any Time" width="20%"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="Posting Details:" width="100%"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="Category:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:ComboBox id="cate" text="Sale" width="5%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="Sub-Category:"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:ComboBox id="subCat" text="Bike" width="5%"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="Title:"/>
+			</mx:GridItem>
+			<mx:GridItem colSpan="3">
+				<mx:TextInput id="title" width="50%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="Price(US$):"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="amount" width="5%"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%" height="100%">
+			<mx:GridItem>
+				<mx:Label text="Details:"/>
+			</mx:GridItem>
+			<mx:GridItem colSpan="5">
+				<mx:TextArea width="100%" height="100%"/>
+			</mx:GridItem>
+		</mx:GridRow>
+	</mx:Grid>
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button id="submit" label="SUBMIT" width="100"/>
+		<mx:Button id="reset" label="RESET" width="100"/>
+		<mx:Button id="discard" label="DISCARD" width="100"/>
+	</mx:HBox>
+</mx:VBox>
