@@ -177,5 +177,20 @@ public class UG_User extends ModelBase{
 	public void setActivated(boolean activated) {
 		this.activated = activated;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuffer sbf = new StringBuffer();
+		sbf.append("###### User #####\n");
+		sbf.append("FirstName : "+ getFirstName() + "\n");
+		sbf.append("LastName  : "+ getLastName()  + "\n");
+		sbf.append("Email Id  : "+ getEmailId() + "\n");
+		sbf.append("DOB       : "+ getDob()+ "\n");
+		sbf.append("Gender    : "+ getGender()+ "\n");
+		//sbf.
+		return super.toString();
+	}
 
 }

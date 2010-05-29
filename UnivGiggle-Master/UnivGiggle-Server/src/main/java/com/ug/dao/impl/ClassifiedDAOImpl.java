@@ -169,4 +169,27 @@ public class ClassifiedDAOImpl implements ClassifiedDAO {
 			return cfd;
 		}
 
+		@Override
+		public List<Classified> getAllClassifieds(String country, String state,
+				                                  String university, String searchText)
+				                                  throws Exception
+		{
+			List<Classified> classiList = null;
+			logger.info("inside getAllClassifieds()..");
+			StringBuffer sbfQuery = new StringBuffer();
+			sbfQuery.append("Select Object(c) from Classified c where c.country = :country and c.state = :state and c.universityName = :university and (c.title like ('%"+ searchText + "%') or c.details like ('%"+ searchText + "%'))");
+			Query query = entityManager.createQuery(sbfQuery.toString());
+			query.setParameter("country", country);
+			query.setParameter("state", state);
+			query.setParameter("university", university);
+			
+			try{
+				classiList = (List<Classified>)query.getResultList();
+			}catch(Exception e){
+				logger.error("Error while reteriving classified",e);
+				throw e;
+			}
+			return classiList;
+		}
+
 }

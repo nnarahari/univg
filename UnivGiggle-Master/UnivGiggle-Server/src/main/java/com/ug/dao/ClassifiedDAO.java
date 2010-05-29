@@ -19,5 +19,7 @@ public interface ClassifiedDAO {
 	public List<Classified> getClassifiedbyUniversity(String universityid) throws Exception;
 	public boolean updateClassified(Classified classified);
 	public boolean updateClassified(String classifiedId)throws Exception;
+	public List<Classified> getAllClassifieds(String country, String state,
+			String university, String searchText)throws Exception;
 	
 }

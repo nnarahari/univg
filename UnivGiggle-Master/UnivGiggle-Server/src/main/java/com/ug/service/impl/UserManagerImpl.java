@@ -106,6 +106,19 @@ public class UserManagerImpl implements UserManager {
 		
 	}
 	/**
+	 * Get the User details
+	 */
+	@Override
+	public UG_User getUser(String emailId) throws Exception {
+		logger.info("inside getUser()...");
+		logger.info("emailId ==> "+ emailId);
+		UG_User user = null;
+		user = ugUserDAO.getUser(emailId);
+		return user;
+	}
+	
+	
+	/**
 	 * @param ugUserDAO the ugUserDAO to set
 	 */
 	public void setUgUserDAO(UGUserDAO ugUserDAO) {
@@ -126,6 +139,5 @@ public class UserManagerImpl implements UserManager {
 		this.velocityEngine = velocityEngine;
 	}
 
-	
 
 }

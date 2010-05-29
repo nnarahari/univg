@@ -108,6 +108,7 @@
 		<property name="attributes">
 			<map>
 				<entry key="classifiedManager" value-ref="classifiedManager" />
+				<entry key="userManager" value-ref="userManager" />
 			</map>
 		</property>
 	</bean>

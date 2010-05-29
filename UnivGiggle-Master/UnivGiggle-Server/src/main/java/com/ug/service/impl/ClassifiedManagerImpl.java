@@ -4,6 +4,7 @@
 package com.ug.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
@@ -118,6 +119,19 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 	 */
 	public void setVelocityEngine(VelocityEngine velocityEngine) {
 		this.velocityEngine = velocityEngine;
+	}
+
+
+
+	@Override
+	public List<Classified> getListClassifieds(String country, String state,
+			String university, String searchText) throws Exception {
+		logger.info("getListClassifieds() started..");
+		logger.info("country ==>"+ country + ", state ==>"+ state + ", university ==>"+ university);
+		logger.info("searchText ==>"+ searchText);
+		
+		
+		return classifiedDAO.getAllClassifieds(country,state,university,searchText);
 	}
 
 
