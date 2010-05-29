@@ -65,7 +65,7 @@ public class UGUserDAOImpl implements UGUserDAO {
 		logger.info("inside validateUser()");
 		logger.info("userName ==>"+ userName);
 		boolean isSuccess = false;
-		String qry = "Select Object(u) from UG_User u where u.userName = :username and u.password = :password";
+		String qry = "Select Object(u) from UG_User u where u.emailId = :username and u.password = :password";
 		Query query = entityManager.createQuery(qry);
 		query.setParameter("username", userName); 
 		query.setParameter("password", password);
@@ -88,7 +88,7 @@ public class UGUserDAOImpl implements UGUserDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	private UG_User getUser(String emailId) throws Exception{
+	public UG_User getUser(String emailId) throws Exception{
 		logger.info("inside getUser ..");
 		logger.info("emailId ==>"+ emailId);
 		UG_User user = null;

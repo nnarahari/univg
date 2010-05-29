@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.ug.model.ResultInfo;
 import com.ug.model.UG_User;
 import com.ug.service.UserManager;
 
@@ -41,24 +42,24 @@ public class UGUserManagerImplTest1 {
 
 	@Test
 	public void testAddUser() {
-		/*logger.info("testAddUser() started..");
+		logger.info("testAddUser() started..");
 		UG_User user = new UG_User();
-		user.setUserName("user");
 		user.setDob(new Date());
 		user.setEmailId("test@test.com");
 		user.setFirstName("FirstName");
 		user.setGender("Male");
 		user.setLastName("LastName");
-		user.setMiddleName("MiddleName");
 		user.setPassword("password");
-		user.setPhone1("12345");
-		user.setPhone2("56789");
+		user.setContactNo("123456789");
+		user.setPasswordQuestion("Q1");
+		user.setPasswordAnswer("Ans1");
 		try {
 			logger.info("userManager ==>"+ userManager);
-			assertTrue(userManager.addUser(user));
+			ResultInfo resultInfo = userManager.addUser(user);
+			assertTrue(resultInfo.isSuccess());
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 	
 
@@ -66,7 +67,7 @@ public class UGUserManagerImplTest1 {
 	public void testValidateUser() {
 		logger.info("inside testValidateUser()");
 		try {
-			assertTrue(userManager.validateUser("user", "password"));
+			assertTrue(userManager.validateUser("test@test.com", "password"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
