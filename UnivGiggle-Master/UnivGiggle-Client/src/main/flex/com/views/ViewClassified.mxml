@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Accordion xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init();">
+<mx:Script>
+	<![CDATA[
+		import mx.collections.ArrayCollection;
+		import com.mappedObjects.ug.model.Classified;
+		private var _classifiedObj:Classified;
+		private var _classifiedObjectsList:ArrayCollection = new ArrayCollection;
+		private var _classifiedDetView:ClassifiedDetails;
+		
+		private function init():void
+		{
+			
+			
+		}
+		
+		public function set classifiedObjList(list:ArrayCollection):void
+		{
+			_classifiedObjectsList = list;
+			for(var i:int = 0;i<_classifiedObjectsList.length;i++){
+				_classifiedObj = _classifiedObjectsList[i] as Classified;
+				_classifiedDetView = new ClassifiedDetails;
+				_classifiedDetView.label = _classifiedObj.title;
+				_classifiedDetView.classifiedObject = _classifiedObj;
+				this.addChild(_classifiedDetView);
+			}
+		}
+		
+		public function get classifiedObjList():ArrayCollection
+		{
+			return _classifiedObjectsList;
+		}
+	]]>
+</mx:Script>
+</mx:Accordion>

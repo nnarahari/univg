@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init();">
+<mx:Script>
+	<![CDATA[
+		import com.mappedObjects.ug.model.Classified;
+		[Bindable]
+		private var _classifiedObj:Classified;
+		private function init():void
+		{
+			_classifiedObj = new Classified;
+			_classifiedObj.country = "US";
+			_classifiedObj.state = "Connecticut";
+			_classifiedObj.universityName = "Mitchell College";
+			_classifiedObj.firstName = "Venkata";
+			_classifiedObj.lastName = "Satya";
+			_classifiedObj.showPersonalDetail = false;
+			_classifiedObj.email = "satya.teeda@gmail.com";
+			_classifiedObj.contactNo = "9916294102";
+			_classifiedObj.timeToContact = "Morning(6AM-9AM)";
+			_classifiedObj.details = "Hi boss waiting for your chance,good luck.";
+			_classifiedObj.activated = true;
+			_classifiedObj.postedDateTime = new Date;
+			_classifiedObj.title = "This page is 4 u";
+			_classifiedObj.price = "50";
+		}
+		
+		public function set classifiedObject(obj:Classified):void
+		{
+			_classifiedObj = obj;
+		}
+		
+		public function get classifiedObject():Classified
+		{
+			return _classifiedObj;
+		}
+	]]>
+</mx:Script>
+	
+		<mx:Form  width="100%">
+			<mx:FormItem label="Posted By :">
+				<mx:Label text="{_classifiedObj.firstName}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Contact Email :">
+				<mx:Label text="{_classifiedObj.email}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Phone Number :">
+				<mx:Label text="{_classifiedObj.contactNo}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Contact Time :">
+				<mx:Label text="{_classifiedObj.timeToContact}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Country :">
+				<mx:Label text="{_classifiedObj.country}"/>
+			</mx:FormItem>
+			<mx:FormItem label="State :">
+				<mx:Label text="{_classifiedObj.state}"/>
+			</mx:FormItem>
+			<mx:FormItem label="University Name :">
+				<mx:Label text="{_classifiedObj.universityName}"/>
+			</mx:FormItem>
+			<mx:FormItem label="ShowPersonalDetail :">
+				<mx:Label text="{_classifiedObj.showPersonalDetail}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Details :">
+				<mx:Label text="{_classifiedObj.details}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Price :">
+				<mx:Label text="{_classifiedObj.currency}{_classifiedObj.price}"/>
+			</mx:FormItem>
+		</mx:Form>
+	</mx:VBox>
+
