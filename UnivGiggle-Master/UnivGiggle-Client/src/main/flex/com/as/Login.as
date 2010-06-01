@@ -1,4 +1,4 @@
-// ActionScript file
+// ActionScript file created by Teeda
 import com.events.LoginEvt;
 import com.interactiveObject.UGInteractiveObject;
 
