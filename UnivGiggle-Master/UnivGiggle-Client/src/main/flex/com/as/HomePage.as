@@ -11,6 +11,7 @@ private function postClassifieds(event:MouseEvent):void
 	dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED));
 }
 
+
 public function onActivate():void
 {
 	Alert.show("onActivate");
