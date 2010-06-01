@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" verticalAlign="middle"  horizontalAlign="center" creationComplete="init();">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderStyle="solid" verticalAlign="middle"  horizontalAlign="center" creationComplete="init();" >
 <mx:Script source="../as/Login.as"/>
 	<mx:Form id="loginForm" >
-		<mx:FormHeading label="Welcome To UnivGiggle"/>
-		<mx:FormItem label="UserName :">
-			<mx:TextInput id="usr" width="200"/>
+		<mx:FormHeading label="Welcome To UnivGiggle" fontWeight="bold"/>
+		<mx:FormItem label="UserName :" fontWeight="bold">
+			<mx:TextInput id="userName" width="200"/>
 		</mx:FormItem>
-		<mx:FormItem label="PassWord :">
-			<mx:TextInput id="pwd" width="200"/>
+		<mx:FormItem label="PassWord :" fontWeight="bold">
+			<mx:TextInput id="passWord" width="200" displayAsPassword="true"/>
 		</mx:FormItem>
 		<mx:FormItem direction="horizontal">
-			<mx:Button id="sub" label="submit" width="80"/>
-			<mx:Button id="reset" label="reset" width="80"/>
+			<mx:Button id="sub" label="submit" width="70"/>
+			<mx:Button id="reset" label="reset" width="70"/>
+			<mx:Button id="signup" label="signUp" width="70"/>
 		</mx:FormItem>
 	</mx:Form>
 </mx:VBox>

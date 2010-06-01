@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
-<mx:Script source="../as/SignUp.as"/>
-	<mx:Grid id="signUp" width="100%" height="275">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"   creationComplete="compInit();">
+<mx:Script source="../as/signUppage.as"/>
+<!-- Binding the ActionScript object with the view controls -->
+<mx:Binding source="firstName.text" destination="ugUser.firstName"/>
+<mx:Binding source="lastName.text" destination="ugUser.lastName"/>
+<mx:Binding source="gender.text" destination="ugUser.gender"/>
+<mx:Binding source="DateField.stringToDate(dateOfBirth.text,'MM/DD/YYYY')" destination="ugUser.dob"/>
+<mx:Binding source="Phone.text" destination="ugUser.contactNo"/>
+<mx:Binding source="password.text" destination="ugUser.password"/>
+<mx:Binding source="emailId.text" destination="ugUser.emailId"/>
+<mx:Binding source="secQues.text" destination="ugUser.passwordQuestion"/>
+<mx:Binding source="answer.text" destination="ugUser.passwordAnswer"/>
+<!-- End of Binding -->
+
+<!-- validation-->
+<mx:StringValidator id="firstNameValidator" property="text" source="{firstName}" minLength="5" maxLength="50"/>
+<mx:StringValidator id="lastNameValidator" property="text" source="{lastName}" minLength="5" maxLength="50"/>
+<mx:PhoneNumberValidator id="contactNoValidator" property="text" source="{Phone}" allowedFormatChars="-" />
+<mx:StringValidator id="passWordValidator" property="text" source="{password}" minLength="5" maxLength="50"/>
+<mx:StringValidator id="answerValidator" property="text" source="{answer}" minLength="4" maxLength="50"/>
+<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{secQues}" minValue="1" lowerThanMinError="Please select a valid question."/>
+<mx:EmailValidator id="emailIdValidator" property="text" source="{emailId}" />
+<!-- End of Validation -->
+	<mx:Grid id="signUp" width="100%">
 		<mx:GridRow id="heading" width="100%">
 			<mx:GridItem>
-				<mx:Label text="Signup"/>
+				<mx:Label text="Signup" fontWeight="bold"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Label text="Create you profile here"/>
+				<mx:Label text="Create you profile here" fontWeight="bold"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -16,25 +37,18 @@
 				<mx:Label text="First Name"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:TextInput id="firstName" width="15%"/>
+				<mx:TextInput id="firstName" width="15%" text="{ugUser.firstName}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow width="100%">
-			<mx:GridItem >
-				<mx:Label text="Middle Name"/>
-			</mx:GridItem>
-			<mx:GridItem width="100%">
-				<mx:TextInput id="middleName" width="15%"/>
-			</mx:GridItem>
-		</mx:GridRow>
+		
 		
 		<mx:GridRow width="100%">
 			<mx:GridItem >
 				<mx:Label text="Last Name"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:TextInput id="lastName" width="15%"/>
+				<mx:TextInput id="lastName" width="15%"   text="{ugUser.lastName}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -43,7 +57,11 @@
 				<mx:Label text="Gender"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:ComboBox id="gender" text="" width="25%">
+				<mx:ComboBox id="gender" width="15%" text="{ugUser.gender}">
+					<mx:dataProvider>
+						<mx:String>Male</mx:String>
+						<mx:String>Female</mx:String>
+					</mx:dataProvider>
 				</mx:ComboBox>
 			</mx:GridItem>
 		</mx:GridRow>
@@ -54,7 +72,7 @@
 				<mx:Label text="Date of Birth"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:DateField id="dateOfBirth"/>
+				<mx:DateField id="dateOfBirth" text="{DateField.dateToString(new Date,'MM/DD/YYYY')}"  width="10%"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -63,28 +81,55 @@
 				<mx:Label text="Phone"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:TextInput id="Phone" width="15%"/>
+				<mx:TextInput id="Phone" width="15%"   text="{ugUser.contactNo}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
 		<mx:GridRow width="100%">
 			<mx:GridItem >
+				<mx:Label text="E-Mail"/>
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:TextInput id="emailId" width="15%"  text="{ugUser.emailId}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<!--<mx:GridRow width="100%">
+			<mx:GridItem >
 				<mx:Label text="Username"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:TextInput id="userName" width="15%"/>
+				<mx:TextInput id="userName" width="15%"   text="{ugUser.userName}"/>
 				<mx:Button id="checkAvailbility" label="Check Availability" width="15%">
 					
 				</mx:Button>
 			</mx:GridItem>
-		</mx:GridRow>
+		</mx:GridRow>-->
 		
 		<mx:GridRow width="100%">
 			<mx:GridItem >
 				<mx:Label text="Password"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:TextInput id="password" width="15%" />
+				<mx:TextInput id="password" width="15%"  displayAsPassword="true" text="{ugUser.password}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow width="100%">
+			<mx:GridItem >
+				<mx:Label text="Secret Question"/>
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:ComboBox id="secQues" dataProvider="{questionArray}" width="25%"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow width="100%">
+			<mx:GridItem >
+				<mx:Label text="Your Answer"/>
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:TextInput id="answer" width="25%" text="{ugUser.passwordAnswer}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 	</mx:Grid>
@@ -92,9 +137,4 @@
 		<mx:Button id="btnCreate" label="Create" width="100"/>
 		<mx:Button id="btnReset" label="Reset" width="100"/>
 	</mx:HBox>
-		
-		
-		
-		
-	
 </mx:VBox>

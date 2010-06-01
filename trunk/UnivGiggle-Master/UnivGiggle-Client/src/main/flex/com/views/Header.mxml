@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+	<mx:HBox width="100%" height="10%" backgroundColor="#EBD2D2">
+		<mx:Image source="@Embed(source='./assets/UnivgiggleLogo.PNG')"/>
+		<mx:Spacer width="20%"/>
+		<mx:VBox width="40%" height="100%">
+			<mx:HBox width="100%" height="75%">
+				<mx:Spacer width="40%"/>
+				<mx:VBox width="60%">
+					<mx:HBox width="100%">
+						<mx:Label text="UserName : "/>
+						<mx:TextInput id="username" width="25%"/>
+						<mx:Label text="PassWord : "/>
+						<mx:TextInput id="password" displayAsPassword="true" width="25%"/>
+					</mx:HBox>
+					<mx:HBox width="100%" horizontalAlign="center">
+						<mx:Label text="Forget your password?"/>
+						<mx:Button label="SignUp"/>
+					</mx:HBox>
+				</mx:VBox>
+			</mx:HBox>
+			<mx:TabBar id="tabBar" height="25%">
+				<mx:String>HOME</mx:String>
+				<mx:String>ABOUT</mx:String>
+				<mx:String>STUDENTS</mx:String>
+				<mx:String>P2P LENDERs</mx:String>
+				<mx:String>CORPORATE LENDERS</mx:String>
+				<mx:String>UNIVERSITY CLASSIFIEDS</mx:String>
+				<mx:String>CONTACT US</mx:String>
+			</mx:TabBar>
+		</mx:VBox>
+	</mx:HBox>
+</mx:VBox>

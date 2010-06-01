@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" verticalGap="10" creationComplete="applicationInit()">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" verticalGap="10" paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"  creationComplete="applicationInit()">
 <mx:Script source="../as/PostedSuccess.as"/>
 	<mx:Label text="Thanks for using univGiggle for your classified needs."/>
 	<mx:Spacer height="15"/>
