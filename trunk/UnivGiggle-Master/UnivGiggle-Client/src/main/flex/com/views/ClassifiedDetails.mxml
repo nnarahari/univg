@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init();">
+<mx:Style>
+	global {
+		modal-transparency: 0.9;
+		modal-transparency-color: white;
+		modal-transparency-blur: 9;
+	}
+</mx:Style>
 <mx:Script>
 	<![CDATA[
+		import mx.collections.ArrayCollection;
 		import com.mappedObjects.ug.model.Classified;
+		import mx.effects.Resize;
+		import mx.events.ResizeEvent;
+		import mx.events.ListEvent;
+		import mx.controls.Image;
+		import mx.events.ItemClickEvent;
+		import mx.managers.PopUpManager;
+		
+
+		private var img:Image;
+		[Bindable]
+		private var imagePathsList:ArrayCollection;
+
 		[Bindable]
 		private var _classifiedObj:Classified;
+		private var tempImageObj:Image;
 		private function init():void
 		{
 			_classifiedObj = new Classified;
@@ -27,15 +48,53 @@
 		public function set classifiedObject(obj:Classified):void
 		{
 			_classifiedObj = obj;
+			imagePathsList = new ArrayCollection(_classifiedObj.imagePaths.split("|"));
 		}
 		
 		public function get classifiedObject():Classified
 		{
 			return _classifiedObj;
 		}
+		
+		private function tileList_itemClick(evt:ListEvent):void {
+			img = new Image();
+			// img.width = 300;
+			// img.height = 300;
+			img.maintainAspectRatio = true;
+			img.addEventListener(Event.COMPLETE, image_complete);
+			img.addEventListener(ResizeEvent.RESIZE, image_resize);
+			img.addEventListener(MouseEvent.CLICK, image_click);
+			img.source = evt.itemRenderer.data;
+			img.setStyle("addedEffect", image_addedEffect);
+			img.setStyle("removedEffect", image_removedEffect);
+			tempImageObj = img;
+			PopUpManager.addPopUp(img, this, true);
+		}
+		
+		private function image_click(evt:MouseEvent):void {
+			PopUpManager.removePopUp(tempImageObj);
+		}
+		
+		private function image_resize(evt:ResizeEvent):void {
+			//PopUpManager.centerPopUp(tempImageObj);
+		}
+		
+		private function image_complete(evt:Event):void {
+			PopUpManager.centerPopUp(tempImageObj);
+		}
+
 	]]>
 </mx:Script>
-	
+		<mx:XML id="xml" source="../assets1/gallery.xml" />
+		<mx:XMLListCollection id="xmlListColl" source="{xml.image}" />
+
+		<mx:WipeDown id="image_addedEffect" startDelay="100" />
+
+		<mx:Parallel id="image_removedEffect">
+			<mx:Zoom />
+			<mx:Fade />
+		</mx:Parallel>
+
 		<mx:Form  width="100%">
 			<mx:FormItem label="Posted By :">
 				<mx:Label text="{_classifiedObj.firstName}"/>
@@ -68,5 +127,16 @@
 				<mx:Label text="{_classifiedObj.currency}{_classifiedObj.price}"/>
 			</mx:FormItem>
 		</mx:Form>
+		<mx:Label text="Uploaded Files :"/>
+		<mx:TileList id="tileList"
+			dataProvider="{imagePathsList}"
+			itemRenderer="com.components.itemRenderer.CustomItemRenderer"
+			columnCount="5"
+			columnWidth="125"
+			rowCount="1"
+			rowHeight="100"
+			themeColor="haloSilver"
+			verticalScrollPolicy="on"
+			itemClick="tileList_itemClick(event);" />
 	</mx:VBox>
 
