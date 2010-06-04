@@ -26,6 +26,7 @@ package com.mappedObjects.ug.model
 		public var title:String;
 		public var price:String;
 		public var currency:String="$";
+		public var imagePaths:String = "assets1/fx_appicon-tn.gif|assets1/fl_appicon-tn.gif|assets1/ai_appicon-tn.gif";
 		
 		public function Classified()
 		{

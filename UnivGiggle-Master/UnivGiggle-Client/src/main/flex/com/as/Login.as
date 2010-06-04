@@ -23,7 +23,7 @@ private function onSubmit(event:MouseEvent):void
 {
 	if(userName.text != "" && passWord.text != ""){
 		loginRmtObj.validateUser(userName.text,passWord.text);
-		dispatchEvent(new LoginEvt(LoginEvt.LOGIN,userName.text,passWord.text));
+//		dispatchEvent(new LoginEvt(LoginEvt.LOGIN,userName.text,passWord.text));
 	}else{
 		Alert.show("Please enter username/password","Information");
 	}

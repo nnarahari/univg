@@ -31,10 +31,12 @@
 	<mx:Spacer height="15"/>
 	<mx:HBox width="100%">
 		<mx:Label text="Please upload a picture:"/>
-		<mx:TextInput width="100%" id="fileName" />
+		<mx:TextInput width="16%" id="fileName" editable="false"/>
 		<mx:Button id="browse" label="Browse.."/>
-		<mx:Button id="upload" label="Upload"/>
+		<!--<mx:Button id="upload" label="Upload"/>-->
 	</mx:HBox>
+	<mx:VBox id="additionalAttach" width="100%"/>
+	<mx:LinkButton id="attach_more" label="Attach more.."/>
 	<mx:HBox width="100%">
 		<mx:CheckBox id="condition" label="Terms &amp; Conditions:" />
 		<mx:Label text="Please click "/>
