@@ -7,7 +7,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <description>UnivGiggle Master project</description>
   <modules>
-    <module>UnivGiggle-Client</module>
+  	<module>UnivGiggle-Client</module>
   	<module>UnivGiggle-Server</module>
+  	<module>UnivGiggle-Image</module>
   </modules>
 </project>
