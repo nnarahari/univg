@@ -49,7 +49,8 @@
 		<backport-util-concurrent.version>3.1</backport-util-concurrent.version>
 		<commons.logging.version>1.1.1</commons.logging.version>
 		<log4j.version>1.2.12</log4j.version>
-		<M2.repo.path>C:/Documents and Settings/srajen03/.m2/repository</M2.repo.path>
+		<M2.repo.path>C:/Documents and
+			Settings/srajen03/.m2/repository</M2.repo.path>
 	</properties>
 
 	<build>
@@ -177,13 +178,6 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-		<!--
-			<dependency> <groupId>org.hibernate</groupId>
-			<artifactId>hibernate</artifactId> <version>3.2.6.ga</version>
-			</dependency> <dependency> <groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.4.0.GA</version> </dependency>
-		-->
 		<dependency>
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
@@ -259,22 +253,12 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.3</version>
 		</dependency>
-		<!--
-			<dependency> <groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId> <version>1.1</version>
-			</dependency>
-		-->
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
 			<version>2.2</version>
 			<scope>test</scope>
 		</dependency>
-		<!--
-			<dependency> <groupId>UnivGiggle-GroupID</groupId>
-			<artifactId>UnivGiggle-Client</artifactId> <version>0.1</version>
-			<type>swf</type> </dependency>
-		-->
 		<dependency>
 			<groupId>com.adobe.blazeds</groupId>
 			<artifactId>blazeds-remoting</artifactId>
@@ -325,8 +309,10 @@
 			<artifactId>velocity</artifactId>
 			<version>1.5</version>
 		</dependency>
-
-
+		<dependency>
+			<groupId>com.google.code.facebookapi</groupId>
+			<artifactId>facebook-java-api</artifactId>
+			<version>2.1.1</version>
+		</dependency>
 	</dependencies>
-
 </project>
