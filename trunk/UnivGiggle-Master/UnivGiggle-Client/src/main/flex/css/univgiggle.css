@@ -1,0 +1,23 @@
+/* CSS file */
+Alert
+	{
+		color : #0f3177;
+		title-style-name : "alertTitle";
+		header-height:19;
+		drop-shadow-enabled: false;
+		drop-shadow-color :#d1ddf7;
+		background-color: #ffffff;
+		corner-radius :6;
+		border-style :solid;
+		header-colors : #90a4d1, #5970a0;
+		footer-colors : #9db6d9, #ffffff;
+		border-color : #5970a0;
+	}
+	
+	.alertTitle{
+		font-family :Verdana;
+		font-size :10;
+		font-weight :bold;
+		text-align :left;
+		color :#ffffff;
+	}
