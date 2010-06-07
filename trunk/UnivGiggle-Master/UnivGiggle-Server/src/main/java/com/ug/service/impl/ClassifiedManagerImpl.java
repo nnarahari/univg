@@ -3,6 +3,11 @@
  */
 package com.ug.service.impl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,29 +35,97 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 
 	Logger logger = Logger.getLogger(ClassifiedManagerImpl.class);
 	
+	private String imageAppURL;
+	private String imageWebURL;
+	
 	@Autowired
 	private ClassifiedDAO classifiedDAO;
 	private JavaMailSender mailSender;
     private VelocityEngine velocityEngine;
     
     
-	
+	/**
+	 * 
+	 */
 	@Override
-	public ResultInfo addClassified(Classified classified) throws Exception {
+	public ResultInfo addClassified(Classified classified, List<String> fileNameList, List<byte []> imageDataList) throws Exception {
 		logger.info("addClassified() started..");
 		Classified cfd = classifiedDAO.addClassified(classified);
 		ResultInfo resultInfo = null;
+		boolean cfdAddedStatus = false;
 		if(cfd != null){
-			logger.info("Classified added successfully!, sending mail to the user to acknowledge");
-			sendConfirmationMail(cfd);
-			resultInfo = createResultInfo(true, "Classified Added successfully!", "0", "Classified Added successfully!", cfd);
+			
+			if(fileNameList != null && imageDataList != null){
+				logger.info("This classified contains images also.. saving that images..");
+				String imagePaths = storeClassifiedImages(fileNameList, imageDataList, cfd.getId());
+				if(imagePaths != null){
+					logger.info("images are stored successfully & got the imagePaths, updating the classified..");
+					boolean isImagePahtUpdated = classifiedDAO.updateClassifiedImagePath(imagePaths, cfd.getId().toString());
+					logger.info("isImagePahtUpdated ==>"+ isImagePahtUpdated);
+					if(isImagePahtUpdated){
+						cfdAddedStatus = true;
+					}else{
+						resultInfo = createResultInfo(false, "Classified Added failed", "2", "Error while updating image path in DB", null);
+					}
+				}else{
+					resultInfo = createResultInfo(false, "Classified Added failed", "2", "Error while storing images", null);
+				}
+			}else{
+				logger.info("No images with this classified.");
+				cfdAddedStatus = true;
+			}
+			if(cfdAddedStatus){
+				logger.info("Classified added successfully!, sending mail to the user to acknowledge");
+				sendConfirmationMail(cfd);
+				resultInfo = createResultInfo(true, "Classified Added successfully!", "0", "Classified Added successfully!", cfd);
+			}
+			
 		}else{
 			logger.info("Classified adding failed..");
 			resultInfo = createResultInfo(false, "Classified Added failed", "1", "Classified Added failed!", null);
 		}
 		return resultInfo;
 	}	
-	
+	/**
+	 * 
+	 * @param fileNameList
+	 * @param imageData
+	 * @param classifiedId
+	 * @return
+	 */
+	private String storeClassifiedImages(List<String> fileNameList, List<byte []> imageData, Long classifiedId){
+		logger.info("inside storeClassifiedImages()");
+		String imagePaths="";
+		logger.info("imageAppURL ==>" + imageAppURL);
+		String cfdImageFolder = imageAppURL + File.separator + "classified"+ File.separator +classifiedId.toString() + File.separator;
+		logger.info("cfdImageFolder ==>"+ cfdImageFolder);
+		boolean foldersCreated = new File(cfdImageFolder).mkdirs();
+		logger.info("foldersCreated ==>"+ foldersCreated);
+		String imageName ="";
+		String imageNameURL = "";
+		FileOutputStream fos=null;
+		byte[] byteImageDate = null;
+		for(int i=0; i<fileNameList.size();i++){
+			imageName = fileNameList.get(i).trim();
+			imageNameURL = cfdImageFolder + imageName;
+			logger.info("saving this file ==>"+ imageName);
+			byteImageDate = imageData.get(i);
+			try {
+				fos = new FileOutputStream(new File(imageNameURL));
+				fos.write(byteImageDate);
+				fos.close();
+			} catch (FileNotFoundException e) {
+				logger.error("Error while saving images ", e);
+			} catch (IOException e) {
+				logger.error("Error while saving images ", e);
+			}
+			fos = null;
+			imagePaths += imageWebURL + "/classified/"+ classifiedId.toString() + "/"+ imageName +"|";
+		}
+		logger.info("imagePaths ==>"+ imagePaths);
+		return imagePaths;
+		
+	}
 	
 	
 	@Override
@@ -101,6 +174,16 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 		
 	}
 	
+	@Override
+	public List<Classified> getListClassifieds(String country, String state,
+			String university, String searchText) throws Exception {
+		logger.info("getListClassifieds() started..");
+		logger.info("country ==>"+ country + ", state ==>"+ state + ", university ==>"+ university);
+		logger.info("searchText ==>"+ searchText);
+		
+		
+		return classifiedDAO.getAllClassifieds(country,state,university,searchText);
+	}
 	
 	/**
 	 * @param classifiedDAO the classifiedDAO to set
@@ -122,19 +205,33 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 	}
 
 
-
-	@Override
-	public List<Classified> getListClassifieds(String country, String state,
-			String university, String searchText) throws Exception {
-		logger.info("getListClassifieds() started..");
-		logger.info("country ==>"+ country + ", state ==>"+ state + ", university ==>"+ university);
-		logger.info("searchText ==>"+ searchText);
-		
-		
-		return classifiedDAO.getAllClassifieds(country,state,university,searchText);
+	/**
+	 * @return the imageAppURL
+	 */
+	public String getImageAppURL() {
+		return imageAppURL;
 	}
 
+	/**
+	 * @param imageAppURL the imageAppURL to set
+	 */
+	public void setImageAppURL(String imageAppURL) {
+		this.imageAppURL = imageAppURL;
+	}
 
+	/**
+	 * @return the imageWebURL
+	 */
+	public String getImageWebURL() {
+		return imageWebURL;
+	}
+
+	/**
+	 * @param imageWebURL the imageWebURL to set
+	 */
+	public void setImageWebURL(String imageWebURL) {
+		this.imageWebURL = imageWebURL;
+	}
 	
 
 }

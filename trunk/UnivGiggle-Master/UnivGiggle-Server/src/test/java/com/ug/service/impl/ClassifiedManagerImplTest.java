@@ -2,7 +2,9 @@ package com.ug.service.impl;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -66,7 +68,7 @@ public class ClassifiedManagerImplTest {
 		
 		ResultInfo result = null;
 		try {
-			result = classfiedManager.addClassified(cfd);
+			result = classfiedManager.addClassified(cfd,null,null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,6 +85,19 @@ public class ClassifiedManagerImplTest {
 			e.printStackTrace();
 		}
 		assertTrue(result.isSuccess());
+	}
+	
+	@Test
+	public void testStoreClassifiedImages(){
+		List<String> filenameList = new ArrayList<String>();
+		filenameList.add("Test1.txt");
+		filenameList.add("Test2.txt");
+		List<byte []> imageDataList = new ArrayList<byte[]>();
+		
+		imageDataList.add("Hi, This is test 1".getBytes());
+		imageDataList.add("Hi, This is test 2".getBytes());
+		
+		//assertTrue(classfiedManager.storeClassifiedImages(filenameList, imageDataList, 101L));
 	}
 
 }
