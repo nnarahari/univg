@@ -5,16 +5,12 @@ import com.events.HomePageEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.Classified;
 
-import flash.events.Event;
-import flash.events.MouseEvent;
-import flash.net.FileFilter;
-import flash.net.FileReference;
-
 import mx.containers.HBox;
 import mx.controls.Alert;
 import mx.controls.Button;
 import mx.controls.Spacer;
 import mx.controls.TextInput;
+import mx.core.ByteArrayAsset;
 import mx.events.CloseEvent;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
@@ -130,12 +126,19 @@ private function onSelectedFile(event:Event):void
 {
 	if(selectedfiles.length < maxImageFileToUpload )
 	{
-		selectedfiles.push(imageFileRef.name);
-		selectedFileReferences.push(imageFileRef.data);
+		imageFileRef.addEventListener(Event.COMPLETE, completeHandler);
+		imageFileRef.load();
+		//selectedFileReferences.push(imageFileRef);
 		tempTextInput.text = imageFileRef.name;
 		browseButEvent.target.enabled = false;
 		//fileName.text = selectedfiles.join(";");
 	}else{
 		Alert.show("maximum 5 images per upload allowed","Information");
 	}
+}
+
+private function completeHandler(event:Event):void
+{
+	selectedfiles.push(imageFileRef.name);
+	selectedFileReferences.push(imageFileRef.data);
 }

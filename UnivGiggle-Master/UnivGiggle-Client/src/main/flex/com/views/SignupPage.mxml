@@ -72,7 +72,7 @@
 				<mx:Label text="Date of Birth"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
-				<mx:DateField id="dateOfBirth" text="{DateField.dateToString(new Date,'MM/DD/YYYY')}"  width="10%"/>
+				<mx:DateField id="dateOfBirth" text="{DateField.dateToString(new Date,'MM/DD/YYYY')}" yearNavigationEnabled="true" selectableRange="{{rangeEnd:new Date()}}" width="10%"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		

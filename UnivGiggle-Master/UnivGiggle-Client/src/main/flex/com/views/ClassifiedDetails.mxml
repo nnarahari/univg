@@ -28,7 +28,7 @@
 		private var tempImageObj:Image;
 		private function init():void
 		{
-			_classifiedObj = new Classified;
+			/* _classifiedObj = new Classified;
 			_classifiedObj.country = "US";
 			_classifiedObj.state = "Connecticut";
 			_classifiedObj.universityName = "Mitchell College";
@@ -42,7 +42,7 @@
 			_classifiedObj.activated = true;
 			_classifiedObj.postedDateTime = new Date;
 			_classifiedObj.title = "This page is 4 u";
-			_classifiedObj.price = "50";
+			_classifiedObj.price = "50"; */
 		}
 		
 		public function set classifiedObject(obj:Classified):void

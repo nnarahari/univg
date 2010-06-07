@@ -4,18 +4,10 @@
 		<mx:Spacer width="20%"/>
 		<mx:Image source="@Embed(source='./assets/footerLogo.PNG')"/>
 		<mx:Spacer width="20%"/>
-		<mx:VBox width="50%">
-			<mx:LinkBar>
-				<mx:String>HOME</mx:String>
-				<mx:String>ABOUT</mx:String>
-				<mx:String>STUDENTS</mx:String>
-				<mx:String>P2P LENDERs</mx:String>
-				<mx:String>CORPORATE LENDERS</mx:String>
-				<mx:String>UNIVERSITY CLASSIFIEDS</mx:String>
-				<mx:String>CONTACT US</mx:String>
-			</mx:LinkBar>
+		<mx:VBox width="50%" verticalAlign="bottom">
+			<!--<mx:Spacer/>-->
 			<mx:HBox width="80%" horizontalAlign="right">
-				<mx:Label text="Copyright@2010 UnivGiggle.com.All rights reserved"/>
+				<mx:Label text="Copyright@2010 UnivGiggle.com.All rights reserved" fontWeight="bold"/>
 			</mx:HBox>
 		</mx:VBox>
 	</mx:HBox>

@@ -58,7 +58,7 @@
 					<mx:Button id="search" label=">>"/>
 				</mx:HBox>	
 			</mx:VBox>
-			<mx:DateChooser width="90%"/>
+			<mx:DateChooser width="90%" yearNavigationEnabled="true" selectableRange="{{rangeEnd:new Date()}}"/>
 		</mx:VBox>
 	<!-- End of Search block-->
 	
