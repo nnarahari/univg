@@ -47,6 +47,7 @@
 			<list>
 				<value>classpath:ug-db.properties</value>
 				<value>classpath:jdbc.properties</value>
+				<value>classpath:UnivGiggle-Application.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -85,6 +86,7 @@
 
 	<!-- DAO Beans  -->
 	<bean id="classifiedDAO" class="com.ug.dao.impl.ClassifiedDAOImpl" autowire="byName"/>
+	
 	<bean id="ugUserDAO" class="com.ug.dao.impl.UGUserDAOImpl" autowire="byName" />
 
 
@@ -92,14 +94,12 @@
 	<!--  Manager classes    -->
 
 	<bean id="classifiedManager" class="com.ug.service.impl.ClassifiedManagerImpl">
-<!--		<property name="classifiedDAO" ref="classifiedDAO" />
-		<property name="mailSender" ref="mailSender" />
-		<property name="velocityEngine" ref="velocityEngine" />-->
+		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
+		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
+		
 	</bean>
 
-	<bean id="userManager" class="com.ug.service.impl.UserManagerImpl">
-<!--		<property name="ugUserDAO" ref="ugUserDAO" />-->
-	</bean>
+	<bean id="userManager" class="com.ug.service.impl.UserManagerImpl"/>
 
 
 
@@ -112,32 +112,5 @@
 			</map>
 		</property>
 	</bean>
-
-
-	<!--
-		<context:component-scan base-package="com.ug.model" /> <bean
-		id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close"> <property name="driverClassName"
-		value="org.hsqldb.jdbcDriver"/> <property name="url"
-		value="jdbc:hsqldb:hsql://localhost:9001"/> <property name="username"
-		value="sa"/> <property name="password" value=""/> </bean> <bean
-		id="mySessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="myDataSource" /> <property
-		name="annotatedClasses"> <list> <value>com.ug.model.User</value>
-		<value>com.ug.model.University</value>
-		<value>com.ug.model.Classified</value> </list> </property> <property
-		name="hibernateProperties"> <props> <prop key="hibernate.dialect">
-		org.hibernate.dialect.HSQLDialect</prop> <prop
-		key="hibernate.show_sql">true</prop> <prop
-		key="hibernate.hbm2ddl.auto">update</prop> </props> </property>
-		</bean>
-	-->
-
-
-	<!--
-		<bean id="myUserDAO" class="com.srini.hiber.dao.UserDAOImpl">
-		<property name="sessionFactory" ref="mySessionFactory"/> </bean>
-	-->
 
 </beans>

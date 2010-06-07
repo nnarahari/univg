@@ -14,11 +14,11 @@ import com.ug.model.ResultInfo;
  */
 public interface ClassifiedManager {
 	
-	public ResultInfo addClassified(Classified classified) throws Exception;
+	public ResultInfo addClassified(Classified classified,List<String> fileNameList, List<byte []> imageDataList) throws Exception;
 	
 	public ResultInfo updateConfirmationStatus(String classifiedId) throws Exception;
 	
 	public List<Classified> getListClassifieds(String country, String state, String university, String searchText) throws Exception;
 	
-
+	//public boolean storeClassifiedImages(List<String> fileNameList, List<byte []> imageData, Long classifiedId);
 }

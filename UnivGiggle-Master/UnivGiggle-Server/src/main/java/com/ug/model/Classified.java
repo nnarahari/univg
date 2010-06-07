@@ -72,6 +72,9 @@ public class Classified extends ModelBase{
 	
 	@Column (name="expired")
 	private boolean expired;
+	
+	@Column (name="imagepaths", length=2000)
+	private String imagePaths;
 
 	/**
 	 * @return the showPersonalDetail
@@ -297,6 +300,18 @@ public class Classified extends ModelBase{
 	 */
 	public void setExpired(boolean expired) {
 		this.expired = expired;
+	}
+	/**
+	 * @return the imagePaths
+	 */
+	public String getImagePaths() {
+		return imagePaths;
+	}
+	/**
+	 * @param imagePaths the imagePaths to set
+	 */
+	public void setImagePaths(String imagePaths) {
+		this.imagePaths = imagePaths;
 	}
 	
 
