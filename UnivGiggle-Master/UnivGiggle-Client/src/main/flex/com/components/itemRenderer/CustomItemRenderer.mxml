@@ -2,9 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
 		horizontalAlign="center"
 		verticalAlign="middle">
-
-	<mx:Image source="{data}" />
-
+	<mx:Image source="{data}" maintainAspectRatio="false" width="80" height="80" />
 <!--	<mx:Label text="{data.@title}" />-->
 
 </mx:VBox>
