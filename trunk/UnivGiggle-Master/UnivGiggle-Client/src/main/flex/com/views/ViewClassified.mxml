@@ -2,6 +2,7 @@
 <mx:Accordion xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init();">
 <mx:Script>
 	<![CDATA[
+		import com.events.PostClassifiedEvent;
 		import mx.collections.ArrayCollection;
 		import com.mappedObjects.ug.model.Classified;
 		private var _classifiedObj:Classified;
@@ -16,6 +17,7 @@
 		
 		public function set classifiedObjList(list:ArrayCollection):void
 		{
+			this.removeAllChildren();
 			_classifiedObjectsList = list;
 			for(var i:int = 0;i<_classifiedObjectsList.length;i++){
 				_classifiedObj = _classifiedObjectsList[i] as Classified;

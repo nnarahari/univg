@@ -32,7 +32,7 @@
 	<mx:HBox width="100%">
 		<mx:Label text="Please upload a picture:"/>
 		<mx:TextInput width="16%" id="fileName" editable="false"/>
-		<mx:Button id="browse" label="Browse.."/>
+		<mx:Button id="browse" label="browse.."/>
 		<!--<mx:Button id="upload" label="Upload"/>-->
 	</mx:HBox>
 	<mx:VBox id="additionalAttach" width="100%"/>

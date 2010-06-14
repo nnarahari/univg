@@ -3,11 +3,11 @@
 <mx:Script source="../as/AppHeader.as"/>
 	<mx:ApplicationControlBar width="100%" height="10%" backgroundColor="#EBD2D2">
 		<mx:Image source="@Embed(source='./assets/UnivgiggleLogo.PNG')"/>
-		<mx:Spacer width="60%"/>
+		<mx:Spacer width="40%"/>
 		<mx:VBox width="40%" height="100%">
 			<mx:HBox width="100%" height="75%">
-				<mx:Spacer width="40%"/>
-				<mx:Canvas width="60%">
+				<mx:Spacer width="30%"/>
+				<mx:Canvas width="100%">
 					<mx:VBox id="loginBlock"  width="100%">
 						<mx:HBox width="100%">
 							<mx:Label text="UserName : "/>
@@ -26,6 +26,7 @@
 						<mx:Label text="{userName.text}"/>
 						<mx:Label text="Logged Time :"/>
 						<mx:Label text="{(new Date).toDateString()+(new Date).toLocaleTimeString()}"/>
+						<mx:LinkButton id="id_logout" label="Logout"/> 
 					</mx:HBox>
 				</mx:Canvas>
 			</mx:HBox>

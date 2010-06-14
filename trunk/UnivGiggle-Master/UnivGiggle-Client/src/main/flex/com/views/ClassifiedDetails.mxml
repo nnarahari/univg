@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- screen for displaying the posted classified details
+	 author : Venkata Teeda -->
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init();">
 <mx:Style>
 	global {
@@ -9,6 +11,8 @@
 </mx:Style>
 <mx:Script>
 	<![CDATA[
+		import com.events.PostClassifiedEvent;
+		import mx.events.MoveEvent;
 		import mx.collections.ArrayCollection;
 		import com.mappedObjects.ug.model.Classified;
 		import mx.effects.Resize;
@@ -28,6 +32,7 @@
 		private var tempImageObj:Image;
 		private function init():void
 		{
+			back_but.addEventListener(MouseEvent.CLICK,onBackButClickHandler,false,0,true);
 			/* _classifiedObj = new Classified;
 			_classifiedObj.country = "US";
 			_classifiedObj.state = "Connecticut";
@@ -45,17 +50,38 @@
 			_classifiedObj.price = "50"; */
 		}
 		
+		private function onBackButClickHandler(event:MouseEvent):void
+		{
+			parentDocument.dispatchEvent(new PostClassifiedEvent(PostClassifiedEvent.EVENTNAME));
+		}
+		
+		/**
+		 * setter function for accepting the classified object.
+		 * @param : obj
+		 * @param : void
+		 * */
 		public function set classifiedObject(obj:Classified):void
 		{
 			_classifiedObj = obj;
-			imagePathsList = new ArrayCollection(_classifiedObj.imagePaths.split("|"));
+			if(_classifiedObj.imagePaths != null)
+				imagePathsList = new ArrayCollection(_classifiedObj.imagePaths.split("|"));
 		}
 		
+		/**
+		 * getter function to return the classified object.
+		 * @param : Classified
+		 * */
 		public function get classifiedObject():Classified
 		{
 			return _classifiedObj;
 		}
 		
+		/**
+		 * listener invoked when clicking on image,where image preview is displayed using the popup
+		 * manager
+		 * @param : evt
+		 * @param : void
+		 * */
 		private function tileList_itemClick(evt:ListEvent):void {
 			img = new Image();
 			// img.width = 300;
@@ -71,14 +97,30 @@
 			PopUpManager.addPopUp(img, this, true);
 		}
 		
+		/**
+		 * listener invoked when clicking on the popup control which displayed the image preview
+		 * @param : evt
+		 * @param : void
+		 * */
 		private function image_click(evt:MouseEvent):void {
 			PopUpManager.removePopUp(tempImageObj);
 		}
 		
+		/**
+		 * listener invoked when selecting on the image shown in the image flow wizard
+		 * @param : evt
+		 * @param : void
+		 * */
 		private function image_resize(evt:ResizeEvent):void {
-			//PopUpManager.centerPopUp(tempImageObj);
+			PopUpManager.centerPopUp(tempImageObj);
+			img.removeEventListener(ResizeEvent.RESIZE, image_resize);
 		}
 		
+		/**
+		 * listener invoked when clicking on the image shown in the image flow wizard
+		 * @param : evt
+		 * @param : void
+		 * */
 		private function image_complete(evt:Event):void {
 			PopUpManager.centerPopUp(tempImageObj);
 		}
@@ -96,14 +138,10 @@
 		</mx:Parallel>
 
 		<mx:Form  width="100%">
-			<mx:FormItem label="Posted By :">
+			<mx:FormItem  width="100%" label="Posted By :" direction="horizontal">
 				<mx:Label text="{_classifiedObj.firstName}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Contact Email :">
-				<mx:Label text="{_classifiedObj.email}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Phone Number :">
-				<mx:Label text="{_classifiedObj.contactNo}"/>
+				<mx:Spacer width="70%"/>
+				<mx:Button id="back_but"  label="back"/>
 			</mx:FormItem>
 			<mx:FormItem label="Contact Time :">
 				<mx:Label text="{_classifiedObj.timeToContact}"/>
@@ -126,6 +164,12 @@
 			<mx:FormItem label="Price :">
 				<mx:Label text="{_classifiedObj.currency}{_classifiedObj.price}"/>
 			</mx:FormItem>
+			<mx:FormItem label="Contact Email :" visible="{_classifiedObj.showPersonalDetail}">
+				<mx:Label text="{_classifiedObj.email}" visible="{_classifiedObj.showPersonalDetail}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Phone Number :" visible="{_classifiedObj.showPersonalDetail}">
+				<mx:Label text="{_classifiedObj.contactNo}" visible="{_classifiedObj.showPersonalDetail}"/>
+			</mx:FormItem>
 		</mx:Form>
 		<mx:Label text="Uploaded Files :"/>
 		<mx:TileList id="tileList"
@@ -136,7 +180,7 @@
 			rowCount="1"
 			rowHeight="100"
 			themeColor="haloSilver"
-			verticalScrollPolicy="on"
+			verticalScrollPolicy="off"
 			itemClick="tileList_itemClick(event);" />
 	</mx:VBox>
 
