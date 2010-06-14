@@ -10,7 +10,6 @@ import mx.controls.Alert;
 import mx.controls.Button;
 import mx.controls.Spacer;
 import mx.controls.TextInput;
-import mx.core.ByteArrayAsset;
 import mx.events.CloseEvent;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
@@ -47,26 +46,73 @@ private function CompInit():void
 private function displayBrowseFile(event:MouseEvent):void
 {
 	if(additionalAttach.numChildren < maxImageFileToUpload - 1 ){
+		// adding space
 		var space:Spacer = new Spacer;
 		space.width = 140;
+		// displaying the selected image file name
 		var fileDisplayField:TextInput = new TextInput;
 		fileDisplayField.percentWidth = 20;
 		fileDisplayField.editable = false;
+		// button for displaying the file browser
 		var browseBut:Button = new Button;
-		browseBut.label = "Browse..";
+		browseBut.label = "browse..";
 		browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
+		// button for removing attach file container
+		var removeBut:Button = new Button;
+		removeBut.label = "remove..";
+		removeBut.addEventListener(MouseEvent.CLICK,removeAttachFileContainer,false,0,true);
+		// horizontal box container where spacer,textInput,browse are aligned
 		var hbox:HBox = new HBox;
 		hbox.percentWidth = 80;
 		hbox.addChild(space);
 		hbox.addChild(fileDisplayField);
 		hbox.addChild(browseBut);
+		hbox.addChild(removeBut);
 		additionalAttach.addChild(hbox);
 	}else
 	{
-		Alert.show("Maximum 5 images can be uploaded..","Information");
+//		Alert.show("Maximum 5 images can be uploaded..","Information");
+		attach_more.enabled = false;
 	}
 }
 
+/**
+ * listener invoked for removing the attached files container
+ * @param : event
+ * @param : void
+ * */
+private function removeAttachFileContainer(event:MouseEvent):void
+{
+	var attachHBox:HBox = event.currentTarget.parent as HBox;
+	var fileName:TextInput = attachHBox.getChildAt(1) as TextInput;
+	updateSelectedFileNames(fileName.text);
+	additionalAttach.removeChild(event.currentTarget.parent as HBox);
+	attach_more.enabled = true;
+}
+
+/**
+ * function invoked for updating the selectedFileName & selectedFileReference
+ * @param : fileName
+ * @param : void
+ * */
+private function updateSelectedFileNames(fileName:String):void
+{
+	var tempSelectedFileNames:Array = new Array;
+	var tempSelectedFileReference:Array = new Array;
+	for(var i:int=0;i<selectedfiles.length;i++){
+		if(selectedfiles[i] != fileName){
+			tempSelectedFileNames.push(selectedfiles[i]);
+			tempSelectedFileReference.push(selectedFileReferences[i]);
+		}
+	}
+	selectedfiles = tempSelectedFileNames;
+	selectedFileReferences = tempSelectedFileReference;
+}
+
+/**
+ * function invoked for displaying the image which contains the verification code.
+ * @param : void
+ * */
 public function createImageCaptcha():void
 {
 	if(imagecaptcha != null){
@@ -77,7 +123,11 @@ public function createImageCaptcha():void
 	verificationBlock.addChild(imagecaptcha);
 }
 
-
+/**
+ * listener invoked for invoking the java method to post the classified
+ * @param : event
+ * @param : void
+ * */
 private function onPost(event:MouseEvent):void
 {
 	if(enteredSecureCode.text  == imagecaptcha._securitycode){
@@ -128,12 +178,11 @@ private function onSelectedFile(event:Event):void
 	{
 		imageFileRef.addEventListener(Event.COMPLETE, completeHandler);
 		imageFileRef.load();
-		//selectedFileReferences.push(imageFileRef);
 		tempTextInput.text = imageFileRef.name;
 		browseButEvent.target.enabled = false;
-		//fileName.text = selectedfiles.join(";");
 	}else{
 		Alert.show("maximum 5 images per upload allowed","Information");
+		
 	}
 }
 

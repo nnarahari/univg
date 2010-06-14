@@ -3,6 +3,7 @@
         import com.events.ClassifiedConfirmEvent;
         import com.events.ClassifiedEvent;
         import com.events.ClassifiedPostEvent;
+        import com.events.ComponentInitEvent;
         import com.events.ContactUSEvent;
         import com.events.CorporateLenderEvent;
         import com.events.CreateUserEvent;
@@ -12,10 +13,9 @@
         import com.events.P2PLenderClassifiedEvent;
         import com.events.SignUpEvent;
         import com.events.StudentClassifiedEvent;
+        import com.events.WelcomeEvent;
+        import com.mappedObjects.ug.model.UG_User;
         
-        import flash.events.Event;
-        
-        import mx.controls.Alert;
         import mx.events.BrowserChangeEvent;
         import mx.managers.BrowserManager;
         import mx.managers.IBrowserManager;
@@ -23,6 +23,8 @@
         
         private var browserManagerInstance:IBrowserManager;
         public var isUserLoggedIn:Boolean = false;
+        
+        private var __ugUser:UG_User;
 		
 		private function applicationInit(event:Event):void
 		{
@@ -37,6 +39,7 @@
 			signUp.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
 			appHeader.addEventListener(SignUpEvent.SIGNUP,goToSignUpPage,false,0,true);
 			postClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			postClassified.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
 			confirmClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			confirmClassified.addEventListener(FetchClassifedObjectEvent.FETCH,getPostedClassifiedObject,false,0,true);
 			univGiggleStack.addEventListener(Event.CHANGE,onStackChange,false,0,true);
@@ -47,6 +50,7 @@
 			this.addEventListener(ContactUSEvent.EVENT_NAME,navigateToContact,false,0,true);
 			this.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			this.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
+			this.addEventListener(WelcomeEvent.EVENT_NAME,goToWelcomePage,false,0,true);
 			browserManagerInstance = BrowserManager.getInstance();
             browserManagerInstance.addEventListener(BrowserChangeEvent.BROWSER_URL_CHANGE,
                 parseURL);
@@ -65,6 +69,11 @@
                 univGiggleStack.selectedIndex = selectedView;
 //				 updateTitle(selectedView);
             }
+        }
+        
+        private function goToWelcomePage(event:WelcomeEvent):void
+        {
+        	univGiggleStack.selectedChild = welcome;
         }
         
         private function setIndexAsFragment (selectedViewIndex:Number):void
@@ -90,12 +99,16 @@
 		{
 			if(event._userName != "")
 				isUserLoggedIn = true;
+			__ugUser = event._ugUser;
 			univGiggleStack.selectedChild = home;
 		}
 		
 		private function goToPostClassifieds(event:ClassifiedEvent):void
 		{
 			univGiggleStack.selectedChild = postClassified;
+			/* postClassified.initialize();*/
+			 
+			
 		}
 		
 		private function goToConfirmClassified(event:ClassifiedPostEvent):void
@@ -127,8 +140,7 @@
 		private function onUserCreated(event:CreateUserEvent):void
 		{
 			univGiggleStack.selectedChild = welcome;
-			/* login.userName.text = event._userName;
-			login.passWord.text = event._passWord; */
+			//__ugUser = event._ugUser;
 		}
 		
 		private function onStackChange(event:Event):void
@@ -160,6 +172,11 @@
         private function navigateToContact(event:ContactUSEvent):void
         {	
         		univGiggleStack.selectedChild = contactUs;
+        }
+        
+        private function setUserObject(event:ComponentInitEvent):void
+        {
+        	postClassified.setUserInfo = __ugUser;
         }
         
         
