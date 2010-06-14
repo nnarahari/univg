@@ -82,7 +82,7 @@ private function setValidator():void
 
 private function onResultAddUser(event:ResultEvent):void
 {
-	dispatchEvent(new CreateUserEvent(CreateUserEvent.USER,"",""));
+	dispatchEvent(new CreateUserEvent(CreateUserEvent.USER,ugUser));
 }
 
 private function onFaultAddUser(event:FaultEvent):void

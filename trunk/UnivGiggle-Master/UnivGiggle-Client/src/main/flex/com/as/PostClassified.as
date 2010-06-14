@@ -5,11 +5,12 @@
  * */
  //import statements
 import com.events.ClassifiedPostEvent;
+import com.events.ComponentInitEvent;
 import com.events.HomePageEvent;
+import com.events.PostClassifiedEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.Classified;
-
-import flash.events.MouseEvent;
+import com.mappedObjects.ug.model.UG_User;
 
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
@@ -48,7 +49,9 @@ private function applicationInit():void
 	listofclassifiedRmtObj = serviceObject.getRemoteObjectInstance("classifiedManager");
 	listofclassifiedRmtObj.addEventListener(ResultEvent.RESULT,onResultGetListOfClassifiedObj,false,0,true);
 	listofclassifiedRmtObj.addEventListener(FaultEvent.FAULT,onFaultGetListOfClassifiedObj,false,0,true);
+	viewClassifies.addEventListener(PostClassifiedEvent.EVENTNAME,invokePostClassified,false,0,true);
 	setValidator();
+	dispatchEvent(new ComponentInitEvent(ComponentInitEvent.EVENT_NAME));
 }
 
 /**
@@ -148,6 +151,19 @@ private function onResultGetListOfClassifiedObj(event:ResultEvent):void
 private function onFaultGetListOfClassifiedObj(event:FaultEvent):void
 {
 	Alert.show(event.fault.message,"Error");
+}
+
+public function set setUserInfo(userInfo:UG_User):void
+{
+	classifiedObj.firstName = userInfo.firstName;
+	classifiedObj.lastName = userInfo.lastName;
+	classifiedObj.contactNo = userInfo.contactNo;
+	classifiedObj.email = userInfo.emailId;
+}
+
+private function invokePostClassified(event:PostClassifiedEvent):void
+{
+	switchView.selectedIndex = 0;
 }
 
 private function mockObject():void
