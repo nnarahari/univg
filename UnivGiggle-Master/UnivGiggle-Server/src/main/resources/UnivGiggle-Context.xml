@@ -88,6 +88,8 @@
 	<bean id="classifiedDAO" class="com.ug.dao.impl.ClassifiedDAOImpl" autowire="byName"/>
 	
 	<bean id="ugUserDAO" class="com.ug.dao.impl.UGUserDAOImpl" autowire="byName" />
+	
+	<bean id="mentorDAO" class="com.ug.dao.impl.MentorDAOImpl" autowire="byName" />
 
 
 
