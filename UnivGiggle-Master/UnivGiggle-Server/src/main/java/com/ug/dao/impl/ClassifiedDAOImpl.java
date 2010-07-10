@@ -3,7 +3,6 @@
  */
 package com.ug.dao.impl;
 
-import java.io.File;
 import java.util.List;
 
 import javax.persistence.EntityManager;

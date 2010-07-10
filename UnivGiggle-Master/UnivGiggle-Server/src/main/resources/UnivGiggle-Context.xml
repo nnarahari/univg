@@ -90,6 +90,8 @@
 	<bean id="ugUserDAO" class="com.ug.dao.impl.UGUserDAOImpl" autowire="byName" />
 	
 	<bean id="mentorDAO" class="com.ug.dao.impl.MentorDAOImpl" autowire="byName" />
+	
+	<bean id="menteeDAO" class="com.ug.dao.impl.MenteeDAOImpl" autowire="byName" />
 
 
 
@@ -98,11 +100,19 @@
 	<bean id="classifiedManager" class="com.ug.service.impl.ClassifiedManagerImpl">
 		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
 		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
-		
 	</bean>
 
 	<bean id="userManager" class="com.ug.service.impl.UserManagerImpl"/>
 
+	<bean id="menteeManager" class="com.ug.service.impl.MenteeManagerImpl">
+		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
+		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
+	</bean>
+	
+	<bean id="mentorManager" class="com.ug.service.impl.MentorManagerImpl" >
+		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
+		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
+	</bean>
 
 
 	<bean

@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +53,6 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 		ResultInfo resultInfo = null;
 		boolean cfdAddedStatus = false;
 		if(cfd != null){
-			
 			if(fileNameList != null && imageDataList != null){
 				logger.info("This classified contains images also.. saving that images..");
 				String imagePaths = storeClassifiedImages(fileNameList, imageDataList, cfd.getId());

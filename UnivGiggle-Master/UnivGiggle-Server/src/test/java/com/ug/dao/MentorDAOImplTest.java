@@ -11,7 +11,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.ug.model.Mentee;
 import com.ug.model.Mentor;
+
+import flex.messaging.io.ArrayList;
 
 /**
  * 
@@ -47,8 +50,13 @@ public class MentorDAOImplTest {
 		mentor.setProfession("Teacher");
 		mentor.setSchoolCollege("schoolCollege");
 		mentor.setTestimonial("testimonial");
-		mentor.setVerificationCode("verificationCode");
 		mentor.setVersion(1);
+		
+		Mentee mentee = createMentee("Robin","Ramesh", "a.a@com");
+		List<Mentee> menteeList = new java.util.ArrayList<Mentee>();
+		menteeList.add(mentee);
+		mentor.setMenteeList(menteeList);
+		
 		Mentor resultMentor = null;
 		resultMentor = mentorDAO.createOrUpdateMentor(mentor);
 		assertNotNull("Result shouldn't be null", resultMentor);
@@ -77,7 +85,6 @@ public class MentorDAOImplTest {
 		mentor.setProfession("Teacher");
 		mentor.setSchoolCollege("schoolCollege");
 		mentor.setTestimonial("testimonial");
-		mentor.setVerificationCode("verificationCode");
 		mentor.setVersion(1);
 		Mentor resultMentor = null;
 		resultMentor = mentorDAO.createOrUpdateMentor(mentor);
@@ -98,7 +105,6 @@ public class MentorDAOImplTest {
 		mentor1.setProfession("Teacher");
 		mentor1.setSchoolCollege("schoolCollege");
 		mentor1.setTestimonial("testimonial");
-		mentor1.setVerificationCode("verificationCode");
 		mentor1.setVersion(1);
 		resultMentor = mentorDAO.createOrUpdateMentor(mentor1);
 		assertNotNull("Result shouldn't be null", resultMentor);
@@ -129,7 +135,6 @@ public class MentorDAOImplTest {
 		mentor.setProfession("Teacher");
 		mentor.setSchoolCollege("schoolCollege");
 		mentor.setTestimonial("testimonial");
-		mentor.setVerificationCode("verificationCode");
 		mentor.setVersion(1);
 
 		Mentor resultMentor = mentorDAO.createOrUpdateMentor(mentor);
@@ -162,7 +167,6 @@ public class MentorDAOImplTest {
 		mentor.setProfession("Teacher");
 		mentor.setSchoolCollege("schoolCollege");
 		mentor.setTestimonial("testimonial");
-		mentor.setVerificationCode("verificationCode");
 		mentor.setVersion(1);
 
 		Mentor resultMentor = mentorDAO.createOrUpdateMentor(mentor);
@@ -170,5 +174,16 @@ public class MentorDAOImplTest {
 		List<Mentor> resultList = mentorDAO.getMentorsByEmail(email);
 		assertNotNull(resultList);
 		assertTrue("Should return morethan a value ", resultList.size() > 0);
+	}
+	
+	private Mentee createMentee(String fname,String lname, String email){
+		Mentee mentee = new Mentee(fname, lname, email);
+		mentee.setAge("22");
+		mentee.setCitizenship("India");
+		mentee.setDegree("MBA");
+		mentee.setGender("Male");
+		mentee.setLanguage("English");
+		mentee.setProfession("Student");
+		return mentee;
 	}
 }
