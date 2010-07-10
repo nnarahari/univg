@@ -1,0 +1,48 @@
+/**
+ * 
+ */
+package com.ug.service;
+
+import com.ug.model.Mentee;
+import com.ug.model.ResultInfo;
+
+/**
+ * @author srini
+ *
+ */
+public interface MenteeManager {
+
+	/**
+	 * Create new {@link Mentee} in to the system.
+	 * @param mentee
+	 * @param imageFileName
+	 * @param imageData
+	 * @return (@link ResultInfo}
+	 * @throws Exception 
+	 */
+	public ResultInfo addMentee(Mentee mentee, String imageFileName, byte[] imageData) throws Exception;
+	
+	
+	/**
+	 * Delete {@link Mentee} from the system.
+	 * @param mentee
+	 * @return
+	 */
+	public ResultInfo removeMentee(Mentee mentee);
+	
+	
+	/**
+	 * Retrieve the {@link Mentee} details from system. 
+	 * @param email
+	 * @return
+	 */
+	public Mentee getMentee(String email);
+	
+	/**
+	 * Update the existing {@link Mentee} details.
+	 * @param mentee
+	 * @return
+	 */
+	public ResultInfo updateMentee(Mentee mentee);
+	
+}

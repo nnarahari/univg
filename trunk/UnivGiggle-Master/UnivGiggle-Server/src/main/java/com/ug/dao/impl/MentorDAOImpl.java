@@ -1,5 +1,6 @@
 package com.ug.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,15 +9,23 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
-import org.hibernate.annotations.Cascade;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ug.dao.MentorDAO;
 import com.ug.exception.DBConnectionFailureException;
+import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 /**
  * 
  * @author Anil.J
+ *
+ */
+/**
+ * @author srini
+ *
+ */
+/**
+ * @author srini
  *
  */
 public class MentorDAOImpl implements MentorDAO {
@@ -48,7 +57,7 @@ public class MentorDAOImpl implements MentorDAO {
 			throw e;
 		}
 		return mentorList;
-	}
+	} 
 
 	/**
 	 * Add new mentor/modify existing mentor.
@@ -106,6 +115,7 @@ public class MentorDAOImpl implements MentorDAO {
 	 * Delete the passed mentor.
 	 */
 	@Override
+	@Transactional
 	public void deleteMentor(Mentor mentor) throws Exception{
 		try{
 			Mentor mentorTobeDeleted = entityManager.find(Mentor.class, mentor.getId());
@@ -117,5 +127,62 @@ public class MentorDAOImpl implements MentorDAO {
 		}
 
 	}
+
+	@Transactional
+	@Override
+	public boolean addMentee(String mentorEmail, Mentee mentee) {
+		logger.info("addMentee() started..");
+		logger.info("mentorEmail ==>"+ mentorEmail);
+		Mentor mentor = getMentor(mentorEmail);
+		logger.info(mentor);
+		logger.info("No of existing mentee for this mentor ==>"+ mentor.getMenteeList().size());
+		List<Mentee> menteeList =  mentor.getMenteeList();
+		menteeList.add(mentee);
+		mentor.setMenteeList(menteeList);
+		try {
+			createOrUpdateMentor(mentor);
+			return true;
+		} catch (Exception e) {
+			logger.error("Error while adding mentee to Mentor.",e);
+		}
+		return false;
+	}
+
+	@Transactional
+	@Override
+	public Mentor getMentor(String email) {
+		logger.info("getMentor() started...email ==>"+ email);
+		Mentor mentor = null;
+		String qry = "Select Object(c) from Mentor c where c.email = :email";
+		Query query = entityManager.createQuery(qry);
+		query.setParameter("email", email);
+		try {
+			mentor = (Mentor) query.getSingleResult();
+		} catch (Exception e) {
+			logger.error("Error while reteriving classified", e);
+		}
+		return mentor;
+	}
+
+
+	@Transactional
+	@Override
+	public boolean removeMentee(String mentorEmail, Mentee mentee) {
+		logger.info("removeMentee() started...mentorEmail ==>"+ mentorEmail);
+		Mentor mentor = getMentor(mentorEmail);
+		logger.info(mentor);
+		List<Mentee> menteeList =  mentor.getMenteeList();
+		menteeList.remove(mentee);
+		mentor.setMenteeList(menteeList);
+		try {
+			createOrUpdateMentor(mentor);
+			return true;
+		} catch (Exception e) {
+			logger.error("Error while removing mentee to Mentor.",e);
+		}
+		return false;
+	}
+	
+
 
 }
