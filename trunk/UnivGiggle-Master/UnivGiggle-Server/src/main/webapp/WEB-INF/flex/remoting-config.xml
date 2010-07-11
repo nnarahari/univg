@@ -22,27 +22,19 @@
 	  	</properties>
   	</destination>
   	
-  	
-  	
-  	
-
-	<!--
-	
-	<destination id="userManager">
-			<properties>
-				<source>com.ug.service.impl.UserManagerImpl</source>
-				<scope>application</scope>
-			</properties>
-			<adapter ref="java-object"/>
-	</destination>
-	
-	
-	<destination id="CreatingRpc">
+  	<destination id="mentorManager">
 		<properties>
-			<source>com.adobe.remoteobjects.RemoteServiceHandler</source>
-			<scope>application</scope>
-		</properties>
-		<adapter ref="java-object"/>
-	</destination>-->
+	  		<factory>spring</factory> 
+	  		<source>mentorManager</source> 
+	  	</properties>
+  	</destination>
+  	
+  	<destination id="menteeManager">
+		<properties>
+	  		<factory>spring</factory> 
+	  		<source>menteeManager</source> 
+	  	</properties>
+  	</destination>
+  	
 
 </service>
