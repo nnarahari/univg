@@ -21,3 +21,29 @@ Alert
 		text-align :left;
 		color :#ffffff;
 	}
+	
+
+.storeButtonBar
+{
+    cornerRadius:           0;
+    buttonStyleName:        "storeButton";
+    themeColor:             #456F84;
+}
+
+.storeButton
+{
+    cornerRadius:           0;
+    fillColors:             #4A6F81, #BDD6E2, #456F84, #9ABBC9;
+    fillAlphas:             1, 1;
+    highlightAlphas:        .5, .25;
+    fontWeight:             "normal";
+    selectedOverSkin:       ClassReference("samples.flexstore.ButtonBarButtonSkin");
+    selectedUpSkin:         ClassReference("samples.flexstore.ButtonBarButtonSkin");
+    overSkin:               ClassReference("samples.flexstore.ButtonBarButtonSkin");
+}
+
+.catalogTitleButtonSelected
+{
+    color:                  #FFFFFF;
+    fontWeight:             "bold";
+}
