@@ -71,10 +71,16 @@ public class UGUserDAOImpl implements UGUserDAO {
 		query.setParameter("password", password);
 
 		try{
-		   UG_User user = (UG_User) query.getSingleResult();
-		   if(user != null)
-			   isSuccess = true;
-			   
+			UG_User user = (UG_User) query.getSingleResult();
+			if(user != null){
+				if(user.isActivated()){
+					isSuccess = true;
+				}else{
+					isSuccess = false;
+					logger.error("User is not activated.. please activate then try to login");
+				}
+			}
+
 		}catch(Exception e){
 			logger.error("Error while reteriving validateUser",e);
 			throw e;
