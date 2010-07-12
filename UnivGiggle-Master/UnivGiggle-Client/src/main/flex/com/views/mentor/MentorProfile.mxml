@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
+	horizontalAlign="center" verticalAlign="top" creationComplete="compInit();">
+<!-- Binding the ActionScript object with the view controls -->
+<mx:Binding source="fname.text" destination="_mentor.firstName"/>
+<mx:Binding source="lname.text" destination="_mentor.lastName"/>
+<mx:Binding source="emailId.text" destination="_mentor.email"/>
+<mx:Binding source="age.text" destination="_mentor.age"/>
+<mx:Binding source="country.text" destination="_mentor.citizenship"/>
+<mx:Binding source="language.text" destination="_mentor.language"/>
+<mx:Binding source="profession.text" destination="_mentor.profession"/>
+<mx:Binding source="highestDegree.text" destination="_mentor.degree"/>
+<mx:Binding source="educationAttn.text" destination="_mentor.schoolCollege"/>
+<mx:Binding source="description.text" destination="_mentor.description"/>
+<mx:Binding source="testimonial.text" destination="_mentor.testimonial"/>
+<!--<mx:Binding source="" destination=""/>
+<mx:Binding source="" destination=""/>
+<mx:Binding source="" destination=""/>
+--><!-- End of Binding -->
+<mx:Script source="../../as/mentor/mentorProfile.as"/>	
+	<mx:Grid id="mentorProfile" width="100%" height="100%">
+		<mx:GridRow id="heading" width="100%">
+			<mx:GridItem >
+				<mx:Text text="Number of Mentees :"/>
+				<mx:Text id="menteeCount" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Button label="Create/Edit Mentor Profile"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow/>
+		<mx:GridRow  width="100%">
+			<mx:GridItem >
+				<mx:Text text="First Name :" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="fname" width="35%" text="{_mentor.firstName}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Last Name :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="lname" width="100%" text="{_mentor.lastName}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%">
+			<mx:GridItem >
+				<mx:Text text="Email Address :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="emailId" width="35%" text="{_mentor.email}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Sex :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:RadioButton id="male" label="Male" groupName="martial" selected="true"/>
+				<mx:RadioButton id="female" label="Female" groupName="martial"/>
+			</mx:GridItem>
+			
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%">
+			<mx:GridItem >
+				<mx:Text text="Age :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="age" width="15%"  text="{_mentor.age}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Country of Citizenship :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:ComboBox id="country"  width="20%"  text="{_mentor.citizenship}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%">
+			<mx:GridItem >
+				<mx:Text text="Language :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="language"  width="35%"  text="{_mentor.language}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Current Profession :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:ComboBox id="profession"  width="20%"  text="{_mentor.profession}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%">
+			<mx:GridItem >
+				<mx:Text text="Highest Degree Obtained :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="highestDegree" width="35%"  text="{_mentor.degree}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Schools/Colleges Attended/Attending :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="educationAttn" width="100%"  text="{_mentor.schoolCollege}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%"  height="100%">
+			<mx:GridItem >
+				<mx:Text text="Brief description about yourself and why you want to serve as a mentor :" width="90%"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextArea id="description" width="100%" height="100%"  text="{_mentor.description}"/>
+			</mx:GridItem>
+			
+		</mx:GridRow>
+		
+		<mx:GridRow>
+			<mx:GridItem>
+				<mx:CheckBox id="menteeChk" label=""/>
+				<mx:Text text="Not accepting any new Mentees (no new mentees"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Text text="will be able to get in touch with you)."/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow>
+			<mx:GridItem >
+				<mx:Text text="Upload Pic :"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextInput id="fileName" width="50%"  text="{_mentor.imagePaths}"/>
+				<mx:Button label="browse.." id="browseBut"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%" height="100%">
+			<mx:GridItem >
+				<mx:Text text="Write New Testimonial for UnivG :" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:TextArea id="testimonial" width="100%" height="100%"  text="{_mentor.testimonial}"/>
+			</mx:GridItem>
+			
+		</mx:GridRow>
+		<mx:GridRow  width="100%">
+			<mx:GridItem >
+				<mx:CheckBox id="chk" label=""/>
+				<mx:Text text="By clicking on checkbox you are agreeing to the"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:LinkButton label="Terms and Conditions"/>
+				<mx:Text text="and the"/>
+				<mx:LinkButton label="Privacy Policy"/>
+				<mx:Text text="of UnivGiggle.com"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow  width="100%">
+			<mx:GridItem >
+				<mx:Text text="Enter Verification Code :" />
+			</mx:GridItem>
+			<mx:GridItem id="verificationBlock">
+				<mx:TextInput id="verificationCode" width="35%"/>
+				<mx:Image />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow height="10%"/>
+		<mx:GridRow  width="100%">
+			<mx:GridItem />
+			<mx:GridItem>
+				<mx:Button id="saveMentorProfile" enabled="{chk.selected}" label="SAVE" />
+				<mx:Button id="cancelMentorProfile" label="CANCEL"/>
+			</mx:GridItem>
+		</mx:GridRow>
+	</mx:Grid>
+</mx:VBox>
