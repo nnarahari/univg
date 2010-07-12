@@ -5,14 +5,16 @@ package com.events
 	public class ClassifiedEvent extends Event
 	{
 		public static var CLASSIFIED:String = "classified";
-		public function ClassifiedEvent(type:String)
+		public var _index:uint = 0;
+		public function ClassifiedEvent(type:String,index:uint)
 		{
 			super(type);
+			_index = index;
 		}
 		
 		override public function clone():Event
 		{
-			return new ClassifiedEvent(type);
+			return new ClassifiedEvent(type,_index);
 		}
 		
 	}
