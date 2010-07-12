@@ -6,7 +6,7 @@
 		<mx:Spacer width="40%"/>
 		<mx:VBox width="40%" height="100%">
 			<mx:HBox width="100%" height="75%">
-				<mx:Spacer width="30%"/>
+				<mx:Spacer width="60%"/>
 				<mx:Canvas width="100%">
 					<mx:VBox id="loginBlock"  width="100%">
 						<mx:HBox width="100%">
@@ -15,6 +15,7 @@
 							<mx:Label text="PassWord : "/>
 							<mx:TextInput id="passWord" displayAsPassword="true" width="150"/>
 							<mx:Button id="sub" label=">>"/>
+							<mx:LinkButton label="Logout" height="10" visible="false"/>
 						</mx:HBox>
 						<mx:HBox width="100%" horizontalAlign="center">
 							<mx:Label text="Forget your password? password passwordyouryour" visible="false"/>
@@ -26,19 +27,15 @@
 						<mx:Label text="{userName.text}"/>
 						<mx:Label text="Logged Time :"/>
 						<mx:Label text="{(new Date).toDateString()+(new Date).toLocaleTimeString()}"/>
-						<mx:LinkButton id="id_logout" label="Logout"/> 
+						<mx:LinkButton id="id_logout" label="Logout" /> 
 					</mx:HBox>
 				</mx:Canvas>
 			</mx:HBox>
-			<mx:TabBar id="tabBar" height="25%">
-				<mx:String>HOME</mx:String>
-				<mx:String>ABOUT</mx:String>
-				<mx:String>STUDENTS</mx:String>
-				<mx:String>P2P LENDERs</mx:String>
-				<mx:String>CORPORATE LENDERS</mx:String>
-				<mx:String>UNIVERSITY CLASSIFIEDS</mx:String>
-				<mx:String>CONTACT US</mx:String>
-			</mx:TabBar>
+			<mx:Canvas>
+				<mx:MenuBar id="mMenuBar" labelField="@label"  
+           			 dataProvider="{menuBarCollection}" />
+
+			</mx:Canvas>
 		</mx:VBox>
 	</mx:ApplicationControlBar>
 </mx:VBox>
