@@ -137,6 +137,7 @@ public class MentorDAOImpl implements MentorDAO {
 		logger.info(mentor);
 		logger.info("No of existing mentee for this mentor ==>"+ mentor.getMenteeList().size());
 		List<Mentee> menteeList =  mentor.getMenteeList();
+		mentee.setMentor(mentor);
 		menteeList.add(mentee);
 		mentor.setMenteeList(menteeList);
 		try {
