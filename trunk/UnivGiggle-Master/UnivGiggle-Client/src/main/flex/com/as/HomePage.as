@@ -8,7 +8,7 @@ private function HomeInit():void{
 
 private function postClassifieds(event:MouseEvent):void
 {
-	dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED));
+	dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED,0));
 }
 
 

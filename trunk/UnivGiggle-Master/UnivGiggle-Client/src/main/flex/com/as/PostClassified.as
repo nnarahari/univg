@@ -155,10 +155,12 @@ private function onFaultGetListOfClassifiedObj(event:FaultEvent):void
 
 public function set setUserInfo(userInfo:UG_User):void
 {
-	classifiedObj.firstName = userInfo.firstName;
-	classifiedObj.lastName = userInfo.lastName;
-	classifiedObj.contactNo = userInfo.contactNo;
-	classifiedObj.email = userInfo.emailId;
+	if(userInfo != null){
+		classifiedObj.firstName = userInfo.firstName;
+		classifiedObj.lastName = userInfo.lastName;
+		classifiedObj.contactNo = userInfo.contactNo;
+		classifiedObj.email = userInfo.emailId;
+	}
 }
 
 private function invokePostClassified(event:PostClassifiedEvent):void
