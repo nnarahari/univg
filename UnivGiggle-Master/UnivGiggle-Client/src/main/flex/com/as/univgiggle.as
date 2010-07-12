@@ -14,6 +14,10 @@
         import com.events.SignUpEvent;
         import com.events.StudentClassifiedEvent;
         import com.events.WelcomeEvent;
+        import com.events.mentee.MenteeProfileEvent;
+        import com.events.mentee.SaveMenteeEvent;
+        import com.events.mentor.MentorProfileEvent;
+        import com.events.mentor.SaveMentorProfileEvent;
         import com.mappedObjects.ug.model.UG_User;
         
         import mx.events.BrowserChangeEvent;
@@ -42,6 +46,8 @@
 			postClassified.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
 			confirmClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			confirmClassified.addEventListener(FetchClassifedObjectEvent.FETCH,getPostedClassifiedObject,false,0,true);
+			mentor.addEventListener(SaveMentorProfileEvent.SAVEEVENT,goToMentorTestimonial,false,0,true);
+			mentee.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 			univGiggleStack.addEventListener(Event.CHANGE,onStackChange,false,0,true);
 			this.addEventListener(AboutUsEvent.EVENT_NAME,aboutHandler,false,0,true);
 			this.addEventListener(StudentClassifiedEvent.EVENT_NAME,navigateToStudentClassified,false,0,true);
@@ -51,6 +57,8 @@
 			this.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			this.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
 			this.addEventListener(WelcomeEvent.EVENT_NAME,goToWelcomePage,false,0,true);
+			this.addEventListener(MentorProfileEvent.MENTOREVENT,goToMentorProfile,false,0,true);
+			this.addEventListener(MenteeProfileEvent.MENTEE_EVENT,goToMenteeProfile,false,0,true);
 			browserManagerInstance = BrowserManager.getInstance();
             browserManagerInstance.addEventListener(BrowserChangeEvent.BROWSER_URL_CHANGE,
                 parseURL);
@@ -106,9 +114,9 @@
 		private function goToPostClassifieds(event:ClassifiedEvent):void
 		{
 			univGiggleStack.selectedChild = postClassified;
+			if(postClassified.switchView != null)
+				postClassified.switchView.selectedIndex = event._index;
 			/* postClassified.initialize();*/
-			 
-			
 		}
 		
 		private function goToConfirmClassified(event:ClassifiedPostEvent):void
@@ -178,5 +186,29 @@
         {
         	postClassified.setUserInfo = __ugUser;
         }
+        
+        private function goToMentorTestimonial(event:SaveMentorProfileEvent):void
+        {
+        	univGiggleStack.selectedChild = mentorAck;
+        	mentorAck.callLater(mentorAck.setMentorObject,[event._mentorObj]);
+        }
+        
+        private function goToMentorProfile(event:MentorProfileEvent):void
+        {
+        	univGiggleStack.selectedChild = mentor;
+        }
+        
+        private function goToMenteeProfile(event:MenteeProfileEvent):void
+        {
+        	univGiggleStack.selectedChild = mentee;
+        }
+        
+        private function goToMenteeTestimonial(event:SaveMenteeEvent):void
+        {
+        	univGiggleStack.selectedChild = menteeAck;
+        	menteeAck.callLater(menteeAck.setMenteeObject,[event._menteeObj]);
+        }
+        
+        
         
         

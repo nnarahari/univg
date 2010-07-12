@@ -9,7 +9,7 @@ private function applicationInit():void
 
 private function newPosting(event:MouseEvent):void
 {
-	dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED));
+	dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED,0));
 }
 
 private function onHomePage(event:MouseEvent):void

@@ -10,11 +10,17 @@
 		import com.events.SignUpEvent;
 		import com.events.StudentClassifiedEvent;
 		import com.events.WelcomeEvent;
+		import com.events.mentee.MenteeProfileEvent;
+		import com.events.mentor.MentorProfileEvent;
 		import com.interactiveObject.ServiceObject;
 		import com.mappedObjects.ug.model.UG_User;
 		
+		import flash.events.MouseEvent;
+		
+		import mx.collections.XMLListCollection;
 		import mx.controls.Alert;
 		import mx.events.ItemClickEvent;
+		import mx.events.MenuEvent;
 		import mx.rpc.events.FaultEvent;
 		import mx.rpc.events.ResultEvent;
 		import mx.rpc.remoting.RemoteObject;
@@ -23,6 +29,38 @@
 		private var serviceObject:ServiceObject;
 		private var __ugUser:UG_User = null;
 		private const indexArr:Array = [0,1,2,3,4,5,6];
+		[Bindable]
+        public var menuBarCollection:XMLListCollection;
+        
+        private var menubarXML:XMLList =
+        <>
+        	<menuitem label="HOME" data="top" type="check"/>
+        	<menuitem label="|" data="top"/>
+        	<menuitem label="ABOUT" data="top"/>
+        	<menuitem label="|" data="top"/>
+        	<menuitem label="STUDENTS" data="top"/>
+        	<menuitem label="|" data="top"/>
+        	<menuitem label="P2P LENDERs" data="top"/>
+        	<menuitem label="|" data="top"/>
+        	<menuitem label="CORPORATE LENDERS" data="top"/>
+        	<menuitem label="|" data="top"/>
+        	<menuitem label="MENTOR PROGRAM" data="top">
+	        	<menuitem label="Mentor" type="radio"
+	                        groupName="one" data="2A"/>
+	            <menuitem label="Mentee" type="radio"
+	                        groupName="one" data="2B"/>
+	        </menuitem>
+        	<menuitem label="|" data="top"/>
+        	<menuitem label="UNIVERSITY CLASSIFIEDS" data="top">
+        		<menuitem label="Post Classified" type="radio"
+                        groupName="one" data="1A"/>
+                <menuitem label="View Classified" type="radio"
+                        groupName="one" data="1B"/>
+        	</menuitem>
+        	<menuitem label="|" data="top"/>
+        	<menuitem label="CONTACT US" data="top"/>
+        </>;
+
 		
 		/**
 		 * function invoked once the application got completely initialized and aligned
@@ -30,10 +68,13 @@
 		 * */
 		private function AppInit():void
 		{
+			menuBarCollection = new XMLListCollection(menubarXML);
 			serviceObject = new ServiceObject;
 			loginRmtObj = serviceObject.getRemoteObjectInstance("userManager");
 			addEventListeners();
-			tabBar.addEventListener(ItemClickEvent.ITEM_CLICK,itemSelected,false,0,true);
+			mMenuBar.addEventListener(MouseEvent.CLICK,menuBarHandler,false,0,true);
+			mMenuBar.addEventListener(MenuEvent.ITEM_CLICK,menuBarItemHandler,false,0,true);
+
 		}
 		
 		/**
@@ -42,38 +83,50 @@
 		 * @param : event
 		 * @param : void
 		 * */
-		private function itemSelected(event:ItemClickEvent):void
-		{
-			if(checkUserLoggedIn()){
-				switch(event.index){
-					case indexArr[0] :
-						parentDocument.dispatchEvent(new WelcomeEvent(WelcomeEvent.EVENT_NAME));
-						break;
-					 case indexArr[1] :
-						parentDocument.dispatchEvent(new AboutUsEvent(AboutUsEvent.EVENT_NAME));
-						break;
-					case indexArr[2] :
-					    parentDocument.dispatchEvent(new StudentClassifiedEvent(StudentClassifiedEvent.EVENT_NAME));
-						break;
-					case indexArr[3] :
-						parentDocument.dispatchEvent(new P2PLenderClassifiedEvent(P2PLenderClassifiedEvent.EVENT_NAME));
-						break;
-					case indexArr[4] :
-						parentDocument.dispatchEvent(new CorporateLenderEvent(CorporateLenderEvent.EVENT_NAME));
-						break;
-					case indexArr[5] :
-						parentDocument.dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED));
-						break; 
-					case indexArr[6] :
-						parentDocument.dispatchEvent(new ContactUSEvent(ContactUSEvent.EVENT_NAME));
-						break; 
-					default :
-					    break;
-				}
-			} else if(event.index == indexArr[5]){
-					parentDocument.dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED));
-			}
-		}
+		private function menuBarHandler(event:MouseEvent):void
+        {
+        	switch(mMenuBar.selectedIndex){
+        		 case 0 :
+        			parentDocument.dispatchEvent(new WelcomeEvent(WelcomeEvent.EVENT_NAME));
+        			break;
+        		case 2:
+        			parentDocument.dispatchEvent(new AboutUsEvent(AboutUsEvent.EVENT_NAME));
+        			break;
+        		case 4:
+        			parentDocument.dispatchEvent(new StudentClassifiedEvent(StudentClassifiedEvent.EVENT_NAME));
+        			break;
+        		case 6:
+        			parentDocument.dispatchEvent(new P2PLenderClassifiedEvent(P2PLenderClassifiedEvent.EVENT_NAME));
+        			break;
+        		case 8:
+        			parentDocument.dispatchEvent(new CorporateLenderEvent(CorporateLenderEvent.EVENT_NAME));
+        			break;
+        		case 14:
+        			parentDocument.dispatchEvent(new ContactUSEvent(ContactUSEvent.EVENT_NAME));
+        			break; 
+        	}
+        }
+        
+         // Event handler for the MenuBar control's itemClick event.
+        private function menuBarItemHandler(event:MenuEvent):void  {
+            
+            switch(event.label){
+            	case "Mentor" :
+            		if(!checkUserLoggedIn())
+						parentDocument.dispatchEvent(new MentorProfileEvent(MentorProfileEvent.MENTOREVENT));
+	            	break;
+            	case "Mentee" :
+            		if(!checkUserLoggedIn())
+						parentDocument.dispatchEvent(new MenteeProfileEvent(MenteeProfileEvent.MENTEE_EVENT));
+	            	break;
+	            case "Post Classified":	            	
+	            		parentDocument.dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED,0));
+	            	break;
+	            case "View Classified":	            	
+	            		parentDocument.dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED,1));
+	            	break;
+            }
+        }
 		
 		/**
 		 * listener invoked once the java method returns the data to the client
@@ -188,4 +241,13 @@
 		private function onLogout(event:MouseEvent):void
 		{
 			Alert.show("Is Logout called ?");
+		}
+		
+		private function subMenuItemClickHandler(event:ItemClickEvent):void
+		{
+			if(event.index == 0){
+				parentDocument.dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED,0));
+			}else{
+				parentDocument.dispatchEvent(new ClassifiedEvent(ClassifiedEvent.CLASSIFIED,1));
+			}
 		}
