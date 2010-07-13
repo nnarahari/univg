@@ -1,5 +1,6 @@
 package com.ug.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,10 +15,12 @@ import com.ug.dao.MentorDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
+
 /**
  * @author srini
- *
+ * 
  */
+
 public class MentorDAOImpl implements MentorDAO {
 
 	Logger logger = Logger.getLogger(MentorDAOImpl.class);
@@ -47,7 +50,7 @@ public class MentorDAOImpl implements MentorDAO {
 			throw e;
 		}
 		return mentorList;
-	} 
+	}
 
 	/**
 	 * Add new mentor/modify existing mentor.
@@ -77,7 +80,6 @@ public class MentorDAOImpl implements MentorDAO {
 		return null;
 	}
 
-	
 	/**
 	 * Get the Mentor based on the email id passed.
 	 */
@@ -106,12 +108,13 @@ public class MentorDAOImpl implements MentorDAO {
 	 */
 	@Override
 	@Transactional
-	public void deleteMentor(Mentor mentor) throws Exception{
-		try{
-			Mentor mentorTobeDeleted = entityManager.find(Mentor.class, mentor.getId());
+	public void deleteMentor(Mentor mentor) throws Exception {
+		try {
+			Mentor mentorTobeDeleted = entityManager.find(Mentor.class, mentor
+					.getId());
 			entityManager.remove(mentorTobeDeleted);
-		}catch(Exception e){
-			logger.info("Error while deleting",e);
+		} catch (Exception e) {
+			logger.info("Error while deleting", e);
 			e.printStackTrace();
 			throw e;
 		}
@@ -122,11 +125,12 @@ public class MentorDAOImpl implements MentorDAO {
 	@Override
 	public boolean addMentee(String mentorEmail, Mentee mentee) {
 		logger.info("addMentee() started..");
-		logger.info("mentorEmail ==>"+ mentorEmail);
+		logger.info("mentorEmail ==>" + mentorEmail);
 		Mentor mentor = getMentor(mentorEmail);
 		logger.info(mentor);
-		logger.info("No of existing mentee for this mentor ==>"+ mentor.getMenteeList().size());
-		List<Mentee> menteeList =  mentor.getMenteeList();
+		logger.info("No of existing mentee for this mentor ==>"
+				+ mentor.getMenteeList().size());
+		List<Mentee> menteeList = mentor.getMenteeList();
 		mentee.setMentor(mentor);
 		menteeList.add(mentee);
 		mentor.setMenteeList(menteeList);
@@ -134,7 +138,7 @@ public class MentorDAOImpl implements MentorDAO {
 			createOrUpdateMentor(mentor);
 			return true;
 		} catch (Exception e) {
-			logger.error("Error while adding mentee to Mentor.",e);
+			logger.error("Error while adding mentee to Mentor.", e);
 		}
 		return false;
 	}
@@ -142,38 +146,40 @@ public class MentorDAOImpl implements MentorDAO {
 	@Transactional
 	@Override
 	public Mentor getMentor(String email) {
-		logger.info("getMentor() started...email ==>"+ email);
+		logger.info("getMentor() started...email ==>" + email);
 		Mentor mentor = null;
 		String qry = "Select Object(c) from Mentor c where c.email = :email";
 		Query query = entityManager.createQuery(qry);
 		query.setParameter("email", email);
+		Mentor newMentorRef = new Mentor();
 		try {
 			mentor = (Mentor) query.getSingleResult();
+			newMentorRef = mentor;
+			List<Mentee> menteeList = new ArrayList<Mentee>();
+			menteeList.addAll(mentor.getMenteeList());
+			newMentorRef.setMenteeList(menteeList);
 		} catch (Exception e) {
 			logger.error("Error while reteriving Mentor", e);
 		}
-		return mentor;
+		return newMentorRef;
 	}
-
 
 	@Transactional
 	@Override
 	public boolean removeMentee(String mentorEmail, Mentee mentee) {
-		logger.info("removeMentee() started...mentorEmail ==>"+ mentorEmail);
+		logger.info("removeMentee() started...mentorEmail ==>" + mentorEmail);
 		Mentor mentor = getMentor(mentorEmail);
 		logger.info(mentor);
-		List<Mentee> menteeList =  mentor.getMenteeList();
+		List<Mentee> menteeList = mentor.getMenteeList();
 		menteeList.remove(mentee);
 		mentor.setMenteeList(menteeList);
 		try {
 			createOrUpdateMentor(mentor);
 			return true;
 		} catch (Exception e) {
-			logger.error("Error while removing mentee to Mentor.",e);
+			logger.error("Error while removing mentee to Mentor.", e);
 		}
 		return false;
 	}
-	
-
 
 }
