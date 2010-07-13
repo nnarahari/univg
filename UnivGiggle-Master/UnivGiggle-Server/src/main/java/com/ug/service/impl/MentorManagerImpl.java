@@ -3,8 +3,6 @@
  */
 package com.ug.service.impl;
 
-import javax.persistence.Transient;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -130,6 +128,7 @@ public class MentorManagerImpl implements MentorManager {
 		logger.info("addMentee() started...");
 		ResultInfo resultInfo = null;
 		boolean isMenteeAdded = mentorDAO.addMentee(mentorEmail, mentee);
+		logger.info("isMenteeAdded ==>"+ isMenteeAdded);
 		if(isMenteeAdded)
 			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentee added Successfully!", "0", "Mentee added Successfully!", null);
 		else
