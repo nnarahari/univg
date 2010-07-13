@@ -1,6 +1,5 @@
 package com.ug.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,15 +14,6 @@ import com.ug.dao.MentorDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
-/**
- * 
- * @author Anil.J
- *
- */
-/**
- * @author srini
- *
- */
 /**
  * @author srini
  *
@@ -160,7 +150,7 @@ public class MentorDAOImpl implements MentorDAO {
 		try {
 			mentor = (Mentor) query.getSingleResult();
 		} catch (Exception e) {
-			logger.error("Error while reteriving classified", e);
+			logger.error("Error while reteriving Mentor", e);
 		}
 		return mentor;
 	}
