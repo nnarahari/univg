@@ -43,6 +43,13 @@ public interface MenteeeDAO {
 	 * @return
 	 */
 	public Mentee getMentee(String email);
+
+
+	/**
+	 * Remove {@link Mentee} from the system.
+	 * @param mentee
+	 */
+	public boolean removeMentee(Mentee mentee);
 	
 	
 
