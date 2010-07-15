@@ -3,6 +3,8 @@
  */
 package com.ug.service;
 
+import java.util.List;
+
 import com.ug.model.Mentee;
 import com.ug.model.ResultInfo;
 
@@ -44,5 +46,15 @@ public interface MenteeManager {
 	 * @return
 	 */
 	public ResultInfo updateMentee(Mentee mentee);
+	
+	
+	/**
+	 * Get all the {@link Mentee}s who doesn't have mentor
+	 * @return
+	 */
+	public List<Mentee> getAvailableMentees();
+	
+	
+	
 	
 }

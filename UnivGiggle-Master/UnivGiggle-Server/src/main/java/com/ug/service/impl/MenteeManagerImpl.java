@@ -3,6 +3,8 @@
  */
 package com.ug.service.impl;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -90,8 +92,14 @@ public class MenteeManagerImpl implements MenteeManager {
 	 */
 	@Override
 	public ResultInfo removeMentee(Mentee mentee) {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("removeMentee() started..");
+		boolean isRemoved = menteeDAO.removeMentee(mentee);
+		ResultInfo resultInfo = null;
+		if(isRemoved)
+			resultInfo  = UnivGiggleUtil.createResultInfo(true, "Mentee removed Successfully!", "0", "Mentee removed Successfully!", null);
+		else
+			resultInfo = UnivGiggleUtil.createResultInfo(false, "Removing Mentee failed", "105", "Removing Mentee failed", null);
+		return resultInfo;
 	}
 
 	/* (non-Javadoc)
@@ -111,6 +119,13 @@ public class MenteeManagerImpl implements MenteeManager {
 		return resultInfo;
 	}
 
+
+	@Override
+	public List<Mentee> getAvailableMentees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	/**
 	 * @return the menteeDAO
 	 */
@@ -152,5 +167,9 @@ public class MenteeManagerImpl implements MenteeManager {
 	public void setImageWebURL(String imageWebURL) {
 		this.imageWebURL = imageWebURL;
 	}
+
+
+
+	
 
 }

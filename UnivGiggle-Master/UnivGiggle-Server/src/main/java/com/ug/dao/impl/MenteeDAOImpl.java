@@ -105,4 +105,19 @@ public class MenteeDAOImpl implements MenteeeDAO {
 		return mentee;
 	}
 
+	@Override
+	public boolean removeMentee(Mentee mentee) {
+		logger.info("removeMentee() started...");
+		try{
+			entityManager.remove(mentee);
+			return true;
+		}catch(Exception ex){
+			logger.error("Error while removing mentee...",ex);
+			return false;
+		}
+		
+	}
+
+	
+
 }
