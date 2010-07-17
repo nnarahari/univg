@@ -28,7 +28,7 @@
 	<category name="Job">
 		<subcategory code="Part time" name="Part time" />
 		<subcategory code="Full time" name="Full time" />
-		<subcategory code="Non profit" name="Non profit" />
+		<subcategory code="Non-profit" name="Non-profit" />
 	</category>
 	<category name="Campus">
 		<subcategory code="Volunteer" name="Volunteer" />
@@ -44,6 +44,6 @@
 		<subcategory code="Discussion forums" name="Discussion forums" />
 	</category>
 	<category name="Campus Events">
-		<subcategory code=Campus Events " name="Campus Events" />
+		<subcategory code="Campus Events" name="Campus Events" />
 	</category>
 </categories>
