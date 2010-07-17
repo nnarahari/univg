@@ -18,14 +18,14 @@
 		<mx:Binding source="yes.selected" destination="classifiedObj.showPersonalDetail"/>
 <!-- End of Binding -->
 <!-- validation-->
-		<mx:StringValidator id="firstNameValidator" property="text" source="{fname}" minLength="5" maxLength="50"/>
-		<mx:StringValidator id="lastNameValidator" property="text" source="{lname}" minLength="5" maxLength="50"/>
+		<mx:StringValidator id="firstNameValidator" property="text" source="{fname}" minLength="2" maxLength="50"/>
+		<mx:StringValidator id="lastNameValidator" property="text" source="{lname}" minLength="2" maxLength="50"/>
 		<mx:PhoneNumberValidator id="contactNoValidator" property="text" source="{contact}" allowedFormatChars="-" />
 		<mx:EmailValidator id="emailIdValidator" property="text" source="{email}" />
-		<mx:StringValidator id="titleValidator" property="text" source="{title}" minLength="10" maxLength="200"/>
-		<mx:StringValidator id="detailsValidator" property="text" source="{details}" minLength="10" maxLength="500"/>
+		<mx:StringValidator id="titleValidator" property="text" source="{title}" minLength="2" maxLength="200"/>
+		<mx:StringValidator id="detailsValidator" property="text" source="{details}" minLength="2" maxLength="500"/>
 		<mx:NumberValidator id="priceValidator" allowNegative="false" domain="int" property="text" source="{amount}"/>
-		<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{time}" minValue="1" lowerThanMinError="Please select a valid time slot"/>
+		<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{time}" minValue="0" lowerThanMinError="Please select a valid time slot"/>
 <!-- End of Validation -->
 		<mx:XML id="dp" source="../../xml/univ.xml" format="e4x" />
 		<mx:XML id="dp_category" source="../../xml/categories.xml" format="e4x" />
@@ -63,10 +63,10 @@
 			<mx:Grid id="postClassified" width="100%" height="100%">
 				<mx:GridRow id="heading" width="100%">
 					<mx:GridItem>
-						<mx:Label text="CLASSIFIEDS:"/>
+						<mx:Label text="CLASSIFIEDS:" fontSize="15"/>
 					</mx:GridItem>
 					<mx:GridItem>
-						<mx:Label text="Post your advertisement"/>
+						<mx:Label text="Post your advertisement" fontSize="15"/>
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow  width="100%">
