@@ -41,6 +41,8 @@ private function onLogin(event:LoginEvt):void
 
 private function resultLoginHandler(event:ResultEvent):void
 {
+	var returnValue:Boolean= event.result as Boolean;
+
 	//To be implemented
 //	dispatchEvent(new LoginEvt(LoginEvt.LOGIN,userName.text,passWord.text));
 }

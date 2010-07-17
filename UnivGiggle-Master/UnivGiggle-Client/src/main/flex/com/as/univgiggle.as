@@ -196,11 +196,13 @@
         private function goToMentorProfile(event:MentorProfileEvent):void
         {
         	univGiggleStack.selectedChild = mentor;
+        	mentor.callLater(mentor.setUserInfo,[__ugUser]);
         }
         
         private function goToMenteeProfile(event:MenteeProfileEvent):void
         {
         	univGiggleStack.selectedChild = mentee;
+        	mentee.callLater(mentee.setUserInfo,[__ugUser]);
         }
         
         private function goToMenteeTestimonial(event:SaveMenteeEvent):void
