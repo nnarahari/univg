@@ -5,6 +5,7 @@ import com.components.Captcha;
 import com.events.mentor.SaveMentorProfileEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.ResultInfo;
+import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentor.Mentor;
 
 import mx.controls.Alert;
@@ -31,7 +32,7 @@ private var imageFileByteArray:ByteArray;
 private function compInit():void
 {
 	serviceObject = new ServiceObject;
-	_mentor = new Mentor;
+	
 	mentorRemoteObj = serviceObject.getRemoteObjectInstance("mentorManager");
 	mentorRemoteObj.addMentor.addEventListener(ResultEvent.RESULT,onResultAddMentorProfile,false,0,true);
 	mentorRemoteObj.addMentor.addEventListener(FaultEvent.FAULT,onFaultAddMentorProfile,false,0,true);
@@ -104,4 +105,20 @@ private function completeHandler(event:Event):void
 {
 	imageFileByteArray = imageFileRef.data as ByteArray;
 
+}
+
+public function setUserInfo(userInfo:UG_User):void
+{
+	if(userInfo != null){
+		if(_mentor == null)
+			_mentor = new Mentor;
+		_mentor.firstName = userInfo.firstName;
+		_mentor.lastName = userInfo.lastName;
+		_mentor.gender = userInfo.gender;
+		_mentor.email = userInfo.emailId;
+		if(_mentor.gender == "Male"){
+			male.selected = true;
+			female.selected = false;
+		}
+	}
 }

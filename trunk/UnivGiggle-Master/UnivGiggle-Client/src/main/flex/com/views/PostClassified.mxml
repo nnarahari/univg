@@ -28,6 +28,7 @@
 		<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{time}" minValue="1" lowerThanMinError="Please select a valid time slot"/>
 <!-- End of Validation -->
 		<mx:XML id="dp" source="../../xml/univ.xml" format="e4x" />
+		<mx:XML id="dp_category" source="../../xml/categories.xml" format="e4x" />
 	<mx:HDividedBox width="100%" height="100%">
 	
 	
@@ -159,13 +160,13 @@
 						<mx:Label text="Category:"/>
 					</mx:GridItem>
 					<mx:GridItem>
-						<mx:ComboBox id="cate" text="{classifiedObj.category}" width="5%"/>
+						<mx:ComboBox id="cate" text="{classifiedObj.category}" dataProvider="{dp_category.category}" labelField="@name" width="5%"/>
 					</mx:GridItem>
 					<mx:GridItem>
 						<mx:Label text="Sub-Category:"/>
 					</mx:GridItem>
 					<mx:GridItem>
-						<mx:ComboBox id="subCat" text="{classifiedObj.subCategory}" width="5%"/>
+						<mx:ComboBox id="subCat" text="{classifiedObj.subCategory}" dataProvider="{cate.selectedItem.subcategory}" labelField="@name" width="5%"/>
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow width="100%">

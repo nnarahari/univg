@@ -16,9 +16,12 @@
 		import com.mappedObjects.ug.model.UG_User;
 		
 		import flash.events.MouseEvent;
+		import flash.events.TextEvent;
 		
 		import mx.collections.XMLListCollection;
+		import mx.containers.FormItem;
 		import mx.controls.Alert;
+		import mx.events.FlexEvent;
 		import mx.events.ItemClickEvent;
 		import mx.events.MenuEvent;
 		import mx.rpc.events.FaultEvent;
@@ -112,11 +115,11 @@
             
             switch(event.label){
             	case "Mentor" :
-            		if(!checkUserLoggedIn())
+            		if(checkUserLoggedIn())
 						parentDocument.dispatchEvent(new MentorProfileEvent(MentorProfileEvent.MENTOREVENT));
 	            	break;
             	case "Mentee" :
-            		if(!checkUserLoggedIn())
+            		if(checkUserLoggedIn())
 						parentDocument.dispatchEvent(new MenteeProfileEvent(MenteeProfileEvent.MENTEE_EVENT));
 	            	break;
 	            case "Post Classified":	            	
