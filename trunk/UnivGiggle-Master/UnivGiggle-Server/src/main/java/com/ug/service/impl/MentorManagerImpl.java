@@ -3,9 +3,19 @@
  */
 package com.ug.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.mail.internet.MimeMessage;
+
 import org.apache.log4j.Logger;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.ug.dao.MentorDAO;
 import com.ug.model.Mentee;
@@ -25,6 +35,8 @@ public class MentorManagerImpl implements MentorManager {
 
 	@Autowired
 	private MentorDAO mentorDAO;
+	private VelocityEngine velocityEngine;
+	private JavaMailSender mailSender;
 	
 	private String imageAppURL;
 	private String imageWebURL;
@@ -106,6 +118,8 @@ public class MentorManagerImpl implements MentorManager {
 			isMenteeAdded = false;
 		}
 		if(isMenteeAdded){
+			logger.info("sending mail confirmation to mentor...");
+			sendConfirmationMail(newMentor);
 			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentor added Successfully!", "0", "Mentor added Successfully!", newMentor);
 		}
 		return resultInfo;
@@ -136,6 +150,24 @@ public class MentorManagerImpl implements MentorManager {
 		return resultInfo;
 	}
 
+	private void sendConfirmationMail(final Mentor mentor){
+		logger.info("inside sendConfirmationMail()");
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+               MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+               message.setTo(mentor.getEmail());
+               message.setSubject("UnivGiggle Mentor Confirmation");
+               Map model = new HashMap();
+               model.put("mentor", mentor);
+               String text = VelocityEngineUtils.mergeTemplateIntoString(
+                  velocityEngine, "MentorConfirmation.vm", model);
+               logger.info("Mail content :: \n" + text);
+               message.setText(text, true);
+            }
+         };
+         this.mailSender.send(preparator);
+	}
+	
 	/**
 	 * @param mentorDAO the mentorDAO to set
 	 */
@@ -155,6 +187,20 @@ public class MentorManagerImpl implements MentorManager {
 	 */
 	public void setImageWebURL(String imageWebURL) {
 		this.imageWebURL = imageWebURL;
+	}
+
+	/**
+	 * @param velocityEngine the velocityEngine to set
+	 */
+	public void setVelocityEngine(VelocityEngine velocityEngine) {
+		this.velocityEngine = velocityEngine;
+	}
+
+	/**
+	 * @param mailSender the mailSender to set
+	 */
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
 	}
 
 	

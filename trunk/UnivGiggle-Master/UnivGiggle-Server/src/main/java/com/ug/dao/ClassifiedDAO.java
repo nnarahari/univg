@@ -29,5 +29,13 @@ public interface ClassifiedDAO {
 			String university, String searchText)throws Exception;
 	
 	public boolean updateClassifiedImagePath(String imagePath, String classifiedId) throws Exception;
+
+	/**
+	 * This method will return the {@link Classified} object if we pass the classified id.
+	 * @param classifiedId
+	 * @return
+	 * @throws Exception 
+	 */
+	public Classified getClassified(String classifiedId) throws Exception;
 	
 }
