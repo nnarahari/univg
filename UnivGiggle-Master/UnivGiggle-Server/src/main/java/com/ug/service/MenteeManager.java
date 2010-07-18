@@ -55,6 +55,12 @@ public interface MenteeManager {
 	public List<Mentee> getAvailableMentees();
 	
 	
-	
+	/**
+	 * Activate {@link Mentee}
+	 * @param menteeId
+	 * @return
+	 * @throws Exception 
+	 */
+	public boolean activateMentee(String menteeId) throws Exception;
 	
 }

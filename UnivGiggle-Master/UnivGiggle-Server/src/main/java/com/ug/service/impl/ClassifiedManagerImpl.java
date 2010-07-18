@@ -29,10 +29,6 @@ import com.ug.service.ClassifiedManager;
 import com.ug.service.UserManager;
 
 /**
- * @author srajen03
- *
- */
-/**
  * @author srrajend
  *
  */

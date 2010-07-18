@@ -203,6 +203,12 @@ public class MentorManagerImpl implements MentorManager {
 		this.mailSender = mailSender;
 	}
 
+	@Override
+	public boolean activateMentor(String mentorId) throws Exception {
+		logger.info("activateMentor() started...");
+		return mentorDAO.activateMentor(mentorId);
+	}
+
 	
 
 }

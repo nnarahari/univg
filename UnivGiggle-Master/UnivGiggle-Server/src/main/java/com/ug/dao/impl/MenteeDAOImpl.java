@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import com.ug.dao.MenteeeDAO;
 import com.ug.exception.DBConnectionFailureException;
+import com.ug.model.Classified;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 
@@ -104,6 +105,21 @@ public class MenteeDAOImpl implements MenteeeDAO {
 		}
 		return mentee;
 	}
+	
+	@Override
+	public Mentee getMenteeById(String menteeId) {
+		logger.info("getMenteeById() started..");
+		logger.info("menteeId ==>" + menteeId);
+		Mentee mentee = null;
+		try{
+			Query query= entityManager.createQuery("Select Object(m) from Mentee m where m.id = :menteeId");
+			query.setParameter("menteeId", menteeId);
+			mentee = (Mentee) query.getSingleResult();
+		}catch(Exception ex){
+			logger.error("Error while querying Mentee's details.",ex);
+		}
+		return mentee;
+	}
 
 	@Override
 	public boolean removeMentee(Mentee mentee) {
@@ -116,6 +132,38 @@ public class MenteeDAOImpl implements MenteeeDAO {
 			return false;
 		}
 		
+	}
+
+
+	@Override
+	public boolean activateMentee(String menteeId) throws Exception {
+		logger.info("inside activateMentee()...");
+		logger.info("menteeId ==>"+ menteeId);
+		boolean isUpdated = false;
+		Mentee mentee = getMenteeById(menteeId);
+		if(mentee != null){
+			logger.info("Activated Status ==>"+ mentee.isActivated());
+			mentee.setActivated(true);
+			try{
+				Mentee newMentee = entityManager.merge(mentee);
+				if(newMentee != null){
+					logger.info("Mentee updated successfully! ==>" + newMentee.isActivated());
+					isUpdated = true;
+				}
+			}catch(Throwable e) {
+				if(e != null) {
+					if(e instanceof PersistenceException) {
+						String errorMsg = e.getMessage().toString();
+						if(errorMsg.contains("JDBCConnectionException")) {
+							throw new DBConnectionFailureException("Unable to execute the query.Please check the database server is up.");
+						}
+						throw new Exception(e);
+					}
+					throw new Exception(e);				
+				}
+			}
+		}
+		return isUpdated;
 	}
 
 	

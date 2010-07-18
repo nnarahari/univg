@@ -60,6 +60,9 @@ public class Mentee extends ModelBase{
 	@Column (name="testimonial", length=2000)
 	private String testimonial;
 	
+	@Column(name="isactivated", nullable=false)
+	private boolean activated;
+	
 	@ManyToOne
 	private Mentor mentor;
 	
@@ -297,5 +300,19 @@ public class Mentee extends ModelBase{
 		builder.append(profession);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	/**
+	 * @return the activated
+	 */
+	public boolean isActivated() {
+		return activated;
+	}
+
+	/**
+	 * @param activated the activated to set
+	 */
+	public void setActivated(boolean activated) {
+		this.activated = activated;
 	}
 }

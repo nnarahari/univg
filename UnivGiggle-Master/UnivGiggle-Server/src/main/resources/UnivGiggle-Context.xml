@@ -121,6 +121,8 @@
 			<map>
 				<entry key="classifiedManager" value-ref="classifiedManager" />
 				<entry key="userManager" value-ref="userManager" />
+				<entry key="menteeManager" value-ref="menteeManager" />
+				<entry key="mentorManager" value-ref="mentorManager" />
 			</map>
 		</property>
 	</bean>
