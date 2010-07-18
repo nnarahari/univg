@@ -3,10 +3,19 @@
  */
 package com.ug.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.mail.internet.MimeMessage;
 
 import org.apache.log4j.Logger;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.ug.dao.MenteeeDAO;
 import com.ug.model.Mentee;
@@ -22,6 +31,8 @@ public class MenteeManagerImpl implements MenteeManager {
 
 	@Autowired
 	private MenteeeDAO menteeDAO;
+	private VelocityEngine velocityEngine;
+	private JavaMailSender mailSender;
 	
 	private Logger logger = Logger.getLogger(MenteeManagerImpl.class);
 	private String imageAppURL;
@@ -69,6 +80,8 @@ public class MenteeManagerImpl implements MenteeManager {
 			isMenteeAdded = false;
 		}
 		if(isMenteeAdded){
+			logger.info("Sending confirmation mail to mentee...");
+			sendConfirmationMail(newMentee);
 			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentee added Successfully!", "0", "Mentee added Successfully!", newMentee);
 		}
 		return resultInfo;
@@ -126,6 +139,26 @@ public class MenteeManagerImpl implements MenteeManager {
 		return null;
 	}
 	
+
+	private void sendConfirmationMail(final Mentee mentee){
+		logger.info("inside sendConfirmationMail()");
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+               MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+               message.setTo(mentee.getEmail());
+               message.setSubject("UnivGiggle Mentee Confirmation");
+               Map model = new HashMap();
+               model.put("mentee", mentee);
+               String text = VelocityEngineUtils.mergeTemplateIntoString(
+                  velocityEngine, "MenteeConfirmation.vm", model);
+               logger.info("Mail content :: \n" + text);
+               message.setText(text, true);
+            }
+         };
+         this.mailSender.send(preparator);
+	}
+	
+	
 	/**
 	 * @return the menteeDAO
 	 */
@@ -166,6 +199,33 @@ public class MenteeManagerImpl implements MenteeManager {
 	 */
 	public void setImageWebURL(String imageWebURL) {
 		this.imageWebURL = imageWebURL;
+	}
+
+
+
+	/**
+	 * @return the velocityEngine
+	 */
+	public VelocityEngine getVelocityEngine() {
+		return velocityEngine;
+	}
+
+
+
+	/**
+	 * @param velocityEngine the velocityEngine to set
+	 */
+	public void setVelocityEngine(VelocityEngine velocityEngine) {
+		this.velocityEngine = velocityEngine;
+	}
+
+
+
+	/**
+	 * @param mailSender the mailSender to set
+	 */
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
 	}
 
 

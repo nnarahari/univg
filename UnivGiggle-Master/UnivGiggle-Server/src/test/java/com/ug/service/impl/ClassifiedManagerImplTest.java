@@ -99,5 +99,10 @@ public class ClassifiedManagerImplTest {
 		
 		//assertTrue(classfiedManager.storeClassifiedImages(filenameList, imageDataList, 101L));
 	}
+	
+	@Test
+	public void testReplyToClassified(){
+		assertTrue(classfiedManager.replyToClassified("a@a.com", "1", "Hi, this is test message"));
+	}
 
 }

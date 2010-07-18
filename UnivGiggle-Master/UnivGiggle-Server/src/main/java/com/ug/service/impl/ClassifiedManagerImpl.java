@@ -24,10 +24,16 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 import com.ug.dao.ClassifiedDAO;
 import com.ug.model.Classified;
 import com.ug.model.ResultInfo;
+import com.ug.model.UG_User;
 import com.ug.service.ClassifiedManager;
+import com.ug.service.UserManager;
 
 /**
  * @author srajen03
+ *
+ */
+/**
+ * @author srrajend
  *
  */
 public class ClassifiedManagerImpl implements ClassifiedManager {
@@ -41,6 +47,8 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 	private ClassifiedDAO classifiedDAO;
 	private JavaMailSender mailSender;
     private VelocityEngine velocityEngine;
+    
+    private UserManager userManager;
     
     
 	/**
@@ -178,9 +186,83 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 		logger.info("getListClassifieds() started..");
 		logger.info("country ==>"+ country + ", state ==>"+ state + ", university ==>"+ university);
 		logger.info("searchText ==>"+ searchText);
-		
-		
 		return classifiedDAO.getAllClassifieds(country,state,university,searchText);
+	}
+	
+	
+	@Override
+	public boolean forwardClassified(String userEmail, String classifiedId,	final String toEmail) {
+		logger.info("forwardClassified() started...");
+		logger.info("userEmail ==>"+ userEmail + " , classifiedId ==>"+ classifiedId + " ,toEmail ==>"+toEmail);
+		
+		Classified classified1 = null;
+		try {
+			classified1 = classifiedDAO.getClassified(classifiedId);
+		} catch (Exception e) {
+			logger.error("Error while reteriving classified...",e);
+		}
+		final Classified classified = classified1;
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+               MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+               message.setTo(toEmail);
+               message.setSubject("UnivGiggle Classified forward");
+               Map model = new HashMap();
+               model.put("classified", classified);
+               String text = VelocityEngineUtils.mergeTemplateIntoString(
+                  velocityEngine, "ClassifiedForward.vm", model);
+               logger.info("Mail content :: \n" + text);
+               message.setText(text, true);
+            }
+         };
+         this.mailSender.send(preparator);
+		
+		return true;
+	}
+	@Override
+	public boolean replyToClassified(final String userEmail, String classifiedId,	final String replyMessage) {
+		logger.info("replyToClassified() started...");
+		logger.info("userEmail ==>"+ userEmail + " , classifiedId ==>"+ classifiedId + " ,replyMessage ==>"+replyMessage);
+		Classified classified1 = null;
+		UG_User user = null;
+		
+		try {
+			classified1 = classifiedDAO.getClassified(classifiedId);
+		} catch (Exception e) {
+			logger.error("Error while reteriving classified...",e);
+			return false;
+		}
+		try {
+			user = userManager.getUser(userEmail);
+		} catch (Exception e) {
+			logger.error("Error while getting user details...",e);
+			return false;
+		}
+		
+		final Classified classified = classified1;
+		final String senderFirstName = user.getFirstName();
+		final String senderLastName = user.getLastName();
+		
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+               MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+               message.setTo(userEmail);
+               message.setSubject("UnivGiggle Classified Reply");
+               Map model = new HashMap();
+               model.put("classified", classified);
+               model.put("message", replyMessage);
+               model.put("senderFirstName", senderFirstName);
+               model.put("senderLastName", senderLastName);
+               
+               String text = VelocityEngineUtils.mergeTemplateIntoString(
+                  velocityEngine, "ReplyClassified.vm", model);
+               logger.info("Mail content :: \n" + text);
+               message.setText(text, true);
+            }
+         };
+         this.mailSender.send(preparator);
+		
+		return true;
 	}
 	
 	/**
@@ -230,6 +312,13 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 	public void setImageWebURL(String imageWebURL) {
 		this.imageWebURL = imageWebURL;
 	}
+	/**
+	 * @param userManager the userManager to set
+	 */
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}
+	
 	
 
 }

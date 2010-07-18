@@ -152,7 +152,8 @@ public class ClassifiedDAOImpl implements ClassifiedDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	private Classified getClassified(String classifiedId)throws Exception{
+	@Override
+	public Classified getClassified(String classifiedId)throws Exception{
 		logger.info("inside getClassified()");
 		logger.info("classifiedId ==>"+ classifiedId);
 		Classified cfd = null;
