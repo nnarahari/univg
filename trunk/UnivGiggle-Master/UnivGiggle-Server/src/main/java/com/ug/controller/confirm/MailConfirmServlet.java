@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 
 import com.ug.model.ResultInfo;
 import com.ug.service.ClassifiedManager;
+import com.ug.service.MenteeManager;
+import com.ug.service.MentorManager;
 import com.ug.service.UserManager;
 
 /**
@@ -33,6 +35,8 @@ public class MailConfirmServlet extends HttpServlet {
 	
 	private ClassifiedManager classifiedManager;
 	private UserManager userManager;
+	private MenteeManager menteeManager;
+	private MentorManager mentorManager;
 	private ResultInfo resultInfo;
 	
 	
@@ -78,7 +82,32 @@ public class MailConfirmServlet extends HttpServlet {
 			} catch (Exception e) {
 				logger.error("Error while updating UGUser.updateConfirmationStatus()..",e);
 			}
-		}else{
+		}else if(key.equalsIgnoreCase("Mentor")){
+			try {
+				mentorManager = (MentorManager) getServletContext().getAttribute("mentorManager");
+				boolean mentorActivated = mentorManager.activateMentor(id);
+				if(mentorActivated){
+					updateResponse(response,"Mentor confirmed successfully!");
+				}else{
+					updateResponse(response,"Mentor status not confirmed!");
+				}
+			} catch (Exception e) {
+				logger.error("Error while updating mentorManager.activateMentor()...",e);
+			}
+		}else if(key.equalsIgnoreCase("Mentee")){
+			try {
+				menteeManager = (MenteeManager) getServletContext().getAttribute("menteeManager");
+				boolean menteeActivated = menteeManager.activateMentee(id);
+				if(menteeActivated){
+					updateResponse(response,"Mentee confirmed successfully!");
+				}else{
+					updateResponse(response,"Mentee status not confirmed!");
+				}
+			} catch (Exception e) {
+				logger.error("Error while updating menteeManager.activateMentee()...",e);
+			}
+		}
+		else{
 			logger.info("No key matched...");
 		}
 		
@@ -95,5 +124,19 @@ public class MailConfirmServlet extends HttpServlet {
 	 */
 	public void setClassifiedManager(ClassifiedManager classifiedManager) {
 		this.classifiedManager = classifiedManager;
+	}
+
+	/**
+	 * @param menteeManager the menteeManager to set
+	 */
+	public void setMenteeManager(MenteeManager menteeManager) {
+		this.menteeManager = menteeManager;
+	}
+
+	/**
+	 * @param mentorManager the mentorManager to set
+	 */
+	public void setMentorManager(MentorManager mentorManager) {
+		this.mentorManager = mentorManager;
 	}
 }

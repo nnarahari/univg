@@ -34,6 +34,7 @@ public class MentorDAOImpl implements MentorDAO {
 		this.entityManager = entityManager;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	/**
 	 * Returns all mentors from table;
@@ -180,6 +181,52 @@ public class MentorDAOImpl implements MentorDAO {
 			logger.error("Error while removing mentee to Mentor.", e);
 		}
 		return false;
+	}
+
+	@Override
+	public boolean activateMentor(String mentorId) throws Exception {
+		logger.info("inside activateMentee()...");
+		logger.info("mentorId ==>"+ mentorId);
+		boolean isUpdated = false;
+		Mentor mentor = getMentorById(mentorId);
+		if(mentor != null){
+			logger.info("Activated Status ==>"+ mentor.isActivated());
+			mentor.setActivated(true);
+			try{
+				Mentor newMentor = entityManager.merge(mentor);
+				if(newMentor != null){
+					logger.info("Mentor updated successfully! ==>" + newMentor.isActivated());
+					isUpdated = true;
+				}
+			}catch(Throwable e) {
+				if(e != null) {
+					if(e instanceof PersistenceException) {
+						String errorMsg = e.getMessage().toString();
+						if(errorMsg.contains("JDBCConnectionException")) {
+							throw new DBConnectionFailureException("Unable to execute the query.Please check the database server is up.");
+						}
+						throw new Exception(e);
+					}
+					throw new Exception(e);				
+				}
+			}
+		}
+		return isUpdated;
+	}
+
+	@Override
+	public Mentor getMentorById(String mentorId) {
+		logger.info("getMentorById() started..");
+		logger.info("mentorId ==>" + mentorId);
+		Mentor mentor = null;
+		try{
+			Query query= entityManager.createQuery("Select Object(m) from Mentor m where m.id = :mentorId");
+			query.setParameter("mentorId", mentorId);
+			mentor = (Mentor) query.getSingleResult();
+		}catch(Exception ex){
+			logger.error("Error while querying Mentee's details.",ex);
+		}
+		return mentor;
 	}
 
 }

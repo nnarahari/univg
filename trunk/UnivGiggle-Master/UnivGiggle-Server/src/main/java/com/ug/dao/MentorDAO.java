@@ -41,4 +41,21 @@ public interface MentorDAO {
 	 * @return
 	 */
 	public boolean removeMentee(String mentorEmail, Mentee mentee);
+	
+	
+	/**
+	 * Activate {@link Mentor} status by email.
+	 * @param mentorId
+	 * @return
+	 * @throws Exception 
+	 */
+	public boolean activateMentor(String mentorId) throws Exception;
+
+	
+	/**
+	 * Get {@link Mentor} details by passing mentor id.
+	 * @param mentorId
+	 * @return
+	 */
+	public Mentor getMentorById(String mentorId);
 }

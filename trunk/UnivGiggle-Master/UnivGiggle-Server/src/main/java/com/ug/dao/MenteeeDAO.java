@@ -52,5 +52,22 @@ public interface MenteeeDAO {
 	public boolean removeMentee(Mentee mentee);
 	
 	
+	/**
+	 * Activate {@link Mentee} status by email.
+	 * @param menteeId
+	 * @return
+	 * @throws Exception 
+	 */
+	public boolean activateMentee(String menteeId) throws Exception;
+
+	
+	/**
+	 * Get {@link Mentee} details by passing mentee id.
+	 * @param menteeId
+	 * @return
+	 */
+	public Mentee getMenteeById(String menteeId);
+	
+	
 
 }

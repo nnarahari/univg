@@ -69,6 +69,9 @@ public class Mentor extends ModelBase{
 	@Column (name="testimonial", length=2000)
 	private String testimonial;
 	
+	@Column(name="isactivated", nullable=false)
+	private boolean activated;
+	
 	@OneToMany(mappedBy="mentor", cascade=CascadeType.ALL)
 	@OrderBy("firstName ASC")
 	private List<Mentee> menteeList;
@@ -216,6 +219,18 @@ public class Mentor extends ModelBase{
 		builder.append(menteeList);
 		builder.append("]");
 		return builder.toString();
+	}
+	/**
+	 * @return the activated
+	 */
+	public boolean isActivated() {
+		return activated;
+	}
+	/**
+	 * @param activated the activated to set
+	 */
+	public void setActivated(boolean activated) {
+		this.activated = activated;
 	}
 	
 	

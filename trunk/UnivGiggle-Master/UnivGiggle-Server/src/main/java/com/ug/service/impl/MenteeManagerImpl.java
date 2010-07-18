@@ -230,6 +230,14 @@ public class MenteeManagerImpl implements MenteeManager {
 
 
 
+	@Override
+	public boolean activateMentee(String menteeId) throws Exception {
+		logger.info("inside activateMentee()...");
+		return menteeDAO.activateMentee(menteeId);
+	}
+
+
+
 	
 
 }

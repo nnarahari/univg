@@ -61,5 +61,14 @@ public interface MentorManager {
 	 * @return
 	 */
 	public ResultInfo removeMentee(String mentorEmail, Mentee mentee);
+	
+	
+	/**
+	 * Activate {@link Mentor}'s profile.
+	 * @param mentorId
+	 * @return
+	 * @throws Exception 
+	 */
+	public boolean activateMentor(String mentorId) throws Exception;
 
 }
