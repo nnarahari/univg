@@ -96,14 +96,14 @@ private function onResultAddMentorProfile(event:ResultEvent):void
 private function onSelectedFile(event:Event):void
 {	
 	imageFileRef.addEventListener(Event.COMPLETE, completeHandler);
-//	imageFileRef.load();
+	imageFileRef.load();
 	fileName.text = imageFileRef.name;
 //	browseBut.enabled = false;
 }
 
 private function completeHandler(event:Event):void
 {
-//	imageFileByteArray = imageFileRef.data as ByteArray;
+	imageFileByteArray = imageFileRef.data as ByteArray;
 
 }
 
