@@ -177,7 +177,7 @@ private function onSelectedFile(event:Event):void
 	if(selectedfiles.length < maxImageFileToUpload )
 	{
 		imageFileRef.addEventListener(Event.COMPLETE, completeHandler);
-		imageFileRef.load();
+//		imageFileRef.load();
 		tempTextInput.text = imageFileRef.name;
 		browseButEvent.target.enabled = false;
 	}else{
@@ -189,5 +189,5 @@ private function onSelectedFile(event:Event):void
 private function completeHandler(event:Event):void
 {
 	selectedfiles.push(imageFileRef.name);
-	selectedFileReferences.push(imageFileRef.data);
+	//selectedFileReferences.push(imageFileRef.data);
 }

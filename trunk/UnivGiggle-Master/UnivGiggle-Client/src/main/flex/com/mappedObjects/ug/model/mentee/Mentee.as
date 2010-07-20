@@ -4,7 +4,7 @@ package com.mappedObjects.ug.model.mentee
 	import com.mappedObjects.ug.model.mentor.Mentor;
 	
 	[Bindable]
-	[RemoteClass(alias='com.ug.model.mentee.Mentee')]
+	[RemoteClass(alias='com.ug.model.Mentee')]
 	public class Mentee extends ModelBase
 	{
 		public var firstName:String = "";

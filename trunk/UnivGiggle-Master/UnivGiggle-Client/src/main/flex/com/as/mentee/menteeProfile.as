@@ -77,7 +77,7 @@ public function createImageCaptcha():void
 
 	if(verificationCode.text  == imagecaptcha._securitycode){
 		male.selected?_mentee.gender = "male":_mentee.gender = "female";
-		mentorRemoteObj.addMentee("",_mentee);
+		mentorRemoteObj.addMentee(_mentee,"satya.teeda@gmail.com",null);
 	 }else{
 	 	Alert.show("Please enter valid code","Information");
 	 }
@@ -137,14 +137,14 @@ public function createImageCaptcha():void
 private function onSelectedFile(event:Event):void
 {	
 	imageFileRef.addEventListener(Event.COMPLETE, completeHandler);
-	imageFileRef.load();
+//	imageFileRef.load();
 	fileName.text = imageFileRef.name;
 //	browseBut.enabled = false;
 }
 
 private function completeHandler(event:Event):void
 {
-	imageFileByteArray = imageFileRef.data as ByteArray;
+//	imageFileByteArray = imageFileRef.data as ByteArray;
 
 }
 

@@ -2,9 +2,16 @@
 <!-- screen for displaying the posted classified details
 	 author : Venkata Teeda -->
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init();">
-
+<mx:Style>
+	global {
+		modal-transparency: 0.9;
+		modal-transparency-color: white;
+		modal-transparency-blur: 9;
+	}
+</mx:Style>
 <mx:Script>
 	<![CDATA[
+		import mx.controls.Alert;
 		import com.events.PostClassifiedEvent;
 		import mx.events.MoveEvent;
 		import mx.collections.ArrayCollection;
@@ -27,6 +34,8 @@
 		private function init():void
 		{
 			back_but.addEventListener(MouseEvent.CLICK,onBackButClickHandler,false,0,true);
+			reply.addEventListener(MouseEvent.CLICK,onReply,false,0,true);
+			forward.addEventListener(MouseEvent.CLICK,onForward,false,0,true);
 			/* _classifiedObj = new Classified;
 			_classifiedObj.country = "US";
 			_classifiedObj.state = "Connecticut";
@@ -118,6 +127,31 @@
 		private function image_complete(evt:Event):void {
 			PopUpManager.centerPopUp(tempImageObj);
 		}
+		
+		private function onReply(event:MouseEvent):void
+		{
+			viewClassified.selectedIndex = 1;
+		}
+		
+		private function onMessageSend():void
+		{
+			Alert.show("Message Sent");
+		}
+		
+		private function onCancel():void
+		{
+			viewClassified.selectedIndex = 0;
+		}
+		
+		private function onForward(event:MouseEvent):void
+		{
+			viewClassified.selectedIndex = 2;
+		}
+		
+		private function onSend():void
+		{
+			Alert.show("forward");
+		}
 
 	]]>
 </mx:Script>
@@ -130,12 +164,15 @@
 			<mx:Zoom />
 			<mx:Fade />
 		</mx:Parallel>
-
-		<mx:Form  width="100%">
+	<mx:ViewStack id="viewClassified" width="100%" height="100%">
+		<mx:VBox width="100%" height="100%">
+		<mx:Form  width="100%" height="100%">
 			<mx:FormItem  width="100%" label="Posted By :" direction="horizontal">
 				<mx:Label text="{_classifiedObj.firstName}"/>
 				<mx:Spacer width="70%"/>
 				<mx:Button id="back_but"  label="back"/>
+				<mx:Button id="reply" label="Reply"/>
+				<mx:Button id="forward" label="Forward"/>
 			</mx:FormItem>
 			<mx:FormItem label="Contact Time :">
 				<mx:Label text="{_classifiedObj.timeToContact}"/>
@@ -176,5 +213,32 @@
 			themeColor="haloSilver"
 			verticalScrollPolicy="off"
 			itemClick="tileList_itemClick(event);" />
+		</mx:VBox>
+		<mx:HBox id="replyArea" horizontalAlign="center" verticalAlign="top" width="100%">
+			<mx:Form width="100%">
+				<mx:FormItem label="Reply message :">
+					<mx:TextArea id="replytext" width="400" height="200"/>
+				</mx:FormItem>
+				<mx:FormItem direction="horizontal">
+					<mx:Button id="sendbut" label="Send" click="onMessageSend();"/>
+					<mx:Spacer width="20"/>
+					<mx:Button id="cancelbut" label="Cancel" click="onCancel();"/>
+				</mx:FormItem>
+		</mx:Form>
+		</mx:HBox>
+		<mx:HBox id="forwardArea" horizontalAlign="center" verticalAlign="top" width="100%">
+			<mx:Form width="100%">
+				<mx:FormItem label="Email :">
+					<mx:TextInput id="emailId" width="200"/>
+				</mx:FormItem>
+				<mx:FormItem direction="horizontal">
+					<mx:Button label="Send" click="onSend();"/>
+					<mx:Spacer width="20"/>
+					<mx:Button label="Cancel" click="onCancel();"/>
+				</mx:FormItem>
+			</mx:Form>		
+			
+		</mx:HBox>
+	</mx:ViewStack>
 	</mx:VBox>
 

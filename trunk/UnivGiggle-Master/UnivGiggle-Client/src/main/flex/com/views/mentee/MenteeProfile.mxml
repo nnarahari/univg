@@ -13,9 +13,6 @@
 <mx:Binding source="educationAttn.text" destination="_mentee.schoolCollege"/>
 <mx:Binding source="description.text" destination="_mentee.description"/>
 <mx:Binding source="testimonial.text" destination="_mentee.testimonial"/>
-
-<mx:XML id="dp_profession" source="../../../xml/profession.xml" format="e4x" />
-<mx:XML id="dp_country" source="../../../xml/country.xml" format="e4x" />
 <!--<mx:Binding source="" destination=""/>
 <mx:Binding source="" destination=""/>
 <mx:Binding source="" destination=""/>
@@ -75,7 +72,7 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country" width="20%"  text="{_mentee.citizenship}" dataProvider="{dp_country.country}" labelField="@name"/>
+				<mx:ComboBox id="country" width="20%"  text="{_mentee.citizenship}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -90,7 +87,7 @@
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession"  width="20%"  text="{_mentee.profession}" dataProvider="{dp_profession.profession}" labelField="@name"/>
+				<mx:ComboBox id="profession" width="20%"  text="{_mentee.profession}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
