@@ -47,3 +47,13 @@ Alert
     color:                  #FFFFFF;
     fontWeight:             "bold";
 }
+
+.fontHighlight
+{
+	font-weight : bold;
+}
+
+.fntColor
+{
+	color : #4A6F81;
+}
