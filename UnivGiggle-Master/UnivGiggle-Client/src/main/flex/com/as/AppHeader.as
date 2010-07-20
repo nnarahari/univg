@@ -16,12 +16,9 @@
 		import com.mappedObjects.ug.model.UG_User;
 		
 		import flash.events.MouseEvent;
-		import flash.events.TextEvent;
 		
 		import mx.collections.XMLListCollection;
-		import mx.containers.FormItem;
 		import mx.controls.Alert;
-		import mx.events.FlexEvent;
 		import mx.events.ItemClickEvent;
 		import mx.events.MenuEvent;
 		import mx.rpc.events.FaultEvent;
