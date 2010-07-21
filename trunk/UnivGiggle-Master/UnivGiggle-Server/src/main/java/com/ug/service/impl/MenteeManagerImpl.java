@@ -3,6 +3,7 @@
  */
 package com.ug.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -134,9 +135,16 @@ public class MenteeManagerImpl implements MenteeManager {
 
 
 	@Override
-	public List<Mentee> getAvailableMentees() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Mentee> getAvailableMentees() throws Exception {
+		logger.info("inside getAvailableMentees()");
+		List<Mentee> availableMentees = new ArrayList<Mentee>();
+		try {
+			availableMentees = menteeDAO.getAvailableMentees();
+		} catch (Exception e) {
+			logger.error("Error while retrieving all available mentees ", e);
+			throw e;
+		}
+		return availableMentees;
 	}
 	
 
