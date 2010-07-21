@@ -52,7 +52,7 @@ public interface MenteeManager {
 	 * Get all the {@link Mentee}s who doesn't have mentor
 	 * @return
 	 */
-	public List<Mentee> getAvailableMentees();
+	public List<Mentee> getAvailableMentees() throws Exception;
 	
 	
 	/**
