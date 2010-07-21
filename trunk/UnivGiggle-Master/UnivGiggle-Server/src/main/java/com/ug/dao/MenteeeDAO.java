@@ -3,6 +3,8 @@
  */
 package com.ug.dao;
 
+import java.util.List;
+
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 
@@ -68,6 +70,11 @@ public interface MenteeeDAO {
 	 */
 	public Mentee getMenteeById(String menteeId);
 	
+	/**
+	 * returns all available mentees.
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Mentee>getAvailableMentees() throws Exception;
 	
-
 }
