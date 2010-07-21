@@ -72,5 +72,14 @@ public class UGUserManagerImplTest1 {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testSendPasswordToUser(){
+		try {
+			assertTrue(userManager.sendPasswordToUser("seeni.vasan@gmail.com"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -118,6 +118,35 @@ public class UserManagerImpl implements UserManager {
 	}
 	
 	
+	@Override
+	public boolean sendPasswordToUser(String emailId) throws Exception {
+		logger.info("sendPasswordToUser() started...");
+		final UG_User user = getUser(emailId);
+		if(user != null){
+			logger.info("User is availble... sending password to his/her email...");
+			MimeMessagePreparator preparator = new MimeMessagePreparator() {
+				public void prepare(MimeMessage mimeMessage) throws Exception {
+					MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+					message.setTo(user.getEmailId());
+					message.setSubject("UnivGiggle user account details.");
+					Map model = new HashMap();
+					model.put("user", user);
+					String text = VelocityEngineUtils.mergeTemplateIntoString(
+							velocityEngine, "ForgotPassword.vm", model);
+					logger.info("Mail content :: \n" + text);
+					message.setText(text, true);
+				}
+			};
+			this.mailSender.send(preparator);
+			return true;
+		}else{
+			logger.error("User not exists.");
+			return false;
+		}
+	}
+
+	
+	
 	/**
 	 * @param ugUserDAO the ugUserDAO to set
 	 */
@@ -139,5 +168,6 @@ public class UserManagerImpl implements UserManager {
 		this.velocityEngine = velocityEngine;
 	}
 
+	
 
 }
