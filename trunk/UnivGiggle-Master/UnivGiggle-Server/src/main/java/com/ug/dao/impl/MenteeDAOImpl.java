@@ -3,6 +3,8 @@
  */
 package com.ug.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
@@ -132,6 +134,18 @@ public class MenteeDAOImpl implements MenteeeDAO {
 			return false;
 		}
 		
+	}
+	@Override
+	public List<Mentee> getAvailableMentees() {
+		logger.info("getAvailableMentees() started..");
+		List<Mentee> menteeList = null;
+		try{
+			Query query= entityManager.createQuery("Select Object(m) from Mentee m where m.mentor is null");
+			menteeList = query.getResultList();
+		}catch(Exception ex){
+			logger.error("Error while querying Available Mentee's details.",ex);
+		}
+		return menteeList;
 	}
 
 
