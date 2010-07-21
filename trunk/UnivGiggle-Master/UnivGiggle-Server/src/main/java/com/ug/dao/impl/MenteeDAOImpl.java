@@ -136,7 +136,7 @@ public class MenteeDAOImpl implements MenteeeDAO {
 		
 	}
 	@Override
-	public List<Mentee> getAvailableMentees() {
+	public List<Mentee> getAvailableMentees() throws Exception {
 		logger.info("getAvailableMentees() started..");
 		List<Mentee> menteeList = null;
 		try{
@@ -144,6 +144,7 @@ public class MenteeDAOImpl implements MenteeeDAO {
 			menteeList = query.getResultList();
 		}catch(Exception ex){
 			logger.error("Error while querying Available Mentee's details.",ex);
+			throw ex;
 		}
 		return menteeList;
 	}
