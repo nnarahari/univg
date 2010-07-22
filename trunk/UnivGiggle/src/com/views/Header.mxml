@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="AppInit()">
+<mx:Script source="../as/AppHeader.as"/>
+	<mx:ApplicationControlBar width="100%" height="10%" backgroundColor="#EBD2D2">
+		<mx:Image source="@Embed(source='./assets/UnivgiggleLogo.PNG')" />
+		<mx:Spacer width="40%"/>
+		<mx:VBox width="40%" height="100%">
+			<mx:HBox width="100%" height="75%">
+				<mx:Spacer width="60%"/>
+				<mx:Canvas width="100%">
+					<mx:VBox id="loginBlock"  width="100%">
+						<mx:HBox width="100%">
+							<mx:Label text="UserName : "/>
+							<mx:TextInput id="userName" width="150"/>
+							<mx:Label text="PassWord : "/>
+							<mx:TextInput id="passWord" displayAsPassword="true" width="150"/>
+							<mx:Button id="sub" label=">>"/>
+							<mx:LinkButton label="Logout" height="10" visible="false"/>
+						</mx:HBox>
+						<mx:HBox width="100%" horizontalAlign="center">
+							<mx:Label text="Forget your password? password passwordyouryour" visible="false"/>
+							<mx:Button id="signup" label="SignUp"/>
+						</mx:HBox>
+					</mx:VBox>
+					<mx:HBox id="loginInfo" visible="false" width="100%" horizontalAlign="right">
+						<mx:Label text="Logged User :"/>
+						<mx:Label text="{userName.text}"/>
+						<mx:Label text="Logged Time :"/>
+						<mx:Label text="{(new Date).toDateString()+(new Date).toLocaleTimeString()}"/>
+						<mx:LinkButton id="id_logout" label="Logout" /> 
+					</mx:HBox>
+				</mx:Canvas>
+			</mx:HBox>
+			<mx:Canvas>
+				<mx:MenuBar id="mMenuBar" labelField="@label"  
+           			 dataProvider="{menuBarCollection}" />
+
+			</mx:Canvas>
+		</mx:VBox>
+	</mx:ApplicationControlBar>
+</mx:VBox>

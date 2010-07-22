@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+	<mx:Form width="100%" height="100%">
+		<mx:HBox width="100%">
+			<mx:Label text="CLASSIFIEDS:"/>
+			<mx:Label text="Post your advertisement"/>
+		</mx:HBox>
+		<mx:Label text="Select Location" width="100%"/>
+		<mx:HBox width="100%">
+				<mx:Label text="Country:"/>
+				<mx:ComboBox id="ccode" text="US" width="5%"/>
+				<mx:Spacer width="5%"/>
+				<mx:Label text="State:"/>
+				<mx:ComboBox id="state" text="Connecticut" width="20%"/>
+				<mx:Spacer width="5%"/>
+				<mx:Label text="University:"/>
+				<mx:ComboBox id="univ" text="Mitchell College" width="25%"/>
+		</mx:HBox>
+		<mx:FormItem label="Personal Information" width="100%" />
+		<mx:HBox width="100%">
+			<mx:Label text="FirstName:"/>
+			<mx:TextInput id="fname" width="15%"/>
+			<mx:Spacer width="5%"/>
+			<mx:Label text="LastName:"/>
+			<mx:TextInput id="lname" width="15%"/>
+			<mx:Spacer width="5%"/>
+			<mx:Label text="Show Personal Information:"/>
+			<mx:RadioButton id="yes" label="Yes" groupName="PersonalInfo"/>
+			<mx:RadioButton id="no" label="No" groupName="PersonalInfo"/>
+		</mx:HBox>
+		<mx:HBox width="100%">
+			<mx:Label text="E-Mail     :"/>
+			<mx:TextInput id="email" width="15%"/>
+			<mx:Spacer width="5%"/>
+			<mx:Label text="Contact No:"/>
+			<mx:TextInput id="contact" width="15%"/>
+			<mx:Spacer width="5%"/>
+			<mx:Label text="Time to Contact:"/>
+			<mx:ComboBox id="time" text="Any Time" width="20%"/>
+		</mx:HBox>
+		<mx:Label text="Posting Details:" width="100%"/>
+		<mx:HBox width="100%">
+			<mx:Label text="Category:"/>
+			<mx:ComboBox id="cate" text="Sale" width="5%"/>
+			<mx:Spacer width="5%"/>
+			<mx:Label text="Sub-Category:"/>
+			<mx:ComboBox id="subCat" text="Bike" width="5%"/>
+		</mx:HBox>
+		<mx:HBox width="100%">
+			<mx:Label text="Title:"/>
+			<mx:TextInput id="title" width="50%"/>
+			<mx:Spacer width="2%"/>
+			<mx:Label text="Price(US$):"/>
+			<mx:TextInput id="amount" width="5%"/>
+		</mx:HBox>
+		<mx:HBox width="100%" height="100%">
+			<mx:Label text="Details:"/>
+			<mx:TextArea width="100%" height="100%"/>
+		</mx:HBox>
+		<mx:HBox width="100%" horizontalAlign="center">
+			<mx:Button id="submit" label="SUBMIT" width="100"/>
+			<mx:Button id="reset" label="RESET" width="100"/>
+			<mx:Button id="discard" label="DISCARD" width="100"/>
+		</mx:HBox>
+	</mx:Form>
+</mx:VBox>

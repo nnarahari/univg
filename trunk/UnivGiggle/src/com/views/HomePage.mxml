@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="HomeInit();"  enterState="onActivate();" exitState="onDeActivate();">
+<mx:Script source="../as/HomePage.as"/>
+	<mx:HBox width="100%" horizontalAlign="right">
+		<mx:Spacer width="100%"/>
+		<!--<mx:Label text="Logged User :"/>
+		<mx:Label id="userName"/>-->
+		<mx:Spacer width="2%"/>
+		<mx:Label text="Logged Time :" visible="false"/>
+		<mx:Label text="{(new Date).toDateString()+(new Date).toLocaleTimeString()}" visible="false"/>
+	</mx:HBox>
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button id="post" label="Post Classifieds" width="150" height="50" cornerRadius="5"/>	
+	</mx:HBox>
+	
+</mx:VBox>
