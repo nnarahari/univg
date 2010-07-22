@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingBottom="10" paddingTop="10" 
+	xmlns:mentee="com.views.mentee.*" paddingLeft="10" paddingRight="10">
+<mx:Script>
+	<![CDATA[
+		import com.mappedObjects.ug.model.mentee.Mentee;
+		public function setMenteeObject(menteeObj:Mentee):void
+		{
+			menteeProfile.setMenteeObject(menteeObj);
+		}
+	]]>
+</mx:Script>
+	<mx:HBox width="100%" >
+		<mx:Text text="Your Mentee Profile has been saved.Below is a snapshot of your profile.Please use the button on the right to look for Mentors" width="40%"/>
+		<mx:Button label="Look for Mentors"/>
+	</mx:HBox>
+	<mx:Spacer height="20%"/>
+	<mentee:MenteeProfileInfo id="menteeProfile"/>
+</mx:VBox>

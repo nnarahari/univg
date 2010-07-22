@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"  width="100%" height="100%" xmlns:mentor="com.views.mentor.*">
+<mx:Script>
+	<![CDATA[
+		import com.mappedObjects.ug.model.mentor.Mentor;
+		public function setMentorObject(mentorObj:Mentor):void
+		{
+			mentorProfile.setMentorObject(mentorObj);
+		}
+	]]>
+</mx:Script>
+	<mx:Text width="100%" text="Congratulations, you have successfully signed up as a Mentor at UnivGiggle. 
+	Thanks for taking the first step towards making a difference in someone’s life by sharing your life 
+	experience with someone in need of guidance and direction. We can assure you that you will have a 
+	very hearty experience through this program. You can see your life changing when you try bringing a 
+	difference in the life of someone.This is also a great way to give back to your society, 
+	alma mater, country and mankind as a whole." fontWeight="bold"/>
+	<mx:HBox width="100%">
+		<mentor:MentorProfileInfo id="mentorProfile" width="50%"/>
+		<mx:VBox width="50%" horizontalAlign="left">
+			<mx:Text text="Outstanding Mentee Requests.Take Action"/>
+			<mx:HBox>
+				<mx:Text text="Mentee1" />
+				<mx:Button label="ACCEPT"/>
+				<mx:Button label="REJECT"/>
+			</mx:HBox>
+		</mx:VBox>	
+	</mx:HBox>
+	
+</mx:VBox>

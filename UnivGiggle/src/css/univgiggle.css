@@ -1,0 +1,59 @@
+/* CSS file */
+Alert
+	{
+		color : #0f3177;
+		title-style-name : "alertTitle";
+		header-height:19;
+		drop-shadow-enabled: false;
+		drop-shadow-color :#d1ddf7;
+		background-color: #ffffff;
+		corner-radius :6;
+		border-style :solid;
+		header-colors : #90a4d1, #5970a0;
+		footer-colors : #9db6d9, #ffffff;
+		border-color : #5970a0;
+	}
+	
+	.alertTitle{
+		font-family :Verdana;
+		font-size :10;
+		font-weight :bold;
+		text-align :left;
+		color :#ffffff;
+	}
+	
+
+.storeButtonBar
+{
+    cornerRadius:           0;
+    buttonStyleName:        "storeButton";
+    themeColor:             #456F84;
+}
+
+.storeButton
+{
+    cornerRadius:           0;
+    fillColors:             #4A6F81, #BDD6E2, #456F84, #9ABBC9;
+    fillAlphas:             1, 1;
+    highlightAlphas:        .5, .25;
+    fontWeight:             "normal";
+    selectedOverSkin:       ClassReference("samples.flexstore.ButtonBarButtonSkin");
+    selectedUpSkin:         ClassReference("samples.flexstore.ButtonBarButtonSkin");
+    overSkin:               ClassReference("samples.flexstore.ButtonBarButtonSkin");
+}
+
+.catalogTitleButtonSelected
+{
+    color:                  #FFFFFF;
+    fontWeight:             "bold";
+}
+
+.fontHighlight
+{
+	font-weight : bold;
+}
+
+.fntColor
+{
+	color : #4A6F81;
+}

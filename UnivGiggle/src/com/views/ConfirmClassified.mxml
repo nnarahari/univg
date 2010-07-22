@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" verticalGap="10" paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"  creationComplete="CompInit();"
+		borderStyle="solid" xmlns:components="com.components.*">
+	<mx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+		]]>
+	</mx:Script>
+<mx:Script source="../as/ConfirmClassified.as"/>
+	
+	<mx:Text text="(${classifiedObj.price}) {classifiedObj.title}" fontSize="18" fontWeight="bold" />
+	<!--<mx:Spacer height="15"/>-->
+	<mx:HRule width="100%"/>
+	<mx:Form id="postInfo">
+		<mx:FormItem label="Posted By :">
+			<mx:Label id="fname" text="{classifiedObj.firstName}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Contact Email :">
+			<mx:Label id="emailId" text="{classifiedObj.email}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Phone Number :">
+			<mx:Label id="pnumber" text="{classifiedObj.contactNo}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Contact Time :">
+			<mx:Label id="contTime" text="{classifiedObj.timeToContact}"/>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:HRule width="100%"/>
+	<!--<mx:Label text="Test detail of posting" />-->
+	
+	<mx:Spacer height="15"/>
+	<mx:HBox width="100%">
+		<mx:Label text="Please upload a picture:"/>
+		<mx:TextInput width="16%" id="fileName" editable="false"/>
+		<mx:Button id="browse" label="browse.."/>
+		<!--<mx:Button id="upload" label="Upload"/>-->
+	</mx:HBox>
+	<mx:VBox id="additionalAttach" width="100%"/>
+	<mx:LinkButton id="attach_more" label="Attach more.."/>
+	<mx:HBox width="100%">
+		<mx:CheckBox id="condition" label="Terms &amp; Conditions:" />
+		<mx:Label text="Please click "/>
+		<mx:LinkButton label="terms &amp; conditions" click="navigateToURL(new URLRequest('http://www.google.com'),'_blank')"/>
+		<mx:Text text="to read and accept the terms and conditions."/>
+	</mx:HBox>
+	<mx:HBox id="verificationBlock" width="100%">
+		<mx:Label text="Enter Verification Code :" />
+		<mx:TextInput id="enteredSecureCode" width="200" enabled="{condition.selected}"/>
+	</mx:HBox>
+	<mx:HBox width="100%" horizontalAlign="right">
+		<mx:Button id="post" label="Post" width="100" enabled="{condition.selected}"/>
+		<mx:Button id="edit" label="Edit" width="100"/>
+		<mx:Button id="discard" label="Discard" width="100"/>
+	</mx:HBox>
+</mx:VBox>

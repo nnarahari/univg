@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- screen for displaying the posted classified details
+	 author : Venkata Teeda -->
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init();">
+<mx:Script>
+	<![CDATA[
+		import com.mappedObjects.ug.model.UG_User;
+		import mx.rpc.events.FaultEvent;
+		import mx.rpc.events.ResultEvent;
+		import mx.rpc.remoting.RemoteObject;
+		import com.interactiveObject.ServiceObject;
+		import mx.controls.Alert;
+		import com.events.PostClassifiedEvent;
+		import mx.events.MoveEvent;
+		import mx.collections.ArrayCollection;
+		import com.mappedObjects.ug.model.Classified;
+		import mx.effects.Resize;
+		import mx.events.ResizeEvent;
+		import mx.events.ListEvent;
+		import mx.controls.Image;
+		import mx.events.ItemClickEvent;
+		import mx.managers.PopUpManager;
+		
+
+		private var img:Image;
+		[Bindable]
+		private var imagePathsList:ArrayCollection;
+
+		[Bindable]
+		private var _classifiedObj:Classified;
+		private var tempImageObj:Image;
+		private var serviceObject:ServiceObject;
+		private var messageObj:RemoteObject;
+		private var _ugUser:UG_User;
+		
+		private function init():void
+		{
+			serviceObject = new ServiceObject;
+			messageObj = serviceObject.getRemoteObjectInstance("classifiedManager");
+			back_but.addEventListener(MouseEvent.CLICK,onBackButClickHandler,false,0,true);
+			reply.addEventListener(MouseEvent.CLICK,onReply,false,0,true);
+			forward.addEventListener(MouseEvent.CLICK,onForward,false,0,true);
+			messageObj.forwardClassified.addEventListener(ResultEvent.RESULT,onResultForwardClassified,false,0,true);
+			messageObj.forwardClassified.addEventListener(FaultEvent.FAULT,onFaultForwardClassified,false,0,true);
+			messageObj.replyToClassified.addEventListener(ResultEvent.RESULT,onResultReplyClassified,false,0,true);
+			messageObj.replyToClassified.addEventListener(FaultEvent.FAULT,onFaultReplyClassified,false,0,true);
+			
+		}
+		
+		public function set userInfo(userInfo:UG_User):void
+		{
+			_ugUser = userInfo;
+		}
+		
+		private function onResultReplyClassified(event:ResultEvent):void
+		{
+			var status:Boolean = event.result as Boolean;
+			if(status){
+				msgStatus.text = "Your message has been sent.";
+			}
+		}
+		
+		private function onFaultReplyClassified(event:FaultEvent):void
+		{
+			Alert.show(event.fault.message,"Error");
+		}
+		
+		private function onResultForwardClassified(event:ResultEvent):void
+		{
+			var status:Boolean = event.result as Boolean;
+			if(status){
+				messageStatus.text = "Your message has been forwarded.";
+			}
+		}
+		
+		private function onFaultForwardClassified(event:FaultEvent):void
+		{
+			Alert.show(event.fault.message,"Error");
+		}
+		
+		private function onBackButClickHandler(event:MouseEvent):void
+		{
+			parentDocument.dispatchEvent(new PostClassifiedEvent(PostClassifiedEvent.EVENTNAME));
+		}
+		
+		/**
+		 * setter function for accepting the classified object.
+		 * @param : obj
+		 * @param : void
+		 * */
+		public function set classifiedObject(obj:Classified):void
+		{
+			_classifiedObj = obj;
+			if(_classifiedObj.imagePaths != null)
+				imagePathsList = new ArrayCollection(_classifiedObj.imagePaths.split("|"));
+		}
+		
+		/**
+		 * getter function to return the classified object.
+		 * @param : Classified
+		 * */
+		public function get classifiedObject():Classified
+		{
+			return _classifiedObj;
+		}
+		
+		/**
+		 * listener invoked when clicking on image,where image preview is displayed using the popup
+		 * manager
+		 * @param : evt
+		 * @param : void
+		 * */
+		private function tileList_itemClick(evt:ListEvent):void {
+			img = new Image();
+			// img.width = 300;
+			// img.height = 300;
+			img.maintainAspectRatio = true;
+			img.addEventListener(Event.COMPLETE, image_complete);
+			img.addEventListener(ResizeEvent.RESIZE, image_resize);
+			img.addEventListener(MouseEvent.CLICK, image_click);
+			img.source = evt.itemRenderer.data;
+			img.setStyle("addedEffect", image_addedEffect);
+			img.setStyle("removedEffect", image_removedEffect);
+			tempImageObj = img;
+			PopUpManager.addPopUp(img, this, true);
+		}
+		
+		/**
+		 * listener invoked when clicking on the popup control which displayed the image preview
+		 * @param : evt
+		 * @param : void
+		 * */
+		private function image_click(evt:MouseEvent):void {
+			PopUpManager.removePopUp(tempImageObj);
+		}
+		
+		/**
+		 * listener invoked when selecting on the image shown in the image flow wizard
+		 * @param : evt
+		 * @param : void
+		 * */
+		private function image_resize(evt:ResizeEvent):void {
+			PopUpManager.centerPopUp(tempImageObj);
+			img.removeEventListener(ResizeEvent.RESIZE, image_resize);
+		}
+		
+		/**
+		 * listener invoked when clicking on the image shown in the image flow wizard
+		 * @param : evt
+		 * @param : void
+		 * */
+		private function image_complete(evt:Event):void {
+			PopUpManager.centerPopUp(tempImageObj);
+		}
+		
+		private function onReply(event:MouseEvent):void
+		{
+			if(_ugUser != null)
+				viewClassified.selectedIndex = 1;
+			else
+				Alert.show("please login to the application","Info");
+		}
+		
+		private function onMessageSend():void
+		{
+//			Alert.show("Message Sent"+Math.round(classifiedObject.id));
+			if(replytext.text != ""){
+				var id:Number = Math.round(classifiedObject.id);
+				messageObj.replyToClassified(_ugUser.emailId,id.toString(),replytext.text);
+			}else{
+				Alert.show("please enter message","Info");
+			}
+		}
+		
+		private function onCancel():void
+		{
+			viewClassified.selectedIndex = 0;
+		}
+		
+		private function onForward(event:MouseEvent):void
+		{
+			if(_ugUser != null)
+				viewClassified.selectedIndex = 2;
+			else
+				Alert.show("please login to the application","Info");
+		}
+		
+		private function onSend():void
+		{
+//			Alert.show("forward");
+			if(emailId.text != ""){
+				var id:Number = Math.round(classifiedObject.id);
+				messageObj.forwardClassified(_ugUser.emailId,id.toString(),emailId.text);
+			}else{
+				Alert.show("please enter emailid","Info");
+			}
+		}
+
+	]]>
+</mx:Script>
+		<mx:XML id="xml" source="../assets1/gallery.xml" />
+		<mx:XMLListCollection id="xmlListColl" source="{xml.image}" />
+
+		<mx:WipeDown id="image_addedEffect" startDelay="100" />
+
+		<mx:Parallel id="image_removedEffect">
+			<mx:Zoom />
+			<mx:Fade />
+		</mx:Parallel>
+	<mx:ViewStack id="viewClassified" width="100%" height="100%">
+		<mx:VBox width="100%" height="100%">
+		<mx:Form  width="100%" height="100%">
+			<mx:FormItem  width="100%" label="Posted By :" direction="horizontal">
+				<mx:Label text="{_classifiedObj.firstName}"/>
+				<mx:Spacer width="70%"/>
+				<mx:Button id="back_but"  label="back"/>
+				<mx:Button id="reply" label="Reply"/>
+				<mx:Button id="forward" label="Forward"/>
+			</mx:FormItem>
+			<mx:FormItem label="Contact Time :">
+				<mx:Label text="{_classifiedObj.timeToContact}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Country :">
+				<mx:Label text="{_classifiedObj.country}"/>
+			</mx:FormItem>
+			<mx:FormItem label="State :">
+				<mx:Label text="{_classifiedObj.state}"/>
+			</mx:FormItem>
+			<mx:FormItem label="University Name :">
+				<mx:Label text="{_classifiedObj.universityName}"/>
+			</mx:FormItem>
+			<mx:FormItem label="ShowPersonalDetail :">
+				<mx:Label text="{_classifiedObj.showPersonalDetail}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Details :">
+				<mx:Label text="{_classifiedObj.details}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Price :">
+				<mx:Label text="{_classifiedObj.currency}{_classifiedObj.price}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Contact Email :" visible="{_classifiedObj.showPersonalDetail}">
+				<mx:Label text="{_classifiedObj.email}" visible="{_classifiedObj.showPersonalDetail}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Phone Number :" visible="{_classifiedObj.showPersonalDetail}">
+				<mx:Label text="{_classifiedObj.contactNo}" visible="{_classifiedObj.showPersonalDetail}"/>
+			</mx:FormItem>
+		</mx:Form>
+		<mx:Label text="Uploaded Files :"/>
+		<mx:TileList id="tileList"
+			dataProvider="{imagePathsList}"
+			itemRenderer="com.components.itemRenderer.CustomItemRenderer"
+			columnCount="5"
+			columnWidth="125"
+			rowCount="1"
+			rowHeight="100"
+			themeColor="haloSilver"
+			verticalScrollPolicy="off"
+			itemClick="tileList_itemClick(event);" />
+		</mx:VBox>
+		<mx:HBox id="replyArea" horizontalAlign="center" verticalAlign="top" width="100%">
+			<mx:Form width="100%">
+				<mx:FormItem label="Reply message :">
+					<mx:TextArea id="replytext" width="400" height="200"/>
+				</mx:FormItem>
+				<mx:FormItem direction="horizontal">
+					<mx:Button id="sendbut" label="Send" click="onMessageSend();"/>
+					<mx:Spacer width="20"/>
+					<mx:Button id="cancelbut" label="Cancel" click="onCancel();"/>
+				</mx:FormItem>
+				<mx:FormItem >
+					<mx:Text id="msgStatus"/>
+				</mx:FormItem>
+		</mx:Form>
+		</mx:HBox>
+		<mx:HBox id="forwardArea" horizontalAlign="center" verticalAlign="top" width="100%">
+			<mx:Form width="100%">
+				<mx:FormItem label="Email :">
+					<mx:TextInput id="emailId" width="200"/>
+				</mx:FormItem>
+				<mx:FormItem direction="horizontal">
+					<mx:Button label="Send" click="onSend();"/>
+					<mx:Spacer width="20"/>
+					<mx:Button label="Cancel" click="onCancel();"/>
+				</mx:FormItem>
+				<mx:FormItem >
+					<mx:Text id="messageStatus"/>
+				</mx:FormItem>
+			</mx:Form>		
+			
+		</mx:HBox>
+	</mx:ViewStack>
+	</mx:VBox>
+

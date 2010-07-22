@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" creationComplete="compInit();">
+<mx:Script source="../../as/mentor/mentorProfileInfo.as"/>
+	<mx:HBox width="100%">
+		<mx:VBox width="25%" height="100%">
+			<mx:Image width="50%" height="50%"/>
+			<mx:Text text="Number of Mentees :{}"/>
+		</mx:VBox>
+		<mx:Form width="75%">
+			<mx:FormItem label="First Name:" width="100%">
+				<mx:Text id="fname" text="{_mentor.firstName}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Last Name:" width="100%">
+				<mx:Text id="lname" text="{_mentor.lastName}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Current Profession:" width="100%">
+				<mx:Text id="profession" text="{_mentor.profession}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Location:" width="100%">
+				<mx:Text id="location" text="{_mentor.citizenship}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Schools/Colleges Attended:" width="100%">
+				<mx:Text id="attend" text="{_mentor.schoolCollege}"/>
+			</mx:FormItem>
+		</mx:Form>
+	</mx:HBox>
+	<mx:Text id="writeUp" text="Write Up as provided by the Mentor when signing up" width="100%"/>
+	<mx:Text id="testimonial" text="Testimonial provided by the mentor for UnivG" width="100%"/>
+	<mx:Button id="request" label="Request to be a Mentee"/>	
+</mx:VBox>
