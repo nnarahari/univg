@@ -3,10 +3,10 @@
 <mx:Script source="../as/Login.as"/>
 	<mx:Form id="loginForm" >
 		<mx:FormHeading label="Welcome To UnivGiggle" fontWeight="bold"/>
-		<mx:FormItem label="UserName :" fontWeight="bold">
+		<mx:FormItem label="Email :" fontWeight="bold">
 			<mx:TextInput id="userName" width="200"/>
 		</mx:FormItem>
-		<mx:FormItem label="PassWord :" fontWeight="bold">
+		<mx:FormItem label="Password :" fontWeight="bold">
 			<mx:TextInput id="passWord" width="200" displayAsPassword="true"/>
 		</mx:FormItem>
 		<mx:FormItem direction="horizontal">
