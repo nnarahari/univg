@@ -16,6 +16,7 @@
 			<view:ConfirmClassified id="confirmClassified"/>
 			<view:PostedSuccess id="postSuccess"/>
 			<view:SignupPage id="signUp" />
+			<view:GenaratePassword id="genaratePassword" />
 			<view:AboutPage id="about"/>
 			<view:StudentClassified id="studentClassified"/>
 			<view:P2PLenderClassified id="p2plender"/>

@@ -5,6 +5,7 @@
 		import com.events.ClassifiedEvent;
 		import com.events.ContactUSEvent;
 		import com.events.CorporateLenderEvent;
+		import com.events.GenaratePasswordEvent;
 		import com.events.LoginEvt;
 		import com.events.P2PLenderClassifiedEvent;
 		import com.events.SignUpEvent;
@@ -185,6 +186,7 @@
 		private function addEventListeners():void
 		{
 			sub.addEventListener(MouseEvent.CLICK,onSubmit,false,0,true);
+			id_forgotPwd.addEventListener(MouseEvent.CLICK,onGenaratePassword,false,0,true);
 			signup.addEventListener(MouseEvent.CLICK,onSignUp,false,0,true);
 			id_logout.addEventListener(MouseEvent.CLICK,onLogout,false,0,true);
 			loginRmtObj.validateUser.addEventListener(ResultEvent.RESULT,resultLoginHandler,false,0,true);
@@ -231,6 +233,10 @@
 		private function onFaultGetUserDetails(event:FaultEvent):void
 		{
 			Alert.show(event.fault.message,"Error");
+		}
+		
+		private function onGenaratePassword(evnt:MouseEvent):void{
+			dispatchEvent(new GenaratePasswordEvent(GenaratePasswordEvent.GENARATEPASSWORD));
 		}
 		
 		/**
