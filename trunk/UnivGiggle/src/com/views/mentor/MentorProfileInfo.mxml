@@ -3,7 +3,7 @@
 <mx:Script source="../../as/mentor/mentorProfileInfo.as"/>
 	<mx:HBox width="100%">
 		<mx:VBox width="25%" height="100%">
-			<mx:Image width="50%" height="50%"/>
+			<mx:Image width="50%" height="50%" source="../../../assets1/ai_appicon-tn.gif"/>
 			<mx:Text text="Number of Mentees :{}"/>
 		</mx:VBox>
 		<mx:Form width="75%">
