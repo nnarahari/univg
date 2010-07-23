@@ -8,6 +8,7 @@
         import com.events.CorporateLenderEvent;
         import com.events.CreateUserEvent;
         import com.events.FetchClassifedObjectEvent;
+        import com.events.GenaratePasswordEvent;
         import com.events.HomePageEvent;
         import com.events.LoginEvt;
         import com.events.P2PLenderClassifiedEvent;
@@ -41,6 +42,8 @@
 			/* loginBut.addEventListener(MouseEvent.CLICK,navigateToLoginScreen,false,0,true);
 			classifiedBut.addEventListener(MouseEvent.CLICK,navigateToClassifiedScreen,false,0,true); */
 			signUp.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
+			genaratePassword.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
+			appHeader.addEventListener(GenaratePasswordEvent.GENARATEPASSWORD, onGenaratepassword,false,0,true);
 			appHeader.addEventListener(SignUpEvent.SIGNUP,goToSignUpPage,false,0,true);
 			postClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			postClassified.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
@@ -128,6 +131,10 @@
 		private function goToPostSuccess(event:ClassifiedConfirmEvent):void
 		{
 			univGiggleStack.selectedChild = postSuccess;
+		}
+		
+		private function onGenaratepassword(event:GenaratePasswordEvent):void{
+			univGiggleStack.selectedChild = genaratePassword;
 		}
 		
 		private function goToHomePage(event:HomePageEvent):void

@@ -18,7 +18,8 @@
 							<mx:LinkButton label="Logout" height="10" visible="false"/>
 						</mx:HBox>
 						<mx:HBox width="100%" horizontalAlign="center">
-							<mx:Label text="Forget your password? password passwordyouryour" visible="false"/>
+							<mx:Label width="195"/>
+							<mx:LinkButton  id="id_forgotPwd" label="Forget your password?" />
 							<mx:Button id="signup" label="SignUp"/>
 						</mx:HBox>
 					</mx:VBox>
