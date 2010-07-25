@@ -167,20 +167,34 @@ public class MentorDAOImpl implements MentorDAO {
 
 	@Transactional
 	@Override
-	public boolean removeMentee(String mentorEmail, Mentee mentee) {
-		logger.info("removeMentee() started...mentorEmail ==>" + mentorEmail);
-		Mentor mentor = getMentor(mentorEmail);
-		logger.info(mentor);
-		List<Mentee> menteeList = mentor.getMenteeList();
-		menteeList.remove(mentee);
-		mentor.setMenteeList(menteeList);
+	public boolean detachMentee(String mentorEmail, Mentee mentee)
+			throws Exception {
+		logger.info("detachMentee() started...mentorEmail ==>" + mentorEmail);
+
+		String qry = "update Mentee m set m.mentor=null where m.email = :email";
+		Query query = entityManager.createQuery(qry);
+		query.setParameter("email", mentee.getEmail());
+		boolean isDetached = false;
 		try {
-			createOrUpdateMentor(mentor);
-			return true;
+			int noOfRowsUpdated = query.executeUpdate();
+			if (noOfRowsUpdated > 0) {
+				isDetached = true;
+			}
 		} catch (Exception e) {
-			logger.error("Error while removing mentee to Mentor.", e);
+			logger.error("Error while detaching mentee", e);
+			throw e;
 		}
-		return false;
+
+		/*
+		 * Mentor mentor = getMentor(mentorEmail); logger.info(mentor); List<Mentee>
+		 * menteeList = mentor.getMenteeList(); menteeList = new ArrayList<Mentee>();
+		 * mentee.setMentor(null); menteeList.add(mentee);
+		 * mentor.setMenteeList(menteeList); try { createOrUpdateMentor(mentor);
+		 * return true; } catch (Exception e) { logger.error("Error while
+		 * removing mentee to Mentor.", e); }
+		 */
+
+		return isDetached;
 	}
 
 	@Override
