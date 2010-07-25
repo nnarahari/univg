@@ -16,8 +16,6 @@
 		import com.interactiveObject.ServiceObject;
 		import com.mappedObjects.ug.model.UG_User;
 		
-		import flash.events.MouseEvent;
-		
 		import mx.collections.XMLListCollection;
 		import mx.controls.Alert;
 		import mx.events.ItemClickEvent;
@@ -136,8 +134,11 @@
 		 * */
 		private function resultLoginHandler(event:ResultEvent):void
 		{
-			loginRmtObj.getUser(userName.text);
-		}
+			if(event.result as Boolean)
+				loginRmtObj.getUser(userName.text);
+ 			else
+				Alert.show("Invalid emailId/password.","Info"); 
+	}
 		
 		/**
 		 * listener invoked when their is NetConnection.failed error or exceptions occured in the

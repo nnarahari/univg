@@ -4,7 +4,7 @@ package com.events
 
 	public class GenaratePasswordEvent extends Event
 	{
-		public static var GENARATEPASSWORD:String = "";
+		public static var GENARATEPASSWORD:String = "generatePassWord";
 		public function GenaratePasswordEvent(type:String)
 		{
 			super(type);

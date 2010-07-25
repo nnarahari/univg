@@ -4,7 +4,7 @@ package com.events
 
 	public class SignUpEvent extends Event
 	{
-		public static var SIGNUP:String = "";
+		public static var SIGNUP:String = "signup";
 		public function SignUpEvent(type:String)
 		{
 			super(type);

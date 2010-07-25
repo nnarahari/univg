@@ -6,7 +6,7 @@ import com.mappedObjects.ug.model.mentee.Mentee;
 [Bindable]
 private var _mentee:Mentee;
 
-public function setMenteeObject(menteeObj:Mentee):void
+public function set menteeObject(menteeObj:Mentee):void
 {
 	_mentee = menteeObj;
 }
