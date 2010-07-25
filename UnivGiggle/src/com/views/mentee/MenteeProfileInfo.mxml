@@ -4,8 +4,9 @@
 <mx:Script source="../../as/mentee/menteeProfileInfo.as"/>
 	<mx:HBox width="100%">
 		<mx:VBox width="25%" height="100%">
-			<mx:Image width="50%" height="50%"/>
+			<mx:Image width="50%" height="50%" source="{_mentee.imagePaths}"/>
 		</mx:VBox>
+		<mx:Spacer width="10%"/>
 		<mx:Form width="75%">
 			<mx:FormItem label="First Name:" width="100%">
 				<mx:Text id="fname" text="{_mentee.firstName}"/>
@@ -24,6 +25,6 @@
 			</mx:FormItem>
 		</mx:Form>
 	</mx:HBox>
-	<mx:Text id="writeUp" text="Write Up as provided by the Mentor when signing up" width="100%"/>
-	<mx:Text id="testimonial" text="Testimonial provided by the mentor for UnivG" width="100%"/>
+	<mx:Text id="writeUp" text="{_mentee.description}" width="100%"/>
+	<mx:Text id="testimonial" text="{_mentee.testimonial}" width="100%"/>
 </mx:VBox>

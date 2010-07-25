@@ -5,17 +5,17 @@
 		import mx.events.CloseEvent;
 		import mx.containers.TitleWindow;
 		import mx.managers.PopUpManager;
-		private var mentorProInfo:MentorProfileInfo;
+		private var menteeProInfo:MenteeProfileInfo;
 		private var tileWindow:TitleWindow;
 		private function hyperLinkClick():void
 		{
-			mentorProInfo = new MentorProfileInfo;
+			menteeProInfo = new MenteeProfileInfo;
 			tileWindow = new TitleWindow;
-			tileWindow.title = "Mentor Profile Info";
+			tileWindow.title = "Mentee Profile Info";
 			tileWindow.percentHeight = 100;
 			tileWindow.percentWidth = 100;
 			tileWindow.showCloseButton = true;
-			tileWindow.addChild(mentorProInfo);
+			tileWindow.addChild(menteeProInfo);
 			PopUpManager.addPopUp(tileWindow,this,true);
 //			PopUpManager.createPopUp(tileWindow);
 			tileWindow.addEventListener(CloseEvent.CLOSE,onClose,false,0,true);
@@ -25,13 +25,13 @@
 		{
 			PopUpManager.removePopUp(tileWindow);
 			tileWindow.removeEventListener(CloseEvent.CLOSE,onClose,false);
-			mentorProInfo = null;
+			menteeProInfo = null;
 			tileWindow = null;
 			
 		}
 	]]>
 </mx:Script>
-	<mx:Text text="Mentor Testimonials" width="100%"/>
+	<mx:Text text="Mentee Testimonials" width="100%"/>
 	<mx:LinkButton label="Testimonial 1 : UnivG has helped me" width="100%" click="hyperLinkClick()"/>
 	<mx:LinkButton label="Testimonial 2 : ..." width="100%"/>
 	<mx:LinkButton label="Testimonial 3s : ..." width="100%"/>

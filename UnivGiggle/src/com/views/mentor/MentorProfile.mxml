@@ -17,7 +17,17 @@
 <mx:Binding source="" destination=""/>
 <mx:Binding source="" destination=""/>
 --><!-- End of Binding -->
-
+<!-- Validation-->
+<mx:StringValidator id="firstNameValidator" property="text" source="{fname}" minLength="2" maxLength="50"/>
+<mx:StringValidator id="lastNameValidator" property="text" source="{lname}" minLength="2" maxLength="50"/>
+<mx:StringValidator id="languageValidator" property="text" source="{language}" minLength="1" maxLength="50"/>
+<mx:StringValidator id="degreeValidator" property="text" source="{highestDegree}" minLength="1" maxLength="50"/>
+<mx:StringValidator id="educationValidator" property="text" source="{educationAttn}" minLength="1" maxLength="50"/>
+<mx:StringValidator id="despValidator" property="text" source="{description}" minLength="1" maxLength="500"/>
+<mx:StringValidator id="testimonialValidator" property="text" source="{testimonial}" minLength="1" maxLength="500"/>
+<mx:EmailValidator id="emailIdValidator" property="text" source="{emailId}" />
+<mx:NumberValidator id="ageValidator" allowNegative="false" domain="int" property="text" source="{age}"/>
+<!-- End of Validation-->
 <mx:XML id="dp_profession" source="../../../xml/profession.xml" format="e4x" />
 <mx:XML id="dp_country" source="../../../xml/country.xml" format="e4x" />
 
@@ -78,7 +88,7 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country"  width="20%"  dataProvider="{dp_country.country}" labelField="@name"/>
+				<mx:ComboBox id="country"  width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{country.text}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -87,13 +97,13 @@
 				<mx:Text text="Language :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:TextInput id="language"  width="35%"  text="{_mentor.language}"/>
+				<mx:TextInput id="language"  width="20%"  text="{_mentor.language}"/>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession"  width="20%"  dataProvider="{dp_profession.profession}" labelField="@name"/>
+				<mx:ComboBox id="profession"  width="150"  dataProvider="{dp_profession.profession}" labelField="@name"  toolTip="{profession.text}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -136,7 +146,7 @@
 				<mx:Text text="Upload Pic :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:TextInput id="fileName" width="50%"  text="{_mentor.imagePaths}"/>
+				<mx:TextInput id="fileName" width="50%"  text="{_mentor.imagePaths}" editable="false"/>
 				<mx:Button label="browse.." id="browseBut"/>
 			</mx:GridItem>
 		</mx:GridRow>

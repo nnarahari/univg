@@ -10,9 +10,11 @@ import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentee.Mentee;
 
 import mx.controls.Alert;
+import mx.events.ValidationResultEvent;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
+import mx.validators.Validator;
 
 private var imagecaptcha:Captcha;
 private const securityCodeLength:uint = 6;
@@ -25,6 +27,7 @@ private var imageFileRef:FileReference;
 private var imageFileFilter:FileFilter = new FileFilter("Image(*.jpg,*.PNG,*.jpeg,*gif,*.png)","*.jpg;*.png;*jpeg;*.gif;*.PNG");
 private var fileFilter:Array = [imageFileFilter];
 private var imageFileByteArray:ByteArray;
+private var validationArray:Array;
 
 /**
  * function invoked once all the components got created & initialized successfully
@@ -40,6 +43,7 @@ private function compInit():void
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	createImageCaptcha();
 	addListeners();
+	setValidator();
 }
 
 /**
@@ -74,13 +78,24 @@ public function createImageCaptcha():void
  * */
  private function onSaveMenteeProfile(event:MouseEvent):void
  {
-
-	if(verificationCode.text  == imagecaptcha._securitycode){
-		male.selected?_mentee.gender = "male":_mentee.gender = "female";
-		mentorRemoteObj.addMentee(_mentee,"satya.teeda@gmail.com",null);
-	 }else{
-	 	Alert.show("Please enter valid code","Information");
-	 }
+	var validatorErrorArr:Array = Validator.validateAll(validationArray);
+	var isValid:Boolean = validatorErrorArr.length == 0;
+	if(isValid){
+		if(verificationCode.text  == imagecaptcha._securitycode){
+			male.selected?_mentee.gender = "male":_mentee.gender = "female";
+			mentorRemoteObj.addMentee(_mentee,fileName.text,imageFileByteArray);
+		 }else{
+		 	Alert.show("Please enter valid code","Information");
+		 }
+	}else{
+		var validationResObj:ValidationResultEvent = null;
+		var consoleResult:Array = [];
+		for each(validationResObj in  validatorErrorArr)
+		{
+			consoleResult.push(validationResObj.currentTarget.source.text+" : "+validationResObj.message);
+		}
+		Alert.show(consoleResult.join("\n"),"Error");
+	}
  }
  
  /**
@@ -162,4 +177,22 @@ public function setUserInfo(userInfo:UG_User):void
 			female.selected = false;
 		}
 	}
+}
+
+/**
+ * function for setting on the required validators inside an array
+ * @return : void
+ * */
+private function setValidator():void
+{
+	validationArray = new Array;
+	validationArray.push(firstNameValidator);
+	validationArray.push(lastNameValidator);
+	validationArray.push(languageValidator);
+	validationArray.push(degreeValidator);
+	validationArray.push(educationValidator);
+	validationArray.push(despValidator);
+	validationArray.push(testimonialValidator);
+	validationArray.push(emailIdValidator);
+	validationArray.push(ageValidator);
 }
