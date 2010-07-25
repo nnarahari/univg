@@ -11,6 +11,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ug.dao.MenteeeDAO;
 import com.ug.exception.DBConnectionFailureException;
@@ -40,6 +41,7 @@ public class MenteeDAOImpl implements MenteeeDAO {
 	 * @see com.ug.dao.MenteeeDAO#addMentee(com.ug.model.Mentee)
 	 */
 	@Override
+	@Transactional
 	public Mentee addMentee(Mentee mentee) throws Exception {
 		logger.info("addMentee started...");
 		try{
