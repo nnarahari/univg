@@ -315,4 +315,9 @@ public class Mentee extends ModelBase{
 	public void setActivated(boolean activated) {
 		this.activated = activated;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		Mentee menteeObj = (Mentee)obj;
+		return email.endsWith(menteeObj.getEmail());
+	}
 }
