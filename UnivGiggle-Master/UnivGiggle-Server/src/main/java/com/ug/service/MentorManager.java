@@ -60,7 +60,7 @@ public interface MentorManager {
 	 * @param mentee
 	 * @return
 	 */
-	public ResultInfo removeMentee(String mentorEmail, Mentee mentee);
+	public ResultInfo detachMentee(String mentorEmail, Mentee mentee)throws Exception;
 	
 	
 	/**
