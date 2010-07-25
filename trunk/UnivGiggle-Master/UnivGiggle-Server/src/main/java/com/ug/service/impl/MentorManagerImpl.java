@@ -126,14 +126,14 @@ public class MentorManagerImpl implements MentorManager {
 	}
 	
 	@Override
-	public ResultInfo removeMentee(String mentorEmail, Mentee mentee) {
+	public ResultInfo detachMentee(String mentorEmail, Mentee mentee)throws Exception {
 		logger.info("removeMentee() started...");
 		ResultInfo resultInfo = null;
-		boolean isMenteeRemoved = mentorDAO.removeMentee(mentorEmail, mentee);
+		boolean isMenteeRemoved = mentorDAO.detachMentee(mentorEmail, mentee);
 		if(isMenteeRemoved)
-			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentee removed successfully!", "0", "Mentee removed successfully!", null);
+			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentee detached successfully!", "0", "Mentee removed successfully!", null);
 		else
-			resultInfo = UnivGiggleUtil.createResultInfo(false, "Removing Mentee failed", "104", "Removing Mentee failed.", null);
+			resultInfo = UnivGiggleUtil.createResultInfo(false, "Detaching Mentee failed", "104", "Removing Mentee failed.", null);
 		return resultInfo;
 	}
 
