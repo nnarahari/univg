@@ -3,7 +3,11 @@
  */
 package com.ug.service.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -18,8 +22,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 import com.ug.model.ResultInfo;
+import com.ug.service.MenteeManager;
 import com.ug.service.MentorManager;
-import com.ug.service.UserManager;
 
 /**
  * @author srini
@@ -29,6 +33,7 @@ public class MentorManagerImplTest {
 
 	private Logger logger = Logger.getLogger(MentorManagerImplTest.class);
 	private MentorManager mentorManager;
+	private MenteeManager menteeManager;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -51,6 +56,7 @@ public class MentorManagerImplTest {
 	public void setUp() throws Exception {
 		ApplicationContext context = new ClassPathXmlApplicationContext("UnivGiggle-Context.xml");
 		mentorManager = (MentorManager) context.getBean("mentorManager");
+		menteeManager = (MenteeManager) context.getBean("menteeManager");
 	}
 
 	/**
@@ -107,6 +113,21 @@ public class MentorManagerImplTest {
 		}
 		Mentor mentor = mentorManager.getMentor("mentor@ug.com");
 		assertTrue(mentor.getMenteeList().size()==0);
+	}
+	
+	@Test
+	public void testAttachMenteeToMentor(){
+		Mentee mentee = menteeManager.getMentee("mentee001@ug.com");
+		Mentor mentor = mentorManager.getMentor("mentor@ug.com");
+		List<Mentee> menteeList = mentor.getMenteeList();
+		int count = menteeList.size();
+		menteeList.add(mentee);
+		mentor.setMenteeList(menteeList);
+		mentorManager.addMentee("mentor@ug.com", mentee);
+		Mentor returnedMentor = mentorManager.getMentor("mentor@ug.com");
+		assertNotNull(returnedMentor);
+		assertTrue(count<returnedMentor.getMenteeList().size());
+		
 	}
 	
 	@Test
