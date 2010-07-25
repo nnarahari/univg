@@ -40,7 +40,7 @@ public interface MentorDAO {
 	 * @param mentee
 	 * @return
 	 */
-	public boolean removeMentee(String mentorEmail, Mentee mentee);
+	public boolean detachMentee(String mentorEmail, Mentee mentee)throws Exception;
 	
 	
 	/**
