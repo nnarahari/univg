@@ -17,12 +17,15 @@
 <mx:Binding source="" destination=""/>
 <mx:Binding source="" destination=""/>
 --><!-- End of Binding -->
+<mx:XML id="dp_profession" source="../../../xml/profession.xml" format="e4x" />
+<mx:XML id="dp_country" source="../../../xml/country.xml" format="e4x" />
+
 <mx:Script source="../../as/mentee/menteeProfile.as"/>	
 	<mx:Grid id="menteeProfile" width="100%" height="100%">
 		<mx:GridRow id="heading" width="100%">
 			<mx:GridItem />
 			<mx:GridItem >
-				<mx:Button label="Create/Edit Mentee Profile"/>
+				<mx:Label text="Create Mentee Profile" fontSize="15" fontWeight="bold"/>
 			</mx:GridItem>
 			<mx:GridItem>
 				<mx:Button id="mentees" label="Look for Mentors"/>
@@ -72,7 +75,7 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country" width="20%"  text="{_mentee.citizenship}"/>
+				<mx:ComboBox id="country" width="20%"  dataProvider="{dp_country.country}" labelField="@name"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -87,7 +90,7 @@
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession" width="20%"  text="{_mentee.profession}"/>
+				<mx:ComboBox id="profession" width="20%"  dataProvider="{dp_profession.profession}" labelField="@name"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -111,7 +114,7 @@
 				<mx:Text text="Brief description about yourself and why you want to serve as a mentor :" width="90%"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:TextArea id="description" width="100%" height="100%"  text="{_mentee.description}"/>
+				<mx:TextArea id="description" width="100%" height="100%"  />
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Upload Pic :"/>
@@ -129,7 +132,7 @@
 				<mx:Text text="Write New Testimonial for UnivG :" />
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:TextArea id="testimonial" width="100%" height="100%"  text="{_mentee.testimonial}"/>
+				<mx:TextArea id="testimonial" width="100%" height="100%"  />
 			</mx:GridItem>
 			
 		</mx:GridRow>

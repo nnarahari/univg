@@ -17,6 +17,10 @@
 <mx:Binding source="" destination=""/>
 <mx:Binding source="" destination=""/>
 --><!-- End of Binding -->
+
+<mx:XML id="dp_profession" source="../../../xml/profession.xml" format="e4x" />
+<mx:XML id="dp_country" source="../../../xml/country.xml" format="e4x" />
+
 <mx:Script source="../../as/mentor/mentorProfile.as"/>	
 <mx:HDividedBox width="100%" height="100%">
     <mentor:MentorTestimonialLinks width="10%" height="100%"/>
@@ -27,7 +31,7 @@
 				<mx:Text id="menteeCount" />
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Button label="Create/Edit Mentor Profile"/>
+				<mx:Label text="Create Mentor Profile" fontSize="15" fontWeight="bold"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow/>
@@ -74,7 +78,7 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country"  width="20%"  text="{_mentor.citizenship}"/>
+				<mx:ComboBox id="country"  width="20%"  dataProvider="{dp_country.country}" labelField="@name"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -89,7 +93,7 @@
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession"  width="20%"  text="{_mentor.profession}"/>
+				<mx:ComboBox id="profession"  width="20%"  dataProvider="{dp_profession.profession}" labelField="@name"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -142,7 +146,7 @@
 				<mx:Text text="Write New Testimonial for UnivG :" />
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:TextArea id="testimonial" width="100%" height="100%"  text="{_mentor.testimonial}"/>
+				<mx:TextArea id="testimonial" width="100%" height="100%"  />
 			</mx:GridItem>
 			
 		</mx:GridRow>
