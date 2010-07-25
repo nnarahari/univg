@@ -10,7 +10,7 @@
 		<mx:Label text="{(new Date).toDateString()+(new Date).toLocaleTimeString()}" visible="false"/>
 	</mx:HBox>
 	<mx:HBox width="100%" horizontalAlign="center">
-		<mx:Button id="post" label="Post Classifieds" width="150" height="50" cornerRadius="5"/>	
+		<mx:Image source="@Embed(source='./assets/greenote.PNG')"/>	
 	</mx:HBox>
 	
 </mx:VBox>
