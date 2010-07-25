@@ -18,16 +18,17 @@
 		<mx:Binding source="yes.selected" destination="classifiedObj.showPersonalDetail"/>
 <!-- End of Binding -->
 <!-- validation-->
-		<mx:StringValidator id="firstNameValidator" property="text" source="{fname}" minLength="5" maxLength="50"/>
-		<mx:StringValidator id="lastNameValidator" property="text" source="{lname}" minLength="5" maxLength="50"/>
+		<mx:StringValidator id="firstNameValidator" property="text" source="{fname}" minLength="2" maxLength="50"/>
+		<mx:StringValidator id="lastNameValidator" property="text" source="{lname}" minLength="2" maxLength="50"/>
 		<mx:PhoneNumberValidator id="contactNoValidator" property="text" source="{contact}" allowedFormatChars="-" />
 		<mx:EmailValidator id="emailIdValidator" property="text" source="{email}" />
-		<mx:StringValidator id="titleValidator" property="text" source="{title}" minLength="10" maxLength="200"/>
-		<mx:StringValidator id="detailsValidator" property="text" source="{details}" minLength="10" maxLength="500"/>
+		<mx:StringValidator id="titleValidator" property="text" source="{title}" minLength="1" maxLength="200"/>
+		<mx:StringValidator id="detailsValidator" property="text" source="{details}" minLength="1" maxLength="500"/>
 		<mx:NumberValidator id="priceValidator" allowNegative="false" domain="int" property="text" source="{amount}"/>
-		<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{time}" minValue="1" lowerThanMinError="Please select a valid time slot"/>
+		<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{time}" minValue="0" lowerThanMinError="Please select a valid time slot"/>
 <!-- End of Validation -->
 		<mx:XML id="dp" source="../../xml/univ.xml" format="e4x" />
+		<mx:XML id="dp_category" source="../../xml/categories.xml" format="e4x" />
 	<mx:HDividedBox width="100%" height="100%">
 	
 	
@@ -62,15 +63,15 @@
 			<mx:Grid id="postClassified" width="100%" height="100%">
 				<mx:GridRow id="heading" width="100%">
 					<mx:GridItem>
-						<mx:Label text="CLASSIFIEDS:" styleName="fontHighlight"/>
+						<!--<mx:Label text="CLASSIFIEDS:" styleName="fontHighlight"/>-->
 					</mx:GridItem>
 					<mx:GridItem>
-						<mx:Label text="Post your advertisement" styleName="fntColor"/>
+						<mx:Label text="Post your advertisement" styleName="fontHighlight" fontSize="15"/>
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow  width="100%">
 					<mx:GridItem  width="100%">
-						<mx:Label text="Select Location" width="100%"/>	
+						<mx:Label text="Select Location" width="100%" fontSize="10" styleName="fontHighlight" />	
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow width="100%">
@@ -78,19 +79,19 @@
 						<mx:Label text="Country:"/>
 					</mx:GridItem>
 					<mx:GridItem width="100%">
-						<mx:ComboBox id="ccode"  width="60" text="{classifiedObj.country}" dataProvider="{dp.country}" labelField="@name" toolTip="{ccode.text}"/>
+						<mx:ComboBox id="ccode"  width="60"  dataProvider="{dp.country}" labelField="@name" toolTip="{ccode.text}"/>
 					</mx:GridItem>
 					<mx:GridItem>
 						<mx:Label text="State:"/>
 					</mx:GridItem>
 					<mx:GridItem width="100%">
-						<mx:ComboBox id="state"  width="150" text="{classifiedObj.state}" dataProvider="{ccode.selectedItem.state}" labelField="@name" toolTip="{state.text}"/>
+						<mx:ComboBox id="state"  width="150"  dataProvider="{ccode.selectedItem.state}" labelField="@name" toolTip="{state.text}"/>
 					</mx:GridItem>
 					<mx:GridItem >
 						<mx:Label text="University:"/>
 					</mx:GridItem>
 					<mx:GridItem width="100%">
-						<mx:ComboBox id="univ"  width="200" text="{classifiedObj.universityName}" dataProvider="{state.selectedItem.university}" labelField="@name" toolTip="{univ.text}"/>
+						<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}" labelField="@name" toolTip="{univ.text}"/>
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow width="100%">
@@ -99,7 +100,7 @@
 				</mx:GridRow>
 				<mx:GridRow width="100%">
 					<mx:GridItem>
-						<mx:FormItem label="Personal Information" width="100%" />
+						<mx:FormItem label="Personal Information" width="100%" fontSize="10" styleName="fontHighlight" />
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow width="100%">
@@ -151,7 +152,7 @@
 				</mx:GridRow>
 				<mx:GridRow width="100%">
 					<mx:GridItem>
-						<mx:Label text="Posting Details:" width="100%"/>
+						<mx:Label text="Posting Details:" width="100%" styleName="fontHighlight"/>
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow width="100%">
@@ -159,13 +160,13 @@
 						<mx:Label text="Category:"/>
 					</mx:GridItem>
 					<mx:GridItem>
-						<mx:ComboBox id="cate" text="{classifiedObj.category}" width="5%"/>
+						<mx:ComboBox id="cate"  width="5%" dataProvider="{dp_category.category}" labelField="@name"/>
 					</mx:GridItem>
 					<mx:GridItem>
 						<mx:Label text="Sub-Category:"/>
 					</mx:GridItem>
 					<mx:GridItem>
-						<mx:ComboBox id="subCat" text="{classifiedObj.subCategory}" width="5%"/>
+						<mx:ComboBox id="subCat"  width="5%" dataProvider="{cate.selectedItem.subcategory}" labelField="@name"/>
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow width="100%">
