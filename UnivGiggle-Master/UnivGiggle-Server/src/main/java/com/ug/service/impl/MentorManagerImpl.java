@@ -57,9 +57,16 @@ public class MentorManagerImpl implements MentorManager {
 	 * @see com.ug.service.MentorManager#removeMentor(com.ug.model.Mentor)
 	 */
 	@Override
-	public ResultInfo removeMentor(Mentor mentor) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultInfo deleteMentor(Mentor mentor)throws Exception {
+		
+		logger.info("deleteMentor() started...");
+		ResultInfo resultInfo = null;
+		boolean isMentorDeleted = mentorDAO.deleteMentor(mentor);
+		if(isMentorDeleted)
+			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentor removed successfully!", "0", "Mentee removed successfully!", null);
+		else
+			resultInfo = UnivGiggleUtil.createResultInfo(false, "Mentor removal failed", "104", "Removing Mentee failed.", null);
+		return resultInfo;
 	}
 
 	/* (non-Javadoc)
