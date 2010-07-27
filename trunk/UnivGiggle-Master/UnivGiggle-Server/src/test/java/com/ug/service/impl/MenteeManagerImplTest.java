@@ -28,12 +28,6 @@ public class MenteeManagerImplTest {
 	}
 	
 	@Test
-	public void testGetAllAvailableMentees() throws Exception{
-		List<Mentee> menteeList = menteeManager.getAvailableMentees();
-		assertTrue(menteeList.size()>0);
-	}
-	
-	@Test
 	public void testAddMenteeNoMentor(){
 		Mentee mentee = createMentee("Mentee1", "002","mentee002@ug.com");
 		mentee.setMentor(null);
@@ -47,6 +41,23 @@ public class MenteeManagerImplTest {
 		assertNotNull(returnedMentee);
 	}
 	
+	@Test
+	public void testGetAllAvailableMentees() throws Exception{
+		List<Mentee> menteeList = menteeManager.getAvailableMentees();
+		assertTrue(menteeList.size()>0);
+	}
+	
+	@Test
+	public void testRemoveMentee() {
+		Mentee mentee = menteeManager.getMentee("mentee002@ug.com");
+		try {
+			menteeManager.deleteMentee(mentee);
+		} catch (Exception e) {
+			fail("Exception Occured");
+		}
+		Mentee returnedMentee = menteeManager.getMentee("mentee002@ug.com");
+		assertTrue(null == returnedMentee);
+	}
 	private Mentor createMentor(String fname,String lname, String email){
 		Mentor mentor = new Mentor(fname, lname, email);
 		mentor.setAge("22");
