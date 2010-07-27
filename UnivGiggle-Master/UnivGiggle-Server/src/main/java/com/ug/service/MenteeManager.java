@@ -30,7 +30,7 @@ public interface MenteeManager {
 	 * @param mentee
 	 * @return
 	 */
-	public ResultInfo removeMentee(Mentee mentee);
+	public ResultInfo deleteMentee(Mentee mentee) throws Exception;
 	
 	
 	/**
