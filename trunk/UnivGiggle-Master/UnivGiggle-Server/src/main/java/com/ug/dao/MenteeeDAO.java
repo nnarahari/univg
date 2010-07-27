@@ -51,7 +51,7 @@ public interface MenteeeDAO {
 	 * Remove {@link Mentee} from the system.
 	 * @param mentee
 	 */
-	public boolean removeMentee(Mentee mentee);
+	public boolean deleteMentee(Mentee mentee)throws Exception;
 	
 	
 	/**
