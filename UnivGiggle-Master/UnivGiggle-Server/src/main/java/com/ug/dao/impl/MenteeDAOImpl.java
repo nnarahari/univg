@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ug.dao.MenteeeDAO;
 import com.ug.exception.DBConnectionFailureException;
-import com.ug.model.Classified;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 
@@ -126,16 +125,21 @@ public class MenteeDAOImpl implements MenteeeDAO {
 	}
 
 	@Override
-	public boolean removeMentee(Mentee mentee) {
+	@Transactional
+	public boolean deleteMentee(Mentee mentee) throws Exception {
 		logger.info("removeMentee() started...");
-		try{
-			entityManager.remove(mentee);
-			return true;
-		}catch(Exception ex){
-			logger.error("Error while removing mentee...",ex);
-			return false;
+		Mentee menteeToRemove = entityManager.find(Mentee.class, mentee.getId());
+		boolean isDeleted = false;
+		try {
+			entityManager.remove(menteeToRemove);
+			isDeleted = true;
+		} catch (Exception ex) {
+			logger.error("Error while removing mentee...", ex);
+			isDeleted = false;
+			throw ex;
+
 		}
-		
+		return isDeleted;
 	}
 	@Override
 	public List<Mentee> getAvailableMentees() throws Exception {
