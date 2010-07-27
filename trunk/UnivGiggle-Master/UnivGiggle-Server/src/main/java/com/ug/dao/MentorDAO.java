@@ -17,7 +17,7 @@ public interface MentorDAO {
 
 	public List<Mentor> getMentorsByEmail(String email) throws Exception;
 
-	public void deleteMentor(Mentor mentor)  throws Exception;
+	public boolean deleteMentor(Mentor mentor)  throws Exception;
 	
 	/**
 	 * Add {@link Mentee} to {@link Mentor}
