@@ -105,9 +105,9 @@ public class MenteeManagerImpl implements MenteeManager {
 	 * @see com.ug.service.MenteeManager#removeMentee(com.ug.model.Mentee)
 	 */
 	@Override
-	public ResultInfo removeMentee(Mentee mentee) {
-		logger.info("removeMentee() started..");
-		boolean isRemoved = menteeDAO.removeMentee(mentee);
+	public ResultInfo deleteMentee(Mentee mentee) throws Exception {
+		logger.info("deleteMentee() started..");
+		boolean isRemoved = menteeDAO.deleteMentee(mentee);
 		ResultInfo resultInfo = null;
 		if(isRemoved)
 			resultInfo  = UnivGiggleUtil.createResultInfo(true, "Mentee removed Successfully!", "0", "Mentee removed Successfully!", null);
