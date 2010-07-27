@@ -132,8 +132,15 @@ public class MentorManagerImplTest {
 	
 	@Test
 	public void testDeleteMentor(){
-		Mentor mentor = createMentor("Mentor", "1", "mentor@ug.com");
-		//TODO : implement.
+		Mentor mentor = mentorManager.getMentor("mentor@ug.com");
+		try {
+			mentorManager.deleteMentor(mentor);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("exception occured"+ e.getMessage());
+		}
+		Mentor returnedMentor = mentorManager.getMentor("mentor@ug.com");
+		assertTrue(null == returnedMentor.getId());
 	}
 	
 	
