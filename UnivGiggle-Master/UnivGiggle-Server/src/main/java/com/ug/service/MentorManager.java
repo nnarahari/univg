@@ -28,7 +28,7 @@ public interface MentorManager {
 	 * @param mentor
 	 * @return
 	 */
-	public ResultInfo removeMentor(Mentor mentor);
+	public ResultInfo deleteMentor(Mentor mentor)throws Exception;
 	
 	
 	/**
