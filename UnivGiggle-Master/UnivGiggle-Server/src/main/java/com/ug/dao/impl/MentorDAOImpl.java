@@ -109,17 +109,28 @@ public class MentorDAOImpl implements MentorDAO {
 	 */
 	@Override
 	@Transactional
-	public void deleteMentor(Mentor mentor) throws Exception {
+	public boolean deleteMentor(Mentor mentor) throws Exception {
+		boolean isMenteeRemovalSuccess = false;
 		try {
 			Mentor mentorTobeDeleted = entityManager.find(Mentor.class, mentor
 					.getId());
+			if(null != mentorTobeDeleted){
+				List<Mentee> dependantMenteeList = mentorTobeDeleted.getMenteeList();
+				if(null != dependantMenteeList && dependantMenteeList.size()>0){
+					for (Mentee menteeToDetach : dependantMenteeList) {
+						detachMentee(mentor.getEmail(), menteeToDetach);
+					}
+				}
+			}
+			mentorTobeDeleted.setMenteeList(null);
 			entityManager.remove(mentorTobeDeleted);
+			isMenteeRemovalSuccess = true;
 		} catch (Exception e) {
 			logger.info("Error while deleting", e);
 			e.printStackTrace();
 			throw e;
 		}
-
+		return isMenteeRemovalSuccess;
 	}
 
 	@Transactional
