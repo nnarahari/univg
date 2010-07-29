@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+	<mx:Grid id="face" width="100%">
+		<mx:GridRow id="heading" width="100%">
+			<mx:GridItem>
+				<mx:Label text="Face Book Login" fontWeight="bold" fontSize="18" />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow/>
+	</mx:Grid>
+	<mx:Form id="login" width="100%">
+		<mx:FormItem label="User Name:">
+			<mx:TextInput id="userName" width="205" />
+		</mx:FormItem>
+		<mx:FormItem label="Password">
+			<mx:TextInput id="pass" width="205" displayAsPassword="true"/>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:HBox>
+		<mx:Label text="New User     "/>
+		<mx:Button label="Signup"/>
+		<mx:Label text="                        "/>
+		<mx:Button label="Login"/>
+	</mx:HBox>		
+</mx:TitleWindow>

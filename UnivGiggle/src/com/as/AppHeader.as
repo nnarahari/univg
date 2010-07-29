@@ -5,6 +5,7 @@
 		import com.events.ClassifiedEvent;
 		import com.events.ContactUSEvent;
 		import com.events.CorporateLenderEvent;
+		import com.events.FaceBookLoginEvent;
 		import com.events.GenaratePasswordEvent;
 		import com.events.LoginEvt;
 		import com.events.P2PLenderClassifiedEvent;
@@ -194,6 +195,11 @@
 			loginRmtObj.validateUser.addEventListener(FaultEvent.FAULT,faultLoginHandler,false,0,true);
 			loginRmtObj.getUser.addEventListener(ResultEvent.RESULT,onResultGetUserDetails,false,0,true);
 			loginRmtObj.getUser.addEventListener(FaultEvent.FAULT,onFaultGetUserDetails,false,0,true);
+			faceBook.addEventListener(MouseEvent.CLICK, faceBookLogin, false,0,true);
+		}
+		
+		private function faceBookLogin(event:MouseEvent):void{
+			dispatchEvent(new FaceBookLoginEvent(FaceBookLoginEvent.FACEBOOKLOGINS));
 		}
 		
 		/**

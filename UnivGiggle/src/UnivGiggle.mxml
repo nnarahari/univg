@@ -22,6 +22,7 @@
 			<view:P2PLenderClassified id="p2plender"/>
 			<view:CorporateLenderClassified id="corLender"/>
 			<view:ContactUs id="contactUs"/>
+			<view:FaceBookLogin id="faceLogin"/>
 			<mentorView:MentorProfile  id="mentor"/>
 			<mentorView:mentorTestimonial id="mentorAck"/>
 			<mentee:MenteeProfile id="mentee"/>
