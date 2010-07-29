@@ -7,6 +7,7 @@
         import com.events.ContactUSEvent;
         import com.events.CorporateLenderEvent;
         import com.events.CreateUserEvent;
+        import com.events.FaceBookLoginEvent;
         import com.events.FetchClassifedObjectEvent;
         import com.events.GenaratePasswordEvent;
         import com.events.HomePageEvent;
@@ -20,10 +21,12 @@
         import com.events.mentor.MentorProfileEvent;
         import com.events.mentor.SaveMentorProfileEvent;
         import com.mappedObjects.ug.model.UG_User;
+        import com.views.FaceBookLogin;
         
         import mx.events.BrowserChangeEvent;
         import mx.managers.BrowserManager;
         import mx.managers.IBrowserManager;
+        import mx.managers.PopUpManager;
         import mx.utils.URLUtil;
         
         private var browserManagerInstance:IBrowserManager;
@@ -42,6 +45,7 @@
 			/* loginBut.addEventListener(MouseEvent.CLICK,navigateToLoginScreen,false,0,true);
 			classifiedBut.addEventListener(MouseEvent.CLICK,navigateToClassifiedScreen,false,0,true); */
 			signUp.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
+			appHeader.addEventListener(FaceBookLoginEvent.FACEBOOKLOGINS, onFaceBookLogin,false,0,true);
 			genaratePassword.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
 			appHeader.addEventListener(GenaratePasswordEvent.GENARATEPASSWORD, onGenaratepassword,false,0,true);
 			appHeader.addEventListener(SignUpEvent.SIGNUP,goToSignUpPage,false,0,true);
@@ -85,6 +89,13 @@
         private function goToWelcomePage(event:WelcomeEvent):void
         {
         	univGiggleStack.selectedChild = welcome;
+        }
+        
+        private function onFaceBookLogin(event:FaceBookLoginEvent):void{
+        	univGiggleStack.selectedChild = welcome;
+        	var faceBook:FaceBookLogin = PopUpManager.createPopUp(welcome, FaceBookLogin, false) as FaceBookLogin;
+        	PopUpManager.centerPopUp(faceBook);
+        	
         }
         
         private function setIndexAsFragment (selectedViewIndex:Number):void
