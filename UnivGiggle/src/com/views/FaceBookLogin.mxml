@@ -12,7 +12,7 @@
 		<mx:FormItem label="User Name:">
 			<mx:TextInput id="userName" width="205" />
 		</mx:FormItem>
-		<mx:FormItem label="Password">
+		<mx:FormItem label="Password:">
 			<mx:TextInput id="pass" width="205" displayAsPassword="true"/>
 		</mx:FormItem>
 	</mx:Form>
