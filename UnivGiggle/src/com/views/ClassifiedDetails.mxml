@@ -213,9 +213,9 @@
 			<mx:FormItem  width="100%" label="Posted By :" direction="horizontal">
 				<mx:Label text="{_classifiedObj.firstName}"/>
 				<mx:Spacer width="70%"/>
-				<mx:Button id="back_but"  label="back"/>
-				<mx:Button id="reply" label="Reply"/>
-				<mx:Button id="forward" label="Forward"/>
+				<mx:Button id="back_but"  label="back" styleName="CommonBtn"/>
+				<mx:Button id="reply" label="Reply" styleName="CommonBtn"/>
+				<mx:Button id="forward" label="Forward" styleName="CommonBtn"/>
 			</mx:FormItem>
 			<mx:FormItem label="Contact Time :">
 				<mx:Label text="{_classifiedObj.timeToContact}"/>
@@ -263,9 +263,9 @@
 					<mx:TextArea id="replytext" width="400" height="200"/>
 				</mx:FormItem>
 				<mx:FormItem direction="horizontal">
-					<mx:Button id="sendbut" label="Send" click="onMessageSend();"/>
+					<mx:Button id="sendbut" label="Send" click="onMessageSend();" styleName="CommonBtn"/>
 					<mx:Spacer width="20"/>
-					<mx:Button id="cancelbut" label="Cancel" click="onCancel();"/>
+					<mx:Button id="cancelbut" label="Cancel" click="onCancel();" styleName="CommonBtn"/>
 				</mx:FormItem>
 				<mx:FormItem >
 					<mx:Text id="msgStatus"/>
@@ -278,9 +278,9 @@
 					<mx:TextInput id="emailId" width="200"/>
 				</mx:FormItem>
 				<mx:FormItem direction="horizontal">
-					<mx:Button label="Send" click="onSend();"/>
+					<mx:Button label="Send" click="onSend();" styleName="CommonBtn"/>
 					<mx:Spacer width="20"/>
-					<mx:Button label="Cancel" click="onCancel();"/>
+					<mx:Button label="Cancel" click="onCancel();" styleName="CommonBtn"/>
 				</mx:FormItem>
 				<mx:FormItem >
 					<mx:Text id="messageStatus"/>

@@ -41,7 +41,7 @@
 				<mx:Label text="Create Mentee Profile" fontSize="15" fontWeight="bold"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Button id="mentees" label="Look for Mentors"/>
+				<mx:Button id="mentees" label="Look for Mentors" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow/>
@@ -136,7 +136,7 @@
 				<mx:TextInput id="fileName" width="100%" editable="false"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Button label="browse.." id="browseBut"/>
+				<mx:Button label="browse.." id="browseBut" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -174,8 +174,8 @@
 		<mx:GridRow  width="100%">
 			<mx:GridItem />
 			<mx:GridItem>
-				<mx:Button id="saveMenteeProfile" enabled="{chk.selected}" label="SAVE" />
-				<mx:Button id="cancelMenteeProfile" label="CANCEL"/>
+				<mx:Button id="saveMenteeProfile" enabled="{chk.selected}" label="SAVE" styleName="CommonBtn"/>
+				<mx:Button id="cancelMenteeProfile" label="CANCEL" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 	</mx:Grid>

@@ -14,14 +14,14 @@
 							<mx:TextInput id="userName" width="150"/>
 							<mx:Label text="Password : "/>
 							<mx:TextInput id="passWord" displayAsPassword="true" width="150"/>
-							<mx:Button id="sub" label="Go"/>
+							<mx:Button id="sub" label="Go" styleName="CommonBtn"/>
 							<!--<mx:LinkButton label="Logout" height="10" visible="false"/>-->
 						</mx:HBox>
 						<mx:HBox width="100%" horizontalAlign="right">
 							<mx:Label width="90"/>
 							<mx:LinkButton  id="id_forgotPwd" label="Forget your password?" />
-							<mx:Button id="signup" label="SignUp"/>
-							<mx:Button id="faceBook" label="FaceBook Connect"/>
+							<mx:Button id="signup" label="SignUp" styleName="CommonBtn"/>
+							<mx:Button id="faceBook" label="FaceBook Connect" styleName="CommonBtn"/>
 						</mx:HBox>
 					</mx:VBox>
 					<mx:HBox id="loginInfo" visible="false" width="100%" horizontalAlign="right">

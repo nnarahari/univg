@@ -15,7 +15,7 @@
 	<mx:VBox width="100%" height="100%" borderStyle="solid">
 		<mx:HBox width="100%" >
 			<mx:Text text="Your Mentee Profile has been saved.Below is a snapshot of your profile.Please use the button on the right to look for Mentors" width="40%"/>
-			<mx:Button label="Look for Mentors"/>
+			<mx:Button label="Look for Mentors" styleName="CommonBtn"/>
 		</mx:HBox>
 		<mx:Spacer height="20%"/>
 		<mentee:MenteeProfileInfo id="menteeProfile"/>

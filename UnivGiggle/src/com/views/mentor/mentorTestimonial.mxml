@@ -89,9 +89,11 @@
 				menteeName.addEventListener(MouseEvent.CLICK,openMenteeProfile,false,0,true);
 				accept_Btn = new Button;
 				accept_Btn.label = "ACCEPT";
+				accept_Btn.styleName = "CommonBtn";
 				accept_Btn.addEventListener(MouseEvent.CLICK,onAccept,false,0,true);
 				reject_Btn = new Button;
 				reject_Btn.label = "REJECT";
+				reject_Btn.styleName = "CommonBtn";
 				reject_Btn.addEventListener(MouseEvent.CLICK,onReject,false,0,true);
 				menteeDet = new HBox;
 				menteeDet.addChild(menteeName);
