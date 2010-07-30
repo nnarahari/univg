@@ -10,9 +10,9 @@
 			<mx:TextInput id="passWord" width="200" displayAsPassword="true"/>
 		</mx:FormItem>
 		<mx:FormItem direction="horizontal">
-			<mx:Button id="sub" label="submit" width="70"/>
-			<mx:Button id="reset" label="reset" width="70"/>
-			<mx:Button id="signup" label="signUp" width="70"/>
+			<mx:Button id="sub" label="submit" width="70" styleName="CommonBtn"/>
+			<mx:Button id="reset" label="reset" width="70" styleName="CommonBtn"/>
+			<mx:Button id="signup" label="signUp" width="70" styleName="CommonBtn"/>
 		</mx:FormItem>
 	</mx:Form>
 </mx:VBox>

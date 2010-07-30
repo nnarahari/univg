@@ -6,7 +6,7 @@
 	<mx:Label text="Your classified has been submitted at univGiggle and email has been sent to you."/>
 	<mx:Label text="Please check your email and perform appropriate action."/>
 	<mx:HBox width="100%" horizontalAlign="left">
-		<mx:Button id="newPost" label="New Posting"/>
-		<mx:Button id="home" label="Home"/>
+		<mx:Button id="newPost" label="New Posting" styleName="CommonBtn"/>
+		<mx:Button id="home" label="Home" styleName="CommonBtn"/>
 	</mx:HBox>
 </mx:VBox>

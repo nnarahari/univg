@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" showCloseButton="true" close="closeFaceBook();">
+<mx:Script>
+	<![CDATA[
+		import mx.managers.PopUpManager;
+		private function closeFaceBook():void
+		{
+			PopUpManager.removePopUp(this);
+		}
+	]]>
+</mx:Script>
 	<mx:Grid id="face" width="100%">
 		<mx:GridRow id="heading" width="100%">
 			<mx:GridItem>
@@ -18,8 +27,8 @@
 	</mx:Form>
 	<mx:HBox>
 		<mx:Label text="New User     "/>
-		<mx:Button label="Signup"/>
+		<mx:Button label="Signup" styleName="CommonBtn"/>
 		<mx:Label text="                        "/>
-		<mx:Button label="Login"/>
+		<mx:Button label="Login" styleName="CommonBtn"/>
 	</mx:HBox>		
 </mx:TitleWindow>

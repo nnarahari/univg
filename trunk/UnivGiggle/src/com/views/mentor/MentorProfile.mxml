@@ -147,7 +147,7 @@
 			</mx:GridItem>
 			<mx:GridItem>
 				<mx:TextInput id="fileName" width="50%"  text="{_mentor.imagePaths}" editable="false"/>
-				<mx:Button label="browse.." id="browseBut"/>
+				<mx:Button label="browse.." id="browseBut" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -185,8 +185,8 @@
 		<mx:GridRow  width="100%">
 			<mx:GridItem />
 			<mx:GridItem>
-				<mx:Button id="saveMentorProfile" enabled="{chk.selected}" label="SAVE" />
-				<mx:Button id="cancelMentorProfile" label="CANCEL"/>
+				<mx:Button id="saveMentorProfile" enabled="{chk.selected}" label="SAVE" styleName="CommonBtn"/>
+				<mx:Button id="cancelMentorProfile" label="CANCEL" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 	</mx:Grid>

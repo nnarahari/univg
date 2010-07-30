@@ -50,7 +50,7 @@
 				<mx:Label text="Search :"/>
 				<mx:HBox width="80%">
 					<mx:TextInput id="srhTxt" width="100%"/>
-					<mx:Button id="search" label=">>"/>
+					<mx:Button id="search" label=">>" styleName="CommonBtn"/>
 				</mx:HBox>	
 			</mx:VBox>
 			<mx:DateChooser width="90%" yearNavigationEnabled="true" selectableRange="{{rangeEnd:new Date()}}"/>
@@ -193,9 +193,9 @@
 				</mx:GridRow>
 			</mx:Grid>
 		<mx:HBox width="100%" horizontalAlign="center">
-			<mx:Button id="submit" label="SUBMIT" width="100"/>
-			<mx:Button id="reset" label="RESET" width="100"/>
-			<mx:Button id="discard" label="DISCARD" width="100"/>
+			<mx:Button id="submit" label="SUBMIT" width="100" styleName="CommonBtn"/>
+			<mx:Button id="reset" label="RESET" width="100" styleName="CommonBtn"/>
+			<mx:Button id="discard" label="DISCARD" width="100" styleName="CommonBtn"/>
 		</mx:HBox>
 		</mx:VBox>
 		<views:ViewClassified id="viewClassifies"  width="100%" height="100%"  />

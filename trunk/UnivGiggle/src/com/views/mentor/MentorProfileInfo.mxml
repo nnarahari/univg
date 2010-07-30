@@ -26,5 +26,5 @@
 	</mx:HBox>
 	<mx:Text id="writeUp" text="{_mentor.description}" width="100%"/>
 	<mx:Text id="testimonial" text="{_mentor.testimonial}" width="100%"/>
-	<mx:Button id="request" label="Request to be a Mentee"/>	
+	<mx:Button id="request" label="Request to be a Mentee" styleName="CommonBtn"/>	
 </mx:VBox>
