@@ -15,6 +15,7 @@ import com.ug.dao.MentorDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
+import com.ug.model.Testimonial;
 
 /**
  * @author srini
@@ -168,8 +169,11 @@ public class MentorDAOImpl implements MentorDAO {
 			mentor = (Mentor) query.getSingleResult();
 			newMentorRef = mentor;
 			List<Mentee> menteeList = new ArrayList<Mentee>();
+			List<Testimonial> testimonialList = new ArrayList<Testimonial>();
 			menteeList.addAll(mentor.getMenteeList());
+			testimonialList.addAll(mentor.getTestmonialList());
 			newMentorRef.setMenteeList(menteeList);
+			newMentorRef.setTestmonialList(testimonialList);
 		} catch (Exception e) {
 			logger.error("Error while reteriving Mentor", e);
 		}
@@ -252,6 +256,38 @@ public class MentorDAOImpl implements MentorDAO {
 			logger.error("Error while querying Mentee's details.",ex);
 		}
 		return mentor;
+	}
+
+	@Override @Transactional
+	public boolean addTestimonial(String mentorEmail, Testimonial testimonial) throws Exception {
+		logger.info("addTestimonial() started...");
+		logger.info("mentroEmail ==>" + mentorEmail);
+		Mentor mentor = getMentor(mentorEmail);
+		
+		testimonial.setMentor(mentor);
+		List<Testimonial>  testmonialList =  mentor.getTestmonialList();
+		logger.info("testmonialList size ==>" + ((testmonialList != null)?testmonialList.size():"null") );
+		testmonialList.add(testimonial);
+		mentor.setTestmonialList(testmonialList);
+		logger.info("adding tm to mentor...");
+		Mentor newMentor = createOrUpdateMentor(mentor);
+		if(newMentor != null){
+			logger.info("tm size after adding ==>"+ newMentor.getTestmonialList().size());
+			return true;
+		}else{
+			logger.error("Error while updating mentor...");
+			return false;
+		}
+	}
+
+	@Override @Transactional
+	public List<Testimonial> getAllTestimonial(String mentorEmail) throws Exception{
+		logger.info("getAllTestimonial() started...");
+		logger.info("mentroEmail ==>" + mentorEmail);
+		Mentor mentor = getMentor(mentorEmail);
+		List<Testimonial>  testmonialList =  mentor.getTestmonialList();
+		logger.info ("testmonialList size ==>" + testmonialList.size());
+		return testmonialList;
 	}
 
 }

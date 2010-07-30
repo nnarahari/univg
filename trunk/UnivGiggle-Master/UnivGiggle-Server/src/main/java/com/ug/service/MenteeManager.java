@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.ug.model.Mentee;
 import com.ug.model.ResultInfo;
+import com.ug.model.Testimonial;
 
 /**
  * @author srini
@@ -62,5 +63,35 @@ public interface MenteeManager {
 	 * @throws Exception 
 	 */
 	public boolean activateMentee(String menteeId) throws Exception;
+	
+	
+	/**
+	 * Add {@link Testimonial} to the {@link Mentee}
+	 * @param menteeEmail
+	 * @param testimonial
+	 * @return
+	 * @throws Exception
+	 */
+	public ResultInfo addTestimonial(String menteeEmail, Testimonial testimonial) throws Exception;
+	
+	/**
+	 * Get all available {@link Testimonial} for the given {@link Mentee}'s email id.
+	 * This method returns null if no {@link Testimonial} available for the {@link Mentee}. 
+	 * @param menteeEmail
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Testimonial> getAllTestimonial(String menteeEmail) throws Exception;
+	
+	
+	/**
+	 * Remove the particular {@link Testimonial} from the {@link Mentee}
+	 * @param menteeEmail
+	 * @param testimonial
+	 * @return
+	 * @throws Exception
+	 */
+	public ResultInfo removeTestimonial(String menteeEmail, Testimonial testimonial) throws Exception;
+	
 	
 }

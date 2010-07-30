@@ -21,6 +21,7 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 import com.ug.dao.MenteeeDAO;
 import com.ug.model.Mentee;
 import com.ug.model.ResultInfo;
+import com.ug.model.Testimonial;
 import com.ug.service.MenteeManager;
 import com.ug.util.UnivGiggleUtil;
 
@@ -246,6 +247,26 @@ public class MenteeManagerImpl implements MenteeManager {
 
 
 
-	
+	@Override
+	public ResultInfo addTestimonial(String menteeEmail, Testimonial testimonial) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public List<Testimonial> getAllTestimonial(String menteeEmail) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public ResultInfo removeTestimonial(String menteeEmail,	Testimonial testimonial) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

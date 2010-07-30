@@ -75,6 +75,9 @@ public class Mentor extends ModelBase{
 	@OneToMany(mappedBy="mentor", cascade=CascadeType.ALL)
 	@OrderBy("firstName ASC")
 	private List<Mentee> menteeList;
+	
+	@OneToMany(mappedBy="mentor", cascade=CascadeType.ALL)
+	private List<Testimonial> testmonialList;
 
 	public String getFirstName() {
 		return firstName;
@@ -217,6 +220,8 @@ public class Mentor extends ModelBase{
 		builder.append(profession);
 		builder.append(" , menteeList=");
 		builder.append(menteeList);
+		builder.append(" , testmonialList=");
+		builder.append(testmonialList);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -231,6 +236,18 @@ public class Mentor extends ModelBase{
 	 */
 	public void setActivated(boolean activated) {
 		this.activated = activated;
+	}
+	/**
+	 * @return the testmonialList
+	 */
+	public List<Testimonial> getTestmonialList() {
+		return testmonialList;
+	}
+	/**
+	 * @param testmonialList the testmonialList to set
+	 */
+	public void setTestmonialList(List<Testimonial> testmonialList) {
+		this.testmonialList = testmonialList;
 	}
 	
 	
