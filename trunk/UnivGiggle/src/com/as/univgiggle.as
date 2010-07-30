@@ -19,6 +19,7 @@
         import com.events.mentee.MenteeProfileEvent;
         import com.events.mentee.SaveMenteeEvent;
         import com.events.mentor.MentorProfileEvent;
+        import com.events.mentor.PopUpEvent;
         import com.events.mentor.SaveMentorProfileEvent;
         import com.mappedObjects.ug.model.UG_User;
         import com.views.FaceBookLogin;
@@ -49,12 +50,20 @@
 			genaratePassword.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
 			appHeader.addEventListener(GenaratePasswordEvent.GENARATEPASSWORD, onGenaratepassword,false,0,true);
 			appHeader.addEventListener(SignUpEvent.SIGNUP,goToSignUpPage,false,0,true);
+			// post classifieds related eventlisteners
 			postClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			postClassified.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
 			confirmClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			confirmClassified.addEventListener(FetchClassifedObjectEvent.FETCH,getPostedClassifiedObject,false,0,true);
+			// end of eventlistener
+			// mentor related eventlisteners
 			mentor.addEventListener(SaveMentorProfileEvent.SAVEEVENT,goToMentorTestimonial,false,0,true);
+			mentor.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			//end
+			// mentee related eventlistener
 			mentee.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
+			mentee.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			//end
 			univGiggleStack.addEventListener(Event.CHANGE,onStackChange,false,0,true);
 			this.addEventListener(AboutUsEvent.EVENT_NAME,aboutHandler,false,0,true);
 			this.addEventListener(StudentClassifiedEvent.EVENT_NAME,navigateToStudentClassified,false,0,true);
@@ -66,6 +75,7 @@
 			this.addEventListener(WelcomeEvent.EVENT_NAME,goToWelcomePage,false,0,true);
 			this.addEventListener(MentorProfileEvent.MENTOREVENT,goToMentorProfile,false,0,true);
 			this.addEventListener(MenteeProfileEvent.MENTEE_EVENT,goToMenteeProfile,false,0,true);
+			
 			browserManagerInstance = BrowserManager.getInstance();
             browserManagerInstance.addEventListener(BrowserChangeEvent.BROWSER_URL_CHANGE,
                 parseURL);
@@ -229,6 +239,6 @@
         	menteeAck.callLater(menteeAck.setMenteeObject,[event._menteeObj]);
         }
         
-        
+      
         
         
