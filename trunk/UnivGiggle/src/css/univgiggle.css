@@ -57,3 +57,15 @@ Alert
 {
 	color : #4A6F81;
 }
+
+Button.CommonBtn
+{
+	upSkin: Embed(source="../assets/TopTab01_Dwn.jpg");
+	overSkin: Embed(source="../assets/TopTab01_Dwn.jpg");
+	downSkin: Embed(source="../assets/TopTab01_Sel.jpg");
+	disabledSkin: Embed(source="../assets/TopTab01_Dis.jpg");
+	selected-down-skin:Embed(source='../assets/TopTab01_Sel.jpg');
+	selected-over-skin:Embed(source='../assets/TopTab01_Sel.jpg');
+	selected-up-skin:Embed(source='../assets/TopTab01_Sel.jpg');
+	
+}
