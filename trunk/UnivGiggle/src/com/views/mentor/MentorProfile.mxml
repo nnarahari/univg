@@ -33,7 +33,7 @@
 
 <mx:Script source="../../as/mentor/mentorProfile.as"/>	
 <mx:HDividedBox width="100%" height="100%">
-    <mentor:MentorTestimonialLinks width="10%" height="100%"/>
+    <mentor:MentorTestimonialLinks id="mentorLinks" width="10%" height="100%"/>
 	<mx:Grid id="mentorProfile" width="90%" height="100%" borderStyle="solid">
 		<mx:GridRow id="heading" width="100%">
 			<mx:GridItem >
