@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
+import com.ug.model.ResultInfo;
+import com.ug.model.Testimonial;
 
 /**
  * {@link Mentee} releated DB operations 
@@ -76,5 +78,7 @@ public interface MenteeeDAO {
 	 * @throws Exception
 	 */
 	public List<Mentee>getAvailableMentees() throws Exception;
+	
+	
 	
 }

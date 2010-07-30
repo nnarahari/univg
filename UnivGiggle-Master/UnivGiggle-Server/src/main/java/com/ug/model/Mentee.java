@@ -3,9 +3,13 @@
  */
 package com.ug.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -62,6 +66,9 @@ public class Mentee extends ModelBase{
 	
 	@Column(name="isactivated", nullable=false)
 	private boolean activated;
+	
+	@OneToMany(mappedBy="mentee", cascade=CascadeType.ALL)
+	private List<Testimonial> testmonialList;
 	
 	@ManyToOne
 	private Mentor mentor;
@@ -319,5 +326,19 @@ public class Mentee extends ModelBase{
 	public boolean equals(Object obj) {
 		Mentee menteeObj = (Mentee)obj;
 		return email.endsWith(menteeObj.getEmail());
+	}
+
+	/**
+	 * @return the testmonialList
+	 */
+	public List<Testimonial> getTestmonialList() {
+		return testmonialList;
+	}
+
+	/**
+	 * @param testmonialList the testmonialList to set
+	 */
+	public void setTestmonialList(List<Testimonial> testmonialList) {
+		this.testmonialList = testmonialList;
 	}
 }

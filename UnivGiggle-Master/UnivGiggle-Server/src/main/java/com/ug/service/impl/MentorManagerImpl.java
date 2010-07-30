@@ -3,7 +3,9 @@
  */
 package com.ug.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
@@ -21,6 +23,7 @@ import com.ug.dao.MentorDAO;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 import com.ug.model.ResultInfo;
+import com.ug.model.Testimonial;
 import com.ug.service.MentorManager;
 import com.ug.util.UnivGiggleUtil;
 
@@ -46,7 +49,7 @@ public class MentorManagerImpl implements MentorManager {
 	/* (non-Javadoc)
 	 * @see com.ug.service.MentorManager#getMentor(java.lang.String)
 	 */
-	@Override
+	@Override 
 	public Mentor getMentor(String email) {
 		logger.info("getMentor() started..");
 		Mentor mentor = mentorDAO.getMentor(email);
@@ -214,6 +217,37 @@ public class MentorManagerImpl implements MentorManager {
 	public boolean activateMentor(String mentorId) throws Exception {
 		logger.info("activateMentor() started...");
 		return mentorDAO.activateMentor(mentorId);
+	}
+
+	@Override
+	public ResultInfo addTestimonial(String mentorEmail, Testimonial testimonial)throws Exception {
+		logger.info("addTestimonial() started...");
+		ResultInfo resultInfo = null;
+		boolean isTMAdded = mentorDAO.addTestimonial(mentorEmail,testimonial);
+		if(isTMAdded){
+			resultInfo = UnivGiggleUtil.createResultInfo(true, "Testimonial added Successfully!", "0", "Testimonial added Successfully!", null);
+		}else{
+			resultInfo = UnivGiggleUtil.createResultInfo(true, "Adding Testimonial failed.", "108", "Adding Testimonial failed.", null);
+		}
+		return resultInfo;
+	}
+
+	@Override 
+	public List<Testimonial> getAllTestimonial(String mentorEmail) 	throws Exception {
+		logger.info("getAllTestimonial() started...");
+		List<Testimonial> listTestimonials = mentorDAO.getAllTestimonial(mentorEmail);
+		if(listTestimonials == null){
+			logger.error("There is no Testimonial available...");
+			return null;
+		}else{
+			return listTestimonials;
+		}
+	}
+
+	@Override
+	public ResultInfo removeTestimonial(String mentorEmail, Testimonial testimonial) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

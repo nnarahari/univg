@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
+import com.ug.model.Testimonial;
 /**
  * 
  * @author Anil.J
@@ -58,4 +59,16 @@ public interface MentorDAO {
 	 * @return
 	 */
 	public Mentor getMentorById(String mentorId);
+	
+	/**
+	 * Add {@link Testimonial} to {@link Mentor}
+	 * @param mentorEmail
+	 * @param testimonial
+	 * @return
+	 * @throws Exception 
+	 */
+	public boolean addTestimonial(String mentorEmail, Testimonial testimonial) throws Exception;
+	
+
+	public List<Testimonial> getAllTestimonial(String mentorEmail) throws Exception;
 }
