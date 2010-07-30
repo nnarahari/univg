@@ -3,7 +3,9 @@
 // author : Venkata Teeda
 
 import com.components.Captcha;
+import com.events.HomePageEvent;
 import com.events.mentee.SaveMenteeEvent;
+import com.events.mentor.PopUpEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.ResultInfo;
 import com.mappedObjects.ug.model.UG_User;
@@ -11,6 +13,7 @@ import com.mappedObjects.ug.model.mentee.Mentee;
 
 import mx.controls.Alert;
 import mx.events.ValidationResultEvent;
+import mx.managers.PopUpManager;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
@@ -41,6 +44,7 @@ private function compInit():void
 	mentorRemoteObj.addMentee.addEventListener(ResultEvent.RESULT,onResultAddMenteeProfile,false,0,true);
 	mentorRemoteObj.addMentee.addEventListener(FaultEvent.FAULT,onFaultAddMenteeProfile,false,0,true);
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
+	menteeLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
 	createImageCaptcha();
 	addListeners();
 	setValidator();
@@ -105,7 +109,7 @@ public function createImageCaptcha():void
  * */
  private function onCancelMenteeProfile(event:MouseEvent):void
  {
- 	
+ 	dispatchEvent(new HomePageEvent(HomePageEvent.HOME));
  }
  
   /**
@@ -195,4 +199,14 @@ private function setValidator():void
 	validationArray.push(testimonialValidator);
 	validationArray.push(emailIdValidator);
 	validationArray.push(ageValidator);
+}
+
+/**
+ * 
+ * @param event
+ */
+private function displayPopUp(event:PopUpEvent):void
+{	
+	PopUpManager.addPopUp(event._titleWindow, this, true);
+	PopUpManager.centerPopUp(event._titleWindow);
 }
