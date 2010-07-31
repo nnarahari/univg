@@ -6,7 +6,7 @@
 <mx:Script source="./com/as/univgiggle.as"/>
 <mx:VBox width="100%" height="100%">
 	<view:Header id="appHeader" height="10%"/>
-		<mx:ViewStack id="univGiggleStack" width="100%" height="100%">
+		<mx:ViewStack id="univGiggleStack" width="100%" height="100%" change="onStackChange(event)">
 			<mx:VBox id="welcome" borderStyle="solid" horizontalAlign="center" >
 				<mx:Image maintainAspectRatio="true" source="./assets/greenote.jpg"/>
 			</mx:VBox>
