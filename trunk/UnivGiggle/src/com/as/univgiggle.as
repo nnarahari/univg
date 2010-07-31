@@ -35,6 +35,13 @@
         
         private var __ugUser:UG_User;
 		
+		/**
+		 * listener invoked when the application is completely got initialized,created the child components,
+		 * where all the event listeners are attached to the button controls & child containers
+		 * & layout them
+		 * @param : event
+		 * @return : void
+		 * */
 		private function applicationInit(event:Event):void
 		{
 			appHeader.addEventListener(LoginEvt.LOGIN,onLoginHandler,false,0,true);
@@ -85,6 +92,11 @@
             parseURL(event);
 		}
 		
+		/**
+		 * function invoked for setting the browser title.
+		 * @param : event
+		 * @return : void
+		 * */
 		 private function parseURL(event:Event):void
         {
             var fragmentString:String = browserManagerInstance.fragment;
@@ -92,13 +104,66 @@
             var selectedView:Number = fragementObject.selectedView as Number;
             if(selectedView < univGiggleStack.childDescriptors.length){
                 univGiggleStack.selectedIndex = selectedView;
-//				 updateTitle(selectedView);
+				 updateTitle(selectedView);
             }
         }
+        
+        /**
+        * function invoked for setting the browser title based on the module selection
+        * @param : selectedViewIndex
+        * @return : void
+        * */
+        private function updateTitle (selectedViewIndex:Number):void
+		{
+			if(selectedViewIndex == 0){
+				browserManagerInstance.setTitle("..::Welcome To UnivGiggle::..");
+			}else if (selectedViewIndex == 1){
+				browserManagerInstance.setTitle("..::About Us::..");
+			}else if (selectedViewIndex == 2){
+				browserManagerInstance.setTitle("..::Students::..");
+			}else if (selectedViewIndex == 3){
+				browserManagerInstance.setTitle("..::P2P Lenders::..");
+			}else if (selectedViewIndex == 4){
+				browserManagerInstance.setTitle("..::Corporate Lenders::..");
+			}else if (selectedViewIndex == 5){
+				browserManagerInstance.setTitle("..::Mentor Program::..");
+			}else if (selectedViewIndex == 6){
+				browserManagerInstance.setTitle("..::University Classifieds::..");
+			}else if (selectedViewIndex == 7){
+				browserManagerInstance.setTitle("..::Contact Us::..");
+			}
+		}
+		
+		/**
+		 * listener invoked while switching b/w the containers
+		 * @param : event
+		 * @return : void
+		 * */
+		private function onStackChange(event:Event):void
+		{
+			var selectedView:Number = event.target.selectedIndex
+			setIndexAsFragment(selectedView);
+			updateTitle (selectedView);
+		}
+		
+		/**
+		 * function invoked for selecting the fragments of the browserManagerInstance
+		 * @param : selectedViewIndex
+		 * @return : void
+		 * */
+		private function setIndexAsFragment (selectedViewIndex:Number):void
+		{
+			var fragmentObject:Object = new Object();
+			fragmentObject.selectedView = selectedViewIndex;
+			var fragmentString:String = URLUtil.objectToString(fragmentObject);
+			browserManagerInstance.setFragment(fragmentString);
+		}
         
         private function goToWelcomePage(event:WelcomeEvent):void
         {
         	univGiggleStack.selectedChild = welcome;
+        	setIndexAsFragment(0);
+        	updateTitle(0);
         }
         
         private function onFaceBookLogin(event:FaceBookLoginEvent):void{
@@ -106,14 +171,6 @@
         	var faceBook:FaceBookLogin = PopUpManager.createPopUp(welcome, FaceBookLogin, false) as FaceBookLogin;
         	PopUpManager.centerPopUp(faceBook);
         	
-        }
-        
-        private function setIndexAsFragment (selectedViewIndex:Number):void
-        {
-            var fragmentObject:Object = new Object();
-            fragmentObject.selectedView = selectedViewIndex;
-            var fragmentString:String = URLUtil.objectToString(fragmentObject);
-            browserManagerInstance.setFragment(fragmentString);
         }
 		
 		private function getPostedClassifiedObject(event:FetchClassifedObjectEvent):void
@@ -140,6 +197,8 @@
 			univGiggleStack.selectedChild = postClassified;
 			if(postClassified.switchView != null)
 				postClassified.switchView.selectedIndex = event._index;
+			setIndexAsFragment(6);
+        	updateTitle(6);
 			/* postClassified.initialize();*/
 		}
 		
@@ -178,36 +237,40 @@
 			univGiggleStack.selectedChild = welcome;
 			//__ugUser = event._ugUser;
 		}
-		
-		private function onStackChange(event:Event):void
-        {
-            var selectedView:Number = event.target.selectedIndex
-            setIndexAsFragment(selectedView);
-        }
         
         private function aboutHandler(event:AboutUsEvent):void
         {	
         		univGiggleStack.selectedChild = about;
+        		setIndexAsFragment(1);
+        		updateTitle(1);
         }
         
         private function navigateToStudentClassified(event:StudentClassifiedEvent):void
         {
         		univGiggleStack.selectedChild = studentClassified;
+        		setIndexAsFragment(2);
+        		updateTitle(2);
         }
         
         private function navigateToP2PLender(event:P2PLenderClassifiedEvent):void
         {
         		univGiggleStack.selectedChild = p2plender;
+        		setIndexAsFragment(3);
+        		updateTitle(3);
         }
         
         private function navigateToCorporateLender(event:CorporateLenderEvent):void
         {
         		univGiggleStack.selectedChild = corLender;
+        		setIndexAsFragment(4);
+        		updateTitle(4);
         }
         
         private function navigateToContact(event:ContactUSEvent):void
         {	
         		univGiggleStack.selectedChild = contactUs;
+        		setIndexAsFragment(7);
+        		updateTitle(7);
         }
         
         private function setUserObject(event:ComponentInitEvent):void
@@ -225,12 +288,16 @@
         {
         	univGiggleStack.selectedChild = mentor;
         	mentor.callLater(mentor.setUserInfo,[__ugUser]);
+        	setIndexAsFragment(5);
+        	updateTitle(5);
         }
         
         private function goToMenteeProfile(event:MenteeProfileEvent):void
         {
         	univGiggleStack.selectedChild = mentee;
         	mentee.callLater(mentee.setUserInfo,[__ugUser]);
+        	setIndexAsFragment(5);
+        	updateTitle(5);
         }
         
         private function goToMenteeTestimonial(event:SaveMenteeEvent):void
