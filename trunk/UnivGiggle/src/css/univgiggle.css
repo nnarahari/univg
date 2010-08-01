@@ -69,3 +69,22 @@ Button.CommonBtn
 	selected-up-skin:Embed(source='../assets/TopTab01_Sel.jpg');
 	
 }
+
+MenuBar {
+    cornerRadius: 8;
+   letterSpacing: 0;
+   backgroundAlpha: 1;
+   backgroundColor: #e294e9;
+   borderColor: #6ba0d6;
+   highlightAlphas: 0.12, 0.36;
+   fillAlphas: 0.76, 0.78;
+   fillColors: #f29ee2, #f5baf4;
+   rollOverColor: #c650c9;
+   selectionColor: #d577d7;
+   color: #090d0e;
+   textRollOverColor: #102126;
+   disabledColor: #aab3b3;
+   fontWeight: bold;
+   textAlign: left;
+   textIndent: 1;
+}
