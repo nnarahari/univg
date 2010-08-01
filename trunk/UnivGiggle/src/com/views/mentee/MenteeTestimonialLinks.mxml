@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" width="100%" height="100%">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" width="100%" height="100%" creationComplete="compInit();">
 <mx:Script>
 	<![CDATA[
+		import mx.controls.LinkButton;
+		import mx.collections.ArrayCollection;
+		import mx.rpc.remoting.RemoteObject;
+		import mx.rpc.events.ResultEvent;
+		import mx.controls.Alert;
+		import mx.rpc.events.FaultEvent;
+		import com.mappedObjects.ug.model.mentor.Testimonial;
+		import com.interactiveObject.ServiceObject;
 		import com.events.mentor.PopUpEvent;
 		import mx.events.CloseEvent;
 		import mx.containers.TitleWindow;
 		import mx.managers.PopUpManager;
 		private var menteeProInfo:MenteeProfileInfo;
 		private var tileWindow:TitleWindow;
-		private function hyperLinkClick():void
+		private var serviceObject:ServiceObject;
+		private var menteeRemoteObj:RemoteObject;
+		private var linkBtnInstance:LinkButton;
+		private var testimonialArray:ArrayCollection;
+		
+		private function compInit():void
+		{
+			serviceObject = new ServiceObject;
+			menteeRemoteObj = serviceObject.getRemoteObjectInstance("menteeManager");
+			menteeRemoteObj.getAllTestimonial.addEventListener(ResultEvent.RESULT,onResultGetAllTestimonial,false,0,true);
+			menteeRemoteObj.getAllTestimonial.addEventListener(FaultEvent.FAULT,onFaultGetAllTestimonial,false,0,true);
+			menteeRemoteObj.getAllTestimonial("satya.teeda@gmail.com");
+		}
+		
+		private function onResultGetAllTestimonial(event:ResultEvent):void
+		{
+			testimonialArray = event.result as ArrayCollection;
+			for each(var testimonialObj:Testimonial in testimonialArray){
+				createLinkButtonInstance(testimonialObj);
+			}
+		}		
+		
+		private function onFaultGetAllTestimonial(event:FaultEvent):void
+		{
+			Alert.show(event.fault.message,"Error");
+		}
+		
+		private function createLinkButtonInstance(testimonialObj:Testimonial):void
+		{
+			linkBtnInstance = new LinkButton;
+			linkBtnInstance.label = testimonialObj.content;
+			linkBtnInstance.percentWidth = 100;
+			linkBtnInstance.addEventListener(MouseEvent.CLICK,hyperLinkClick,false,0,true);
+			this.addChild(linkBtnInstance);
+		}
+		
+		private function hyperLinkClick(event:MouseEvent):void
 		{
 			menteeProInfo = new MenteeProfileInfo;
 			tileWindow = new TitleWindow;
@@ -17,8 +61,6 @@
 			tileWindow.percentWidth = 100;
 			tileWindow.showCloseButton = true;
 			tileWindow.addChild(menteeProInfo);
-//			PopUpManager.addPopUp(tileWindow,this,true);
-//			PopUpManager.createPopUp(tileWindow);
 			tileWindow.addEventListener(CloseEvent.CLOSE,onClose,false,0,true);
 			dispatchEvent(new PopUpEvent(PopUpEvent.POPUPTYPE,tileWindow));
 		}
@@ -34,8 +76,8 @@
 	]]>
 </mx:Script>
 	<mx:Text text="Mentee Testimonials" width="100%"/>
-	<mx:LinkButton label="Testimonial 1 : UnivG has helped me" width="100%" click="hyperLinkClick()"/>
+	<!--<mx:LinkButton label="Testimonial 1 : UnivG has helped me" width="100%" />
 	<mx:LinkButton label="Testimonial 2 : ..." width="100%"/>
-	<mx:LinkButton label="Testimonial 3s : ..." width="100%"/>
+	<mx:LinkButton label="Testimonial 3s : ..." width="100%"/>-->
 </mx:VBox>
  

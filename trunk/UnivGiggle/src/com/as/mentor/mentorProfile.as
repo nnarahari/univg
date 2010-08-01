@@ -11,6 +11,7 @@ import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentor.Mentor;
 
 import mx.controls.Alert;
+import mx.core.Application;
 import mx.events.ValidationResultEvent;
 import mx.managers.PopUpManager;
 import mx.rpc.events.FaultEvent;
@@ -30,6 +31,8 @@ private var resultInfoObj:ResultInfo;
 private const securityCodeLength:uint = 6;
 private var serviceObject:ServiceObject;
 private var validationArray:Array;
+private var __ugUser:UG_User;
+private var isMentorAvailable:Boolean = false;
 
 /**
  * function invoked for displaying the image which contains the verification code.
@@ -52,17 +55,9 @@ public function createImageCaptcha():void
 public function setUserInfo(userInfo:UG_User):void
 {
 	if(userInfo != null){
-		if(_mentor == null)
-			_mentor = new Mentor;
-		_mentor.firstName = userInfo.firstName;
-		_mentor.lastName = userInfo.lastName;
-		_mentor.gender = userInfo.gender;
-		_mentor.email = userInfo.emailId;
-		if(_mentor.gender == "Male"){
-			male.selected = true;
-			female.selected = false;
-		}
+		__ugUser = userInfo;
 	}
+	
 }
  
  /**
@@ -83,16 +78,21 @@ public function setUserInfo(userInfo:UG_User):void
 private function compInit():void
 {
 	serviceObject = new ServiceObject;
-	
 	mentorRemoteObj = serviceObject.getRemoteObjectInstance("mentorManager");
+	mentorRemoteObj.getMentor.addEventListener(ResultEvent.RESULT,onResultGetMentor,false,0,true);
+	mentorRemoteObj.getMentor.addEventListener(FaultEvent.FAULT,onFaultGetMentor,false,0,true);
 	mentorRemoteObj.addMentor.addEventListener(ResultEvent.RESULT,onResultAddMentorProfile,false,0,true);
 	mentorRemoteObj.addMentor.addEventListener(FaultEvent.FAULT,onFaultAddMentorProfile,false,0,true);
+	mentorRemoteObj.updateMentor.addEventListener(ResultEvent.RESULT,onResultUpdateMentor,false,0,true);
+	mentorRemoteObj.updateMentor.addEventListener(FaultEvent.FAULT,onFaultUpdateMentor,false,0,true);
+	
 	saveMentorProfile.addEventListener(MouseEvent.CLICK,onSaveMentorProfile,false,0,true);
 	cancelMentorProfile.addEventListener(MouseEvent.CLICK,onCancelMentorProfile,false,0,true);
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	mentorLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
 	createImageCaptcha();
 	setValidator();
+	mentorRemoteObj.getMentor(Application.application.__ugUser.emailId);
 }
 
 
@@ -137,6 +137,10 @@ private function onResultAddMentorProfile(event:ResultEvent):void
  	}
  }
 
+/**
+ * 
+ * @param event
+ */
 private function onSaveMentorProfile(event:MouseEvent):void
 {
 	var validatorErrorArr:Array = Validator.validateAll(validationArray);
@@ -144,7 +148,12 @@ private function onSaveMentorProfile(event:MouseEvent):void
 	if(isValid){
 		if(verificationCode.text  == imagecaptcha._securitycode){
 			male.selected?_mentor.gender = "male":_mentor.gender = "female";
-			mentorRemoteObj.addMentor(_mentor,fileName.text,imageFileByteArray);
+			if(!isMentorAvailable){
+				mentorRemoteObj.addMentor(_mentor,fileName.text,imageFileByteArray);
+			}else{
+				mentorRemoteObj.updateMentor(_mentor);
+			}
+			
 		}else
 		{
 			Alert.show("Please enter valid code","Information");
@@ -187,9 +196,66 @@ private function setValidator():void
 	validationArray.push(ageValidator);
 }
 
-  private function displayPopUp(event:PopUpEvent):void
-	{	
-		PopUpManager.addPopUp(event._titleWindow, this, true);
-		PopUpManager.centerPopUp(event._titleWindow);
+/**
+ * 
+ * @param event
+ */
+private function displayPopUp(event:PopUpEvent):void
+{	
+	PopUpManager.addPopUp(event._titleWindow, this, true);
+	PopUpManager.centerPopUp(event._titleWindow);
+}
+	
+/**
+ * 
+ * @param event
+ */
+private function onResultGetMentor(event:ResultEvent):void
+{
+	_mentor = event.result as Mentor;
+	if(_mentor.email == null){
+		_mentor.firstName = __ugUser.firstName;
+		_mentor.lastName = __ugUser.lastName;
+		_mentor.gender = __ugUser.gender;
+		_mentor.email = __ugUser.emailId;
+		if(_mentor.gender == "Male"){
+			male.selected = true;
+			female.selected = false;
+		}
+		isMentorAvailable = false;
+	}else{
+		if(_mentor.menteeList.length > 0)
+			menteeCount.text = _mentor.menteeList.length as String;
+		else
+			menteeCount.text = "0";
+		isMentorAvailable = true;
 	}
+}
+
+/**
+ * onFaultGetMentor
+ * @param event
+ */
+private function onFaultGetMentor(event:FaultEvent):void
+{
+	Alert.show(event.fault.message,"Error");
+}
+
+private function onResultUpdateMentor(event:ResultEvent):void
+{
+	resultInfoObj = event.result as ResultInfo;
+ 	if(resultInfoObj.success){
+ 		dispatchEvent(new SaveMentorProfileEvent(SaveMentorProfileEvent.SAVEEVENT,_mentor));
+ 	}
+}
+
+/**
+ * onFaultUpdateMentor
+ * @param event
+ */
+private function onFaultUpdateMentor(event:FaultEvent):void
+{
+	Alert.show(event.fault.message,"Error");
+}
+
         

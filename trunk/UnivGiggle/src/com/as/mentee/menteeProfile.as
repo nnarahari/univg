@@ -12,6 +12,7 @@ import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentee.Mentee;
 
 import mx.controls.Alert;
+import mx.core.Application;
 import mx.events.ValidationResultEvent;
 import mx.managers.PopUpManager;
 import mx.rpc.events.FaultEvent;
@@ -24,13 +25,15 @@ private const securityCodeLength:uint = 6;
 [Bindable]
 private var _mentee:Mentee;
 private var serviceObject:ServiceObject;
-private var mentorRemoteObj:RemoteObject;
+private var menteeRemoteObj:RemoteObject;
 private var resultInfoObj:ResultInfo;
 private var imageFileRef:FileReference;
 private var imageFileFilter:FileFilter = new FileFilter("Image(*.jpg,*.PNG,*.jpeg,*gif,*.png)","*.jpg;*.png;*jpeg;*.gif;*.PNG");
 private var fileFilter:Array = [imageFileFilter];
 private var imageFileByteArray:ByteArray;
 private var validationArray:Array;
+private var __ugUser:UG_User;
+private var isMenteeAvailable:Boolean = false;
 
 /**
  * function invoked once all the components got created & initialized successfully
@@ -40,14 +43,19 @@ private function compInit():void
 {
 	serviceObject = new ServiceObject;
 	//_mentee = new Mentee;
-	mentorRemoteObj = serviceObject.getRemoteObjectInstance("menteeManager");
-	mentorRemoteObj.addMentee.addEventListener(ResultEvent.RESULT,onResultAddMenteeProfile,false,0,true);
-	mentorRemoteObj.addMentee.addEventListener(FaultEvent.FAULT,onFaultAddMenteeProfile,false,0,true);
+	menteeRemoteObj = serviceObject.getRemoteObjectInstance("menteeManager");
+	menteeRemoteObj.addMentee.addEventListener(ResultEvent.RESULT,onResultAddMenteeProfile,false,0,true);
+	menteeRemoteObj.addMentee.addEventListener(FaultEvent.FAULT,onFaultAddMenteeProfile,false,0,true);
+	menteeRemoteObj.getMentee.addEventListener(ResultEvent.RESULT,onResultGetMentee,false,0,true);
+	menteeRemoteObj.getMentee.addEventListener(FaultEvent.FAULT,onFaultGetMentee,false,0,true);
+	menteeRemoteObj.updateMentee.addEventListener(ResultEvent.RESULT,onResultUpdateMentee,false,0,true);
+	menteeRemoteObj.updateMentee.addEventListener(FaultEvent.FAULT,onFaultUpdateMentee,false,0,true);
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	menteeLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
 	createImageCaptcha();
 	addListeners();
 	setValidator();
+	menteeRemoteObj.getMentee(Application.application.__ugUser.emailId);
 }
 
 /**
@@ -87,7 +95,10 @@ public function createImageCaptcha():void
 	if(isValid){
 		if(verificationCode.text  == imagecaptcha._securitycode){
 			male.selected?_mentee.gender = "male":_mentee.gender = "female";
-			mentorRemoteObj.addMentee(_mentee,fileName.text,imageFileByteArray);
+			if(!isMenteeAvailable)
+				menteeRemoteObj.addMentee(_mentee,fileName.text,imageFileByteArray);
+			else
+				menteeRemoteObj.updateMentee(_mentee);
 		 }else{
 		 	Alert.show("Please enter valid code","Information");
 		 }
@@ -146,13 +157,21 @@ public function createImageCaptcha():void
  	Alert.show(event.fault.message,"Error");
  }
  
-  private function browseImageFile(event:MouseEvent):void
+/**
+ * 
+ * @param event
+ */
+private function browseImageFile(event:MouseEvent):void
  {	
 	imageFileRef = new FileReference;
 	imageFileRef.addEventListener(Event.SELECT,onSelectedFile);
 	imageFileRef.browse(fileFilter);
  }
 
+/**
+ * 
+ * @param event
+ */
 private function onSelectedFile(event:Event):void
 {	
 	imageFileRef.addEventListener(Event.COMPLETE, completeHandler);
@@ -161,25 +180,24 @@ private function onSelectedFile(event:Event):void
 //	browseBut.enabled = false;
 }
 
+/**
+ * 
+ * @param event
+ */
 private function completeHandler(event:Event):void
 {
 	imageFileByteArray = imageFileRef.data as ByteArray;
 
 }
 
+/**
+ * 
+ * @param userInfo
+ */
 public function setUserInfo(userInfo:UG_User):void
 {
 	if(userInfo != null){
-		if(_mentee == null)
-			_mentee = new Mentee;
-		_mentee.firstName = userInfo.firstName;
-		_mentee.lastName = userInfo.lastName;
-		_mentee.gender = userInfo.gender;
-		_mentee.email = userInfo.emailId;
-		if(_mentee.gender == "Male"){
-			male.selected = true;
-			female.selected = false;
-		}
+		__ugUser = userInfo;
 	}
 }
 
@@ -209,4 +227,56 @@ private function displayPopUp(event:PopUpEvent):void
 {	
 	PopUpManager.addPopUp(event._titleWindow, this, true);
 	PopUpManager.centerPopUp(event._titleWindow);
+}
+
+
+/**
+ * 
+ * @param event
+ */
+private function onResultGetMentee(event:ResultEvent):void
+{
+	_mentee = event.result as Mentee;
+	if(_mentee.email == null){
+		_mentee.firstName = __ugUser.firstName;
+		_mentee.lastName = __ugUser.lastName;
+		_mentee.gender = __ugUser.gender;
+		_mentee.email = __ugUser.emailId;
+		if(_mentee.gender == "Male"){
+			male.selected = true;
+			female.selected = false;
+		}
+		isMenteeAvailable = false;
+	}else{
+		isMenteeAvailable = true;
+	}
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onFaultGetMentee(event:FaultEvent):void{
+	Alert.show(event.fault.message,"Error");
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onResultUpdateMentee(event:ResultEvent):void
+{
+	resultInfoObj = event.result as ResultInfo;
+ 	if(resultInfoObj.success){
+ 		dispatchEvent(new SaveMenteeEvent(SaveMenteeEvent.SAVEEVENT,_mentee));	
+ 	}
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onFaultUpdateMentee(event:FaultEvent):void
+{
+	Alert.show(event.fault.message,"Error");
 }

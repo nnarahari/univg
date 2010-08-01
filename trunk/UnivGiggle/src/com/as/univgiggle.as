@@ -33,7 +33,7 @@
         private var browserManagerInstance:IBrowserManager;
         public var isUserLoggedIn:Boolean = false;
         
-        private var __ugUser:UG_User;
+        public var __ugUser:UG_User;
 		
 		/**
 		 * listener invoked when the application is completely got initialized,created the child components,
