@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"  width="100%" height="100%" xmlns:mentor="com.views.mentor.*" creationComplete="compInit();">
 <mx:Script>
 	<![CDATA[
+		import com.mappedObjects.ug.model.mentor.Testimonial;
 		import mx.containers.HBox;
 		import com.mappedObjects.ug.model.ResultInfo;
 		import mx.controls.LinkBar;
@@ -33,6 +34,7 @@
 		private var mentorObject:Mentor;
 		private var resultInfoObj:ResultInfo;
 		private var menteeObj:Mentee;
+		private var testimonialObj:Testimonial;
 		private function compInit():void
 		{
 			serviceObject = new ServiceObject;
@@ -45,6 +47,12 @@
 			
 			menteeRemoteObj.getAvailableMentees.addEventListener(ResultEvent.RESULT,onResultGetAvaiableMentee,false,0,true);
 			menteeRemoteObj.getAvailableMentees.addEventListener(FaultEvent.FAULT,onFaultGetAvaiableMentee,false,0,true);
+			mentorRmtObject.addTestimonial.addEventListener(ResultEvent.RESULT,onResultAddTestimonial,false,0,true);
+			mentorRmtObject.addTestimonial.addEventListener(FaultEvent.FAULT,onFaultAddTestimonial,false,0,true);
+			
+			mentorRmtObject.removeTestimonial.addEventListener(ResultEvent.RESULT,onResultRemoveTestimonial,false,0,true);
+			mentorRmtObject.removeTestimonial.addEventListener(FaultEvent.FAULT,onFaultRemoveTestimonial,false,0,true);
+			btn_send.addEventListener(MouseEvent.CLICK,onRequestSend,false,0,true);
 			menteeRemoteObj.getAvailableMentees();
 		}
 		
@@ -56,6 +64,26 @@
 		}
 		
 		private function onFaultAddMentee(event:FaultEvent):void
+		{
+			Alert.show(event.fault.message,"Error");
+		}
+		
+		private function onResultAddTestimonial(event:ResultEvent):void
+		{
+			
+		}
+		
+		private function onFaultAddTestimonial(event:FaultEvent):void
+		{
+			Alert.show(event.fault.message,"Error");
+		}
+		
+		private function onResultRemoveTestimonial(event:ResultEvent):void
+		{
+			
+		}
+		
+		private function onFaultRemoveTestimonial(event:FaultEvent):void
 		{
 			Alert.show(event.fault.message,"Error");
 		}
@@ -160,6 +188,15 @@
 			}
 			return null;
 		}
+		
+		private function onRequestSend(event:MouseEvent):void
+		{
+			testimonialObj = new Testimonial;
+			testimonialObj.toUser = srcPerson.text;
+			testimonialObj.fromUser = destPerson.text;
+			testimonialObj.content = content.text;
+			mentorRmtObject.addTestimonial(mentorObject.email,testimonialObj);
+		}
 
 	]]>
 </mx:Script>
@@ -185,6 +222,19 @@
 				</mx:HBox>-->
 			</mx:VBox>	
 		</mx:HBox>
+		<mx:VBox>
+			<mx:HBox>
+				<mx:Text text="from User:"/>
+				<mx:TextInput id="srcPerson"/>
+				<mx:Text text="to User:"/>
+				<mx:TextInput id="destPerson"/>
+			</mx:HBox>
+			<mx:HBox>
+				<mx:Text text="Testimonial Text :"/>
+				<mx:TextArea id="content" width="200" height="100"/>
+			</mx:HBox>
+			<mx:Button id="btn_send" label="Send"/>
+		</mx:VBox>
 	</mx:VBox>
 </mx:HDividedBox>
 </mx:VBox>

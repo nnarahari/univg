@@ -21,6 +21,8 @@ package com.mappedObjects.ug.model.mentee
 		public var imagePaths:String = "";
 		public var testimonial:String = "This is Test Testimonial";
 		public var mentor:Mentor;
+		public var activated:Boolean;
+		public var testmonialList:Array;
 		public function Mentee()
 		{
 			super();

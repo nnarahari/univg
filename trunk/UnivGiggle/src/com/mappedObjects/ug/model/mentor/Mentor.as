@@ -20,6 +20,8 @@ package com.mappedObjects.ug.model.mentor
 		public var imagePaths:String = "";
 		public var testimonial:String = "this is test testimonial";
 		public var menteeList:Array = new Array;
+		public var activated:Boolean = false;
+		public var testmonialList:Array;
 		public function Mentor()
 		{
 			super();
