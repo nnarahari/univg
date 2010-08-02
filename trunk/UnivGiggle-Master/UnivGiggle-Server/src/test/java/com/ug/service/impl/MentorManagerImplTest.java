@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -22,6 +23,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 import com.ug.model.ResultInfo;
+import com.ug.model.Testimonial;
 import com.ug.service.MenteeManager;
 import com.ug.service.MentorManager;
 
@@ -162,10 +164,39 @@ public class MentorManagerImplTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testAddTestimonial(){
+		Testimonial testimonial = new Testimonial("seeni.vasan@gmail.com","test@ug.com",new Date(),"Hi, this is test....");
+		try {
+			ResultInfo resultInfo = mentorManager.addTestimonial("seeni.vasan@gmail.com", testimonial);
+			assertTrue(resultInfo.isSuccess());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Add TM failed...");
+		}
+	}
 	
+	@Test
+	public void testGetAllTestimonial(){
+		try {
+			List<Testimonial> tmList = mentorManager.getAllTestimonial("seeni.vasan@gmail.com");
+			assertTrue(tmList.size() == 2);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("GET All TM failed...");
+		}
+	}
 
-	
-
+	@Test
+	public void testGetMentors(){
+		try {
+			List<Mentor> mentorList = mentorManager.getMentors("US", null);
+			assertNotNull(mentorList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	private Mentor createMentor(String fname,String lname, String email){

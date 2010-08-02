@@ -3,7 +3,6 @@
  */
 package com.ug.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -248,6 +247,18 @@ public class MentorManagerImpl implements MentorManager {
 	public ResultInfo removeTestimonial(String mentorEmail, Testimonial testimonial) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Mentor> getAllMentors() throws Exception {
+		logger.info("getAllMentors() started...");
+		return mentorDAO.getAllMentors();
+	}
+
+	@Override
+	public List<Mentor> getMentors(String country, String profession)throws Exception {
+		logger.info("getMentors() started...");
+		return mentorDAO.getMentors(country,profession);
 	}
 
 	

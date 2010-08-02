@@ -71,4 +71,13 @@ public interface MentorDAO {
 	
 
 	public List<Testimonial> getAllTestimonial(String mentorEmail) throws Exception;
+
+	/**
+	 * Get {@link Mentor}'s list after applying the filter like country and profession.
+	 * @param country
+	 * @param profession
+	 * @return
+	 * @throws Exception 
+	 */
+	public List<Mentor> getMentors(String country, String profession) throws Exception;
 }
