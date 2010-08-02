@@ -52,7 +52,7 @@
 			
 			mentorRmtObject.removeTestimonial.addEventListener(ResultEvent.RESULT,onResultRemoveTestimonial,false,0,true);
 			mentorRmtObject.removeTestimonial.addEventListener(FaultEvent.FAULT,onFaultRemoveTestimonial,false,0,true);
-			btn_send.addEventListener(MouseEvent.CLICK,onRequestSend,false,0,true);
+			//btn_send.addEventListener(MouseEvent.CLICK,onRequestSend,false,0,true);
 			menteeRemoteObj.getAvailableMentees();
 		}
 		
@@ -191,11 +191,11 @@
 		
 		private function onRequestSend(event:MouseEvent):void
 		{
-			testimonialObj = new Testimonial;
+			/* testimonialObj = new Testimonial;
 			testimonialObj.toUser = srcPerson.text;
 			testimonialObj.fromUser = destPerson.text;
 			testimonialObj.content = content.text;
-			mentorRmtObject.addTestimonial(mentorObject.email,testimonialObj);
+			mentorRmtObject.addTestimonial(mentorObject.email,testimonialObj); */
 		}
 
 	]]>
@@ -222,7 +222,7 @@
 				</mx:HBox>-->
 			</mx:VBox>	
 		</mx:HBox>
-		<mx:VBox>
+		<!--<mx:VBox>
 			<mx:HBox>
 				<mx:Text text="from User:"/>
 				<mx:TextInput id="srcPerson"/>
@@ -234,7 +234,7 @@
 				<mx:TextArea id="content" width="200" height="100"/>
 			</mx:HBox>
 			<mx:Button id="btn_send" label="Send"/>
-		</mx:VBox>
+		</mx:VBox>-->
 	</mx:VBox>
 </mx:HDividedBox>
 </mx:VBox>

@@ -79,19 +79,19 @@
 						<mx:Label text="Country:"/>
 					</mx:GridItem>
 					<mx:GridItem width="100%">
-						<mx:ComboBox id="ccode"  width="60"  dataProvider="{dp.country}" labelField="@name" toolTip="{ccode.text}"/>
+						<mx:ComboBox id="ccode"  width="80"  dataProvider="{dp.country}"  labelField="@name" toolTip="{ccode.text}"/>
 					</mx:GridItem>
 					<mx:GridItem>
 						<mx:Label text="State:"/>
 					</mx:GridItem>
 					<mx:GridItem width="100%">
-						<mx:ComboBox id="state"  width="150"  dataProvider="{ccode.selectedItem.state}" labelField="@name" toolTip="{state.text}"/>
+						<mx:ComboBox id="state"  width="150"  dataProvider="{ccode.selectedItem.state}"  labelField="@name" toolTip="{state.text}"/>
 					</mx:GridItem>
 					<mx:GridItem >
 						<mx:Label text="University:"/>
 					</mx:GridItem>
 					<mx:GridItem width="100%">
-						<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}" labelField="@name" toolTip="{univ.text}"/>
+						<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}"  labelField="@name" toolTip="{univ.text}"/>
 					</mx:GridItem>
 				</mx:GridRow>
 				<mx:GridRow width="100%">
