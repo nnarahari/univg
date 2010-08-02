@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <universites>
+<country name='Select'>
+	<state code='Select' name='Select'>
+		<university name='Select'/>
+	</state>
+</country>
 <country name='US'>
 		<state code='Alabama' name='Alabama'>
 			<university name='Air University'/>
@@ -555,7 +560,7 @@
 			<university name='Blessing-Rieman College of Nursing'/>
 			<university name='Bradley University'/>
 			<university name='Catholic Theological Union'/>
-			<university name='The Chicago School of Professional Psychology'/>
+			
 			<university name='Chicago State University'/>
 			<university name='Chicago Theological Seminary'/>
 			<university name='Columbia College Chicago'/>
@@ -633,9 +638,11 @@
 			<university name='Southern Illinois University System (Carbondale)'/>
 			<university name='Southern Illinois University System (Edwardsville)'/>
 			<university name='Spertus Institute of Jewish Studies'/>
+			<university name='The Chicago School of Professional Psychology'/>
 			<university name='Trinity Christian College'/>
 			<university name='Trinity College of Nursing and Health Sciences'/>
 			<university name='Trinity International University'/>
+			
 			<university name='University of Chicago'/>
 			<university name='University of Illinois System (Chicago)'/>
 			<university name='University of Illinois System (Springfield)'/>
@@ -807,6 +814,7 @@
 			<university name='Merrimack College'/>
 			<university name='Mount Holyoke College'/>
 			<university name='Mount Ida College'/>
+			<university name='Medical School at Worcester'/>
 			<university name='New England College of Optometry'/>
 			<university name='New England Conservatory of Music'/>
 			<university name='Newbury College'/>
@@ -823,7 +831,7 @@
 			<university name='Suffolk University'/>
 			<university name='Tufts University'/>
 			<university name='University of Massachusetts System'/>
-			<university name='Medical School at Worcester'/>
+			
 			<university name='Wellesley College'/>
 			<university name='Wentworth Institute of Technology'/>
 			<university name='Western New England College'/>
@@ -893,6 +901,7 @@
 			<university name='Missouri State University'/>
 			<university name='Missouri Valley College'/>
 			<university name='Missouri Western State University'/>
+			<university name='Missouri University of Science and Technology'/>
 			<university name='Northwest Missouri State University'/>
 			<university name='Ozark Christian College'/>
 			<university name='Park University'/>
@@ -908,7 +917,7 @@
 			<university name='Truman State University'/>
 			<university name='University of Central Missouri'/>
 			<university name='University of Missouri System'/>
-			<university name='Missouri University of Science and Technology'/>
+			
 			<university name='Washington University in Saint Louis'/>
 			<university name='Webster University'/>
 			<university name='Westminster College'/>
@@ -966,13 +975,13 @@
 			<university name='Davenport University'/>
 			<university name='Eastern Michigan University'/>
 			<university name='Ferris State University'/>
-			<university name='Kendall College of Art and Design'/>
 			<university name='Finlandia University'/>
 			<university name='Grace Bible College'/>
 			<university name='Grand Valley State University'/>
 			<university name='Great Lakes Christian College'/>
 			<university name='Hillsdale College'/>
 			<university name='Hope College'/>
+			<university name='Kendall College of Art and Design'/>
 			<university name='Kalamazoo College'/>
 			<university name='Kettering University'/>
 			<university name='Kuyper College'/>
@@ -1005,6 +1014,7 @@
 			<university name='Augsburg College'/>
 			<university name='Bethany Lutheran College'/>
 			<university name='Bethel University and Seminary'/>
+			<university name='Bemidji State University'/>
 			<university name='Capella University'/>
 			<university name='Carleton College'/>
 			<university name='College of Saint Benedict'/>
@@ -1025,13 +1035,9 @@
 			<university name='Mayo Clinic College of Medicine'/>
 			<university name='Minneapolis College of Art and Design'/>
 			<university name='Minnesota State College and University System'/>
-			<university name='Bemidji State University'/>
 			<university name='Metropolitan State University'/>
 			<university name='Minnesota State University( Mankato)'/>
 			<university name='Minnesota State University( Moorhead)'/>
-			<university name='Southwest Minnesota State University'/>
-			<university name='Saint Cloud State University'/>
-			<university name='Winona State University'/>
 			<university name='North Central University'/>
 			<university name='Northwestern College'/>
 			<university name='Northwestern Health Sciences University'/>
@@ -1041,19 +1047,22 @@
 			<university name='Saint Johns University'/>
 			<university name='Saint Marys University of Minnesota'/>
 			<university name='Saint Olaf College'/>
+			<university name='Southwest Minnesota State University'/>
+			<university name='Saint Cloud State University'/>
 			<university name='United Theological Seminary of the Twin Cities'/>
 			<university name='University of Minnesota System'/>
 			<university name='University of Saint Thomas'/>
 			<university name='Walden University'/>
+			<university name='Winona State University'/>
 		</state>
 		<state code='Montana' name='Montana'>
 			<university name='Carroll College'/>
 			<university name='Montana State University System'/>
+			<university name='Montana Tech'/>
 			<university name='Rocky Mountain College'/>
 			<university name='Salish Kootenai College'/>
 			<university name='University of Great Falls'/>
 			<university name='University of Montana System'/>
-			<university name='Montana Tech'/>
 			<university name='University of Montana-Missoula'/>
 			<university name='University of Montana-Western'/>
 		</state>
@@ -1185,7 +1194,6 @@
 			<university name='Bloomfield College'/>
 			<university name='Caldwell College'/>
 			<university name='Centenary College'/>
-			<university name='The College of New Jersey'/>
 			<university name='College of Saint Elizabeth'/>
 			<university name='Drew University'/>
 			<university name='Fairleigh Dickinson University'/>
@@ -1206,6 +1214,7 @@
 			<university name='Seton Hall University'/>
 			<university name='Stevens Institute of Technology'/>
 			<university name='Thomas Edison State College'/>
+			<university name='The College of New Jersey'/>
 			<university name='University of Medicine and Dentistry of New Jersey'/>
 			<university name='William Paterson University'/>
 		</state>
@@ -1214,110 +1223,23 @@
 			<university name='Albany College of Pharmacy'/>
 			<university name='Albany Medical College'/>
 			<university name='Alfred University'/>
+			<university name='Arnold and Marie Schwartz College of Pharmacy and Health Sciences'/>
 			<university name='Bank Street College of Education'/>
 			<university name='Bard College'/>
 			<university name='Barnard College'/>
 			<university name='Boricua College'/>
 			<university name='Briarcliffe College'/>
+			<university name='Baruch College'/>
+			<university name='Brooklyn College'/>
+			<university name='Brentwood Campus'/>
+			<university name='Brooklyn Campus'/>
+			<university name='C.W. Post Campus'/>
+			<university name='City College'/>
+			<university name='College of Staten Island'/>
 			<university name='Canisius College'/>
 			<university name='Cazenovia College'/>
 			<university name='Christ the King Seminary'/>
 			<university name='City University of New York System'/>
-			<university name='Baruch College'/>
-			<university name='Brooklyn College'/>
-			<university name='City College'/>
-			<university name='College of Staten Island'/>
-			<university name='Graduate School and University Center'/>
-			<university name='Hunter College'/>
-			<university name='John Jay College of Criminal Justice'/>
-			<university name='Lehman College'/>
-			<university name='Medger Evers College'/>
-			<university name='New York City College of Technology'/>
-			<university name='Queens College'/>
-			<university name='York College'/>
-			<university name='Clarkson University'/>
-			<university name='Colgate University'/>
-			<university name='College of Mount Saint Vincent'/>
-			<university name='College of New Rochelle'/>
-			<university name='College of Saint Rose'/>
-			<university name='Columbia University'/>
-			<university name='Concordia College-Bronxville'/>
-			<university name='The Cooper Union for the Advancement of Science and Art'/>
-			<university name='Cornell University'/>
-			<university name='Culinary Institute of America'/>
-			<university name='Daemen College'/>
-			<university name='Davis College'/>
-			<university name='Dominican College'/>
-			<university name='Dowling College'/>
-			<university name='D�Youville College'/>
-			<university name='Elmira College'/>
-			<university name='Excelsior College'/>
-			<university name='Five Towns College'/>
-			<university name='Fordham University'/>
-			<university name='Hamilton College'/>
-			<university name='Hartwick College'/>
-			<university name='Hebrew Union College-Jewish Institute of Religion'/>
-			<university name='Hilbert College'/>
-			<university name='Hobart and William Smith Colleges'/>
-			<university name='Hofstra University'/>
-			<university name='Houghton College'/>
-			<university name='Iona College'/>
-			<university name='Ithaca College'/>
-			<university name='The Jewish Theological Seminary of America'/>
-			<university name='The Juilliard School'/>
-			<university name='Keuka College'/>
-			<university name='Le Moyne College'/>
-			<university name='Laboratory Institute of Merchandising'/>
-			<university name='Long Island University'/>
-			<university name='Arnold and Marie Schwartz College of Pharmacy and Health Sciences'/>
-			<university name='Brentwood Campus'/>
-			<university name='Brooklyn Campus'/>
-			<university name='C.W. Post Campus'/>
-			<university name='Rockland Graduate Campus'/>
-			<university name='Southampton Graduate Campus'/>
-			<university name='Westchester Graduate Campus'/>
-			<university name='Manhattan College'/>
-			<university name='Manhattan School of Music'/>
-			<university name='Manhattanville College'/>
-			<university name='Marist College'/>
-			<university name='Marymount Manhattan College'/>
-			<university name='Medaille College'/>
-			<university name='Mercy College'/>
-			<university name='Metropolitan College of New York'/>
-			<university name='Molloy College'/>
-			<university name='Monroe College'/>
-			<university name='Mount Saint Mary College'/>
-			<university name='Nazareth College'/>
-			<university name='The New School'/>
-			<university name='New York Chiropractic College'/>
-			<university name='New York College of Podiatric Medicine'/>
-			<university name='New York Institute of Technology'/>
-			<university name='New York Medical College'/>
-			<university name='New York University'/>
-			<university name='Niagara University'/>
-			<university name='Nyack College'/>
-			<university name='Pace University'/>
-			<university name='Parsons School of Design'/>
-			<university name='Paul Smiths College'/>
-			<university name='Polytechnic University of New York'/>
-			<university name='Pratt Institute'/>
-			<university name='Rensselaer Polytechnic Institute'/>
-			<university name='Roberts Wesleyan College'/>
-			<university name='Rochester Institute of Technology'/>
-			<university name='The Rockefeller University'/>
-			<university name='The Sage Colleges'/>
-			<university name='Saint Bonaventure University'/>
-			<university name='Saint Francis College'/>
-			<university name='Saint John Fisher College'/>
-			<university name='Saint Johns University'/>
-			<university name='Saint Josephs College'/>
-			<university name='Saint Lawrence University'/>
-			<university name='Saint Thomas Aquinas College'/>
-			<university name='Sarah Lawrence College'/>
-			<university name='School of Visual Arts'/>
-			<university name='Siena College'/>
-			<university name='Skidmore College'/>
-			<university name='State University of New York System'/>
 			<university name='College at Brockport'/>
 			<university name='College at Buffalo (Buffalo State College)'/>
 			<university name='College at Cortland'/>
@@ -1337,29 +1259,123 @@
 			<university name='College of Technology at Alfred (Alfred State University)'/>
 			<university name='College of Technology at Canton'/>
 			<university name='College of Technology at Delhi'/>
+			<university name='Clarkson University'/>
+			<university name='Colgate University'/>
+			<university name='College of Mount Saint Vincent'/>
+			<university name='College of New Rochelle'/>
+			<university name='College of Saint Rose'/>
+			<university name='Columbia University'/>
+			<university name='Concordia College-Bronxville'/>
+			
+			<university name='Cornell University'/>
+			<university name='Culinary Institute of America'/>
+			
 			<university name='Downstate Medical Center'/>
+			<university name='Daemen College'/>
+			<university name='Davis College'/>
+			<university name='Dominican College'/>
+			<university name='Dowling College'/>
+			<university name='D�Youville College'/>
+			
 			<university name='Empire State College'/>
+			<university name='Elmira College'/>
+			<university name='Excelsior College'/>
+			
 			<university name='Farmingdale State College'/>
 			<university name='Fashion Institute of Technology'/>
+			
+			<university name='Five Towns College'/>
+			<university name='Fordham University'/>
+			
+			<university name='Hunter College'/>
+			
+			<university name='Hamilton College'/>
+			<university name='Hartwick College'/>
+			<university name='Hebrew Union College-Jewish Institute of Religion'/>
+			<university name='Hilbert College'/>
+			<university name='Hobart and William Smith Colleges'/>
+			<university name='Hofstra University'/>
+			<university name='Houghton College'/>
+			<university name='Iona College'/>
+			<university name='Ithaca College'/>
 			<university name='Institute of Technology at Utica/Rome'/>
+			<university name='John Jay College of Criminal Justice'/>
+			<university name='Keuka College'/>
+			<university name='Lehman College'/>
+			<university name='Le Moyne College'/>
+			<university name='Laboratory Institute of Merchandising'/>
+			<university name='Long Island University'/>
+			<university name='Medger Evers College'/>
+			<university name='Manhattan College'/>
+			<university name='Manhattan School of Music'/>
+			<university name='Manhattanville College'/>
+			<university name='Marist College'/>
+			<university name='Marymount Manhattan College'/>
+			<university name='Medaille College'/>
+			<university name='Mercy College'/>
+			<university name='Metropolitan College of New York'/>
+			<university name='Molloy College'/>
+			<university name='Monroe College'/>
+			<university name='Mount Saint Mary College'/>
 			<university name='Maritime College at Fort Schuyler'/>
-			<university name='Upstate Medical University'/>
+			<university name='Nazareth College'/>
+			
+			<university name='New York Chiropractic College'/>
+			<university name='New York College of Podiatric Medicine'/>
+			<university name='New York Institute of Technology'/>
+			<university name='New York Medical College'/>
+			<university name='New York University'/>
+			<university name='Niagara University'/>
+			<university name='Nyack College'/>
+			<university name='New York City College of Technology'/>
+			<university name='Pace University'/>
+			<university name='Parsons School of Design'/>
+			<university name='Paul Smiths College'/>
+			<university name='Polytechnic University of New York'/>
+			<university name='Pratt Institute'/>
+			<university name='Queens College'/>
+			<university name='Rensselaer Polytechnic Institute'/>
+			<university name='Roberts Wesleyan College'/>
+			<university name='Rochester Institute of Technology'/>
+			<university name='Rockland Graduate Campus'/>
+			<university name='Saint Bonaventure University'/>
+			<university name='Saint Francis College'/>
+			<university name='Saint John Fisher College'/>
+			<university name='Saint Johns University'/>
+			<university name='Saint Josephs College'/>
+			<university name='Saint Lawrence University'/>
+			<university name='Saint Thomas Aquinas College'/>
+			<university name='Sarah Lawrence College'/>
+			<university name='School of Visual Arts'/>
+			<university name='Siena College'/>
+			<university name='Skidmore College'/>
 			<university name='Syracuse University'/>
+			<university name='State University of New York System'/>
+			<university name='Southampton Graduate Campus'/>
 			<university name='Teachers College(Columbia University)'/>
+			<university name='The New School'/>
 			<university name='Touro College'/>
+			<university name='The Jewish Theological Seminary of America'/>
+			<university name='The Juilliard School'/>
+			<university name='The Rockefeller University'/>
+			<university name='The Sage Colleges'/>
+			<university name='The Cooper Union for the Advancement of Science and Art'/>
 			<university name='Unification Theological Seminary'/>
 			<university name='Union College'/>
 			<university name='Union Theological Seminary'/>
 			<university name='United States Merchant Marine Academy'/>
 			<university name='United States Military Academy'/>
 			<university name='University of Rochester'/>
+			<university name='Upstate Medical University'/>
 			<university name='Utica College of Syracuse University'/>
 			<university name='Vassar College'/>
 			<university name='Vaughn College of Aeronautics and Technology'/>
 			<university name='Wagner College'/>
 			<university name='Webb Institute'/>
 			<university name='Wells College'/>
+			<university name='Westchester Graduate Campus'/>
 			<university name='Yeshiva University'/>
+			<university name='York College'/>
 		</state>
 		<state code='Oregon' name='Oregon'>
 			<university name='Art Institute of Portland'/>
@@ -1408,7 +1424,7 @@
 			<university name='Cleveland Institute of Music'/>
 			<university name='Cleveland State University'/>
 			<university name='College of Mount Saint Joseph'/>
-			<university name='The College of Wooster'/>
+			
 			<university name='Columbus College of Art and Design'/>
 			<university name='David N. Myers University'/>
 			<university name='Defiance College'/>
@@ -1440,12 +1456,14 @@
 			<university name='Ohio Wesleyan University'/>
 			<university name='Otterbein College'/>
 			<university name='Shawnee State University'/>
+			<university name='The College of Wooster'/>
+			<university name='The University of Findlay'/>
 			<university name='Tiffin University'/>
 			<university name='Union Institute and University'/>
 			<university name='University of Akron'/>
 			<university name='University of Cincinnati'/>
 			<university name='University of Dayton'/>
-			<university name='The University of Findlay'/>
+			
 			<university name='University of Northwestern Ohio'/>
 			<university name='University of Rio Grande'/>
 			<university name='University of Toledo'/>
@@ -1462,13 +1480,13 @@
 		</state>
 		<state code='Oklahoma' name='Oklahoma'>
 			<university name='Bacone College'/>
+			<university name='Broken Arrow campus'/>
 			<university name='Cameron University'/>
 			<university name='East Central University'/>
 			<university name='Langston University'/>
 			<university name='Mid-America Christian University'/>
-			<university name='Northeastern State University'/>
-			<university name='Broken Arrow campus'/>
 			<university name='Muskogee campus'/>
+			<university name='Northeastern State University'/>
 			<university name='Northwestern Oklahoma State University'/>
 			<university name='Oklahoma Baptist University'/>
 			<university name='Oklahoma Christian University'/>
@@ -1640,7 +1658,7 @@
 			<university name='Anderson College'/>
 			<university name='Benedict College'/>
 			<university name='Charleston Southern University'/>
-			<university name='The Citadel'/>
+			
 			<university name='Claflin University'/>
 			<university name='Clemson University'/>
 			<university name='Coastal Carolina University'/>
@@ -1663,6 +1681,7 @@
 			<university name='Sherman College of Straight Chiropractic'/>
 			<university name='South Carolina State University'/>
 			<university name='Southern Wesleyan University'/>
+			<university name='The Citadel'/>
 			<university name='University of South Carolina System'/>
 			<university name='Voorhees College'/>
 			<university name='Winthrop University'/>
@@ -1737,9 +1756,11 @@
 			<university name='Vanderbilt University'/>
 		</state>
 		<state code='Texas' name='Texas'>
+			
 			<university name='Abilene Christian University'/>
 			<university name='Ambassador University (closed spring 1997)'/>
 			<university name='Amberton University'/>
+			<university name='Angelo State University'/>
 			<university name='Arlington Baptist College'/>
 			<university name='Art Institute of Dallas'/>
 			<university name='Art Institute of Houston'/>
@@ -1749,6 +1770,7 @@
 			<university name='Baptist Missionary Association Theological Seminary'/>
 			<university name='Baylor College of Medicine'/>
 			<university name='Baylor University'/>
+			<university name='Baylor College of Dentistry'/>
 			<university name='College of Saint Thomas More'/>
 			<university name='Concordia University-Texas'/>
 			<university name='Criswell College'/>
@@ -1762,9 +1784,12 @@
 			<university name='Houston Baptist University'/>
 			<university name='Howard Payne University'/>
 			<university name='Huston-Tillotson University'/>
+			<university name='Health Science Center at Fort Worth'/>
+			<university name='Health Sciences Center'/>
 			<university name='Jarvis Christian College'/>
 			<university name='LeTourneau University'/>
 			<university name='Lubbock Christian University'/>
+			<university name='Lamar University'/>
 			<university name='McMurry University'/>
 			<university name='Midwestern State University'/>
 			<university name='Northwood University'/>
@@ -1772,6 +1797,7 @@
 			<university name='Our Lady of the Lake University'/>
 			<university name='Parker College of Chiropractic'/>
 			<university name='Paul Quinn College'/>
+			<university name='Prairie View AandM University'/>
 			<university name='Rice University'/>
 			<university name='Saint Edwards University'/>
 			<university name='Saint Marys University of San Antonio'/>
@@ -1785,25 +1811,24 @@
 			<university name='Southwestern Christian College'/>
 			<university name='Southwestern University'/>
 			<university name='Stephen F. Austin State University'/>
+			<university name='Sam Houston State University'/>
+			<university name='Sul Ross State University'/>
 			<university name='Texas AandM University System'/>
-			<university name='Baylor College of Dentistry'/>
-			<university name='Prairie View AandM University'/>
 			<university name='Tarleton State University'/>
 			<university name='Texas AandM International University'/>
-			<university name='West Texas AandM University'/>
+			
 			<university name='Texas Chiropractic College'/>
 			<university name='Texas Christian University'/>
 			<university name='Texas College'/>
 			<university name='Texas Lutheran University'/>
 			<university name='Texas Southern University'/>
 			<university name='Texas State University System'/>
-			<university name='Lamar University'/>
-			<university name='Sam Houston State University'/>
-			<university name='Sul Ross State University'/>
+			
+			
 			<university name='Texas State University-San Marcos'/>
 			<university name='Texas Tech University System'/>
-			<university name='Angelo State University'/>
-			<university name='Health Sciences Center'/>
+			
+			
 			<university name='Texas Tech University'/>
 			<university name='Texas Wesleyan University'/>
 			<university name='Texas Womans University'/>
@@ -1812,7 +1837,7 @@
 			<university name='University of Houston System'/>
 			<university name='University of Mary Hardin-Baylor'/>
 			<university name='University of North Texas'/>
-			<university name='Health Science Center at Fort Worth'/>
+			
 			<university name='University of Saint Thomas'/>
 			<university name='University of Texas System (Arlington)'/>
 			<university name='University of Texas System- Austin'/>
@@ -1831,6 +1856,7 @@
 			<university name='University of Texas System- Southwestern Medical Center at Dallas'/>
 			<university name='University of the Incarnate Word'/>
 			<university name='Wayland Baptist University'/>
+			<university name='West Texas AandM University'/>
 		</state>
 		<state code='Utah' name='Utah'>
 			<university name='Brigham Young University'/>
