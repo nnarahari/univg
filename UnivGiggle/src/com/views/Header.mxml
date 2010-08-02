@@ -21,7 +21,7 @@
 							<mx:Label width="90"/>
 							<mx:LinkButton  id="id_forgotPwd" label="Forget your password?" />
 							<mx:Button id="signup" label="SignUp" styleName="CommonBtn"/>
-							<mx:Button id="faceBook" label="FaceBook Connect" styleName="CommonBtn"/>
+							<mx:Button id="faceBook" label="FaceBook Connect" styleName="CommonBtn" enabled="false"/>
 						</mx:HBox>
 					</mx:VBox>
 					<mx:HBox id="loginInfo" visible="false" width="100%" horizontalAlign="right">
