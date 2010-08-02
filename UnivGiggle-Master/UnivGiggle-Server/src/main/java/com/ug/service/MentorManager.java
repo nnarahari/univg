@@ -105,5 +105,27 @@ public interface MentorManager {
 	
 	
 	
+	/**
+	 * Get {@link Mentor}s in the system with filter applied.
+	 * @param country
+	 * @param profession
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Mentor> getMentors(String country, String profession) throws Exception;
+	
+	
+	/**
+	 * Get all the {@link Mentor}s available in the system.
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Mentor> getAllMentors() throws Exception;
+	
+	
+	//public List<Mentor> getMentorsbyProfession(String profession) throws Exception;
+	
+	
+	
 
 }

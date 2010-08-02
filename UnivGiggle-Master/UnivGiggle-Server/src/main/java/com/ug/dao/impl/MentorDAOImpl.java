@@ -290,4 +290,32 @@ public class MentorDAOImpl implements MentorDAO {
 		return testmonialList;
 	}
 
+	@Override
+	public List<Mentor> getMentors(String country, String profession)throws Exception {
+		logger.info("getMentors() started... , country ==>"+ country + ", profession ==>"+ profession);
+		List<Mentor> mentorList = null;
+		String qry = "Select Object(c) from Mentor c where c.citizenship like :country and c.profession like :profession";
+		Query query = entityManager.createQuery(qry);
+
+		if(country != null && country.trim() != "")
+			query.setParameter("country", country);
+		else
+			query.setParameter("country", "%");
+
+
+		if(profession != null && profession.trim() != "")
+			query.setParameter("profession", profession);
+		else
+			query.setParameter("profession", "%");
+
+		try {
+			mentorList = query.getResultList();
+		} catch (Exception e) {
+			logger.error("Error while reteriving mentors", e);
+			throw e;
+		}
+		return mentorList;
+
+	}
+
 }
