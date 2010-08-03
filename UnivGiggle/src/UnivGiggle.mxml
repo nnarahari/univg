@@ -23,8 +23,11 @@
 			<view:CorporateLenderClassified id="corLender"/>
 			<view:ContactUs id="contactUs"/>
 			<view:FaceBookLogin id="faceLogin"/>
+			
+			<!--<mentorView:MentorsList id="mentorsList"/>-->
 			<mentorView:MentorProfile  id="mentor"/>
 			<mentorView:mentorTestimonial id="mentorAck"/>
+			
 			<mentee:MenteeProfile id="mentee"/>
 			<mentee:MenteeTestimonial id="menteeAck"/>
 		</mx:ViewStack>

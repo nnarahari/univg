@@ -19,7 +19,7 @@
         import com.events.mentee.MenteeProfileEvent;
         import com.events.mentee.SaveMenteeEvent;
         import com.events.mentor.MentorProfileEvent;
-        import com.events.mentor.PopUpEvent;
+        import com.events.mentor.MentorsListEvent;
         import com.events.mentor.SaveMentorProfileEvent;
         import com.mappedObjects.ug.model.UG_User;
         import com.views.FaceBookLogin;
@@ -70,6 +70,8 @@
 			// mentee related eventlistener
 			mentee.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 			mentee.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			mentee.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorList,false,0,true);
+			
 			//end
 			univGiggleStack.addEventListener(Event.CHANGE,onStackChange,false,0,true);
 			this.addEventListener(AboutUsEvent.EVENT_NAME,aboutHandler,false,0,true);
@@ -307,5 +309,7 @@
         }
         
       
-        
+        public function goToMentorList(event:MentorsListEvent):void{
+        //	univGiggleStack.selectedChild = mentorsList;
+        }
         
