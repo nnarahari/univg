@@ -5,11 +5,14 @@
 import com.components.Captcha;
 import com.events.HomePageEvent;
 import com.events.mentee.SaveMenteeEvent;
+import com.events.mentor.MentorsListEvent;
 import com.events.mentor.PopUpEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.ResultInfo;
 import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentee.Mentee;
+
+import flash.events.MouseEvent;
 
 import mx.controls.Alert;
 import mx.core.Application;
@@ -52,6 +55,7 @@ private function compInit():void
 	menteeRemoteObj.updateMentee.addEventListener(FaultEvent.FAULT,onFaultUpdateMentee,false,0,true);
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	menteeLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
+	btnLookForMentor.addEventListener(MouseEvent.CLICK,onClickLFMentor, false,0,true);
 	createImageCaptcha();
 	addListeners();
 	setValidator();
@@ -80,7 +84,8 @@ public function createImageCaptcha():void
  {
  	saveMenteeProfile.addEventListener(MouseEvent.CLICK,onSaveMenteeProfile,false,0,true);
  	cancelMenteeProfile.addEventListener(MouseEvent.CLICK,onCancelMenteeProfile,false,0,true);
- 	mentees.addEventListener(MouseEvent.CLICK,searchMentorProfile,false,0,true);
+ 	btnLookForMentor.addEventListener(MouseEvent.CLICK,onLookForMentor,false,0,true);
+ 	//mentees.addEventListener(MouseEvent.CLICK,searchMentorProfile,false,0,true);
  }
  
  /**
@@ -279,4 +284,12 @@ private function onResultUpdateMentee(event:ResultEvent):void
 private function onFaultUpdateMentee(event:FaultEvent):void
 {
 	Alert.show(event.fault.message,"Error");
+}
+
+private function onClickLFMentor(event:MouseEvent):void{
+	dispatchEvent(new MentorsListEvent(MentorsListEvent.MENTOR_LIST));
+}
+
+private function onLookForMentor(event:MouseEvent):void{
+	Alert.show("look for mentor clicked...");
 }

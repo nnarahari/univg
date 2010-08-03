@@ -41,7 +41,7 @@
 				<mx:Label text="Create Mentee Profile" fontSize="15" fontWeight="bold"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Button id="mentees" label="Look for Mentors" styleName="CommonBtn"/>
+				<mx:Button id="btnLookForMentor" label="Look for Mentors" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow/>
@@ -124,7 +124,7 @@
 		
 		<mx:GridRow  width="100%"  height="100%">
 			<mx:GridItem >
-				<mx:Text text="Brief description about yourself and why you want to serve as a mentor :" width="90%"/>
+				<mx:Text text="Brief description about yourself and why you want to serve as a mentee :" width="90%"/>
 			</mx:GridItem>
 			<mx:GridItem>
 				<mx:TextArea id="description" width="100%" height="100%"  />
