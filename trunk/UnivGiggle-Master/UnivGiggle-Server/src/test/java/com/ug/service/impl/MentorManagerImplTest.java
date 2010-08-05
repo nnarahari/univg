@@ -199,6 +199,20 @@ public class MentorManagerImplTest {
 	}
 	
 	
+	@Test
+	public void testGetAllMentors(){
+		try {
+			List<Mentor> mentorList = mentorManager.getAllMentors();
+			System.out.println("mentors List ==>"+mentorList.size());
+			assertNotNull(mentorList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	private Mentor createMentor(String fname,String lname, String email){
 		Mentor mentor = new Mentor(fname, lname, email);
 		mentor.setAge("22");

@@ -3,7 +3,9 @@
  */
 package com.ug.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -252,7 +254,16 @@ public class MentorManagerImpl implements MentorManager {
 	@Override
 	public List<Mentor> getAllMentors() throws Exception {
 		logger.info("getAllMentors() started...");
-		return mentorDAO.getAllMentors();
+		List<Mentor> modifiedMentorList = new ArrayList<Mentor>();
+		List<Mentor> mentorList = mentorDAO.getAllMentors();
+		for (Iterator iterator = mentorList.iterator(); iterator.hasNext();) {
+			Mentor mentor = (Mentor) iterator.next();
+			mentor.setTestmonialList(null);
+			mentor.setMenteeList(null);
+			modifiedMentorList.add(mentor);
+		}
+		logger.info("modifiedMentorList size ==>"+ modifiedMentorList.size());
+		return modifiedMentorList;
 	}
 
 	@Override
