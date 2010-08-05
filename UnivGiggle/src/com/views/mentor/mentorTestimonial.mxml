@@ -101,10 +101,15 @@
 		}
 		
 		
-		public function setMentorObject(mentorObj:Mentor):void
+		public function setMentorObject(mentorObj:Mentor,flag:Boolean):void
 		{
 			mentorObject = mentorObj;
 			mentorProfile.setMentorObject(mentorObj);
+			if(flag){
+				ackMsg.text = "Congratulations, you have successfully signed up as a Mentor at UnivGiggle.Thanks for taking the first step towards making a difference in some one’s life by sharing your life experience with someone in need of guidance and direction. We can assure you that you will have a very hearty experience through this program. You can see your life changing when you try bringing a difference in the life of someone.This is also a great way to give back to your society, alma mater, country and mankind as a whole.";
+			}else{
+				ackMsg.text = "Thanks for serving as a Mentor for UnivGiggle and joining us in the journey striving to bring about a difference in the lives of many.";
+			}
 		}
 		
 		private function onResultGetAvaiableMentee(event:ResultEvent):void
@@ -202,13 +207,8 @@
 </mx:Script>
 <mx:HDividedBox width="100%" height="100%">
 <mentor:MentorTestimonialLinks width="10%" height="100%"/>
-	<mx:VBox width="100%" height="100%" borderStyle="solid">
-		<mx:Text width="100%" text="Congratulations, you have successfully signed up as a Mentor at UnivGiggle. 
-		Thanks for taking the first step towards making a difference in someone’s life by sharing your life 
-		experience with someone in need of guidance and direction. We can assure you that you will have a 
-		very hearty experience through this program. You can see your life changing when you try bringing a 
-		difference in the life of someone.This is also a great way to give back to your society, 
-		alma mater, country and mankind as a whole." fontWeight="bold"/>
+	<mx:VBox width="100%" height="100%" borderStyle="solid" paddingLeft="5" paddingTop="5" paddingRight="5" paddingBottom="5">
+		<mx:Text id="ackMsg" width="100%" fontSize="15"  fontWeight="bold"/>
 		<mx:Spacer height="20%"/>
 		<mx:HBox width="100%">
 			<mentor:MentorProfileInfo id="mentorProfile" width="50%"/>

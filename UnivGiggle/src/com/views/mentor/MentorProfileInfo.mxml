@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" creationComplete="compInit();">
 <mx:Script source="../../as/mentor/mentorProfileInfo.as"/>
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Label text="Mentor Profile" fontSize="15" fontWeight="bold"/>
+	</mx:HBox>	
 	<mx:HBox width="100%">
 		<mx:VBox width="25%" height="100%">
-			<mx:Image width="50%" height="50%" source="{_mentor.imagePaths}"/>
+			<mx:Image width="150" height="150" maintainAspectRatio="true" source="{_mentor.imagePaths}"/>
 			<mx:Text text="Number of Mentees :{_noOfMentees}"/>
 		</mx:VBox>
 		<mx:Form width="75%">
@@ -22,9 +25,13 @@
 			<mx:FormItem label="Schools/Colleges Attended:" width="100%">
 				<mx:Text id="attend" text="{_mentor.schoolCollege}"/>
 			</mx:FormItem>
+			<mx:FormItem>
+				<mx:Text id="writeUp" text="{_mentor.description}" width="100%"/>			
+			</mx:FormItem>
+			<mx:FormItem>
+				<mx:Text id="testimonial" text="{_mentor.testimonial}" width="100%"/>
+			</mx:FormItem>
 		</mx:Form>
 	</mx:HBox>
-	<mx:Text id="writeUp" text="{_mentor.description}" width="100%"/>
-	<mx:Text id="testimonial" text="{_mentor.testimonial}" width="100%"/>
 	<mx:Button id="request" label="Request to be a Mentee" enabled="{_mentor.activated}" styleName="CommonBtn"/>	
 </mx:VBox>

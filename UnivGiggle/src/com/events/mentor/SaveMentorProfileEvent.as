@@ -8,10 +8,12 @@ package com.events.mentor
 	{
 		public static var SAVEEVENT:String = "save";
 		public var _mentorObj:Mentor;
-		public function SaveMentorProfileEvent(type:String,mentorObj:Mentor)
+		public var _mentorFlag:Boolean = false;//save means true or update false
+		public function SaveMentorProfileEvent(type:String,mentorObj:Mentor,flag:Boolean)
 		{
 			super(type);
 			_mentorObj = mentorObj;
+			_mentorFlag = flag;
 		}
 	}
 }
