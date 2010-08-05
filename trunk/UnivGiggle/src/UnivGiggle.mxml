@@ -24,7 +24,7 @@
 			<view:ContactUs id="contactUs"/>
 			<view:FaceBookLogin id="faceLogin"/>
 			
-			<!--<mentorView:MentorsList id="mentorsList"/>-->
+			<mentorView:MentorList id="mentorsList"/>
 			<mentorView:MentorProfile  id="mentor"/>
 			<mentorView:mentorTestimonial id="mentorAck"/>
 			

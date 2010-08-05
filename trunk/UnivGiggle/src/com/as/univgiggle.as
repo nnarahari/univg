@@ -70,7 +70,7 @@
 			// mentee related eventlistener
 			mentee.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 			mentee.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
-			mentee.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorList,false,0,true);
+			mentee.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
 			
 			//end
 			univGiggleStack.addEventListener(Event.CHANGE,onStackChange,false,0,true);
@@ -84,7 +84,6 @@
 			this.addEventListener(WelcomeEvent.EVENT_NAME,goToWelcomePage,false,0,true);
 			this.addEventListener(MentorProfileEvent.MENTOREVENT,goToMentorProfile,false,0,true);
 			this.addEventListener(MenteeProfileEvent.MENTEE_EVENT,goToMenteeProfile,false,0,true);
-			
 			browserManagerInstance = BrowserManager.getInstance();
             browserManagerInstance.addEventListener(BrowserChangeEvent.BROWSER_URL_CHANGE,
                 parseURL);
@@ -309,7 +308,7 @@
         }
         
       
-        public function goToMentorList(event:MentorsListEvent):void{
-        //	univGiggleStack.selectedChild = mentorsList;
+        public function goToMentorsList(event:MentorsListEvent):void{
+        	univGiggleStack.selectedChild = mentorsList;
         }
         
