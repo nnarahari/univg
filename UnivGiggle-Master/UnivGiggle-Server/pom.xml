@@ -51,6 +51,7 @@
 		<log4j.version>1.2.12</log4j.version>
 		<M2.repo.path>C:/Documents and
 			Settings/srajen03/.m2/repository</M2.repo.path>
+		<maven.jetty.plugin.version>6.1.11</maven.jetty.plugin.version>
 	</properties>
 
 	<build>
@@ -89,6 +90,15 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>${maven.jetty.plugin.version}</version>
+				<configuration>
+					<webAppSourceDirectory>${project.build.directory}/${project.build.finalName}</webAppSourceDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
