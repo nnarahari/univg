@@ -291,5 +291,6 @@ private function onClickLFMentor(event:MouseEvent):void{
 }
 
 private function onLookForMentor(event:MouseEvent):void{
-	Alert.show("look for mentor clicked...");
+	//Alert.show("look for mentor clicked...");
+	dispatchEvent(new MentorsListEvent(MentorsListEvent.MENTOR_LIST));
 }
