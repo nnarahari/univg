@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" 
-	verticalAlign="top" creationComplete="compInit();" xmlns:mentee="com.views.mentee.*">
+	verticalAlign="top" creationComplete="compInit();" xmlns:mentee="com.views.mentee.*" xmlns:comboBox="com.components.comboBox.*">
 <!-- Binding the ActionScript object with the view controls -->
 <mx:Binding source="fname.text" destination="_mentee.firstName"/>
 <mx:Binding source="lname.text" destination="_mentee.lastName"/>
@@ -88,7 +88,7 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country" width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{country.text}"/>
+				<comboBox:UnivComboBox id="country" width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{country.text}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -103,7 +103,7 @@
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession" width="150"  dataProvider="{dp_profession.profession}" toolTip="{profession.text}" labelField="@name"/>
+				<comboBox:UnivComboBox id="profession" width="150"  dataProvider="{dp_profession.profession}" toolTip="{profession.text}" labelField="@name"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		

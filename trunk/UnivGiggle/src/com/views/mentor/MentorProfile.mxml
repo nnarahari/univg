@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
-	horizontalAlign="center" verticalAlign="top" creationComplete="compInit();" xmlns:mentor="com.views.mentor.*">
+	horizontalAlign="center" verticalAlign="top" creationComplete="compInit();" xmlns:mentor="com.views.mentor.*" xmlns:comboBox="com.components.comboBox.*">
 <!-- Binding the ActionScript object with the view controls -->
 <mx:Binding source="fname.text" destination="_mentor.firstName"/>
 <mx:Binding source="lname.text" destination="_mentor.lastName"/>
@@ -36,16 +36,16 @@
     <mentor:MentorTestimonialLinks id="mentorLinks" width="10%" height="100%"/>
 	<mx:Grid id="mentorProfile" width="90%" height="100%" borderStyle="solid">
 		<mx:GridRow id="heading" width="100%">
-			<mx:GridItem >
+			<mx:GridItem id="mentee_no">
 				<mx:Text text="Number of Mentees :"/>
 				<mx:Text id="menteeCount" />
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Label text="Create Mentor Profile" fontSize="15" fontWeight="bold"/>
+				<mx:Button id="but_mentor" label="Create Mentor Profile" fontSize="15" fontWeight="bold"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow/>
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="First Name :" />
 			</mx:GridItem>
@@ -60,7 +60,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Email Address :"/>
 			</mx:GridItem>
@@ -77,7 +77,7 @@
 			
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Age :"/>
 			</mx:GridItem>
@@ -88,11 +88,11 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country"  width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{country.text}"/>
+				<comboBox:UnivComboBox id="country"  width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{country.text}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Language :"/>
 			</mx:GridItem>
@@ -103,11 +103,11 @@
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession"  width="150"  dataProvider="{dp_profession.profession}" labelField="@name"  toolTip="{profession.text}"/>
+				<comboBox:UnivComboBox id="profession"  width="150"  dataProvider="{dp_profession.profession}" labelField="@name"  toolTip="{profession.text}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Highest Degree Obtained :"/>
 			</mx:GridItem>
@@ -122,7 +122,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%"  height="100%">
+		<mx:GridRow  width="100%"  height="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Brief description about yourself and why you want to serve as a mentor :" width="90%"/>
 			</mx:GridItem>
@@ -132,7 +132,7 @@
 			
 		</mx:GridRow>
 		
-		<mx:GridRow>
+		<mx:GridRow visible="{displayContent}">
 			<mx:GridItem>
 				<mx:CheckBox id="menteeChk" label=""/>
 				<mx:Text text="Not accepting any new Mentees (no new mentees"/>
@@ -141,17 +141,17 @@
 				<mx:Text text="will be able to get in touch with you)."/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow>
+		<mx:GridRow visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Upload Pic :"/>
 			</mx:GridItem>
-			<mx:GridItem>
-				<mx:TextInput id="fileName" width="50%"  text="{_mentor.imagePaths}" editable="false"/>
+			<mx:GridItem visible="{displayContent}">
+				<mx:TextInput id="fileName" width="125"  text="{_mentor.imagePaths}" editable="false"/>
 				<mx:Button label="browse.." id="browseBut" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%" height="100%">
+		<mx:GridRow  width="100%" height="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Write New Testimonial for UnivG :" />
 			</mx:GridItem>
@@ -160,7 +160,7 @@
 			</mx:GridItem>
 			
 		</mx:GridRow>
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:CheckBox id="chk" label=""/>
 				<mx:Text text="By clicking on checkbox you are agreeing to the"/>
@@ -172,7 +172,7 @@
 				<mx:Text text="of UnivGiggle.com"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Enter Verification Code :" />
 			</mx:GridItem>
@@ -182,7 +182,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow height="10%"/>
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem />
 			<mx:GridItem>
 				<mx:Button id="saveMentorProfile" enabled="{chk.selected}" label="SAVE" styleName="CommonBtn"/>

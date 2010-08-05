@@ -283,7 +283,7 @@
         private function goToMentorTestimonial(event:SaveMentorProfileEvent):void
         {
         	univGiggleStack.selectedChild = mentorAck;
-        	mentorAck.callLater(mentorAck.setMentorObject,[event._mentorObj]);
+        	mentorAck.callLater(mentorAck.setMentorObject,[event._mentorObj,event._mentorFlag]);
         }
         
         private function goToMentorProfile(event:MentorProfileEvent):void

@@ -36,6 +36,8 @@ private var serviceObject:ServiceObject;
 private var validationArray:Array;
 private var __ugUser:UG_User;
 private var isMentorAvailable:Boolean = false;
+[Bindable]
+private var displayContent:Boolean = false;
 
 /**
  * function invoked for displaying the image which contains the verification code.
@@ -93,6 +95,7 @@ private function compInit():void
 	cancelMentorProfile.addEventListener(MouseEvent.CLICK,onCancelMentorProfile,false,0,true);
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	mentorLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
+	but_mentor.addEventListener(MouseEvent.CLICK,onDisplayContent,false,0,true);
 	createImageCaptcha();
 	setValidator();
 	mentorRemoteObj.getMentor(Application.application.__ugUser.emailId);
@@ -136,7 +139,7 @@ private function onResultAddMentorProfile(event:ResultEvent):void
  {
  	resultInfoObj = event.result as ResultInfo;
  	if(resultInfoObj.success){
- 		dispatchEvent(new SaveMentorProfileEvent(SaveMentorProfileEvent.SAVEEVENT,_mentor));
+ 		dispatchEvent(new SaveMentorProfileEvent(SaveMentorProfileEvent.SAVEEVENT,_mentor,true));
  	}
  }
 
@@ -226,12 +229,16 @@ private function onResultGetMentor(event:ResultEvent):void
 			female.selected = false;
 		}
 		isMentorAvailable = false;
+		mentee_no.visible = false;
+		but_mentor.label = "Create Mentor Profile";
 	}else{
 		if(_mentor.menteeList.length > 0)
 			menteeCount.text = _mentor.menteeList.length as String;
 		else
 			menteeCount.text = "0";
 		isMentorAvailable = true;
+		mentee_no.visible = true;
+		but_mentor.label = "Edit Mentor Profile";
 	}
 }
 
@@ -248,7 +255,7 @@ private function onResultUpdateMentor(event:ResultEvent):void
 {
 	resultInfoObj = event.result as ResultInfo;
  	if(resultInfoObj.success){
- 		dispatchEvent(new SaveMentorProfileEvent(SaveMentorProfileEvent.SAVEEVENT,_mentor));
+ 		dispatchEvent(new SaveMentorProfileEvent(SaveMentorProfileEvent.SAVEEVENT,_mentor,false));
  	}
 }
 
@@ -259,6 +266,19 @@ private function onResultUpdateMentor(event:ResultEvent):void
 private function onFaultUpdateMentor(event:FaultEvent):void
 {
 	Alert.show(event.fault.message,"Error");
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onDisplayContent(event:MouseEvent):void
+{
+	if((event.target.label as String).indexOf("Create") == 0)
+		saveMentorProfile.label = "SAVE";
+	else
+		saveMentorProfile.label = "UPDATE";
+	displayContent = true;
 }
 
         
