@@ -22,7 +22,25 @@
         import com.events.mentor.MentorsListEvent;
         import com.events.mentor.SaveMentorProfileEvent;
         import com.mappedObjects.ug.model.UG_User;
+        import com.views.AboutPage;
+        import com.views.ConfirmClassified;
+        import com.views.ContactUs;
+        import com.views.CorporateLenderClassified;
         import com.views.FaceBookLogin;
+        import com.views.GenaratePassword;
+        import com.views.HomePage;
+        import com.views.Login;
+        import com.views.P2PLenderClassified;
+        import com.views.PostClassified;
+        import com.views.PostedSuccess;
+        import com.views.SignupPage;
+        import com.views.StudentClassified;
+        import com.views.WelcomeNote;
+        import com.views.mentee.MenteeProfile;
+        import com.views.mentee.MenteeTestimonial;
+        import com.views.mentor.MentorList;
+        import com.views.mentor.MentorProfile;
+        import com.views.mentor.mentorTestimonial;
         
         import mx.events.BrowserChangeEvent;
         import mx.managers.BrowserManager;
@@ -45,35 +63,34 @@
 		private function applicationInit(event:Event):void
 		{
 			appHeader.addEventListener(LoginEvt.LOGIN,onLoginHandler,false,0,true);
-			home.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
-			postClassified.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
-			confirmClassified.addEventListener(ClassifiedConfirmEvent.CLASSIFIEDCONFIRM,goToPostSuccess,false,0,true);
-			postSuccess.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
-			postSuccess.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
-			/* loginBut.addEventListener(MouseEvent.CLICK,navigateToLoginScreen,false,0,true);
-			classifiedBut.addEventListener(MouseEvent.CLICK,navigateToClassifiedScreen,false,0,true); */
-			signUp.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
+			/* home.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true); */
+//			postClassified.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
+			/* confirmClassified.addEventListener(ClassifiedConfirmEvent.CLASSIFIEDCONFIRM,goToPostSuccess,false,0,true); */
+			/* postSuccess.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			postSuccess.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true); */
+			
+			/* signUp.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true); */
 			appHeader.addEventListener(FaceBookLoginEvent.FACEBOOKLOGINS, onFaceBookLogin,false,0,true);
-			genaratePassword.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
+			/* genaratePassword.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true); */
 			appHeader.addEventListener(GenaratePasswordEvent.GENARATEPASSWORD, onGenaratepassword,false,0,true);
 			appHeader.addEventListener(SignUpEvent.SIGNUP,goToSignUpPage,false,0,true);
 			// post classifieds related eventlisteners
-			postClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
-			postClassified.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
-			confirmClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
-			confirmClassified.addEventListener(FetchClassifedObjectEvent.FETCH,getPostedClassifiedObject,false,0,true);
+			/* postClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			postClassified.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true); */
+			/* confirmClassified.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			confirmClassified.addEventListener(FetchClassifedObjectEvent.FETCH,getPostedClassifiedObject,false,0,true); */
 			// end of eventlistener
 			// mentor related eventlisteners
-			mentor.addEventListener(SaveMentorProfileEvent.SAVEEVENT,goToMentorTestimonial,false,0,true);
-			mentor.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			/* mentor.addEventListener(SaveMentorProfileEvent.SAVEEVENT,goToMentorTestimonial,false,0,true);
+			mentor.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true); */
 			//end
 			// mentee related eventlistener
-			mentee.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
+			/* mentee.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 			mentee.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
-			mentee.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
+			mentee.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true); */
 			
 			//end
-			univGiggleStack.addEventListener(Event.CHANGE,onStackChange,false,0,true);
+//			univGiggleStack.addEventListener(Event.CHANGE,onStackChange,false,0,true);
 			this.addEventListener(AboutUsEvent.EVENT_NAME,aboutHandler,false,0,true);
 			this.addEventListener(StudentClassifiedEvent.EVENT_NAME,navigateToStudentClassified,false,0,true);
 			this.addEventListener(P2PLenderClassifiedEvent.EVENT_NAME,navigateToP2PLender,false,0,true);
@@ -89,8 +106,9 @@
                 parseURL);
             //initialize the browser manager
             browserManagerInstance.init("", "..::Welcome To UnivGiggle::..");
-            
+            goToWelcomePage();
             parseURL(event);
+            
 		}
 		
 		/**
@@ -103,10 +121,10 @@
             var fragmentString:String = browserManagerInstance.fragment;
             var fragementObject:Object = URLUtil.stringToObject(fragmentString);
             var selectedView:Number = fragementObject.selectedView as Number;
-            if(selectedView < univGiggleStack.childDescriptors.length){
+           /*  if(selectedView < univGiggleStack.childDescriptors.length){
                 univGiggleStack.selectedIndex = selectedView;
 				 updateTitle(selectedView);
-            }
+            } */
         }
         
         /**
@@ -160,29 +178,38 @@
 			browserManagerInstance.setFragment(fragmentString);
 		}
         
-        private function goToWelcomePage(event:WelcomeEvent):void
-        {
-        	univGiggleStack.selectedChild = welcome;
-        	setIndexAsFragment(0);
-        	updateTitle(0);
+        private function goToWelcomePage(event:WelcomeEvent=null):void
+        {	
+        	univGiggleStack1.removeAllChildren();
+        	_welcomeNoteInstance = new WelcomeNote;
+        	univGiggleStack1.addChild(_welcomeNoteInstance);
+//        	univGiggleStack.selectedChild = welcome;
+//        	setIndexAsFragment(0);
+//        	updateTitle(0);
         }
         
         private function onFaceBookLogin(event:FaceBookLoginEvent):void{
-        	univGiggleStack.selectedChild = welcome;
-        	var faceBook:FaceBookLogin = PopUpManager.createPopUp(welcome, FaceBookLogin, false) as FaceBookLogin;
-        	PopUpManager.centerPopUp(faceBook);
+//        	univGiggleStack.selectedChild = welcome;
+			goToWelcomePage();
+        	var _faceBookInstance:FaceBookLogin = PopUpManager.createPopUp(_welcomeNoteInstance, FaceBookLogin, false) as FaceBookLogin;
+        	PopUpManager.centerPopUp(_faceBookInstance);
         	
         }
 		
 		private function getPostedClassifiedObject(event:FetchClassifedObjectEvent):void
 		{
-			confirmClassified.classifiedObj = event._classifiedObj;
+			if(_confirmClassifiedInstance)
+				_confirmClassifiedInstance.classifiedObj = event._classifiedObj;
 			//confirmClassified.createImageCaptcha();
 		}
 		
 		private function goToSignUpPage(event:SignUpEvent):void
 		{
-			univGiggleStack.selectedChild = signUp;
+//			univGiggleStack.selectedChild = signUp;
+			univGiggleStack1.removeAllChildren();
+			_signUpInstance = new SignupPage;
+			_signUpInstance.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
+			univGiggleStack1.addChild(_signUpInstance);
 		}
 		
 		private function onLoginHandler(event:LoginEvt):void
@@ -190,125 +217,207 @@
 			if(event._userName != "")
 				isUserLoggedIn = true;
 			__ugUser = event._ugUser;
-			univGiggleStack.selectedChild = home;
+//			univGiggleStack.selectedChild = home;
+			univGiggleStack1.removeAllChildren();
+			_homeInstance = new HomePage;
+			 _homeInstance.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true); 
+			univGiggleStack1.addChild(_homeInstance);
 		}
 		
 		private function goToPostClassifieds(event:ClassifiedEvent):void
 		{
-			univGiggleStack.selectedChild = postClassified;
+			/* univGiggleStack.selectedChild = postClassified;
 			if(postClassified.switchView != null)
 				postClassified.switchView.selectedIndex = event._index;
 			setIndexAsFragment(6);
-        	updateTitle(6);
-			/* postClassified.initialize();*/
+        	updateTitle(6); */
+			univGiggleStack1.removeAllChildren();
+			_postClassifiedInstance = new PostClassified;
+			_postClassifiedInstance.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
+			_postClassifiedInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			_postClassifiedInstance.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
+			_postClassifiedInstance.Index = event._index;
+			/* if(_postClassifiedInstance.switchView != null)
+				_postClassifiedInstance.switchView.selectedIndex = */ 
+			univGiggleStack1.addChild(_postClassifiedInstance);
 		}
 		
 		private function goToConfirmClassified(event:ClassifiedPostEvent):void
 		{
-			univGiggleStack.selectedChild = confirmClassified;
-			confirmClassified.dispatchEvent(new FetchClassifedObjectEvent(FetchClassifedObjectEvent.FETCH,event._classified));
+			/* univGiggleStack.selectedChild = confirmClassified;
+			confirmClassified.dispatchEvent(new FetchClassifedObjectEvent(FetchClassifedObjectEvent.FETCH,event._classified)); */
+			univGiggleStack1.removeAllChildren();
+			_confirmClassifiedInstance = new ConfirmClassified;
+			_confirmClassifiedInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			_confirmClassifiedInstance.addEventListener(FetchClassifedObjectEvent.FETCH,getPostedClassifiedObject,false,0,true);
+			_confirmClassifiedInstance.addEventListener(ClassifiedConfirmEvent.CLASSIFIEDCONFIRM,goToPostSuccess,false,0,true);
+			_confirmClassifiedInstance.dispatchEvent(new FetchClassifedObjectEvent(FetchClassifedObjectEvent.FETCH,event._classified));
+			univGiggleStack1.addChild(_confirmClassifiedInstance);
 		}
 		
 		private function goToPostSuccess(event:ClassifiedConfirmEvent):void
 		{
-			univGiggleStack.selectedChild = postSuccess;
+//			univGiggleStack.selectedChild = postSuccess;
+			univGiggleStack1.removeAllChildren();
+        	_postConfirmationInstance = new PostedSuccess;
+        	_postConfirmationInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			_postConfirmationInstance.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
+        	univGiggleStack1.addChild(_postConfirmationInstance);
 		}
 		
 		private function onGenaratepassword(event:GenaratePasswordEvent):void{
-			univGiggleStack.selectedChild = genaratePassword;
+//			univGiggleStack.selectedChild = genaratePassword;
+			univGiggleStack1.removeAllChildren();
+        	_genPassWord = new GenaratePassword;
+        	_genPassWord.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
+        	univGiggleStack1.addChild(_genPassWord);
 		}
 		
 		private function goToHomePage(event:HomePageEvent):void
-		{
-			univGiggleStack.selectedChild = home;
+		{	
+			univGiggleStack1.removeAllChildren();
+        	_homeInstance = new HomePage;
+        	_homeInstance.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
+        	univGiggleStack1.addChild(_homeInstance);
 		}
 		
 		private function navigateToLoginScreen(event:MouseEvent):void
-		{
-			univGiggleStack.selectedChild = login;
+		{	
+			univGiggleStack1.removeAllChildren();
+        	_loginInstance = new Login;
+        	univGiggleStack1.addChild(_loginInstance);
 		}
 		
 		private function navigateToClassifiedScreen(event:MouseEvent):void
 		{
-			univGiggleStack.selectedChild = postClassified;
+//			univGiggleStack.selectedChild = postClassified;
+			univGiggleStack1.removeAllChildren();
+			_postClassifiedInstance = new PostClassified;
+			_postClassifiedInstance.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
+			_postClassifiedInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			_postClassifiedInstance.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
+			univGiggleStack1.addChild(_postClassifiedInstance);
 		}
 		
-		private function onUserCreated(event:CreateUserEvent):void
+		private function onUserCreated(event:CreateUserEvent = null):void
 		{
-			univGiggleStack.selectedChild = welcome;
+//			univGiggleStack.selectedChild = welcome;
+			goToWelcomePage();
 			//__ugUser = event._ugUser;
 		}
         
         private function aboutHandler(event:AboutUsEvent):void
         {	
-        		univGiggleStack.selectedChild = about;
+        		/* univGiggleStack.selectedChild = about;
         		setIndexAsFragment(1);
-        		updateTitle(1);
+        		updateTitle(1); */
+        		univGiggleStack1.removeAllChildren();
+        		_aboutUsInstance = new AboutPage;
+        		univGiggleStack1.addChild(_aboutUsInstance);
         }
         
         private function navigateToStudentClassified(event:StudentClassifiedEvent):void
         {
-        		univGiggleStack.selectedChild = studentClassified;
+        		/* univGiggleStack.selectedChild = studentClassified;
         		setIndexAsFragment(2);
-        		updateTitle(2);
+        		updateTitle(2); */
+        		univGiggleStack1.removeAllChildren();
+        		_studentClassInstance = new StudentClassified;
+        		univGiggleStack1.addChild(_studentClassInstance);
         }
         
         private function navigateToP2PLender(event:P2PLenderClassifiedEvent):void
         {
-        		univGiggleStack.selectedChild = p2plender;
+        		/* univGiggleStack.selectedChild = p2plender;
         		setIndexAsFragment(3);
-        		updateTitle(3);
+        		updateTitle(3); */
+        		univGiggleStack1.removeAllChildren();
+        		_p2plenderInstance = new P2PLenderClassified;
+        		univGiggleStack1.addChild(_p2plenderInstance);
         }
         
         private function navigateToCorporateLender(event:CorporateLenderEvent):void
         {
-        		univGiggleStack.selectedChild = corLender;
+        		/* univGiggleStack.selectedChild = corLender;
         		setIndexAsFragment(4);
-        		updateTitle(4);
+        		updateTitle(4); */
+        		univGiggleStack1.removeAllChildren();
+        		_corpLenderInstance = new CorporateLenderClassified;
+        		univGiggleStack1.addChild(_corpLenderInstance);
         }
         
         private function navigateToContact(event:ContactUSEvent):void
         {	
-        		univGiggleStack.selectedChild = contactUs;
+        		/* univGiggleStack.selectedChild = contactUs;
         		setIndexAsFragment(7);
-        		updateTitle(7);
+        		updateTitle(7); */
+        		univGiggleStack1.removeAllChildren();
+        		_contactUsInstance = new ContactUs;
+        		univGiggleStack1.addChild(_contactUsInstance);
         }
         
         private function setUserObject(event:ComponentInitEvent):void
         {
-        	postClassified.setUserInfo = __ugUser;
+        	if(_postClassifiedInstance != null)
+        		_postClassifiedInstance.setUserInfo = __ugUser;
         }
         
         private function goToMentorTestimonial(event:SaveMentorProfileEvent):void
         {
-        	univGiggleStack.selectedChild = mentorAck;
-        	mentorAck.callLater(mentorAck.setMentorObject,[event._mentorObj,event._mentorFlag]);
+        	/* univGiggleStack.selectedChild = mentorAck;
+        	mentorAck.callLater(mentorAck.setMentorObject,[event._mentorObj,event._mentorFlag]); */
+        	univGiggleStack1.removeAllChildren();
+        	_mentorAckInstance = new mentorTestimonial;
+        	_mentorAckInstance.callLater(_mentorAckInstance.setMentorObject,[event._mentorObj,event._mentorFlag]);
+        	univGiggleStack1.addChild(_mentorAckInstance);
+        	
         }
         
         private function goToMentorProfile(event:MentorProfileEvent):void
         {
-        	univGiggleStack.selectedChild = mentor;
+        	/* univGiggleStack.selectedChild = mentor;
         	mentor.callLater(mentor.setUserInfo,[__ugUser]);
         	setIndexAsFragment(5);
-        	updateTitle(5);
+        	updateTitle(5); */
+        	univGiggleStack1.removeAllChildren();
+        	_mentorInstance = new MentorProfile;
+        	_mentorInstance.addEventListener(SaveMentorProfileEvent.SAVEEVENT,goToMentorTestimonial,false,0,true);
+			_mentorInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+        	_mentorInstance.callLater(_mentorInstance.setUserInfo,[__ugUser]);
+        	univGiggleStack1.addChild(_mentorInstance);
         }
         
         private function goToMenteeProfile(event:MenteeProfileEvent):void
         {
-        	univGiggleStack.selectedChild = mentee;
-        	mentee.callLater(mentee.setUserInfo,[__ugUser]);
-        	setIndexAsFragment(5);
-        	updateTitle(5);
+//        	univGiggleStack.selectedChild = mentee;
+//        	mentee.callLater(mentee.setUserInfo,[__ugUser]);
+//        	setIndexAsFragment(5);
+//        	updateTitle(5);
+			univGiggleStack1.removeAllChildren();
+			_menteeInstance = new MenteeProfile;
+			_menteeInstance.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
+			_menteeInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			_menteeInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
+			_menteeInstance.callLater(_menteeInstance.setUserInfo,[__ugUser]);
+			univGiggleStack1.addChild(_menteeInstance);
         }
         
         private function goToMenteeTestimonial(event:SaveMenteeEvent):void
         {
-        	univGiggleStack.selectedChild = menteeAck;
-        	menteeAck.callLater(menteeAck.setMenteeObject,[event._menteeObj]);
+//        	univGiggleStack.selectedChild = menteeAck;
+//        	menteeAck.callLater(menteeAck.setMenteeObject,[event._menteeObj]);
+			univGiggleStack1.removeAllChildren();
+			_menteeAckInstance = new MenteeTestimonial;
+			_menteeAckInstance.callLater(_menteeAckInstance.setMenteeObject,[event._menteeObj]);
+			univGiggleStack1.addChild(_menteeAckInstance);
         }
         
       
         public function goToMentorsList(event:MentorsListEvent):void{
-        	univGiggleStack.selectedChild = mentorsList;
+//        	univGiggleStack.selectedChild = mentorsList;
+        	univGiggleStack1.removeAllChildren();
+        	_mentorListInstance = new MentorList;
+        	univGiggleStack1.addChild(_mentorListInstance);
+        	
         }
         

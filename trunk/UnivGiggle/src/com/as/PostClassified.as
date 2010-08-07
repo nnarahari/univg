@@ -31,6 +31,8 @@ private var listOfClassifiedObjects:ArrayCollection = new ArrayCollection;
 private var _classifiedObj:Classified;
 private var _classifiedObjectsList:ArrayCollection = new ArrayCollection;
 private var _ugUser:UG_User;
+[Bindable]
+private var _screenIndex:int = 0;;
 
 // Interaction implementation
 
@@ -43,9 +45,12 @@ private function applicationInit():void
 {	
 	serviceObject = new ServiceObject;
 	classifiedObj = new Classified();
-	submit.addEventListener(MouseEvent.CLICK,onSubmit,false,0,true);
-	discard.addEventListener(MouseEvent.CLICK,onDiscard,false,0,true);
-	reset.addEventListener(MouseEvent.CLICK,onReset,false,0,true);
+	if(submit != null)
+		submit.addEventListener(MouseEvent.CLICK,onSubmit,false,0,true);
+	if(discard != null)
+		discard.addEventListener(MouseEvent.CLICK,onDiscard,false,0,true);
+	if(reset != null)
+		reset.addEventListener(MouseEvent.CLICK,onReset,false,0,true);
 	search.addEventListener(MouseEvent.CLICK,onSearch,false,0,true);
 	listofclassifiedRmtObj = serviceObject.getRemoteObjectInstance("classifiedManager");
 	listofclassifiedRmtObj.addEventListener(ResultEvent.RESULT,onResultGetListOfClassifiedObj,false,0,true);
@@ -53,6 +58,11 @@ private function applicationInit():void
 	viewClassifies.addEventListener(PostClassifiedEvent.EVENTNAME,invokePostClassified,false,0,true);
 	setValidator();
 	dispatchEvent(new ComponentInitEvent(ComponentInitEvent.EVENT_NAME));
+}
+
+public function set Index(val:int):void
+{
+	_screenIndex = val;
 }
 
 /**

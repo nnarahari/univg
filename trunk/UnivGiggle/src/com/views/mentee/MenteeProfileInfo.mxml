@@ -4,7 +4,7 @@
 <mx:Script source="../../as/mentee/menteeProfileInfo.as"/>
 	<mx:HBox width="100%">
 		<mx:VBox width="25%" height="100%">
-			<mx:Image width="50%" height="50%" source="{_mentee.imagePaths}"/>
+			<mx:Image width="150" height="150" source="{_mentee.imagePaths}"/>
 		</mx:VBox>
 		<mx:Spacer width="10%"/>
 		<mx:Form width="75%">
