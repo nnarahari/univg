@@ -14,26 +14,27 @@
 					<mx:Text text="Country of Citizenship :"/>
 				</mx:GridItem>
 				<mx:GridItem>
-					<mx:ComboBox id="country"  width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{country.text}"/>
+					<mx:ComboBox id="cmbCountry"  width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{cmbCountry.text}"/>
 				</mx:GridItem>
 				<mx:GridItem >
 					<mx:Text text="Current Profession :"/>
 				</mx:GridItem>
 				<mx:GridItem>
-					<mx:ComboBox id="profession"  width="150"  dataProvider="{dp_profession.profession}" labelField="@name"  toolTip="{profession.text}"/>
+					<mx:ComboBox id="cmbProfession"  width="150"  dataProvider="{dp_profession.profession}" labelField="@name"  toolTip="{cmbProfession.text}"/>
 				</mx:GridItem>
 			</mx:GridRow>
     </mx:Grid>		
 	</mx:HBox>
 	</mx:VBox>
 	<mx:VBox>
-		<mx:DataGrid id="dgMentorList" dataProvider="{mentorsList}" resizableColumns="true">
+		<mx:DataGrid id="dgMentorList" dataProvider="{mentorsList}" resizableColumns="true" doubleClickEnabled="true" >
 			<mx:columns>
 				<mx:DataGridColumn dataField="firstName" headerText="Firstname" />
 				<mx:DataGridColumn dataField="lastName" headerText="Lastname"/>
 				<mx:DataGridColumn dataField="citizenship" headerText="Country"/>
 				<mx:DataGridColumn dataField="language" headerText="Language"/>
 				<mx:DataGridColumn dataField="degree" headerText="Degree"/>
+				<mx:DataGridColumn dataField="profession" headerText="Profession"/>
 		</mx:columns>
 	</mx:DataGrid>
 		
