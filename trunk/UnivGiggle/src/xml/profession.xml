@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <professions>
+	<profession name="" />
 	<profession name="Accountant" />
 	<profession name="Actor/Actress" />
 	<profession name="Aerospace Engineer" />
