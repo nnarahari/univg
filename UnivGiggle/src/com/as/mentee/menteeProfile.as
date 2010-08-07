@@ -12,8 +12,6 @@ import com.mappedObjects.ug.model.ResultInfo;
 import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentee.Mentee;
 
-import flash.events.MouseEvent;
-
 import mx.controls.Alert;
 import mx.core.Application;
 import mx.events.ValidationResultEvent;
@@ -37,6 +35,8 @@ private var imageFileByteArray:ByteArray;
 private var validationArray:Array;
 private var __ugUser:UG_User;
 private var isMenteeAvailable:Boolean = false;
+[Bindable]
+private var displayContent:Boolean = false;
 
 /**
  * function invoked once all the components got created & initialized successfully
@@ -56,6 +56,7 @@ private function compInit():void
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	menteeLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
 	btnLookForMentor.addEventListener(MouseEvent.CLICK,onClickLFMentor, false,0,true);
+	but_mentee.addEventListener(MouseEvent.CLICK,onDisplayContent,false,0,true);
 	createImageCaptcha();
 	addListeners();
 	setValidator();
@@ -147,7 +148,7 @@ public function createImageCaptcha():void
  {
  	resultInfoObj = event.result as ResultInfo;
  	if(resultInfoObj.success){
- 		dispatchEvent(new SaveMenteeEvent(SaveMenteeEvent.SAVEEVENT,_mentee));	
+ 		dispatchEvent(new SaveMenteeEvent(SaveMenteeEvent.SAVEEVENT,_mentee,true));	
  	}
  }
  
@@ -242,7 +243,9 @@ private function displayPopUp(event:PopUpEvent):void
 private function onResultGetMentee(event:ResultEvent):void
 {
 	_mentee = event.result as Mentee;
-	if(_mentee.email == null){
+	if(_mentee == null)
+		_mentee = new Mentee;
+	if(_mentee.email == ""){
 		_mentee.firstName = __ugUser.firstName;
 		_mentee.lastName = __ugUser.lastName;
 		_mentee.gender = __ugUser.gender;
@@ -252,8 +255,10 @@ private function onResultGetMentee(event:ResultEvent):void
 			female.selected = false;
 		}
 		isMenteeAvailable = false;
+		but_mentee.label = "Create Mentee Profile";
 	}else{
 		isMenteeAvailable = true;
+		but_mentee.label = "Edit Mentee Profile";
 	}
 }
 
@@ -273,7 +278,7 @@ private function onResultUpdateMentee(event:ResultEvent):void
 {
 	resultInfoObj = event.result as ResultInfo;
  	if(resultInfoObj.success){
- 		dispatchEvent(new SaveMenteeEvent(SaveMenteeEvent.SAVEEVENT,_mentee));	
+ 		dispatchEvent(new SaveMenteeEvent(SaveMenteeEvent.SAVEEVENT,_mentee,false));	
  	}
 }
 
@@ -286,11 +291,32 @@ private function onFaultUpdateMentee(event:FaultEvent):void
 	Alert.show(event.fault.message,"Error");
 }
 
+/**
+ * 
+ * @param event
+ */
 private function onClickLFMentor(event:MouseEvent):void{
 	dispatchEvent(new MentorsListEvent(MentorsListEvent.MENTOR_LIST));
 }
 
+/**
+ * 
+ * @param event
+ */
 private function onLookForMentor(event:MouseEvent):void{
 	//Alert.show("look for mentor clicked...");
 	dispatchEvent(new MentorsListEvent(MentorsListEvent.MENTOR_LIST));
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onDisplayContent(event:MouseEvent):void
+{
+	if((event.target.label as String).indexOf("Create") == 0)
+		saveMenteeProfile.label = "SAVE";
+	else
+		saveMenteeProfile.label = "UPDATE";
+	displayContent = true;
 }

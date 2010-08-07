@@ -38,14 +38,14 @@
 		<mx:GridRow id="heading" width="100%">
 			<mx:GridItem />
 			<mx:GridItem >
-				<mx:Label text="Create Mentee Profile" fontSize="15" fontWeight="bold"/>
+				<mx:Button id="but_mentee" label="Create Mentee Profile" fontSize="15" fontWeight="bold"/>
 			</mx:GridItem>
 			<mx:GridItem>
 				<mx:Button id="btnLookForMentor" label="Look for Mentors" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow/>
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="First Name :"/>
 			</mx:GridItem>
@@ -60,7 +60,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Email Address :"/>
 			</mx:GridItem>
@@ -77,7 +77,7 @@
 			
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Age :"/>
 			</mx:GridItem>
@@ -92,7 +92,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Language :"/>
 			</mx:GridItem>
@@ -107,7 +107,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Highest Degree Obtained :"/>
 			</mx:GridItem>
@@ -122,7 +122,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%"  height="100%">
+		<mx:GridRow  width="100%"  height="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Brief description about yourself and why you want to serve as a mentee :" width="90%"/>
 			</mx:GridItem>
@@ -140,7 +140,7 @@
 			</mx:GridItem>
 		</mx:GridRow>
 		
-		<mx:GridRow  width="100%" height="100%">
+		<mx:GridRow  width="100%" height="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Write New Testimonial for UnivG :" />
 			</mx:GridItem>
@@ -149,7 +149,7 @@
 			</mx:GridItem>
 			
 		</mx:GridRow>
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}"> 
 			<mx:GridItem >
 				<mx:CheckBox id="chk" label=""/>
 				<mx:Text text="By clicking on checkbox you are agreeing to the"/>
@@ -161,7 +161,7 @@
 				<mx:Text text="of UnivGiggle.com"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow  width="100%">
+		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Enter Verification Code :" />
 			</mx:GridItem>
@@ -173,7 +173,7 @@
 		<mx:GridRow height="10%"/>
 		<mx:GridRow  width="100%">
 			<mx:GridItem />
-			<mx:GridItem>
+			<mx:GridItem visible="{displayContent}">
 				<mx:Button id="saveMenteeProfile" enabled="{chk.selected}" label="SAVE" styleName="CommonBtn"/>
 				<mx:Button id="cancelMenteeProfile" label="CANCEL" styleName="CommonBtn"/>
 			</mx:GridItem>

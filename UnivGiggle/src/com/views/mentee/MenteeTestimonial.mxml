@@ -12,9 +12,10 @@
 </mx:Script>
 <mx:HDividedBox width="100%" height="100%">
 <mentee:MenteeTestimonialLinks width="10%" height="100%" borderStyle="solid"/>
-	<mx:VBox width="100%" height="100%" borderStyle="solid">
+	<mx:VBox width="100%" height="100%" borderStyle="solid" paddingLeft="10" paddingBottom="10" paddingRight="10" paddingTop="10">
 		<mx:HBox width="100%" >
-			<mx:Text text="Your Mentee Profile has been saved.Below is a snapshot of your profile.Please use the button on the right to look for Mentors" width="40%"/>
+			<mx:Text text="Your Mentee Profile has been saved.Below is a snapshot of your profile.Please use the button on the right to look for Mentors" width="100%"
+				fontSize="15" fontWeight="bold"/>
 			<mx:Button label="Look for Mentors" styleName="CommonBtn"/>
 		</mx:HBox>
 		<mx:Spacer height="20%"/>
