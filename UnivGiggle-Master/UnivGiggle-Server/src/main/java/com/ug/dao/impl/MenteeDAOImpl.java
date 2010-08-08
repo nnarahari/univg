@@ -3,6 +3,7 @@
  */
 package com.ug.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,6 +18,7 @@ import com.ug.dao.MenteeeDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
+import com.ug.model.Testimonial;
 
 /**
  * @author srini
@@ -99,14 +101,19 @@ public class MenteeDAOImpl implements MenteeeDAO {
 		logger.info("getMentee() started..");
 		logger.info("email ==>" + email);
 		Mentee mentee = null;
+		Mentee newMentee = new Mentee();
 		try{
 			Query query= entityManager.createQuery("Select Object(m) from Mentee m where m.email = :email");
 			query.setParameter("email", email);
 			mentee = (Mentee) query.getSingleResult();
+			newMentee = mentee;
+			//List<Testimonial> testimonialList = new ArrayList<Testimonial>();
+			//testimonialList.addAll(mentee.getTestmonialList());
+			newMentee.setTestmonialList(null);
 		}catch(Exception ex){
 			logger.error("Error while querying Mentee's details.",ex);
 		}
-		return mentee;
+		return newMentee;
 	}
 	
 	@Override
