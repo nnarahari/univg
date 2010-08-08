@@ -3,6 +3,7 @@
  */
 package com.ug.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.ug.model.Mentee;
@@ -93,5 +94,6 @@ public interface MenteeManager {
 	 */
 	public ResultInfo removeTestimonial(String menteeEmail, Testimonial testimonial) throws Exception;
 	
-	
+
+	public ResultInfo addRequestToMentor(String mentorEmail, String menteeEmail, Date requestTime) throws Exception;
 }

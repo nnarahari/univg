@@ -127,8 +127,7 @@ public class MentorDAOImpl implements MentorDAO {
 			entityManager.remove(mentorTobeDeleted);
 			isMenteeRemovalSuccess = true;
 		} catch (Exception e) {
-			logger.info("Error while deleting", e);
-			e.printStackTrace();
+			logger.error("Error while deleting", e);
 			throw e;
 		}
 		return isMenteeRemovalSuccess;

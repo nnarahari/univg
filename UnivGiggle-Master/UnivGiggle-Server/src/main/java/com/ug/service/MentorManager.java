@@ -3,6 +3,7 @@
  */
 package com.ug.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.ug.model.Mentee;
@@ -123,7 +124,10 @@ public interface MentorManager {
 	public List<Mentor> getAllMentors() throws Exception;
 	
 	
-	//public List<Mentor> getMentorsbyProfession(String profession) throws Exception;
+	
+	public List<Mentee> getMenteesRequest(String mentorEmail) throws Exception;
+	
+	
 	
 	
 	

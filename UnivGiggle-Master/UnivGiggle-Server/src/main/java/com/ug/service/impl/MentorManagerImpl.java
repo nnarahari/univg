@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.ug.dao.MentorDAO;
+import com.ug.dao.MentorsRequestDAO;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
 import com.ug.model.ResultInfo;
@@ -39,6 +40,7 @@ public class MentorManagerImpl implements MentorManager {
 
 	@Autowired
 	private MentorDAO mentorDAO;
+	private MentorsRequestDAO mentorsRequestDAO;
 	private VelocityEngine velocityEngine;
 	private JavaMailSender mailSender;
 	
@@ -160,6 +162,12 @@ public class MentorManagerImpl implements MentorManager {
 			resultInfo = UnivGiggleUtil.createResultInfo(false, "Adding Mentee failed", "103", "Adding Mentee failed.", null);
 		return resultInfo;
 	}
+	
+	@Override
+	public List<Mentee> getMenteesRequest(String mentorEmail) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	private void sendConfirmationMail(final Mentor mentor){
 		logger.info("inside sendConfirmationMail()");
@@ -270,6 +278,15 @@ public class MentorManagerImpl implements MentorManager {
 	public List<Mentor> getMentors(String country, String profession)throws Exception {
 		logger.info("getMentors() started...");
 		return mentorDAO.getMentors(country,profession);
+	}
+
+	
+
+	/**
+	 * @param mentorsRequestDAO the mentorsRequestDAO to set
+	 */
+	public void setMentorsRequestDAO(MentorsRequestDAO mentorsRequestDAO) {
+		this.mentorsRequestDAO = mentorsRequestDAO;
 	}
 
 	
