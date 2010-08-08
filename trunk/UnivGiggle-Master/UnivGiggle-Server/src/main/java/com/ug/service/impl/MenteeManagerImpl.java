@@ -4,6 +4,7 @@
 package com.ug.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,9 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.ug.dao.MenteeeDAO;
+import com.ug.dao.MentorsRequestDAO;
 import com.ug.model.Mentee;
+import com.ug.model.MentorsRequest;
 import com.ug.model.ResultInfo;
 import com.ug.model.Testimonial;
 import com.ug.service.MenteeManager;
@@ -33,6 +36,7 @@ public class MenteeManagerImpl implements MenteeManager {
 
 	@Autowired
 	private MenteeeDAO menteeDAO;
+	private MentorsRequestDAO mentorsRequestDAO;
 	private VelocityEngine velocityEngine;
 	private JavaMailSender mailSender;
 	
@@ -146,6 +150,20 @@ public class MenteeManagerImpl implements MenteeManager {
 			throw e;
 		}
 		return availableMentees;
+	}
+	
+	
+	@Override
+	public ResultInfo addRequestToMentor(String mentorEmail, String menteeEmail, Date requestTime) throws Exception {
+		logger.info("addRequestToMentor() started...");
+		ResultInfo resultInfo = null;
+		MentorsRequest mentorsRequest = new MentorsRequest(mentorEmail, menteeEmail, requestTime);
+		boolean isMentorRequestAdded = mentorsRequestDAO.addMentorsRequest(mentorsRequest);
+		if(isMentorRequestAdded)
+			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentee's request to mentor added successfully", "0", "Success", null);
+		else
+			resultInfo = UnivGiggleUtil.createResultInfo(false, "Mentee's request to mentor not added successfully", "108", "Fail", null);
+		return null;
 	}
 	
 
@@ -267,6 +285,14 @@ public class MenteeManagerImpl implements MenteeManager {
 	public ResultInfo removeTestimonial(String menteeEmail,	Testimonial testimonial) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	/**
+	 * @param mentorsRequestDAO the mentorsRequestDAO to set
+	 */
+	public void setMentorsRequestDAO(MentorsRequestDAO mentorsRequestDAO) {
+		this.mentorsRequestDAO = mentorsRequestDAO;
 	}
 
 }
