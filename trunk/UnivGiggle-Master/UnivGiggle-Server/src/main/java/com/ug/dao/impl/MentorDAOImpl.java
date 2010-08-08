@@ -175,6 +175,7 @@ public class MentorDAOImpl implements MentorDAO {
 			newMentorRef.setTestmonialList(testimonialList);
 		} catch (Exception e) {
 			logger.error("Error while reteriving Mentor", e);
+			return null;
 		}
 		return newMentorRef;
 	}

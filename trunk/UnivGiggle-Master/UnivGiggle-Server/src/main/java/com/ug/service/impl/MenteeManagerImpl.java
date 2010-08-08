@@ -101,9 +101,14 @@ public class MenteeManagerImpl implements MenteeManager {
 	@Override
 	public Mentee getMentee(String email) {
 		logger.info("getMentee() started..email ==>"+ email);
-		Mentee mentee = menteeDAO.getMentee(email);
-		logger.info ("Mentee Details ==>" + mentee);
-		return mentee;
+		try{
+			Mentee mentee = menteeDAO.getMentee(email);
+			logger.info ("Mentee Details ==>" + mentee);
+			return mentee;
+		}catch (Exception e) {
+			logger.error("Error while getMentee() ",e);
+			return null;
+		}
 	}
 
 	/* (non-Javadoc)

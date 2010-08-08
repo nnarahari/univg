@@ -58,8 +58,13 @@ public class MentorManagerImpl implements MentorManager {
 	@Override 
 	public Mentor getMentor(String email) {
 		logger.info("getMentor() started..");
-		Mentor mentor = mentorDAO.getMentor(email);
-		return mentor;
+		try{
+			Mentor mentor = mentorDAO.getMentor(email);
+			return mentor;
+		}catch (Exception e) {
+			logger.error("Error while getMentor() ",e);
+			return null;
+		}
 	}
 
 	/* (non-Javadoc)

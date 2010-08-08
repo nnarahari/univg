@@ -113,8 +113,13 @@ public class UserManagerImpl implements UserManager {
 		logger.info("inside getUser()...");
 		logger.info("emailId ==> "+ emailId);
 		UG_User user = null;
-		user = ugUserDAO.getUser(emailId);
-		return user;
+		try{
+			user = ugUserDAO.getUser(emailId);
+			return user;
+		}catch (Exception e) {
+			logger.error("Error while getUser()",e);
+			return null;
+		}
 	}
 	
 	
