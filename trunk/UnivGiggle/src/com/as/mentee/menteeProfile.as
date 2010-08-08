@@ -255,9 +255,11 @@ private function onResultGetMentee(event:ResultEvent):void
 			female.selected = false;
 		}
 		isMenteeAvailable = false;
+		btnLookForMentor.visible = false;
 		but_mentee.label = "Create Mentee Profile";
 	}else{
 		isMenteeAvailable = true;
+		btnLookForMentor.visible = true;
 		but_mentee.label = "Edit Mentee Profile";
 	}
 }

@@ -33,5 +33,5 @@
 			</mx:FormItem>
 		</mx:Form>
 	</mx:HBox>
-	<mx:Button id="request" label="Request to be a Mentee" enabled="{_mentor.activated}" styleName="CommonBtn"/>	
+	<mx:Button id="request" label="Request to be a Mentee"  styleName="CommonBtn"/>	
 </mx:VBox>

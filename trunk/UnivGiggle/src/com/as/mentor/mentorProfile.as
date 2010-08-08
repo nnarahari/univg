@@ -274,10 +274,13 @@ private function onFaultUpdateMentor(event:FaultEvent):void
  */
 private function onDisplayContent(event:MouseEvent):void
 {
-	if((event.target.label as String).indexOf("Create") == 0)
+	if((event.target.label as String).indexOf("Create") == 0){
 		saveMentorProfile.label = "SAVE";
-	else
+	}else{
 		saveMentorProfile.label = "UPDATE";
+		country.text = _mentor.citizenship;
+		profession.text = _mentor.profession;
+	}
 	displayContent = true;
 }
 

@@ -7,6 +7,7 @@
 		import com.events.CorporateLenderEvent;
 		import com.events.FaceBookLoginEvent;
 		import com.events.GenaratePasswordEvent;
+		import com.events.HomePageEvent;
 		import com.events.LoginEvt;
 		import com.events.P2PLenderClassifiedEvent;
 		import com.events.SignUpEvent;
@@ -149,7 +150,8 @@
 		 * */
 		private function faultLoginHandler(event:FaultEvent):void
 		{
-			Alert.show(event.fault.message,"Error");
+//			Alert.show(event.fault.message,"Error");
+			Alert.show("Please enter username/password","Information");
 		}
 		
 		/**
@@ -253,7 +255,13 @@
 		 * */
 		private function onLogout(event:MouseEvent):void
 		{
-			Alert.show("Is Logout called ?");
+//			Alert.show("Is Logout called ?");
+			userName.text = "";
+			passWord.text = "";
+			loginBlock.visible = true;
+			loginInfo.visible = false;
+			parentDocument.dispatchEvent(new HomePageEvent(HomePageEvent.HOME));
+			
 		}
 		
 		private function subMenuItemClickHandler(event:ItemClickEvent):void
