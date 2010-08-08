@@ -36,12 +36,12 @@
     <mentor:MentorTestimonialLinks id="mentorLinks" width="10%" height="100%"/>
 	<mx:Grid id="mentorProfile" width="90%" height="100%" borderStyle="solid">
 		<mx:GridRow id="heading" width="100%">
-			<mx:GridItem id="mentee_no">
+			<mx:GridItem id="mentee_no" visible="{isMenteeAvailable}">
 				<mx:Text text="Number of Mentees :"/>
 				<mx:Text id="menteeCount" />
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Button id="but_mentor" label="Create Mentor Profile" fontSize="15" fontWeight="bold"/>
+				<mx:Button id="but_mentor" label="{but_label}" fontSize="15" fontWeight="bold" enabled="{isEnable}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow/>

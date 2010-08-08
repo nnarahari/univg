@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingBottom="10" paddingTop="10" 
-	xmlns:mentee="com.views.mentee.*" paddingLeft="10" paddingRight="10">
+	xmlns:mentee="com.views.mentee.*" paddingLeft="10" paddingRight="10" creationComplete="init();">
 <mx:Script>
 	<![CDATA[
+		import com.events.mentor.MentorsListEvent;
 		import com.mappedObjects.ug.model.mentee.Mentee;
+		
+		private function init():void
+		{
+			btnLookForMentor.addEventListener(MouseEvent.CLICK,onClickLFMentor, false,0,true);
+		}
 		public function setMenteeObject(menteeObj:Mentee):void
 		{
 			menteeProfile.menteeObject = menteeObj;
+			
+		}
+		
+		/**
+		 * 
+		 * @param event
+		 */
+		private function onClickLFMentor(event:MouseEvent):void{
+			dispatchEvent(new MentorsListEvent(MentorsListEvent.MENTOR_LIST));
 		}
 	]]>
 </mx:Script>
@@ -16,7 +31,7 @@
 		<mx:HBox width="100%" >
 			<mx:Text text="Your Mentee Profile has been saved.Below is a snapshot of your profile.Please use the button on the right to look for Mentors" width="100%"
 				fontSize="15" fontWeight="bold"/>
-			<mx:Button id="mentor_But" label="Look for Mentors" styleName="CommonBtn"/>
+			<mx:Button id="btnLookForMentor" label="Look for Mentors" styleName="CommonBtn"/>
 		</mx:HBox>
 		<mx:Spacer height="20%"/>
 		<mentee:MenteeProfileInfo id="menteeProfile"/>
