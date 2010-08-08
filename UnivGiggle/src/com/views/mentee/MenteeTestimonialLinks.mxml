@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" width="100%" height="100%" creationComplete="compInit();">
 <mx:Script>
 	<![CDATA[
+		import mx.core.Application;
 		import mx.controls.LinkButton;
 		import mx.collections.ArrayCollection;
 		import mx.rpc.remoting.RemoteObject;
@@ -27,7 +28,7 @@
 			menteeRemoteObj = serviceObject.getRemoteObjectInstance("menteeManager");
 			menteeRemoteObj.getAllTestimonial.addEventListener(ResultEvent.RESULT,onResultGetAllTestimonial,false,0,true);
 			menteeRemoteObj.getAllTestimonial.addEventListener(FaultEvent.FAULT,onFaultGetAllTestimonial,false,0,true);
-			menteeRemoteObj.getAllTestimonial("satya.teeda@gmail.com");
+			menteeRemoteObj.getAllTestimonial(Application.application.__ugUser.emailId);
 		}
 		
 		private function onResultGetAllTestimonial(event:ResultEvent):void

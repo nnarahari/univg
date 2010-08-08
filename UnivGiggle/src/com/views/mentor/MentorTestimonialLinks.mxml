@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" width="100%" height="100%" creationComplete="compInit();">
 <mx:Script>
 	<![CDATA[
+		import mx.core.Application;
 		import mx.controls.Alert;
 		import com.mappedObjects.ug.model.mentor.Testimonial;
 		import mx.collections.ArrayCollection;
@@ -27,7 +28,7 @@
 			mentorRemoteObj = serviceObject.getRemoteObjectInstance("mentorManager");
 			mentorRemoteObj.getAllTestimonial.addEventListener(ResultEvent.RESULT,onResultGetAllTestimonial,false,0,true);
 			mentorRemoteObj.getAllTestimonial.addEventListener(FaultEvent.FAULT,onFaultGetAllTestimonial,false,0,true);
-			mentorRemoteObj.getAllTestimonial("satya.teeda@gmail.com");
+			mentorRemoteObj.getAllTestimonial(Application.application.__ugUser.emailId);
 		}
 		
 		private function onResultGetAllTestimonial(event:ResultEvent):void
