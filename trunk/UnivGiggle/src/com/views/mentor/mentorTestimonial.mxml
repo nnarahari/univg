@@ -45,15 +45,15 @@
 			mentorRmtObject.detachMentee.addEventListener(ResultEvent.RESULT,onResultDetachMentee,false,0,true);
 			mentorRmtObject.detachMentee.addEventListener(FaultEvent.FAULT,onFaultDetachMentee,false,0,true);
 			
-			menteeRemoteObj.getAvailableMentees.addEventListener(ResultEvent.RESULT,onResultGetAvaiableMentee,false,0,true);
-			menteeRemoteObj.getAvailableMentees.addEventListener(FaultEvent.FAULT,onFaultGetAvaiableMentee,false,0,true);
+			mentorRmtObject.getMenteesRequest.addEventListener(ResultEvent.RESULT,onResultGetAvaiableMentee,false,0,true);
+			mentorRmtObject.getMenteesRequest.addEventListener(FaultEvent.FAULT,onFaultGetAvaiableMentee,false,0,true);
 			mentorRmtObject.addTestimonial.addEventListener(ResultEvent.RESULT,onResultAddTestimonial,false,0,true);
 			mentorRmtObject.addTestimonial.addEventListener(FaultEvent.FAULT,onFaultAddTestimonial,false,0,true);
 			
 			mentorRmtObject.removeTestimonial.addEventListener(ResultEvent.RESULT,onResultRemoveTestimonial,false,0,true);
 			mentorRmtObject.removeTestimonial.addEventListener(FaultEvent.FAULT,onFaultRemoveTestimonial,false,0,true);
 			//btn_send.addEventListener(MouseEvent.CLICK,onRequestSend,false,0,true);
-			menteeRemoteObj.getAvailableMentees();
+			mentorRmtObject.getMenteesRequest(mentorObject.email);
 		}
 		
 		private function onResultAddMentee(event:ResultEvent):void
@@ -115,6 +115,7 @@
 		private function onResultGetAvaiableMentee(event:ResultEvent):void
 		{
 			menteeList = event.result as ArrayCollection;
+			if(menteeList != null)
 			mentorProfile.menteeCount = menteeList.length;
 			for each(var mentee:Mentee in menteeList){
 				menteeName = new LinkButton;

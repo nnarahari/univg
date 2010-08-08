@@ -417,6 +417,7 @@
 //        	univGiggleStack.selectedChild = mentorsList;
         	univGiggleStack1.removeAllChildren();
         	_mentorListInstance = new MentorList;
+        	_mentorListInstance.userProfile = __ugUser;
         	univGiggleStack1.addChild(_mentorListInstance);
         	
         }

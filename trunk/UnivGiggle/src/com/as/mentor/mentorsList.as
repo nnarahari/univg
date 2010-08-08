@@ -1,6 +1,7 @@
 // ActionScript file
 import com.events.mentor.PopUpEvent;
 import com.interactiveObject.ServiceObject;
+import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentor.Mentor;
 import com.views.mentor.MentorProfileInfo;
 
@@ -20,6 +21,7 @@ private var serviceObject:ServiceObject;
 private var mentorsList:ArrayCollection = null;
 private var mentorProInfo:MentorProfileInfo;
 private var tileWindow:TitleWindow;
+private var _ugUser:UG_User;
 
 /**
  * function invoked once all the components got created
@@ -120,6 +122,7 @@ private function showMentorProfileInfo(mentorObj:Mentor):void
 {
 	mentorProInfo = new MentorProfileInfo;
 	mentorProInfo.setMentorObject(mentorObj);
+	mentorProInfo.userProfile = _ugUser;
 	tileWindow = new TitleWindow;
 	tileWindow.title = "Mentor Profile Info";
 	tileWindow.percentHeight = 100;
@@ -158,4 +161,13 @@ private function onClose(event:CloseEvent):void
 	mentorProInfo = null;
 	tileWindow = null;
 	
+}
+
+/**
+ * function invoked for setting the user profile
+ * @param val
+ */
+public function set userProfile(val:UG_User):void
+{
+	_ugUser = val;
 }
