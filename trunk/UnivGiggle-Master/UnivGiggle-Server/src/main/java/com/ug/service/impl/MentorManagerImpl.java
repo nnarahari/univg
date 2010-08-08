@@ -20,10 +20,12 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
+import com.ug.dao.MenteeeDAO;
 import com.ug.dao.MentorDAO;
 import com.ug.dao.MentorsRequestDAO;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
+import com.ug.model.MentorsRequest;
 import com.ug.model.ResultInfo;
 import com.ug.model.Testimonial;
 import com.ug.service.MentorManager;
@@ -41,6 +43,7 @@ public class MentorManagerImpl implements MentorManager {
 	@Autowired
 	private MentorDAO mentorDAO;
 	private MentorsRequestDAO mentorsRequestDAO;
+	private MenteeeDAO menteeDAO;
 	private VelocityEngine velocityEngine;
 	private JavaMailSender mailSender;
 	
@@ -165,8 +168,19 @@ public class MentorManagerImpl implements MentorManager {
 	
 	@Override
 	public List<Mentee> getMenteesRequest(String mentorEmail) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("getMenteesRequest() started...mentorEmail ==>"+ mentorEmail);
+		List<MentorsRequest> mentorReqList = mentorsRequestDAO.getRequestsForMentor(mentorEmail);
+		List<Mentee> menteesList = new ArrayList<Mentee>();
+		if(null != mentorReqList){
+			logger.info("MentorsReq size ==>" +mentorReqList.size());
+			for (Iterator<MentorsRequest> iterator = mentorReqList.iterator(); iterator.hasNext();) {
+				MentorsRequest mentorsRequest = iterator.next();
+				Mentee mentee = menteeDAO.getMentee(mentorsRequest.getMenteeEmail());
+				if(mentee != null)
+					menteesList.add(mentee);
+			}
+		}
+		return menteesList;
 	}
 
 	private void sendConfirmationMail(final Mentor mentor){
@@ -287,6 +301,13 @@ public class MentorManagerImpl implements MentorManager {
 	 */
 	public void setMentorsRequestDAO(MentorsRequestDAO mentorsRequestDAO) {
 		this.mentorsRequestDAO = mentorsRequestDAO;
+	}
+
+	/**
+	 * @param menteeDAO the menteeDAO to set
+	 */
+	public void setMenteeDAO(MenteeeDAO menteeDAO) {
+		this.menteeDAO = menteeDAO;
 	}
 
 	

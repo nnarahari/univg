@@ -74,7 +74,7 @@ public class MentorManagerImplTest {
 	 */
 	@Test
 	public void testAddMentor() throws Exception {
-		Mentor mentor = createMentor("Mentor", "1", "mentor@ug.com");
+		Mentor mentor = createMentor("Mohan", "3", "mentor3@ug.com");
 		ResultInfo resultInfo = mentorManager.addMentor(mentor, null, null);
 		assertTrue(resultInfo.isSuccess());
 	}
@@ -211,7 +211,16 @@ public class MentorManagerImplTest {
 		}
 	}
 	
-	
+	@Test
+	public void testGetMenteesRequest(){
+		try {
+			List<Mentee> menteeList = mentorManager.getMenteesRequest("mentor@ug.com");
+			System.out.println(menteeList.size());
+			assertNotNull(menteeList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	private Mentor createMentor(String fname,String lname, String email){
 		Mentor mentor = new Mentor(fname, lname, email);
@@ -220,7 +229,7 @@ public class MentorManagerImplTest {
 		mentor.setDegree("MBA");
 		mentor.setGender("Male");
 		mentor.setLanguage("English");
-		mentor.setProfession("Software engr.");
+		mentor.setProfession("Architect");
 		return mentor;
 	}
 	

@@ -92,6 +92,8 @@
 	<bean id="mentorDAO" class="com.ug.dao.impl.MentorDAOImpl" autowire="byName" />
 	
 	<bean id="menteeDAO" class="com.ug.dao.impl.MenteeDAOImpl" autowire="byName" />
+	
+	<bean id="mentorsRequestDAO" class="com.ug.dao.impl.MentorsRequestDAOImpl" autowire="byName" />
 
 
 

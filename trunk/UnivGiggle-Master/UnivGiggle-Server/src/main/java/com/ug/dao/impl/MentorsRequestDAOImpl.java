@@ -3,11 +3,14 @@
  */
 package com.ug.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ug.dao.MentorsRequestDAO;
 import com.ug.model.MentorsRequest;
@@ -32,13 +35,16 @@ public class MentorsRequestDAOImpl implements MentorsRequestDAO {
 	/* (non-Javadoc)
 	 * @see com.ug.dao.MentorsRequestDAO#addMentorsRequest(com.ug.model.MentorsRequest)
 	 */
-	@Override
+	@Override @Transactional
 	public boolean addMentorsRequest(MentorsRequest mentorsRequest) {
 		logger.info("addMentorsRequest() started....");
+		logger.info(mentorsRequest.getMenteeEmail() + "," + mentorsRequest.getMentorEmail());
 		MentorsRequest newMentorsRequest = entityManager.merge(mentorsRequest);
-		logger.info("newMentorsRequest ==>"+ newMentorsRequest);
-		if(newMentorsRequest != null)
+		
+		if(newMentorsRequest != null){
+			logger.info("newMentorsRequest ==>"+ newMentorsRequest.getId());
 			return true;
+		}
 		else
 			return false;
 	}
@@ -63,6 +69,18 @@ public class MentorsRequestDAOImpl implements MentorsRequestDAO {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public List<MentorsRequest> getRequestsForMentor(String mentorEmail) throws Exception {
+		logger.info("getRequestsForMentor() started...mentorEmail " + mentorEmail);
+		String qry = "Select Object(m) from MentorsRequest m where m.mentorEmail = :mentorEmail";
+		Query query = entityManager.createQuery(qry);
+		query.setParameter("mentorEmail", mentorEmail);
+		
+		List<MentorsRequest> mentorReqList = query.getResultList();
+		
+		return mentorReqList;
 	}
 
 }
