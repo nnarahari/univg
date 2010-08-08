@@ -163,7 +163,7 @@ public class MenteeManagerImpl implements MenteeManager {
 			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentee's request to mentor added successfully", "0", "Success", null);
 		else
 			resultInfo = UnivGiggleUtil.createResultInfo(false, "Mentee's request to mentor not added successfully", "108", "Fail", null);
-		return null;
+		return resultInfo;
 	}
 	
 
