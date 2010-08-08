@@ -3,7 +3,6 @@
 
 import com.components.Captcha;
 import com.events.HomePageEvent;
-import com.events.mentor.MentorsListEvent;
 import com.events.mentor.PopUpEvent;
 import com.events.mentor.SaveMentorProfileEvent;
 import com.interactiveObject.ServiceObject;
@@ -11,10 +10,7 @@ import com.mappedObjects.ug.model.ResultInfo;
 import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentor.Mentor;
 
-import flash.events.MouseEvent;
-
 import mx.controls.Alert;
-import mx.core.Application;
 import mx.events.ValidationResultEvent;
 import mx.managers.PopUpManager;
 import mx.rpc.events.FaultEvent;
@@ -38,6 +34,12 @@ private var __ugUser:UG_User;
 private var isMentorAvailable:Boolean = false;
 [Bindable]
 private var displayContent:Boolean = false;
+[Bindable]
+private var isMenteeAvailable:Boolean = false;
+[Bindable]
+private var but_label:String ;
+[Bindable]
+private var isEnable:Boolean = false;
 
 /**
  * function invoked for displaying the image which contains the verification code.
@@ -84,8 +86,8 @@ private function compInit():void
 {
 	serviceObject = new ServiceObject;
 	mentorRemoteObj = serviceObject.getRemoteObjectInstance("mentorManager");
-	mentorRemoteObj.getMentor.addEventListener(ResultEvent.RESULT,onResultGetMentor,false,0,true);
-	mentorRemoteObj.getMentor.addEventListener(FaultEvent.FAULT,onFaultGetMentor,false,0,true);
+	/* mentorRemoteObj.getMentor.addEventListener(ResultEvent.RESULT,onResultGetMentor,false,0,true);
+	mentorRemoteObj.getMentor.addEventListener(FaultEvent.FAULT,onFaultGetMentor,false,0,true); */
 	mentorRemoteObj.addMentor.addEventListener(ResultEvent.RESULT,onResultAddMentorProfile,false,0,true);
 	mentorRemoteObj.addMentor.addEventListener(FaultEvent.FAULT,onFaultAddMentorProfile,false,0,true);
 	mentorRemoteObj.updateMentor.addEventListener(ResultEvent.RESULT,onResultUpdateMentor,false,0,true);
@@ -98,7 +100,9 @@ private function compInit():void
 	but_mentor.addEventListener(MouseEvent.CLICK,onDisplayContent,false,0,true);
 	createImageCaptcha();
 	setValidator();
-	mentorRemoteObj.getMentor(Application.application.__ugUser.emailId);
+	country.text = _mentor.citizenship;
+	profession.text = _mentor.profession;
+//	mentorRemoteObj.getMentor(Application.application.__ugUser.emailId);
 }
 
 
@@ -282,6 +286,31 @@ private function onDisplayContent(event:MouseEvent):void
 		profession.text = _mentor.profession;
 	}
 	displayContent = true;
+}
+
+public function set mentorObject(val:Mentor):void
+{
+	_mentor = val;
+	
+}
+
+public function set menteeCountVisible(val:Boolean):void
+{
+	isMenteeAvailable = val;
+}
+
+public function set labelField(val:String):void
+{
+	if(val.indexOf("Create") == 0){
+		but_label = val;
+		isEnable= true;
+		displayContent = false;
+	}else{
+		but_label = val;
+		isEnable= false;
+		displayContent = true;
+	}
+	
 }
 
         

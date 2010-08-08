@@ -46,16 +46,16 @@
         	<menuitem label="CORPORATE LENDERS" data="top"/>
         	<menuitem label="|" data="top"/>
         	<menuitem label="MENTOR PROGRAM" data="top">
-	        	<menuitem label="Mentor" type="radio"
+	        	<menuitem label="Mentor" 
 	                        groupName="one" data="2A"/>
-	            <menuitem label="Mentee" type="radio"
+	            <menuitem label="Mentee" 
 	                        groupName="one" data="2B"/>
 	        </menuitem>
         	<menuitem label="|" data="top"/>
         	<menuitem label="UNIVERSITY CLASSIFIEDS" data="top">
-        		<menuitem label="Post Classified" type="radio"
+        		<menuitem label="Post Classified"
                         groupName="one" data="1A"/>
-                <menuitem label="View Classified" type="radio"
+                <menuitem label="View Classified"
                         groupName="one" data="1B"/>
         	</menuitem>
         	<menuitem label="|" data="top"/>
@@ -260,7 +260,7 @@
 			passWord.text = "";
 			loginBlock.visible = true;
 			loginInfo.visible = false;
-			parentDocument.dispatchEvent(new HomePageEvent(HomePageEvent.HOME));
+			parentDocument.dispatchEvent(new HomePageEvent(HomePageEvent.HOME,false));
 			
 		}
 		

@@ -212,7 +212,7 @@
 		<mx:Text id="ackMsg" width="100%" fontSize="15"  fontWeight="bold"/>
 		<mx:Spacer height="20%"/>
 		<mx:HBox width="100%">
-			<mentor:MentorProfileInfo id="mentorProfile" width="50%"/>
+			<mentor:MentorProfileInfo id="mentorProfile" width="50%" mentorRequestBut="false"/>
 			<mx:VBox width="50%" horizontalAlign="left">
 				<mx:Text text="Outstanding Mentee Requests.Take Action"/>
 				<mx:VBox id="menteeDisplayList"/>

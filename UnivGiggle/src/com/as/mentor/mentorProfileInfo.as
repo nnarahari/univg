@@ -7,6 +7,7 @@ import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.mentor.Mentor;
 
 import mx.controls.Alert;
+import mx.events.CloseEvent;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
@@ -19,6 +20,8 @@ private var _userProfileObj:UG_User;
 private var resultInfoObj:ResultInfo;
 private var serviceObject:ServiceObject;
 private var currentDate:Date;
+[Bindable]
+private var isMentorRequestEnable:Boolean = true;
 /**
  * function invoked once all the components got created
  * @return : void
@@ -40,9 +43,10 @@ private function compInit():void{
 private function onResultAddRequestToMentor(event:ResultEvent):void
 {
 	resultInfoObj = event.result as ResultInfo;
-	if(resultInfoObj.success)
+	if(resultInfoObj.success){
+		dispatchEvent(new CloseEvent(CloseEvent.CLOSE));
 		Alert.show("Request Send to Mentor","Information");
-	else
+	}else
 		Alert.show("Error while Sending request to Mentor","Error");
 }
 
@@ -76,6 +80,11 @@ public function set userProfile(userObj:UG_User):void
 public function set menteeCount(count:int):void
 {
 	_noOfMentees = count;
+}
+
+public function set mentorRequestBut(val:Boolean):void
+{
+	isMentorRequestEnable = val;
 }
 
 /**

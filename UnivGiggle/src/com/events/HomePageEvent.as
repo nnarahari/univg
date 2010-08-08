@@ -5,9 +5,11 @@ package com.events
 	public class HomePageEvent extends Event
 	{
 		public static var HOME:String = "home";
-		public function HomePageEvent(type:String)
+		public var _isLoggedOut:Boolean = true;
+		public function HomePageEvent(type:String,val:Boolean = true)
 		{
 			super(type);
+			_isLoggedOut = val;
 		}
 		
 		override public function clone():Event
