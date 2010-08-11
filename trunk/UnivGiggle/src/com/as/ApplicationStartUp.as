@@ -1,5 +1,6 @@
 // ActionScript file
 import com.interactiveObject.ServiceObject;
+import com.mappedObjects.ug.model.mentee.Mentee;
 import com.mappedObjects.ug.model.mentor.Mentor;
 import com.views.AboutPage;
 import com.views.ConfirmClassified;
@@ -16,6 +17,7 @@ import com.views.SignupPage;
 import com.views.StudentClassified;
 import com.views.WelcomeNote;
 import com.views.mentee.MenteeProfile;
+import com.views.mentee.MenteeProfileDetails;
 import com.views.mentee.MenteeTestimonial;
 import com.views.mentor.MentorList;
 import com.views.mentor.MentorProfile;
@@ -51,10 +53,13 @@ private var _mentorProfileDet:MentorProfileDetails;
 private var mentorRemoteObj:RemoteObject;
 private var _mentor:Mentor;
 private var serviceObject:ServiceObject;
+private var menteeRemoteObj:RemoteObject;
+private var _mentee:Mentee;
+private var _menteeProDetails:MenteeProfileDetails;
 
 private function getMentorDetails():void
 {
-	serviceObject = new ServiceObject;
+	
 	mentorRemoteObj = serviceObject.getRemoteObjectInstance("mentorManager");
 	mentorRemoteObj.getMentor.addEventListener(ResultEvent.RESULT,onResultGetMentor,false,0,true);
 	mentorRemoteObj.getMentor.addEventListener(FaultEvent.FAULT,onFaultGetMentor,false,0,true);
@@ -117,4 +122,69 @@ private function displayEditableMentorProfile():void
     _mentorProfileDet = new MentorProfileDetails;
     _mentorProfileDet.mentorObject = _mentor;
     univGiggleStack1.addChild(_mentorProfileDet);
+}
+
+
+private function getMenteeDetails():void
+{
+	menteeRemoteObj = serviceObject.getRemoteObjectInstance("menteeManager");
+	menteeRemoteObj.getMentee.addEventListener(ResultEvent.RESULT,onResultGetMentee,false,0,true);
+	menteeRemoteObj.getMentee.addEventListener(FaultEvent.FAULT,onFaultGetMentee,false,0,true);
+	menteeRemoteObj.getMentee(__ugUser.emailId);
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onResultGetMentee(event:ResultEvent):void
+{
+	_mentee = event.result as Mentee;
+	if(_mentee.email == "" || _mentee.email == null){
+		_mentee.firstName = __ugUser.firstName;
+		_mentee.lastName = __ugUser.lastName;
+		_mentee.gender = __ugUser.gender;
+		_mentee.email = __ugUser.emailId;
+		createMenteeProfile();
+		/* isMenteeAvailable = false;
+		btnLookForMentor.visible = false;
+		but_mentee.label = "Create Mentee Profile"; */
+	}else{
+		displayEditableMenteeProfile();
+	}
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onFaultGetMentee(event:FaultEvent):void{
+	Alert.show(event.fault.message,"Error");
+}
+
+/**
+ * 
+ */
+private function createMenteeProfile():void
+{
+	univGiggleStack1.removeAllChildren();
+	_menteeInstance = new MenteeProfile;
+	_menteeInstance.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
+	_menteeInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+	_menteeInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
+	_menteeInstance.callLater(_menteeInstance.setUserInfo,[__ugUser]);
+	univGiggleStack1.addChild(_menteeInstance);
+	_menteeInstance.menteeObject = _mentee;
+	_menteeInstance.labelField = "Create Mentee Profile";
+}
+
+/**
+ * 
+ */
+private function displayEditableMenteeProfile():void{
+	univGiggleStack1.removeAllChildren();
+    _menteeProDetails = new MenteeProfileDetails;
+    _menteeProDetails.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
+    _menteeProDetails.menteeObject = _mentee;
+    univGiggleStack1.addChild(_menteeProDetails);
 }
