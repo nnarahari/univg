@@ -3,6 +3,7 @@
 // author : Venkata Teeda
 
 import com.components.Captcha;
+import com.events.ComboBoxLoadEvt;
 import com.events.HomePageEvent;
 import com.events.mentee.SaveMenteeEvent;
 import com.events.mentor.MentorsListEvent;
@@ -37,6 +38,10 @@ private var __ugUser:UG_User;
 private var isMenteeAvailable:Boolean = false;
 [Bindable]
 private var displayContent:Boolean = false;
+[Bindable]
+private var isEnable:Boolean = false;
+[Bindable]
+private var but_label:String = "";
 
 /**
  * function invoked once all the components got created & initialized successfully
@@ -49,18 +54,22 @@ private function compInit():void
 	menteeRemoteObj = serviceObject.getRemoteObjectInstance("menteeManager");
 	menteeRemoteObj.addMentee.addEventListener(ResultEvent.RESULT,onResultAddMenteeProfile,false,0,true);
 	menteeRemoteObj.addMentee.addEventListener(FaultEvent.FAULT,onFaultAddMenteeProfile,false,0,true);
-	menteeRemoteObj.getMentee.addEventListener(ResultEvent.RESULT,onResultGetMentee,false,0,true);
-	menteeRemoteObj.getMentee.addEventListener(FaultEvent.FAULT,onFaultGetMentee,false,0,true);
+	/* menteeRemoteObj.getMentee.addEventListener(ResultEvent.RESULT,onResultGetMentee,false,0,true);
+	menteeRemoteObj.getMentee.addEventListener(FaultEvent.FAULT,onFaultGetMentee,false,0,true); */
 	menteeRemoteObj.updateMentee.addEventListener(ResultEvent.RESULT,onResultUpdateMentee,false,0,true);
 	menteeRemoteObj.updateMentee.addEventListener(FaultEvent.FAULT,onFaultUpdateMentee,false,0,true);
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	menteeLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
 	btnLookForMentor.addEventListener(MouseEvent.CLICK,onClickLFMentor, false,0,true);
 	but_mentee.addEventListener(MouseEvent.CLICK,onDisplayContent,false,0,true);
+	this.addEventListener(ComboBoxLoadEvt.LOAD_EVENT,onComboBoxLoad,false,0,true);
 	createImageCaptcha();
 	addListeners();
 	setValidator();
 	menteeRemoteObj.getMentee(Application.application.__ugUser.emailId);
+	country.dataProvider = dp_country.country;
+	profession.dataProvider = dp_profession.profession;
+	dispatchEvent(new ComboBoxLoadEvt(ComboBoxLoadEvt.LOAD_EVENT));
 }
 
 /**
@@ -321,4 +330,31 @@ private function onDisplayContent(event:MouseEvent):void
 	else
 		saveMenteeProfile.label = "UPDATE";
 	displayContent = true;
+}
+
+public function set menteeObject(val:Mentee):void
+{
+	_mentee = val;
+}
+
+public function set labelField(val:String):void
+{
+	if(val.indexOf("Create") == 0){
+		but_label = val;
+		isEnable= false;
+		displayContent = false;
+		isMenteeAvailable = false;
+	}else{
+		but_label = val;
+		isEnable= true;
+		displayContent = true;
+		isMenteeAvailable = true;
+	}
+	
+}
+
+private function onComboBoxLoad(event:ComboBoxLoadEvt):void
+{
+	country.text = _mentee.citizenship;
+	profession.text = _mentee.profession;
 }

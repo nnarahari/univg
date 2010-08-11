@@ -16,6 +16,7 @@
         import com.events.SignUpEvent;
         import com.events.StudentClassifiedEvent;
         import com.events.WelcomeEvent;
+        import com.events.mentee.MenteeProfileDetEvent;
         import com.events.mentee.MenteeProfileEvent;
         import com.events.mentee.SaveMenteeEvent;
         import com.events.mentor.MentorProfileDetEvent;
@@ -37,11 +38,9 @@
         import com.views.SignupPage;
         import com.views.StudentClassified;
         import com.views.WelcomeNote;
-        import com.views.mentee.MenteeProfile;
         import com.views.mentee.MenteeTestimonial;
         import com.views.mentor.MentorList;
         import com.views.mentor.MentorProfile;
-        import com.views.mentor.MentorProfileDetails;
         import com.views.mentor.mentorTestimonial;
         
         import mx.events.BrowserChangeEvent;
@@ -64,6 +63,7 @@
 		 * */
 		private function applicationInit(event:Event):void
 		{
+			serviceObject = new ServiceObject;
 			appHeader.addEventListener(LoginEvt.LOGIN,onLoginHandler,false,0,true);
 			/* home.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true); */
 //			postClassified.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
@@ -104,6 +104,7 @@
 			this.addEventListener(MentorProfileEvent.MENTOREVENT,goToMentorProfile,false,0,true);
 			this.addEventListener(MenteeProfileEvent.MENTEE_EVENT,goToMenteeProfile,false,0,true);
 			this.addEventListener(MentorProfileDetEvent.PROFILE_EVENT,displayMentorProfile,false,0,true);
+			this.addEventListener(MenteeProfileDetEvent.MENTEE_EVENT,displayMenteeProfile,false,0,true);
 			browserManagerInstance = BrowserManager.getInstance();
             browserManagerInstance.addEventListener(BrowserChangeEvent.BROWSER_URL_CHANGE,
                 parseURL);
@@ -417,13 +418,14 @@
          */
         private function goToMenteeProfile(event:MenteeProfileEvent):void
         {
-			univGiggleStack1.removeAllChildren();
+        	getMenteeDetails();
+			/* univGiggleStack1.removeAllChildren();
 			_menteeInstance = new MenteeProfile;
 			_menteeInstance.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 			_menteeInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_menteeInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
 			_menteeInstance.callLater(_menteeInstance.setUserInfo,[__ugUser]);
-			univGiggleStack1.addChild(_menteeInstance);
+			univGiggleStack1.addChild(_menteeInstance); */
         }
         
         /**
@@ -467,5 +469,23 @@
 			_mentorInstance.menteeCountVisible = true;
 			_mentorInstance.labelField = "Edit Mentor Profile";
 			_mentorInstance.mentorObject = _mentor;
+        }
+        
+        
+        /**
+         * 
+         * @param event
+         */
+        private function displayMenteeProfile(event:MenteeProfileDetEvent):void{
+        	univGiggleStack1.removeAllChildren();
+        	_menteeInstance = new MenteeProfile;
+			_menteeInstance.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
+			_menteeInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
+			_menteeInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
+			_menteeInstance.callLater(_menteeInstance.setUserInfo,[__ugUser]);
+			univGiggleStack1.addChild(_menteeInstance);
+			_menteeInstance.menteeObject = _mentee;
+			_menteeInstance.labelField = "Edit Mentee Profile";
+        	univGiggleStack1.addChild(_menteeInstance);
         }
         

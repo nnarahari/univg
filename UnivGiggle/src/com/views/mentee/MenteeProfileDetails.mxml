@@ -8,19 +8,21 @@
 		<mx:GridRow id="heading" width="100%">
 			<mx:GridItem />
 			<mx:GridItem >
-				<mx:Text id="but_mentee" text="Edit Mentee Profile" fontSize="15" fontWeight="bold"/>
+				<mx:Button id="but_mentee" label="Edit Mentee Profile" fontSize="15" fontWeight="bold"/>
 			</mx:GridItem>
+			<mx:GridItem/>
 			<mx:GridItem>
 				<mx:Button id="btnLookForMentor" label="Look for Mentors" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
+		<mx:GridRow/>
 		<mx:GridRow/>
 		<mx:GridRow  width="100%" >
 			<mx:GridItem >
 				<mx:Text text="First Name :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Text id="fname"  text="{_mentee.firstName}"/>
+				<mx:Text id="fname"  text="{_mentee.firstName}" width="30%"/>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Last Name :"/>
@@ -66,7 +68,7 @@
 				<mx:Text text="Language :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:TextInput id="language" text="{_mentee.language}"/>
+				<mx:Text id="language" text="{_mentee.language}"/>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Current Profession :"/>

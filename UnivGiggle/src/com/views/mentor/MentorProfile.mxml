@@ -88,7 +88,7 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country"  width="150"  dataProvider="{dp_country.country}" labelField="@name" toolTip="{country.text}"/>
+				<mx:ComboBox id="country"  width="150"  dataProvider="{dp_country.country}" text="{_mentor.citizenship}" labelField="@name" toolTip="{country.text}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -103,7 +103,7 @@
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession"  width="150"  dataProvider="{dp_profession.profession}" labelField="@name"  toolTip="{profession.text}"/>
+				<mx:ComboBox id="profession"  width="150"  dataProvider="{dp_profession.profession}" text="{_mentor.profession}" labelField="@name"  toolTip="{profession.text}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
