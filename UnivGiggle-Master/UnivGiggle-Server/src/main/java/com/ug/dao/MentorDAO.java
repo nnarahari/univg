@@ -32,8 +32,9 @@ public interface MentorDAO {
 	 * Get the {@link Mentor} details from DB.
 	 * @param email
 	 * @return
+	 * @throws Exception 
 	 */
-	public Mentor getMentor(String email);
+	public Mentor getMentor(String email) throws Exception;
 	
 	/**
 	 * Remove {@link Mentee} from {@link Mentor}'s list
