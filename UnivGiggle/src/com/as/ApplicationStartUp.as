@@ -1,4 +1,5 @@
 // ActionScript file
+import com.events.mentor.MentorsListEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.mentee.Mentee;
 import com.mappedObjects.ug.model.mentor.Mentor;
@@ -73,7 +74,9 @@ private function getMentorDetails():void
 private function onResultGetMentor(event:ResultEvent):void
 {
 	_mentor = event.result as Mentor;
-	if(_mentor.email == null){
+//	if(_mentor.email == "" || _mentor.email == null){
+	if(_mentor == null){
+		_mentor = new Mentor();
 		_mentor.firstName = __ugUser.firstName;
 		_mentor.lastName = __ugUser.lastName;
 		_mentor.gender = __ugUser.gender;
@@ -120,6 +123,7 @@ private function displayEditableMentorProfile():void
 {
 	univGiggleStack1.removeAllChildren();
     _mentorProfileDet = new MentorProfileDetails;
+    _mentorProfileDet.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
     _mentorProfileDet.mentorObject = _mentor;
     univGiggleStack1.addChild(_mentorProfileDet);
 }

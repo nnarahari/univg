@@ -14,12 +14,12 @@
 <!-- End of Binding -->
 
 <!-- validation-->
-<mx:StringValidator id="firstNameValidator" property="text" source="{firstName}" minLength="5" maxLength="50"/>
-<mx:StringValidator id="lastNameValidator" property="text" source="{lastName}" minLength="5" maxLength="50"/>
+<mx:StringValidator id="firstNameValidator" property="text" source="{firstName}" minLength="2" maxLength="50"/>
+<mx:StringValidator id="lastNameValidator" property="text" source="{lastName}" minLength="2" maxLength="50"/>
 <mx:PhoneNumberValidator id="contactNoValidator" property="text" source="{Phone}" allowedFormatChars="-" />
 <mx:StringValidator id="passWordValidator" property="text" source="{password}" minLength="5" maxLength="50"/>
 <mx:StringValidator id="answerValidator" property="text" source="{answer}" minLength="4" maxLength="50"/>
-<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{secQues}" minValue="1" lowerThanMinError="Please select a valid question."/>
+<mx:NumberValidator id="indexValidator" property="selectedIndex" source="{secQues}" minValue="0" lowerThanMinError="Please select a valid question."/>
 <mx:EmailValidator id="emailIdValidator" property="text" source="{emailId}" />
 <!-- End of Validation -->
 	<mx:Grid id="signUp" width="100%">
