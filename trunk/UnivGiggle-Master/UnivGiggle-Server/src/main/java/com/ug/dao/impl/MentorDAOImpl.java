@@ -138,15 +138,16 @@ public class MentorDAOImpl implements MentorDAO {
 	public boolean addMentee(String mentorEmail, Mentee mentee) {
 		logger.info("addMentee() started..");
 		logger.info("mentorEmail ==>" + mentorEmail);
-		Mentor mentor = getMentor(mentorEmail);
-		logger.info(mentor);
-		logger.info("No of existing mentee for this mentor ==>"
-				+ mentor.getMenteeList().size());
-		List<Mentee> menteeList = mentor.getMenteeList();
-		mentee.setMentor(mentor);
-		menteeList.add(mentee);
-		mentor.setMenteeList(menteeList);
 		try {
+			Mentor mentor = getMentor(mentorEmail);
+			logger.info(mentor);
+			logger.info("No of existing mentee for this mentor ==>"
+					+ mentor.getMenteeList().size());
+			List<Mentee> menteeList = mentor.getMenteeList();
+			mentee.setMentor(mentor);
+			menteeList.add(mentee);
+			mentor.setMenteeList(menteeList);
+
 			createOrUpdateMentor(mentor);
 			return true;
 		} catch (Exception e) {
@@ -157,7 +158,7 @@ public class MentorDAOImpl implements MentorDAO {
 
 	@Transactional
 	@Override
-	public Mentor getMentor(String email) {
+	public Mentor getMentor(String email) throws Exception {
 		logger.info("getMentor() started...email ==>" + email);
 		Mentor mentor = null;
 		String qry = "Select Object(c) from Mentor c where c.email = :email";
@@ -174,8 +175,8 @@ public class MentorDAOImpl implements MentorDAO {
 			newMentorRef.setMenteeList(menteeList);
 			newMentorRef.setTestmonialList(testimonialList);
 		} catch (Exception e) {
-			logger.error("Error while reteriving Mentor", e);
-			return null;
+			//logger.error("Error while reteriving Mentor", e);
+			throw new Exception("No Mentor found!");
 		}
 		return newMentorRef;
 	}
