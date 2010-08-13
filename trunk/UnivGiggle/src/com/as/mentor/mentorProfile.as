@@ -2,6 +2,7 @@
 // author : Venkata Teeda
 
 import com.components.Captcha;
+import com.events.ComboBoxLoadEvt;
 import com.events.HomePageEvent;
 import com.events.mentor.PopUpEvent;
 import com.events.mentor.SaveMentorProfileEvent;
@@ -98,10 +99,10 @@ private function compInit():void
 	browseBut.addEventListener(MouseEvent.CLICK,browseImageFile,false,0,true);
 	mentorLinks.addEventListener(PopUpEvent.POPUPTYPE,displayPopUp,false,0,true);
 	but_mentor.addEventListener(MouseEvent.CLICK,onDisplayContent,false,0,true);
+	this.addEventListener(ComboBoxLoadEvt.LOAD_EVENT,loadComboValue,false,0,true);
 	createImageCaptcha();
 	setValidator();
-	country.text = _mentor.citizenship;
-	profession.text = _mentor.profession;
+	
 //	mentorRemoteObj.getMentor(Application.application.__ugUser.emailId);
 }
 
@@ -310,6 +311,20 @@ public function set labelField(val:String):void
 		isEnable= false;
 		displayContent = true;
 	}
+	
+}
+
+private function onComboBoxInit():void
+{
+//	this.dispatchEvent(new ComboBoxLoadEvt(ComboBoxLoadEvt.LOAD_EVENT));
+	country.dataProvider = dp_country.country;
+	profession.dataProvider = dp_profession.profession;
+	country.text = _mentor.citizenship;
+	profession.text = _mentor.profession;
+}
+
+private function loadComboValue(event:ComboBoxLoadEvt):void
+{
 	
 }
 

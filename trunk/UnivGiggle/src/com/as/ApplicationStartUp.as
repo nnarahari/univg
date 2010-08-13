@@ -124,8 +124,9 @@ private function displayEditableMentorProfile():void
 	univGiggleStack1.removeAllChildren();
     _mentorProfileDet = new MentorProfileDetails;
     _mentorProfileDet.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
-    _mentorProfileDet.mentorObject = _mentor;
     univGiggleStack1.addChild(_mentorProfileDet);
+    _mentorProfileDet.mentorObject = _mentor;
+    _mentorProfileDet.callLater(_mentorProfileDet.invokeService);
 }
 
 

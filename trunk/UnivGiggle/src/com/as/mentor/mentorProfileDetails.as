@@ -44,7 +44,7 @@ private function compInit():void
 	mentorRmtObject.detachMentee.addEventListener(ResultEvent.RESULT,onResultDetachMentee,false,0,true);
 	mentorRmtObject.detachMentee.addEventListener(FaultEvent.FAULT,onFaultDetachMentee,false,0,true);
 	but_mentor.addEventListener(MouseEvent.CLICK,editMentorProfile,false,0,true);
-	
+	mentorRmtObject.getMenteesRequest(_mentor.email);
 }
 
 public function set mentorObject(menObj:Mentor):void
@@ -54,7 +54,12 @@ public function set mentorObject(menObj:Mentor):void
 		_menteeCount = _mentor.menteeList.length;
 	else
 		_menteeCount = 0;
-	mentorRmtObject.getMenteesRequest(_mentor.email);
+	
+}
+
+public function invokeService():void
+{
+//	mentorRmtObject.getMenteesRequest(_mentor.email);	
 }
 
 private function editMentorProfile(event:MouseEvent):void
