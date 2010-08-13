@@ -6,9 +6,9 @@
 <mx:Binding source="lname.text" destination="_mentor.lastName"/>
 <mx:Binding source="emailId.text" destination="_mentor.email"/>
 <mx:Binding source="age.text" destination="_mentor.age"/>
-<mx:Binding source="country.text" destination="_mentor.citizenship"/>
+<!--mx:Binding source="country.text" destination="_mentor.citizenship"/-->
 <mx:Binding source="language.text" destination="_mentor.language"/>
-<mx:Binding source="profession.text" destination="_mentor.profession"/>
+<!--mx:Binding source="profession.text" destination="_mentor.profession"/-->
 <mx:Binding source="highestDegree.text" destination="_mentor.degree"/>
 <mx:Binding source="educationAttn.text" destination="_mentor.schoolCollege"/>
 <mx:Binding source="description.text" destination="_mentor.description"/>
@@ -88,7 +88,7 @@
 				<mx:Text text="Country of Citizenship :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="country"  width="150"  dataProvider="{dp_country.country}" text="{_mentor.citizenship}" labelField="@name" toolTip="{country.text}"/>
+				<mx:ComboBox id="country"  width="150"  labelField="@name" toolTip="{country.text}" creationComplete="onComboBoxInit()"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -103,7 +103,7 @@
 				<mx:Text text="Current Profession :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="profession"  width="150"  dataProvider="{dp_profession.profession}" text="{_mentor.profession}" labelField="@name"  toolTip="{profession.text}"/>
+				<mx:ComboBox id="profession"  width="150" labelField="@name"  toolTip="{profession.text}"  creationComplete="onComboBoxInit()"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
