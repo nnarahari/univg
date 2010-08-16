@@ -18,6 +18,7 @@
 <mx:StringValidator id="lastNameValidator" property="text" source="{lastName}" minLength="2" maxLength="50"/>
 <mx:PhoneNumberValidator id="contactNoValidator" property="text" source="{Phone}" allowedFormatChars="-" />
 <mx:StringValidator id="passWordValidator" property="text" source="{password}" minLength="5" maxLength="50"/>
+<mx:StringValidator id="passWordValidator1" property="text" source="{confirmPassword}" minLength="5" maxLength="50"/>
 <mx:StringValidator id="answerValidator" property="text" source="{answer}" minLength="4" maxLength="50"/>
 <mx:NumberValidator id="indexValidator" property="selectedIndex" source="{secQues}" minValue="0" lowerThanMinError="Please select a valid question."/>
 <mx:EmailValidator id="emailIdValidator" property="text" source="{emailId}" />
@@ -25,13 +26,14 @@
 	<mx:Grid id="signUp" width="100%">
 		<mx:GridRow id="heading" width="100%">
 			<mx:GridItem>
-				<mx:Label text="Signup" fontWeight="bold"/>
-			</mx:GridItem>
-			<mx:GridItem>
-				<mx:Label text="Create you profile here" fontWeight="bold"/>
+				<mx:Label text="Sign Up" fontWeight="bold" fontSize="20"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		
+        <mx:GridRow width="100%">
+		     <mx:GridItem>
+				<mx:Label text="Create your profile here" fontWeight="bold" fontSize="18"/>
+			</mx:GridItem>
+		</mx:GridRow>
 		<mx:GridRow width="100%">
 			<mx:GridItem >
 				<mx:Label text="First Name"/>
@@ -117,6 +119,15 @@
 		
 		<mx:GridRow width="100%">
 			<mx:GridItem >
+				<mx:Label text="Confirm Password"/>
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:TextInput id="confirmPassword" width="15%"  displayAsPassword="true" />
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow width="100%">
+			<mx:GridItem >
 				<mx:Label text="Secret Question"/>
 			</mx:GridItem>
 			<mx:GridItem width="100%">
@@ -132,7 +143,31 @@
 				<mx:TextInput id="answer" width="25%" text="{ugUser.passwordAnswer}"/>
 			</mx:GridItem>
 		</mx:GridRow>
+		
+		<mx:GridRow  width="100%" >
+			<mx:GridItem >
+				<mx:CheckBox id="chk" label=""/>
+				<mx:Text text="By clicking on checkbox you are agreeing to the"/>
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:LinkButton label="Terms and Conditions"/>
+				<mx:Text text="and the"/>
+				<mx:LinkButton label="Privacy Policy"/>
+				<mx:Text text="of UnivGiggle.com"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow  width="100%" >
+			<mx:GridItem >
+				<mx:Text text="Enter Verification Code :" />
+			</mx:GridItem>
+			<mx:GridItem id="verificationBlock">
+				<mx:TextInput id="verificationCode" width="35%"/>
+				<mx:Image />
+			</mx:GridItem>
+		</mx:GridRow>
+		
 	</mx:Grid>
+	
 	<mx:HBox width="100%" horizontalAlign="left">
 		<mx:Button id="btnCreate" label="Create" width="100" styleName="CommonBtn"/>
 		<mx:Button id="btnReset" label="Reset" width="100" styleName="CommonBtn"/>

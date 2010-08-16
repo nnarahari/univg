@@ -41,7 +41,7 @@
         	<menuitem label="|" data="top"/>
         	<menuitem label="STUDENTS" data="top"/>
         	<menuitem label="|" data="top"/>
-        	<menuitem label="P2P LENDERs" data="top"/>
+        	<menuitem label="P2P LENDERS" data="top"/>
         	<menuitem label="|" data="top"/>
         	<menuitem label="CORPORATE LENDERS" data="top"/>
         	<menuitem label="|" data="top"/>
