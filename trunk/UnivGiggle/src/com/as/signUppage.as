@@ -1,4 +1,5 @@
 // ActionScript file
+import com.components.Captcha;
 import com.events.CreateUserEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.UG_User;
@@ -16,7 +17,9 @@ import mx.validators.Validator;
 [Bindable]
 private var ugUser:UG_User;
 private var serviceObject:ServiceObject;
+private const securityCodeLength:uint = 6;
 private var createUserRmtObj:RemoteObject;
+private var imagecaptcha:Captcha;
 [Bindable]
 private var questionArray:Array = ["-Select One-","What is your pet name?","What is your school name?","What is your first name of your uncle?",
 								   "Where did you meet your spouse?"]
@@ -32,6 +35,7 @@ private function compInit():void
 	createUserRmtObj.addUser.addEventListener(ResultEvent.RESULT,onResultAddUser,false,0,true);
 	createUserRmtObj.addUser.addEventListener(FaultEvent.FAULT,onFaultAddUser,false,0,true);
 	setValidator();
+	createImageCaptcha();
 	/* var dateF:DateFormatter = new DateFormatter;
 	dateF.formatString = "MM/DD/YYYY";
 	mx.controls.Alert.show(dateF.format(new Date)); */
@@ -44,7 +48,16 @@ private function onUserCreate(event:MouseEvent):void
 	var isValid:Boolean = validatorErrorArr.length == 0;
 	if(isValid)
 	{
-		createUserRmtObj.addUser(ugUser);
+		if(password.text != confirmPassword.text){
+			Alert.show("Password & confirm password are not match","Error");
+			return;
+		}
+		if(verificationCode.text  == imagecaptcha._securitycode){
+			createUserRmtObj.addUser(ugUser);
+		}else{
+			Alert.show("Please enter valid code","Information");
+			return;
+		}
 		//dispatchEvent(new CreateUserEvent(CreateUserEvent.USER,userName.text,password.text));		
 	}else
 	{
@@ -88,4 +101,19 @@ private function onResultAddUser(event:ResultEvent):void
 private function onFaultAddUser(event:FaultEvent):void
 {
 	Alert.show(event.fault.message,"Error");
+}
+
+
+/**
+ * function invoked for displaying the image which contains the verification code.
+ * @param : void
+ * */
+public function createImageCaptcha():void
+{
+	if(imagecaptcha != null){
+		imagecaptcha = null;
+		verificationBlock.removeChildAt(2);
+	}
+	imagecaptcha = new Captcha("alphaCharsnum",securityCodeLength);
+	verificationBlock.addChild(imagecaptcha);
 }
