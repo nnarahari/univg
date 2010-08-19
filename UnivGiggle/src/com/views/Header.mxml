@@ -19,7 +19,7 @@
 						</mx:HBox>
 						<mx:HBox width="100%" horizontalAlign="right">
 							<mx:Label width="90"/>
-							<mx:Button id="faceBook" label="FaceBook Connect" styleName="CommonBtn" enabled="false"/>
+							<mx:Button id="faceBook" label="FaceBook Connect" styleName="CommonBtn" enabled="true" />
 							<!--<mx:Spacer width="12%"/> --> 
 								
 							<mx:LinkButton  id="id_forgotPwd" label="Forget Password?" />

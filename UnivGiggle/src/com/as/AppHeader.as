@@ -5,7 +5,6 @@
 		import com.events.ClassifiedEvent;
 		import com.events.ContactUSEvent;
 		import com.events.CorporateLenderEvent;
-		import com.events.FaceBookLoginEvent;
 		import com.events.GenaratePasswordEvent;
 		import com.events.HomePageEvent;
 		import com.events.LoginEvt;
@@ -15,6 +14,7 @@
 		import com.events.WelcomeEvent;
 		import com.events.mentee.MenteeProfileEvent;
 		import com.events.mentor.MentorProfileEvent;
+		import com.facebook.events.FacebookEvent;
 		import com.interactiveObject.ServiceObject;
 		import com.mappedObjects.ug.model.UG_User;
 		
@@ -25,6 +25,13 @@
 		import mx.rpc.events.FaultEvent;
 		import mx.rpc.events.ResultEvent;
 		import mx.rpc.remoting.RemoteObject;
+		
+		 import com.facebook.Facebook;
+		import com.facebook.utils.FacebookSessionUtil;
+
+
+		private var fbook:Facebook;
+		private var session:FacebookSessionUtil;
 		
 		private var loginRmtObj:RemoteObject = null;
 		private var serviceObject:ServiceObject;
@@ -201,7 +208,38 @@
 		}
 		
 		private function faceBookLogin(event:MouseEvent):void{
-			dispatchEvent(new FaceBookLoginEvent(FaceBookLoginEvent.FACEBOOKLOGINS));
+			if(session != null)
+				session.logout();
+			if(fbook != null)	
+				fbook.logout();
+			 session=new FacebookSessionUtil("c99637fd6ef64f36a26170fc90e28f56","8447a4c38c98f7c23b757f5e3b6ea044",loaderInfo);
+   			 fbook=session.facebook;
+   			 session.addEventListener(FacebookEvent.CONNECT,onConnect);
+   			 session.addEventListener(FacebookEvent.WAITING_FOR_LOGIN,onWaitLogin);
+   			 session.login();
+		}
+		
+		protected function onWaitLogin(event:FacebookEvent):void{
+   			 var alert:Alert = Alert.show("Validating facebook login credentials..\nClick ok for the result.","Waiting for login");
+  			  alert.addEventListener(Event.CLOSE,onClose);
+		}
+		
+		protected function onClose(event:Event):void {    
+  		    session.validateLogin();
+		}
+		
+		protected function onConnect(event:FacebookEvent):void{
+			if(event.success && session.activeSession.is_connected){
+				 __ugUser = new UG_User();
+				 __ugUser.firstName = "fbuser";
+				 __ugUser.emailId = "fbUser";
+				 __ugUser.lastName = "fbuser";
+				 userName.text = "fbUser";
+				 __ugUser.activated = true;
+				loginBlock.visible = false;
+				loginInfo.visible = true;
+				dispatchEvent(new LoginEvt(LoginEvt.LOGIN,__ugUser.emailId,session.activeSession.session_key,__ugUser));
+			}	
 		}
 		
 		/**
