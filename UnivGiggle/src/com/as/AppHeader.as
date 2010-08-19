@@ -14,7 +14,11 @@
 		import com.events.WelcomeEvent;
 		import com.events.mentee.MenteeProfileEvent;
 		import com.events.mentor.MentorProfileEvent;
+		import com.facebook.Facebook;
+		import com.facebook.commands.users.GetInfo;
+		import com.facebook.data.users.FacebookUser;
 		import com.facebook.events.FacebookEvent;
+		import com.facebook.utils.FacebookSessionUtil;
 		import com.interactiveObject.ServiceObject;
 		import com.mappedObjects.ug.model.UG_User;
 		
@@ -25,9 +29,11 @@
 		import mx.rpc.events.FaultEvent;
 		import mx.rpc.events.ResultEvent;
 		import mx.rpc.remoting.RemoteObject;
-		
-		 import com.facebook.Facebook;
-		import com.facebook.utils.FacebookSessionUtil;
+		import com.facebook.net.FacebookCall; 
+		import com.facebook.commands.users.GetInfo;   
+        import com.facebook.data.users.FacebookUser;   
+        import com.facebook.data.users.GetInfoData;   
+        import com.facebook.data.users.GetInfoFieldValues;
 
 
 		private var fbook:Facebook;
@@ -230,17 +236,28 @@
 		
 		protected function onConnect(event:FacebookEvent):void{
 			if(event.success && session.activeSession.is_connected){
-				 __ugUser = new UG_User();
-				 __ugUser.firstName = "fbuser";
-				 __ugUser.emailId = "fbUser";
-				 __ugUser.lastName = "fbuser";
-				 userName.text = "fbUser";
-				 __ugUser.activated = true;
-				loginBlock.visible = false;
-				loginInfo.visible = true;
-				dispatchEvent(new LoginEvt(LoginEvt.LOGIN,__ugUser.emailId,session.activeSession.session_key,__ugUser));
-			}	
-		}
+				 var getInfo:GetInfo = new GetInfo( new Array( session.facebook.uid), new Array( GetInfoFieldValues.ALL_VALUES ) );   
+           		 var fbCall:FacebookCall = session.facebook.post( getInfo );   
+           		 fbCall.addEventListener( FacebookEvent.COMPLETE, fbGetInfoCompleteHandler, false, 0, true );   
+            }   
+               
+  		}       
+               
+            private function fbGetInfoCompleteHandler( e:FacebookEvent ):void  
+            {   
+	            var getInfoData:GetInfoData = e.data as GetInfoData;   
+	            var fbUser:FacebookUser = getInfoData.userCollection.getItemAt( 0 ) as FacebookUser; 
+	            userName.text = fbUser.name;  
+	             __ugUser = new UG_User();
+				 __ugUser.firstName = fbUser.first_name;
+				 __ugUser.emailId = fbUser.name;
+				 __ugUser.lastName = fbUser.last_name; 
+				 __ugUser.activated = true; 
+				 loginBlock.visible = false;
+				 loginInfo.visible = true;
+				 dispatchEvent(new LoginEvt(LoginEvt.LOGIN,__ugUser.emailId, __ugUser.emailId,__ugUser));
+				 session.logout();
+            }
 		
 		/**
 		 * function invoked to display a popup message when the user tries to select the tab control bar
