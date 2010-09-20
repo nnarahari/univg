@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="AppInit()">
 <mx:Script source="../as/AppHeader.as"/>
-	<mx:ApplicationControlBar width="100%" height="10%" backgroundColor="#EBD2D2">
-		<mx:Image source="@Embed(source='./assets/UnivgiggleLogo.PNG')" height="100%" width="100%" maintainAspectRatio="true"/>
+	<mx:HBox width="100%" height="10%" backgroundImage="./assets/tophead01.jpg">
+		<mx:Image source="@Embed(source='./assets/univgiggle_1.png')" width="128" height="128"/>
 		<!--<mx:Spacer width="40%"/> -->
 		<mx:VBox width="40%" height="100%">
 			<mx:HBox width="100%" height="75%" horizontalAlign="right">
@@ -41,5 +41,5 @@
 
 			</mx:Canvas>
 		</mx:VBox>
-	</mx:ApplicationControlBar>
+	</mx:HBox>
 </mx:VBox>
