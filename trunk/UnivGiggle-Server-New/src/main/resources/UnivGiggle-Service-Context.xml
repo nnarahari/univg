@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.0.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-autowire="byName">
+
+	<tx:annotation-driven />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true" />
+				<property name="generateDdl" value="true" />
+				<property name="databasePlatform" value="${hibernate.dialect}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${hibernate.connection.driver_class}" />
+		<property name="url" value="${hibernate.connection.url}" />
+		<property name="username" value="${hibernate.connection.username}" />
+		<property name="password" value="${hibernate.connection.password}" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean id="modelPropPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:ug-db.properties</value>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:UnivGiggle-Application.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" autowire="byName">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="univgiggle2010" />
+		<property name="password" value="hello123*()" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="velocityEngine"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean" autowire="byName">
+		<property name="velocityProperties">
+			<value>
+				resource.loader=class
+				class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+			</value>
+		</property>
+	</bean>
+
+	<!-- Utility Beans  -->
+
+	<bean id="univGiggleUtil" class="com.ug.util.UnivGiggleHelper">
+		<property name="mailSender" ref="mailSender" />
+		<property name="velocityEngine" ref="velocityEngine" />
+	</bean>
+
+
+	<!-- DAO Beans  -->
+	<bean id="classifiedDAO" class="com.ug.dao.impl.ClassifiedDAOImpl" autowire="byName"/>
+	
+	<bean id="ugUserDAO" class="com.ug.dao.impl.UGUserDAOImpl" autowire="byName" />
+	
+	<bean id="mentorDAO" class="com.ug.dao.impl.MentorDAOImpl" autowire="byName" />
+	
+	<bean id="menteeDAO" class="com.ug.dao.impl.MenteeDAOImpl" autowire="byName" />
+	
+	<bean id="mentorsRequestDAO" class="com.ug.dao.impl.MentorsRequestDAOImpl" autowire="byName" />
+
+
+
+	<!--  Manager classes    -->
+
+	<bean id="classifiedManager" class="com.ug.service.impl.ClassifiedManagerImpl">
+		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
+		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
+	</bean>
+
+	<bean id="userManager" class="com.ug.service.impl.UserManagerImpl"/>
+
+	<bean id="menteeManager" class="com.ug.service.impl.MenteeManagerImpl">
+		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
+		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
+	</bean>
+	
+	<bean id="mentorManager" class="com.ug.service.impl.MentorManagerImpl" >
+		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
+		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
+	</bean>
+
+
+	<bean
+		class="org.springframework.web.context.support.ServletContextAttributeExporter">
+		<property name="attributes">
+			<map>
+				<entry key="classifiedManager" value-ref="classifiedManager" />
+				<entry key="userManager" value-ref="userManager" />
+				<entry key="menteeManager" value-ref="menteeManager" />
+				<entry key="mentorManager" value-ref="mentorManager" />
+			</map>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,14 @@
+<html>
+<body>
+<h1>UnivGiggle</h1>
+<h3>Hi ${classified.firstName} ${classified.lastName}</h3>
+
+<div>
+    ${senderFirstName} ${senderLastName} send message regarding your classified ${classified.id}
+</div>
+<div>    
+    ${message}
+</div>
+</body>
+
+</html>

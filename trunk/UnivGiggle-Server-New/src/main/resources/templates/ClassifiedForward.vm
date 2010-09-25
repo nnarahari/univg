@@ -1,0 +1,13 @@
+<html>
+<body>
+<h1>UnivGiggle </h1>
+<h3>Hi,</h3> 
+
+<h3> Your friend <b>${classified.firstName} ${classified.lastName}</b> , forwarded this classified. Please click the following link to see full details.</h3>
+
+<div>
+    <a href="http://localhost:8080/univgiggle/MailConfirmServlet?key=ViewClassified&id=${classified.id}">http://localhost:8080/univgiggle/MailConfirmServlet?key=ViewClassified&id=${classified.id}</a>.
+</div>
+</body>
+
+</html>
