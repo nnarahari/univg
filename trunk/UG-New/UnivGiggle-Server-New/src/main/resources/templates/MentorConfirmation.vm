@@ -1,0 +1,11 @@
+<html>
+<body>
+<h3>Hi ${mentor.firstName} ${mentor.lastName} , welcome to the UnivGiggle!</h3>
+
+<div>
+   You have registered yourself as a mentor in UnivGiggle. To confirm & activate your mentor profile please click the following link.
+   <a href="http://localhost:8080/univgiggle/MailConfirmServlet?key=Mentor&id=${mentor.id}">http://localhost:8080/univgiggle/MailConfirmServlet?key=Mentor&id=${mentor.id}</a>.
+</div>
+</body>
+
+</html>

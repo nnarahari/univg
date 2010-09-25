@@ -1,0 +1,10 @@
+<html>
+<body>
+<h3>Hi ${user.firstName} ${user.lastName} , welcome to the UnivGiggle!</h3>
+
+<div>
+   To Activate your profile please click the following link.
+   <a href="http://localhost:8080/univgiggle/MailConfirmServlet?key=UGUser&id=${user.emailId}">http://localhost:8080/univgiggle/MailConfirmServlet?key=UGUser&id=${user.emailId}</a>.
+</div>
+</body>
+</html>
