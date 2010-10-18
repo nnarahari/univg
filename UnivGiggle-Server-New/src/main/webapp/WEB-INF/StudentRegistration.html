@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="menu_style.css">
+<link rel="stylesheet" type="text/css" href="messages.css" />
+<script type="text/javascript" src="reg.js"></script>
+<script type="text/javascript" language="javascript" src="datetimepicker.js"></script>
+<script type="text/javascript">
+function apply()
+{
+  document.form.submit.disabled=true;
+  if(document.form.check.checked==true)
+  {
+    document.form.submit.disabled=false;
+  }
+  if(document.form.check.checked==false)
+  {
+    document.form.submit.enabled=false;
+  }
+}
+</script>
+<script language="JavaScript">
+	<!--
+		if (document.images)
+		{
+		calimg= new Image(16,16); 
+		calimg.src="images/cal.gif"; 
+		}
+	//-->
+</script>
+<title>Welcome to Univgiggle Student Login Page</title>
+<style type="text/css">
+<!--
+.style1 {font-size: 14pt}
+-->
+</style>
+</head>
+<body>
+<div class="header"></div>
+<ul id="menu">
+  <li></li>
+  <li><a href="" target="_self" title="">HOME</a></li>
+	<li><a href="" target="_self" title="">ABOUT</a></li>
+	<li><a href="" target="_self" title="">STUDENTS</a></li>
+	<li><a href="" target="_self" title="">P2P LENDERS</a></li>
+	<li><a href="" target="_self" title="">CORPORATE LENDERS</a></li>
+	<li><a href="" target="_self" title="">MENTOR PROGRAM</a></li>
+	<li><a href="" target="_self" title="">UNIVERSITY CLASSIFIFD</a></li>
+	<li><a href="" target="_self" title="">CONTACT US</a>      <br>
+</li>
+</ul>
+<form name="form" id="form" class="form" action="success.html" onsubmit="return validate(this)" method="post">
+  <p>&nbsp;</p>
+  <table width="284" height="253" align="left" style="border:3px solid #cfcfcf; background-color:#efefef;">
+    <tr>
+      <td colspan=2></td>
+    </tr>
+    <tr>
+      <td height="49" colspan=2 align="center" style="font-weight:bold;font-size:20pt;"><span class="style1">Availble Grants</span></td>
+    </tr>
+    <tr>
+      <td width="267">&nbsp;</td>
+      <td width="1">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan=2>&nbsp;</td>
+    </tr>
+  </table>
+  <table width="579" align="center" style="border:3px solid #cfcfcf; background-color:#efefef; font: 12px Verdana, Arial, Helvetica, sans-serif;">
+<tr><td colspan=2></td></tr>
+<tr>
+  <td colspan=2 align="center" style="font-weight:bold;font-size:20pt;">Univgiggle Student User Login !!</td>
+</tr>
+<tr>
+    <td> </td>
+    <td> </td>
+  </tr>
+  <tr>
+	<td width="311" height="33">First Name</td>
+    <td width="252"><input type="text" name="fname" id="fname"/></td>
+  </tr>
+  <tr>
+    <td width="311" height="33">Last Name</td>
+    <td width="252"><input type="text" name="lname" id="lname" /></td>
+  </tr>
+  <tr>
+    <td width="311" height="33">Address</td>
+    <td width="252"><input type="text" name="address" id="address" /></td>
+  </tr>
+  <tr>
+    <td width="311" height="33">University Email Address</td>
+    <td><input type="text" name="email" id="email" /></td>
+  </tr>
+<tr>
+		<td width="311" height="33">Gender</td>
+      <td width="252"><select name="gender" id="gender">
+          <option value ="">Please Select Gender</option>
+          <option value ="male">Male</option>
+          <option value ="female">Female</option>
+        </select></td>
+    </tr>
+    <tr>
+		<td width="311" height="33">State</td>
+      <td width="252"><select name="state" id="state">
+          <option value ="">Please Select State</option>
+        </select></td>
+	</tr>
+    <tr>
+		<td width="311" height="33">University</td>
+      <td width="252"><select name="university" id="university">
+          <option value ="">Please Select University</option>
+        </select></td>
+	</tr>
+    <tr>
+		<td width="311" height="33">Program</td>
+      <td width="252"><select name="program" id="program">
+          <option value ="">Please Select Program</option>
+        </select></td>
+	</tr>
+    <tr>
+		<td width="311" height="33">Department</td>
+      <td width="252"><select name="department" id="department">
+          <option value ="" >Please Select Department</option>
+        </select></td>
+	</tr>
+    <tr>
+		<td width="311" height="33">Expected Graduation Date (MM-DD-YYYY)</td>
+      <td width="252"><input type="text" name="graddate" id="graddate" /> 
+      <a href="javascript:NewCal('sdate','mmddyyyy')"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a></td><td width="0"></td>
+	</tr>
+  <tr>
+		<td width="311" height="33">Attach Resume</td>
+        <td width="252"><input type="file" name="attachresume" id="attachresume" />
+      </td></td>
+	</tr><tr>
+		<td width="311" height="33">Attach Picture</td>
+      <td width="252"><input type="file" name="attachpicture" id="attachpicture" />
+      </td>
+	</tr>
+    <tr>
+		<td width="311" height="33">Link to LinkedIn Profile</td>
+      <td width="252"><input type="text" name="linkedin" id="linkedin" /></td>
+	</tr>
+    <tr>
+		<td width="311" height="33">Link to Youtube ( References)</td>
+      <td width="252"><input type="text" name="youtube" id="youtube" /></td>
+	</tr>
+    <tr>
+		<td width="311" height="33">Please enter the char shown </td>
+      <td width="252"><input type="text" name="account_no" value=""></td>
+	</tr>
+    <tr>
+		<td width="311" height="33">Please tell us about yourself</td>
+    <td width="252"><span class="form">
+        <textarea  name="address" rows=10 cols=30 ></textarea>
+	    </span></td>
+    </tr>
+  <tr><td colspan=2><input type="checkbox" name="check" onClick="apply()"></td>
+  <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input type="submit" name="submit" value="Submit" disabled></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
