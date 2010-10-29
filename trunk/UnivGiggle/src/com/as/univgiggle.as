@@ -235,15 +235,15 @@
 				postClassified.switchView.selectedIndex = event._index;
 			setIndexAsFragment(6);
         	updateTitle(6); */
-			univGiggleStack1.removeAllChildren();
+			 univGiggleStack1.removeAllChildren();
 			_postClassifiedInstance = new PostClassified;
 			_postClassifiedInstance.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
 			_postClassifiedInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_postClassifiedInstance.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
 			_postClassifiedInstance.Index = event._index;
-			/* if(_postClassifiedInstance.switchView != null)
-				_postClassifiedInstance.switchView.selectedIndex = */ 
-			univGiggleStack1.addChild(_postClassifiedInstance);
+			 
+			univGiggleStack1.addChild(_postClassifiedInstance); 
+			
 		}
 		
 		private function goToConfirmClassified(event:ClassifiedPostEvent):void

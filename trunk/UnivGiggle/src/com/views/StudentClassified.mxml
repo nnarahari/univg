@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
-	<mx:Image source="@Embed(source='./assets/undercon.png')"/>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+	horizontalAlign="center" verticalAlign="top" xmlns:student="com.views.student.*"  paddingLeft="10" borderStyle="solid">
+	<mx:HDividedBox width="100%" height="100%">
+		<student:AvailableGrants width="15%" height="100%"/>
+		<mx:VBox width="85%" height="100%"/>
+ 	</mx:HDividedBox>
 </mx:VBox>
