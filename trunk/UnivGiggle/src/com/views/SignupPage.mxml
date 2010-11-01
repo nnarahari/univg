@@ -12,7 +12,7 @@
 <mx:Binding source="secQues.text" destination="ugUser.passwordQuestion"/>
 <mx:Binding source="answer.text" destination="ugUser.passwordAnswer"/>
 <!-- End of Binding -->
-
+<!-- test -->
 <!-- validation-->
 <mx:StringValidator id="firstNameValidator" property="text" source="{firstName}" minLength="2" maxLength="50"/>
 <mx:StringValidator id="lastNameValidator" property="text" source="{lastName}" minLength="2" maxLength="50"/>
