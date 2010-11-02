@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="initData();">
+<mx:Script>
+	<![CDATA[
+		  import mx.controls.Button;
+	      import mx.collections.*;
+      	  private var listArray:Array=[
+         {label: "Grant 1.   Standford1 Student requested grant of $20000", data: 0},
+         {label: "Grant 2.   Standford2 Student requested grant of $20000", data: 1},
+         {label: "Grant 3.   Standford3 Student requested grant of $20000", data: 2},
+         {label: "Grant 4.   Standford4 Student requested grant of $20000", data: 3},
+         {label: "Grant 5.   Standford5 Student requested grant of $20000", data: 4},
+         {label: "Grant 6.   Standford6 Student requested grant of $20000", data: 5}];
+      	[Bindable]
+      	public var TileListdp:ArrayCollection;
+		private function initData():void
+		{
+			TileListdp = new ArrayCollection(listArray);
+			
+		}
+	]]>
+</mx:Script>
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Text text="Featured Grant Request"/>	
+	</mx:HBox>
+	<mx:TileList dataProvider="{TileListdp}" columnCount="1" 
+      itemRenderer="com.components.itemRenderer.CustomTextComp" width="100%" height="100%" paddingBottom="5" paddingLeft="10" paddingTop="5" paddingRight="10"/>
+</mx:VBox>
