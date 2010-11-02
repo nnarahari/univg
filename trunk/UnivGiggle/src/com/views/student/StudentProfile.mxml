@@ -1,8 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
-	horizontalAlign="center" verticalAlign="top" xmlns:student="com.views.student.*"  paddingLeft="10" borderStyle="solid">
-	<mx:HDividedBox width="100%" height="100%">
-		<student:AvailableGrants width="15%" height="100%"/>
-		<mx:VBox width="85%" height="100%"/>
- 	</mx:HDividedBox>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderStyle="solid" paddingLeft="5" paddingTop="5" paddingBottom="5" creationComplete="creationHandler();">
+<mx:Metadata>
+	[Event(name="saveProfile", type="com.events.student.SaveStudentProfileEvent")]
+</mx:Metadata>
+<!-- Binding the ActionScript object with the view controls -->
+<mx:Binding source="fname.text" destination="_student.firstName"/>
+<mx:Binding source="lname.text" destination="_student.lastName"/>
+<mx:Binding source="emailId.text" destination="_student.email"/>
+<mx:Binding source="country.text" destination="_student.citizenship"/>
+<mx:Binding source="state.text" destination="_student.state"/>
+<mx:Binding source="univ.text" destination="_student.uniVal"/>
+<mx:Binding source="dept.text" destination="_student.department"/>
+<mx:Binding source="btn_program.text" destination="_student.program"/>
+<!--mx:Binding source="gradDate.text" destination="_student.gradDate"/-->
+<mx:Binding source="story.text" destination="_student.storyTxt"/>
+<mx:Binding source="picFileName.text" destination="_student.pictureName"/>
+<mx:Binding source="fileName.text" destination="_student.resumeName"/>
+<mx:Binding source="btn_link.text" destination="_student.linkedInLink"/>
+<mx:Binding source="btn_youtubelink.text" destination="_student.youTubeLink"/>
+
+<mx:Script source="../../as/student/StudentProfile.as"/>
+<mx:XML id="dp" source="../../../xml/univ.xml" format="e4x" />
+<mx:XML id="dp_category" source="../../../xml/categories.xml" format="e4x" />
+		<mx:Grid id="mentorProfile" width="90%" height="100%" >
+		<mx:GridRow id="heading" width="100%">
+			<mx:GridItem id="mentee_no" >
+				
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Button id="but_mentor" label="{but_label}" fontSize="15" fontWeight="bold" />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow/>
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem >
+				<mx:Text text="First Name :" />
+			</mx:GridItem>
+			<mx:GridItem width="300">
+				<mx:TextInput id="fname" width="200" text="{_student.firstName}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Last Name :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:TextInput id="lname" width="200" text="{_student.lastName}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem >
+				<mx:Text text="Email Address :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:TextInput id="emailId" width="200" text="{_student.email}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Sex :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:RadioButton id="male" label="Male" groupName="martial" selected="true"/>
+				<mx:RadioButton id="female" label="Female" groupName="martial"/>
+			</mx:GridItem>
+			
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem >
+				<mx:Text text="Country :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:ComboBox id="country"  width="150"  labelField="@name" dataProvider="{dp.country}"  toolTip="{country.text}" text="{_student.citizenship}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="State:"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:ComboBox id="state"  width="150"  dataProvider="{country.selectedItem.state}"  labelField="@name" toolTip="{state.text}" text="{_student.state}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem >
+				<mx:Text text="University:"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}"  labelField="@name" toolTip="{univ.text}" text="{_student.uniVal}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Department :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:ComboBox id="dept"  width="80"   labelField="@name" text="{_student.department}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem >
+				<mx:Text text="Program for Study :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:ComboBox id="btn_program"  width="150" labelField="@name" text="{_student.program}"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Expected Graduation Date  :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:DateField id="gradDate" width="80" />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow  width="100%" height="100%" visible="{displayContent}" >
+			<mx:GridItem >
+				<mx:Text text="Please tell us something about yourself :" width="150" />
+			</mx:GridItem>
+			<mx:GridItem colSpan="3">
+				<mx:TextArea id="story" width="500" height="100%" text="{_student.storyTxt}" />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem >
+				<mx:Text text="Upload Pic :"/>
+			</mx:GridItem>
+			<mx:GridItem visible="{displayContent}"  width="300">
+				<mx:TextInput id="picFileName" width="125"  editable="false" text="{_student.pictureName}"/>
+				<mx:Button label="browse.." id="browseBut" styleName="CommonBtn"/>
+			</mx:GridItem>
+			<mx:GridItem >
+				<mx:Text text="Upload Resume :" />
+			</mx:GridItem>
+			<mx:GridItem  width="300">
+				<mx:TextInput id="fileName" width="125" editable="false" text="{_student.resumeName}"/>
+				<mx:Button label="browse.." id="btn_resume" styleName="CommonBtn"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Text text="LinkedIn profile Link :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300" colSpan="3">
+				<mx:TextInput id="btn_link" width="300" text="{_student.linkedInLink}" />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%" >
+			<mx:GridItem>
+				<mx:Text text="Link to Youtube Video :"/>
+			</mx:GridItem>
+			<mx:GridItem  width="300" colSpan="3">
+				<mx:TextInput id="btn_youtubelink" width="300" text="{_student.youTubeLink}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem colSpan="3">
+				<mx:CheckBox id="chk" label=""/>
+				<mx:Text text="By clicking on checkbox you are agreeing to the"/>
+			<!--</mx:GridItem>
+			<mx:GridItem>-->
+				<mx:LinkButton label="Terms and Conditions"/>
+				<mx:Text text="and the"/>
+				<mx:LinkButton label="Privacy Policy"/>
+				<mx:Text text="of UnivGiggle.com"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem >
+				<mx:Text text="Enter Verification Code :" />
+			</mx:GridItem>
+			<mx:GridItem id="verificationBlock"  width="300">
+				<mx:TextInput id="verificationCode" width="150"/>
+				<mx:Image />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow height="10%"/>
+		<mx:GridRow  width="100%" visible="{displayContent}">
+			<mx:GridItem />
+			<mx:GridItem>
+				<mx:Button id="saveProfile" enabled="{chk.selected}" label="SAVE" styleName="CommonBtn"/>
+				<mx:Button id="cancelProfile" label="CANCEL" styleName="CommonBtn"/>
+			</mx:GridItem>
+		</mx:GridRow>
+	</mx:Grid>
 </mx:VBox>

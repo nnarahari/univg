@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="left">
+<mx:Script>
+	<![CDATA[
+		import flash.net.navigateToURL;
+		import mx.controls.LinkButton;
+		import com.mappedObjects.ug.model.student.Student;
+		[Bindable]
+		private var _student:Student;
+		public function set studentProfile(studentObj:Student):void
+		{
+			_student = studentObj;
+		}
+		
+		private function openLink(event:MouseEvent):void
+		{
+			var linkBtn:LinkButton = event.currentTarget as LinkButton;
+			navigateToURL(new URLRequest(linkBtn.label));
+		}
+	]]>
+</mx:Script>
+	<mx:Form>
+		<mx:FormItem label="First Name:">
+			<mx:Text text="{_student.firstName}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Last Name:">
+			<mx:Text text="{_student.lastName}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Current University:">
+			<mx:Text  text="{_student.uniVal}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Program/Department/Graduation date:">
+			<mx:Text text="{_student.program}{_student.department}{_student.gradDate}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Link to view resume:">
+			<mx:LinkButton label="http://google.com" click="openLink(event);" />
+		</mx:FormItem>
+		<mx:FormItem label="Link to LinkedIn Profile:">
+			<mx:LinkButton label="{_student.linkedInLink}" click="openLink(event);"/>
+		</mx:FormItem>
+		<mx:FormItem label="Link to youtube video:">
+			<mx:LinkButton label="{_student.youTubeLink}" click="openLink(event);"/>
+		</mx:FormItem>
+		<mx:Text text="{_student.storyTxt}" width="400"/>
+	</mx:Form>
+</mx:VBox>
