@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:student="com.views.student.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
+<mx:Script>
+	<![CDATA[
+		import com.mappedObjects.ug.model.student.Student;
+		import mx.controls.Alert;
+		import com.events.student.SelectedGrantEvt;
+		[Bindable]
+		private var incompleteGrantList:Array=[
+	         {label: "Grant A.   Missing Document", data: 0},
+	         {label: "Grant B.   Missing Fund", data: 1},
+	         {label: "Grant C.   Missing Fund of $40000", data: 2}];
+	    [Bindable]     
+	    private var grantStatusList:Array=[
+	         {label: "Grant 1.   Open Under Processing", data: 0},
+	         {label: "Grant 2.   Approved Under Processing", data: 1},
+	         {label: "Grant 3.   Fulfilled and Closed", data: 2}];
+	    private const incompleteGrantText:String = "Incomplete Grant Requests";
+	    private const grantstatusText:String = "GRANT STATUS";
+	    [Bindable]
+	    private var _student:Student;     
+	   private function createHandler():void
+	   {
+//	   		incompleteGrants.grantListData = incompleteGrantList;
+	   		incompleteGrants.headerText = incompleteGrantText;
+//	   		grantStatus.grantListData = grantStatusList;
+	   		grantStatus.headerText = grantstatusText;
+	   		incompleteGrants.addEventListener(SelectedGrantEvt.GRANT_NAME,selectedInCompleteGrant,false,0,true);
+	   		grantStatus.addEventListener(SelectedGrantEvt.GRANT_NAME,selectedGrant,false,0,true);
+	   }
+	   
+	   private function selectedInCompleteGrant(event:SelectedGrantEvt):void
+	   {
+	   		Alert.show("Selected Value---->"+event._selectedGrant);
+	   }
+	   
+	   private function selectedGrant(event:SelectedGrantEvt):void
+	   {
+	   		Alert.show("Selected Value---->"+event._selectedGrant);
+	   }
+	   
+	   public function set studentProfileDet(studentObj:Student):void
+	   {
+	   		_student = studentObj;
+	   }
+	]]>
+</mx:Script>
+	<mx:HBox width="100%" paddingLeft="20">
+		<mx:VBox>
+			<mx:Image width="150" height="150" source="./assets/student.jpg"/>
+			<mx:Button label="EDIT MY STUDENT PROFILE"/>	
+		</mx:VBox>
+		<mx:Spacer width="10%"/>
+		<student:StudentProfileDet borderStyle="solid" studentProfile="{_student}" width="75%"/>
+	</mx:HBox>
+	<mx:HBox width="100%">
+		<mx:VBox width="50%" horizontalAlign="center">
+			<student:AvailableGrants id="incompleteGrants" grantListData="{incompleteGrantList}" width="30%"/>
+			<mx:Button label="REQUEST NEW GRANT"/>	
+		</mx:VBox>
+		<mx:HBox width="50%" horizontalAlign="left">
+			<student:AvailableGrants id="grantStatus" grantListData="{grantStatusList}" width="30%"/>	
+		</mx:HBox>
+	</mx:HBox>
+</mx:VBox>

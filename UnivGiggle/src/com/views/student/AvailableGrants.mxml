@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="initData();">
+<mx:Metadata>
+	[Event(name="selectGrant", type="com.events.student.SelectedGrantEvt")]
+</mx:Metadata>
 <mx:Script>
 	<![CDATA[
-		  import mx.controls.Button;
-	      import mx.collections.*;
-      	  private var listArray:Array=[
-         {label: "Grant 1.   Google has a grant of $20000", data: 0},
-         {label: "Grant 2.   Cisco has a grant of $30000", data: 1},
-         {label: "Grant 3.   Google has a grant of $40000", data: 2},
-         {label: "Grant 4.   Google has a grant of $50000", data: 3},
-         {label: "Grant 5.   Google has a grant of $60000", data: 4},
-         {label: "Grant 6.   Google has a grant of $70000", data: 5}];
+		import com.events.student.SelectedGrantEvt;
+		import com.components.itemRenderer.CustomTextComp;
+		import mx.collections.*;
+		[Bindable]
+      	private var _headerTxt:String = "Available Grants";
       	[Bindable]
       	public var TileListdp:ArrayCollection;
+      	private var _selectedGrantEvt:SelectedGrantEvt;
 		private function initData():void
+		{	
+			grantList.addEventListener(MouseEvent.CLICK,onSelect,false,0,true);
+		}
+		
+		public function set grantListData(listArray:Array):void
 		{
 			TileListdp = new ArrayCollection(listArray);
-			
+		}
+		
+		public function set headerText(val:String):void
+		{
+			_headerTxt = val;
+		}
+		
+		private function onSelect(event:MouseEvent):void
+		{
+			_selectedGrantEvt = new SelectedGrantEvt(SelectedGrantEvt.GRANT_NAME,grantList.selectedItem.label);
+			dispatchEvent(_selectedGrantEvt);
 		}
 	]]>
 </mx:Script>
 	<mx:HBox width="100%" horizontalAlign="center">
-		<mx:Text text="Available Grants"/>	
+		<mx:Text id="header" text="{_headerTxt}" fontWeight="bold"/>	
 	</mx:HBox>
-	<mx:TileList dataProvider="{TileListdp}" columnCount="1" 
+	<mx:TileList id="grantList" dataProvider="{TileListdp}" columnCount="1" 
       itemRenderer="com.components.itemRenderer.CustomTextComp" width="100%" height="100%" paddingBottom="5" paddingLeft="10" paddingTop="5" paddingRight="10"/>
 </mx:VBox>
