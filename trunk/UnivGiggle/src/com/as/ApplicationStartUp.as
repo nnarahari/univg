@@ -24,6 +24,7 @@ import com.views.mentor.MentorList;
 import com.views.mentor.MentorProfile;
 import com.views.mentor.MentorProfileDetails;
 import com.views.mentor.mentorTestimonial;
+import com.views.student.StudentGrantDetails;
 
 import mx.controls.Alert;
 import mx.rpc.events.FaultEvent;
@@ -57,6 +58,7 @@ private var serviceObject:ServiceObject;
 private var menteeRemoteObj:RemoteObject;
 private var _mentee:Mentee;
 private var _menteeProDetails:MenteeProfileDetails;
+private var _studentGrantDetails:StudentGrantDetails;
 
 private function getMentorDetails():void
 {

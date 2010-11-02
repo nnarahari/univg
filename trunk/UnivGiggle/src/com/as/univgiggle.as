@@ -23,6 +23,8 @@
         import com.events.mentor.MentorProfileEvent;
         import com.events.mentor.MentorsListEvent;
         import com.events.mentor.SaveMentorProfileEvent;
+        import com.events.student.SaveProfile;
+        import com.events.student.SaveStudentProfileEvent;
         import com.mappedObjects.ug.model.UG_User;
         import com.views.AboutPage;
         import com.views.ConfirmClassified;
@@ -42,6 +44,7 @@
         import com.views.mentor.MentorList;
         import com.views.mentor.MentorProfile;
         import com.views.mentor.mentorTestimonial;
+        import com.views.student.StudentGrantDetails;
         
         import mx.events.BrowserChangeEvent;
         import mx.managers.BrowserManager;
@@ -105,6 +108,7 @@
 			this.addEventListener(MenteeProfileEvent.MENTEE_EVENT,goToMenteeProfile,false,0,true);
 			this.addEventListener(MentorProfileDetEvent.PROFILE_EVENT,displayMentorProfile,false,0,true);
 			this.addEventListener(MenteeProfileDetEvent.MENTEE_EVENT,displayMenteeProfile,false,0,true);
+			
 			browserManagerInstance = BrowserManager.getInstance();
             browserManagerInstance.addEventListener(BrowserChangeEvent.BROWSER_URL_CHANGE,
                 parseURL);
@@ -339,9 +343,26 @@
         private function navigateToStudentClassified(event:StudentClassifiedEvent):void
         {
         
-        		univGiggleStack1.removeAllChildren();
+        		 univGiggleStack1.removeAllChildren();
         		_studentClassInstance = new StudentClassified;
-        		univGiggleStack1.addChild(_studentClassInstance);
+        		_studentClassInstance.addEventListener(SaveProfile.SAVE_PROFILE,displayStudentGrantDetails,false,0,true);
+        		univGiggleStack1.addChild(_studentClassInstance); 
+        		/* univGiggleStack1.removeAllChildren();
+	        	_studentGrantDetails = new StudentGrantDetails;
+	        	univGiggleStack1.addChild(_studentGrantDetails); */
+        }
+        
+        /**
+         * 
+         * @param event
+         */
+        private function displayStudentGrantDetails(event:SaveProfile):void
+        {
+        	univGiggleStack1.removeAllChildren();
+        	_studentGrantDetails = new StudentGrantDetails;
+        	_studentGrantDetails.studentProfileDet = event._studentObj;
+        	univGiggleStack1.addChild(_studentGrantDetails);
+        	
         }
         
         /**
