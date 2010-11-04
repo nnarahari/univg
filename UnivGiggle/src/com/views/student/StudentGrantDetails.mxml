@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:student="com.views.student.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
 <mx:Script>
 	<![CDATA[
+		import com.events.student.CreateGrantRequestEvent;
 		import com.mappedObjects.ug.model.student.Student;
 		import mx.controls.Alert;
 		import com.events.student.SelectedGrantEvt;
@@ -18,7 +19,8 @@
 	    private const incompleteGrantText:String = "Incomplete Grant Requests";
 	    private const grantstatusText:String = "GRANT STATUS";
 	    [Bindable]
-	    private var _student:Student;     
+	    private var _student:Student;    
+	    private var _grantRequestEvt:CreateGrantRequestEvent; 
 	   private function createHandler():void
 	   {
 //	   		incompleteGrants.grantListData = incompleteGrantList;
@@ -27,6 +29,7 @@
 	   		grantStatus.headerText = grantstatusText;
 	   		incompleteGrants.addEventListener(SelectedGrantEvt.GRANT_NAME,selectedInCompleteGrant,false,0,true);
 	   		grantStatus.addEventListener(SelectedGrantEvt.GRANT_NAME,selectedGrant,false,0,true);
+	   		but_grant.addEventListener(MouseEvent.CLICK,requestForNewGrant,false,0,true);
 	   }
 	   
 	   private function selectedInCompleteGrant(event:SelectedGrantEvt):void
@@ -43,6 +46,12 @@
 	   {
 	   		_student = studentObj;
 	   }
+	   
+	   private function requestForNewGrant(event:MouseEvent):void
+	   {
+	   		_grantRequestEvt = new CreateGrantRequestEvent(CreateGrantRequestEvent.GRANT_REQUEST);
+	   		dispatchEvent(_grantRequestEvt);
+	   }
 	]]>
 </mx:Script>
 	<mx:HBox width="100%" paddingLeft="20">
@@ -56,7 +65,7 @@
 	<mx:HBox width="100%">
 		<mx:VBox width="50%" horizontalAlign="center">
 			<student:AvailableGrants id="incompleteGrants" grantListData="{incompleteGrantList}" width="30%"/>
-			<mx:Button label="REQUEST NEW GRANT"/>	
+			<mx:Button id="but_grant" label="REQUEST NEW GRANT"/>	
 		</mx:VBox>
 		<mx:HBox width="50%" horizontalAlign="left">
 			<student:AvailableGrants id="grantStatus" grantListData="{grantStatusList}" width="30%"/>	
