@@ -67,10 +67,10 @@ public class ClassifiedManagerImpl implements ClassifiedManager {
 					if(isImagePahtUpdated){
 						cfdAddedStatus = true;
 					}else{
-						resultInfo = createResultInfo(false, "Classified Added failed", "2", "Error while updating image path in DB", null);
+						resultInfo = createResultInfo(false, "Add Classified failed", "2", "Error while updating image path in DB", null);
 					}
 				}else{
-					resultInfo = createResultInfo(false, "Classified Added failed", "2", "Error while storing images", null);
+					resultInfo = createResultInfo(false, "Add Classified failed", "2", "Error while storing images", null);
 				}
 			}else{
 				logger.info("No images with this classified.");
