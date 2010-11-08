@@ -24,6 +24,7 @@ import com.views.mentor.MentorList;
 import com.views.mentor.MentorProfile;
 import com.views.mentor.MentorProfileDetails;
 import com.views.mentor.mentorTestimonial;
+import com.views.student.GrantPage;
 import com.views.student.StudentGrantDetails;
 
 import mx.controls.Alert;
@@ -59,6 +60,7 @@ private var menteeRemoteObj:RemoteObject;
 private var _mentee:Mentee;
 private var _menteeProDetails:MenteeProfileDetails;
 private var _studentGrantDetails:StudentGrantDetails;
+private var _grantDet:GrantPage;
 
 private function getMentorDetails():void
 {
@@ -110,12 +112,12 @@ private function onFaultGetMentor(event:FaultEvent):void
 
 private function createMentorProfile():void
 {
-	univGiggleStack1.removeAllChildren();
+	univGiggleStack.removeAllChildren();
 	_mentorInstance = new MentorProfile;
 	_mentorInstance.addEventListener(SaveMentorProfileEvent.SAVEEVENT,goToMentorTestimonial,false,0,true);
 	_mentorInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 	_mentorInstance.callLater(_mentorInstance.setUserInfo,[__ugUser]);
-	univGiggleStack1.addChild(_mentorInstance);
+	univGiggleStack.addChild(_mentorInstance);
 	_mentorInstance.menteeCountVisible = false;
 	_mentorInstance.labelField = "Create Mentor Profile";
 	_mentorInstance.mentorObject = _mentor;
@@ -123,10 +125,10 @@ private function createMentorProfile():void
 
 private function displayEditableMentorProfile():void
 {
-	univGiggleStack1.removeAllChildren();
+	univGiggleStack.removeAllChildren();
     _mentorProfileDet = new MentorProfileDetails;
     _mentorProfileDet.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
-    univGiggleStack1.addChild(_mentorProfileDet);
+    univGiggleStack.addChild(_mentorProfileDet);
     _mentorProfileDet.mentorObject = _mentor;
     _mentorProfileDet.callLater(_mentorProfileDet.invokeService);
 }
@@ -174,13 +176,13 @@ private function onFaultGetMentee(event:FaultEvent):void{
  */
 private function createMenteeProfile():void
 {
-	univGiggleStack1.removeAllChildren();
+	univGiggleStack.removeAllChildren();
 	_menteeInstance = new MenteeProfile;
 	_menteeInstance.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 	_menteeInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 	_menteeInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
 	_menteeInstance.callLater(_menteeInstance.setUserInfo,[__ugUser]);
-	univGiggleStack1.addChild(_menteeInstance);
+	univGiggleStack.addChild(_menteeInstance);
 	_menteeInstance.menteeObject = _mentee;
 	_menteeInstance.labelField = "Create Mentee Profile";
 }
@@ -189,9 +191,9 @@ private function createMenteeProfile():void
  * 
  */
 private function displayEditableMenteeProfile():void{
-	univGiggleStack1.removeAllChildren();
+	univGiggleStack.removeAllChildren();
     _menteeProDetails = new MenteeProfileDetails;
     _menteeProDetails.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
     _menteeProDetails.menteeObject = _mentee;
-    univGiggleStack1.addChild(_menteeProDetails);
+    univGiggleStack.addChild(_menteeProDetails);
 }

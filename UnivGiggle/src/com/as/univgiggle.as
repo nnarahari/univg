@@ -23,8 +23,8 @@
         import com.events.mentor.MentorProfileEvent;
         import com.events.mentor.MentorsListEvent;
         import com.events.mentor.SaveMentorProfileEvent;
+        import com.events.student.CreateGrantRequestEvent;
         import com.events.student.SaveProfile;
-        import com.events.student.SaveStudentProfileEvent;
         import com.mappedObjects.ug.model.UG_User;
         import com.views.AboutPage;
         import com.views.ConfirmClassified;
@@ -44,6 +44,7 @@
         import com.views.mentor.MentorList;
         import com.views.mentor.MentorProfile;
         import com.views.mentor.mentorTestimonial;
+        import com.views.student.GrantPage;
         import com.views.student.StudentGrantDetails;
         
         import mx.events.BrowserChangeEvent;
@@ -188,9 +189,9 @@
         
         private function goToWelcomePage(event:WelcomeEvent=null):void
         {	
-        	univGiggleStack1.removeAllChildren();
+        	univGiggleStack.removeAllChildren();
         	_welcomeNoteInstance = new WelcomeNote;
-        	univGiggleStack1.addChild(_welcomeNoteInstance);
+        	univGiggleStack.addChild(_welcomeNoteInstance);
 //        	univGiggleStack.selectedChild = welcome;
 //        	setIndexAsFragment(0);
 //        	updateTitle(0);
@@ -214,10 +215,10 @@
 		private function goToSignUpPage(event:SignUpEvent):void
 		{
 //			univGiggleStack.selectedChild = signUp;
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
 			_signUpInstance = new SignupPage;
 			_signUpInstance.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
-			univGiggleStack1.addChild(_signUpInstance);
+			univGiggleStack.addChild(_signUpInstance);
 		}
 		
 		private function onLoginHandler(event:LoginEvt):void
@@ -226,10 +227,10 @@
 				isUserLoggedIn = true;
 			__ugUser = event._ugUser;
 //			univGiggleStack.selectedChild = home;
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
 			_homeInstance = new HomePage;
 			 _homeInstance.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true); 
-			univGiggleStack1.addChild(_homeInstance);
+			univGiggleStack.addChild(_homeInstance);
 		}
 		
 		private function goToPostClassifieds(event:ClassifiedEvent):void
@@ -239,14 +240,14 @@
 				postClassified.switchView.selectedIndex = event._index;
 			setIndexAsFragment(6);
         	updateTitle(6); */
-			 univGiggleStack1.removeAllChildren();
+			 univGiggleStack.removeAllChildren();
 			_postClassifiedInstance = new PostClassified;
 			_postClassifiedInstance.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
 			_postClassifiedInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_postClassifiedInstance.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
 			_postClassifiedInstance.Index = event._index;
 			 
-			univGiggleStack1.addChild(_postClassifiedInstance); 
+			univGiggleStack.addChild(_postClassifiedInstance); 
 			
 		}
 		
@@ -254,31 +255,31 @@
 		{
 			/* univGiggleStack.selectedChild = confirmClassified;
 			confirmClassified.dispatchEvent(new FetchClassifedObjectEvent(FetchClassifedObjectEvent.FETCH,event._classified)); */
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
 			_confirmClassifiedInstance = new ConfirmClassified;
 			_confirmClassifiedInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_confirmClassifiedInstance.addEventListener(FetchClassifedObjectEvent.FETCH,getPostedClassifiedObject,false,0,true);
 			_confirmClassifiedInstance.addEventListener(ClassifiedConfirmEvent.CLASSIFIEDCONFIRM,goToPostSuccess,false,0,true);
 			_confirmClassifiedInstance.dispatchEvent(new FetchClassifedObjectEvent(FetchClassifedObjectEvent.FETCH,event._classified));
-			univGiggleStack1.addChild(_confirmClassifiedInstance);
+			univGiggleStack.addChild(_confirmClassifiedInstance);
 		}
 		
 		private function goToPostSuccess(event:ClassifiedConfirmEvent):void
 		{
 //			univGiggleStack.selectedChild = postSuccess;
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
         	_postConfirmationInstance = new PostedSuccess;
         	_postConfirmationInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_postConfirmationInstance.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
-        	univGiggleStack1.addChild(_postConfirmationInstance);
+        	univGiggleStack.addChild(_postConfirmationInstance);
 		}
 		
 		private function onGenaratepassword(event:GenaratePasswordEvent):void{
 //			univGiggleStack.selectedChild = genaratePassword;
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
         	_genPassWord = new GenaratePassword;
         	_genPassWord.addEventListener(CreateUserEvent.USER,onUserCreated,false,0,true);
-        	univGiggleStack1.addChild(_genPassWord);
+        	univGiggleStack.addChild(_genPassWord);
 		}
 		
 		/**
@@ -288,10 +289,10 @@
 		private function goToHomePage(event:HomePageEvent):void
 		{	
 			isUserLoggedIn = event._isLoggedOut;
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
         	_homeInstance = new HomePage;
         	_homeInstance.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
-        	univGiggleStack1.addChild(_homeInstance);
+        	univGiggleStack.addChild(_homeInstance);
 		}
 		
 		/**
@@ -300,9 +301,9 @@
 		 */
 		private function navigateToLoginScreen(event:MouseEvent):void
 		{	
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
         	_loginInstance = new Login;
-        	univGiggleStack1.addChild(_loginInstance);
+        	univGiggleStack.addChild(_loginInstance);
 		}
 		
 		/**
@@ -311,12 +312,12 @@
 		 */
 		private function navigateToClassifiedScreen(event:MouseEvent):void
 		{
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
 			_postClassifiedInstance = new PostClassified;
 			_postClassifiedInstance.addEventListener(ClassifiedPostEvent.CLASSIFIEDPOST,goToConfirmClassified,false,0,true);
 			_postClassifiedInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_postClassifiedInstance.addEventListener(ComponentInitEvent.EVENT_NAME,setUserObject,false,0,true);
-			univGiggleStack1.addChild(_postClassifiedInstance);
+			univGiggleStack.addChild(_postClassifiedInstance);
 		}
 		
 		private function onUserCreated(event:CreateUserEvent = null):void
@@ -331,9 +332,9 @@
         private function aboutHandler(event:AboutUsEvent):void
         {	
         
-        		univGiggleStack1.removeAllChildren();
+        		univGiggleStack.removeAllChildren();
         		_aboutUsInstance = new AboutPage;
-        		univGiggleStack1.addChild(_aboutUsInstance);
+        		univGiggleStack.addChild(_aboutUsInstance);
         }
         
         /**
@@ -343,13 +344,13 @@
         private function navigateToStudentClassified(event:StudentClassifiedEvent):void
         {
         
-        		 univGiggleStack1.removeAllChildren();
+        		 univGiggleStack.removeAllChildren();
         		_studentClassInstance = new StudentClassified;
         		_studentClassInstance.addEventListener(SaveProfile.SAVE_PROFILE,displayStudentGrantDetails,false,0,true);
-        		univGiggleStack1.addChild(_studentClassInstance); 
-        		/* univGiggleStack1.removeAllChildren();
+        		univGiggleStack.addChild(_studentClassInstance); 
+        		/* univGiggleStack.removeAllChildren();
 	        	_studentGrantDetails = new StudentGrantDetails;
-	        	univGiggleStack1.addChild(_studentGrantDetails); */
+	        	univGiggleStack.addChild(_studentGrantDetails); */
         }
         
         /**
@@ -358,11 +359,19 @@
          */
         private function displayStudentGrantDetails(event:SaveProfile):void
         {
-        	univGiggleStack1.removeAllChildren();
+        	univGiggleStack.removeAllChildren();
         	_studentGrantDetails = new StudentGrantDetails;
         	_studentGrantDetails.studentProfileDet = event._studentObj;
-        	univGiggleStack1.addChild(_studentGrantDetails);
+        	_studentGrantDetails.addEventListener(CreateGrantRequestEvent.GRANT_REQUEST,displayGrantScreen,false,0,true);
+        	univGiggleStack.addChild(_studentGrantDetails);
         	
+        }
+        
+        private function displayGrantScreen(event:CreateGrantRequestEvent):void
+        {
+        	univGiggleStack.removeAllChildren();
+        	_grantDet = new GrantPage;
+        	univGiggleStack.addChild(_grantDet);
         }
         
         /**
@@ -371,9 +380,9 @@
          */
         private function navigateToP2PLender(event:P2PLenderClassifiedEvent):void
         {		
-        		univGiggleStack1.removeAllChildren();
+        		univGiggleStack.removeAllChildren();
         		_p2plenderInstance = new P2PLenderClassified;
-        		univGiggleStack1.addChild(_p2plenderInstance);
+        		univGiggleStack.addChild(_p2plenderInstance);
         }
         
         /**
@@ -383,9 +392,9 @@
         private function navigateToCorporateLender(event:CorporateLenderEvent):void
         {
         		
-        		univGiggleStack1.removeAllChildren();
+        		univGiggleStack.removeAllChildren();
         		_corpLenderInstance = new CorporateLenderClassified;
-        		univGiggleStack1.addChild(_corpLenderInstance);
+        		univGiggleStack.addChild(_corpLenderInstance);
         }
         
         /**
@@ -395,9 +404,9 @@
         private function navigateToContact(event:ContactUSEvent):void
         {	
         
-        		univGiggleStack1.removeAllChildren();
+        		univGiggleStack.removeAllChildren();
         		_contactUsInstance = new ContactUs;
-        		univGiggleStack1.addChild(_contactUsInstance);
+        		univGiggleStack.addChild(_contactUsInstance);
         }
         
         /**
@@ -417,10 +426,10 @@
         private function goToMentorTestimonial(event:SaveMentorProfileEvent):void
         {
         
-        	univGiggleStack1.removeAllChildren();
+        	univGiggleStack.removeAllChildren();
         	_mentorAckInstance = new mentorTestimonial;
         	_mentorAckInstance.callLater(_mentorAckInstance.setMentorObject,[event._mentorObj,event._mentorFlag]);
-        	univGiggleStack1.addChild(_mentorAckInstance);
+        	univGiggleStack.addChild(_mentorAckInstance);
         	
         }
         
@@ -440,13 +449,13 @@
         private function goToMenteeProfile(event:MenteeProfileEvent):void
         {
         	getMenteeDetails();
-			/* univGiggleStack1.removeAllChildren();
+			/* univGiggleStack.removeAllChildren();
 			_menteeInstance = new MenteeProfile;
 			_menteeInstance.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 			_menteeInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_menteeInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
 			_menteeInstance.callLater(_menteeInstance.setUserInfo,[__ugUser]);
-			univGiggleStack1.addChild(_menteeInstance); */
+			univGiggleStack.addChild(_menteeInstance); */
         }
         
         /**
@@ -455,11 +464,11 @@
          */
         private function goToMenteeTestimonial(event:SaveMenteeEvent):void
         {
-			univGiggleStack1.removeAllChildren();
+			univGiggleStack.removeAllChildren();
 			_menteeAckInstance = new MenteeTestimonial;
 			_menteeAckInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
 			_menteeAckInstance.callLater(_menteeAckInstance.setMenteeObject,[event._menteeObj]);
-			univGiggleStack1.addChild(_menteeAckInstance);
+			univGiggleStack.addChild(_menteeAckInstance);
         }
         
         
@@ -468,10 +477,10 @@
          * @param event
          */
         public function goToMentorsList(event:MentorsListEvent):void{
-        	univGiggleStack1.removeAllChildren();
+        	univGiggleStack.removeAllChildren();
         	_mentorListInstance = new MentorList;
         	_mentorListInstance.userProfile = __ugUser;
-        	univGiggleStack1.addChild(_mentorListInstance);
+        	univGiggleStack.addChild(_mentorListInstance);
         	
         }
         
@@ -481,12 +490,12 @@
          */
         private function displayMentorProfile(event:MentorProfileDetEvent):void
         {
-        	univGiggleStack1.removeAllChildren();
+        	univGiggleStack.removeAllChildren();
 			_mentorInstance = new MentorProfile;
 			_mentorInstance.addEventListener(SaveMentorProfileEvent.SAVEEVENT,goToMentorTestimonial,false,0,true);
 			_mentorInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_mentorInstance.callLater(_mentorInstance.setUserInfo,[__ugUser]);
-			univGiggleStack1.addChild(_mentorInstance);
+			univGiggleStack.addChild(_mentorInstance);
 			_mentorInstance.menteeCountVisible = true;
 			_mentorInstance.labelField = "Edit Mentor Profile";
 			_mentorInstance.mentorObject = _mentor;
@@ -498,15 +507,15 @@
          * @param event
          */
         private function displayMenteeProfile(event:MenteeProfileDetEvent):void{
-        	univGiggleStack1.removeAllChildren();
+        	univGiggleStack.removeAllChildren();
         	_menteeInstance = new MenteeProfile;
 			_menteeInstance.addEventListener(SaveMenteeEvent.SAVEEVENT,goToMenteeTestimonial,false,0,true);
 			_menteeInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			_menteeInstance.addEventListener(MentorsListEvent.MENTOR_LIST,goToMentorsList,false,0,true);
 			_menteeInstance.callLater(_menteeInstance.setUserInfo,[__ugUser]);
-			univGiggleStack1.addChild(_menteeInstance);
+			univGiggleStack.addChild(_menteeInstance);
 			_menteeInstance.menteeObject = _mentee;
 			_menteeInstance.labelField = "Edit Mentee Profile";
-        	univGiggleStack1.addChild(_menteeInstance);
+        	univGiggleStack.addChild(_menteeInstance);
         }
         
