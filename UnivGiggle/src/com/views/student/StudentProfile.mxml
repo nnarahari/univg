@@ -7,17 +7,26 @@
 <mx:Binding source="fname.text" destination="_student.firstName"/>
 <mx:Binding source="lname.text" destination="_student.lastName"/>
 <mx:Binding source="emailId.text" destination="_student.email"/>
-<mx:Binding source="country.text" destination="_student.citizenship"/>
+<mx:Binding source="country.text" destination="_student.country"/>
 <mx:Binding source="state.text" destination="_student.state"/>
-<mx:Binding source="univ.text" destination="_student.uniVal"/>
+<mx:Binding source="univ.text" destination="_student.university"/>
 <mx:Binding source="dept.text" destination="_student.department"/>
 <mx:Binding source="btn_program.text" destination="_student.program"/>
 <!--mx:Binding source="gradDate.text" destination="_student.gradDate"/-->
-<mx:Binding source="story.text" destination="_student.storyTxt"/>
-<mx:Binding source="picFileName.text" destination="_student.pictureName"/>
-<mx:Binding source="fileName.text" destination="_student.resumeName"/>
-<mx:Binding source="btn_link.text" destination="_student.linkedInLink"/>
-<mx:Binding source="btn_youtubelink.text" destination="_student.youTubeLink"/>
+<mx:Binding source="story.text" destination="_student.studentStory"/>
+<mx:Binding source="picFileName.text" destination="_student.picturePath"/>
+<mx:Binding source="fileName.text" destination="_student.resumePath"/>
+<mx:Binding source="btn_link.text" destination="_student.linkedInProfile"/>
+<mx:Binding source="btn_youtubelink.text" destination="_student.youtubeLink"/>
+
+<mx:StringValidator id="firstNameValidator" property="text" source="{fname}" minLength="2" maxLength="50"/>
+<mx:StringValidator id="lastNameValidator" property="text" source="{lname}" minLength="2" maxLength="50"/>
+<mx:EmailValidator id="emailIdValidator" property="text" source="{emailId}" />
+<mx:StringValidator id="studentStoryValidator" property="text" source="{story}" minLength="100" maxLength="2000"/>
+<mx:StringValidator id="linkedInProfileValidator" property="text" source="{btn_link}" minLength="5"/>
+<mx:StringValidator id="youTubeLinkValidator" property="text" source="{btn_youtubelink}" minLength="5"/>
+<mx:StringValidator id="picPathValidator" property="text" source="{picFileName}" minLength="5"/>
+<mx:StringValidator id="resumePathValidator" property="text" source="{fileName}" minLength="5"/>
 
 <mx:Script source="../../as/student/StudentProfile.as"/>
 <mx:XML id="dp" source="../../../xml/univ.xml" format="e4x" />
@@ -28,7 +37,7 @@
 				
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:Button id="but_mentor" label="{but_label}" fontSize="15" fontWeight="bold" />
+				<mx:Text id="but_mentor" text="{but_label}" fontSize="15" fontWeight="bold" />
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow/>
@@ -69,7 +78,7 @@
 				<mx:Text text="Country :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:ComboBox id="country"  width="150"  labelField="@name" dataProvider="{dp.country}"  toolTip="{country.text}" text="{_student.citizenship}"/>
+				<mx:ComboBox id="country"  width="150"  labelField="@name" dataProvider="{dp.country}"  toolTip="{country.text}" text="{_student.country}"/>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="State:"/>
@@ -84,7 +93,7 @@
 				<mx:Text text="University:"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}"  labelField="@name" toolTip="{univ.text}" text="{_student.uniVal}"/>
+				<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}"  labelField="@name" toolTip="{univ.text}" text="{_student.university}"/>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Department :"/>
@@ -113,7 +122,7 @@
 				<mx:Text text="Please tell us something about yourself :" width="150" />
 			</mx:GridItem>
 			<mx:GridItem colSpan="3">
-				<mx:TextArea id="story" width="500" height="100%" text="{_student.storyTxt}" />
+				<mx:TextArea id="story" width="500" height="100%" text="{_student.studentStory}" />
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow  width="100%" visible="{displayContent}">
@@ -121,14 +130,14 @@
 				<mx:Text text="Upload Pic :"/>
 			</mx:GridItem>
 			<mx:GridItem visible="{displayContent}"  width="300">
-				<mx:TextInput id="picFileName" width="125"  editable="false" text="{_student.pictureName}"/>
+				<mx:TextInput id="picFileName" width="125"  editable="false" text="{_student.picturePath}"/>
 				<mx:Button label="browse.." id="browseBut" styleName="CommonBtn"/>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Upload Resume :" />
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:TextInput id="fileName" width="125" editable="false" text="{_student.resumeName}"/>
+				<mx:TextInput id="fileName" width="125" editable="false" text="{_student.resumePath}"/>
 				<mx:Button label="browse.." id="btn_resume" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
@@ -137,7 +146,7 @@
 				<mx:Text text="LinkedIn profile Link :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300" colSpan="3">
-				<mx:TextInput id="btn_link" width="300" text="{_student.linkedInLink}" />
+				<mx:TextInput id="btn_link" width="300" text="{_student.linkedInProfile}" />
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow width="100%" >
@@ -145,7 +154,7 @@
 				<mx:Text text="Link to Youtube Video :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300" colSpan="3">
-				<mx:TextInput id="btn_youtubelink" width="300" text="{_student.youTubeLink}"/>
+				<mx:TextInput id="btn_youtubelink" width="300" text="{_student.youtubeLink}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow  width="100%" visible="{displayContent}">

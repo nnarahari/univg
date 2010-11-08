@@ -27,20 +27,20 @@
 			<mx:Text text="{_student.lastName}"/>
 		</mx:FormItem>
 		<mx:FormItem label="Current University:">
-			<mx:Text  text="{_student.uniVal}"/>
+			<mx:Text  text="{_student.university}"/>
 		</mx:FormItem>
 		<mx:FormItem label="Program/Department/Graduation date:">
-			<mx:Text text="{_student.program}{_student.department}{_student.gradDate}"/>
+			<mx:Text text="{_student.program}{_student.department}{_student.expectedGraduationMonth}"/>
 		</mx:FormItem>
 		<mx:FormItem label="Link to view resume:">
 			<mx:LinkButton label="http://google.com" click="openLink(event);" />
 		</mx:FormItem>
 		<mx:FormItem label="Link to LinkedIn Profile:">
-			<mx:LinkButton label="{_student.linkedInLink}" click="openLink(event);"/>
+			<mx:LinkButton label="{_student.linkedInProfile}" click="openLink(event);"/>
 		</mx:FormItem>
 		<mx:FormItem label="Link to youtube video:">
-			<mx:LinkButton label="{_student.youTubeLink}" click="openLink(event);"/>
+			<mx:LinkButton label="{_student.youtubeLink}" click="openLink(event);"/>
 		</mx:FormItem>
-		<mx:Text text="{_student.storyTxt}" width="400"/>
+		<mx:Text text="{_student.studentStory}" width="400"/>
 	</mx:Form>
 </mx:VBox>
