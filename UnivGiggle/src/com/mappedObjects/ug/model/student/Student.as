@@ -1,10 +1,10 @@
 package com.mappedObjects.ug.model.student
 {
-	import mx.controls.List;
+	import com.mappedObjects.ug.model.ModelBase;
 	
 	[Bindable]
 	[RemoteClass(alias='com.ug.model.Student')]
-	public class Student
+	public class Student extends ModelBase
 	{
 		public var firstName:String = "";
 		public var lastName:String = "";
