@@ -371,6 +371,7 @@
         {
         	univGiggleStack.removeAllChildren();
         	_grantDet = new GrantPage;
+        	_grantDet.addEventListener(SaveProfile.SAVE_PROFILE,displayStudentGrantDetails,false,0,true);
         	univGiggleStack.addChild(_grantDet);
         }
         
