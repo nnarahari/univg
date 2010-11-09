@@ -10,7 +10,7 @@ package com.mappedObjects.ug.model.student
 		public var neededBy:Date;
 		public var requirement:String;
 		public var validationTemplatePath:String;
-		public var status:String;
+		public var status:String = 'Open';
 		public var student:Student;
 		
 		

@@ -8,7 +8,7 @@
 				<mx:Text text="Grant {_grantNo} submitted by {_studentName}" />
 			</mx:GridItem>
 			<mx:GridItem >
-				<mx:Text text="Incomplete" fontWeight="bold" color="halogreen"/>
+				<mx:Text text="{_statusLabel}" fontWeight="bold" color="{_statusColor}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow  width="100%"  height="100%">
@@ -16,7 +16,7 @@
 				<mx:Text text="Grant Amount :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:TextInput id="amountVal" width="150"/>
+				<mx:TextInput id="amountVal" text="{_studentGrantObj.grantAmount}" width="150"/>
 				<mx:ComboBox id="currency">
 					<mx:dataProvider>
 						<mx:String>USD</mx:String>
@@ -32,7 +32,7 @@
 				<mx:Text text="Grant Request For :"/>
 			</mx:GridItem>
 			<mx:GridItem colSpan="2">
-				<mx:ComboBox id="grant" width="200"/>
+				<mx:ComboBox id="grant" width="200" text="{_studentGrantObj.requestedFor}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow width="100%" >
@@ -43,7 +43,7 @@
 		</mx:GridRow>
 		<mx:GridRow width="100%"  height="100%">
 			<mx:GridItem colSpan="3">
-				<mx:TextArea id="grantRequestDet" width="100%"/>
+				<mx:TextArea id="grantRequestDet" width="100%" text="{_studentGrantObj.requirement}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow width="100%"  height="100%">
