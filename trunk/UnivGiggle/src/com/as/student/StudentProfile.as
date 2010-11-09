@@ -60,6 +60,9 @@ private function creationHandler():void
  */
 private function onSaveProfile(event:MouseEvent):void
 {
+	var _saveProfileEvt:SaveStudentProfileEvent = new SaveStudentProfileEvent(SaveStudentProfileEvent.SAVE_PROFILE,_student);
+	dispatchEvent(_saveProfileEvt);
+	//for testing	
 	var validatorErrorArr:Array = Validator.validateAll(validationArray);
 	var isValid:Boolean = validatorErrorArr.length == 0;
 	if(isValid){
