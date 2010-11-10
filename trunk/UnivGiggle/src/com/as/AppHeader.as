@@ -107,7 +107,8 @@
         			parentDocument.dispatchEvent(new AboutUsEvent(AboutUsEvent.EVENT_NAME));
         			break;
         		case 4:
-        			parentDocument.dispatchEvent(new StudentClassifiedEvent(StudentClassifiedEvent.EVENT_NAME));
+        			if(checkUserLoggedIn())
+        				parentDocument.dispatchEvent(new StudentClassifiedEvent(StudentClassifiedEvent.EVENT_NAME));
         			break;
         		case 6:
         			parentDocument.dispatchEvent(new P2PLenderClassifiedEvent(P2PLenderClassifiedEvent.EVENT_NAME));
