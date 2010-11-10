@@ -4,6 +4,7 @@ import com.events.HomePageEvent;
 import com.events.student.SaveStudentProfileEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.ResultInfo;
+import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.student.Student;
 
 import mx.controls.Alert;
@@ -33,7 +34,7 @@ private var picPathByteArray:ByteArray;
 private var resumePathByteArray:ByteArray;
 private var resultInfoObj:ResultInfo;
 private var validationArray:Array;
-
+private var __ugUser:UG_User;
 /**
  * 
  */
@@ -49,7 +50,7 @@ private function creationHandler():void
 	cancelProfile.addEventListener(MouseEvent.CLICK,onCancelProfile,false,0,true);
 	studentRemoteObj.addStudent.addEventListener(ResultEvent.RESULT,onResultAddStudent,false,0,true);
 	studentRemoteObj.addStudent.addEventListener(FaultEvent.FAULT,onFaultAddStudent,false,0,true);
-	_student = new Student;
+	
 	createImageCaptcha();
 	setValidator();
 }
@@ -217,4 +218,21 @@ private function onResultAddStudent(event:ResultEvent):void
 		var _saveProfileEvt:SaveStudentProfileEvent = new SaveStudentProfileEvent(SaveStudentProfileEvent.SAVE_PROFILE,_student);
 		dispatchEvent(_saveProfileEvt);
 	}
+}
+
+/**
+ * 
+ * @param userInfo
+ */
+public function setUserInfo(userInfo:UG_User):void
+{
+	if(userInfo != null){
+		__ugUser = userInfo;
+		_student = new Student;
+		_student.firstName = __ugUser.firstName;
+		_student.lastName = __ugUser.lastName;
+		_student.email = __ugUser.emailId;
+		_student.gender = __ugUser.gender;
+	}
+	
 }
