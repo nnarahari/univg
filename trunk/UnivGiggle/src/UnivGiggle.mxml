@@ -7,32 +7,7 @@
 <mx:Script source="./com/as/ApplicationStartUp.as"/>
 <mx:VBox width="100%" height="100%">
 	<view:Header id="appHeader" height="10%"/>
-	<mx:Canvas id="univGiggleStack1" width="100%" height="100%" />
-		<!--<mx:ViewStack id="univGiggleStack" width="100%" height="100%" change="onStackChange(event)">
-			<mx:VBox id="welcome" borderStyle="solid" horizontalAlign="center" >
-				<mx:Image maintainAspectRatio="true" source="./assets/greenote.jpg"/>
-			</mx:VBox>
-			<view:Login id="login"/>
-			<view:HomePage id="home" />
-			<view:PostClassified id="postClassified" />
-			<view:ConfirmClassified id="confirmClassified"/>
-			<view:PostedSuccess id="postSuccess"/>
-			<view:SignupPage id="signUp" />
-			<view:GenaratePassword id="genaratePassword" />
-			<view:AboutPage id="about"/>
-			<view:StudentClassified id="studentClassified"/>
-			<view:P2PLenderClassified id="p2plender"/>
-			<view:CorporateLenderClassified id="corLender"/>
-			<view:ContactUs id="contactUs"/>
-			<view:FaceBookLogin id="faceLogin"/>
-			
-			<mentorView:MentorList id="mentorsList"/>
-			<mentorView:MentorProfile  id="mentor"/>
-			<mentorView:mentorTestimonial id="mentorAck"/>
-			
-			<mentee:MenteeProfile id="mentee"/>
-			<mentee:MenteeTestimonial id="menteeAck"/>
-		</mx:ViewStack>-->
+	<mx:Canvas id="univGiggleStack" width="100%" height="100%" />
 	<view:Footer id="appFooter" height="5%" width="100%"/>
 </mx:VBox>
 </mx:Application>
