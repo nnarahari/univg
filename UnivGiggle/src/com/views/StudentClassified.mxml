@@ -3,10 +3,12 @@
 	horizontalAlign="center" verticalAlign="top" xmlns:student="com.views.student.*"  paddingLeft="10" borderStyle="solid" creationComplete="creationHandler();">
 	<mx:Script>
 		<![CDATA[
+			import com.mappedObjects.ug.model.UG_User;
 			import com.events.student.SaveProfile;
 			import com.events.student.SaveStudentProfileEvent;
 			import mx.controls.Alert;
 			import com.events.student.SelectedGrantEvt;
+			private var __ugUser:UG_User;
 			private var listArray:Array=[
 	         {label: "Grant 1.   Google has a grant of $20000", data: 0},
 	         {label: "Grant 2.   Cisco has a grant of $30000", data: 1},
@@ -30,6 +32,19 @@
 			{
 				var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,event._studentObj);
 				dispatchEvent(_saveProfileEvt);
+			}
+			
+			/**
+			 * 
+			 * @param userInfo
+			 */
+			public function setUserInfo(userInfo:UG_User):void
+			{
+				if(userInfo != null){
+					__ugUser = userInfo;
+					studentProfile.callLater(studentProfile.setUserInfo,[__ugUser]);
+				}
+				
 			}
 		]]>
 	</mx:Script>
