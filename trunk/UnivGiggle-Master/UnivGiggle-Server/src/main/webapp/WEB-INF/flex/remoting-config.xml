@@ -36,5 +36,12 @@
 	  	</properties>
   	</destination>
   	
+  	<destination id="studentManager">
+		<properties>
+	  		<factory>spring</factory> 
+	  		<source>studentManager</source> 
+	  	</properties>
+  	</destination>
+  	
 
 </service>
