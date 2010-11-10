@@ -347,6 +347,7 @@
         		 univGiggleStack.removeAllChildren();
         		_studentClassInstance = new StudentClassified;
         		_studentClassInstance.addEventListener(SaveProfile.SAVE_PROFILE,displayStudentGrantDetails,false,0,true);
+        		_studentClassInstance.callLater(_studentClassInstance.setUserInfo,[__ugUser]);
         		univGiggleStack.addChild(_studentClassInstance); 
         		/* univGiggleStack.removeAllChildren();
 	        	_studentGrantDetails = new StudentGrantDetails;
