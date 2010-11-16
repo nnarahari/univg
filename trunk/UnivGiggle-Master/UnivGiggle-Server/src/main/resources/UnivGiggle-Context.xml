@@ -96,6 +96,8 @@
 	<bean id="mentorsRequestDAO" class="com.ug.dao.impl.MentorsRequestDAOImpl" autowire="byName" />
 	
 	<bean id="studentDAO" class="com.ug.dao.impl.StudentDAOImpl" autowire="byName" />
+	
+	<bean id="corporateDAO" class="com.ug.dao.impl.CorporateDAOImpl" autowire="byName" />
 
 
 
@@ -119,6 +121,11 @@
 	</bean>
 	
 	<bean id="studentManager" class="com.ug.service.impl.StudentManagerImpl" >
+		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
+		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
+	</bean>
+	
+		<bean id="corporateManager" class="com.ug.service.impl.CorporateManagerImpl" >
 		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
 		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
 	</bean>
