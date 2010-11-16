@@ -43,5 +43,12 @@
 	  	</properties>
   	</destination>
   	
+  	<destination id="corporateManager">
+		<properties>
+	  		<factory>spring</factory> 
+	  		<source>corporateManager</source> 
+	  	</properties>
+  	</destination>
+  	
 
 </service>
