@@ -114,6 +114,7 @@
         			parentDocument.dispatchEvent(new P2PLenderClassifiedEvent(P2PLenderClassifiedEvent.EVENT_NAME));
         			break;
         		case 8:
+        		if(checkUserLoggedIn())
         			parentDocument.dispatchEvent(new CorporateLenderEvent(CorporateLenderEvent.EVENT_NAME));
         			break;
         		case 14:
