@@ -97,7 +97,9 @@
 	
 	<bean id="studentDAO" class="com.ug.dao.impl.StudentDAOImpl" autowire="byName" />
 	
-	<bean id="corporateDAO" class="com.ug.dao.impl.CorporateDAOImpl" autowire="byName" />
+	<bean id="studentGrantDAO" class="com.ug.dao.impl.StudentGrantDAOImpl" autowire="byName" />
+	
+<!--	<bean id="corporateDAO" class="com.ug.dao.impl.CorporateDAOImpl" autowire="byName" />-->
 
 
 
@@ -125,12 +127,13 @@
 		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
 	</bean>
 	
-		<bean id="corporateManager" class="com.ug.service.impl.CorporateManagerImpl" >
+	<bean id="studentGrantManager" class="com.ug.service.impl.StudentGrantManagerImpl" />
+	
+	<!--<bean id="corporateManager" class="com.ug.service.impl.CorporateManagerImpl" >
 		<property name="imageAppURL" value="${IMAGE_APP_URL}" />
 		<property name="imageWebURL" value="${IMAGE_WEB_URL}" />
 	</bean>
-
-
+	-->
 	<bean
 		class="org.springframework.web.context.support.ServletContextAttributeExporter">
 		<property name="attributes">

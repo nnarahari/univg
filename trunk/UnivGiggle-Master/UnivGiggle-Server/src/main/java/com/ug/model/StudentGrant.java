@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @Table(name="StudentGrant")
 public class StudentGrant extends ModelBase {
 	
+	private static final long serialVersionUID = 1300963282886234579L;
+
 	@Column (name="grantamount" , nullable=false)
 	private double grantAmount;
 	
@@ -26,7 +28,6 @@ public class StudentGrant extends ModelBase {
 	
 	@Column (name="neededby", nullable=false)
 	private Date neededBy;
-	
 	
 	@Column (name="requirement", nullable=false, length=2000)
 	private String requirement;

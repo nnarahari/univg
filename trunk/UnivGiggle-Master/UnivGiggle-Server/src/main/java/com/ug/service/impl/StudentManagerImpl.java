@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ug.dao.StudentDAO;
 import com.ug.model.ResultInfo;
 import com.ug.model.Student;
+import com.ug.model.StudentGrant;
 import com.ug.service.StudentManager;
 import com.ug.util.UnivGiggleUtil;
 
@@ -45,10 +46,21 @@ public class StudentManagerImpl implements StudentManager{
 
 	@Override
 	public Student getStudent(String email) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("getStudent() started...");
+		return studentDAO.getStudent(email);
 	}
 
+	@Override
+	public Student updateStudent(Student stud) throws Exception{
+		return studentDAO.createStudent(stud);
+	}
+	
+	@Override
+	public boolean addStudentGrant(String email, StudentGrant sGrant)throws Exception{
+		logger.info("addStudentGrant() started....");
+		return studentDAO.addStudentGrant(email, sGrant);
+	}
+	
 	/**
 	 * @param studentDAO the studentDAO to set
 	 */
