@@ -19,9 +19,6 @@ import javax.persistence.Table;
 @Table(name="Student")
 public class Student extends ModelBase{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 558447798151912608L;
 
 	@Column(name="firstname", length=50, nullable=false)

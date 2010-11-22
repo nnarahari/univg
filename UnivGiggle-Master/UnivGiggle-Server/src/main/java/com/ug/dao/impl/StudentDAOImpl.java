@@ -3,6 +3,9 @@
  */
 package com.ug.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
@@ -15,6 +18,8 @@ import com.ug.dao.StudentDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Classified;
 import com.ug.model.Student;
+import com.ug.model.StudentGrant;
+
 
 /**
  * @author srrajend
@@ -59,18 +64,40 @@ public class StudentDAOImpl implements StudentDAO {
 	@Override
 	public Student getStudent(String email) throws Exception {
 		logger.info("getStudent() started...");
-		logger.debug("email ==>"+ email);
+		logger.info("email ==>"+ email);
 		Student student = null;
-		String qry = "Select Object(c) from Student s where s.email = :email";
+		String qry = "Select Object(s) from Student s where s.email = :email";
 		Query query = entityManager.createQuery(qry);
 		query.setParameter("email", email); 
+		
+		Student newStudent = new Student();
 		try{
 			student = (Student) query.getSingleResult();
+			newStudent = student;
+			List<StudentGrant> sgList = new ArrayList<StudentGrant>();
+			sgList.addAll(student.getGrantList());
+			newStudent.setGrantList(sgList);
 		}catch(Exception e){
 			logger.error("Error while reteriving classified",e);
 			throw e;
 		}
-		return student;
+		return newStudent;
+	}
+	
+	@Override @Transactional
+	public boolean addStudentGrant(String email, StudentGrant sGrant)throws Exception{
+		logger.info("addStudentGrant() started...email ==>"+ email);
+		Student stud = getStudent(email);
+		
+		List<StudentGrant> sgList = stud.getGrantList();
+		logger.info("studet grant size ==>"+ sgList.size());
+		sGrant.setStudent(stud);
+		sgList.add(sGrant);
+		stud.setGrantList(sgList);
+		
+		Student newStud = createStudent(stud);
+		return true;
+		
 	}
 
 }
