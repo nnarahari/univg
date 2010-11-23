@@ -41,6 +41,11 @@
 		<mx:FormItem label="Link to youtube video:">
 			<mx:LinkButton label="{_student.youtubeLink}" click="openLink(event);"/>
 		</mx:FormItem>
-		<mx:Text text="{_student.studentStory}" width="400"/>
+		<mx:HBox width="100%">
+			<mx:Spacer width="5%"/>
+			<mx:Text text="{_student.studentStory}" width="80%"/>
+			<mx:Spacer width="5%"/>	
+		</mx:HBox>
+		
 	</mx:Form>
 </mx:VBox>
