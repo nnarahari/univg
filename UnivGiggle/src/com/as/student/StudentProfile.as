@@ -35,6 +35,7 @@ private var resumePathByteArray:ByteArray;
 private var resultInfoObj:ResultInfo;
 private var validationArray:Array;
 private var __ugUser:UG_User;
+private var isAdded:Boolean = true;
 /**
  * 
  */
@@ -50,7 +51,10 @@ private function creationHandler():void
 	cancelProfile.addEventListener(MouseEvent.CLICK,onCancelProfile,false,0,true);
 	studentRemoteObj.addStudent.addEventListener(ResultEvent.RESULT,onResultAddStudent,false,0,true);
 	studentRemoteObj.addStudent.addEventListener(FaultEvent.FAULT,onFaultAddStudent,false,0,true);
-	
+	studentRemoteObj.getStudent.addEventListener(ResultEvent.RESULT,onResultGetStudent,false,0,true);
+	studentRemoteObj.getStudent.addEventListener(FaultEvent.FAULT,onFaultGetStudent,false,0,true);
+	studentRemoteObj.updateStudent.addEventListener(ResultEvent.RESULT,onResultUpdateStudent,false,0,true);
+	studentRemoteObj.updateStudent.addEventListener(FaultEvent.FAULT,onFaultUpdateStudent,false,0,true);
 	createImageCaptcha();
 	setValidator();
 }
@@ -68,7 +72,10 @@ private function onSaveProfile(event:MouseEvent):void
 		if(verificationCode.text  == imagecaptcha._securitycode){
 			male.selected?_student.gender = "male":_student.gender = "female";
 			_student.expectedGraduationMonth = gradDate.text;
-			studentRemoteObj.addStudent(_student,picPathByteArray,resumePathByteArray);
+			if(isAdded)
+				studentRemoteObj.addStudent(_student,picPathByteArray,resumePathByteArray);
+			else
+				studentRemoteObj.updateStudent(_student);
 			
 		}else
 		{
@@ -233,6 +240,47 @@ public function setUserInfo(userInfo:UG_User):void
 		_student.lastName = __ugUser.lastName;
 		_student.email = __ugUser.emailId;
 		_student.gender = __ugUser.gender;
+		creationHandler();
+		studentRemoteObj.getStudent(__ugUser.emailId);
 	}
 	
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onResultGetStudent(event:ResultEvent):void
+{	
+	if(event.result as Student){
+		_student = event.result as Student;
+		if(_student != null){
+			but_label = "Edit";
+			isAdded = false;
+		}else{
+			but_label = "Create";
+			isAdded = true;
+	 	}
+ 	}
+}
+
+/**
+ * 
+ * @param event
+ */
+private function onFaultGetStudent(event:FaultEvent):void
+{
+	Alert.show(event.fault.message,"Error");
+}
+
+private function onResultUpdateStudent(event:ResultEvent):void
+{
+	_student = event.result as Student;
+	var _saveProfileEvt:SaveStudentProfileEvent = new SaveStudentProfileEvent(SaveStudentProfileEvent.SAVE_PROFILE,_student);
+	dispatchEvent(_saveProfileEvt);
+}
+
+private function onFaultUpdateStudent(event:FaultEvent):void
+{
+	Alert.show(event.fault.message,"Error");
 }
