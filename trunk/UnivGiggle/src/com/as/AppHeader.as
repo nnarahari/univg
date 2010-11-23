@@ -17,10 +17,14 @@
 		import com.facebook.Facebook;
 		import com.facebook.commands.users.GetInfo;
 		import com.facebook.data.users.FacebookUser;
+		import com.facebook.data.users.GetInfoData;
+		import com.facebook.data.users.GetInfoFieldValues;
 		import com.facebook.events.FacebookEvent;
+		import com.facebook.net.FacebookCall;
 		import com.facebook.utils.FacebookSessionUtil;
 		import com.interactiveObject.ServiceObject;
 		import com.mappedObjects.ug.model.UG_User;
+		import com.mappedObjects.ug.model.student.Student;
 		
 		import mx.collections.XMLListCollection;
 		import mx.controls.Alert;
@@ -29,11 +33,6 @@
 		import mx.rpc.events.FaultEvent;
 		import mx.rpc.events.ResultEvent;
 		import mx.rpc.remoting.RemoteObject;
-		import com.facebook.net.FacebookCall; 
-		import com.facebook.commands.users.GetInfo;   
-        import com.facebook.data.users.FacebookUser;   
-        import com.facebook.data.users.GetInfoData;   
-        import com.facebook.data.users.GetInfoFieldValues;
 
 
 		private var fbook:Facebook;
@@ -109,6 +108,7 @@
         		case 4:
         			if(checkUserLoggedIn())
         				parentDocument.dispatchEvent(new StudentClassifiedEvent(StudentClassifiedEvent.EVENT_NAME));
+      
         			break;
         		case 6:
         			parentDocument.dispatchEvent(new P2PLenderClassifiedEvent(P2PLenderClassifiedEvent.EVENT_NAME));

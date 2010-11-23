@@ -1,6 +1,12 @@
 // ActionScript file
 import com.events.student.SaveProfile;
+import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.student.StudentGrant;
+
+import mx.controls.Alert;
+import mx.rpc.events.FaultEvent;
+import mx.rpc.events.ResultEvent;
+import mx.rpc.remoting.RemoteObject;
 
 [Bindable]
 private var _listofMonths:Array = ['01','02','03','04','05','06','07','08','09','10','11','12'];
@@ -28,12 +34,18 @@ private var _statusColor:uint = 0xc60404;
 private var _statusLabel:String;
 [Bindable]
 private var _studentGrantObj:StudentGrant;
+private var serviceObject:ServiceObject;
+private var grantRemoteObj:RemoteObject;
 
 private function creationHandler():void
 {
+	serviceObject = new ServiceObject;
+	grantRemoteObj = serviceObject.getRemoteObjectInstance("studentManager");
 	but_attach.addEventListener(MouseEvent.CLICK,browseFiles,false,0,true);
 	but_save.addEventListener(MouseEvent.CLICK,saveStudentGrant,false,0,true);
 	but_cancel.addEventListener(MouseEvent.CLICK,cancelStudentGrant,false,0,true);
+	grantRemoteObj.addStudentGrant.addEventListener(ResultEvent.RESULT,onResultAddStudentGrant,false,0,true);
+	grantRemoteObj.addStudentGrant.addEventListener(FaultEvent.FAULT,onFaultAddStudentGrant,false,0,true);
 	//for testing
 	var obj:StudentGrant = new StudentGrant;
 	displayRequiredStatus(obj);
@@ -72,12 +84,22 @@ private function selectedFileDet(event:Event):void
 
 private function saveStudentGrant(event:MouseEvent):void
 {
-	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,null);
-	dispatchEvent(_saveProfileEvt);
+	grantRemoteObj.addStudentGrant(_studentGrantObj);
 }
 
 private function cancelStudentGrant(event:MouseEvent):void
 {
 	 var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,null);
 	dispatchEvent(_saveProfileEvt); 
+}
+
+private function onResultAddStudentGrant(event:ResultEvent):void
+{
+	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,null);
+	dispatchEvent(_saveProfileEvt);
+}
+
+private function onFaultAddStudentGrant(event:FaultEvent):void
+{
+	Alert.show(event.fault.message,"Error");
 }
