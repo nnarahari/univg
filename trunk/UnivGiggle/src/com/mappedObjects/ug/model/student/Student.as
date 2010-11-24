@@ -13,7 +13,7 @@ package com.mappedObjects.ug.model.student
 		public var country:String = "US";
 		public var state:String = "Alabama";
 		public var university:String = "Air University";
-		public var program:String = "Training";
+		public var program:String = "";
 		public var department:String = "IT";
 		public var expectedGraduationMonth:String = "11/2010";
 		public var resumePath:String = "";
