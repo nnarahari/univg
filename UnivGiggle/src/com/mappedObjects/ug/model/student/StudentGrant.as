@@ -5,10 +5,10 @@ package com.mappedObjects.ug.model.student
 	[RemoteClass(alias='com.ug.model.StudentGrant')]
 	public class StudentGrant extends ModelBase
 	{
-		public var grantAmount:Number;
-		public var requestedFor:String;
+		public var grantAmount:Number = 50;
+		public var requestedFor:String = 'Open request';
 		public var neededBy:Date;
-		public var requirement:String;
+		public var requirement:String='sdhkjhasdjhasd';
 		public var validationTemplatePath:String;
 		public var status:String = 'Open';
 		public var student:Student;
