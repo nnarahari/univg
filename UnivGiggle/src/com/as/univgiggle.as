@@ -347,6 +347,7 @@
         		 univGiggleStack.removeAllChildren();
         		_studentClassInstance = new StudentClassified;
         		_studentClassInstance.addEventListener(SaveProfile.SAVE_PROFILE,displayStudentGrantDetails,false,0,true);
+        		_studentClassInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
         		_studentClassInstance.callLater(_studentClassInstance.setUserInfo,[__ugUser]);
         		univGiggleStack.addChild(_studentClassInstance); 
         		
@@ -371,6 +372,8 @@
         	univGiggleStack.removeAllChildren();
         	_grantDet = new GrantPage;
         	_grantDet.addEventListener(SaveProfile.SAVE_PROFILE,displayStudentGrantDetails,false,0,true);
+        	_grantDet.callLater(_grantDet.setUserObj,[__ugUser]);
+        	_grantDet.callLater(_grantDet.setStudentObj,[event._student]);
         	univGiggleStack.addChild(_grantDet);
         }
         
