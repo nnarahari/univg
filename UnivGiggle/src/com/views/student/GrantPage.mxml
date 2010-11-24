@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingLeft="10" paddingBottom="10" paddingTop="10"
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" paddingLeft="10" paddingBottom="10" paddingTop="10"
 	creationComplete="creationHandler();">
 <mx:Script source="../../as/student/GrantPage.as"/>
+<mx:XML id="dp_request" source="../../../xml/grantrequest.xml" format="e4x" />
 	<mx:Grid width="100%" height="100%" >
 		<mx:GridRow  width="100%" height="100%">
 			<mx:GridItem colSpan="2" horizontalAlign="center">
@@ -32,7 +33,7 @@
 				<mx:Text text="Grant Request For :"/>
 			</mx:GridItem>
 			<mx:GridItem colSpan="2">
-				<mx:ComboBox id="grant" width="200" text="{_studentGrantObj.requestedFor}"/>
+				<mx:ComboBox id="grant" width="200" labelField="@name" dataProvider="{dp_request.request}" text="{_studentGrantObj.requestedFor}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow width="100%" >

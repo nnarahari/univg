@@ -51,7 +51,7 @@
 	   
 	   private function requestForNewGrant(event:MouseEvent):void
 	   {
-	   		_grantRequestEvt = new CreateGrantRequestEvent(CreateGrantRequestEvent.GRANT_REQUEST);
+	   		_grantRequestEvt = new CreateGrantRequestEvent(CreateGrantRequestEvent.GRANT_REQUEST,_student);
 	   		dispatchEvent(_grantRequestEvt);
 	   }
 	   
