@@ -1,9 +1,12 @@
 // ActionScript file
 import com.events.student.SaveProfile;
 import com.interactiveObject.ServiceObject;
+import com.mappedObjects.ug.model.UG_User;
+import com.mappedObjects.ug.model.student.Student;
 import com.mappedObjects.ug.model.student.StudentGrant;
 
 import mx.controls.Alert;
+import mx.core.ByteArrayAsset;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
@@ -36,6 +39,9 @@ private var _statusLabel:String;
 private var _studentGrantObj:StudentGrant;
 private var serviceObject:ServiceObject;
 private var grantRemoteObj:RemoteObject;
+private var _userObj:UG_User;
+private var _student:Student;
+private var _templateByteArray:ByteArray;
 
 private function creationHandler():void
 {
@@ -79,12 +85,23 @@ private function browseFiles(event:MouseEvent):void
 
 private function selectedFileDet(event:Event):void
 {
-	var fileRef:FileReference = event.currentTarget as FileReference;
+	fileRef = event.currentTarget as FileReference;
+	fileRef.addEventListener(Event.COMPLETE, loadSelectedTemplate);
+	fileRef.load();
+}
+
+private function loadSelectedTemplate(event:Event):void
+{
+	_templateByteArray = fileRef.data as ByteArray;
 }
 
 private function saveStudentGrant(event:MouseEvent):void
 {
-	grantRemoteObj.addStudentGrant(_studentGrantObj);
+	
+	_studentGrantObj.validationTemplatePath = "name";
+	var needBy:String = "01/02/2006";
+	_studentGrantObj.neededBy = new Date(needBy,02);
+	grantRemoteObj.addStudentGrant(_userObj.emailId,_studentGrantObj);
 }
 
 private function cancelStudentGrant(event:MouseEvent):void
@@ -102,4 +119,20 @@ private function onResultAddStudentGrant(event:ResultEvent):void
 private function onFaultAddStudentGrant(event:FaultEvent):void
 {
 	Alert.show(event.fault.message,"Error");
+}
+
+public function setUserObj(userObj:UG_User):void
+{
+	if(userObj != null){
+		_userObj = userObj;
+	}
+}
+
+public function setStudentObj(studentObj:Student):void
+{
+	if(studentObj != null){
+		_student = studentObj;
+		_studentGrantObj = new StudentGrant;
+		_studentGrantObj.student = _student;
+	}
 }
