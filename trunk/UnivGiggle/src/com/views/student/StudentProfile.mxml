@@ -30,6 +30,8 @@
 
 <mx:Script source="../../as/student/StudentProfile.as"/>
 <mx:XML id="dp" source="../../../xml/univ.xml" format="e4x" />
+<mx:XML id="dp_program" source="../../../xml/studyprogram.xml" format="e4x" />
+<mx:XML id="dp_dept" source="../../../xml/department.xml" format="e4x" />
 <mx:XML id="dp_category" source="../../../xml/categories.xml" format="e4x" />
 		<mx:Grid id="mentorProfile" width="90%" height="100%" >
 		<mx:GridRow id="heading" width="100%">
@@ -99,7 +101,7 @@
 				<mx:Text text="Department :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:ComboBox id="dept"  width="80"   labelField="@name" text="{_student.department}"/>
+				<mx:ComboBox id="dept"  width="200" dataProvider="{dp_dept.department}"   labelField="@name" text="{_student.department}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -108,7 +110,8 @@
 				<mx:Text text="Program for Study :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:ComboBox id="btn_program"  width="150" labelField="@name" text="{_student.program}"/>
+				<mx:ComboBox id="btn_program"  labelField="@name" width="200" dataProvider="{dp_program.program}"  text="{_student.program}">
+				</mx:ComboBox>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Expected Graduation Date  :"/>
