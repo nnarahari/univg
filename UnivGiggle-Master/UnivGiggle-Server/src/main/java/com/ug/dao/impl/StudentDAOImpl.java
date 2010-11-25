@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ug.dao.StudentDAO;
 import com.ug.exception.DBConnectionFailureException;
-import com.ug.model.Classified;
 import com.ug.model.Student;
 import com.ug.model.StudentGrant;
 
@@ -78,7 +77,7 @@ public class StudentDAOImpl implements StudentDAO {
 			sgList.addAll(student.getGrantList());
 			newStudent.setGrantList(sgList);
 		}catch(Exception e){
-			logger.error("Error while reteriving classified",e);
+			logger.error("Error while reteriving student",e);
 			throw e;
 		}
 		return newStudent;
