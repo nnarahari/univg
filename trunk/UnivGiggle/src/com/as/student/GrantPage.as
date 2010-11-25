@@ -112,7 +112,7 @@ private function cancelStudentGrant(event:MouseEvent):void
 
 private function onResultAddStudentGrant(event:ResultEvent):void
 {
-	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,null);
+	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,_student);
 	dispatchEvent(_saveProfileEvt);
 }
 
