@@ -25,6 +25,7 @@
 		import com.interactiveObject.ServiceObject;
 		import com.mappedObjects.ug.model.UG_User;
 		import com.mappedObjects.ug.model.student.Student;
+		import com.mappedObjects.ug.model.corporate.Corporate;
 		
 		import mx.collections.XMLListCollection;
 		import mx.controls.Alert;
