@@ -4,6 +4,7 @@
 package com.ug.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -60,7 +61,7 @@ public class StudentDAOImpl implements StudentDAO {
 		return null;
 	}
 
-	@Override
+	@Override @Transactional
 	public Student getStudent(String email) throws Exception {
 		logger.info("getStudent() started...");
 		logger.info("email ==>"+ email);
@@ -95,8 +96,39 @@ public class StudentDAOImpl implements StudentDAO {
 		stud.setGrantList(sgList);
 		
 		Student newStud = createStudent(stud);
-		return true;
+		if(newStud != null)
+			return true;
+		else
+			return false;
 		
 	}
+
+
+	@Override
+	public List<Student> getStudentsFromUniversity(String university)throws Exception {
+		logger.info("getStudentsFromUniversity() started...");
+		List<Student> studentListToReturn = new ArrayList<Student>();
+		String qry = "Select Object(s) from Student s where s.university = :university";
+		Query query = entityManager.createQuery(qry);
+		query.setParameter("university", university); 
+		Student student = null;
+		Student newStudent = new Student();
+		try{
+			List<Student> studentList =  query.getResultList();
+			for (Iterator<Student> iterator = studentList.iterator(); iterator.hasNext();) {
+				student =  iterator.next();
+				newStudent = student;
+				List<StudentGrant> sgList = new ArrayList<StudentGrant>();
+				sgList.addAll(student.getGrantList());
+				newStudent.setGrantList(sgList);
+				studentListToReturn.add(newStudent);
+			}
+			return studentListToReturn;
+		}catch(Exception e){
+			logger.error("Error while reteriving student",e);
+			throw e;
+		}
+	}
+	
 
 }
