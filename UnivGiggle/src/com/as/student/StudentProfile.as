@@ -222,6 +222,7 @@ private function onResultAddStudent(event:ResultEvent):void
 {
 	resultInfoObj = event.result as ResultInfo;
 	if(resultInfoObj.success){
+		_student = resultInfoObj.responseObject as Student;
 		var _saveProfileEvt:SaveStudentProfileEvent = new SaveStudentProfileEvent(SaveStudentProfileEvent.SAVE_PROFILE,_student);
 		dispatchEvent(_saveProfileEvt);
 	}
@@ -257,6 +258,9 @@ private function onResultGetStudent(event:ResultEvent):void
 		if(_student != null){
 			but_label = "Edit";
 			isAdded = false;
+			_student.gender == "male"?male.selected = true : female.selected = true;
+			gradDate.text = _student.expectedGraduationMonth;
+			univ.text = _student.university;
 		}else{
 			but_label = "Create";
 			isAdded = true;
@@ -270,7 +274,7 @@ private function onResultGetStudent(event:ResultEvent):void
  */
 private function onFaultGetStudent(event:FaultEvent):void
 {
-	Alert.show(event.fault.message,"Error");
+//	Alert.show(event.fault.message,"Error");
 }
 
 private function onResultUpdateStudent(event:ResultEvent):void
