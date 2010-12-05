@@ -63,7 +63,7 @@ public class StudentGrantManagerImplTest {
 		
 		StudentGrant sGrant = new StudentGrant();
 		sGrant.setGrantAmount(1000);
-		sGrant.setNeededBy(new Date());
+		sGrant.setNeededBy("Jun-11");
 		sGrant.setRequestedFor("MCA");
 		sGrant.setStatus("TRUE");
 		sGrant.setValidationTemplatePath("path 1");

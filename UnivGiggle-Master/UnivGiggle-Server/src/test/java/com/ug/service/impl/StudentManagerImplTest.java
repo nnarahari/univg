@@ -98,12 +98,21 @@ public class StudentManagerImplTest {
 
 		StudentGrant sGrant = new StudentGrant();
 		sGrant.setGrantAmount(1000);
-		sGrant.setNeededBy(new Date());
+		sGrant.setNeededBy("May-2011");
 		sGrant.setRequestedFor("MCA");
 		sGrant.setStatus("TRUE");
 		sGrant.setValidationTemplatePath("path 1");
 		sGrant.setRequirement("Req 1");
 		
+		int count = studentManager.getStudent("s@s.com").getGrantList().size();
+		System.out.println("count ==>"+ count);
 		assertTrue(studentManager.addStudentGrant("s@s.com", sGrant));
+		
+		Student stud = studentManager.getStudent("s@s.com");
+		count = stud.getGrantList().size();
+		System.out.println("count  after add grant==>"+ count);
+		System.out.println("Req for  ==>"+ stud.getGrantList().get(0).getRequestedFor());
+		
+		
 	}
 }

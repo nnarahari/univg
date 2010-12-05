@@ -3,6 +3,11 @@
  */
 package com.ug.service.impl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,8 +39,39 @@ public class StudentManagerImpl implements StudentManager{
 		Student stud = studentDAO.createStudent(student);
 		if (stud != null){
 			logger.info("student profile added successfully... need to store profile photo and resume...");
+			FileOutputStream fos=null;
+			boolean dataStoredSuccess = false;
 			if( profilePic != null && resumeData != null){
-				//TODO store profile & resume..
+				
+				String profilePicturePath =  imageAppURL + File.separator + "StudentPhoto"+ File.separator + student.getId() + File.separator + student.getPicturePath();
+				String resumePath =  imageAppURL + File.separator + "StudentProfile"+ File.separator + student.getId() + File.separator + student.getResumePath();
+				try{
+					logger.info("storing profile picture...");
+					fos = new FileOutputStream(new File(profilePicturePath));
+					fos.write(profilePic);
+					fos.close();
+
+					logger.info("storing profile data...");
+
+					fos = new FileOutputStream(new File(resumePath));
+					fos.write(resumeData);
+					fos.close();
+					dataStoredSuccess = true;
+				}catch(FileNotFoundException ex){
+					logger.error("Error while saving file....",ex);
+					dataStoredSuccess = false;
+				}catch(IOException ioEx){
+					logger.error("Error while saving file....",ioEx);
+					dataStoredSuccess = false;
+				}
+				if(dataStoredSuccess){
+					profilePicturePath =  imageWebURL + File.separator + "StudentPhoto"+ File.separator + student.getId() + File.separator + student.getPicturePath();
+					resumePath =  imageWebURL + File.separator + "StudentProfile"+ File.separator + student.getId() + File.separator + student.getResumePath();
+					logger.info("updating student profile with new resume and profile pic path....");
+					stud.setPicturePath(profilePicturePath);
+					stud.setResumePath(resumePath);
+					updateStudent(stud);
+				}
 			}
 			resultInfo = UnivGiggleUtil.createResultInfo(true, "Student profile created successfully.", "0", "Student profile created successfully.", stud);
 		}else{
