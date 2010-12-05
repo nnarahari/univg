@@ -63,7 +63,7 @@
 </mx:Script>
 	<mx:HBox width="100%" paddingLeft="20">
 		<mx:VBox width="20%" borderStyle="solid">
-			<mx:Image width="150" height="150" source="./assets/student.jpg"/>
+			<mx:Image width="150" height="150" source="{_student.picturePath}"/>
 			<mx:Button id="btn_edit" label="EDIT MY STUDENT PROFILE"/>	
 		</mx:VBox>
 		<student:StudentProfileDet borderStyle="solid" studentProfile="{_student}" width="80%"/>
