@@ -6,7 +6,6 @@ import com.mappedObjects.ug.model.student.Student;
 import com.mappedObjects.ug.model.student.StudentGrant;
 
 import mx.controls.Alert;
-import mx.core.ByteArrayAsset;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
@@ -52,6 +51,8 @@ private function creationHandler():void
 	but_cancel.addEventListener(MouseEvent.CLICK,cancelStudentGrant,false,0,true);
 	grantRemoteObj.addStudentGrant.addEventListener(ResultEvent.RESULT,onResultAddStudentGrant,false,0,true);
 	grantRemoteObj.addStudentGrant.addEventListener(FaultEvent.FAULT,onFaultAddStudentGrant,false,0,true);
+	grantRemoteObj.getStudent.addEventListener(ResultEvent.RESULT,onResultGetStudent,false,0,true);
+	grantRemoteObj.getStudent.addEventListener(FaultEvent.FAULT,onFaultGetStudent,false,0,true);
 	//for testing
 	var obj:StudentGrant = new StudentGrant;
 	displayRequiredStatus(obj);
@@ -112,8 +113,7 @@ private function cancelStudentGrant(event:MouseEvent):void
 
 private function onResultAddStudentGrant(event:ResultEvent):void
 {
-	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,_student);
-	dispatchEvent(_saveProfileEvt);
+	grantRemoteObj.getStudent(_userObj.emailId);
 }
 
 private function onFaultAddStudentGrant(event:FaultEvent):void
@@ -126,6 +126,20 @@ public function setUserObj(userObj:UG_User):void
 	if(userObj != null){
 		_userObj = userObj;
 	}
+}
+
+private function onResultGetStudent(event:ResultEvent):void
+{	
+	if(event.result as Student){
+		_student = event.result as Student;
+	}
+	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,_student);
+	dispatchEvent(_saveProfileEvt);
+}
+
+private function onFaultGetStudent(event:FaultEvent):void
+{
+	Alert.show(event.fault.message,"Error");
 }
 
 public function setStudentObj(studentObj:Student):void
