@@ -3,8 +3,6 @@
  */
 package com.ug.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -27,7 +25,7 @@ public class StudentGrant extends ModelBase {
 	private String requestedFor;
 	
 	@Column (name="neededby", nullable=false)
-	private Date neededBy;
+	private String neededBy;
 	
 	@Column (name="requirement", nullable=false, length=2000)
 	private String requirement;
@@ -78,7 +76,7 @@ public class StudentGrant extends ModelBase {
 	/**
 	 * @return the neededBy
 	 */
-	public Date getNeededBy() {
+	public String getNeededBy() {
 		return neededBy;
 	}
 
@@ -86,7 +84,7 @@ public class StudentGrant extends ModelBase {
 	/**
 	 * @param neededBy the neededBy to set
 	 */
-	public void setNeededBy(Date neededBy) {
+	public void setNeededBy(String neededBy) {
 		this.neededBy = neededBy;
 	}
 
