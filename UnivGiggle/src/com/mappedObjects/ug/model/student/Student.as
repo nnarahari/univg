@@ -10,17 +10,17 @@ package com.mappedObjects.ug.model.student
 		public var lastName:String = "";
 		public var email:String = "";
 		public var gender:String = "";
-		public var country:String = "US";
-		public var state:String = "Alabama";
-		public var university:String = "Air University";
+		public var country:String = "";
+		public var state:String = "";
+		public var university:String = "";
 		public var program:String = "";
-		public var department:String = "IT";
-		public var expectedGraduationMonth:String = "11/2010";
+		public var department:String = "";
+		public var expectedGraduationMonth:String = "";
 		public var resumePath:String = "";
 		public var picturePath:String = "";
 		public var studentStory:String = "";
 		public var youtubeLink:String = "";
-		public var linkedInProfile:String = "http://www.linkedin.com/";
+		public var linkedInProfile:String = "";
 		public var grantList:Array;
 		public function Student()
 		{
