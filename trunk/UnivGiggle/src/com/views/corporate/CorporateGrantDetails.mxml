@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:corporate="com.views.corporate.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
+<mx:Script>
+	<![CDATA[
+		import com.events.corporate.CreateGrantRequestEvent;
+		import com.mappedObjects.ug.model.corporate.corporate;
+		import mx.controls.Alert;
+		import com.events.corporate.CreateGrantRequestEvent;
+		import com.events.corporate.AddGrant;
+		import com.events.corporate.DisperseGrant;
+	    private var _corporate:corporate;    
+	    private var _approveGrantEvt:CreateGrantRequestEvent;
+	    private var _addGrantEvt:AddGrant;
+	    private var _disperseGrantEvt:DisperseGrant; 
+	   private function createHandler():void
+	   {
+	   		but_viewapproveGrant.addEventListener(MouseEvent.CLICK,viewapproveGrant,false,0,true);
+	   		but_editCorporateProfile.addEventListener(MouseEvent.CLICK,editCorporateProfile,false,0,true);
+	   		but_addGrant.addEventListener(MouseEvent.CLICK,addGrant,false,0,true);
+	   		but_ok.addEventListener(MouseEvent.CLICK,disperseGrant,false,0,true);
+	   		
+	   }
+	   
+	  
+	   public function set corporateProfileDet(corporateObj:corporate):void
+	   {
+	   		_corporate = corporateObj;
+	   }
+	   
+	   private function viewapproveGrant(event:MouseEvent):void
+	   {
+	   		_approveGrantEvt = new APPROVEGrantRequestEvent(APPROVEGrantRequestEvent.APPROVEGRANT_REQUEST);
+	   		dispatchEvent(_approveGrantEvt);
+	   }
+	   
+	   private function addGrant(event:MouseEvent):void
+	   {
+	   		_addGrantEvt = new AddGrant(AddGrant.ADDGRANT_AMOUNT);
+	   		dispatchEvent(_addGrantEvt);
+	   }
+	   
+	   private function disperseGrant(event:MouseEvent):void
+	   {
+	   		_disperseGrantEvt = new DisperseGrant(DisperseGrant.DISPERSEGRANT_AMOUNT);
+	   		dispatchEvent(_disperseGrantEvt);
+	   }
+	]]>
+</mx:Script>
+	<mx:HBox width="100%" paddingLeft="20" height="196">
+		<mx:VBox>
+			<mx:Image width="166" height="150" source="./assets/corporate.jpg"/>
+			<mx:Button id="but_editCorporateProfile" styleName="CommonBtn" label="EDIT CORPORATE PROFILE" width="187"/>	
+		</mx:VBox>
+		<mx:Spacer width="10%"/>
+		<corporate:CorporateProfileDetails borderStyle="solid" corporateProfileDet="{_corporate}" width="468" height="193"/>
+	</mx:HBox>
+	<mx:HBox width="1154" paddingLeft="20" height="126">
+	<mx:Form>
+		<mx:FormItem label="Grant Amount Committed:">
+			<mx:Text text="{_corporate.commitedAmount}"/> <!-- add object-->
+		</mx:FormItem>
+		<mx:FormItem label="Grant Amount Available:">
+			<mx:Text text="{_corporate.availableAmount}"/> <!-- add object -->
+		</mx:FormItem>
+		<mx:VBox width="287" horizontalAlign="center">
+			
+			<mx:Button id="but_addGrant" styleName="CommonBtn" label="ADD GRANT" width="103"/>	
+		</mx:VBox>
+	</mx:Form>
+	<mx:Form>
+		<mx:FormItem label="Let the UnivGiggle pick the students and disperse the grants as made available by   :" height="59" width="294">
+			<mx:Text text="{_corporate.companyName}"/> <!-- add object -->
+		</mx:FormItem>
+		<mx:VBox width="290" horizontalAlign="center">
+			
+			<mx:Button id="but_ok" label="OK" styleName="CommonBtn" width="91"/>	
+		</mx:VBox>
+	</mx:Form>
+	
+		<mx:Form>
+		<mx:VBox width="328" horizontalAlign="center">
+			<mx:Button id="but_viewapproveGrant" styleName="CommonBtn" label="View and Approve Student Grant Request" width="263"/>
+			
+		</mx:VBox>
+	</mx:Form>
+	</mx:HBox>
+</mx:VBox>
