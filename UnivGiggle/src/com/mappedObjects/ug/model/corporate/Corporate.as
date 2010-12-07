@@ -3,6 +3,7 @@
 package com.mappedObjects.ug.model.corporate
 {
 	import com.mappedObjects.ug.model.ModelBase;
+	import com.mappedObjects.ug.model.student.Student;
 	
 	[Bindable]
 	[RemoteClass(alias='com.ug.model.Corporate')]
@@ -32,6 +33,10 @@ package com.mappedObjects.ug.model.corporate
 		public var picturePath:String = "";
 		public var companyLink:String = "";
 		public var companyName:String = "";
+		public var commitedAmount:Number;
+		public var availableAmount:Number;
+		public var addGrant:Number;
+		public var student:Student;
 		
 		public function Corporate()
 		{
