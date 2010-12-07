@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" 
+	creationComplete="compInit();" xmlns:student="com.views.student.*" >
+	<mx:Script>
+		<![CDATA[
+			import com.mappedObjects.ug.model.University;
+		]]>
+	</mx:Script>
+<mx:Script source="../../as/student/studentsList.as"/>
+<mx:XML id="dp_university" source="../../../xml/univ.xml" format="e4x" />
+	
+	<mx:VBox>
+		<mx:Label text="View Requested Grants" fontSize="20"/>
+	</mx:VBox>
+	<mx:VBox>
+	<mx:HBox width="100%">
+		<mx:Grid id="studentsListGrid" >	
+			<mx:GridRow  width="100%">
+				<mx:GridItem >
+					<mx:Text text="State :" width="67"/>
+				</mx:GridItem>
+				<mx:GridItem>
+					<mx:ComboBox id="cmbState"  width="150"  dataProvider="{dp_university.state}" labelField="@name" toolTip="{cmbState.text}"/>
+				</mx:GridItem>
+				<mx:GridItem  width="111" height="21">
+				</mx:GridItem>
+				<mx:GridItem>
+					<mx:Text text="University :"/>
+					<mx:ComboBox id="cmbUniversity"  width="173"  dataProvider="{dp_university.University}" labelField="@name"  toolTip="{cmbUniversity.text}"/>
+				</mx:GridItem>
+			</mx:GridRow>
+    </mx:Grid>		
+	</mx:HBox>
+	</mx:VBox>
+	<mx:VBox>
+		<mx:DataGrid id="dgStudentList" dataProvider="{studentsList}" resizableColumns="true" doubleClickEnabled="true"  width="641">
+			<mx:columns>
+				<mx:DataGridColumn dataField="firstName" headerText="student grant information" />
+
+		</mx:columns>
+	</mx:DataGrid>
+		
+	</mx:VBox>
+		
+</mx:VBox>
