@@ -3,12 +3,13 @@
 	horizontalAlign="center" verticalAlign="middle" >
 <mx:Script>
 	<![CDATA[
+		import com.mappedObjects.ug.model.student.StudentGrant;
 		[Bindable]
 		private var _grantedText:String;
 		override public function set data(value:Object):void
 		{
 			super.data = value;
-			_grantedText = value.label;
+			_grantedText = (value as StudentGrant).requirement;
 		}
 	]]>
 </mx:Script>
