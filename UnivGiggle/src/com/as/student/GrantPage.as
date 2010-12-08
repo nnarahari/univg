@@ -97,11 +97,8 @@ private function loadSelectedTemplate(event:Event):void
 }
 
 private function saveStudentGrant(event:MouseEvent):void
-{
-	
+{	
 	_studentGrantObj.validationTemplatePath = "name";
-	var needBy:String = "01/02/2006";
-	_studentGrantObj.neededBy = new Date(needBy,02);
 	grantRemoteObj.addStudentGrant(_userObj.emailId,_studentGrantObj);
 }
 
