@@ -2,6 +2,8 @@ package com.mappedObjects.ug.model.student
 {
 	import com.mappedObjects.ug.model.ModelBase;
 	
+	import mx.collections.ArrayCollection;
+	
 	[Bindable]
 	[RemoteClass(alias='com.ug.model.Student')]
 	public class Student extends ModelBase
@@ -21,7 +23,7 @@ package com.mappedObjects.ug.model.student
 		public var studentStory:String = "";
 		public var youtubeLink:String = "";
 		public var linkedInProfile:String = "";
-		public var grantList:Array;
+		public var grantList:ArrayCollection;
 		public var studentList:Array = new Array;
 		public function Student()
 		{
