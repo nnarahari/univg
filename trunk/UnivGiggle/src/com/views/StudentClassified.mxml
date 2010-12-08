@@ -3,6 +3,12 @@
 	horizontalAlign="center" verticalAlign="top" xmlns:student="com.views.student.*"  paddingLeft="10" borderStyle="solid" creationComplete="creationHandler();">
 	<mx:Script>
 		<![CDATA[
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.remoting.RemoteObject;
+			import com.interactiveObject.ServiceObject;
+			
+			import mx.collections.ArrayCollection;
 			import com.mappedObjects.ug.model.student.Student;
 			import com.mappedObjects.ug.model.UG_User;
 			import com.events.student.SaveProfile;
@@ -10,6 +16,7 @@
 			import mx.controls.Alert;
 			import com.events.student.SelectedGrantEvt;
 			private var __ugUser:UG_User;
+			private var _student:Student;
 			private var listArray:Array=[
 	         {label: "Grant 1.   Google has a grant of $20000", data: 0},
 	         {label: "Grant 2.   Cisco has a grant of $30000", data: 1},
@@ -17,11 +24,28 @@
 	         {label: "Grant 4.   Google has a grant of $50000", data: 3},
 	         {label: "Grant 5.   Google has a grant of $60000", data: 4},
 	         {label: "Grant 6.   Google has a grant of $70000", data: 5}];
+	        private var serviceObject:ServiceObject;
+	        private var studentRemoteObj:RemoteObject;
 			private function creationHandler():void
 			{
+				serviceObject = new ServiceObject;
+				studentRemoteObj = serviceObject.getRemoteObjectInstance("studentManager");
 				availGrant.addEventListener(SelectedGrantEvt.GRANT_NAME,selectedGrantHandler);
 				studentProfile.addEventListener(SaveStudentProfileEvent.SAVE_PROFILE,saveStudentProfile);
-				availGrant.grantListData = listArray;
+				studentRemoteObj.getStudent.addEventListener(ResultEvent.RESULT,onResultGetStudent,false,0,true);
+				studentRemoteObj.getStudent.addEventListener(FaultEvent.FAULT,onFaultGetStudent,false,0,true);
+				studentRemoteObj.getStudent(__ugUser.emailId);
+			}
+			
+			private function onResultGetStudent(event:ResultEvent):void
+			{
+				_student = event.result as Student;
+				availGrant.grantListData = _student.grantList as ArrayCollection;
+			}
+			
+			private function onFaultGetStudent(event:FaultEvent):void
+			{
+//				Alert.show(event.fault.message,"Error");	
 			}
 			
 			private function selectedGrantHandler(event:SelectedGrantEvt):void
@@ -53,6 +77,6 @@
 	</mx:Script>
 	<mx:HDividedBox width="100%" height="100%">
 		<student:AvailableGrants id="availGrant" width="15%" height="100%" />
-		<student:StudentProfile id="studentProfile" width="85%" height="100%"/>
+		<student:StudentProfile id="studentProfile" width="85%" height="100%" />
  	</mx:HDividedBox>
 </mx:VBox>
