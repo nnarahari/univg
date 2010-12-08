@@ -5,6 +5,7 @@ package com.events.student
 	public class SaveStudentProfileEvent extends Event
 	{
 		public static const SAVE_PROFILE:String = "save";
+		public static const DISPLAY_GRANT_LIST:String = "displayGrantList";
 		public var _studentObj:Student;
 		public function SaveStudentProfileEvent(type:String,studentObj:Student)
 		{
