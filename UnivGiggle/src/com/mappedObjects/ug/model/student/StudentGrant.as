@@ -7,10 +7,10 @@ package com.mappedObjects.ug.model.student
 	{
 		public var grantAmount:Number = 0;
 		public var requestedFor:String = '';
-		public var neededBy:Date;
+		public var neededBy:String = '';
 		public var requirement:String='';
 		public var validationTemplatePath:String;
-		public var status:String = 'Open';
+		public var status:String = 'Approved Under Processing';
 		public var student:Student;
 		
 		
