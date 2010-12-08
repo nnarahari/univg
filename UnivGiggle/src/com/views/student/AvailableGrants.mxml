@@ -5,6 +5,7 @@
 </mx:Metadata>
 <mx:Script>
 	<![CDATA[
+		import com.mappedObjects.ug.model.student.StudentGrant;
 		import com.events.student.SelectedGrantEvt;
 		import com.components.itemRenderer.CustomTextComp;
 		import mx.collections.*;
@@ -18,9 +19,9 @@
 			grantList.addEventListener(MouseEvent.CLICK,onSelect,false,0,true);
 		}
 		
-		public function set grantListData(listArray:Array):void
+		public function set grantListData(listArray:ArrayCollection):void
 		{
-			TileListdp = new ArrayCollection(listArray);
+			TileListdp = listArray;
 		}
 		
 		public function set headerText(val:String):void
@@ -30,7 +31,7 @@
 		
 		private function onSelect(event:MouseEvent):void
 		{
-			_selectedGrantEvt = new SelectedGrantEvt(SelectedGrantEvt.GRANT_NAME,grantList.selectedItem.label);
+			_selectedGrantEvt = new SelectedGrantEvt(SelectedGrantEvt.GRANT_NAME,(grantList.selectedItem as StudentGrant).requirement);
 			dispatchEvent(_selectedGrantEvt);
 		}
 	]]>

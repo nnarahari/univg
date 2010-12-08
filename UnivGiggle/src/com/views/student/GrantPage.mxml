@@ -5,6 +5,7 @@
 <mx:Binding source="Number(amountVal.text)" destination="_studentGrantObj.grantAmount"/>
 <mx:Binding source="grant.text" destination="_studentGrantObj.requestedFor"/>
 <mx:Binding source="grantRequestDet.text" destination="_studentGrantObj.requirement"/>
+<mx:Binding source="grantDate.text" destination="_studentGrantObj.neededBy"/>
 <mx:XML id="dp_request" source="../../../xml/grantrequest.xml" format="e4x" />
 
 	<mx:Grid width="100%" height="100%" >
@@ -56,8 +57,7 @@
 				<mx:Text text="Grant Needed By :"/>
 			</mx:GridItem>
 			<mx:GridItem>
-				<mx:ComboBox id="id_mon" width="100" dataProvider="{_listofMonths}"/>
-				<mx:ComboBox id="id_year" width="100" dataProvider="{_listofYears}"/>
+				<mx:DateField id="grantDate" width="100" text="{_studentGrantObj.neededBy}"/>
 			</mx:GridItem>
 			<mx:GridItem>
 			</mx:GridItem>

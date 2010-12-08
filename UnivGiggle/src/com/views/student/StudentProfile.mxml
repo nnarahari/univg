@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderStyle="solid" paddingLeft="5" paddingTop="5" paddingBottom="5" >
 <mx:Metadata>
 	[Event(name="saveProfile", type="com.events.student.SaveStudentProfileEvent")]
+	[Event(name="UpdateGrantList",type="com.events.student.UpdateGrantListEvent")]
 </mx:Metadata>
 <!-- Binding the ActionScript object with the view controls -->
 <mx:Binding source="fname.text" destination="_student.firstName"/>

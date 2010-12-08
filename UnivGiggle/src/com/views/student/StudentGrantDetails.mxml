@@ -2,26 +2,29 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:student="com.views.student.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
 <mx:Script>
 	<![CDATA[
+		import com.mappedObjects.ug.model.student.StudentGrant;
+		import mx.collections.ArrayCollection;
 		import com.events.StudentClassifiedEvent;
 		import com.events.student.CreateGrantRequestEvent;
 		import com.mappedObjects.ug.model.student.Student;
 		import mx.controls.Alert;
 		import com.events.student.SelectedGrantEvt;
 		[Bindable]
-		private var incompleteGrantList:Array=[
+		private var incompleteGrantList:ArrayCollection=new ArrayCollection([
 	         {label: "Grant A.   Missing Document", data: 0},
 	         {label: "Grant B.   Missing Fund", data: 1},
-	         {label: "Grant C.   Missing Fund of $40000", data: 2}];
+	         {label: "Grant C.   Missing Fund of $40000", data: 2}]);
 	    [Bindable]     
-	    private var grantStatusList:Array=[
+	    private var grantStatusList:ArrayCollection=new ArrayCollection([
 	         {label: "Grant 1.   Open Under Processing", data: 0},
 	         {label: "Grant 2.   Approved Under Processing", data: 1},
-	         {label: "Grant 3.   Fulfilled and Closed", data: 2}];
+	         {label: "Grant 3.   Fulfilled and Closed", data: 2}]);
 	    private const incompleteGrantText:String = "Incomplete Grant Requests";
 	    private const grantstatusText:String = "GRANT STATUS";
 	    [Bindable]
 	    private var _student:Student;    
 	    private var _grantRequestEvt:CreateGrantRequestEvent; 
+	    private var grantList:ArrayCollection;
 	   private function createHandler():void
 	   {
 //	   		incompleteGrants.grantListData = incompleteGrantList;
@@ -47,6 +50,16 @@
 	   public function set studentProfileDet(studentObj:Student):void
 	   {
 	   		_student = studentObj;
+	   		incompleteGrantList.removeAll();
+	   		grantStatusList.removeAll();
+	   		grantList = _student.grantList;
+	   		for each(var studentGrantObj:StudentGrant in grantList){
+	   			if(studentGrantObj.status == "Open"){
+	   				incompleteGrantList.addItem(studentGrantObj);
+	   			}else{
+	   				grantStatusList.addItem(studentGrantObj);
+	   			}
+	   		}
 	   }
 	   
 	   private function requestForNewGrant(event:MouseEvent):void
