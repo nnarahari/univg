@@ -36,6 +36,7 @@ private var resultInfoObj:ResultInfo;
 private var validationArray:Array;
 private var __ugUser:UG_User;
 private var isAdded:Boolean = true;
+
 /**
  * 
  */
@@ -262,3 +263,4 @@ private function onFaultUpdateCorporate(event:FaultEvent):void
 {
 	Alert.show(event.fault.message,"Error");
 }
+

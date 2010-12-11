@@ -373,7 +373,7 @@
         	_grantDet = new GrantPage;
         	_grantDet.addEventListener(SaveProfile.SAVE_PROFILE,displayStudentGrantDetails,false,0,true);
         	_grantDet.callLater(_grantDet.setUserObj,[__ugUser]);
-        	_grantDet.callLater(_grantDet.setStudentObj,[event._student]);
+        	_grantDet.callLater(_grantDet.setStudentObj,[event._student,event._studentGrantObj]);
         	univGiggleStack.addChild(_grantDet);
         }
         
@@ -397,6 +397,7 @@
         		
         		univGiggleStack.removeAllChildren();
         		_corpLenderInstance = new CorporateLenderClassified;
+        		_corpLenderInstance.callLater(_corpLenderInstance.setUserInfo,[__ugUser]);
         		univGiggleStack.addChild(_corpLenderInstance);
         }
         
