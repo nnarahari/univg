@@ -99,12 +99,13 @@ private function loadSelectedTemplate(event:Event):void
 private function saveStudentGrant(event:MouseEvent):void
 {	
 	_studentGrantObj.validationTemplatePath = "name";
+	_studentGrantObj.status = "Incomplete";
 	grantRemoteObj.addStudentGrant(_userObj.emailId,_studentGrantObj);
 }
 
 private function cancelStudentGrant(event:MouseEvent):void
 {
-	 var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,null);
+	 var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,_studentGrantObj.student);
 	dispatchEvent(_saveProfileEvt); 
 }
 
@@ -129,8 +130,9 @@ private function onResultGetStudent(event:ResultEvent):void
 {	
 	if(event.result as Student){
 		_student = event.result as Student;
+		_studentGrantObj.student = _student;
 	}
-	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,_student);
+	var _saveProfileEvt:SaveProfile = new SaveProfile(SaveProfile.SAVE_PROFILE,_studentGrantObj.student);
 	dispatchEvent(_saveProfileEvt);
 }
 
@@ -139,9 +141,14 @@ private function onFaultGetStudent(event:FaultEvent):void
 	Alert.show(event.fault.message,"Error");
 }
 
-public function setStudentObj(studentObj:Student):void
+public function setStudentObj(studentObj:Student,studentGrantObj:StudentGrant):void
 {
-	if(studentObj != null){
+	
+	if(studentGrantObj != null){
+		_studentGrantObj = studentGrantObj;
+		if(_studentGrantObj.status != "Incomplete")
+			but_save.label = 'DELETE';
+	}else{
 		_student = studentObj;
 		_studentGrantObj = new StudentGrant;
 		_studentGrantObj.student = _student;
