@@ -7,9 +7,9 @@
 <mx:Binding source="grantRequestDet.text" destination="_studentGrantObj.requirement"/>
 <mx:Binding source="grantDate.text" destination="_studentGrantObj.neededBy"/>
 <mx:XML id="dp_request" source="../../../xml/grantrequest.xml" format="e4x" />
-
-	<mx:Grid width="100%" height="100%" >
-		<mx:GridRow  width="100%" height="100%">
+<!--<mx:Panel width="100%" height="100%" horizontalAlign="center" headerHeight="8">-->
+	<mx:Grid width="100%" height="100%" paddingLeft="20" borderStyle="solid">
+		<mx:GridRow  width="100%" height="100%" horizontalAlign="center">
 			<mx:GridItem colSpan="2" horizontalAlign="center">
 				<mx:Text text="Grant {_grantNo} submitted by {_studentName}" />
 			</mx:GridItem>
@@ -17,7 +17,7 @@
 				<mx:Text text="{_statusLabel}" fontWeight="bold" color="{_statusColor}"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow  width="100%"  height="100%">
+		<mx:GridRow  width="100%"  height="100%" horizontalAlign="center">
 			<mx:GridItem>
 				<mx:Text text="Grant Amount :"/>
 			</mx:GridItem>
@@ -33,7 +33,7 @@
 			<mx:GridItem>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow width="100%" height="100%">
+		<mx:GridRow width="100%" height="100%" horizontalAlign="center">
 			<mx:GridItem>
 				<mx:Text text="Grant Request For :"/>
 			</mx:GridItem>
@@ -41,18 +41,18 @@
 				<mx:ComboBox id="grant" width="200" labelField="@name" dataProvider="{dp_request.request}" text="{_studentGrantObj.requestedFor}"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow width="100%" >
+		<mx:GridRow width="100%" horizontalAlign="center">
 			<mx:GridItem/>
 			<mx:GridItem>
 				<mx:Text text="Please explain your grant request further as selected above :"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow width="100%"  height="100%">
+		<mx:GridRow width="100%"  height="100%" horizontalAlign="center">
 			<mx:GridItem colSpan="3">
 				<mx:TextArea id="grantRequestDet" width="100%" text="{_studentGrantObj.requirement}"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow width="100%"  height="100%">
+		<mx:GridRow width="100%"  height="100%" horizontalAlign="center">
 			<mx:GridItem >
 				<mx:Text text="Grant Needed By :"/>
 			</mx:GridItem>
@@ -62,12 +62,12 @@
 			<mx:GridItem>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow width="100%"  height="100%">
+		<mx:GridRow width="100%"  height="100%" horizontalAlign="center">
 			<mx:GridItem colSpan="3">
 				<mx:Text htmlText="{_templateMessage}"/>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow width="100%"  height="100%">
+		<mx:GridRow width="100%"  height="100%" horizontalAlign="center">
 			<mx:GridItem colSpan="2">
 				<mx:Text text="Upload completed template"/>
 				<mx:Button id="but_attach" label="Attach" width="150"/>
@@ -75,7 +75,7 @@
 			<mx:GridItem>
 			</mx:GridItem>
 		</mx:GridRow>
-		<mx:GridRow width="100%"  height="100%">
+		<mx:GridRow width="100%"  height="100%" horizontalAlign="center">
 			<mx:GridItem/>
 			<mx:GridItem>
 				<mx:Button id="but_save" label="SAVE" width="100"/>
@@ -85,4 +85,5 @@
 			</mx:GridItem>
 		</mx:GridRow>
 	</mx:Grid>
+	<!--</mx:Panel>-->
 </mx:VBox>
