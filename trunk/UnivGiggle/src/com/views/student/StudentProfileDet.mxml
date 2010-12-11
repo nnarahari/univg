@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="left">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center">
 <mx:Script>
 	<![CDATA[
 		import flash.net.navigateToURL;
@@ -42,9 +42,7 @@
 			<mx:LinkButton label="{_student.youtubeLink}" click="openLink(event);"/>
 		</mx:FormItem>
 		<mx:HBox width="100%">
-			<mx:Spacer width="5%"/>
-			<mx:Text text="{_student.studentStory}" width="80%"/>
-			<mx:Spacer width="5%"/>	
+			<mx:Text text="{_student.studentStory}" width="300"/>
 		</mx:HBox>
 		
 	</mx:Form>
