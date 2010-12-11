@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<industryList>
+	<industry name="Accounting"/>
+	<industry name="Advertising/Marketing/PR"/>
+	<industry name="Aerospace  Defense"/>
+	<industry name="Banking  Securities"/>
+	<industry name="Call Center Outsourcing"/>
+	<industry name="Consulting"/>
+	<industry name="Education"/>
+	<industry name="Energy, Chemical, Utilities"/>
+	<industry name="Financial Services - Other"/>
+	<industry name="Government - Federal"/>
+	<industry name="Government - State  Local"/>
+	<industry name="High Tech - Hardware"/>
+	<industry name="High Tech - ISP"/>
+	<industry name="High Tech - Other"/>
+	<industry name="Hospital, Clinic, Doctor Office"/>
+	<industry name="Hospitality, Tourism, Travel"/>
+	<industry name="Insurance"/>
+	<industry name="Legal"/>
+	<industry name="Manufacturing"/>
+	<industry name="Medical, Pharma, Biotech"/>
+	<industry name="Real Estate"/>
+	<industry name="Retail"/>
+	<industry name="Software - Finance"/>
+	<industry name="Software - Healthcare"/>
+	<industry name="Software - Other"/>
+	<industry name="Support Outsourcing"/>
+	<industry name="Telecommunications"/>
+	<industry name="Transport  Distribution"/>
+	<industry name="VAR / Systems Integrator"/>
+	<industry name="Others"/>
+</industryList>
