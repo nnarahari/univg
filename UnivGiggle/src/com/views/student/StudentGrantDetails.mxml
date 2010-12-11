@@ -25,10 +25,12 @@
 	    private var _student:Student;    
 	    private var _grantRequestEvt:CreateGrantRequestEvent; 
 	    private var grantList:ArrayCollection;
+	    private var _studentGrantObj:StudentGrant;
 	   private function createHandler():void
 	   {
 //	   		incompleteGrants.grantListData = incompleteGrantList;
 	   		incompleteGrants.headerText = incompleteGrantText;
+	   		_studentGrantObj = new StudentGrant;
 //	   		grantStatus.grantListData = grantStatusList;
 	   		grantStatus.headerText = grantstatusText;
 	   		incompleteGrants.addEventListener(SelectedGrantEvt.GRANT_NAME,selectedInCompleteGrant,false,0,true);
@@ -40,6 +42,9 @@
 	   private function selectedInCompleteGrant(event:SelectedGrantEvt):void
 	   {
 	   		Alert.show("Selected Value---->"+event._selectedGrant);
+	   		_studentGrantObj = event._selectedGrant as StudentGrant;
+	   		_grantRequestEvt = new CreateGrantRequestEvent(CreateGrantRequestEvent.GRANT_REQUEST,_student,_studentGrantObj);
+	   		dispatchEvent(_grantRequestEvt);
 	   }
 	   
 	   private function selectedGrant(event:SelectedGrantEvt):void
@@ -55,7 +60,7 @@
 	   		if(_student != null)
 	   			grantList = _student.grantList;
 	   		for each(var studentGrantObj:StudentGrant in grantList){
-	   			if(studentGrantObj.status == "Open"){
+	   			if(studentGrantObj.status == "Incomplete"){
 	   				incompleteGrantList.addItem(studentGrantObj);
 	   			}else{
 	   				grantStatusList.addItem(studentGrantObj);
@@ -65,7 +70,8 @@
 	   
 	   private function requestForNewGrant(event:MouseEvent):void
 	   {
-	   		_grantRequestEvt = new CreateGrantRequestEvent(CreateGrantRequestEvent.GRANT_REQUEST,_student);
+	   		_studentGrantObj = null;
+	   		_grantRequestEvt = new CreateGrantRequestEvent(CreateGrantRequestEvent.GRANT_REQUEST,_student,_studentGrantObj);
 	   		dispatchEvent(_grantRequestEvt);
 	   }
 	   
