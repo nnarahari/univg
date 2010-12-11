@@ -2,7 +2,7 @@
 import com.components.Captcha;
 import com.events.HomePageEvent;
 import com.events.student.SaveStudentProfileEvent;
-import com.events.student.UpdateGrantListEvent;
+
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.ResultInfo;
 import com.mappedObjects.ug.model.UG_User;
