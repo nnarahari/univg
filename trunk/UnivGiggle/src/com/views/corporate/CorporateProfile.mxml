@@ -36,6 +36,7 @@
 <mx:XML id="dp_category" source="../../../xml/categories.xml" format="e4x" />
 <mx:XML id="dp_program" source="../../../xml/studyprogram.xml" format="e4x" />
 <mx:XML id="dp_dept" source="../../../xml/department.xml" format="e4x" />
+<mx:XML id="dp_industry" source="../../../xml/industry.xml" format="e4x" />
 
 		<mx:Grid id="mentorProfile" width="90%" height="100%" >
 		<mx:GridRow id="heading" width="100%">
@@ -79,16 +80,16 @@
 			<mx:GridItem  width="300">
 				<mx:TextInput id="companyName" width="200" text="{_corporate.companyName}"/>
 			</mx:GridItem>
-		</mx:GridRow>
-			
-		
-		<mx:GridRow  width="100%" visible="{displayContent}">
 			<mx:GridItem >
 				<mx:Text text="Country :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
 				<mx:ComboBox id="country"  width="150"  labelField="@name" dataProvider="{dp.country}"  toolTip="{country.text}" text="{_corporate.country}"/>
 			</mx:GridItem>
+		</mx:GridRow>
+			
+		
+		<mx:GridRow  width="100%" visible="{displayContent}">			
 			<mx:GridItem >
 				<mx:Text text="State:"/>
 			</mx:GridItem>
@@ -114,7 +115,7 @@
 				<mx:Text text="Industry :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:ComboBox id="industry"  width="80"   labelField="@name" text="{_corporate.industry}"/>
+				<mx:ComboBox id="industry"  width="200"  dataProvider="{dp_industry.industry}"  labelField="@name" text="{_corporate.industry}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 	

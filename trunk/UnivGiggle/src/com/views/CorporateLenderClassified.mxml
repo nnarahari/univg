@@ -20,7 +20,7 @@
 			{
 				grantRequests.addEventListener(SelectedCorporateGrantEvt.SELECTEDCORPORATEGRANT_NAME,selectedGrantHandler);
 				corporateProfile.addEventListener(SaveCorporateEvent.SAVECORPORATE_PROFILE,saveCorporateProfile);
-				grantRequests.grantListData = listArray;
+//				grantRequests.grantListData = listArray;
 			}
 			
 			private function selectedGrantHandler(event:SelectedCorporateGrantEvt):void

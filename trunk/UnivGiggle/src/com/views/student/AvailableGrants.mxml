@@ -31,7 +31,7 @@
 		
 		private function onSelect(event:MouseEvent):void
 		{
-			_selectedGrantEvt = new SelectedGrantEvt(SelectedGrantEvt.GRANT_NAME,(grantList.selectedItem as StudentGrant).requirement);
+			_selectedGrantEvt = new SelectedGrantEvt(SelectedGrantEvt.GRANT_NAME,grantList.selectedItem as StudentGrant);
 			dispatchEvent(_selectedGrantEvt);
 		}
 	]]>
