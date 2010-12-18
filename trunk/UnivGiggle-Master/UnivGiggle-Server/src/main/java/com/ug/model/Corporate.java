@@ -3,6 +3,7 @@
  */
 package com.ug.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -15,27 +16,43 @@ import javax.persistence.Table;
 public class Corporate extends ModelBase {
 	
 	private static final long serialVersionUID = -6689890155089392897L;
+	
+	public Corporate(){
+		
+	}
 
+	@Column(name="corporatename", length=200, nullable=false)
 	private String corporateName;
 	
+	@Column(name="email", length=100, unique=true, nullable=false)
 	private String email;
 	
+	@Column(name="state", length=100, nullable=false)
 	private String state;
 	
+	@Column(name="country", length=100, nullable=false)
 	private String country;
 	
+	@Column(name="industry", length=100)
 	private String industry;
 	
+	@Column(name="companydetails", length=2000)
 	private String companyDetails;
 	
+	@Column(name="youtubevideo", length=200)
 	private String youtubeVideo;
 	
+	@Column(name="compnayimagepath", length=250)
 	private String companyImagePath;
 	
+	@Column(name="companywebsite", length=100)
 	private String companyWebsite;
 	
-	private String grantList;
+	@Column(name="grantlist", length=200)
+	private String grantList; //TODO change properly.,.
 	
+	
+	@Column(name="corporatestory", length=2000)
 	private String corporateStory;
 
 	/**

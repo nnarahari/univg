@@ -38,6 +38,8 @@ public class CorporateManagerImpl implements CorporateManager {
 		logger.info("addCorporate() started...");
 		ResultInfo resultInfo = null;
 		Corporate newCorporate = corporateDAO.createOrUpdateCorporate(corporate);
+		logger.info(" corp name ==>"+ newCorporate.getCorporateName());
+		
 		if(newCorporate != null){
 			logger.info("Corporate details added successfully");
 			resultInfo = UnivGiggleUtil.createResultInfo(true, "Corporate profile created successfully.", "0", "Corporate profile created successfully.", newCorporate);
@@ -131,6 +133,20 @@ public class CorporateManagerImpl implements CorporateManager {
 	 */
 	public void setImageWebURL(String imageWebURL) {
 		this.imageWebURL = imageWebURL;
+	}
+
+	/**
+	 * @return the corporateDAO
+	 */
+	public CorporateDAO getCorporateDAO() {
+		return corporateDAO;
+	}
+
+	/**
+	 * @param corporateDAO the corporateDAO to set
+	 */
+	public void setCorporateDAO(CorporateDAO corporateDAO) {
+		this.corporateDAO = corporateDAO;
 	}
 
 }

@@ -3,21 +3,17 @@
  */
 package com.ug.dao.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ug.dao.CorporateDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Corporate;
-import com.ug.model.Student;
-import com.ug.model.StudentGrant;
 
 /**
  * @author srrajend
@@ -37,7 +33,7 @@ public class CorporateDAOImpl implements CorporateDAO {
 	/* (non-Javadoc)
 	 * @see com.ug.dao.CorporateDAO#createOrUpdateCorporate(com.ug.model.Corporate)
 	 */
-	@Override
+	@Override @Transactional
 	public Corporate createOrUpdateCorporate(Corporate corporate)throws Exception {
 		logger.info("createOrUpdateCorporate() started...");
 		try{
