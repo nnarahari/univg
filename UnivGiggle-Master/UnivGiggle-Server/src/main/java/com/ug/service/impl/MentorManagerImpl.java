@@ -92,9 +92,9 @@ public class MentorManagerImpl implements MentorManager {
 		ResultInfo resultInfo = null;
 		Mentor newMentor = mentorDAO.createOrUpdateMentor(mentor);
 		if(newMentor != null)
-			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentor updated successfully!", "0", "Mentor updated successfully!", null);
+			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentor updated successfully!", "0", "Mentor updated successfully!", newMentor);
 		else
-			resultInfo = UnivGiggleUtil.createResultInfo(true, "Mentor update failed!", "102", "Error while updating mentor details.", null);
+			resultInfo = UnivGiggleUtil.createResultInfo(false, "Mentor update failed!", "102", "Error while updating mentor details.", null);
 		return resultInfo;
 	}
 
