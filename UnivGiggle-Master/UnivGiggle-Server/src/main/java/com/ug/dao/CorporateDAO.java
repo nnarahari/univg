@@ -13,6 +13,8 @@ public interface CorporateDAO {
 	
 	public Corporate createOrUpdateCorporate(Corporate corporate) throws Exception;
 	
+	public Corporate getCorporate(String email) throws Exception;
+	
 	
 
 }

@@ -3,15 +3,21 @@
  */
 package com.ug.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
 import com.ug.dao.CorporateDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Corporate;
+import com.ug.model.Student;
+import com.ug.model.StudentGrant;
 
 /**
  * @author srrajend
@@ -51,6 +57,22 @@ public class CorporateDAOImpl implements CorporateDAO {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public Corporate getCorporate(String email) throws Exception {
+		logger.info("getCorporate() started...email ==>"+ email);
+		Corporate corporate = null;
+		String qry = "Select Object(s) from Corporate c where c.email = :email";
+		Query query = entityManager.createQuery(qry);
+		query.setParameter("email", email); 
+		try{
+			corporate = (Corporate) query.getSingleResult();
+		}catch(Exception e){
+			logger.error("Error while reteriving corporate",e);
+			throw e;
+		}
+		return corporate;
 	}
 
 }
