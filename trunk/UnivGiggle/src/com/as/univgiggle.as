@@ -16,6 +16,7 @@
         import com.events.SignUpEvent;
         import com.events.StudentClassifiedEvent;
         import com.events.WelcomeEvent;
+        import com.events.corporate.SaveCorporate;
         import com.events.mentee.MenteeProfileDetEvent;
         import com.events.mentee.MenteeProfileEvent;
         import com.events.mentee.SaveMenteeEvent;
@@ -40,6 +41,7 @@
         import com.views.SignupPage;
         import com.views.StudentClassified;
         import com.views.WelcomeNote;
+        import com.views.corporate.CorporateGrantDetails;
         import com.views.mentee.MenteeTestimonial;
         import com.views.mentor.MentorList;
         import com.views.mentor.MentorProfile;
@@ -397,8 +399,17 @@
         		
         		univGiggleStack.removeAllChildren();
         		_corpLenderInstance = new CorporateLenderClassified;
+        		_corpLenderInstance.addEventListener(SaveCorporate.SAVECORPORATE_PROFILE,displayCorporateGrantDetails);
         		_corpLenderInstance.callLater(_corpLenderInstance.setUserInfo,[__ugUser]);
         		univGiggleStack.addChild(_corpLenderInstance);
+        }
+        
+        private function displayCorporateGrantDetails(event:SaveCorporate):void
+        {
+        	univGiggleStack.removeAllChildren();
+        	var _corporateGrantDet:CorporateGrantDetails = new CorporateGrantDetails;
+        	_corporateGrantDet.corporateProfileDet = event._corporateObj;
+        	univGiggleStack.addChild(_corporateGrantDet);
         }
         
         /**

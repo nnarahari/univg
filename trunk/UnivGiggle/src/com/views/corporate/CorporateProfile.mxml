@@ -4,20 +4,20 @@
 	[Event(name="saveProfile", type="com.events.corporate.SavecorporateEvent")]
 </mx:Metadata>
 <!-- Binding the ActionScript object with the view controls -->
-<mx:Binding source="fname.text" destination="_corporate.firstName"/>
-<mx:Binding source="lname.text" destination="_corporate.lastName"/>
+<!--mx:Binding source="fname.text" destination="_corporate.firstName"/>
+<mx:Binding source="lname.text" destination="_corporate.lastName"/-->
 <mx:Binding source="emailId.text" destination="_corporate.email"/>
 <mx:Binding source="country.text" destination="_corporate.country"/>
 <mx:Binding source="state.text" destination="_corporate.state"/>
-<mx:Binding source="city.text" destination="_corporate.city"/> <!-- add city as one more para -->
-<mx:Binding source="univ.text" destination="_corporate.university"/> <!--// list of universities -->
+<!--mx:Binding source="city.text" destination="_corporate.city"/> < add city as one more para>
+<mx:Binding source="univ.text" destination="_corporate.university"/--> <!--// list of universities -->
 <mx:Binding source="industry.text" destination="_corporate.industry"/> <!--// industry instead of department -->
 <mx:Binding source="story.text" destination="_corporate.corporateStory"/>
-<mx:Binding source="picFileName.text" destination="_corporate.picturePath"/> <!--// company logo -->
-<mx:Binding source="btn_link.text" destination="_corporate.linkedInProfile"/>
-<mx:Binding source="btn_youtubelink.text" destination="_corporate.youtubeLink"/>
-<mx:Binding source="btn_companylink.text" destination="_corporate.companyLink"/> <!--// company website link -->
-<mx:Binding source="companyName.text" destination="_corporate.companyName"/> <!-- // needed to populate on corporate 3 page -->
+<!--<mx:Binding source="picFileName.text" destination="_corporate.picturePath"/> 
+<mx:Binding source="btn_link.text" destination="_corporate.linkedInProfile"/>-->
+<mx:Binding source="btn_youtubelink.text" destination="_corporate.youtubeVideo"/>
+<mx:Binding source="btn_companylink.text" destination="_corporate.companyWebsite"/> <!--// company website link -->
+<mx:Binding source="companyName.text" destination="_corporate.corporateName"/> <!-- // needed to populate on corporate 3 page -->
 
 
 
@@ -47,13 +47,13 @@
 				<mx:Text text="First Name :" />
 			</mx:GridItem>
 			<mx:GridItem width="300">
-				<mx:TextInput id="fname" width="200" text="{_corporate.firstName}"/>
+				<mx:TextInput id="fname" width="200" />
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Last Name :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:TextInput id="lname" width="200" text="{_corporate.lastName}"/>
+				<mx:TextInput id="lname" width="200" />
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -78,7 +78,7 @@
 				<mx:Text text="Company Name :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:TextInput id="companyName" width="200" text="{_corporate.companyName}"/>
+				<mx:TextInput id="companyName" width="200" text="{_corporate.corporateName}"/>
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Country :"/>
@@ -100,7 +100,7 @@
 				<mx:Text text="City:"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:ComboBox id="city"  width="150"  dataProvider="{country.selectedItem.city}"  labelField="@name" toolTip="{city.text}" text="{_corporate.city}"/>
+				<mx:ComboBox id="city"  width="150"  dataProvider="{country.selectedItem.city}"  labelField="@name" toolTip="{city.text}" />
 			</mx:GridItem>
 		</mx:GridRow>
 		
@@ -109,7 +109,7 @@
 				<mx:Text text="Select University for search:"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}"  labelField="@name" toolTip="{univ.text}" text="{_corporate.university}"/>
+				<mx:ComboBox id="univ"  width="200"  dataProvider="{state.selectedItem.university}"  labelField="@name" toolTip="{univ.text}" />
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Industry :"/>
@@ -133,7 +133,7 @@
 				<mx:Text text="Upload Company Logo :"/>
 			</mx:GridItem>
 			<mx:GridItem visible="{displayContent}"  width="300">
-				<mx:TextInput id="picFileName" width="125"  editable="false" text="{_corporate.picturePath}"/>
+				<mx:TextInput id="picFileName" width="125"  editable="false"/>
 				<mx:Button label="browse.." id="browseBut" styleName="CommonBtn"/>
 			</mx:GridItem>
 		</mx:GridRow>
@@ -143,7 +143,7 @@
 				<mx:Text text="LinkedIn profile Link :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300" colSpan="3">
-				<mx:TextInput id="btn_link" width="300" text="{_corporate.linkedInProfile}" />
+				<mx:TextInput id="btn_link" width="300" />
 			</mx:GridItem>
 		</mx:GridRow>
 
@@ -152,7 +152,7 @@
 				<mx:Text text="Link to Youtube Video :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300" colSpan="3">
-				<mx:TextInput id="btn_youtubelink" width="300" text="{_corporate.youtubeLink}"/>
+				<mx:TextInput id="btn_youtubelink" width="300" text="{_corporate.youtubeVideo}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 
@@ -161,7 +161,7 @@
 				<mx:Text text="Link to Company Website :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300" colSpan="3">
-				<mx:TextInput id="btn_companylink" width="300" text="{_corporate.companyLink}"/>
+				<mx:TextInput id="btn_companylink" width="300" text="{_corporate.companyWebsite}"/>
 			</mx:GridItem>
 		</mx:GridRow>
 

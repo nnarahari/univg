@@ -71,11 +71,16 @@ private function onSaveProfile(event:MouseEvent):void
 	var isValid:Boolean = validatorErrorArr.length == 0;
 	if(isValid){
 		if(verificationCode.text  == imagecaptcha._securitycode){
-			male.selected?_corporate.gender = "male":_corporate.gender = "female";
-			if(isAdded)
-				corporateRemoteObj.addCorporate(_corporate,picPathByteArray,resumePathByteArray);
-			else
+//			male.selected?_corporate.gender = "male":_corporate.gender = "female";			
+			_corporate.companyDetails = "Its a product base company..";
+			_corporate.companyImagePath = "C:\\image1.JPG";
+			_corporate.grantList = "Grant list...";
+			if(isAdded){
+//				corporateRemoteObj.addCorporate(_corporate,picPathByteArray,resumePathByteArray);
+				corporateRemoteObj.addCorporate(_corporate);
+			}else{
 				corporateRemoteObj.updateCorporate(_corporate);
+			}
 			
 		}else
 		{
@@ -215,10 +220,10 @@ public function setUserInfo(userInfo:UG_User):void
 	if(userInfo != null){
 		__ugUser = userInfo;
 		_corporate = new Corporate;
-		_corporate.firstName = __ugUser.firstName;
-		_corporate.lastName = __ugUser.lastName;
+//		_corporate.firstName = __ugUser.firstName;
+//		_corporate.lastName = __ugUser.lastName;
 		_corporate.email = __ugUser.emailId;
-		_corporate.gender = __ugUser.gender;
+//		_corporate.gender = __ugUser.gender;
 		creationHandler();
 		corporateRemoteObj.getCorporate(__ugUser.emailId);
 	}
