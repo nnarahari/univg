@@ -2,47 +2,49 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:corporate="com.views.corporate.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
 <mx:Script>
 	<![CDATA[
-		import com.events.corporate.CreateGrantRequestEvent;
-		import com.mappedObjects.ug.model.corporate.corporate;
+		import com.mappedObjects.ug.model.corporate.Corporate;
+//		import com.events.corporate.CreateGrantRequestEvent;
+//		import com.mappedObjects.ug.model.corporate.corporate;
 		import mx.controls.Alert;
-		import com.events.corporate.CreateGrantRequestEvent;
+//		import com.events.corporate.CreateGrantRequestEvent;
 		import com.events.corporate.AddGrant;
 		import com.events.corporate.DisperseGrant;
-	    private var _corporate:corporate;    
-	    private var _approveGrantEvt:CreateGrantRequestEvent;
+		[Bindable]
+	    private var _corporate:Corporate;    
+//	    private var _approveGrantEvt:CreateGrantRequestEvent;
 	    private var _addGrantEvt:AddGrant;
 	    private var _disperseGrantEvt:DisperseGrant; 
 	   private function createHandler():void
 	   {
 	   		but_viewapproveGrant.addEventListener(MouseEvent.CLICK,viewapproveGrant,false,0,true);
-	   		but_editCorporateProfile.addEventListener(MouseEvent.CLICK,editCorporateProfile,false,0,true);
+//	   		but_editCorporateProfile.addEventListener(MouseEvent.CLICK,editCorporateProfile,false,0,true);
 	   		but_addGrant.addEventListener(MouseEvent.CLICK,addGrant,false,0,true);
 	   		but_ok.addEventListener(MouseEvent.CLICK,disperseGrant,false,0,true);
 	   		
 	   }
 	   
 	  
-	   public function set corporateProfileDet(corporateObj:corporate):void
+	   public function set corporateProfileDet(corporateObj:Corporate):void
 	   {
 	   		_corporate = corporateObj;
 	   }
 	   
 	   private function viewapproveGrant(event:MouseEvent):void
 	   {
-	   		_approveGrantEvt = new APPROVEGrantRequestEvent(APPROVEGrantRequestEvent.APPROVEGRANT_REQUEST);
-	   		dispatchEvent(_approveGrantEvt);
+	   		 /* _approveGrantEvt = new APPROVEGrantRequestEvent(APPROVEGrantRequestEvent.APPROVEGRANT_REQUEST);
+	   		 dispatchEvent(_approveGrantEvt); */
 	   }
 	   
 	   private function addGrant(event:MouseEvent):void
 	   {
-	   		_addGrantEvt = new AddGrant(AddGrant.ADDGRANT_AMOUNT);
-	   		dispatchEvent(_addGrantEvt);
+	   		/* _addGrantEvt = new AddGrant(AddGrant.ADDGRANT_AMOUNT);
+	   		dispatchEvent(_addGrantEvt); */
 	   }
 	   
 	   private function disperseGrant(event:MouseEvent):void
 	   {
-	   		_disperseGrantEvt = new DisperseGrant(DisperseGrant.DISPERSEGRANT_AMOUNT);
-	   		dispatchEvent(_disperseGrantEvt);
+	   		/* _disperseGrantEvt = new DisperseGrant(DisperseGrant.DISPERSEGRANT_AMOUNT);
+	   		dispatchEvent(_disperseGrantEvt); */
 	   }
 	]]>
 </mx:Script>
@@ -57,10 +59,10 @@
 	<mx:HBox width="1154" paddingLeft="20" height="126">
 	<mx:Form>
 		<mx:FormItem label="Grant Amount Committed:">
-			<mx:Text text="{_corporate.commitedAmount}"/> <!-- add object-->
+			<mx:Text /> <!-- add object text="{_corporate.commitedAmount}"-->
 		</mx:FormItem>
 		<mx:FormItem label="Grant Amount Available:">
-			<mx:Text text="{_corporate.availableAmount}"/> <!-- add object -->
+			<mx:Text /> <!-- add object text="{_corporate.availableAmount}"-->
 		</mx:FormItem>
 		<mx:VBox width="287" horizontalAlign="center">
 			
@@ -69,7 +71,7 @@
 	</mx:Form>
 	<mx:Form>
 		<mx:FormItem label="Let the UnivGiggle pick the students and disperse the grants as made available by   :" height="59" width="294">
-			<mx:Text text="{_corporate.companyName}"/> <!-- add object -->
+			<mx:Text text="{_corporate.corporateName}"/> <!-- add object -->
 		</mx:FormItem>
 		<mx:VBox width="290" horizontalAlign="center">
 			

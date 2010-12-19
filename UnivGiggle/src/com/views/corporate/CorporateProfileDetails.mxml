@@ -2,12 +2,13 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="left">
 <mx:Script>
 	<![CDATA[
+		import com.mappedObjects.ug.model.corporate.Corporate;
 		import flash.net.navigateToURL;
 		import mx.controls.LinkButton;
-		import com.mappedObjects.ug.model.corporate.corporate;
+		
 		[Bindable]
-		private var _corporate:corporate;
-		public function set corporateProfile(corporateObj:corporate):void
+		private var _corporate:Corporate;
+		public function set corporateProfileDet(corporateObj:Corporate):void
 		{
 			_corporate = corporateObj;
 		}
@@ -21,22 +22,22 @@
 </mx:Script>
 	<mx:Form>
 		<mx:FormItem label="Company Name:">
-			<mx:Text text="{_corporate.companyName}"/>
+			<mx:Text text="{_corporate.corporateName}"/>
 		</mx:FormItem>
 		<mx:FormItem label="Current Location:">
-			<mx:Text text="{_corporate.city}"/>
+			<mx:Text text="{_corporate.country}"/>
 		</mx:FormItem>
 		<mx:FormItem label="Industry:">
 			<mx:Text  text="{_corporate.industry}"/>
 		</mx:FormItem>
 		<mx:FormItem label="Link to Corporate Website:">
-			<mx:Text text="{_corporate.companyLink)"/>
+			<mx:Text text="{_corporate.companyWebsite)"/>
 		</mx:FormItem>
 		<mx:FormItem label="Link to LinkedIn Profile:">
-			<mx:LinkButton label="{_corporate.linkedInProfile}" click="openLink(event);"/>
+			<mx:LinkButton label="{_corporate.youtubeVideo}" click="openLink(event);"/>
 		</mx:FormItem>
 		<mx:FormItem label="Link to youtube video:">
-			<mx:LinkButton label="{_corporate.youtubeLink}" click="openLink(event);"/>
+			<mx:LinkButton label="{_corporate.youtubeVideo}" click="openLink(event);"/>
 		</mx:FormItem>
 		<mx:Text text="{_corporate.corporateStory}" width="400"/>
 	</mx:Form>
