@@ -220,10 +220,10 @@ public function setUserInfo(userInfo:UG_User):void
 	if(userInfo != null){
 		__ugUser = userInfo;
 		_corporate = new Corporate;
-//		_corporate.firstName = __ugUser.firstName;
-//		_corporate.lastName = __ugUser.lastName;
+		_corporate.firstName = __ugUser.firstName;
+		_corporate.lastName = __ugUser.lastName;
 		_corporate.email = __ugUser.emailId;
-//		_corporate.gender = __ugUser.gender;
+		_corporate.gender = __ugUser.gender;
 		creationHandler();
 		corporateRemoteObj.getCorporate(__ugUser.emailId);
 	}
