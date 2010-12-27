@@ -1,53 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" creationComplete="compInit();">
-<mx:Script source="../../as/student/studentProfileInfo.as"/>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" 
+	creationComplete="compInit();" showCloseButton="true" verticalAlign="middle">
+<mx:states>
+	<mx:State name="approveState">
+		<mx:RemoveChild target="{studentView}"/>
+		<mx:RemoveChild target="{corporateView}"/>
+		<mx:RemoveChild target="{request}"/>
+		<mx:AddChild>
+			<mx:VBox width="100%" height="100%" horizontalAlign="center">
+				<mx:Text width="800" text="Thanks for approving the grant.The amount will be transferred from the sub-account to the student.A message has been sent to the student accordingly.It will be posted on Univgiggle homepage.To navigate to Univgiggle homepage click here.Alternatively you can close this window and continue to view and approve other grant requests."/>
+				<mx:Button label="Home" />
+			</mx:VBox>
+		</mx:AddChild>		
+	</mx:State>
+</mx:states>
+<mx:Script source="../../as/corporate/studentProfileInfo.as"/>
 	<mx:HBox width="100%" horizontalAlign="center">
 		<mx:Label text="Student Profile" fontSize="15" fontWeight="bold"/>
 	</mx:HBox>	
-	<mx:HBox width="100%">
-		<mx:VBox width="228" height="178">
-			<mx:Image width="211" height="157" maintainAspectRatio="true" source="{_student.imagePaths}"/>
+	<mx:HBox id="studentView" width="100%">
+		<mx:VBox width="228" height="178" borderStyle="solid">
+			<mx:Image width="211" height="157" maintainAspectRatio="true" /><!--source="{_student.imagePaths}"-->
 		</mx:VBox>
-		<mx:Form width="75%">
+		<mx:Form width="75%"  borderStyle="solid">
 			<mx:FormItem label="Student Name:" width="100%">
 			<mx:Text text="{_student.firstName}"/>
 			</mx:FormItem>
 			<mx:FormItem label="Current University:" width="826">
-				<mx:Text  text="{_student.university}"/>
+				<mx:Text  /><!--text="{_student.university}"-->
 			</mx:FormItem>
 			<mx:FormItem label="Program/Department/Graduation date:" width="824">
-			<mx:Text text="{_student.program}{_student.department}{_student.expectedGraduationMonth}"/>
+			<mx:Text /><!--text="{_student.program}{_student.department}{_student.expectedGraduationMonth}"-->
 			</mx:FormItem>
 			<mx:FormItem label="Link to view resume:" width="823">
 			</mx:FormItem>
 				<mx:FormItem label="Link to LinkedIn Profile:" width="822">
-				<mx:LinkButton label="{_student.linkedInProfile}" click="openLink(event);"/>
+				<mx:LinkButton  click="openLink(event);"/><!--label="{_student.linkedInProfile}"-->
 			</mx:FormItem>
 			<mx:FormItem label="Link to youtube video:" width="821">
-			<mx:LinkButton label="{_student.youtubeLink}" click="openLink(event);"/>
+			<mx:LinkButton  click="openLink(event);"/><!--label="{_student.youtubeLink}"-->
 			</mx:FormItem>
 			<mx:HBox width="100%">
 			<mx:Spacer width="5%"/>
-			<mx:Text text="{_student.studentStory}" width="80%"/>
+			<mx:Text  width="80%"/><!--text="{_student.studentStory}"-->
 			<mx:Spacer width="5%"/>	
 		</mx:HBox>
 
 		</mx:Form>
 	</mx:HBox>
-	<mx:Form width="887" horizontalAlign="left" height="116">
+	<mx:Form id="corporateView" width="887"  height="116"  borderStyle="solid">
 		<mx:FormItem label="Grant Amount Requested:" width="100%">
-		<mx:Text  text="{_student.grantAmount}"/>
+		<mx:Text  /><!--text="{_student.grantAmount}"-->
 		</mx:FormItem>
 		<mx:FormItem label="Grant Needed By:" width="100%">
-		<mx:Text  text="{_student.neededBy}"/>
+		<mx:Text /><!-- text="{_student.neededBy}"-->
 		</mx:FormItem>
 		<mx:FormItem label="Grant Requested for:" width="100%">
-		<mx:Text  text="{_student.requestedFor}"/>
+		<mx:Text /><!-- text="{_student.requestedFor}"-->
 		</mx:FormItem>
 		<mx:FormItem label="View Requirement Template:" width="100%">
-		<mx:Text  text="{_student.validationTemplatePath}"/>
+		<mx:Text /><!-- text="{_student.validationTemplatePath}"-->
 		</mx:FormItem>
 		
 	</mx:Form>
 	<mx:Button id="request" label="Approve Grant Request"  styleName="CommonBtn" enabled="{isMentorRequestEnable}" width="184"/>
-</mx:VBox>
+</mx:TitleWindow>

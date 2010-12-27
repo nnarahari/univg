@@ -4,8 +4,8 @@
 	[Event(name="saveProfile", type="com.events.corporate.SavecorporateEvent")]
 </mx:Metadata>
 <!-- Binding the ActionScript object with the view controls -->
-<!--mx:Binding source="fname.text" destination="_corporate.firstName"/>
-<mx:Binding source="lname.text" destination="_corporate.lastName"/-->
+<mx:Binding source="fname.text" destination="_corporate.firstName"/>
+<mx:Binding source="lname.text" destination="_corporate.lastName"/>
 <mx:Binding source="emailId.text" destination="_corporate.email"/>
 <mx:Binding source="country.text" destination="_corporate.country"/>
 <mx:Binding source="state.text" destination="_corporate.state"/>
