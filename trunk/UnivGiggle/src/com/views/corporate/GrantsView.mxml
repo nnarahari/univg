@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingLeft="15" 
+	paddingTop="15" paddingRight="15" xmlns:corporate="com.views.corporate.*">
+<mx:Script>
+	<![CDATA[
+		import mx.events.CloseEvent;
+		import mx.managers.PopUpManager;
+		import mx.collections.ArrayCollection;
+		private var listArray:Array=[
+	         {label: "Student 1.   SJSU Student has requested a grant of $20000", data: 0},
+	         {label: "Student 2.   SJSU Student has requested a grant of $20000", data: 1},
+	         {label: "Student 3.   SJSU Student has requested a grant of $20000", data: 2},
+	         {label: "Student 4.   SJSU Student has requested a grant of $20000", data: 3},
+	         {label: "Student 5.   SJSU Student has requested a grant of $20000", data: 4},
+	         {label: "Student 6.   SJSU Student has requested a grant of $20000", data: 5}];
+	     [Bindable]   
+	     private var gridData:ArrayCollection = new ArrayCollection([{label1:"cisco",label2:"granted 1000",label3:"India"}]);
+	     private var _studentGrantInfo:StudentGrantInfo;
+	     
+	     private function onChange():void
+	     {
+	     	_studentGrantInfo = new StudentGrantInfo();
+	     	_studentGrantInfo.addEventListener(CloseEvent.CLOSE,onClose);
+	     	PopUpManager.addPopUp(_studentGrantInfo,this,true);
+	     	PopUpManager.centerPopUp(_studentGrantInfo);
+	     }
+	     
+	     private function onClose(event:CloseEvent):void
+	     {
+	     	PopUpManager.removePopUp(_studentGrantInfo);
+	     }
+	]]>
+</mx:Script>
+<mx:XML id="dp" source="../../../xml/univ.xml" format="e4x" />
+<mx:HDividedBox width="100%" height="100%">
+		<corporate:GrantRequests id="grantRequests" borderStyle="solid" width="15%" height="100%" />
+		<mx:VBox width="75%" borderStyle="solid" height="100%" paddingTop="15">
+			<mx:HBox width="100%">
+				<mx:ComboBox id="state"  width="150" labelField="@name" dataProvider="{dp.country.state}"/>
+				<mx:Spacer width="100%"/>
+				<mx:ComboBox id="univ"  width="200" labelField="@name" dataProvider="{state.selectedItem.university}"/>
+			</mx:HBox>
+			<mx:Spacer width="30%"/>
+			<mx:DataGrid id="dg" dataProvider="{gridData}" width="100%" change="onChange();">
+				<mx:columns>
+					<mx:DataGridColumn headerText="Column1" dataField="label1"/>
+					<mx:DataGridColumn headerText="Column2" dataField="label2"/>
+					<mx:DataGridColumn headerText="Column3" dataField="label3"/>
+				</mx:columns>
+			</mx:DataGrid>
+		</mx:VBox>
+</mx:HDividedBox>
+</mx:VBox>

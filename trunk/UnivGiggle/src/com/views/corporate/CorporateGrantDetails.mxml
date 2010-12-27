@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:corporate="com.views.corporate.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingLeft="15" paddingTop="15" paddingRight="15" xmlns:corporate="com.views.corporate.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
 <mx:Script>
 	<![CDATA[
+		import com.events.corporate.ApproveGrantRequestEvent;
+		
 		import com.mappedObjects.ug.model.corporate.Corporate;
 //		import com.events.corporate.CreateGrantRequestEvent;
 //		import com.mappedObjects.ug.model.corporate.corporate;
@@ -11,7 +13,7 @@
 		import com.events.corporate.DisperseGrant;
 		[Bindable]
 	    private var _corporate:Corporate;    
-//	    private var _approveGrantEvt:CreateGrantRequestEvent;
+	    private var _approveGrantEvt:ApproveGrantRequestEvent;
 	    private var _addGrantEvt:AddGrant;
 	    private var _disperseGrantEvt:DisperseGrant; 
 	   private function createHandler():void
@@ -31,8 +33,8 @@
 	   
 	   private function viewapproveGrant(event:MouseEvent):void
 	   {
-	   		 /* _approveGrantEvt = new APPROVEGrantRequestEvent(APPROVEGrantRequestEvent.APPROVEGRANT_REQUEST);
-	   		 dispatchEvent(_approveGrantEvt); */
+	   		  _approveGrantEvt = new ApproveGrantRequestEvent(ApproveGrantRequestEvent.APPROVEGRANT_REQUEST,null);
+	   		 dispatchEvent(_approveGrantEvt); 
 	   }
 	   
 	   private function addGrant(event:MouseEvent):void
@@ -48,15 +50,16 @@
 	   }
 	]]>
 </mx:Script>
-	<mx:HBox width="100%" paddingLeft="20" height="196">
+	<mx:HBox width="100%" paddingLeft="20" height="100%">
 		<mx:VBox>
 			<mx:Image width="166" height="150" source="./assets/corporate.jpg"/>
 			<mx:Button id="but_editCorporateProfile" styleName="CommonBtn" label="EDIT CORPORATE PROFILE" width="187"/>	
 		</mx:VBox>
 		<mx:Spacer width="10%"/>
-		<corporate:CorporateProfileDetails borderStyle="solid" corporateProfileDet="{_corporate}" width="468" height="193"/>
+		<corporate:CorporateProfileDetails borderStyle="solid" corporateProfileDet="{_corporate}" width="600" height="193"/>
 	</mx:HBox>
-	<mx:HBox width="1154" paddingLeft="20" height="126">
+	<mx:Spacer width="10%"/>
+	<mx:HBox width="1154" paddingLeft="20" height="100%">
 	<mx:Form>
 		<mx:FormItem label="Grant Amount Committed:">
 			<mx:Text /> <!-- add object text="{_corporate.commitedAmount}"-->
@@ -64,26 +67,19 @@
 		<mx:FormItem label="Grant Amount Available:">
 			<mx:Text /> <!-- add object text="{_corporate.availableAmount}"-->
 		</mx:FormItem>
-		<mx:VBox width="287" horizontalAlign="center">
-			
+		<mx:Spacer width="20"/>
+		<mx:HBox width="287" height="100" horizontalAlign="center" verticalAlign="middle" borderStyle="solid">	
+			<mx:TextInput width="100"/>		
 			<mx:Button id="but_addGrant" styleName="CommonBtn" label="ADD GRANT" width="103"/>	
-		</mx:VBox>
+		</mx:HBox>
 	</mx:Form>
-	<mx:Form>
-		<mx:FormItem label="Let the UnivGiggle pick the students and disperse the grants as made available by   :" height="59" width="294">
-			<mx:Text text="{_corporate.corporateName}"/> <!-- add object -->
-		</mx:FormItem>
-		<mx:VBox width="290" horizontalAlign="center">
-			
-			<mx:Button id="but_ok" label="OK" styleName="CommonBtn" width="91"/>	
-		</mx:VBox>
-	</mx:Form>
-	
-		<mx:Form>
-		<mx:VBox width="328" horizontalAlign="center">
-			<mx:Button id="but_viewapproveGrant" styleName="CommonBtn" label="View and Approve Student Grant Request" width="263"/>
-			
-		</mx:VBox>
-	</mx:Form>
+	<mx:VBox width="328" horizontalAlign="center">
+		<mx:Button id="but_viewapproveGrant" styleName="CommonBtn" label="View and Approve Student Grant Request" width="263"/>
+		<mx:Spacer width="10%"/>
+		<mx:VBox width="300" horizontalAlign="center" borderStyle="solid">
+			<mx:Text width="250" text="Let the UnivGiggle pick the students and disperse the grants as made available by   : {_corporate.corporateName}"/>
+			<mx:Button id="but_ok" label="OK" styleName="CommonBtn" width="91"/>
+		</mx:VBox>	
+	</mx:VBox>
 	</mx:HBox>
 </mx:VBox>
