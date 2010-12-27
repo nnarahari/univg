@@ -9,8 +9,10 @@ package com.mappedObjects.ug.model.corporate
 	[RemoteClass(alias='com.ug.model.Corporate')]
 	public class Corporate extends ModelBase
 	{
-		protected var firstName:String = "";
-		protected var lastName:String = "";
+		[Transient]
+		public var firstName:String = "";
+		[Transient]
+		public var lastName:String = "";
 		public var corporateName:String = "";
 		public var email:String = "";
 		public var state:String = "";
@@ -22,7 +24,8 @@ package com.mappedObjects.ug.model.corporate
 		public var companyWebsite:String = "";
 		public var grantList:String = "";
 		public var corporateStory:String = "";
-		protected var gender:String = "";
+		[Transient]
+		public var gender:String = "";
 		/* public var university:String = "";		
 		
 		public var citizenship:String = "";		
