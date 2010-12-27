@@ -16,6 +16,7 @@
         import com.events.SignUpEvent;
         import com.events.StudentClassifiedEvent;
         import com.events.WelcomeEvent;
+        import com.events.corporate.ApproveGrantRequestEvent;
         import com.events.corporate.SaveCorporate;
         import com.events.mentee.MenteeProfileDetEvent;
         import com.events.mentee.MenteeProfileEvent;
@@ -42,6 +43,7 @@
         import com.views.StudentClassified;
         import com.views.WelcomeNote;
         import com.views.corporate.CorporateGrantDetails;
+        import com.views.corporate.GrantsView;
         import com.views.mentee.MenteeTestimonial;
         import com.views.mentor.MentorList;
         import com.views.mentor.MentorProfile;
@@ -408,8 +410,21 @@
         {
         	univGiggleStack.removeAllChildren();
         	var _corporateGrantDet:CorporateGrantDetails = new CorporateGrantDetails;
+        	_corporateGrantDet.addEventListener(ApproveGrantRequestEvent.APPROVEGRANT_REQUEST,displayCorporateGrantView);
         	_corporateGrantDet.corporateProfileDet = event._corporateObj;
         	univGiggleStack.addChild(_corporateGrantDet);
+        }
+        
+        /**
+        * @private
+        * method for displaying the corporate grants view
+        * @param : event
+        * */
+        private function displayCorporateGrantView(event:ApproveGrantRequestEvent):void
+        {
+        	univGiggleStack.removeAllChildren();
+        	var _corporateGrantView:GrantsView = new GrantsView();
+        	univGiggleStack.addChild(_corporateGrantView);
         }
         
         /**
