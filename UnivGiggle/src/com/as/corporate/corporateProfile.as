@@ -1,13 +1,16 @@
 // ActionScript files
 import com.components.Captcha;
 import com.events.HomePageEvent;
+import com.events.corporate.NavigateHomeEvent;
 import com.events.corporate.SaveCorporateEvent;
 import com.interactiveObject.ServiceObject;
 import com.mappedObjects.ug.model.ResultInfo;
 import com.mappedObjects.ug.model.UG_User;
 import com.mappedObjects.ug.model.corporate.Corporate;
 
+import mx.containers.TitleWindow;
 import mx.controls.Alert;
+import mx.events.CloseEvent;
 import mx.events.ValidationResultEvent;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
@@ -36,6 +39,7 @@ private var resultInfoObj:ResultInfo;
 private var validationArray:Array;
 private var __ugUser:UG_User;
 private var isAdded:Boolean = true;
+private var msgTitle:TitleWindow;
 
 /**
  * 
@@ -186,9 +190,8 @@ private function setValidator():void
  */
 private function onCancelProfile(event:MouseEvent):void
 {
-	dispatchEvent(new HomePageEvent(HomePageEvent.HOME));
+	dispatchEvent(new NavigateHomeEvent(NavigateHomeEvent.NAVIGATE_STATE));
 }
-
 /**
  * 
  * @param event
@@ -206,9 +209,16 @@ private function onResultAddCorporate(event:ResultEvent):void
 {
 	resultInfoObj = event.result as ResultInfo;
 	if(resultInfoObj.success){
-		var _saveCorporateProfileEvt:SaveCorporateEvent = new SaveCorporateEvent(SaveCorporateEvent.SAVECORPORATE_PROFILE,_corporate);
-		dispatchEvent(_saveCorporateProfileEvt);
+		Alert.show("Thank you for registering with UnivGiggle. We really appreciate your help and cooperation. Your corporate profile has been saved and will be activated once it is validated. Please check your corporate email to validate and activate your profile. Once activated you would be able to review student grant requests and approve them as appropriate. Congratulations and Thank You!!!","result",0,this,closeHandler);
+		
 	}
+}
+
+private function closeHandler(event:CloseEvent):void
+{
+//	dispatchEvent(new NavigateHomeEvent(NavigateHomeEvent.NAVIGATE_STATE));
+	var _saveCorporateProfileEvt:SaveCorporateEvent = new SaveCorporateEvent(SaveCorporateEvent.SAVECORPORATE_PROFILE,_corporate);
+	dispatchEvent(_saveCorporateProfileEvt); 
 }
 
 /**

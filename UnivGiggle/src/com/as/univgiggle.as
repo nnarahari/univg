@@ -402,6 +402,7 @@
         		univGiggleStack.removeAllChildren();
         		_corpLenderInstance = new CorporateLenderClassified;
         		_corpLenderInstance.addEventListener(SaveCorporate.SAVECORPORATE_PROFILE,displayCorporateGrantDetails);
+        		_corpLenderInstance.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
         		_corpLenderInstance.callLater(_corpLenderInstance.setUserInfo,[__ugUser]);
         		univGiggleStack.addChild(_corpLenderInstance);
         }
