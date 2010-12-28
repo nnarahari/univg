@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingLeft="15" paddingTop="15" paddingRight="15" xmlns:corporate="com.views.corporate.*" creationComplete="createHandler();" horizontalScrollPolicy="off">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingLeft="15" paddingTop="15" paddingRight="15" xmlns:corporate="com.views.corporate.*" creationComplete="createHandler();" borderStyle="solid" horizontalScrollPolicy="off">
 <mx:Script>
 	<![CDATA[
 		import com.events.corporate.ApproveGrantRequestEvent;
@@ -45,21 +45,23 @@
 	   
 	   private function disperseGrant(event:MouseEvent):void
 	   {
+	   	but_viewapproveGrant.enabled = false;
+	   	grantMsg.text = "You have authorize UnivG to approve grants on behalf of <company name>";
 	   		/* _disperseGrantEvt = new DisperseGrant(DisperseGrant.DISPERSEGRANT_AMOUNT);
 	   		dispatchEvent(_disperseGrantEvt); */
 	   }
 	]]>
 </mx:Script>
-	<mx:HBox width="100%" paddingLeft="20" height="100%">
+	<mx:HBox width="100%" paddingLeft="20" height="100%" horizontalAlign="center" verticalAlign="middle">
 		<mx:VBox>
 			<mx:Image width="166" height="150" source="./assets/corporate.jpg"/>
 			<mx:Button id="but_editCorporateProfile" styleName="CommonBtn" label="EDIT CORPORATE PROFILE" width="187"/>	
 		</mx:VBox>
-		<mx:Spacer width="10%"/>
-		<corporate:CorporateProfileDetails borderStyle="solid" corporateProfileDet="{_corporate}" width="600" height="193"/>
+		<mx:Spacer width="20"/>
+		<corporate:CorporateProfileDetails borderStyle="solid" corporateProfileDet="{_corporate}" width="600" height="200"/>
 	</mx:HBox>
 	<mx:Spacer width="10%"/>
-	<mx:HBox width="1154" paddingLeft="20" height="100%">
+	<mx:HBox width="100%" paddingLeft="20" height="100%" horizontalAlign="center" verticalAlign="middle" horizontalGap="50"> 
 	<mx:Form>
 		<mx:FormItem label="Grant Amount Committed:">
 			<mx:Text /> <!-- add object text="{_corporate.commitedAmount}"-->
@@ -73,12 +75,13 @@
 			<mx:Button id="but_addGrant" styleName="CommonBtn" label="ADD GRANT" width="103"/>	
 		</mx:HBox>
 	</mx:Form>
-	<mx:VBox width="328" horizontalAlign="center">
+	<mx:VBox width="328" horizontalAlign="center" height="210" verticalAlign="middle">
 		<mx:Button id="but_viewapproveGrant" styleName="CommonBtn" label="View and Approve Student Grant Request" width="263"/>
 		<mx:Spacer width="10%"/>
 		<mx:VBox width="300" horizontalAlign="center" borderStyle="solid">
 			<mx:Text width="250" text="Let the UnivGiggle pick the students and disperse the grants as made available by   : {_corporate.corporateName}"/>
 			<mx:Button id="but_ok" label="OK" styleName="CommonBtn" width="91"/>
+			<mx:Text id="grantMsg" width="250"/>
 		</mx:VBox>	
 	</mx:VBox>
 	</mx:HBox>
