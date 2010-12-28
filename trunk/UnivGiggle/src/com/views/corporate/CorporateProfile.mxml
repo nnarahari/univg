@@ -47,13 +47,13 @@
 				<mx:Text text="First Name :" />
 			</mx:GridItem>
 			<mx:GridItem width="300">
-				<mx:TextInput id="fname" width="200" />
+				<mx:TextInput id="fname" text="{_corporate.firstName}" width="200" />
 			</mx:GridItem>
 			<mx:GridItem >
 				<mx:Text text="Last Name :"/>
 			</mx:GridItem>
 			<mx:GridItem  width="300">
-				<mx:TextInput id="lname" width="200" />
+				<mx:TextInput id="lname" text="{_corporate.lastName}" width="200" />
 			</mx:GridItem>
 		</mx:GridRow>
 		
