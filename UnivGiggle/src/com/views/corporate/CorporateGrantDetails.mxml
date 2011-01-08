@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingLeft="15" paddingTop="15" paddingRight="15" xmlns:corporate="com.views.corporate.*" creationComplete="createHandler();" borderStyle="solid" horizontalScrollPolicy="off">
 <mx:Script>
 	<![CDATA[
+		import com.events.corporate.CorporateLenderEvent;
 		import com.events.corporate.ApproveGrantRequestEvent;
 		
 		import com.mappedObjects.ug.model.corporate.Corporate;
@@ -19,7 +20,7 @@
 	   private function createHandler():void
 	   {
 	   		but_viewapproveGrant.addEventListener(MouseEvent.CLICK,viewapproveGrant,false,0,true);
-//	   		but_editCorporateProfile.addEventListener(MouseEvent.CLICK,editCorporateProfile,false,0,true);
+	   		but_editCorporateProfile.addEventListener(MouseEvent.CLICK,editCorporateProfile,false,0,true);
 	   		but_addGrant.addEventListener(MouseEvent.CLICK,addGrant,false,0,true);
 	   		but_ok.addEventListener(MouseEvent.CLICK,disperseGrant,false,0,true);
 	   		
@@ -35,6 +36,12 @@
 	   {
 	   		  _approveGrantEvt = new ApproveGrantRequestEvent(ApproveGrantRequestEvent.APPROVEGRANT_REQUEST,null);
 	   		 dispatchEvent(_approveGrantEvt); 
+	   }
+	   
+	   private function editCorporateProfile(event:MouseEvent):void
+	   {
+	   		var _corporateEvt:CorporateLenderEvent = new CorporateLenderEvent(CorporateLenderEvent.CORPORATE_EVENT);
+	   		dispatchEvent(_corporateEvt);
 	   }
 	   
 	   private function addGrant(event:MouseEvent):void

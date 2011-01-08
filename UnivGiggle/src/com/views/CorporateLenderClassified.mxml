@@ -3,6 +3,8 @@
 	horizontalAlign="center" verticalAlign="top" xmlns:corporate="com.views.corporate.*"  paddingLeft="10" borderStyle="solid" creationComplete="creationHandler();">
 	<mx:Script>
 		<![CDATA[
+			import com.events.HomePageEvent;
+			import com.events.corporate.NavigateHomeEvent;
 			import com.mappedObjects.ug.model.UG_User;
 			import com.events.corporate.SaveCorporate;
 			import com.events.corporate.SaveCorporateEvent;
@@ -20,6 +22,7 @@
 			{
 				grantRequests.addEventListener(SelectedCorporateGrantEvt.SELECTEDCORPORATEGRANT_NAME,selectedGrantHandler);
 				corporateProfile.addEventListener(SaveCorporateEvent.SAVECORPORATE_PROFILE,saveCorporateProfile);
+				corporateProfile.addEventListener(NavigateHomeEvent.NAVIGATE_STATE,navigateToHomePage);
 //				grantRequests.grantListData = listArray;
 			}
 			
@@ -32,6 +35,11 @@
 			{
 				var _saveCorporateProfileEvt:SaveCorporate = new SaveCorporate(SaveCorporate.SAVECORPORATE_PROFILE,event._corporateObj);
 				dispatchEvent(_saveCorporateProfileEvt);
+			}
+			
+			private function navigateToHomePage(event:NavigateHomeEvent):void
+			{
+				dispatchEvent(new HomePageEvent(HomePageEvent.HOME));
 			}
 			
 			/**
