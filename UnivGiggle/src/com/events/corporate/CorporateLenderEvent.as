@@ -12,7 +12,7 @@ package com.events.corporate
 		
 		override public function clone():Event
 		{
-			return new AboutUsEvent(type);
+			return new CorporateLenderEvent(type);
 		}
 		
 	}
