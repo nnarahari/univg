@@ -4,7 +4,7 @@
 		import com.events.AboutUsEvent;
 		import com.events.ClassifiedEvent;
 		import com.events.ContactUSEvent;
-		import com.events.CorporateLenderEvent;
+		import com.events.corporate.CorporateLenderEvent;
 		import com.events.GenaratePasswordEvent;
 		import com.events.HomePageEvent;
 		import com.events.LoginEvt;
@@ -24,8 +24,6 @@
 		import com.facebook.utils.FacebookSessionUtil;
 		import com.interactiveObject.ServiceObject;
 		import com.mappedObjects.ug.model.UG_User;
-		import com.mappedObjects.ug.model.student.Student;
-		import com.mappedObjects.ug.model.corporate.Corporate;
 		
 		import mx.collections.XMLListCollection;
 		import mx.controls.Alert;
@@ -116,7 +114,7 @@
         			break;
         		case 8:
         		if(checkUserLoggedIn())
-        			parentDocument.dispatchEvent(new CorporateLenderEvent(CorporateLenderEvent.EVENT_NAME));
+        			parentDocument.dispatchEvent(new CorporateLenderEvent(CorporateLenderEvent.CORPORATE_EVENT));
         			break;
         		case 14:
         			parentDocument.dispatchEvent(new ContactUSEvent(ContactUSEvent.EVENT_NAME));

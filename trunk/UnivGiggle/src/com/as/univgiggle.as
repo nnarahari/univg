@@ -5,7 +5,6 @@
         import com.events.ClassifiedPostEvent;
         import com.events.ComponentInitEvent;
         import com.events.ContactUSEvent;
-        import com.events.CorporateLenderEvent;
         import com.events.CreateUserEvent;
         import com.events.FaceBookLoginEvent;
         import com.events.FetchClassifedObjectEvent;
@@ -17,6 +16,7 @@
         import com.events.StudentClassifiedEvent;
         import com.events.WelcomeEvent;
         import com.events.corporate.ApproveGrantRequestEvent;
+        import com.events.corporate.CorporateLenderEvent;
         import com.events.corporate.SaveCorporate;
         import com.events.mentee.MenteeProfileDetEvent;
         import com.events.mentee.MenteeProfileEvent;
@@ -104,7 +104,7 @@
 			this.addEventListener(AboutUsEvent.EVENT_NAME,aboutHandler,false,0,true);
 			this.addEventListener(StudentClassifiedEvent.EVENT_NAME,navigateToStudentClassified,false,0,true);
 			this.addEventListener(P2PLenderClassifiedEvent.EVENT_NAME,navigateToP2PLender,false,0,true);
-			this.addEventListener(CorporateLenderEvent.EVENT_NAME,navigateToCorporateLender,false,0,true);
+			this.addEventListener(CorporateLenderEvent.CORPORATE_EVENT,navigateToCorporateLender,false,0,true);
 			this.addEventListener(ContactUSEvent.EVENT_NAME,navigateToContact,false,0,true);
 			this.addEventListener(HomePageEvent.HOME,goToHomePage,false,0,true);
 			this.addEventListener(ClassifiedEvent.CLASSIFIED,goToPostClassifieds,false,0,true);
@@ -412,6 +412,7 @@
         	univGiggleStack.removeAllChildren();
         	var _corporateGrantDet:CorporateGrantDetails = new CorporateGrantDetails;
         	_corporateGrantDet.addEventListener(ApproveGrantRequestEvent.APPROVEGRANT_REQUEST,displayCorporateGrantView);
+        	_corporateGrantDet.addEventListener(CorporateLenderEvent.CORPORATE_EVENT,navigateToCorporateLender);
         	_corporateGrantDet.corporateProfileDet = event._corporateObj;
         	univGiggleStack.addChild(_corporateGrantDet);
         }
