@@ -3,6 +3,7 @@
  */
 package com.ug.service.impl;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -82,10 +83,12 @@ public class CorporateManagerImplTest {
 
 	/**
 	 * Test method for {@link com.ug.service.impl.CorporateManagerImpl#getCorporate(java.lang.String)}.
+	 * @throws Exception 
 	 */
 	@Test
-	public void testGetCorporate() {
-		fail("Not yet implemented");
+	public void testGetCorporate() throws Exception {
+		Corporate corporate = corporateManager.getCorporate("s@s.com");
+		assertNotNull(corporate);
 	}
 
 	/**

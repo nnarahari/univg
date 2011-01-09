@@ -55,20 +55,23 @@ public class CorporateDAOImpl implements CorporateDAO {
 		return null;
 	}
 
-	@Override
+	@Override @Transactional
 	public Corporate getCorporate(String email) throws Exception {
 		logger.info("getCorporate() started...email ==>"+ email);
 		Corporate corporate = null;
-		String qry = "Select Object(s) from Corporate c where c.email = :email";
+		String qry = "Select Object(c) from Corporate c where c.email = :email";
 		Query query = entityManager.createQuery(qry);
 		query.setParameter("email", email); 
+		
+		Corporate newCorporate = new Corporate();
 		try{
 			corporate = (Corporate) query.getSingleResult();
+			newCorporate = corporate;
 		}catch(Exception e){
 			logger.error("Error while reteriving corporate",e);
 			throw e;
 		}
-		return corporate;
+		return newCorporate;
 	}
 
 }
