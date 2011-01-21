@@ -54,6 +54,13 @@ public class Corporate extends ModelBase {
 	
 	@Column(name="corporatestory", length=2000)
 	private String corporateStory;
+	
+	
+	@Column (name="commitedAmount" , nullable=false)
+	private double commitedAmount;
+	
+	@Column (name="availableAmount" , nullable=false)
+	private double availableAmount;
 
 	/**
 	 * @return the corporateName
@@ -207,6 +214,38 @@ public class Corporate extends ModelBase {
 	 */
 	public void setCorporateStory(String corporateStory) {
 		this.corporateStory = corporateStory;
+	}
+	
+	
+	/**
+	 * @return the commitedAmount
+	 */
+	public double getCommitedAmount() {
+		return commitedAmount;
+	}
+
+
+	/**
+	 * @param grantAmount the commitedAmount to set
+	 */
+	public void setCommitedAmount(double commitedAmount) {
+		this.commitedAmount = commitedAmount;
+	}
+	
+	
+	/**
+	 * @return the availableAmount
+	 */
+	public double getAvailableAmount() {
+		return availableAmount;
+	}
+
+
+	/**
+	 * @param grantAmount the availableAmount to set
+	 */
+	public void setAvailableAmount(double availableAmount) {
+		this.availableAmount = availableAmount;
 	}
 	
 
