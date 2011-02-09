@@ -24,6 +24,7 @@ package com.mappedObjects.ug.model.student
 		public var youtubeLink:String = "";
 		public var linkedInProfile:String = "";
 		public var grantList:ArrayCollection;
+		public var isActive:Boolean="";
 		public var studentList:Array = new Array;
 		public function Student()
 		{
