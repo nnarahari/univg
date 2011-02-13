@@ -73,5 +73,50 @@ public class CorporateDAOImpl implements CorporateDAO {
 		}
 		return newCorporate;
 	}
+	
+	@Override
+	public Corporate getCorporateById(String corporateId){
+		logger.debug("getCorporateById() started.. id ==>"+ corporateId);
+		Corporate corporate = null;
+		try{
+			Query query= entityManager.createQuery("Select Object(c) from Corporate c where c.id = :corporateId");
+			query.setParameter("corporateId", corporateId);
+			corporate = (Corporate) query.getSingleResult();
+		}catch(Exception ex){
+			logger.error("Error while querying corporate details.",ex);
+		}
+		return corporate;
+	}
+	
+
+	@Override
+	public boolean activateCorporate(String id) throws Exception {
+		logger.debug("activateCorporate() started... id ==>"+ id);
+		boolean isUpdated = false;
+		Corporate corporate = getCorporateById(id);
+		if(corporate != null){
+			logger.info("Activated Status ==>"+ corporate.isActivated());
+			corporate.setActivated(true);
+			try{
+				Corporate newCorporate = entityManager.merge(corporate);
+				if(newCorporate != null){
+					logger.info("Corporate updated successfully! ==>" + newCorporate.isActivated());
+					isUpdated = true;
+				}
+			}catch(Throwable e) {
+				if(e != null) {
+					if(e instanceof PersistenceException) {
+						String errorMsg = e.getMessage().toString();
+						if(errorMsg.contains("JDBCConnectionException")) {
+							throw new DBConnectionFailureException("Unable to execute the query.Please check the database server is up.");
+						}
+						throw new Exception(e);
+					}
+					throw new Exception(e);				
+				}
+			}
+		}
+		return isUpdated;
+	}
 
 }

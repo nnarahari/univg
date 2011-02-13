@@ -66,6 +66,9 @@ public class Student extends ModelBase{
 	@Column (name="youtubelink", length=200)
 	private String youtubeLink;
 	
+	@Column (name="activated")
+	private boolean activated;
+	
 	
 	@OneToMany(mappedBy="student", cascade=CascadeType.ALL)
 	private List<StudentGrant> grantList;
@@ -324,6 +327,22 @@ public class Student extends ModelBase{
 	 */
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+
+	/**
+	 * @return the activated
+	 */
+	public boolean isActivated() {
+		return activated;
+	}
+
+
+	/**
+	 * @param activated the activated to set
+	 */
+	public void setActivated(boolean activated) {
+		this.activated = activated;
 	}
 	
 	

@@ -15,8 +15,10 @@ import org.apache.log4j.Logger;
 
 import com.ug.model.ResultInfo;
 import com.ug.service.ClassifiedManager;
+import com.ug.service.CorporateManager;
 import com.ug.service.MenteeManager;
 import com.ug.service.MentorManager;
+import com.ug.service.StudentManager;
 import com.ug.service.UserManager;
 
 /**
@@ -37,6 +39,8 @@ public class MailConfirmServlet extends HttpServlet {
 	private UserManager userManager;
 	private MenteeManager menteeManager;
 	private MentorManager mentorManager;
+	private StudentManager studentManager;
+	private CorporateManager corporateManager;
 	private ResultInfo resultInfo;
 	
 	
@@ -105,6 +109,30 @@ public class MailConfirmServlet extends HttpServlet {
 				}
 			} catch (Exception e) {
 				logger.error("Error while updating menteeManager.activateMentee()...",e);
+			}
+		}else if(key.equalsIgnoreCase("Student")){
+			try {
+				studentManager = (StudentManager) getServletContext().getAttribute("studentManager");
+				boolean studentActivated = studentManager.activateStudent(id);
+				if(studentActivated){
+					updateResponse(response,"Student profile activated successfully!");
+				}else{
+					updateResponse(response,"Student profile not activated");
+				}
+			} catch (Exception e) {
+				logger.error("Error while updating studentManager.activateStudent()...",e);
+			}
+		}else if(key.equalsIgnoreCase("Corporate")){
+			try {
+				corporateManager = (CorporateManager) getServletContext().getAttribute("corparteManager");
+				boolean corporateActivated = corporateManager.activateCorporate(id);
+				if(corporateActivated){
+					updateResponse(response,"Corporate profile activated successfully!");
+				}else{
+					updateResponse(response,"Corporate profile not activated");
+				}
+			} catch (Exception e) {
+				logger.error("Error while updating activateCorporate()...",e);
 			}
 		}
 		else{

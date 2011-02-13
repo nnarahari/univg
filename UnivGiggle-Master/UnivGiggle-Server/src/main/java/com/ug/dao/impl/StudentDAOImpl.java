@@ -129,6 +129,50 @@ public class StudentDAOImpl implements StudentDAO {
 			throw e;
 		}
 	}
+
+	@Override
+	public Student getStudentById(String studentId){
+		logger.debug("getStudentById() started.. id ==>"+ studentId);
+		Student student = null;
+		try{
+			Query query= entityManager.createQuery("Select Object(s) from Student s where s.id = :studentId");
+			query.setParameter("studentId", studentId);
+			student = (Student) query.getSingleResult();
+		}catch(Exception ex){
+			logger.error("Error while querying Student details.",ex);
+		}
+		return student;
+	}
+
+	@Override
+	public boolean activateStudent(String id) throws Exception {
+		logger.debug("activateStudent() started... id ==>"+ id);
+		boolean isUpdated = false;
+		Student student = getStudentById(id);
+		if(student != null){
+			logger.info("Activated Status ==>"+ student.isActivated());
+			student.setActivated(true);
+			try{
+				Student newStudent = entityManager.merge(student);
+				if(newStudent != null){
+					logger.info("Student updated successfully! ==>" + newStudent.isActivated());
+					isUpdated = true;
+				}
+			}catch(Throwable e) {
+				if(e != null) {
+					if(e instanceof PersistenceException) {
+						String errorMsg = e.getMessage().toString();
+						if(errorMsg.contains("JDBCConnectionException")) {
+							throw new DBConnectionFailureException("Unable to execute the query.Please check the database server is up.");
+						}
+						throw new Exception(e);
+					}
+					throw new Exception(e);				
+				}
+			}
+		}
+		return isUpdated;
+	}
 	
 
 }

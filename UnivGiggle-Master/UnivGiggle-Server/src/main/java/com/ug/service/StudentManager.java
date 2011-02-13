@@ -20,5 +20,7 @@ public interface StudentManager {
 	public boolean addStudentGrant(String email, StudentGrant sGrant) throws Exception;
 
 	public Student updateStudent(Student stud) throws Exception;
+
+	public boolean activateStudent(String id) throws Exception;
 	
 }

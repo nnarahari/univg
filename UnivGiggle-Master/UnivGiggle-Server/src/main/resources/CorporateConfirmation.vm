@@ -1,0 +1,11 @@
+<html>
+<body>
+<h3>Hi ${corporate.corporatename} , welcome to the UnivGiggle!</h3>
+
+<div>
+   You corporate profile created in UnivGiggle. To confirm & activate your corporate profile please click the following link.
+   <a href="http://localhost:8080/univgiggle/MailConfirmServlet?key=Corporate&id=${corporate.id}">http://localhost:8080/univgiggle/MailConfirmServlet?key=Corporate&id=${corporate.id}</a>.
+</div>
+</body>
+
+</html>
