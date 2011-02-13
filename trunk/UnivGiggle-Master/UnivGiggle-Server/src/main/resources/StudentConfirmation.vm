@@ -1,0 +1,11 @@
+<html>
+<body>
+<h3>Hi ${student.firstName} ${student.lastName} , welcome to the UnivGiggle!</h3>
+
+<div>
+   You student profile created in UnivGiggle. To confirm & activate your student profile please click the following link.
+   <a href="http://localhost:8080/univgiggle/MailConfirmServlet?key=Student&id=${student.id}">http://localhost:8080/univgiggle/MailConfirmServlet?key=Student&id=${student.id}</a>.
+</div>
+</body>
+
+</html>

@@ -18,4 +18,6 @@ public interface CorporateManager {
 	
 	public ResultInfo updateCorporate(Corporate corporate) throws Exception;
 
+	public boolean activateCorporate(String id)throws Exception;
+
 }

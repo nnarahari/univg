@@ -3,10 +3,18 @@
  */
 package com.ug.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.mail.internet.MimeMessage;
+
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.ug.dao.CorporateDAO;
 import com.ug.model.Corporate;
@@ -42,6 +50,7 @@ public class CorporateManagerImpl implements CorporateManager {
 		
 		if(newCorporate != null){
 			logger.info("Corporate details added successfully");
+			sendConfirmationMail(newCorporate);
 			resultInfo = UnivGiggleUtil.createResultInfo(true, "Corporate profile created successfully.", "0", "Corporate profile created successfully.", newCorporate);
 		}else{
 			resultInfo = UnivGiggleUtil.createResultInfo(false, "Store Corporate profile failed.", "101", "Store Corporate profile failed.", null);
@@ -78,7 +87,32 @@ public class CorporateManagerImpl implements CorporateManager {
 			resultInfo = UnivGiggleUtil.createResultInfo(false, "Corporate update failed!", "102", "Error while updating Corporate details.", null);
 		return resultInfo;
 	}
+	
+	
+	@Override
+	public boolean activateCorporate(String id) throws Exception {
+		logger.debug("activateCorporate() started... id ==>"+ id);
+		return corporateDAO.activateCorporate(id);
+	}
 
+	private void sendConfirmationMail(final Corporate corporate){
+		logger.info("inside sendConfirmationMail()");
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+               MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+               message.setTo(corporate.getEmail());
+               message.setSubject("UnivGiggle Corporate Confirmation");
+               Map model = new HashMap();
+               model.put("corporate", corporate);
+               String text = VelocityEngineUtils.mergeTemplateIntoString(
+                  velocityEngine, "CorporateConfirmation.vm", model);
+               logger.info("Mail content :: \n" + text);
+               message.setText(text, true);
+            }
+         };
+         this.mailSender.send(preparator);
+	}
+	
 	/**
 	 * @return the velocityEngine
 	 */
@@ -148,5 +182,7 @@ public class CorporateManagerImpl implements CorporateManager {
 	public void setCorporateDAO(CorporateDAO corporateDAO) {
 		this.corporateDAO = corporateDAO;
 	}
+
+
 
 }

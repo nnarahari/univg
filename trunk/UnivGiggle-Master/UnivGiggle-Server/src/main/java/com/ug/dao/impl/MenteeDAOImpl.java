@@ -3,7 +3,6 @@
  */
 package com.ug.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,7 +17,6 @@ import com.ug.dao.MenteeeDAO;
 import com.ug.exception.DBConnectionFailureException;
 import com.ug.model.Mentee;
 import com.ug.model.Mentor;
-import com.ug.model.Testimonial;
 
 /**
  * @author srini

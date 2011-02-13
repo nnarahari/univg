@@ -21,8 +21,10 @@ public interface StudentDAO {
 	public boolean addStudentGrant(String email, StudentGrant sGrant) throws Exception;
 
 	public List<Student> getStudentsFromUniversity(String university) throws Exception;
-	
-	
+
+	public boolean activateStudent(String id) throws Exception;
+
+	public Student getStudentById(String studentId) throws Exception;
 	
 	
 }

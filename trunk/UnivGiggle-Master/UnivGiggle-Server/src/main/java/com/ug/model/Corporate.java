@@ -61,6 +61,9 @@ public class Corporate extends ModelBase {
 	
 	@Column (name="availableAmount" , nullable=false)
 	private double availableAmount;
+	
+	@Column (name="activated")
+	private boolean activated;
 
 	/**
 	 * @return the corporateName
@@ -246,6 +249,20 @@ public class Corporate extends ModelBase {
 	 */
 	public void setAvailableAmount(double availableAmount) {
 		this.availableAmount = availableAmount;
+	}
+
+	/**
+	 * @return the activated
+	 */
+	public boolean isActivated() {
+		return activated;
+	}
+
+	/**
+	 * @param activated the activated to set
+	 */
+	public void setActivated(boolean activated) {
+		this.activated = activated;
 	}
 	
 
