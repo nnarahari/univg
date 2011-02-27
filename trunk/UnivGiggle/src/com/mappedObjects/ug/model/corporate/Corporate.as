@@ -24,7 +24,6 @@ package com.mappedObjects.ug.model.corporate
 		public var companyWebsite:String = "";
 		public var grantList:String = "";
 		public var corporateStory:String = "";
-		public var isActive:Boolean="";
 		[Transient]
 		public var gender:String = "";
 		/* public var university:String = "";		
