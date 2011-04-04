@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Loan" object="${loan}" path="/loans" z="gZgkQSwud16CU3EBijRrLkcGEVY=">
+        <field:display field="loanStatus" id="s_com_ug_domain_Loan_loanStatus" object="${loan}" z="Y75zSQqsnqycCm4k8r5nSt9rpww="/>
+        <field:display field="loanPeriod" id="s_com_ug_domain_Loan_loanPeriod" object="${loan}" z="bZWTC0jMhYZOj01uxt8ZgtGw/KE="/>
+        <field:display field="comments" id="s_com_ug_domain_Loan_comments" object="${loan}" z="+zkQudb3MxeEcBVgWxUAPiUee8g="/>
+        <field:display field="guarantor" id="s_com_ug_domain_Loan_guarantor" object="${loan}" z="VYIyj8cPLXjuYD1NAa9fmbyMHHw="/>
+        <field:display date="true" dateTimePattern="${loan_firstpaymentdate_date_format}" field="firstPaymentDate" id="s_com_ug_domain_Loan_firstPaymentDate" object="${loan}" z="/Ry+7hsiXMtdguQLdwcGkQgw2K4="/>
+        <field:display field="loanNaeededFor" id="s_com_ug_domain_Loan_loanNaeededFor" object="${loan}" z="UG5AwvzUK6FKtFBshsYMRy+R8p0="/>
+        <field:display date="true" dateTimePattern="${loan_lastpaymentdate_date_format}" field="lastPaymentDate" id="s_com_ug_domain_Loan_lastPaymentDate" object="${loan}" z="ofnvZMtBGbmy8SBv4/mmuuxrypo="/>
+        <field:display field="loanAmount" id="s_com_ug_domain_Loan_loanAmount" object="${loan}" z="0K2KUqsd/vcRnBo/BQOVU2kqb50="/>
+        <field:display date="true" dateTimePattern="${loan_loanorigindate_date_format}" field="loanOriginDate" id="s_com_ug_domain_Loan_loanOriginDate" object="${loan}" z="YkgzYgc+ZURUoVDeP9M4r1uq1Xk="/>
+        <field:display field="loanName" id="s_com_ug_domain_Loan_loanName" object="${loan}" z="w+DKenKEkbdx3Er6VC0egHd2Src="/>
+    </page:show>
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_ug_domain_Guarantor" modelAttribute="guarantor" path="/guarantors" versionField="Version" z="aOS0vwU5cZ5L0DDLGCZcAD8RtCM=">
+        <field:checkbox field="enabled" id="c_com_ug_domain_Guarantor_enabled" z="vwTYmi6DXM3oYRh5RcFDbPNORZ4="/>
+        <field:input field="workPhone" id="c_com_ug_domain_Guarantor_workPhone" z="VKQHCzj2iei81ERFXHVaMzwRmO8="/>
+        <field:input field="country" id="c_com_ug_domain_Guarantor_country" max="20" z="/ddLgsyPX3wRLjAMwAqAY4On98g="/>
+        <field:textarea field="lastName" id="c_com_ug_domain_Guarantor_lastName" required="true" z="1S6xC8G+YKFtKAIr6SXa9X+THZI="/>
+        <field:textarea field="city" id="c_com_ug_domain_Guarantor_city" required="true" z="mAFLVsgwuLUoRcAuuRsL8DIPYBQ="/>
+        <field:input field="homePhone" id="c_com_ug_domain_Guarantor_homePhone" z="UxFPwfNiZyerfiCqk3MX5f/w16o="/>
+        <field:select field="university" id="c_com_ug_domain_Guarantor_university" itemValue="id" items="${universitys}" path="/universitys" z="UnWe1zrNZCAOXYd6RRUEacVGxpk="/>
+        <field:input field="middleName" id="c_com_ug_domain_Guarantor_middleName" max="30" z="eb354njEYXEoYpKaweoQkz8sbYs="/>
+        <field:textarea field="linkedInProfile" id="c_com_ug_domain_Guarantor_linkedInProfile" z="H7Lc4/ocWp19Rz2GOzCG8SsVTn4="/>
+        <field:select field="state" id="c_com_ug_domain_Guarantor_state" items="${states}" path="states" z="7xh+LphS7BKDzOYgbUcmmW2BjSs="/>
+        <field:textarea field="address2" id="c_com_ug_domain_Guarantor_address2" z="Yuu3UfvtaMIJKVUUsaheatW5o2s="/>
+        <field:textarea field="address1" id="c_com_ug_domain_Guarantor_address1" required="true" z="wDVKc3luHZVoesziqB3y5G76FAM="/>
+        <field:select field="gender" id="c_com_ug_domain_Guarantor_gender" items="${genders}" path="genders" z="AGGZvgoG76/Sa23pvcWY0E3gdOQ="/>
+        <field:input field="homePage" id="c_com_ug_domain_Guarantor_homePage" max="30" z="vrVdmzZIyYT1qLea5/WHWWeUQO8="/>
+        <field:input field="mobile" id="c_com_ug_domain_Guarantor_mobile" z="C59ymgPWWhV3OjtiTvhP41WqD+M="/>
+        <field:textarea field="firstName" id="c_com_ug_domain_Guarantor_firstName" required="true" z="+4wnn+zu/BSu2vBY5qw8p8Giejc="/>
+        <field:input field="zip" id="c_com_ug_domain_Guarantor_zip" max="10" min="5" required="true" z="tqTIUUfq2v+0V3Vry7ysaS1Bl3c="/>
+        <field:checkbox field="locked" id="c_com_ug_domain_Guarantor_locked" z="WMaq1a5nYRpbvd9Q/eFTUlwTRJc="/>
+    </form:update>
+</div>
