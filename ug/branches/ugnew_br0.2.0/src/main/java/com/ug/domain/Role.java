@@ -1,5 +1,6 @@
 package com.ug.domain;
 
+import org.springframework.roo.addon.dbre.RooDbManaged;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -9,7 +10,8 @@ import javax.validation.constraints.Size;
 
 @RooJavaBean
 @RooToString
-@RooEntity
+@RooEntity(table = "role")
+@RooDbManaged(automaticallyDelete = true)
 public class Role {
 
     @NotNull

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="loanstatuses/list">
+        <put-attribute name="body" value="/WEB-INF/views/loanstatuses/list.jspx"/>
+    </definition>
+<definition extends="default" name="loanstatuses/show">
+        <put-attribute name="body" value="/WEB-INF/views/loanstatuses/show.jspx"/>
+    </definition>
+<definition extends="default" name="loanstatuses/create">
+        <put-attribute name="body" value="/WEB-INF/views/loanstatuses/create.jspx"/>
+    </definition>
+<definition extends="default" name="loanstatuses/update">
+        <put-attribute name="body" value="/WEB-INF/views/loanstatuses/update.jspx"/>
+    </definition>
+</tiles-definitions>

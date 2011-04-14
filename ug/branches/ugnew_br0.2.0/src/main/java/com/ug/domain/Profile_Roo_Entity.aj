@@ -4,7 +4,6 @@
 package com.ug.domain;
 
 import com.ug.domain.Profile;
-import java.lang.Integer;
 import java.lang.Long;
 import java.util.List;
 import javax.persistence.Column;
@@ -14,12 +13,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Version;
+import javax.persistence.Table;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Profile_Roo_Entity {
     
     declare @type: Profile: @Entity;
+    
+    declare @type: Profile: @Table(name = "profile");
     
     @PersistenceContext
     transient EntityManager Profile.entityManager;
@@ -29,24 +30,12 @@ privileged aspect Profile_Roo_Entity {
     @Column(name = "id")
     private Long Profile.id;
     
-    @Version
-    @Column(name = "version")
-    private Integer Profile.version;
-    
     public Long Profile.getId() {
         return this.id;
     }
     
     public void Profile.setId(Long id) {
         this.id = id;
-    }
-    
-    public Integer Profile.getVersion() {
-        return this.version;
-    }
-    
-    public void Profile.setVersion(Integer version) {
-        this.version = version;
     }
     
     @Transactional

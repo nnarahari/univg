@@ -3,16 +3,18 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_ug_domain_Loan" modelAttribute="loan" path="/loans" render="${empty dependencies}" z="xkIdI7Kt8fKgqrzOorTKHmJzb/o=">
-        <field:select field="loanStatus" id="c_com_ug_domain_Loan_loanStatus" items="${loanstatuses}" path="loanstatuses" z="eGLbWBwzjM0YvH+hEJF2M4xEx3o="/>
-        <field:input field="loanPeriod" id="c_com_ug_domain_Loan_loanPeriod" z="MvhuUxTQLByaKbFRRP7jV8v2z3w="/>
-        <field:textarea field="comments" id="c_com_ug_domain_Loan_comments" z="MRG6dFqeaMs5BWBCiBIfdJyP1xY="/>
-        <field:select field="guarantor" id="c_com_ug_domain_Loan_guarantor" itemValue="id" items="${guarantors}" path="/guarantors" z="g8bZj3cmQISt4ugERsCpoUXxk/8="/>
+        <field:input field="loanPeriod" id="c_com_ug_domain_Loan_loanPeriod" required="true" validationMessageCode="field_invalid_integer" z="q+KuUqDOY8ZsIkJJyaSWxU8EdTI="/>
+        <field:input field="comments" id="c_com_ug_domain_Loan_comments" z="wk1O+gzyRH+qTVfstqOrsD1pF5w="/>
         <field:datetime dateTimePattern="${loan_firstpaymentdate_date_format}" field="firstPaymentDate" id="c_com_ug_domain_Loan_firstPaymentDate" z="UII3s3z7HMyIy1t7vGbMXcuHhyM="/>
-        <field:textarea field="loanNaeededFor" id="c_com_ug_domain_Loan_loanNaeededFor" z="kUj/mMEBitxm7z7k0t1d0YmEdC0="/>
+        <field:input field="loanNaeededFor" id="c_com_ug_domain_Loan_loanNaeededFor" z="dnx22lVQN7AeLWwBgadvWJk82JY="/>
         <field:datetime dateTimePattern="${loan_lastpaymentdate_date_format}" field="lastPaymentDate" id="c_com_ug_domain_Loan_lastPaymentDate" z="/Lasczupu74HkFRuE+CGUqcpGL0="/>
+        <field:select field="guarantorId" id="c_com_ug_domain_Loan_guarantorId" itemValue="id" items="${guarantors}" path="/guarantors" z="N1NhmRA5El30DcqJFpmi2QrzRko="/>
+        <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
         <field:input field="loanAmount" id="c_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="sRpq/u7od98yZXyVfBV8wFXZHaY="/>
+        <field:select field="userId" id="c_com_ug_domain_Loan_userId" itemValue="id" items="${users}" path="/users" z="x0JzZuJEQ1w737ARcsdxKBp/keI="/>
         <field:datetime dateTimePattern="${loan_loanorigindate_date_format}" field="loanOriginDate" id="c_com_ug_domain_Loan_loanOriginDate" z="q3rVVi+0VyNGZyiVby1KmhJ4AV0="/>
-        <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" max="20" z="MS/571i8YuzbgvLfhMTd79kdP+0="/>
+        <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" z="bvGO4FhtYErSLN7vv1dR68M2xWs="/>
+        <field:select field="loanStatusId" id="c_com_ug_domain_Loan_loanStatusId" itemValue="id" items="${loanstatuses}" path="/loanstatuses" z="5GkkK0wPaYGsgo2G+0VfkeYWNUw="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Loan" render="${not empty dependencies}" z="Wvh3Eg7q2lCLSg9SpW0vjG+50oA="/>
 </div>

@@ -13,4 +13,25 @@
 <definition extends="default" name="loans/update">
         <put-attribute name="body" value="/WEB-INF/views/loans/update.jspx"/>
     </definition>
+<definition extends="default" name="loans/findLoansByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByUserId.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByGuarantorId">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByGuarantorId.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanAmount">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanAmount.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNeededBy">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededBy.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNeededByBetween">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededByBetween.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanOriginDateBetween">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanOriginDateBetween.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanStatusId">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanStatusId.jspx"/>
+    </definition>
 </tiles-definitions>

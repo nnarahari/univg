@@ -7,8 +7,12 @@
         <logout logout-url="/resources/j_spring_security_logout"/>
         
         <!-- Configure these elements to secure URIs in your application -->
-        <intercept-url access="isAuthenticated()" pattern="/"/>
-        <intercept-url access="hasRole('ROLE_ADMIN')" pattern="/choices/**"/>
+       <intercept-url access="isAuthenticated()" pattern="/"/>
+        <intercept-url pattern="*/roles/**" access="hasRole('admin')"/>
+        <intercept-url pattern="*/loanstatus/**" access="hasRole('admin')"/>
+        <intercept-url pattern="*/universitys/**" access="hasRole('admin')"/>
+
+        <intercept-url access="hasRole('admin')" pattern="/choices/**"/>
         <intercept-url access="isAuthenticated()" pattern="/member/**"/>
         <intercept-url access="permitAll" pattern="/resources/**"/>
         <intercept-url access="permitAll" pattern="/**"/>

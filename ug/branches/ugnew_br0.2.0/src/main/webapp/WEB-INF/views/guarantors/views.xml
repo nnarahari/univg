@@ -13,4 +13,10 @@
 <definition extends="default" name="guarantors/update">
         <put-attribute name="body" value="/WEB-INF/views/guarantors/update.jspx"/>
     </definition>
+<definition extends="default" name="guarantors/findGuarantorsByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/guarantors/findGuarantorsByUserId.jspx"/>
+    </definition>
+<definition extends="default" name="guarantors/findGuarantorsByUniversityId">
+        <put-attribute name="body" value="/WEB-INF/views/guarantors/findGuarantorsByUniversityId.jspx"/>
+    </definition>
 </tiles-definitions>

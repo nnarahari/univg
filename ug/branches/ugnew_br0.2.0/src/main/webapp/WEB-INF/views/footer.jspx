@@ -17,7 +17,7 @@
         <spring:message code="security_logout"/>
       </a>
     <div>|</div>
-            <a href="/ug3/changepassword/index">password</a>
+            <a href="/ugbeta/changepassword/index">password</a>
         </span>
   </c:if>
 

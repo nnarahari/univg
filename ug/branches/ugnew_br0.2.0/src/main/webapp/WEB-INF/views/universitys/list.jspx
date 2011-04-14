@@ -6,10 +6,10 @@
         <table:table data="${universitys}" id="l_com_ug_domain_University" path="/universitys" z="k/Ups4Hsw0gip/btqgEDk7hSx7M=">
             <table:column id="c_com_ug_domain_University_enabled" property="enabled" z="v7t0RWT/Vr3PQSG4U13GWlZa5UE="/>
             <table:column id="c_com_ug_domain_University_phone" property="phone" z="94QJygFkwqgHOq48aXSev1alAaQ="/>
-            <table:column id="c_com_ug_domain_University_state" property="state" z="cbnphJzALE3+rRz0TCbRixwdhy0="/>
-            <table:column id="c_com_ug_domain_University_address2" property="address2" z="DmZmDu3fx0jxlWvUeJGWCdGs3Fg="/>
-            <table:column id="c_com_ug_domain_University_universityName" property="universityName" z="62peogwWazzmgttA6KTBueE4qHc="/>
-            <table:column id="c_com_ug_domain_University_address1" property="address1" z="le4ZWLzTGFZWbojBqtAHEnD+LN0="/>
+            <table:column id="c_com_ug_domain_University_universityWebsite" property="universityWebsite" z="Fy2jgvpwHaJT+qbB41cEWp1yIpQ="/>
+            <table:column id="c_com_ug_domain_University_country" property="country" z="BWtU6dGjF+XoYPhATRnrekyiGgE="/>
+            <table:column id="c_com_ug_domain_University_city" property="city" z="NcFdcyuRnz3n56iTpdJ5X2pUKy8="/>
+            <table:column id="c_com_ug_domain_University_profiles" property="profiles" z="oILopg888ZjcbB8gWZ6xNqFdXTA="/>
         </table:table>
     </page:list>
 </div>

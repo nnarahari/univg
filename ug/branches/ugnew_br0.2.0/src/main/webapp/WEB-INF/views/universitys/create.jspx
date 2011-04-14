@@ -5,16 +5,18 @@
     <form:create id="fc_com_ug_domain_University" modelAttribute="university" path="/universitys" render="${empty dependencies}" z="h8tSAmT5y/NeFN7DSxqfNuv1vyk=">
         <field:checkbox field="enabled" id="c_com_ug_domain_University_enabled" z="XTH+Yh7WY+ReLTILLsj/7lfSBRw="/>
         <field:input field="phone" id="c_com_ug_domain_University_phone" required="true" z="9tK3DiCANIhtrDQCa2OWV2AhJrE="/>
-        <field:select field="state" id="c_com_ug_domain_University_state" items="${states}" path="states" z="cmpl5YJGPpKSDOC+QDlMDq0zJ20="/>
-        <field:textarea field="address2" id="c_com_ug_domain_University_address2" z="5LWVtazvNwOa020W0zhMlHsJHqE="/>
-        <field:input field="universityName" id="c_com_ug_domain_University_universityName" max="20" required="true" z="xf9ZJ/lfAcaYXzUQdduaaqLtbIU="/>
-        <field:textarea field="address1" id="c_com_ug_domain_University_address1" required="true" z="gBg+SgNBcu5OTjYlj/yAY+DOdvU="/>
-        <field:input field="universityWebsite" id="c_com_ug_domain_University_universityWebsite" max="30" z="FSCw05Vt9r+KrO2oHPlX1AKObuQ="/>
+        <field:input field="universityWebsite" id="c_com_ug_domain_University_universityWebsite" z="wSFKPpzzucvIr0+bE6Lh0qM1Kzk="/>
+        <field:input field="country" id="c_com_ug_domain_University_country" z="aUIEhgi4L98hNSRKUhHrOmpNgME="/>
+        <field:input field="city" id="c_com_ug_domain_University_city" required="true" z="R7QZSKIB4SnNb+/bFEaCaRu17E0="/>
+        <field:simple field="profiles" id="c_com_ug_domain_University_profiles" messageCode="entity_reference_not_managed" messageCodeAttribute="Profile" z="i8KdMenbWnTS9mMAP3S7p6AsCXU="/>
+        <field:input field="universityName" id="c_com_ug_domain_University_universityName" required="true" z="jBH3SiOkXwwFYVe6cZ98umYAdUE="/>
+        <field:input field="address2" id="c_com_ug_domain_University_address2" z="Bw6o75tOYwthQiQcdYN2q5w3W6k="/>
+        <field:select field="stateId" id="c_com_ug_domain_University_stateId" itemValue="id" items="${states}" path="/states" z="jTYS72T7lS2fm5GSYTr/zQ0kBvk="/>
+        <field:input field="address1" id="c_com_ug_domain_University_address1" required="true" z="J25dMd7v9eCX0ZBFIpi2CqLZNe4="/>
         <field:input field="mobile" id="c_com_ug_domain_University_mobile" z="/y973E2RGHIpIlAp5AgtBE0HiK4="/>
         <field:checkbox field="locked" id="c_com_ug_domain_University_locked" z="MlyUsxoS982+um/UZThmw7lgS5c="/>
-        <field:input field="zip" id="c_com_ug_domain_University_zip" max="10" min="5" required="true" z="6m1Qi5FucdpZy9iYwhin+kT4FS4="/>
-        <field:input field="country" id="c_com_ug_domain_University_country" max="20" z="MVTZ+TOJhXVVbieG/mH7xLgHSX0="/>
-        <field:textarea field="city" id="c_com_ug_domain_University_city" required="true" z="PMEttJ3s8ZgpxqzO8C4n9zT/9ZE="/>
+        <field:simple field="guarantors" id="c_com_ug_domain_University_guarantors" messageCode="entity_reference_not_managed" messageCodeAttribute="Guarantor" z="g9PSiR0GVTcuV/vbXe6oCdEhBtA="/>
+        <field:input field="zip" id="c_com_ug_domain_University_zip" required="true" z="/nKzSqOOS/dWS/lRHjj5MP26Ong="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_University" render="${not empty dependencies}" z="e2xZKmXZKTe9Gj8Tkp0sLN2s32Y="/>
 </div>

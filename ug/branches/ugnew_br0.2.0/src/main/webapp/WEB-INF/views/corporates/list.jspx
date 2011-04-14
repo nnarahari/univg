@@ -6,10 +6,10 @@
         <table:table data="${corporates}" id="l_com_ug_domain_Corporate" path="/corporates" z="Lo7tgy+btikLiyPGSF82wcP7fqY=">
             <table:column id="c_com_ug_domain_Corporate_enabled" property="enabled" z="QPekF/7LfCE4JkVBqZtqstQXIL0="/>
             <table:column id="c_com_ug_domain_Corporate_workPhone" property="workPhone" z="VN0aWdnskjdSEMoJ6/ntaF8OLfU="/>
+            <table:column id="c_com_ug_domain_Corporate_userId" property="userId" z="dSvD/vwHpwNYBVRUulASrTWnhBQ="/>
             <table:column id="c_com_ug_domain_Corporate_country" property="country" z="HP8LaMXAIyL/XdRcnGhJOMZFYnM="/>
             <table:column id="c_com_ug_domain_Corporate_corporateName" property="corporateName" z="caHmKrSsYTHZpriFBd4FdIkhnNw="/>
             <table:column id="c_com_ug_domain_Corporate_corporateWebsite" property="corporateWebsite" z="M+SKYIpb88JmZGw9NSvaON//Av4="/>
-            <table:column id="c_com_ug_domain_Corporate_city" property="city" z="ZxBEk3puqM7IxNbRuDEzgKdUjpw="/>
         </table:table>
     </page:list>
 </div>

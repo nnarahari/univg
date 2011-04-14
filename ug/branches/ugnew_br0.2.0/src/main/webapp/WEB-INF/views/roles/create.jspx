@@ -3,8 +3,10 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_ug_domain_Role" modelAttribute="role" path="/roles" render="${empty dependencies}" z="A6p25tETeCT1nx8bh54oWKVU+1I=">
-        <field:input field="roleName" id="c_com_ug_domain_Role_roleName" min="1" required="true" z="Hkhsj/wrmN0iKoO6gaHlC7sx/Rs="/>
-        <field:textarea field="roleDescription" id="c_com_ug_domain_Role_roleDescription" required="true" z="t9lCsXCm7mirHlsloJK5HGpUt+8="/>
+        
+        
+    <field:input field="roleName" id="c_com_ug_domain_Role_roleName" min="1" required="true" z="Hkhsj/wrmN0iKoO6gaHlC7sx/Rs="/>
+    <field:textarea field="roleDescription" id="c_com_ug_domain_Role_roleDescription" required="true" z="t9lCsXCm7mirHlsloJK5HGpUt+8="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Role" render="${not empty dependencies}" z="BY6BktOQC3u1w16W41hUVeZvZRw="/>
 </div>

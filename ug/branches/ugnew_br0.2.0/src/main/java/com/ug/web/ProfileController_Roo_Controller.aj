@@ -3,14 +3,19 @@
 
 package com.ug.web;
 
+import com.ug.domain.Department;
 import com.ug.domain.Profile;
+import com.ug.domain.Programstudy;
 import com.ug.domain.University;
-import com.ug.reference.Gender;
+import com.ug.domain.User;
+import com.ug.domain.UserRole;
+import com.ug.uil.UgUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -63,7 +68,7 @@ privileged aspect ProfileController_Roo_Controller {
             float nrOfPages = (float) Profile.countProfiles() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("profiles", Profile.findAllProfiles());
+            uiModel.addAttribute("profiles", UgUtil.getProfiles());
         }
         addDateTimeFormatPatterns(uiModel);
         return "profiles/list";
@@ -97,9 +102,43 @@ privileged aspect ProfileController_Roo_Controller {
         return "redirect:/profiles";
     }
     
+    @RequestMapping(params = { "find=ByUniversityId", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUniversityIdForm(Model uiModel) {
+        uiModel.addAttribute("universitys", University.findAllUniversitys());
+        return "profiles/findProfilesByUniversityId";
+    }
+    
+    @RequestMapping(params = "find=ByUniversityId", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUniversityId(@RequestParam("universityId") University universityId, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByUniversityId(universityId).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByUserId", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUserIdForm(Model uiModel) {
+        uiModel.addAttribute("users", User.findAllUsers());
+        return "profiles/findProfilesByUserId";
+    }
+    
+    @RequestMapping(params = "find=ByUserId", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUserId(@RequestParam("userId") User userId, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByUserId(userId).getResultList());
+        return "profiles/list";
+    }
+    
+    @ModelAttribute("departments")
+    public Collection<Department> ProfileController.populateDepartments() {
+        return Department.findAllDepartments();
+    }
+    
     @ModelAttribute("profiles")
-    public Collection<Profile> ProfileController.populateProfiles() {
-        return Profile.findAllProfiles();
+    public java.util.Collection<Profile> ProfileController.populateProfiles() {
+        return UgUtil.getProfiles();
+    }
+    
+    @ModelAttribute("programstudys")
+    public java.util.Collection<Programstudy> ProfileController.populateProgramstudys() {
+        return Programstudy.findAllProgramstudys();
     }
     
     @ModelAttribute("universitys")
@@ -107,13 +146,22 @@ privileged aspect ProfileController_Roo_Controller {
         return University.findAllUniversitys();
     }
     
-    @ModelAttribute("genders")
-    public java.util.Collection<Gender> ProfileController.populateGenders() {
-        return Arrays.asList(Gender.class.getEnumConstants());
+    @ModelAttribute("users")
+    public java.util.Collection<User> ProfileController.populateUsers() {
+		UserRole userRole = UgUtil.getLoggedInUserRole();
+		if (userRole != null
+				&& "admin".equals(userRole.getRoleEntry().getRoleName())) {
+			return User.findAllUsers();
+		} else {
+			java.util.List<User> users = new ArrayList<User>();
+			users.add(UgUtil.getLoggedInUser());
+			return users;
+		}
     }
     
     void ProfileController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("profile_dateofbirth_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("profile_expectedgraduationdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
     }
     
     String ProfileController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

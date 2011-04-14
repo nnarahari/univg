@@ -3,7 +3,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_com_ug_domain_UserRole" modelAttribute="userRole" path="/userroles" versionField="Version" z="lnltke1KUkgz7f8KLHO+nEe3xUs=">
-        <field:select field="roleEntry" id="c_com_ug_domain_UserRole_roleEntry" itemValue="id" items="${roles}" path="/roles" required="true" z="21bAVVLUR/TXCGUI416+tqKAm5M="/>
-        <field:select field="userEntry" id="c_com_ug_domain_UserRole_userEntry" itemValue="id" items="${users}" path="/users" required="true" z="jh224CIIr1GafhSytL21pk/vsJc="/>
+        
+        
+    <field:select field="userEntry" id="c_com_ug_domain_UserRole_userEntry" itemValue="id" items="${users}" path="/users" required="true" z="jh224CIIr1GafhSytL21pk/vsJc="/>
+    <field:select field="roleEntry" id="c_com_ug_domain_UserRole_roleEntry" itemValue="id" items="${roles}" path="/roles" required="true" z="21bAVVLUR/TXCGUI416+tqKAm5M="/>
     </form:update>
 </div>

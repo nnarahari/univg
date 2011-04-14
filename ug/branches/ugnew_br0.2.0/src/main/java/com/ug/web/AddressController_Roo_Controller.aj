@@ -4,13 +4,17 @@
 package com.ug.web;
 
 import com.ug.domain.Address;
-import com.ug.reference.AddressTypes;
-import com.ug.reference.State;
+import com.ug.domain.Addresstype;
+import com.ug.domain.State;
+import com.ug.domain.User;
+import com.ug.domain.UserRole;
+import com.ug.uil.UgUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -63,7 +67,7 @@ privileged aspect AddressController_Roo_Controller {
             float nrOfPages = (float) Address.countAddresses() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("addresses", Address.findAllAddresses());
+            uiModel.addAttribute("addresses", UgUtil.getAddresses());
         }
         addDateTimeFormatPatterns(uiModel);
         return "addresses/list";
@@ -97,20 +101,44 @@ privileged aspect AddressController_Roo_Controller {
         return "redirect:/addresses";
     }
     
-    @ModelAttribute("addresses")
-    public Collection<Address> AddressController.populateAddresses() {
-        return Address.findAllAddresses();
+    @RequestMapping(params = { "find=ByUserId", "form" }, method = RequestMethod.GET)
+    public String AddressController.findAddressesByUserIdForm(Model uiModel) {
+        uiModel.addAttribute("users", User.findAllUsers());
+        return "addresses/findAddressesByUserId";
     }
     
-    @ModelAttribute("addresstypeses")
-    public java.util.Collection<AddressTypes> AddressController.populateAddressTypeses() {
-        return Arrays.asList(AddressTypes.class.getEnumConstants());
+    @RequestMapping(params = "find=ByUserId", method = RequestMethod.GET)
+    public String AddressController.findAddressesByUserId(@RequestParam("userId") User userId, Model uiModel) {
+        uiModel.addAttribute("addresses", Address.findAddressesByUserId(userId).getResultList());
+        return "addresses/list";
+    }
+    
+    @ModelAttribute("addresses")
+    public Collection<Address> AddressController.populateAddresses() {
+       	return UgUtil.getAddresses();
+            }
+    
+    @ModelAttribute("addresstypes")
+    public java.util.Collection<Addresstype> AddressController.populateAddresstypes() {
+        return Addresstype.findAllAddresstypes();
     }
     
     @ModelAttribute("states")
     public java.util.Collection<State> AddressController.populateStates() {
-        return Arrays.asList(State.class.getEnumConstants());
+        return State.findAllStates();
     }
+    
+    @ModelAttribute("users")
+    public java.util.Collection<User> AddressController.populateUsers() {
+		UserRole userRole = UgUtil.getLoggedInUserRole();
+		if (userRole != null
+				&& "admin".equals(userRole.getRoleEntry().getRoleName())) {
+			return User.findAllUsers();
+		} else {
+			java.util.List<User> users = new ArrayList<User>();
+			users.add(UgUtil.getLoggedInUser());
+			return users;
+		}    }
     
     void AddressController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("address_dateto_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));

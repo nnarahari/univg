@@ -4,7 +4,6 @@
 package com.ug.domain;
 
 import com.ug.domain.Address;
-import java.lang.Integer;
 import java.lang.Long;
 import java.util.List;
 import javax.persistence.Column;
@@ -14,12 +13,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Version;
+import javax.persistence.Table;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Address_Roo_Entity {
     
     declare @type: Address: @Entity;
+    
+    declare @type: Address: @Table(name = "address");
     
     @PersistenceContext
     transient EntityManager Address.entityManager;
@@ -29,24 +30,12 @@ privileged aspect Address_Roo_Entity {
     @Column(name = "id")
     private Long Address.id;
     
-    @Version
-    @Column(name = "version")
-    private Integer Address.version;
-    
     public Long Address.getId() {
         return this.id;
     }
     
     public void Address.setId(Long id) {
         this.id = id;
-    }
-    
-    public Integer Address.getVersion() {
-        return this.version;
-    }
-    
-    public void Address.setVersion(Integer version) {
-        this.version = version;
     }
     
     @Transactional

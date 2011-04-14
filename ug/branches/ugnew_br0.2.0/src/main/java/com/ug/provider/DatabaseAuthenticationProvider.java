@@ -105,7 +105,7 @@ public class DatabaseAuthenticationProvider extends
 	        throw new BadCredentialsException("Invalid password");
 	      }
 	      // authorize admin
-	      authorities.add(new GrantedAuthorityImpl("ROLE_ADMIN"));
+	      authorities.add(new GrantedAuthorityImpl("admin"));
 	    } else {
 	      try {
 	    	TypedQuery<User> query= User.findUsersByEmailAddress(username);

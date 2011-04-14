@@ -7,9 +7,13 @@
         <field:display field="education" id="s_com_ug_domain_Profile_education" object="${profile}" z="dunIdScjc1gvJKEr46Lz5rgJK6Q="/>
         <field:display field="citizenship" id="s_com_ug_domain_Profile_citizenship" object="${profile}" z="JcnrWlM6e3OsoJDopDDTnotc8fs="/>
         <field:display field="linkedInProfile" id="s_com_ug_domain_Profile_linkedInProfile" object="${profile}" z="E+OeeLb4rrKs4GKriyFpHD7PJaI="/>
+        <field:display field="programStudyId" id="s_com_ug_domain_Profile_programStudyId" object="${profile}" z="6PKqoHy3VTX9m+la71MseqyAsjQ="/>
         <field:display field="gender" id="s_com_ug_domain_Profile_gender" object="${profile}" z="LOtnOMa5/mSZjLtmUNt3WdY4vfg="/>
         <field:display field="mobile" id="s_com_ug_domain_Profile_mobile" object="${profile}" z="/qIheCg9klMTSFQgCtu1tl2bXZo="/>
+        <field:display date="true" dateTimePattern="${profile_expectedgraduationdate_date_format}" field="expectedGraduationDate" id="s_com_ug_domain_Profile_expectedGraduationDate" object="${profile}" z="ppJ0enyEJMizAkHp5YxwBc66ZmE="/>
+        <field:display field="universityId" id="s_com_ug_domain_Profile_universityId" object="${profile}" z="U8orQW0Eh0eMKjKtS15qfmLioMI="/>
+        <field:display field="userId" id="s_com_ug_domain_Profile_userId" object="${profile}" z="APZqCVRPtPwBGVW05JhTxI80/CU="/>
+        <field:display field="departmentId" id="s_com_ug_domain_Profile_departmentId" object="${profile}" z="uj72750sXHPkiDOmUivVoLCkuCs="/>
         <field:display field="homePhone" id="s_com_ug_domain_Profile_homePhone" object="${profile}" z="ZOVVcLzwAoDDcYqejtmO2WAR7QU="/>
-        <field:display field="university" id="s_com_ug_domain_Profile_university" object="${profile}" z="vMW7FRBr+vfUXmboWnoOpAHejzM="/>
     </page:show>
 </div>

@@ -3,15 +3,20 @@
 
 package com.ug.web;
 
+import com.ug.domain.Gender;
 import com.ug.domain.Guarantor;
+import com.ug.domain.Loan;
+import com.ug.domain.State;
 import com.ug.domain.University;
-import com.ug.reference.Gender;
-import com.ug.reference.State;
+import com.ug.domain.User;
+import com.ug.domain.UserRole;
+import com.ug.uil.UgUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -59,7 +64,7 @@ privileged aspect GuarantorController_Roo_Controller {
             float nrOfPages = (float) Guarantor.countGuarantors() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("guarantors", Guarantor.findAllGuarantors());
+            uiModel.addAttribute("guarantors", UgUtil.getGuaranters());
         }
         return "guarantors/list";
     }
@@ -90,9 +95,48 @@ privileged aspect GuarantorController_Roo_Controller {
         return "redirect:/guarantors";
     }
     
+    @RequestMapping(params = { "find=ByUniversityId", "form" }, method = RequestMethod.GET)
+    public String GuarantorController.findGuarantorsByUniversityIdForm(Model uiModel) {
+        uiModel.addAttribute("universitys", University.findAllUniversitys());
+        return "guarantors/findGuarantorsByUniversityId";
+    }
+    
+    @RequestMapping(params = "find=ByUniversityId", method = RequestMethod.GET)
+    public String GuarantorController.findGuarantorsByUniversityId(@RequestParam("universityId") University universityId, Model uiModel) {
+        uiModel.addAttribute("guarantors", Guarantor.findGuarantorsByUniversityId(universityId).getResultList());
+        return "guarantors/list";
+    }
+    
+    @RequestMapping(params = { "find=ByUserId", "form" }, method = RequestMethod.GET)
+    public String GuarantorController.findGuarantorsByUserIdForm(Model uiModel) {
+        uiModel.addAttribute("users", User.findAllUsers());
+        return "guarantors/findGuarantorsByUserId";
+    }
+    
+    @RequestMapping(params = "find=ByUserId", method = RequestMethod.GET)
+    public String GuarantorController.findGuarantorsByUserId(@RequestParam("userId") User userId, Model uiModel) {
+        uiModel.addAttribute("guarantors", Guarantor.findGuarantorsByUserId(userId).getResultList());
+        return "guarantors/list";
+    }
+    
+    @ModelAttribute("genders")
+    public Collection<Gender> GuarantorController.populateGenders() {
+        return Gender.findAllGenders();
+    }
+    
     @ModelAttribute("guarantors")
-    public Collection<Guarantor> GuarantorController.populateGuarantors() {
-        return Guarantor.findAllGuarantors();
+    public java.util.Collection<Guarantor> GuarantorController.populateGuarantors() {
+    	return UgUtil.getGuaranters();
+    }
+    
+    @ModelAttribute("loans")
+    public java.util.Collection<Loan> GuarantorController.populateLoans() {
+        return Loan.findAllLoans();
+    }
+    
+    @ModelAttribute("states")
+    public java.util.Collection<State> GuarantorController.populateStates() {
+        return State.findAllStates();
     }
     
     @ModelAttribute("universitys")
@@ -100,15 +144,18 @@ privileged aspect GuarantorController_Roo_Controller {
         return University.findAllUniversitys();
     }
     
-    @ModelAttribute("genders")
-    public java.util.Collection<Gender> GuarantorController.populateGenders() {
-        return Arrays.asList(Gender.class.getEnumConstants());
-    }
-    
-    @ModelAttribute("states")
-    public java.util.Collection<State> GuarantorController.populateStates() {
-        return Arrays.asList(State.class.getEnumConstants());
-    }
+    @ModelAttribute("users")
+    public java.util.Collection<User> GuarantorController.populateUsers() {
+		UserRole userRole = UgUtil.getLoggedInUserRole();
+		if (userRole != null
+				&& "admin".equals(userRole.getRoleEntry().getRoleName())) {
+			return User.findAllUsers();
+		} else {
+			java.util.List<User> users = new ArrayList<User>();
+			users.add(UgUtil.getLoggedInUser());
+			return users;
+		}
+   }
     
     String GuarantorController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();

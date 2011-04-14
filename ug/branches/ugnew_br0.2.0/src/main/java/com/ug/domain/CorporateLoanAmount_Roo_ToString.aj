@@ -9,9 +9,9 @@ privileged aspect CorporateLoanAmount_Roo_ToString {
     
     public String CorporateLoanAmount.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Corporate: ").append(getCorporate()).append(", ");
-        sb.append("CommittedLoanAmount: ").append(getCommittedLoanAmount()).append(", ");
+        sb.append("CorporateId: ").append(getCorporateId()).append(", ");
         sb.append("AvailableLoanAmount: ").append(getAvailableLoanAmount()).append(", ");
+        sb.append("CommittedLoanAmount: ").append(getCommittedLoanAmount()).append(", ");
         sb.append("LoanedAmount: ").append(getLoanedAmount());
         return sb.toString();
     }

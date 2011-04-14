@@ -9,16 +9,17 @@ privileged aspect Address_Roo_ToString {
     
     public String Address.toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("UserId: ").append(getUserId()).append(", ");
+        sb.append("StateId: ").append(getStateId()).append(", ");
+        sb.append("AddressTypeId: ").append(getAddressTypeId()).append(", ");
         sb.append("DisplayIdentifier: ").append(getDisplayIdentifier()).append(", ");
         sb.append("DateFrom: ").append(getDateFrom()).append(", ");
         sb.append("DateTo: ").append(getDateTo()).append(", ");
-        sb.append("AddressType: ").append(getAddressType()).append(", ");
         sb.append("Address1: ").append(getAddress1()).append(", ");
         sb.append("Address2: ").append(getAddress2()).append(", ");
         sb.append("City: ").append(getCity()).append(", ");
-        sb.append("State: ").append(getState()).append(", ");
-        sb.append("Zip: ").append(getZip()).append(", ");
-        sb.append("Country: ").append(getCountry());
+        sb.append("Country: ").append(getCountry()).append(", ");
+        sb.append("Zip: ").append(getZip());
         return sb.toString();
     }
     

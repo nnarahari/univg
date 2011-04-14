@@ -3,7 +3,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_com_ug_domain_Role" modelAttribute="role" path="/roles" versionField="Version" z="O5bnn2j5y7lU6tNpjniircauW20=">
-        <field:input field="roleName" id="c_com_ug_domain_Role_roleName" min="1" required="true" z="Hkhsj/wrmN0iKoO6gaHlC7sx/Rs="/>
-        <field:textarea field="roleDescription" id="c_com_ug_domain_Role_roleDescription" required="true" z="t9lCsXCm7mirHlsloJK5HGpUt+8="/>
+        
+        
+    <field:input field="roleName" id="c_com_ug_domain_Role_roleName" min="1" required="true" z="Hkhsj/wrmN0iKoO6gaHlC7sx/Rs="/>
+    <field:textarea field="roleDescription" id="c_com_ug_domain_Role_roleDescription" required="true" z="t9lCsXCm7mirHlsloJK5HGpUt+8="/>
     </form:update>
 </div>

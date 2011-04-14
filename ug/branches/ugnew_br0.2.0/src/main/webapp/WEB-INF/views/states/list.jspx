@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_State" items="${states}" z="+HNuq//UD56LPDpG78bl9vt55vo=">
+        <table:table data="${states}" id="l_com_ug_domain_State" path="/states" z="F8Umi9PLM4ME8RCl7NzVidT72vQ=">
+            <table:column id="c_com_ug_domain_State_stateDescription" property="stateDescription" z="nOJejxwoMi/X0f+FV9rVzNeVdeY="/>
+            <table:column id="c_com_ug_domain_State_addresses" property="addresses" z="PHRcOXN1DS5AWzNNZQ3HncJqNuI="/>
+            <table:column id="c_com_ug_domain_State_corporates" property="corporates" z="38mKusFpwyP9R9b65mn6siMakao="/>
+            <table:column id="c_com_ug_domain_State_guarantors" property="guarantors" z="+Pxr1yibO66W1TFLEpsRGPn5KbY="/>
+            <table:column id="c_com_ug_domain_State_universities" property="universities" z="aOjtqZOLXtWbriQBfH/EsGr4nEk="/>
+            <table:column id="c_com_ug_domain_State_stateName" property="stateName" z="JCpvbibMZBhQIy/hVQ1bmdgGqOA="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,5 +1,6 @@
 package com.ug.domain;
 
+import org.springframework.roo.addon.dbre.RooDbManaged;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -10,18 +11,11 @@ import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
-import com.ug.domain.Profile;
-import javax.persistence.ManyToOne;
-import java.util.Set;
-import com.ug.domain.Address;
-import java.util.HashSet;
-import javax.persistence.ManyToMany;
-import javax.persistence.CascadeType;
-import com.ug.domain.Loan;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findUsersByEmailAddress", "findUsersByActivationKeyAndEmailAddress" })
+@RooDbManaged(automaticallyDelete = true)
+@RooEntity(table = "user", finders = { "findUsersByEmailAddress", "findUsersByActivationKeyAndEmailAddress" })
 public class User {
 
     @NotNull
@@ -50,13 +44,4 @@ public class User {
     private Boolean enabled;
 
     private Boolean locked;
-
-    @ManyToOne
-    private Profile profile;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Address> addresses = new HashSet<Address>();
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Loan> loans = new HashSet<Loan>();
 }

@@ -9,14 +9,18 @@ privileged aspect Profile_Roo_ToString {
     
     public String Profile.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("University: ").append(getUniversity()).append(", ");
+        sb.append("UserId: ").append(getUserId()).append(", ");
+        sb.append("UniversityId: ").append(getUniversityId()).append(", ");
+        sb.append("DepartmentId: ").append(getDepartmentId()).append(", ");
+        sb.append("ProgramStudyId: ").append(getProgramStudyId()).append(", ");
+        sb.append("ExpectedGraduationDate: ").append(getExpectedGraduationDate()).append(", ");
         sb.append("Citizenship: ").append(getCitizenship()).append(", ");
         sb.append("DateOfBirth: ").append(getDateOfBirth()).append(", ");
-        sb.append("Gender: ").append(getGender()).append(", ");
         sb.append("Education: ").append(getEducation()).append(", ");
+        sb.append("Gender: ").append(getGender()).append(", ");
         sb.append("HomePhone: ").append(getHomePhone()).append(", ");
-        sb.append("Mobile: ").append(getMobile()).append(", ");
-        sb.append("LinkedInProfile: ").append(getLinkedInProfile());
+        sb.append("LinkedInProfile: ").append(getLinkedInProfile()).append(", ");
+        sb.append("Mobile: ").append(getMobile());
         return sb.toString();
     }
     

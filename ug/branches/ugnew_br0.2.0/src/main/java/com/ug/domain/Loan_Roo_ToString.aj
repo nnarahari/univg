@@ -9,16 +9,18 @@ privileged aspect Loan_Roo_ToString {
     
     public String Loan.toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("UserId: ").append(getUserId()).append(", ");
+        sb.append("GuarantorId: ").append(getGuarantorId()).append(", ");
+        sb.append("LoanStatusId: ").append(getLoanStatusId()).append(", ");
         sb.append("LoanName: ").append(getLoanName()).append(", ");
-        sb.append("LoanNaeededFor: ").append(getLoanNaeededFor()).append(", ");
         sb.append("LoanAmount: ").append(getLoanAmount()).append(", ");
-        sb.append("LoanPeriod: ").append(getLoanPeriod()).append(", ");
-        sb.append("FirstPaymentDate: ").append(getFirstPaymentDate()).append(", ");
-        sb.append("LastPaymentDate: ").append(getLastPaymentDate()).append(", ");
+        sb.append("LoanNaeededFor: ").append(getLoanNaeededFor()).append(", ");
+        sb.append("LoanNeededBy: ").append(getLoanNeededBy()).append(", ");
         sb.append("LoanOriginDate: ").append(getLoanOriginDate()).append(", ");
+        sb.append("LoanPeriod: ").append(getLoanPeriod()).append(", ");
         sb.append("Comments: ").append(getComments()).append(", ");
-        sb.append("Guarantor: ").append(getGuarantor()).append(", ");
-        sb.append("LoanStatus: ").append(getLoanStatus());
+        sb.append("FirstPaymentDate: ").append(getFirstPaymentDate()).append(", ");
+        sb.append("LastPaymentDate: ").append(getLastPaymentDate());
         return sb.toString();
     }
     

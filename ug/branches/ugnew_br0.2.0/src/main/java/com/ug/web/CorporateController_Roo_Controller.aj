@@ -4,12 +4,13 @@
 package com.ug.web;
 
 import com.ug.domain.Corporate;
-import com.ug.reference.State;
+import com.ug.domain.CorporateLoanAmount;
+import com.ug.domain.State;
+import com.ug.domain.User;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -93,9 +94,19 @@ privileged aspect CorporateController_Roo_Controller {
         return Corporate.findAllCorporates();
     }
     
+    @ModelAttribute("corporateloanamounts")
+    public java.util.Collection<CorporateLoanAmount> CorporateController.populateCorporateLoanAmounts() {
+        return CorporateLoanAmount.findAllCorporateLoanAmounts();
+    }
+    
     @ModelAttribute("states")
     public java.util.Collection<State> CorporateController.populateStates() {
-        return Arrays.asList(State.class.getEnumConstants());
+        return State.findAllStates();
+    }
+    
+    @ModelAttribute("users")
+    public java.util.Collection<User> CorporateController.populateUsers() {
+        return User.findAllUsers();
     }
     
     String CorporateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_ug_domain_Loan" items="${loans}" z="U4GqToRuR/+4mfXlnFZve/3wtec=">
         <table:table data="${loans}" id="l_com_ug_domain_Loan" path="/loans" z="e1nnxdYw9yAfcQe8djJqeRHB2vM=">
-            <table:column id="c_com_ug_domain_Loan_loanStatus" property="loanStatus" z="hiodtqGqNxh2QfyAzULw2VF0Rgk="/>
             <table:column id="c_com_ug_domain_Loan_loanPeriod" property="loanPeriod" z="h4VNCjy5ewaCQ2cdzb/EWS1urAU="/>
             <table:column id="c_com_ug_domain_Loan_comments" property="comments" z="z+GdTClgY0cVM2Yz0elLdSN4eZE="/>
-            <table:column id="c_com_ug_domain_Loan_guarantor" property="guarantor" z="iJ/IlpmZepi8bKe784bTS481BqI="/>
             <table:column id="c_com_ug_domain_Loan_firstPaymentDate" property="firstPaymentDate" z="EQOzrIKuoOGxUZv3WQfHzs2u90g="/>
             <table:column id="c_com_ug_domain_Loan_loanNaeededFor" property="loanNaeededFor" z="3cKMS+9dOv/YupLIU3EKyNp6eOg="/>
+            <table:column id="c_com_ug_domain_Loan_lastPaymentDate" property="lastPaymentDate" z="5KojgR1gAd4bsrVfghbRX41IBjo="/>
+            <table:column id="c_com_ug_domain_Loan_guarantorId" property="guarantorId" z="9T2rG2ttDZ50ve6BwAO2eacUrCo="/>
         </table:table>
     </page:list>
 </div>

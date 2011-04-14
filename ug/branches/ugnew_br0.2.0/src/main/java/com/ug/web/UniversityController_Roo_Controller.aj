@@ -3,13 +3,14 @@
 
 package com.ug.web;
 
+import com.ug.domain.Guarantor;
+import com.ug.domain.Profile;
+import com.ug.domain.State;
 import com.ug.domain.University;
-import com.ug.reference.State;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -88,14 +89,24 @@ privileged aspect UniversityController_Roo_Controller {
         return "redirect:/universitys";
     }
     
-    @ModelAttribute("universitys")
-    public Collection<University> UniversityController.populateUniversitys() {
-        return University.findAllUniversitys();
+    @ModelAttribute("guarantors")
+    public Collection<Guarantor> UniversityController.populateGuarantors() {
+        return Guarantor.findAllGuarantors();
+    }
+    
+    @ModelAttribute("profiles")
+    public java.util.Collection<Profile> UniversityController.populateProfiles() {
+        return Profile.findAllProfiles();
     }
     
     @ModelAttribute("states")
     public java.util.Collection<State> UniversityController.populateStates() {
-        return Arrays.asList(State.class.getEnumConstants());
+        return State.findAllStates();
+    }
+    
+    @ModelAttribute("universitys")
+    public java.util.Collection<University> UniversityController.populateUniversitys() {
+        return University.findAllUniversitys();
     }
     
     String UniversityController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:find finderName="ByLoanOriginDateBetween" id="ff_com_ug_domain_Loan" path="/loans" z="T0vry1uUJf72VpL1VO6kcB6RCZc=">
+        <field:datetime dateTimePattern="${loan_minloanorigindate_date_format}" disableFormBinding="true" field="minLoanOriginDate" id="f_com_ug_domain_Loan_minLoanOriginDate" z="gExDEJjGE74J9KOcv+A0k2BDV2M="/>
+        <field:datetime dateTimePattern="${loan_maxloanorigindate_date_format}" disableFormBinding="true" field="maxLoanOriginDate" id="f_com_ug_domain_Loan_maxLoanOriginDate" z="VNzaF4Pexz2EjOOhcLUNyE6rl8s="/>
+    </form:find>
+</div>

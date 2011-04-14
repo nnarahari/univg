@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Loanstatus" items="${loanstatuses}" z="xTrBDvZkr9Qn4rIxgWwJx8Dobzk=">
+        <table:table data="${loanstatuses}" id="l_com_ug_domain_Loanstatus" path="/loanstatuses" z="gHxqn9WHTCQTX6yn/yJV99Qnivc=">
+            <table:column id="c_com_ug_domain_Loanstatus_loanStatusName" property="loanStatusName" z="ZOhUtoi0EOX92nDZR0i60xFX6kE="/>
+            <table:column id="c_com_ug_domain_Loanstatus_loans" property="loans" z="UB9hLr88gmi2oWNt/WSGiAV+M3o="/>
+            <table:column id="c_com_ug_domain_Loanstatus_loanStatusDescription" property="loanStatusDescription" z="nSnbz9X9WZb+3JbxxdhU2AHhQfw="/>
+        </table:table>
+    </page:list>
+</div>

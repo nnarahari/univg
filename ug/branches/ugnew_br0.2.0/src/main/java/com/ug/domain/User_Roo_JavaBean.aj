@@ -3,13 +3,9 @@
 
 package com.ug.domain;
 
-import com.ug.domain.Address;
-import com.ug.domain.Loan;
-import com.ug.domain.Profile;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Date;
-import java.util.Set;
 
 privileged aspect User_Roo_JavaBean {
     
@@ -75,30 +71,6 @@ privileged aspect User_Roo_JavaBean {
     
     public void User.setLocked(Boolean locked) {
         this.locked = locked;
-    }
-    
-    public Profile User.getProfile() {
-        return this.profile;
-    }
-    
-    public void User.setProfile(Profile profile) {
-        this.profile = profile;
-    }
-    
-    public Set<Address> User.getAddresses() {
-        return this.addresses;
-    }
-    
-    public void User.setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
-    }
-    
-    public java.util.Set<Loan> User.getLoans() {
-        return this.loans;
-    }
-    
-    public void User.setLoans(java.util.Set<Loan> loans) {
-        this.loans = loans;
     }
     
 }

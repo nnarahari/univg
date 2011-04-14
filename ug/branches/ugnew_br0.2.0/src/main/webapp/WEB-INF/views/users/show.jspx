@@ -3,16 +3,26 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_ug_domain_User" object="${user}" path="/users" z="53qsVwATxsnYgox+ecuLAUgUb9k=">
-        <field:display field="enabled" id="s_com_ug_domain_User_enabled" object="${user}" z="CXUa2M7cGGqBRmm/NzQubgF4ags="/>
-        <field:display field="activationKey" id="s_com_ug_domain_User_activationKey" object="${user}" z="eixc1vEUxNolujWyxlo7kcJ8+kI="/>
-        <field:display field="password" id="s_com_ug_domain_User_password" object="${user}" z="vjGIjR2vDPys4tMx/ltdcKg0b4g="/>
-        <field:display field="emailAddress" id="s_com_ug_domain_User_emailAddress" object="${user}" z="JzFqRkxqBVYjC8L/CAEXaNsXMT8="/>
-        <field:display field="firstName" id="s_com_ug_domain_User_firstName" object="${user}" z="PHbnNCRLSNKjrZFfLPAdfL7Fjoc="/>
-        <field:display field="locked" id="s_com_ug_domain_User_locked" object="${user}" z="IGs2JF7JFu9LeT70NfKqMzvQutY="/>
-        <field:display date="true" dateTimePattern="${user_activationdate_date_format}" field="activationDate" id="s_com_ug_domain_User_activationDate" object="${user}" z="CcuiJeOG5Y3znBF1fKWFGW2ZdyE="/>
-        <field:display field="lastName" id="s_com_ug_domain_User_lastName" object="${user}" z="9U4QGar5yvp/qe3sLwUZ0GS8+P8="/>
-    <field:display field="profile" id="s_com_ug_domain_User_profile" object="${user}" z="SkkbrDwZhEwuLYsyqfQEUivb5Vg="/>
-    <field:display field="addresses" id="s_com_ug_domain_User_addresses" object="${user}" z="j9A8T5tsSn25w31ZKEl2KdvO/zo="/>
-    <field:display field="loans" id="s_com_ug_domain_User_loans" object="${user}" z="Rra0ndtunstTQJWSNeL/wKYcbRs="/>
+        
+        <field:display field="addresses" id="s_com_ug_domain_User_addresses" object="${user}" z="j9A8T5tsSn25w31ZKEl2KdvO/zo="/>
+        <field:display field="corporates" id="s_com_ug_domain_User_corporates" object="${user}" z="UyczHhhqQIBNDVPSGGu0jSU6Kuk="/>
+        <field:display field="loans" id="s_com_ug_domain_User_loans" object="${user}" z="Rra0ndtunstTQJWSNeL/wKYcbRs="/>
+        
+        
+        
+        <field:display field="profiles" id="s_com_ug_domain_User_profiles" object="${user}" z="9yhVszx4b6RO2B3aWvSB016z2JU="/>
+        
+        
+        <field:display field="guarantors" id="s_com_ug_domain_User_guarantors" object="${user}" z="O9rahVy3281uMOG1p8GhDJ028zE="/>
+        
+        
+    <field:display field="firstName" id="s_com_ug_domain_User_firstName" object="${user}" z="PHbnNCRLSNKjrZFfLPAdfL7Fjoc="/>
+    <field:display field="lastName" id="s_com_ug_domain_User_lastName" object="${user}" z="9U4QGar5yvp/qe3sLwUZ0GS8+P8="/>
+    <field:display field="emailAddress" id="s_com_ug_domain_User_emailAddress" object="${user}" z="JzFqRkxqBVYjC8L/CAEXaNsXMT8="/>
+    <field:display field="password" id="s_com_ug_domain_User_password" object="${user}" z="vjGIjR2vDPys4tMx/ltdcKg0b4g="/>
+    <field:display date="true" dateTimePattern="${user_activationdate_date_format}" field="activationDate" id="s_com_ug_domain_User_activationDate" object="${user}" z="CcuiJeOG5Y3znBF1fKWFGW2ZdyE="/>
+    <field:display field="activationKey" id="s_com_ug_domain_User_activationKey" object="${user}" z="eixc1vEUxNolujWyxlo7kcJ8+kI="/>
+    <field:display field="enabled" id="s_com_ug_domain_User_enabled" object="${user}" z="CXUa2M7cGGqBRmm/NzQubgF4ags="/>
+    <field:display field="locked" id="s_com_ug_domain_User_locked" object="${user}" z="IGs2JF7JFu9LeT70NfKqMzvQutY="/>
     </page:show>
 </div>

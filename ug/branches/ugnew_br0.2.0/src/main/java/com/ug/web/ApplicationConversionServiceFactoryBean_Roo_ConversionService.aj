@@ -4,12 +4,18 @@
 package com.ug.web;
 
 import com.ug.domain.Address;
+import com.ug.domain.Addresstype;
 import com.ug.domain.Corporate;
 import com.ug.domain.CorporateLoanAmount;
+import com.ug.domain.Department;
+import com.ug.domain.Gender;
 import com.ug.domain.Guarantor;
 import com.ug.domain.Loan;
+import com.ug.domain.Loanstatus;
 import com.ug.domain.Profile;
+import com.ug.domain.Programstudy;
 import com.ug.domain.Role;
+import com.ug.domain.State;
 import com.ug.domain.University;
 import com.ug.domain.User;
 import java.lang.String;
@@ -26,10 +32,18 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    org.springframework.core.convert.converter.Converter<Addresstype, String> ApplicationConversionServiceFactoryBean.getAddresstypeConverter() {
+        return new org.springframework.core.convert.converter.Converter<Addresstype, String>() {
+            public String convert(Addresstype addresstype) {
+                return new StringBuilder().append(addresstype.getAddressTypeName()).append(" ").append(addresstype.getAddressTypeDescription()).toString();
+            }
+        };
+    }
+    
     org.springframework.core.convert.converter.Converter<Corporate, String> ApplicationConversionServiceFactoryBean.getCorporateConverter() {
         return new org.springframework.core.convert.converter.Converter<Corporate, String>() {
             public String convert(Corporate corporate) {
-                return new StringBuilder().append(corporate.getCorporateName()).append(" ").append(corporate.getIndustry()).append(" ").append(corporate.getCorporateWebsite()).append(" ").append(corporate.getCorporateLinkedInProfile()).toString();
+                return new StringBuilder().append(corporate.getAddress1()).append(" ").append(corporate.getAddress2()).append(" ").append(corporate.getCity()).append(" ").append(corporate.getCorporateLinkedInProfile()).toString();
             }
         };
     }
@@ -37,7 +51,23 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     org.springframework.core.convert.converter.Converter<CorporateLoanAmount, String> ApplicationConversionServiceFactoryBean.getCorporateLoanAmountConverter() {
         return new org.springframework.core.convert.converter.Converter<CorporateLoanAmount, String>() {
             public String convert(CorporateLoanAmount corporateloanamount) {
-                return new StringBuilder().append(corporateloanamount.getCommittedLoanAmount()).append(" ").append(corporateloanamount.getAvailableLoanAmount()).append(" ").append(corporateloanamount.getLoanedAmount()).toString();
+                return new StringBuilder().append(corporateloanamount.getAvailableLoanAmount()).append(" ").append(corporateloanamount.getCommittedLoanAmount()).append(" ").append(corporateloanamount.getLoanedAmount()).toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<Department, String> ApplicationConversionServiceFactoryBean.getDepartmentConverter() {
+        return new org.springframework.core.convert.converter.Converter<Department, String>() {
+            public String convert(Department department) {
+                return new StringBuilder().append(department.getDepartmentName()).append(" ").append(department.getDepartmentDescription()).toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<Gender, String> ApplicationConversionServiceFactoryBean.getGenderConverter() {
+        return new org.springframework.core.convert.converter.Converter<Gender, String>() {
+            public String convert(Gender gender) {
+                return new StringBuilder().append(gender.getGenderName()).toString();
             }
         };
     }
@@ -45,7 +75,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     org.springframework.core.convert.converter.Converter<Guarantor, String> ApplicationConversionServiceFactoryBean.getGuarantorConverter() {
         return new org.springframework.core.convert.converter.Converter<Guarantor, String>() {
             public String convert(Guarantor guarantor) {
-                return new StringBuilder().append(guarantor.getFirstName()).append(" ").append(guarantor.getMiddleName()).append(" ").append(guarantor.getLastName()).append(" ").append(guarantor.getHomePage()).toString();
+                return new StringBuilder().append(guarantor.getAddress1()).append(" ").append(guarantor.getAddress2()).append(" ").append(guarantor.getCity()).append(" ").append(guarantor.getCountry()).toString();
             }
         };
     }
@@ -53,7 +83,15 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     org.springframework.core.convert.converter.Converter<Loan, String> ApplicationConversionServiceFactoryBean.getLoanConverter() {
         return new org.springframework.core.convert.converter.Converter<Loan, String>() {
             public String convert(Loan loan) {
-                return new StringBuilder().append(loan.getLoanName()).append(" ").append(loan.getLoanNaeededFor()).append(" ").append(loan.getLoanAmount()).append(" ").append(loan.getLoanPeriod()).toString();
+                return new StringBuilder().append(loan.getLoanName()).append(" ").append(loan.getLoanAmount()).append(" ").append(loan.getLoanNaeededFor()).append(" ").append(loan.getLoanNeededBy()).toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<Loanstatus, String> ApplicationConversionServiceFactoryBean.getLoanstatusConverter() {
+        return new org.springframework.core.convert.converter.Converter<Loanstatus, String>() {
+            public String convert(Loanstatus loanstatus) {
+                return new StringBuilder().append(loanstatus.getLoanStatusName()).append(" ").append(loanstatus.getLoanStatusDescription()).toString();
             }
         };
     }
@@ -61,7 +99,15 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     org.springframework.core.convert.converter.Converter<Profile, String> ApplicationConversionServiceFactoryBean.getProfileConverter() {
         return new org.springframework.core.convert.converter.Converter<Profile, String>() {
             public String convert(Profile profile) {
-                return new StringBuilder().append(profile.getCitizenship()).append(" ").append(profile.getDateOfBirth()).append(" ").append(profile.getEducation()).append(" ").append(profile.getHomePhone()).toString();
+                return new StringBuilder().append(profile.getExpectedGraduationDate()).append(" ").append(profile.getCitizenship()).append(" ").append(profile.getDateOfBirth()).append(" ").append(profile.getEducation()).toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<Programstudy, String> ApplicationConversionServiceFactoryBean.getProgramstudyConverter() {
+        return new org.springframework.core.convert.converter.Converter<Programstudy, String>() {
+            public String convert(Programstudy programstudy) {
+                return new StringBuilder().append(programstudy.getProgramStudyName()).append(" ").append(programstudy.getProgramStudyDescription()).toString();
             }
         };
     }
@@ -74,10 +120,18 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    org.springframework.core.convert.converter.Converter<State, String> ApplicationConversionServiceFactoryBean.getStateConverter() {
+        return new org.springframework.core.convert.converter.Converter<State, String>() {
+            public String convert(State state) {
+                return new StringBuilder().append(state.getStateName()).append(" ").append(state.getStateDescription()).toString();
+            }
+        };
+    }
+    
     org.springframework.core.convert.converter.Converter<University, String> ApplicationConversionServiceFactoryBean.getUniversityConverter() {
         return new org.springframework.core.convert.converter.Converter<University, String>() {
             public String convert(University university) {
-                return new StringBuilder().append(university.getUniversityName()).append(" ").append(university.getUniversityWebsite()).append(" ").append(university.getPhone()).append(" ").append(university.getMobile()).toString();
+                return new StringBuilder().append(university.getUniversityName()).append(" ").append(university.getUniversityWebsite()).append(" ").append(university.getAddress1()).append(" ").append(university.getAddress2()).toString();
             }
         };
     }
@@ -92,12 +146,18 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getAddressConverter());
+        registry.addConverter(getAddresstypeConverter());
         registry.addConverter(getCorporateConverter());
         registry.addConverter(getCorporateLoanAmountConverter());
+        registry.addConverter(getDepartmentConverter());
+        registry.addConverter(getGenderConverter());
         registry.addConverter(getGuarantorConverter());
         registry.addConverter(getLoanConverter());
+        registry.addConverter(getLoanstatusConverter());
         registry.addConverter(getProfileConverter());
+        registry.addConverter(getProgramstudyConverter());
         registry.addConverter(getRoleConverter());
+        registry.addConverter(getStateConverter());
         registry.addConverter(getUniversityConverter());
         registry.addConverter(getUserConverter());
     }

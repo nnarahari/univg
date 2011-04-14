@@ -13,4 +13,7 @@
 <definition extends="default" name="addresses/update">
         <put-attribute name="body" value="/WEB-INF/views/addresses/update.jspx"/>
     </definition>
+<definition extends="default" name="addresses/findAddressesByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/addresses/findAddressesByUserId.jspx"/>
+    </definition>
 </tiles-definitions>

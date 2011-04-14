@@ -4,7 +4,6 @@
 package com.ug.domain;
 
 import com.ug.domain.CorporateLoanAmount;
-import java.lang.Integer;
 import java.lang.Long;
 import java.util.List;
 import javax.persistence.Column;
@@ -14,12 +13,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Version;
+import javax.persistence.Table;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect CorporateLoanAmount_Roo_Entity {
     
     declare @type: CorporateLoanAmount: @Entity;
+    
+    declare @type: CorporateLoanAmount: @Table(name = "corporate_loan_amount");
     
     @PersistenceContext
     transient EntityManager CorporateLoanAmount.entityManager;
@@ -29,24 +30,12 @@ privileged aspect CorporateLoanAmount_Roo_Entity {
     @Column(name = "id")
     private Long CorporateLoanAmount.id;
     
-    @Version
-    @Column(name = "version")
-    private Integer CorporateLoanAmount.version;
-    
     public Long CorporateLoanAmount.getId() {
         return this.id;
     }
     
     public void CorporateLoanAmount.setId(Long id) {
         this.id = id;
-    }
-    
-    public Integer CorporateLoanAmount.getVersion() {
-        return this.version;
-    }
-    
-    public void CorporateLoanAmount.setVersion(Integer version) {
-        this.version = version;
     }
     
     @Transactional

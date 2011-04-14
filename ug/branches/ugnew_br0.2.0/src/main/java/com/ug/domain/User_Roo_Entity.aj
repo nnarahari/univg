@@ -14,12 +14,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Table;
 import javax.persistence.Version;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect User_Roo_Entity {
     
     declare @type: User: @Entity;
+    
+    declare @type: User: @Table(name = "user");
     
     @PersistenceContext
     transient EntityManager User.entityManager;
