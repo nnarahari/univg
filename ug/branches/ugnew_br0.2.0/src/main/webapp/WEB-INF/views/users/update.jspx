@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_ug_domain_User" modelAttribute="user" path="/users" versionField="Version" z="ID5eWAq8/RhqbNslR1Q4Wefoj2U=">
+        <field:checkbox field="enabled" id="c_com_ug_domain_User_enabled" z="g7J4EBegTazd7HG/gzYtSC68ErA="/>
+        <field:input field="activationKey" id="c_com_ug_domain_User_activationKey" z="/uk9GuEezgCaOiAMUptLcofXRCY="/>
+        <field:input field="password" id="c_com_ug_domain_User_password" min="1" required="true" z="Pfff4kyteHYw4K07LbhogbngL84="/>
+        <field:input field="emailAddress" id="c_com_ug_domain_User_emailAddress" min="1" required="true" validationMessageCode="field_invalid_email" z="YCrp+7Tac/vzdD4+kVam+8OUtXA="/>
+        <field:input field="firstName" id="c_com_ug_domain_User_firstName" min="1" required="true" z="Q3o84/O7P+RaK77e/r501kDQyRg="/>
+        <field:checkbox field="locked" id="c_com_ug_domain_User_locked" z="HRmbLbyw+NOdz4MaPs8ytDXzJS0="/>
+        <field:datetime dateTimePattern="${user_activationdate_date_format}" field="activationDate" id="c_com_ug_domain_User_activationDate" z="GX/BA82AXzaZ7tfWCCxLbMIv+TI="/>
+        <field:input field="lastName" id="c_com_ug_domain_User_lastName" min="1" required="true" z="IkiU33JK0WPdgodd4x18X17KYl4="/>
+    <field:select field="profile" id="c_com_ug_domain_User_profile" itemValue="id" items="${profiles}" path="/profiles" z="8I1JF9Yxt4F1ajwqnPuJArCcWmw="/>
+    <field:select field="addresses" id="c_com_ug_domain_User_addresses" itemValue="id" items="${addresses}" multiple="true" path="/addresses" z="7IIsegBJ2ScMR1J+aIXeKsLjFko="/>
+    <field:select field="loans" id="c_com_ug_domain_User_loans" itemValue="id" items="${loans}" multiple="true" path="/loans" z="WOIfR/E/OcbU3HJ9TbSJ0JZTpkQ="/>
+    </form:update>
+</div>

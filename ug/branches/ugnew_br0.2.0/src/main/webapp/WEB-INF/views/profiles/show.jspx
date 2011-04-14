@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Profile" object="${profile}" path="/profiles" z="pQKHv9iYgpOl5Optq7ztM3tGfx8=">
+        <field:display date="true" dateTimePattern="${profile_dateofbirth_date_format}" field="dateOfBirth" id="s_com_ug_domain_Profile_dateOfBirth" object="${profile}" z="9qw44sK3avKhTc68oqkTKRxNqmE="/>
+        <field:display field="education" id="s_com_ug_domain_Profile_education" object="${profile}" z="dunIdScjc1gvJKEr46Lz5rgJK6Q="/>
+        <field:display field="citizenship" id="s_com_ug_domain_Profile_citizenship" object="${profile}" z="JcnrWlM6e3OsoJDopDDTnotc8fs="/>
+        <field:display field="linkedInProfile" id="s_com_ug_domain_Profile_linkedInProfile" object="${profile}" z="E+OeeLb4rrKs4GKriyFpHD7PJaI="/>
+        <field:display field="gender" id="s_com_ug_domain_Profile_gender" object="${profile}" z="LOtnOMa5/mSZjLtmUNt3WdY4vfg="/>
+        <field:display field="mobile" id="s_com_ug_domain_Profile_mobile" object="${profile}" z="/qIheCg9klMTSFQgCtu1tl2bXZo="/>
+        <field:display field="homePhone" id="s_com_ug_domain_Profile_homePhone" object="${profile}" z="ZOVVcLzwAoDDcYqejtmO2WAR7QU="/>
+        <field:display field="university" id="s_com_ug_domain_Profile_university" object="${profile}" z="vMW7FRBr+vfUXmboWnoOpAHejzM="/>
+    </page:show>
+</div>

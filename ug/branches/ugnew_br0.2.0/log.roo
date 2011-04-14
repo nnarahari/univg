@@ -1,0 +1,206 @@
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-04-03 16:41:18
+project --topLevelPackage com.ug --projectName ug3 --java 6
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-04-03 16:41:19
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-04-03 16:41:25
+osgi uninstall --bundleSymbolicName com.xsoftwarelabs.spring.roo.addon.typicalsecurity
+addon remove --bundleSymbolicName com.xsoftwarelabs.spring.roo.addon.typicalsecurity
+osgi start --url http://spring-roo-addon-typical-security.googlecode.com/files/com.xsoftwarelabs.spring.roo.addon.typicalsecurity-0.1.5.BUILD-SNAPSHOT.jar
+persistence setup --provider HIBERNATE --database MYSQL 
+database properties set --key database.password --value password
+database properties set --key database.username --value root
+database properties set --key database.url --value jdbc:mysql://localhost:3306/ug3
+entity --class ~.domain.User --testAutomatically --permitReservedWords
+field string --fieldName firstName --sizeMin 1 --notNull
+field string --fieldName lastName --sizeMin 1 --notNull
+field string --fieldName emailAddress --sizeMin 1 --notNull --unique
+field string --fieldName password --sizeMin 1 --notNull
+field date --fieldName activationDate --type java.util.Date 
+field string --fieldName activationKey 
+field boolean --fieldName enabled 
+field boolean --fieldName locked 
+entity --class ~.domain.Role --testAutomatically --permitReservedWords
+field string --fieldName roleName --sizeMin 1 --notNull --unique
+field string --fieldName roleDescription --sizeMin --sizeMax 200 --notNull
+entity --class ~.domain.UserRole --testAutomatically
+field reference --fieldName userEntry --type ~.domain.User --notNull
+field reference --fieldName roleEntry --type ~.domain.Role --notNull
+finder add findUsersByEmailAddress --class ~.domain.User
+finder add findUsersByActivationKeyAndEmailAddress --class ~.domain.User
+finder add findUserRolesByUserEntry --class ~.domain.UserRole
+controller scaffold --class ~.web.UserController --entity ~.domain.User
+controller scaffold --class ~.web.RoleController --entity ~.domain.Role
+controller scaffold --class ~.web.UserRoleController --entity ~.domain.UserRole
+security setup
+email sender setup --hostServer smtp.gmail.com --port 587 --protocol SMTP --username rohitsghatoltest@gmail.com --password password4me
+typicalsecurity setup
+enum type --class ~.reference.Gender
+enum constant --name Male
+enum constant --name Female
+enum type --class ~.reference.AddressTypes
+enum constant --name Permanent
+enum constant --name Communication
+enum constant --name Accomodation
+enum type --class ~.reference.LoanStatus
+enum constant --name Submitted
+enum constant --name UnderReview
+enum constant --name Approved
+enum constant --name Suspended
+enum constant --name Deleted
+enum constant --name InActive
+enum constant --name Closed
+enum constant --name Pending
+enum constant --name Paid
+enum type --class ~.reference.State  --permitReservedWords
+enum constant --name AA
+enum constant --name AE
+enum constant --name AP
+enum constant --name AL
+enum constant --name AK
+enum constant --name AS --permitReservedWords
+enum constant --name AZ
+enum constant --name AR
+enum constant --name CA
+enum constant --name CO
+enum constant --name CT
+enum constant --name DE
+enum constant --name DC
+enum constant --name FM
+enum constant --name FL
+enum constant --name GA
+enum constant --name GU
+enum constant --name HI
+enum constant --name ID
+enum constant --name IL
+enum constant --name IN --permitReservedWords
+enum constant --name IA
+enum constant --name KS
+enum constant --name KY
+enum constant --name LA
+enum constant --name ME
+enum constant --name MH
+enum constant --name MD
+enum constant --name MA
+enum constant --name MI
+enum constant --name MN
+enum constant --name MS
+enum constant --name MO
+enum constant --name MT
+enum constant --name NE
+enum constant --name NV
+enum constant --name NH
+enum constant --name NJ
+enum constant --name NM
+enum constant --name NY
+enum constant --name NC
+enum constant --name ND
+enum constant --name MP
+enum constant --name OH
+enum constant --name OK
+enum constant --name OR --permitReservedWords
+enum constant --name PW
+enum constant --name PA
+enum constant --name PR
+enum constant --name RI
+enum constant --name SC
+enum constant --name SD
+enum constant --name TN
+enum constant --name TX
+enum constant --name UT
+enum constant --name VT
+enum constant --name VI
+enum constant --name VA
+enum constant --name WA
+enum constant --name WV
+enum constant --name WI
+enum constant --name WY
+entity --class ~.domain.Address --testAutomatically 
+field string --fieldName displayIdentifier --sizeMax 15
+field date --fieldName dateFrom --type java.util.Date
+field date --fieldName dateTo --type java.util.Date
+field enum --type ~.reference.AddressTypes --fieldName addressType --notNull false
+field string --fieldName address1 --notNull --sizeMax 50
+field string --fieldName address2  --sizeMax 50
+field string --fieldName city --notNull --sizeMax 50
+field enum --type ~.reference.State --fieldName state --notNull false --permitReservedWords
+field string --fieldName zip --notNull --sizeMin 5 --sizeMax 10
+field string --fieldName country  --sizeMax 20
+entity --class ~.domain.University --testAutomatically 
+field string --fieldName universityName --notNull --sizeMax 20
+field string --fieldName universityWebsite --sizeMax 30
+field string --fieldName phone  --notNull
+field string --fieldName mobile  
+field string --fieldName address1 --notNull --sizeMax 50
+field string --fieldName address2  --sizeMax 50
+field string --fieldName city --notNull --sizeMax 50
+field enum --type ~.reference.State --fieldName state --notNull false --permitReservedWords
+field string --fieldName zip --notNull --sizeMin 5 --sizeMax 10
+field string --fieldName country  --sizeMax 20
+field boolean --fieldName enabled 
+field boolean --fieldName locked
+entity --class ~.domain.Guarantor --testAutomatically 
+field string --fieldName firstName --notNull --sizeMax 50
+field string --fieldName middleName  --sizeMax 30
+field string --fieldName lastName  --notNull --sizeMax 50
+field enum --type ~.reference.Gender --fieldName gender --notNull false
+field email template --fieldName email
+field string --fieldName homePage --sizeMax 30
+field string --fieldName linkedInProfile --sizeMax 75
+field string --fieldName homePhone  
+field string --fieldName workPhone 
+field string --fieldName mobile  
+field reference --type ~.domain.University --fieldName university
+field boolean --fieldName enabled 
+field boolean --fieldName locked 
+field string --fieldName address1 --notNull --sizeMax 50
+field string --fieldName address2  --sizeMax 50
+field string --fieldName city --notNull --sizeMax 50
+field enum --type ~.reference.State --fieldName state --notNull false --permitReservedWords
+field string --fieldName zip --notNull --sizeMin 5 --sizeMax 10
+field string --fieldName country  --sizeMax 20
+entity --class ~.domain.Corporate --testAutomatically 
+field string --fieldName corporateName --notNull --sizeMax 20
+field string --fieldName industry --sizeMax 15
+field string --fieldName corporateWebsite --sizeMax 30
+field string --fieldName corporateLinkedInProfile --sizeMax 75
+field string --fieldName corporatePrimaryContact  --notNull --sizeMax 50
+field email template --fieldName primaryContactEmail
+field string --fieldName workPhone  --notNull
+field string --fieldName mobile  
+field string --fieldName address1 --notNull --sizeMax 50
+field string --fieldName address2  --sizeMax 50
+field string --fieldName city --notNull --sizeMax 50
+field enum --type ~.reference.State --fieldName state --notNull false --permitReservedWords
+field string --fieldName zip --notNull --sizeMin 5 --sizeMax 10
+field string --fieldName country  --sizeMax 20
+field boolean --fieldName enabled 
+field boolean --fieldName locked
+entity --class ~.domain.CorporateLoanAmount --testAutomatically
+field reference --type ~.domain.Corporate --fieldName corporate
+field number --fieldName committedLoanAmount --type java.math.BigDecimal --notNull --digitsInteger 9 --digitsFraction 2
+field number --fieldName availableLoanAmount --type java.math.BigDecimal --notNull --digitsInteger 9 --digitsFraction 2
+field number --fieldName loanedAmount --type java.math.BigDecimal --notNull --digitsInteger 9 --digitsFraction 2
+entity --class ~.domain.Loan --testAutomatically
+field string --fieldName loanName --sizeMax 20
+field string --fieldName loanNaeededFor --sizeMax 200
+field number --fieldName loanAmount --type java.math.BigDecimal --notNull --digitsInteger 9 --digitsFraction 2
+field number --fieldName loanPeriod --type int
+field date --fieldName firstPaymentDate --type java.util.Date
+field date --fieldName lastPaymentDate --type java.util.Date
+field date --fieldName loanOriginDate --type java.util.Date
+field string --fieldName comments --sizeMax 2000
+field reference --type ~.domain.Guarantor --fieldName guarantor
+field enum --type ~.reference.LoanStatus --fieldName loanStatus --notNull false
+entity --class ~.domain.Profile --testAutomatically 
+field reference --type ~.domain.University --fieldName university
+field string --fieldName citizenship  --notNull
+field date --fieldName dateOfBirth --type java.util.Date  
+field enum --type ~.reference.Gender --fieldName gender --notNull false
+field string --fieldName education   --notNull --sizeMax 200
+field string --fieldName homePhone   --notNull --sizeMax 10
+field string --fieldName mobile --notNull --sizeMax 10
+field string --fieldName linkedInProfile --sizeMax 75
+field reference --type ~.domain.Profile --fieldName profile --class ~.domain.User
+field set --type ~.domain.Address --fieldName addresses --class ~.domain.User
+field set --class ~.domain.User --type ~.domain.Loan --fieldName loans
+controller all --package ~.web
+// script --file C:\springsource\ugnew3.roo

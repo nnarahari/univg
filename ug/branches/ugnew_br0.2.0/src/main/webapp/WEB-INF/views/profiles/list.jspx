@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Profile" items="${profiles}" z="Up6UFy1WSGvTHrOY6vAi1P0CjLM=">
+        <table:table data="${profiles}" id="l_com_ug_domain_Profile" path="/profiles" z="GzYHEl6VzAygLJjMSyLQvcsTnIU=">
+            <table:column id="c_com_ug_domain_Profile_dateOfBirth" property="dateOfBirth" z="5+n0OBB+MZBkYuKHX+ptFX4TIxI="/>
+            <table:column id="c_com_ug_domain_Profile_education" property="education" z="ltpL3rXhUleGQLQ4+o+VYzHo0Jc="/>
+            <table:column id="c_com_ug_domain_Profile_citizenship" property="citizenship" z="rqrkgjx2haeMAyaz65v0fXcQEKc="/>
+            <table:column id="c_com_ug_domain_Profile_linkedInProfile" property="linkedInProfile" z="YcYkSElmMVMp/yrSr4XwUZY9o2Q="/>
+            <table:column id="c_com_ug_domain_Profile_gender" property="gender" z="VmoUb9R3b1B/s8UMwsK7AG46KCE="/>
+            <table:column id="c_com_ug_domain_Profile_mobile" property="mobile" z="sfTJnWiQZU3cSucVrVeLGv6uuak="/>
+        </table:table>
+    </page:list>
+</div>
