@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_University" items="${universitys}" z="ZgiKNRnOS1evNU9RjUHM7FPCUWY=">
+        <table:table data="${universitys}" id="l_com_ug_domain_University" path="/universitys" z="k/Ups4Hsw0gip/btqgEDk7hSx7M=">
+            <table:column id="c_com_ug_domain_University_enabled" property="enabled" z="v7t0RWT/Vr3PQSG4U13GWlZa5UE="/>
+            <table:column id="c_com_ug_domain_University_phone" property="phone" z="94QJygFkwqgHOq48aXSev1alAaQ="/>
+            <table:column id="c_com_ug_domain_University_universityWebsite" property="universityWebsite" z="Fy2jgvpwHaJT+qbB41cEWp1yIpQ="/>
+            <table:column id="c_com_ug_domain_University_country" property="country" z="BWtU6dGjF+XoYPhATRnrekyiGgE="/>
+            <table:column id="c_com_ug_domain_University_city" property="city" z="NcFdcyuRnz3n56iTpdJ5X2pUKy8="/>
+            <table:column id="c_com_ug_domain_University_profiles" property="profiles" z="oILopg888ZjcbB8gWZ6xNqFdXTA="/>
+        </table:table>
+    </page:list>
+</div>

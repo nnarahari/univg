@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Loanstatus" object="${loanstatus}" path="/loanstatuses" z="ajELUIbB8M2c9F/EW5tRbmvl57k=">
+        <field:display field="loanStatusName" id="s_com_ug_domain_Loanstatus_loanStatusName" object="${loanstatus}" z="K0ztXZMw8s7eBIoZmMEK8tIZF08="/>
+        <field:display field="loans" id="s_com_ug_domain_Loanstatus_loans" object="${loanstatus}" z="DQVZ5Itd0ywolJDfmad1NL4ylI8="/>
+        <field:display field="loanStatusDescription" id="s_com_ug_domain_Loanstatus_loanStatusDescription" object="${loanstatus}" z="WGtD2xuWCnDiIxvO6/FJf2/317E="/>
+    </page:show>
+</div>

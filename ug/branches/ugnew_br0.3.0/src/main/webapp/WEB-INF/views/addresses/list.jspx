@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Address" items="${addresses}" z="LURo6IdX+pBtm15dLOUgd8PPkw8=">
+        <table:table data="${addresses}" id="l_com_ug_domain_Address" path="/addresses" z="rj4duQ9aS0fjzp0vD1leJkrntrY=">
+            <table:column id="c_com_ug_domain_Address_dateTo" property="dateTo" z="MBl2IDiHHPZdPuEIeAIIdJwdENg="/>
+            <table:column id="c_com_ug_domain_Address_address2" property="address2" z="oooddq57c12Sb8x57bbEa6xHyFc="/>
+            <table:column id="c_com_ug_domain_Address_address1" property="address1" z="UmGMejQt2z0yZrnE4sIbXpk4nHw="/>
+            <table:column id="c_com_ug_domain_Address_dateFrom" property="dateFrom" z="e73ebT6i6cfI7Jqo/4J+u9t1SsM="/>
+            <table:column id="c_com_ug_domain_Address_stateId" property="stateId" z="AhO8nP4qmLuG7gwDFSDbUtyPBLQ="/>
+            <table:column id="c_com_ug_domain_Address_displayIdentifier" property="displayIdentifier" z="RtjbKMmif6P1ZTiOcMDBYReN/Ns="/>
+        </table:table>
+    </page:list>
+</div>

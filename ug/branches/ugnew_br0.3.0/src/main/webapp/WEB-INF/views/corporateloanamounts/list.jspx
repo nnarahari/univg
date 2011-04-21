@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_CorporateLoanAmount" items="${corporateloanamounts}" z="50aqTLpriMPht6ggx83XEyt3oEE=">
+        <table:table data="${corporateloanamounts}" id="l_com_ug_domain_CorporateLoanAmount" path="/corporateloanamounts" z="U82UnHv6afgpQDCmdkDmOnPE3UI=">
+            <table:column id="c_com_ug_domain_CorporateLoanAmount_committedLoanAmount" property="committedLoanAmount" z="sbbH9rKDRc+9lvPe/Ok2gOrdHE8="/>
+            <table:column id="c_com_ug_domain_CorporateLoanAmount_availableLoanAmount" property="availableLoanAmount" z="iKiPMNvhJYWrg+D+Odfd+0LdiHw="/>
+            <table:column id="c_com_ug_domain_CorporateLoanAmount_corporateId" property="corporateId" z="X3gisg+574wqgRx3G90OJv7QIWw="/>
+            <table:column id="c_com_ug_domain_CorporateLoanAmount_loanedAmount" property="loanedAmount" z="1Kum7G/9eFSpJZF3aCHk6YfTraQ="/>
+        </table:table>
+    </page:list>
+</div>

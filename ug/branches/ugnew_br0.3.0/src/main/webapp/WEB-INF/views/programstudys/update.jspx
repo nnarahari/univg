@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_ug_domain_Programstudy" modelAttribute="programstudy" path="/programstudys" versionField="Version" z="DDYkxsIgrj29kGHLclan345DtoY=">
+        <field:simple field="profiles" id="c_com_ug_domain_Programstudy_profiles" messageCode="entity_reference_not_managed" messageCodeAttribute="Profile" z="c4COssbcIENe49Ow/ZYA9zXh3NM="/>
+        <field:input field="programStudyDescription" id="c_com_ug_domain_Programstudy_programStudyDescription" z="DgXSnkygv1ElFuiVVAzB2ABOuLY="/>
+        <field:input field="programStudyName" id="c_com_ug_domain_Programstudy_programStudyName" required="true" z="8xhC1sEVRwDGP047iIB+rgpCLHc="/>
+    </form:update>
+</div>

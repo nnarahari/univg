@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_University" object="${university}" path="/universitys" z="gce6NZuAEsnRgDPEzp/zK/3YvGY=">
+        <field:display field="enabled" id="s_com_ug_domain_University_enabled" object="${university}" z="ks8wr+PjFP96GEA5XvCso2RBf1w="/>
+        <field:display field="phone" id="s_com_ug_domain_University_phone" object="${university}" z="HCd2wgsCGWhILAXxpZKJVejt62I="/>
+        <field:display field="universityWebsite" id="s_com_ug_domain_University_universityWebsite" object="${university}" z="PTQvlk0D6JrY+eq8wVNZsS1HfS4="/>
+        <field:display field="country" id="s_com_ug_domain_University_country" object="${university}" z="Uz73YcX5WJcDm8OtyK+dFlh/dfM="/>
+        <field:display field="city" id="s_com_ug_domain_University_city" object="${university}" z="K6PJu2bLJtgv00k/PUOeJfU0Wm4="/>
+        <field:display field="profiles" id="s_com_ug_domain_University_profiles" object="${university}" z="RwpLSTOci6sxSp+rvVok0arLv4g="/>
+        <field:display field="universityName" id="s_com_ug_domain_University_universityName" object="${university}" z="gRYMja5am9te35lx2M+dy4/hr50="/>
+        <field:display field="address2" id="s_com_ug_domain_University_address2" object="${university}" z="UXOELcwwa3dBISQYbZ3985BilD0="/>
+        <field:display field="stateId" id="s_com_ug_domain_University_stateId" object="${university}" z="hrOodNHBWi8ny3R9hcYAyFQtKe0="/>
+        <field:display field="address1" id="s_com_ug_domain_University_address1" object="${university}" z="AT87i17iXJN0XQfYloiwrEnF0cU="/>
+        <field:display field="mobile" id="s_com_ug_domain_University_mobile" object="${university}" z="VAb7KecmqZNTO59gndfAxdniBTE="/>
+        <field:display field="locked" id="s_com_ug_domain_University_locked" object="${university}" z="qokquwdyZbnvIuuA8o9IsJ3fogY="/>
+        <field:display field="guarantors" id="s_com_ug_domain_University_guarantors" object="${university}" z="kgS3dI4rtrIJA2vt2luf1FnEmYQ="/>
+        <field:display field="zip" id="s_com_ug_domain_University_zip" object="${university}" z="LfBsHZ6EDLIbrzRC2NGKTPA+WNk="/>
+    </page:show>
+</div>

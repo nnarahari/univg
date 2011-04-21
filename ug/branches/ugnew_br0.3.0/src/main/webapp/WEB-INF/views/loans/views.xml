@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="loans/list">
+        <put-attribute name="body" value="/WEB-INF/views/loans/list.jspx"/>
+    </definition>
+<definition extends="default" name="loans/show">
+        <put-attribute name="body" value="/WEB-INF/views/loans/show.jspx"/>
+    </definition>
+<definition extends="default" name="loans/create">
+        <put-attribute name="body" value="/WEB-INF/views/loans/create.jspx"/>
+    </definition>
+<definition extends="default" name="loans/update">
+        <put-attribute name="body" value="/WEB-INF/views/loans/update.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByUserId.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByGuarantorId">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByGuarantorId.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanAmount">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanAmount.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNeededBy">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededBy.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNeededByBetween">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededByBetween.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanStatusId">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanStatusId.jspx"/>
+    </definition>
+</tiles-definitions>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_User" items="${users}" z="0u16MaMktBAVUMIRvrbPXT0o5eg=">
+        <table:table data="${users}" id="l_com_ug_domain_User" path="/users" z="5TvQN2fHwNHHvqm7CeHhsrZOTWE=">
+            
+            <table:column id="c_com_ug_domain_User_addresses" property="addresses" z="tBZszan1HNutb3TrIBrI68bPjCE="/>
+            <table:column id="c_com_ug_domain_User_corporates" property="corporates" z="d4LCW/ZiBjjQv+HEqr1hfFWTroY="/>
+            <table:column id="c_com_ug_domain_User_loans" property="loans" z="GqzNXrLTmLGnN++NtnJhCBnEh5E="/>
+            
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+        
+        
+            
+        <table:column id="c_com_ug_domain_User_enabled" property="enabled" z="syxAV6RdhkzN+EUQpFP9btrVIvI="/>
+            
+        
+            
+        <table:column id="c_com_ug_domain_User_password" property="password" z="H0djVlVqQ3vVNgYcB1PdXCM2J9M="/>
+            <table:column id="c_com_ug_domain_User_lastName" property="lastName" z="194uWQ2PMBOZNqzdmI70G8DFOKA="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Profile" object="${profile}" path="/profiles" z="pQKHv9iYgpOl5Optq7ztM3tGfx8=">
+        <field:display date="true" dateTimePattern="${profile_dateofbirth_date_format}" field="dateOfBirth" id="s_com_ug_domain_Profile_dateOfBirth" object="${profile}" z="9qw44sK3avKhTc68oqkTKRxNqmE="/>
+        <field:display field="citizenship" id="s_com_ug_domain_Profile_citizenship" object="${profile}" z="JcnrWlM6e3OsoJDopDDTnotc8fs="/>
+        <field:display field="linkedInProfile" id="s_com_ug_domain_Profile_linkedInProfile" object="${profile}" z="E+OeeLb4rrKs4GKriyFpHD7PJaI="/>
+        <field:display field="programStudyId" id="s_com_ug_domain_Profile_programStudyId" object="${profile}" z="6PKqoHy3VTX9m+la71MseqyAsjQ="/>
+        <field:display field="mobile" id="s_com_ug_domain_Profile_mobile" object="${profile}" z="/qIheCg9klMTSFQgCtu1tl2bXZo="/>
+        <field:display date="true" dateTimePattern="${profile_expectedgraduationdate_date_format}" field="expectedGraduationDate" id="s_com_ug_domain_Profile_expectedGraduationDate" object="${profile}" z="ppJ0enyEJMizAkHp5YxwBc66ZmE="/>
+        <field:display field="universityId" id="s_com_ug_domain_Profile_universityId" object="${profile}" z="U8orQW0Eh0eMKjKtS15qfmLioMI="/>
+        <field:display field="userId" id="s_com_ug_domain_Profile_userId" object="${profile}" z="APZqCVRPtPwBGVW05JhTxI80/CU="/>
+        <field:display field="departmentId" id="s_com_ug_domain_Profile_departmentId" object="${profile}" z="uj72750sXHPkiDOmUivVoLCkuCs="/>
+        <field:display field="homePhone" id="s_com_ug_domain_Profile_homePhone" object="${profile}" z="ZOVVcLzwAoDDcYqejtmO2WAR7QU="/>
+        <field:display field="genderId" id="s_com_ug_domain_Profile_genderId" object="${profile}" z="K5idHtckXn/MjO+PBINzwsOKgbc="/>
+    </page:show>
+</div>

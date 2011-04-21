@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Gender" items="${genders}" z="yhOnBwQXjJjvRgiHFqt5x4xPeec=">
+        <table:table data="${genders}" id="l_com_ug_domain_Gender" path="/genders" z="Xbp9UiCgPdtbGEG49xtbiQWn8PE=">
+            <table:column id="c_com_ug_domain_Gender_profiles" property="profiles" z="zU/iRiNtlMvWBRU441v87Zn+R7c="/>
+            <table:column id="c_com_ug_domain_Gender_guarantors" property="guarantors" z="PV1ucbVHUC/r+Xd5VjaKYeAe/FU="/>
+            <table:column id="c_com_ug_domain_Gender_genderName" property="genderName" z="0PFw4ICLrmH+yWCE9CiD7d+5ANQ="/>
+        </table:table>
+    </page:list>
+</div>

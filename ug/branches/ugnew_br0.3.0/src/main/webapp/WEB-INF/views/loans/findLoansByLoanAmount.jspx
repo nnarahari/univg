@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:find finderName="ByLoanAmount" id="ff_com_ug_domain_Loan" path="/loans" z="BAaGpGm6TTiy6SZWX1Y9MEns4+k=">
+        <field:input disableFormBinding="true" field="loanAmount" id="f_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="7FqAx1bnkfCaZiIvKrpR0yShEUE="/>
+    </form:find>
+</div>

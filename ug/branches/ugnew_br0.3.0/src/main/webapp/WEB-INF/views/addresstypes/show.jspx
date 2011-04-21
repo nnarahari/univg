@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Addresstype" object="${addresstype}" path="/addresstypes" z="zDHDI4ZxoDuwznlKkAZ97lgvtJ0=">
+        <field:display field="addressTypeName" id="s_com_ug_domain_Addresstype_addressTypeName" object="${addresstype}" z="12fXb8eN06phxdm2P5zfPB84/X0="/>
+        <field:display field="addresses" id="s_com_ug_domain_Addresstype_addresses" object="${addresstype}" z="EUEBQ1ykbtv6jr7DC+lhxnhFvag="/>
+        <field:display field="addressTypeDescription" id="s_com_ug_domain_Addresstype_addressTypeDescription" object="${addresstype}" z="viZ7Wpr596ejF9BRN31mwRvIB9A="/>
+    </page:show>
+</div>

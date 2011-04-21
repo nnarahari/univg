@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_CorporateLoanAmount" object="${corporateloanamount}" path="/corporateloanamounts" z="JGCIIjSNSg0JvC9x0TDMKJbuj8s=">
+        <field:display field="committedLoanAmount" id="s_com_ug_domain_CorporateLoanAmount_committedLoanAmount" object="${corporateloanamount}" z="wmg6alEXtptaKYpeTPTFDVZIh8w="/>
+        <field:display field="availableLoanAmount" id="s_com_ug_domain_CorporateLoanAmount_availableLoanAmount" object="${corporateloanamount}" z="pCQ9YKmqAX48nefqcXHf7MWGLUE="/>
+        <field:display field="corporateId" id="s_com_ug_domain_CorporateLoanAmount_corporateId" object="${corporateloanamount}" z="hPkV8y91t+wNaIb60Yi25FeQNhg="/>
+        <field:display field="loanedAmount" id="s_com_ug_domain_CorporateLoanAmount_loanedAmount" object="${corporateloanamount}" z="qO1zkgDJuOqa4D4+Ckt7SqkPmK4="/>
+    </page:show>
+</div>
