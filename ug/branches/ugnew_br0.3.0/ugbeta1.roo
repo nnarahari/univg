@@ -1,0 +1,24 @@
+persistence setup --provider HIBERNATE --database MYSQL
+database properties set --key database.password --value password
+database properties set --key database.username --value root
+database properties set --key database.url --value jdbc:mysql://localhost:3306/ugbeta1
+addon install bundle --bundleSymbolicName org.springframework.roo.wrapping.mysql-connector-java
+database reverse engineer --schema unable-to-obtain-connection --package ~.domain
+controller all --package ~.web
+addon remove --bundleSymbolicName com.xsoftwarelabs.spring.roo.addon.typicalsecurity
+osgi start --url http://spring-roo-addon-typical-security.googlecode.com/files/com.xsoftwarelabs.spring.roo.addon.typicalsecurity-0.1.5.BUILD-SNAPSHOT.jar
+typicalsecurity setup
+finder add findGuarantorByUserId --class ~.domain.Guarantor
+finder add findGuarantorsByUserId --class ~.domain.Guarantor
+finder add findGuarantorsByUniversityId --class ~.domain.Guarantor
+finder add findProfilesByUserId --class ~.domain.Profile
+finder add findProfilesByUniversityId --class ~.domain.Profile
+finder add findAddressByUserId --class ~.domain.Address
+finder add findAddressesByUserId --class ~.domain.Address
+finder add findLoansByUserId --class ~.domain.Loan
+finder add findLoansByGuarantorId --class ~.domain.Loan
+finder add findLoansByLoanAmount --class ~.domain.Loan
+finder add findLoansByLoanNeededBy --class ~.domain.Loan
+finder add findLoansByLoanNeededByBetween --class ~.domain.Loan
+finder add findLoansByLoanOriginDateBetween --class ~.domain.Loan
+finder add findLoansByLoanStatusId --class ~.domain.Loan
