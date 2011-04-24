@@ -12,20 +12,39 @@ body {
 }
 
 #header {
-	margin-bottom: 1em;
+	margin-bottom: 5px;
 }
 
 #wrapper {
-	width:800px;
-	min-width: 800px;
-	max-width: 800px;
+	width:960px;
+	min-width: 960px;
+	max-width: 960px;
 	margin-right: auto;
 	margin-left: auto;
+	background-color:#fff;
 
 	/* fix max-width incompatibility in IE6 */
-	width:expression(document.body.clientWidth > 800? "800px": "auto" );
+	width:expression(document.body.clientWidth > 800? "960px": "auto" );
 	
 	overflow:hidden;
+	
+	display:block;
+
+}
+#wrapper1{
+	width:960px;
+	min-width: 960px;
+	max-width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color:#fff;
+
+	/* fix max-width incompatibility in IE6 */
+	width:expression(document.body.clientWidth > 800? "960px": "auto" );
+	
+	overflow:hidden;
+	margin-top:10px;
+	
 	display:block;
 }
 
@@ -42,7 +61,7 @@ body {
 	float:left;  	
 	left:0px;
 	width:220px;
-	margin-right:15px;
+	margin-right:1px;
 }
 
 #menu ul{
@@ -65,7 +84,7 @@ body {
 
 #menu h2 {
 	color: #fff;
-	background: #648C1D;
+	background: #059BD8; /* 648C1D */
 	text-transform: uppercase;
 	font-weight:bold;
 	font-size: 12px;
@@ -79,7 +98,7 @@ body {
 }
 
 #menu a:hover {
-	color: #648C1D;
+	color: #059BD8; /* 648C1D */
 	background: #fff;
 }
 

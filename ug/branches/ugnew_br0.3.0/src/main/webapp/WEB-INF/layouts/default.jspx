@@ -18,11 +18,12 @@
   	<body class="tundra spring">
    		<div id="wrapper">
 		    <tiles:insertAttribute name="header" ignore="true" />
-		    <tiles:insertAttribute name="menu" ignore="true" />   
-		    <div id="main">
+		      
+		    <div id="wrapper1">
+		    	<tiles:insertAttribute name="menu" ignore="true" /> 
 	    		<tiles:insertAttribute name="body"/> 
-		    	<tiles:insertAttribute name="footer" ignore="true"/>
 		    </div>
+		    <tiles:insertAttribute name="footer" ignore="true"/>
 		</div>
 	</body>
 </html>
