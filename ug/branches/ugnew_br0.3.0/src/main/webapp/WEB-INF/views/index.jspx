@@ -9,6 +9,11 @@
     </h3>
     <p>
       <spring:message code="welcome_text" />
-    </p>
+	 </p>
+	  <p>
+		<li> To create a student profile <a href="profiles?form">click here</a> </li>
+		<li> To create a corporate profile <a href="corporates?form">click here </a></li>
+	  </p>
+   
   </util:panel>
 </div>
