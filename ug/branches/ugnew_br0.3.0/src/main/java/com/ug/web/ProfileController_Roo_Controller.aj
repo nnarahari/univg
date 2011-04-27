@@ -7,8 +7,12 @@ import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Profile;
 import com.ug.domain.Programstudy;
+import com.ug.domain.Role;
 import com.ug.domain.University;
 import com.ug.domain.User;
+import com.ug.domain.UserRole;
+import com.ug.util.UgUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -39,6 +43,23 @@ privileged aspect ProfileController_Roo_Controller {
         }
         uiModel.asMap().clear();
         profile.persist();
+        
+        System.out.println("profile crreated.. associating student role to the user..");
+        UserRole userRole = new UserRole();
+        
+        User user = UgUtil.getLoggedInUser();
+        System.out.println("user ==>"+ user);
+        
+        Role role = Role.findRole(1L);
+        
+        System.out.println("role ==>"+ role);
+        userRole.setUserEntry(user);
+        userRole.setRoleEntry(role);
+        
+        userRole.persist();       
+        System.out.println( "Done");
+        
+        
         return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), httpServletRequest);
     }
     

@@ -26,6 +26,7 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 privileged aspect UserRoleController_Roo_Controller {
+	
     
     @RequestMapping(method = RequestMethod.POST)
     public String UserRoleController.create(@Valid UserRole userRole, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -35,6 +36,8 @@ privileged aspect UserRoleController_Roo_Controller {
         }
         uiModel.asMap().clear();
         userRole.persist();
+        
+        
         return "redirect:/userroles/" + encodeUrlPathSegment(userRole.getId().toString(), httpServletRequest);
     }
     
