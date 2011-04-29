@@ -17,6 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -156,7 +157,7 @@ privileged aspect ProfileController_Roo_Controller {
     
     @ModelAttribute("profiles")
     public java.util.Collection<Profile> ProfileController.populateProfiles() {
-        return Profile.findAllProfiles();
+        return UgUtil.getProfiles();
     }
     
     @ModelAttribute("programstudys")
@@ -171,7 +172,15 @@ privileged aspect ProfileController_Roo_Controller {
     
     @ModelAttribute("users")
     public java.util.Collection<User> ProfileController.populateUsers() {
-        return User.findAllUsers();
+    	UserRole userRole = UgUtil.getLoggedInUserRole();
+		if (userRole != null
+				&& "admin".equals(userRole.getRoleEntry().getRoleName())) {
+			return User.findAllUsers();
+		} else {
+			java.util.List<User> users = new ArrayList<User>();
+			users.add(UgUtil.getLoggedInUser());
+			return users;
+		}   
     }
     
     void ProfileController.addDateTimeFormatPatterns(Model uiModel) {

@@ -3,10 +3,10 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_ug_domain_CorporateLoanAmount" modelAttribute="corporateLoanAmount" path="/corporateloanamounts" render="${empty dependencies}" z="abuSZdy/fagHN2G3qRMIlSb8Y08=">
-        <field:input field="committedLoanAmount" id="c_com_ug_domain_CorporateLoanAmount_committedLoanAmount" required="true" validationMessageCode="field_invalid_number" z="54EqoXMJEN+M3GODh98MBn2Lqec="/>
-        <field:input field="availableLoanAmount" id="c_com_ug_domain_CorporateLoanAmount_availableLoanAmount" required="true" validationMessageCode="field_invalid_number" z="61uvZyAKVxKg9NHYcpjQs3gYeb4="/>
         <field:select field="corporateId" id="c_com_ug_domain_CorporateLoanAmount_corporateId" itemValue="id" items="${corporates}" path="/corporates" z="eJq3IsnmCiOJflpQfl/29SYGLYk="/>
         <field:input field="loanedAmount" id="c_com_ug_domain_CorporateLoanAmount_loanedAmount" required="true" validationMessageCode="field_invalid_number" z="saG7EqPBBaLgiHQbsXHZPi/GPp0="/>
+        <field:input field="committedLoanAmount" id="c_com_ug_domain_CorporateLoanAmount_committedLoanAmount" required="true" validationMessageCode="field_invalid_number" z="54EqoXMJEN+M3GODh98MBn2Lqec="/>
+        <field:input field="availableLoanAmount" id="c_com_ug_domain_CorporateLoanAmount_availableLoanAmount" required="true" validationMessageCode="field_invalid_number" z="61uvZyAKVxKg9NHYcpjQs3gYeb4="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_CorporateLoanAmount" render="${not empty dependencies}" z="5wSHcVT10xqWDag8DMF2tmQv2Mk="/>
 </div>

@@ -5,16 +5,15 @@ package com.ug.web;
 
 import com.ug.domain.Corporate;
 import com.ug.domain.CorporateLoanAmount;
-import com.ug.domain.Role;
 import com.ug.domain.State;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
-import com.ug.util.UgUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -38,20 +37,6 @@ privileged aspect CorporateController_Roo_Controller {
         }
         uiModel.asMap().clear();
         corporate.persist();
-        System.out.println("corporate profile created.. adding corporate role to the user");
-        UserRole userRole = new UserRole();
-        
-        User user = UgUtil.getLoggedInUser();
-        System.out.println("user ==>"+ user);
-        
-        Role role = Role.findRole(2L);
-        
-        System.out.println("role ==>"+ role);
-        userRole.setUserEntry(user);
-        userRole.setRoleEntry(role);
-        
-        userRole.persist();       
-        System.out.println( "Done");
         return "redirect:/corporates/" + encodeUrlPathSegment(corporate.getId().toString(), httpServletRequest);
     }
     
@@ -124,7 +109,15 @@ privileged aspect CorporateController_Roo_Controller {
     
     @ModelAttribute("users")
     public java.util.Collection<User> CorporateController.populateUsers() {
-        return User.findAllUsers();
+		UserRole userRole = com.ug.util.UgUtil.getLoggedInUserRole();
+		if (userRole != null
+				&& "admin".equals(userRole.getRoleEntry().getRoleName())) {
+			return User.findAllUsers();
+		} else {
+			java.util.List<User> users = new ArrayList<User>();
+			users.add(com.ug.util.UgUtil.getLoggedInUser());
+			return users;
+		}
     }
     
     String CorporateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

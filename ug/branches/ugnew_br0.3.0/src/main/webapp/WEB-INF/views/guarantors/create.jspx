@@ -3,26 +3,26 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_ug_domain_Guarantor" modelAttribute="guarantor" path="/guarantors" render="${empty dependencies}" z="Kpfi6DJlQ/zXcx5Q/vLy0zI+v+o=">
-        <field:checkbox field="enabled" id="c_com_ug_domain_Guarantor_enabled" z="vwTYmi6DXM3oYRh5RcFDbPNORZ4="/>
-        <field:input field="workPhone" id="c_com_ug_domain_Guarantor_workPhone" z="VKQHCzj2iei81ERFXHVaMzwRmO8="/>
-        <field:simple field="loans" id="c_com_ug_domain_Guarantor_loans" messageCode="entity_reference_not_managed" messageCodeAttribute="Loan" z="rdWgLkhhIYufhVclpz+/Ni7vmP0="/>
         <field:select field="userId" id="c_com_ug_domain_Guarantor_userId" itemValue="id" items="${users}" path="/users" z="b96qCiorfoAsyJWBAqAf1B6Bi7I="/>
-        <field:input field="lastName" id="c_com_ug_domain_Guarantor_lastName" required="true" z="GedhNexhC/Jg0eBEzG4VPSuTb+Q="/>
-        <field:input field="country" id="c_com_ug_domain_Guarantor_country" z="s7xp4zY3U/FD+Q35+A4ZY9Eebjs="/>
-        <field:select field="genderId" id="c_com_ug_domain_Guarantor_genderId" itemValue="id" items="${genders}" path="/genders" z="0rH7NJaK9mklPuLjDlbUlwqxmrg="/>
-        <field:input field="city" id="c_com_ug_domain_Guarantor_city" required="true" z="Xs4iD+3beSrTVdh7Sb3J0Stk+5g="/>
-        <field:input field="homePhone" id="c_com_ug_domain_Guarantor_homePhone" z="UxFPwfNiZyerfiCqk3MX5f/w16o="/>
-        <field:input field="middleName" id="c_com_ug_domain_Guarantor_middleName" z="zKM1z56PCr7DazgECra+46XQbpA="/>
-        <field:input field="linkedInProfile" id="c_com_ug_domain_Guarantor_linkedInProfile" z="nDoVRw2DPjRx6Ei3NvZ7MfpdBkI="/>
-        <field:input field="address2" id="c_com_ug_domain_Guarantor_address2" z="tMzmMS4b9szOfG5by/05tNHn3sQ="/>
-        <field:select field="stateId" id="c_com_ug_domain_Guarantor_stateId" itemValue="id" items="${states}" path="/states" z="Y8Vclf+K8GPKNWMAPMsOC2cSOPg="/>
-        <field:input field="address1" id="c_com_ug_domain_Guarantor_address1" required="true" z="CDMFneu6yzCD7c3zug81h4L6dNQ="/>
-        <field:input field="homePage" id="c_com_ug_domain_Guarantor_homePage" z="jypmUXtEHD4bKG+8yjW5OA+BFRw="/>
-        <field:input field="mobile" id="c_com_ug_domain_Guarantor_mobile" z="C59ymgPWWhV3OjtiTvhP41WqD+M="/>
-        <field:input field="firstName" id="c_com_ug_domain_Guarantor_firstName" required="true" z="AgXqAdwadOQLLK63QRI5i/HcTpw="/>
-        <field:input field="zip" id="c_com_ug_domain_Guarantor_zip" required="true" z="tynZ4rJZx8NRDbsd5UQly8fxOI8="/>
-        <field:checkbox field="locked" id="c_com_ug_domain_Guarantor_locked" z="WMaq1a5nYRpbvd9Q/eFTUlwTRJc="/>
         <field:select field="universityId" id="c_com_ug_domain_Guarantor_universityId" itemValue="id" items="${universitys}" path="/universitys" z="ZfXMbZ0kq6GRtA+NXLxx00M/WZk="/>
+        <field:input field="firstName" id="c_com_ug_domain_Guarantor_firstName" required="true" z="AgXqAdwadOQLLK63QRI5i/HcTpw="/>
+        <field:input field="middleName" id="c_com_ug_domain_Guarantor_middleName" z="zKM1z56PCr7DazgECra+46XQbpA="/>
+        <field:input field="lastName" id="c_com_ug_domain_Guarantor_lastName" required="true" z="GedhNexhC/Jg0eBEzG4VPSuTb+Q="/>
+        <field:select field="genderId" id="c_com_ug_domain_Guarantor_genderId" itemValue="id" items="${genders}" path="/genders" z="0rH7NJaK9mklPuLjDlbUlwqxmrg="/>
+        <field:input field="workPhone" id="c_com_ug_domain_Guarantor_workPhone" z="VKQHCzj2iei81ERFXHVaMzwRmO8="/>
+        <field:input field="mobile" id="c_com_ug_domain_Guarantor_mobile" z="C59ymgPWWhV3OjtiTvhP41WqD+M="/>
+        <field:input field="homePhone" id="c_com_ug_domain_Guarantor_homePhone" z="UxFPwfNiZyerfiCqk3MX5f/w16o="/>
+        <field:input field="linkedInProfile" id="c_com_ug_domain_Guarantor_linkedInProfile" z="nDoVRw2DPjRx6Ei3NvZ7MfpdBkI="/>
+        <field:input field="address1" id="c_com_ug_domain_Guarantor_address1" required="true" z="CDMFneu6yzCD7c3zug81h4L6dNQ="/>
+        <field:input field="address2" id="c_com_ug_domain_Guarantor_address2" z="tMzmMS4b9szOfG5by/05tNHn3sQ="/>
+        <field:input field="city" id="c_com_ug_domain_Guarantor_city" required="true" z="Xs4iD+3beSrTVdh7Sb3J0Stk+5g="/>
+        <field:select field="stateId" id="c_com_ug_domain_Guarantor_stateId" itemValue="id" items="${states}" path="/states" z="Y8Vclf+K8GPKNWMAPMsOC2cSOPg="/>
+        <field:input field="country" id="c_com_ug_domain_Guarantor_country" z="s7xp4zY3U/FD+Q35+A4ZY9Eebjs="/>
+        <field:input field="zip" id="c_com_ug_domain_Guarantor_zip" required="true" z="tynZ4rJZx8NRDbsd5UQly8fxOI8="/>
+        <field:input field="homePage" id="c_com_ug_domain_Guarantor_homePage" z="jypmUXtEHD4bKG+8yjW5OA+BFRw="/>
+        <field:checkbox field="locked" id="c_com_ug_domain_Guarantor_locked" z="WMaq1a5nYRpbvd9Q/eFTUlwTRJc="/>
+        <field:checkbox field="enabled" id="c_com_ug_domain_Guarantor_enabled" z="vwTYmi6DXM3oYRh5RcFDbPNORZ4="/>
+        <field:simple field="loans" id="c_com_ug_domain_Guarantor_loans" messageCode="entity_reference_not_managed" messageCodeAttribute="Loan" z="rdWgLkhhIYufhVclpz+/Ni7vmP0="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Guarantor" render="${not empty dependencies}" z="fga0R+TMywBs164r1bQ3w1PDJKo="/>
 </div>

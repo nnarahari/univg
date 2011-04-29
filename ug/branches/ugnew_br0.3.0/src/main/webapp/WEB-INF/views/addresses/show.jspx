@@ -3,16 +3,16 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_ug_domain_Address" object="${address}" path="/addresses" z="nDMTxfvGHltoE6kaD53J1cEq70k=">
-        <field:display date="true" dateTimePattern="${address_dateto_date_format}" field="dateTo" id="s_com_ug_domain_Address_dateTo" object="${address}" z="ckgsJc+TA9FnYqkHQwIfGJYqstc="/>
-        <field:display field="address2" id="s_com_ug_domain_Address_address2" object="${address}" z="9ZEJzlizhsO4nhHMMUtu0e+AI9Q="/>
-        <field:display field="address1" id="s_com_ug_domain_Address_address1" object="${address}" z="fRBgpigqWsUM+zm4lupLWefD5zE="/>
-        <field:display date="true" dateTimePattern="${address_datefrom_date_format}" field="dateFrom" id="s_com_ug_domain_Address_dateFrom" object="${address}" z="s9s03K8RTYN7ORSoH10gE2iuCiM="/>
-        <field:display field="stateId" id="s_com_ug_domain_Address_stateId" object="${address}" z="ASwAhjP/IV692ejWMCLpc/X3joE="/>
-        <field:display field="displayIdentifier" id="s_com_ug_domain_Address_displayIdentifier" object="${address}" z="ksG0NDmFKCi9O57Zmc6RihOMiZQ="/>
-        <field:display field="zip" id="s_com_ug_domain_Address_zip" object="${address}" z="PLi0bf/nW8yUmX+AyFeeZGmMnIY="/>
         <field:display field="userId" id="s_com_ug_domain_Address_userId" object="${address}" z="MCcKeD7EcweEyuWVFXbu+7StJZc="/>
-        <field:display field="country" id="s_com_ug_domain_Address_country" object="${address}" z="SmmtojupIPX3SaLPWwbJyFxea20="/>
-        <field:display field="city" id="s_com_ug_domain_Address_city" object="${address}" z="kPmWUWstu7XrAnyFGLvWXd9HkDc="/>
+        <field:display field="displayIdentifier" id="s_com_ug_domain_Address_displayIdentifier" object="${address}" z="ksG0NDmFKCi9O57Zmc6RihOMiZQ="/>
         <field:display field="addressTypeId" id="s_com_ug_domain_Address_addressTypeId" object="${address}" z="yNOaXpegfdrTbv7Ye5IUvewLV7w="/>
+        <field:display date="true" dateTimePattern="${address_datefrom_date_format}" field="dateFrom" id="s_com_ug_domain_Address_dateFrom" object="${address}" z="s9s03K8RTYN7ORSoH10gE2iuCiM="/>
+        <field:display date="true" dateTimePattern="${address_dateto_date_format}" field="dateTo" id="s_com_ug_domain_Address_dateTo" object="${address}" z="ckgsJc+TA9FnYqkHQwIfGJYqstc="/>
+        <field:display field="address1" id="s_com_ug_domain_Address_address1" object="${address}" z="fRBgpigqWsUM+zm4lupLWefD5zE="/>
+        <field:display field="address2" id="s_com_ug_domain_Address_address2" object="${address}" z="9ZEJzlizhsO4nhHMMUtu0e+AI9Q="/>
+        <field:display field="city" id="s_com_ug_domain_Address_city" object="${address}" z="kPmWUWstu7XrAnyFGLvWXd9HkDc="/>
+        <field:display field="stateId" id="s_com_ug_domain_Address_stateId" object="${address}" z="ASwAhjP/IV692ejWMCLpc/X3joE="/>
+        <field:display field="zip" id="s_com_ug_domain_Address_zip" object="${address}" z="PLi0bf/nW8yUmX+AyFeeZGmMnIY="/>
+        <field:display field="country" id="s_com_ug_domain_Address_country" object="${address}" z="SmmtojupIPX3SaLPWwbJyFxea20="/>
     </page:show>
 </div>
