@@ -6,6 +6,7 @@ CREATE TABLE state (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
+
 CREATE TABLE department (
 	id BIGINT NOT NULL AUTO_INCREMENT,
 	departmentName VARCHAR(255) NOT NULL,
