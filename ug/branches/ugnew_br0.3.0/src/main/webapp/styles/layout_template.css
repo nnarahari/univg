@@ -63,6 +63,7 @@ h1, h2, h3, h4, h5, h6{
 	background-color:#FFFFFF;
 	border-left:10px solid #DFDFDF;
 	border-right:10px solid #DFDFDF;
+	margin: 0 auto 0;
 	}
 
 /* ----------------------------------------------Header-------------------------------------*/
@@ -77,7 +78,7 @@ h1, h2, h3, h4, h5, h6{
 	}
 
 #header .fl_left{
-	display:block;
+	display:table;
 	float:left;
 	width:400px;
 	margin:5px 0 0 0;
@@ -86,7 +87,7 @@ h1, h2, h3, h4, h5, h6{
 #header .fl_right{
 	display:block;
 	float:right;
-	width:468px;
+	width:500px;
 	}
 
 #header h1{
@@ -409,6 +410,7 @@ h1, h2, h3, h4, h5, h6{
 	font-weight:normal;
 	list-style:none;
 	line-height:normal;
+	width: 860px;
 	}
 
 #footer .footbox{
