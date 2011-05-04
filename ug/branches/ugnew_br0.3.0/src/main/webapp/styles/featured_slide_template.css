@@ -7,20 +7,20 @@ Licence: <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commo
 */
 
 #featured_slide{
-	height:300px;
+	height:290px;
 	overflow:hidden;
 	color:#666666;
 	background-color:#FFFFFF;
+	width: 830px;
+	padding: 20px 40px;
+	position: relative;
 	}
 
 #featured_slide a{
 	color:#059BD8;
-	background-color:#232323;
 	}
 
 #featured_slide a, #featured_slide ul, #featured_slide img{
-	margin:0;
-	padding:0;
 	border:none;
 	outline:none;
 	list-style:none;
