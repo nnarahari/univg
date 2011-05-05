@@ -1,6 +1,15 @@
-<div xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" 
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:directive.page import="com.ug.domain.UserRole"/>
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:directive.page import="com.ug.util.UgUtil"/>
+  
   <jsp:output omit-xml-declaration="yes" />
+  <jsp:scriptlet>
+		String loggedInUserRole = UgUtil.getLoggedInUserRoleName();
+		request.setAttribute("loggedInUserRole",loggedInUserRole);
+  </jsp:scriptlet>
+  
   <spring:message var="app_name" code="application_name" htmlEscape="false" />
   <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
   <util:panel id="title" title="${title}">
@@ -10,10 +19,24 @@
     <p>
       <spring:message code="welcome_text" />
 	 </p>
-	  <p>
-		<li> To create a student profile <a href="profiles?form">click here</a> </li>
-		<li> To create a corporate profile <a href="corporates?form">click here </a></li>
-	  </p>
+	  
+ 	<c:choose>
+      <c:when test="${loggedInUserRole == 'student'}">
+			<br /> <h1>Student page content...</h1>
+      </c:when>
+	
+	  <c:when test="${loggedInUserRole == 'coporate'}">
+			<br /> <h1>Corporate page content...</h1>
+      </c:when>
+
+      <c:otherwise>
+		<jsp:forward page="/generalUser.html"/>
+      </c:otherwise>
+	  
+    </c:choose>	
    
   </util:panel>
+	 
+       
+	   
 </div>
