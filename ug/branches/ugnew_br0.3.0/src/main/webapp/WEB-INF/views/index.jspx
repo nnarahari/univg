@@ -30,7 +30,7 @@
       </c:when>
 
       <c:otherwise>
-		<jsp:forward page="/generalUser.html"/>
+		<jsp:forward page="/loginmain.jsp"/>
       </c:otherwise>
 	  
     </c:choose>	
