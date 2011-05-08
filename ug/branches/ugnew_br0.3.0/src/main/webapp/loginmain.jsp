@@ -88,11 +88,11 @@ input.groovybutton
     <div id="topnav">
       <ul>
         <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="style-demo.html">STUDENT</a></li>
-        <li><a href="full-width.html">CORPORATES</a></li>
-		<li><a href="full-width.html">P2P</a></li>
-		<li><a href="full-width.html">MENTORSHIP</a></li>
-		<li><a href="full-width.html">CONTACT US</a></li>
+        <li><a href="profiles?form">STUDENT</a></li>
+        <li><a href="corporates?form">CORPORATES</a></li>
+		<li><a href="#">P2P</a></li>
+		<li><a href="#">MENTORSHIP</a></li>
+		<li><a href="#">CONTACT US</a></li>
       </ul>
     </div>
     <div id="search">
