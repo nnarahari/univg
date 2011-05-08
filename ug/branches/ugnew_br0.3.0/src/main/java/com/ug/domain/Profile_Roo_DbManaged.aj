@@ -3,20 +3,22 @@
 
 package com.ug.domain;
 
-import com.ug.domain.Department;
-import com.ug.domain.Gender;
-import com.ug.domain.Programstudy;
-import com.ug.domain.University;
-import com.ug.domain.User;
-import java.lang.String;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 privileged aspect Profile_Roo_DbManaged {
     
@@ -65,6 +67,22 @@ privileged aspect Profile_Roo_DbManaged {
     @NotNull
     private String Profile.mobile;
     
+    //@Column(name = "mobile", columnDefinition = "VARCHAR", length = 10)
+    //@NotNull
+    @Transient
+    private String Profile.universityEmail;
+
+    
+    public String Profile.getUniversityEmail() {
+        return this.universityEmail;
+    }
+    
+    public void Profile.setUniversityEmail(String universityEmail) {
+        this.universityEmail = universityEmail;
+    }
+ 
+    
+
     public User Profile.getUserId() {
         return this.userId;
     }

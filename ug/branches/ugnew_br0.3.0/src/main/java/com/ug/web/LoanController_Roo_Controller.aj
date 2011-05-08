@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -29,22 +31,42 @@ import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
+import com.ug.util.UgUtil;
 
 privileged aspect LoanController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST)
-    public String LoanController.create(@Valid Loan loan, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("loan", loan);
-            addDateTimeFormatPatterns(uiModel);
-            return "loans/create";
-        }
-        uiModel.asMap().clear();
-        loan.persist();
-        return "redirect:/loans/" + encodeUrlPathSegment(loan.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(params = "form", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.POST)
+	public String LoanController.create(@Valid Loan loan,
+			BindingResult bindingResult, Model uiModel,
+			@RequestParam("vtemplate") MultipartFile content,
+			HttpServletRequest httpServletRequest) {
+
+		if (bindingResult.hasErrors()) {
+			uiModel.addAttribute("loan", loan);
+			addDateTimeFormatPatterns(uiModel);
+			return "loans/create";
+		}
+		uiModel.asMap().clear();
+		loan.persist();
+		String templateFileName = loan.getId() + "-" + loan.getUserId().getId();
+		saveValidationTemplate(content, httpServletRequest.getSession()
+				.getServletContext().getRealPath("/"), templateFileName);
+
+		saveValidationTemplate(content, "/ug", templateFileName);
+
+		return "redirect:/loans/"
+				+ encodeUrlPathSegment(loan.getId().toString(),
+						httpServletRequest);
+	}
+
+	@Autowired
+	private static void saveValidationTemplate(MultipartFile content,
+			String realPath, String templateFileName) {
+		UgUtil.createFile("loan", content, realPath, templateFileName);
+
+	}
+
+	@RequestMapping(params = "form", method = RequestMethod.GET)
     public String LoanController.createForm(Model uiModel) {
         uiModel.addAttribute("loan", new Loan());
         addDateTimeFormatPatterns(uiModel);

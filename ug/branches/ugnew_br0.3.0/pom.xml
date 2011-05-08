@@ -102,6 +102,11 @@
             <version>2.5</version>
             <scope>provided</scope>
         </dependency>
+		<dependency>
+	      <groupId>commons-io</groupId>
+		  <artifactId>commons-io</artifactId>
+	      <version>1.4</version>
+    	</dependency>
         <dependency>
             <groupId>net.sf.flexjson</groupId>
             <artifactId>flexjson</artifactId>

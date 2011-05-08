@@ -96,11 +96,11 @@ privileged aspect User_Roo_Entity {
     }
     
     public static long User.countUsers() {
-        return entityManager().createQuery("select count(o) from User o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM User o", Long.class).getSingleResult();
     }
     
     public static List<User> User.findAllUsers() {
-        return entityManager().createQuery("select o from User o", User.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM User o", User.class).getResultList();
     }
     
     public static User User.findUser(Long id) {
@@ -109,7 +109,7 @@ privileged aspect User_Roo_Entity {
     }
     
     public static List<User> User.findUserEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from User o", User.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM User o", User.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

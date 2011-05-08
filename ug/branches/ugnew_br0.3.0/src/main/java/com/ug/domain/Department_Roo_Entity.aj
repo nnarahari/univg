@@ -96,11 +96,11 @@ privileged aspect Department_Roo_Entity {
     }
     
     public static long Department.countDepartments() {
-        return entityManager().createQuery("select count(o) from Department o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM Department o", Long.class).getSingleResult();
     }
     
     public static List<Department> Department.findAllDepartments() {
-        return entityManager().createQuery("select o from Department o", Department.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM Department o", Department.class).getResultList();
     }
     
     public static Department Department.findDepartment(Long id) {
@@ -109,7 +109,7 @@ privileged aspect Department_Roo_Entity {
     }
     
     public static List<Department> Department.findDepartmentEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from Department o", Department.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM Department o", Department.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

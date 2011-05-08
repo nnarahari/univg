@@ -18,7 +18,7 @@
         <intercept-url access="permitAll" pattern="/**"/>
         
         <session-management invalid-session-url="/main.html" >
-			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true"  />
+			<!-- <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"  /> -->
 		</session-management>
         
     </http>

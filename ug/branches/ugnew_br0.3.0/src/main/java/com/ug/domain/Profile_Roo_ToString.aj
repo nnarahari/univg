@@ -14,6 +14,7 @@ privileged aspect Profile_Roo_ToString {
         sb.append("DepartmentId: ").append(getDepartmentId()).append(", ");
         sb.append("ProgramStudyId: ").append(getProgramStudyId()).append(", ");
         sb.append("GenderId: ").append(getGenderId()).append(", ");
+        sb.append("UniversityEmail: ").append(getUniversityEmail()).append(", ");
         sb.append("ExpectedGraduationDate: ").append(getExpectedGraduationDate()).append(", ");
         sb.append("Citizenship: ").append(getCitizenship()).append(", ");
         sb.append("DateOfBirth: ").append(getDateOfBirth()).append(", ");

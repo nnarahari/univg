@@ -96,11 +96,11 @@ privileged aspect UserRole_Roo_Entity {
     }
     
     public static long UserRole.countUserRoles() {
-        return entityManager().createQuery("select count(o) from UserRole o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM UserRole o", Long.class).getSingleResult();
     }
     
     public static List<UserRole> UserRole.findAllUserRoles() {
-        return entityManager().createQuery("select o from UserRole o", UserRole.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM UserRole o", UserRole.class).getResultList();
     }
     
     public static UserRole UserRole.findUserRole(Long id) {
@@ -109,7 +109,7 @@ privileged aspect UserRole_Roo_Entity {
     }
     
     public static List<UserRole> UserRole.findUserRoleEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from UserRole o", UserRole.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM UserRole o", UserRole.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

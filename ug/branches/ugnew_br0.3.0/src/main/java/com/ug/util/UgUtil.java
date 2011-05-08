@@ -1,5 +1,9 @@
 package com.ug.util;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.List;
 
@@ -7,6 +11,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ug.domain.Address;
 import com.ug.domain.Guarantor;
@@ -214,6 +219,33 @@ public class UgUtil {
 			return null;
 		}
 
+	}
+	
+	public static void createFile(String type, MultipartFile file, String fileLocation,
+			String userId) {
+		String fileName = file.getOriginalFilename();
+		long size = file.getSize();
+		try {
+			String fileMe = fileLocation
+					+ "/app/"+type+"/"
+					+ userId
+					+ "-"+type
+					+ file.getOriginalFilename().substring(
+							file.getOriginalFilename().indexOf('.'));
+			System.out.println(">>>> Created file Location:" + fileMe);
+			InputStream in = file.getInputStream();
+			FileOutputStream f = new FileOutputStream(fileMe);
+			int ch = 0;
+			while ((ch = in.read()) != -1) {
+				f.write(ch);
+			}
+			f.flush();
+			f.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

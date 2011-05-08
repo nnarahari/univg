@@ -3,6 +3,36 @@
 
 package com.ug.web;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
+import org.hibernate.Hibernate;
+import org.joda.time.format.DateTimeFormat;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import org.springframework.web.util.UriUtils;
+import org.springframework.web.util.WebUtils;
+
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Profile;
@@ -13,45 +43,38 @@ import com.ug.domain.User;
 import com.ug.domain.UserRole;
 import com.ug.util.UgUtil;
 
-import java.io.UnsupportedEncodingException;
-import java.lang.Integer;
-import java.lang.Long;
-import java.lang.String;
-import java.util.ArrayList;
-import java.util.Collection;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import org.joda.time.format.DateTimeFormat;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UriUtils;
-import org.springframework.web.util.WebUtils;
-
 privileged aspect ProfileController_Roo_Controller {
+	
+
     
     @RequestMapping(method = RequestMethod.POST)
-    public String ProfileController.create(@Valid Profile profile, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
+    public String ProfileController.create(@Valid Profile profile, BindingResult bindingResult, Model uiModel, @RequestParam("file") MultipartFile content,@RequestParam("resume") MultipartFile resumeContent,HttpServletRequest httpServletRequest) {
+       
+   	
+    	if (bindingResult.hasErrors()) {
+        	System.out.println("Binding Errors:"+ bindingResult.getAllErrors().toString());
             uiModel.addAttribute("profile", profile);
             addDateTimeFormatPatterns(uiModel);
             return "profiles/create";
         }
+
+       
         uiModel.asMap().clear();
         profile.persist();
         
+        saveProfileImage(content, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"-"+profile.getId());
+        saveResume(resumeContent, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"-"+profile.getId());
+ 
+        saveProfileImage(content, "/ug",profile.getUserId().getId()+"-"+profile.getId());
+        saveResume(resumeContent, "/ug",profile.getUserId().getId()+"-"+profile.getId());
+
         System.out.println("profile crreated.. associating student role to the user..");
         UserRole userRole = new UserRole();
         
         User user = UgUtil.getLoggedInUser();
         System.out.println("user ==>"+ user);
         
-        Role role = Role.findRole(1L);
+        Role role = Role.findRole(2L);//2 is for student
         
         System.out.println("role ==>"+ role);
         userRole.setUserEntry(user);
@@ -64,7 +87,17 @@ privileged aspect ProfileController_Roo_Controller {
         return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), httpServletRequest);
     }
     
-    @RequestMapping(params = "form", method = RequestMethod.GET)
+    private static void saveResume(MultipartFile content,  String realPath, String id) {
+    	UgUtil.createFile("resume",content, realPath,id);
+		
+	}
+
+	private static void saveProfileImage(MultipartFile content, String realPath, String id) {
+		
+		UgUtil.createFile("profile",content, realPath,id);
+	}
+
+	@RequestMapping(params = "form", method = RequestMethod.GET)
     public String ProfileController.createForm(Model uiModel) {
         uiModel.addAttribute("profile", new Profile());
         addDateTimeFormatPatterns(uiModel);
@@ -90,6 +123,7 @@ privileged aspect ProfileController_Roo_Controller {
             uiModel.addAttribute("profiles", Profile.findAllProfiles());
         }
         addDateTimeFormatPatterns(uiModel);
+       
         return "profiles/list";
     }
     
