@@ -30,12 +30,12 @@
       <c:when test="${loggedInUserRole == 'student'}">
 			<br /> <h1>Student page content...</h1>
 			
-			<jsp:forward page="<%=studentProfilePath%>" />
+			<!--<jsp:forward page="<%=studentProfilePath%>" />-->
       </c:when>
 	
 	  <c:when test="${loggedInUserRole == 'coporate'}">
 			<br /> <h1>Corporate page content...</h1>
-			<jsp:forward page="<%=corporateProfilePath%>" />
+			<!--<jsp:forward page="<%=corporateProfilePath%>" />-->
       </c:when>
 
       <c:otherwise>
