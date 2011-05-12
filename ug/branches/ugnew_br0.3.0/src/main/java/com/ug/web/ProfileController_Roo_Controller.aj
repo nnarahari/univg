@@ -48,16 +48,18 @@ privileged aspect ProfileController_Roo_Controller {
             return "profiles/create";
         }
 
+    	String photoIdentifier = saveProfileImage(content, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
+		String resumeIdentifier = saveResume(resumeContent, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
+						
+		profile.setPhotoIdentifier(photoIdentifier);
+    	profile.setResumeIdentifier(resumeIdentifier);
+
+    	saveProfileImage(content, "/ug",profile.getUserId().getId()+"");
+        saveResume(resumeContent, "/ug",profile.getUserId().getId()+"");
        
         uiModel.asMap().clear();
         profile.persist();
         
-        saveProfileImage(content, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"-"+profile.getId());
-        saveResume(resumeContent, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"-"+profile.getId());
- 
-        saveProfileImage(content, "/ug",profile.getUserId().getId()+"-"+profile.getId());
-        saveResume(resumeContent, "/ug",profile.getUserId().getId()+"-"+profile.getId());
-
         System.out.println("profile crreated.. associating student role to the user..");
         UserRole userRole = new UserRole();
         
@@ -77,14 +79,14 @@ privileged aspect ProfileController_Roo_Controller {
         return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), httpServletRequest);
     }
     
-    private static void saveResume(MultipartFile content,  String realPath, String id) {
-    	UgUtil.createFile("resume",content, realPath,id);
+    private static String saveResume(MultipartFile content,  String realPath, String id) {
+    	return UgUtil.createFile("resume",content, realPath,id);
 		
 	}
 
-	private static void saveProfileImage(MultipartFile content, String realPath, String id) {
+	private static String saveProfileImage(MultipartFile content, String realPath, String id) {
 		
-		UgUtil.createFile("profile",content, realPath,id);
+		return UgUtil.createFile("profile",content, realPath,id);
 	}
 
 	@RequestMapping(params = "form", method = RequestMethod.GET)

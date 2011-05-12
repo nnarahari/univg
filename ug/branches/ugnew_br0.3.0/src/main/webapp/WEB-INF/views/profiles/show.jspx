@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<jsp:directive.page import="java.util.List"/>
+<jsp:directive.page import="java.util.ArrayList"/>
+<jsp:directive.page import="com.ug.domain.User"/>
+<jsp:directive.page import="com.ug.domain.Profile"/>
+<jsp:directive.page import="com.ug.util.UgUtil"/>
+<jsp:directive.page import="java.util.Collection"/>
+
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:scriptlet>
+		User loggedInUser = UgUtil.getLoggedInUser();
+		String loggedInUserId = loggedInUser.getId()+"";
+		request.setAttribute("loggedInUserId", loggedInUserId);
+		Collection profiles = UgUtil.getProfiles();
+		List profileList = new ArrayList(profiles);
+		Profile firstProfile = (Profile)profileList.get(0);
+		
+		if(!profiles.isEmpty())
+		{
+			request.setAttribute("PhotoIdentifier",firstProfile.getPhotoIdentifier() );
+			request.setAttribute("ResumeIdentifier",firstProfile.getResumeIdentifier() );
+		}
+	</jsp:scriptlet>
+    
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_ug_domain_Profile" object="${profile}" path="/profiles" z="pQKHv9iYgpOl5Optq7ztM3tGfx8=">
+        Photograph(2*2 inch):<img src="${PhotoIdentifier}" height="150px" width="150px" />
         <field:display field="userId" id="s_com_ug_domain_Profile_userId" object="${profile}" z="APZqCVRPtPwBGVW05JhTxI80/CU="/>
         <field:display field="citizenship" id="s_com_ug_domain_Profile_citizenship" object="${profile}" z="JcnrWlM6e3OsoJDopDDTnotc8fs="/>
         <field:display field="genderId" id="s_com_ug_domain_Profile_genderId" object="${profile}" z="K5idHtckXn/MjO+PBINzwsOKgbc="/>
@@ -14,5 +37,6 @@
         <field:display field="mobile" id="s_com_ug_domain_Profile_mobile" object="${profile}" z="/qIheCg9klMTSFQgCtu1tl2bXZo="/>
         <field:display field="homePhone" id="s_com_ug_domain_Profile_homePhone" object="${profile}" z="ZOVVcLzwAoDDcYqejtmO2WAR7QU="/>
         <field:display field="linkedInProfile" id="s_com_ug_domain_Profile_linkedInProfile" object="${profile}" z="E+OeeLb4rrKs4GKriyFpHD7PJaI="/>
+       
     </page:show>
 </div>

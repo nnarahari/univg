@@ -72,6 +72,30 @@ privileged aspect Profile_Roo_DbManaged {
     @Transient
     private String Profile.universityEmail;
 
+    @Transient
+    private String Profile.photoIdentifier;
+    
+    @Transient
+    private String Profile.resumeIdentifier;
+    
+    
+    public String Profile.getResumeIdentifier() {
+        return this.resumeIdentifier;
+    }
+    
+    public void Profile.setResumeIdentifier(String resumeIdentifier) {
+        this.resumeIdentifier = resumeIdentifier;
+    }
+ 
+    public String Profile.getPhotoIdentifier() {
+    	return this.photoIdentifier;
+    	 //return "/ugbeta1/app/profile/2-profile.jpg";
+    }
+    
+    public void Profile.setPhotoIdentifier(String photoIdentifier) {
+        this.photoIdentifier = photoIdentifier;
+    }
+ 
     
     public String Profile.getUniversityEmail() {
         return this.universityEmail;

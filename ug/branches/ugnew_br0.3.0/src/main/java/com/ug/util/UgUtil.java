@@ -38,7 +38,7 @@ public class UgUtil {
 
 			return null;
 		}
-	} 
+	}
 
 	public static UserRole getLoggedInUserRole() {
 		try {
@@ -220,18 +220,22 @@ public class UgUtil {
 		}
 
 	}
-	
-	public static void createFile(String type, MultipartFile file, String fileLocation,
-			String userId) {
-		String fileName = file.getOriginalFilename();
-		long size = file.getSize();
+
+	public static String createFile(String type, MultipartFile file,
+			String fileLocation, String userId) {
+		// String fileName = file.getOriginalFilename();
+		// long size = file.getSize();
+		String fileNameToReturn = null;
 		try {
-			String fileMe = fileLocation
-					+ "/app/"+type+"/"
+			fileNameToReturn = "/app/"
+					+ type
+					+ "/"
 					+ userId
-					+ "-"+type
+					+ "-"
+					+ type
 					+ file.getOriginalFilename().substring(
 							file.getOriginalFilename().indexOf('.'));
+			String fileMe = fileLocation + fileNameToReturn;
 			System.out.println(">>>> Created file Location:" + fileMe);
 			InputStream in = file.getInputStream();
 			FileOutputStream f = new FileOutputStream(fileMe);
@@ -246,6 +250,7 @@ public class UgUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return fileNameToReturn;
 	}
 
 }
