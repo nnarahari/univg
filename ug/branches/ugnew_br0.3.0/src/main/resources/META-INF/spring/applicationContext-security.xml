@@ -11,6 +11,7 @@
         <intercept-url pattern="*/roles/**" access="hasRole('admin')"/>
         <intercept-url pattern="*/loanstatus/**" access="hasRole('admin')"/>
         <intercept-url pattern="*/universitys/**" access="hasRole('admin')"/>
+        <intercept-url pattern="/login/success.htm" access="isAuthenticated()"/>
 
         <intercept-url access="hasRole('admin')" pattern="/choices/**"/>
         <intercept-url access="isAuthenticated()" pattern="/member/**"/>
