@@ -152,13 +152,13 @@ input.groovybutton
         <h2 class="title"><img src="images/Corporate.jpg" alt="" />Our Corporate Partners</h2>
      <!--    <p>Students of verious University such as Standford University, UC, SJSU brings to build the network between Corporates and Students.</p> -->
      <p><img src="images/Corporate-box-home-page.jpg" alt="" /></p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        <p class="readmore"><a href="continueReadingCorporate.jsp">Continue Reading &raquo;</a></p>
       </li>
       <li>
         <h2 class="title"><img src="images/Student.jpg" alt="" />Students</h2>
        <!--  <p>Students of verious University such as Standford University, UC, SJSU brings to build the network between Corporates and Students.</p> -->
         <p><img src="images/Student-box-home-page.jpg" alt="" /></p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        <p class="readmore"><a href="continueReadingStudent.jsp">Continue Reading &raquo;</a></p>
       </li>
       <li class="last">
         <h2 class="title"><img src="images/P2P.jpg" alt="" />P2P Lenders</h2>
