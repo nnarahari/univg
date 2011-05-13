@@ -2,7 +2,7 @@
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
   <jsp:output omit-xml-declaration="yes" />
 
-<jsp:directive.include file="header.html" />
+<jsp:directive.include file="header.jsp" />
 
 <!--  <spring:url var="banner" value="/images/final_logo2.jpg" />
   <spring:url var="home" value="/" />
