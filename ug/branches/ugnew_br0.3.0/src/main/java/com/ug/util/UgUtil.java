@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.persistence.TypedQuery;
 
@@ -253,6 +255,34 @@ public class UgUtil {
 			e.printStackTrace();
 		}
 		return fileNameToReturn;
+	}
+	
+	public static boolean validatePhone(String phone) {
+        return phone.matches("^\\d{10}$");
+	}
+	
+	public static boolean validateGeneralEmail(String generalEmail) {
+        boolean isValid = false;
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = generalEmail;
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+                isValid = true;
+        }
+        return isValid;
+	}
+
+	public static boolean validateStudentEmail(String studentEmail) {
+		boolean isValid = false;
+		String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[E]{1}+[D]{1}+[U]{1}$";
+		CharSequence inputStr = studentEmail;
+		Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(inputStr);
+		if (matcher.matches()) {
+			isValid = true;
+		}
+		return isValid;
 	}
 
 }
