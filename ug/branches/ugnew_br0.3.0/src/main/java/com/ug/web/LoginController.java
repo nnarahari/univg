@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ug.domain.Corporate;
@@ -19,7 +18,7 @@ import com.ug.util.UgUtil;
 /**
  * @author srrajend
  *
- */
+ */  
 @Controller
 @RequestMapping (value="/login")
 public class LoginController {
@@ -34,6 +33,10 @@ public class LoginController {
 		String loggedInUserRole = UgUtil.getLoggedInUserRoleName();
 		User user = UgUtil.getLoggedInUser();
 		
+		logger.debug("loggedInUserRole ==>"+ loggedInUserRole);
+		
+		logger.debug("user ==>"+ user);
+		
 		if(user != null){
 			userId = user.getId();
 		}else{
@@ -45,7 +48,7 @@ public class LoginController {
 				uiModel.addAttribute("profile", Profile.findProfile(userId));
 				uiModel.addAttribute("itemId", userId);
 				displayPage = "profiles/show";
-			}else if(loggedInUserRole.equalsIgnoreCase("coporate")){
+			}else if(loggedInUserRole.equalsIgnoreCase("corporate")){
 				uiModel.addAttribute("corporate", Corporate.findCorporate(userId));
 				uiModel.addAttribute("itemId", userId);
 				displayPage= "corporates/show";
@@ -60,6 +63,23 @@ public class LoginController {
 		logger.debug("displayPage ==>"+displayPage );
 		return displayPage;
 	}
+	
+	
+	
+	
+	/*@RequestMapping ( value="/studentBefore.htm")
+	public String studentBeforeLogin(HttpServletRequest req, Model uiModel){
+		logger.debug("studentBeforeLogin() started...");
+		String displayPage = "studentBeforelogin";
+		return displayPage;
+	}
+	
+	@RequestMapping ( value="/coporateBefore.htm")
+	public String coporateBeforeLogin(HttpServletRequest req, Model uiModel){
+		logger.debug("coporateBeforeLogin() started...");
+		String displayPage = "corporateBeforelogin";
+		return displayPage;
+	}*/
 	
 	
 }

@@ -87,12 +87,12 @@ input.groovybutton
   <div class="wrapper">
     <div id="topnav">
       <ul>
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="style-demo.html">STUDENT</a></li>
-        <li><a href="full-width.html">CORPORATES</a></li>
-		<li><a href="full-width.html">P2P</a></li>
-		<li><a href="full-width.html">MENTORSHIP</a></li>
-		<li><a href="full-width.html">CONTACT US</a></li>
+        <li class="active"><a href="main.jsp">Home</a></li>
+        <li><a href="studentBeforelogin">STUDENT</a></li>
+        <li><a href="coporateBeforeLogin">CORPORATES</a></li>
+		<li><a href="#">P2P</a></li>
+		<li><a href="#">MENTORSHIP</a></li>
+		<li><a href="#">CONTACT US</a></li>
       </ul>
     </div>
     <div id="search">
