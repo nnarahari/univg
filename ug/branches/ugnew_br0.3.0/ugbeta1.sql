@@ -196,9 +196,11 @@ CREATE TABLE loan (
 	comments VARCHAR(2000),
 	supportDocumentName VARCHAR(75),
 	loanStatusId BIGINT not null,
+	address BIGINT not null,
 	PRIMARY KEY (id),
 	FOREIGN KEY (userId) REFERENCES user(id),
 	FOREIGN KEY (grantNeededFor) REFERENCES grantNeededFor(id),
+	FOREIGN KEY (address) REFERENCES address(id),
 	FOREIGN KEY (loanStatusId) REFERENCES loanStatus(id)	
 ) ENGINE=InnoDB;
 
