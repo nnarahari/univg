@@ -30,6 +30,7 @@
 	<mvc:view-controller path="/dataAccessFailure"/>
 	<mvc:view-controller path="/studentBeforelogin"/>
 	<mvc:view-controller path="/corporateBeforelogin"/>
+	<mvc:view-controller path="/learnAboutLoan"/>
 
 	<!-- Resolves localized messages*.properties and application.properties files in the application to	allow for internationalization. 
 		The messages*.properties files translate Roo generated messages which are part of the admin interface, the application.properties

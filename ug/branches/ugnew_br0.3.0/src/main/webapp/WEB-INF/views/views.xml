@@ -30,4 +30,8 @@
         <put-attribute name="body" value="/WEB-INF/views/corporateBeforelogin.jspx"/>
     </definition>
     
+    <definition extends="default" name="learnAboutLoan">
+        <put-attribute name="body" value="/WEB-INF/views/loan/learnAboutLoan.jspx"/>
+    </definition>
+    
 </tiles-definitions>

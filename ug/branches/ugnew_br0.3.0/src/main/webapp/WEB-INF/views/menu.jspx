@@ -99,7 +99,16 @@
 	</jsp:scriptlet>
 	<sec:authorize ifAllGranted="student">
 	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+	
+		<menu:category id="c_address" z="my5R1aInTRohGzWz9TL4j8LX/vE=">
+			<menu:item id="i_address_new" messageCode="global_menu_new" url="/addresses?form" z="vg+UZ0neKcizSzKiVzXeI3oY1BA="/>
+			<menu:item id="fi_address_userid" messageCode="student_menu_find_addresses" url="/addresses?find=ByUserId&amp;userId=${loggedInUserId}" z="Kqkjv5jXpJIk2xIgKUVusc3yoe0="/>
+				
+		</menu:category>
+		
 		<menu:category id="c_loan" z="S+w7sxbJV/kGsRBzpM6sxIvlUrs=">
+			
+			<menu:item id="i_loan_new" messageCode="learn_about_loan" url="/learnAboutLoan" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
 			<menu:item id="i_loan_new" messageCode="global_menu_new" url="/loans?form" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
 			<menu:item id="fi_loan_userid" messageCode="student_menu_find_loan" url="/loans?find=ByUserId&amp;userId=${loggedInUserId}" z="Mf2HBIWjX0XjNj6JjM4pQmSFbzY="/>
 		
@@ -117,11 +126,7 @@
 				url="/guarantors?find=ByUserIduserId=${loggedInUserId}"
 				z="OpTPKNBWmC6+RKVyM0iNgWnKpnM=" />
 		</menu:category>  -->
-		<menu:category id="c_address" z="my5R1aInTRohGzWz9TL4j8LX/vE=">
-			<menu:item id="i_address_new" messageCode="global_menu_new" url="/addresses?form" z="vg+UZ0neKcizSzKiVzXeI3oY1BA="/>
-			<menu:item id="fi_address_userid" messageCode="student_menu_find_addresses" url="/addresses?find=ByUserId&amp;userId=${loggedInUserId}" z="Kqkjv5jXpJIk2xIgKUVusc3yoe0="/>
-				
-		</menu:category>
+		
 	</menu:menu>
 	</sec:authorize>
 
@@ -135,6 +140,11 @@
 			<menu:item id="i_corporate_new" messageCode="global_menu_new" url="/corporates?form" z="2B378xTDeK85UzqNloDvE7GLwuY="/>
 			<menu:item id="i_corporate_list" messageCode="global_menu_list" url="/corporates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="w0/pNyFp2tR+ecZpHeCYWzvaV4I="/>
 		</menu:category>
+		
+		<menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
+			<menu:item id="i_corporate_new" messageCode="student_search" url="/corporates/searchStudent" z="2B378xTDeK85UzqNloDvE7GLwuY="/>
+		</menu:category>
+		
 	</menu:menu>
 	</sec:authorize>
 
