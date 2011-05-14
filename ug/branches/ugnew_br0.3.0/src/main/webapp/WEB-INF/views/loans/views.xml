@@ -16,9 +16,6 @@
 <definition extends="default" name="loans/findLoansByUserId">
         <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByUserId.jspx"/>
     </definition>
-<definition extends="default" name="loans/findLoansByGuarantorId">
-        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByGuarantorId.jspx"/>
-    </definition>
 <definition extends="default" name="loans/findLoansByLoanAmount">
         <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanAmount.jspx"/>
     </definition>

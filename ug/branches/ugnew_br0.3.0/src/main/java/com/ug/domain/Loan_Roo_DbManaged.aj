@@ -3,19 +3,16 @@
 
 package com.ug.domain;
 
-import com.ug.domain.Guarantor;
-import com.ug.domain.Loanstatus;
-import com.ug.domain.User;
-import java.lang.Integer;
-import java.lang.String;
 import java.math.BigDecimal;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 privileged aspect Loan_Roo_DbManaged {
@@ -23,10 +20,6 @@ privileged aspect Loan_Roo_DbManaged {
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private User Loan.userId;
-    
-//    @ManyToOne
-//    @JoinColumn(name = "guarantorId", referencedColumnName = "id", nullable = false)
-//    private Guarantor Loan.guarantorId;
     
     @ManyToOne
     @JoinColumn(name = "loanStatusId", referencedColumnName = "id", nullable = false)
@@ -48,12 +41,20 @@ privileged aspect Loan_Roo_DbManaged {
     @DateTimeFormat(style = "S-")
     private Date Loan.loanNeededBy;
     
-    @Column(name = "loan_period", columnDefinition = "INT")
-    @NotNull
-    private Integer Loan.loanPeriod;
-    
     @Column(name = "comments", columnDefinition = "VARCHAR", length = 2000)
     private String Loan.comments;
+    
+    @Column(name = "supportDocumentName", columnDefinition = "VARCHAR", length = 75)
+    private String Loan.supportDocumentName;
+
+    public String Loan.getSupportDocumentName() {
+        return this.supportDocumentName;
+    }
+    
+    public void Loan.setSupportDocumentName(String supportDocumentName) {
+        this.supportDocumentName = supportDocumentName;
+    }
+
     
     public User Loan.getUserId() {
         return this.userId;
@@ -62,14 +63,6 @@ privileged aspect Loan_Roo_DbManaged {
     public void Loan.setUserId(User userId) {
         this.userId = userId;
     }
-    
-//    public Guarantor Loan.getGuarantorId() {
-//        return this.guarantorId;
-//    }
-//    
-//    public void Loan.setGuarantorId(Guarantor guarantorId) {
-//        this.guarantorId = guarantorId;
-//    }
     
     public Loanstatus Loan.getLoanStatusId() {
         return this.loanStatusId;
@@ -109,14 +102,6 @@ privileged aspect Loan_Roo_DbManaged {
     
     public void Loan.setLoanNeededBy(Date loanNeededBy) {
         this.loanNeededBy = loanNeededBy;
-    }
-    
-    public Integer Loan.getLoanPeriod() {
-        return this.loanPeriod;
-    }
-    
-    public void Loan.setLoanPeriod(Integer loanPeriod) {
-        this.loanPeriod = loanPeriod;
     }
     
     public String Loan.getComments() {

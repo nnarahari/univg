@@ -178,7 +178,6 @@ CREATE TABLE address (
 	FOREIGN KEY (addressTypeId) REFERENCES addressType(id)
 ) ENGINE=InnoDB;
 
-
 CREATE TABLE loan (
 	id BIGINT NOT NULL AUTO_INCREMENT,
 	userId bigint not null,
@@ -186,13 +185,12 @@ CREATE TABLE loan (
 	loan_amount DECIMAL(10 , 2) NOT NULL,
 	loan_naeeded_for VARCHAR(200),
 	loan_needed_by DATETIME NOT NULL,
-	loan_period INT NOT NULL,
-	loanStatusId BIGINT not null,
 	comments VARCHAR(2000),
+	supportDocumentName VARCHAR(75),
+	loanStatusId BIGINT not null,
 	PRIMARY KEY (id),
 	FOREIGN KEY (userId) REFERENCES user(id),
 	FOREIGN KEY (loanStatusId) REFERENCES loanStatus(id)	
-
 ) ENGINE=InnoDB;
 
 CREATE TABLE corporate (

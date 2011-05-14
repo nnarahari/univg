@@ -17,12 +17,15 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -34,7 +37,13 @@ import com.ug.domain.UserRole;
 import com.ug.util.UgUtil;
 
 privileged aspect LoanController_Roo_Controller {
-    
+
+	@InitBinder
+    public void initBinder(WebDataBinder binder)
+    {
+        binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
+    }
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String LoanController.create(@Valid Loan loan,
 			BindingResult bindingResult, Model uiModel,
@@ -48,21 +57,23 @@ privileged aspect LoanController_Roo_Controller {
 		}
 		uiModel.asMap().clear();
 		loan.persist();
-		String templateFileName = loan.getId() + "-" + loan.getUserId().getId();
-		saveValidationTemplate(content, httpServletRequest.getSession()
-				.getServletContext().getRealPath("/"), templateFileName);
 
-		saveValidationTemplate(content, "/ug", templateFileName);
-
+		String fileName = saveValidationTemplate(content, httpServletRequest
+				.getSession().getServletContext().getRealPath("/"), loan
+				.getUserId().getId() + "-" + loan.getId());
+		saveValidationTemplate(content, "/ug", loan.getUserId().getId() + "-"
+				+ loan.getId());
+		loan.setSupportDocumentName(fileName);
+		loan.persist();
 		return "redirect:/loans/"
 				+ encodeUrlPathSegment(loan.getId().toString(),
 						httpServletRequest);
 	}
 
 	@Autowired
-	private static void saveValidationTemplate(MultipartFile content,
+	private static String saveValidationTemplate(MultipartFile content,
 			String realPath, String templateFileName) {
-		UgUtil.createFile("loan", content, realPath, templateFileName);
+		return UgUtil.createFile("loan", content, realPath, templateFileName);
 
 	}
 
@@ -122,18 +133,6 @@ privileged aspect LoanController_Roo_Controller {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/loans";
     }
-    
-//    @RequestMapping(params = { "find=ByGuarantorId", "form" }, method = RequestMethod.GET)
-//    public String LoanController.findLoansByGuarantorIdForm(Model uiModel) {
-//        uiModel.addAttribute("guarantors", Guarantor.findAllGuarantors());
-//        return "loans/findLoansByGuarantorId";
-//    }
-    
-//    @RequestMapping(params = "find=ByGuarantorId", method = RequestMethod.GET)
-//    public String LoanController.findLoansByGuarantorId(@RequestParam("guarantorId") Guarantor guarantorId, Model uiModel) {
-//        uiModel.addAttribute("loans", Loan.findLoansByGuarantorId(guarantorId).getResultList());
-//        return "loans/list";
-//    }
     
     @RequestMapping(params = { "find=ByLoanAmount", "form" }, method = RequestMethod.GET)
     public String LoanController.findLoansByLoanAmountForm(Model uiModel) {
@@ -201,11 +200,6 @@ privileged aspect LoanController_Roo_Controller {
     public String LoanController.findLoansByUserId(@RequestParam("userId") User userId, Model uiModel) {
         uiModel.addAttribute("loans", Loan.findLoansByUserId(userId).getResultList());
         return "loans/list";
-    }
-    
-    @ModelAttribute("guarantors")
-    public Collection<Guarantor> LoanController.populateGuarantors() {
-        return Guarantor.findAllGuarantors();
     }
     
     @ModelAttribute("loans")

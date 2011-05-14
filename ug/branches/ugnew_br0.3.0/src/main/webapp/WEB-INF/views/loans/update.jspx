@@ -8,8 +8,6 @@
         <field:input field="loanNaeededFor" id="c_com_ug_domain_Loan_loanNaeededFor" z="dnx22lVQN7AeLWwBgadvWJk82JY="/>
         <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
         <field:input field="loanAmount" id="c_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="sRpq/u7od98yZXyVfBV8wFXZHaY="/>
-        <field:input field="loanPeriod" id="c_com_ug_domain_Loan_loanPeriod" required="true" validationMessageCode="field_invalid_integer" z="q+KuUqDOY8ZsIkJJyaSWxU8EdTI="/>
-        <field:select field="guarantorId" id="c_com_ug_domain_Loan_guarantorId" itemValue="id" items="${guarantors}" path="/guarantors" z="N1NhmRA5El30DcqJFpmi2QrzRko="/>
         <field:input field="comments" id="c_com_ug_domain_Loan_comments" z="wk1O+gzyRH+qTVfstqOrsD1pF5w="/>
         <field:select field="loanStatusId" id="c_com_ug_domain_Loan_loanStatusId" itemValue="id" items="${loanstatuses}" path="/loanstatuses" z="5GkkK0wPaYGsgo2G+0VfkeYWNUw="/>
     </form:update>
