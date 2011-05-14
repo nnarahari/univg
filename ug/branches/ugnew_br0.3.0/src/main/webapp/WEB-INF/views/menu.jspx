@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:sec="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
 <jsp:directive.page import="com.ug.util.UgUtil"/>
 	<jsp:directive.page import="com.ug.domain.User"/>
 	<jsp:directive.page import="com.ug.util.UgUtil"/> 
@@ -26,7 +26,7 @@
     <menu:category id="c_profile" z="7+DSGeUy45gwkQx/NptxyQe7XpY=">
             <menu:item id="i_profile_new" messageCode="global_menu_new" url="/profiles?form" z="5CN+Gy9le00bCK9RJj72N/fBXsM="/>
         <menu:item id="i_profile_list" messageCode="global_menu_list" url="/profiles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Xn953x2DUSQIcljOjuowLDd1gRc="/>
-        <menu:item id="fi_profile_userid" messageCode="global_menu_find" url="/profiles?find=ByUserId&amp;form" z="YWIO6zh/b+VbGwIhvPcLFKO3I94="/>
+        <menu:item id="fi_profile_userid" messageCode="student_menu_find_profile" url="/profiles?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
         <menu:item id="fi_profile_universityid" messageCode="global_menu_find" url="/profiles?find=ByUniversityId&amp;form" z="XWsNTP1zAcAKovoco1BbHiwNdY4="/>
         </menu:category>
     <menu:category id="c_university" z="BKAmptBGIXfVmWi9r315z/BHEN0=">
@@ -44,7 +44,7 @@
     <menu:category id="c_address" z="my5R1aInTRohGzWz9TL4j8LX/vE=">
             <menu:item id="i_address_new" messageCode="global_menu_new" url="/addresses?form" z="vg+UZ0neKcizSzKiVzXeI3oY1BA="/>
         <menu:item id="i_address_list" messageCode="global_menu_list" url="/addresses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="u8ooCATbc0N+VHl1spo80t0zy+k="/>
-        <menu:item id="fi_address_userid" messageCode="global_menu_find" url="/addresses?find=ByUserId&amp;form" z="Kqkjv5jXpJIk2xIgKUVusc3yoe0="/>
+        <menu:item id="fi_address_userid" messageCode="student_menu_find_addresses" url="/addresses?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
         </menu:category>
     <menu:category id="c_user" z="uoTSf/uIZ821ZppidzS9aO776yk=">
             <menu:item id="i_user_new" messageCode="global_menu_new" url="/users?form" z="Zv1m8u2rG+JFKcvJ+AHVVK0ey24="/>
@@ -59,12 +59,12 @@
     <menu:category id="c_loan" z="S+w7sxbJV/kGsRBzpM6sxIvlUrs=">
             <menu:item id="i_loan_new" messageCode="global_menu_new" url="/loans?form" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
         <menu:item id="i_loan_list" messageCode="global_menu_list" url="/loans?page=1&amp;size=${empty param.size ? 10 : param.size}" z="T1OUmbBUiEvZna/Ykv4qqBTNaE4="/>
-        <menu:item id="fi_loan_userid" messageCode="global_menu_find" url="/loans?find=ByUserId&amp;form" z="Mf2HBIWjX0XjNj6JjM4pQmSFbzY="/>
-        <menu:item id="fi_loan_guarantorid" messageCode="global_menu_find" url="/loans?find=ByGuarantorId&amp;form" z="cukvWuMuGiqL5cj3afhRsutSWPU="/>
+        <menu:item id="fi_loan_userid" messageCode="student_menu_find_loan" url="/loans?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
+        
         <menu:item id="fi_loan_loanamount" messageCode="global_menu_find" url="/loans?find=ByLoanAmount&amp;form" z="tSyBu//pJHMmx/1vELgP+q7QhIg="/>
         <menu:item id="fi_loan_loanneededby" messageCode="global_menu_find" url="/loans?find=ByLoanNeededBy&amp;form" z="1O/7TFFCnto79pVBP+elP2PC7i8="/>
         <menu:item id="fi_loan_loanneededbybetween" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByBetween&amp;form" z="hx8zmfKc5aMCSu0qJAqZs7y81bg="/>
-        <menu:item id="fi_loan_loanorigindatebetween" messageCode="global_menu_find" url="/loans?find=ByLoanOriginDateBetween&amp;form" z="x4UUO4JOz08vn0Ed1ry7XXF2y8g="/>
+        
         <menu:item id="fi_loan_loanstatusid" messageCode="global_menu_find" url="/loans?find=ByLoanStatusId&amp;form" z="m78MheoLWRfME4rEqyJyw7Znn1c="/>
         </menu:category>
     <menu:category id="c_gender" z="rs6Edo9pdk6gqZx5Augnd7P/lu0=">
@@ -86,7 +86,11 @@
         <menu:item id="i_userrole_list" messageCode="global_menu_list" url="/userroles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fTjcT4INZTypLgu+ZHmwzE55ORs="/>
         <menu:item id="fi_userrole_userentry" messageCode="global_menu_find" url="/userroles?find=ByUserEntry&amp;form" z="JLowrgxSZ/Geluin/9qGXem92Ng="/>
         </menu:category>
-    </menu:menu>
+    <menu:category id="c_grantneededfor" z="0St0QawNwlDz2FMKLA+q2IDkLvk=">
+                <menu:item id="i_grantneededfor_new" messageCode="global_menu_new" url="/grantneededfors?form" z="TzQbrsLPleIYSrpTV78KUy/Zt2E="/>
+            <menu:item id="i_grantneededfor_list" messageCode="global_menu_list" url="/grantneededfors?page=1&amp;size=${empty param.size ? 10 : param.size}" z="z8pjE3cHXRvoJOEhiFugGy29ePQ="/>
+            </menu:category>
+        </menu:menu>
 	</sec:authorize>
 	<jsp:scriptlet>
 		User loggedInUser = UgUtil.getLoggedInUser();
@@ -96,18 +100,14 @@
 	<sec:authorize ifAllGranted="student">
 	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
 		<menu:category id="c_loan" z="S+w7sxbJV/kGsRBzpM6sxIvlUrs=">
-			<menu:item id="i_loan_new" messageCode="global_menu_new"
-				url="/loans?form" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs=" />
-			<menu:item id="fi_loan_userid" messageCode="student_menu_find_loan"
-				url="/loans?find=ByUserId&amp;userId=${loggedInUserId}" z="Mf2HBIWjX0XjNj6JjM4pQmSFbzY=" />
+			<menu:item id="i_loan_new" messageCode="global_menu_new" url="/loans?form" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
+			<menu:item id="fi_loan_userid" messageCode="student_menu_find_loan" url="/loans?find=ByUserId&amp;userId=${loggedInUserId}" z="Mf2HBIWjX0XjNj6JjM4pQmSFbzY="/>
 		
 		</menu:category>
 		<menu:category id="c_profile" z="7+DSGeUy45gwkQx/NptxyQe7XpY=">
 			<!-- <menu:item id="i_profile_new" messageCode="global_menu_new"
 				url="/profiles?form" z="5CN+Gy9le00bCK9RJj72N/fBXsM=" /> -->
-			<menu:item id="fi_profile_userid" messageCode="student_menu_find_profile"
-				url="/profiles?find=ByUserId&amp;userId=${loggedInUserId}"
-				z="YWIO6zh/b+VbGwIhvPcLFKO3I94=" />
+			<menu:item id="fi_profile_userid" messageCode="student_menu_find_profile" url="/profiles?find=ByUserId&amp;userId=${loggedInUserId}" z="YWIO6zh/b+VbGwIhvPcLFKO3I94="/>
 				
 		</menu:category>
 		<!--  <menu:category id="c_guarantor" z="48v0rYVmUXF5cYVu+KGklNC8tkI=">
@@ -118,10 +118,8 @@
 				z="OpTPKNBWmC6+RKVyM0iNgWnKpnM=" />
 		</menu:category>  -->
 		<menu:category id="c_address" z="my5R1aInTRohGzWz9TL4j8LX/vE=">
-			<menu:item id="i_address_new" messageCode="global_menu_new"
-				url="/addresses?form" z="vg+UZ0neKcizSzKiVzXeI3oY1BA=" />
-			<menu:item id="fi_address_userid" messageCode="student_menu_find_addresses"
-				url="/addresses?find=ByUserId&amp;userId=${loggedInUserId}" z="Kqkjv5jXpJIk2xIgKUVusc3yoe0=" />
+			<menu:item id="i_address_new" messageCode="global_menu_new" url="/addresses?form" z="vg+UZ0neKcizSzKiVzXeI3oY1BA="/>
+			<menu:item id="fi_address_userid" messageCode="student_menu_find_addresses" url="/addresses?find=ByUserId&amp;userId=${loggedInUserId}" z="Kqkjv5jXpJIk2xIgKUVusc3yoe0="/>
 				
 		</menu:category>
 	</menu:menu>
@@ -129,22 +127,13 @@
 
 	<sec:authorize ifAllGranted="corporate">
 	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-		<menu:category id="c_corporateloanamount"
-			z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
-			<menu:item id="i_corporateloanamount_new"
-				messageCode="global_menu_new" url="/corporateloanamounts?form"
-				z="tLT912vXYJne7+0Ha12szO0UN4A=" />
-			<menu:item id="i_corporateloanamount_list"
-				messageCode="global_menu_list"
-				url="/corporateloanamounts?page=1&amp;size=${empty param.size ? 10 : param.size}"
-				z="JIFaxrCmi7oHU/i0prsY07si1+Y=" />
+		<menu:category id="c_corporateloanamount" z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
+			<menu:item id="i_corporateloanamount_new" messageCode="global_menu_new" url="/corporateloanamounts?form" z="tLT912vXYJne7+0Ha12szO0UN4A="/>
+			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
 		</menu:category>
 		<menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
-			<menu:item id="i_corporate_new" messageCode="global_menu_new"
-				url="/corporates?form" z="2B378xTDeK85UzqNloDvE7GLwuY=" />
-			<menu:item id="i_corporate_list" messageCode="global_menu_list"
-				url="/corporates?page=1&amp;size=${empty param.size ? 10 : param.size}"
-				z="w0/pNyFp2tR+ecZpHeCYWzvaV4I=" />
+			<menu:item id="i_corporate_new" messageCode="global_menu_new" url="/corporates?form" z="2B378xTDeK85UzqNloDvE7GLwuY="/>
+			<menu:item id="i_corporate_list" messageCode="global_menu_list" url="/corporates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="w0/pNyFp2tR+ecZpHeCYWzvaV4I="/>
 		</menu:category>
 	</menu:menu>
 	</sec:authorize>

@@ -9,6 +9,7 @@ import com.ug.domain.Corporate;
 import com.ug.domain.CorporateLoanAmount;
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
+import com.ug.domain.Grantneededfor;
 import com.ug.domain.Guarantor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
@@ -72,6 +73,14 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    org.springframework.core.convert.converter.Converter<Grantneededfor, String> ApplicationConversionServiceFactoryBean.getGrantneededforConverter() {
+        return new org.springframework.core.convert.converter.Converter<Grantneededfor, String>() {
+            public String convert(Grantneededfor grantneededfor) {
+                return new StringBuilder().append(grantneededfor.getGrantNeed()).append(" ").append(grantneededfor.getGrantNeedDescription()).toString();
+            }
+        };
+    }
+    
     org.springframework.core.convert.converter.Converter<Guarantor, String> ApplicationConversionServiceFactoryBean.getGuarantorConverter() {
         return new org.springframework.core.convert.converter.Converter<Guarantor, String>() {
             public String convert(Guarantor guarantor) {
@@ -83,7 +92,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     org.springframework.core.convert.converter.Converter<Loan, String> ApplicationConversionServiceFactoryBean.getLoanConverter() {
         return new org.springframework.core.convert.converter.Converter<Loan, String>() {
             public String convert(Loan loan) {
-                return new StringBuilder().append(loan.getLoanName()).append(" ").append(loan.getLoanAmount()).append(" ").append(loan.getLoanNaeededFor()).append(" ").append(loan.getLoanNeededBy()).toString();
+                return new StringBuilder().append(loan.getLoanName()).append(" ").append(loan.getLoanAmount()).append(" ").append(loan.getLoanNeededBy()).append(" ").append(loan.getComments()).toString();
             }
         };
     }
@@ -151,6 +160,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getCorporateLoanAmountConverter());
         registry.addConverter(getDepartmentConverter());
         registry.addConverter(getGenderConverter());
+        registry.addConverter(getGrantneededforConverter());
         registry.addConverter(getGuarantorConverter());
         registry.addConverter(getLoanConverter());
         registry.addConverter(getLoanstatusConverter());

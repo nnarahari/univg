@@ -29,7 +29,7 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
-import com.ug.domain.Guarantor;
+import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
 import com.ug.domain.User;
@@ -224,7 +224,12 @@ privileged aspect LoanController_Roo_Controller {
 			return users;
 		}
     }
-    
+      
+    @ModelAttribute("grantneededfors")
+    public Collection<Grantneededfor> LoanController.populateGrantneededfors() {
+        return Grantneededfor.findAllGrantneededfors();
+    }
+      
     void LoanController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("loan_minloanorigindate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("loan_maxloanneededby_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));

@@ -12,6 +12,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.ug.domain.Department;
+import com.ug.domain.Grantneededfor;
 import com.ug.domain.Programstudy;
 import com.ug.domain.State;
 import com.ug.domain.University;
@@ -162,6 +163,34 @@ public class LoadFirstTimeData {
 		University dept = new University();
 		String deptName = el.getAttribute("name");
 		dept.setUniversityName(deptName);
+		return dept;
+	}
+	
+	public static void loadLoanNeeds(String fileName) {
+		// get the root element
+		Document docEle = parseXmlFile(fileName);
+
+		// get a nodelist of elements
+		NodeList nl = docEle.getElementsByTagName("request");
+		if (nl != null && nl.getLength() > 0) {
+			for (int i = 0; i < nl.getLength(); i++) {
+
+				// get the employee element
+				Element el = (Element) nl.item(i);
+
+				// get the Employee object
+				Grantneededfor e = getLoanNeeds(el);
+
+				e.persist();
+			}
+		}
+	}
+
+	private static Grantneededfor getLoanNeeds(Element el) {
+		Grantneededfor dept = new Grantneededfor();
+		String deptName = el.getAttribute("name");
+		dept.setGrantNeed(deptName);
+		dept.setGrantNeedDescription(deptName);
 		return dept;
 	}
 

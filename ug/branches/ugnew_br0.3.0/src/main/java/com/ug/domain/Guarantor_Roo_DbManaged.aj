@@ -4,24 +4,18 @@
 package com.ug.domain;
 
 import com.ug.domain.Gender;
-import com.ug.domain.Loan;
 import com.ug.domain.State;
 import com.ug.domain.University;
 import com.ug.domain.User;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 privileged aspect Guarantor_Roo_DbManaged {
     
-//    @OneToMany(mappedBy = "guarantorId")
-//    private Set<Loan> Guarantor.loans;
-//    
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private User Guarantor.userId;
@@ -87,14 +81,6 @@ privileged aspect Guarantor_Roo_DbManaged {
     @Column(name = "zip", columnDefinition = "VARCHAR", length = 10)
     @NotNull
     private String Guarantor.zip;
-    
-//    public Set<Loan> Guarantor.getLoans() {
-//        return this.loans;
-//    }
-//    
-//    public void Guarantor.setLoans(Set<Loan> loans) {
-//        this.loans = loans;
-//    }
     
     public User Guarantor.getUserId() {
         return this.userId;

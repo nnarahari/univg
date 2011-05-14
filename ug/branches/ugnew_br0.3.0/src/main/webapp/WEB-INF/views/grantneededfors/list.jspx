@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Grantneededfor" items="${grantneededfors}" z="xrD6DHWHPUUUuvfZVbL9kMZFM5E=">
+        <table:table data="${grantneededfors}" id="l_com_ug_domain_Grantneededfor" path="/grantneededfors" z="PufmpBa0mxEOIN38Xj8vLOx83go=">
+            <table:column id="c_com_ug_domain_Grantneededfor_loans" property="loans" z="Y6x48q54mTXJErpcdj3bffqtexE="/>
+            <table:column id="c_com_ug_domain_Grantneededfor_grantNeed" property="grantNeed" z="rl/r5LFbpYWAktDU6z3iakmeon8="/>
+            <table:column id="c_com_ug_domain_Grantneededfor_grantNeedDescription" property="grantNeedDescription" z="aUQ6+WcG7umSAkkpNveeiyn71Aw="/>
+        </table:table>
+    </page:list>
+</div>

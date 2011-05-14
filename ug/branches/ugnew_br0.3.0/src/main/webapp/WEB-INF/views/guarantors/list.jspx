@@ -10,6 +10,7 @@
             <table:column id="c_com_ug_domain_Guarantor_userId" property="userId" z="yFJN8xIznieR+8+Zw6prp+yaX1s="/>
             <table:column id="c_com_ug_domain_Guarantor_lastName" property="lastName" z="vzyGymK/HqKp+tMM1BoYT6tnXf8="/>
             <table:column id="c_com_ug_domain_Guarantor_country" property="country" z="8CRUgeV9CIscwJgFsoQKq0FEQGc="/>
+			<table:column id="c_com_ug_domain_Guarantor_genderId" property="genderId" z="WneRdd/G4PnO89CC782CjN8CnOk="/>
         </table:table>
     </page:list>
 </div>

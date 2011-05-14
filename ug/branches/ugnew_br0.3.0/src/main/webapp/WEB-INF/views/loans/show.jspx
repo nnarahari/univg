@@ -5,10 +5,11 @@
     <page:show id="ps_com_ug_domain_Loan" object="${loan}" path="/loans" z="gZgkQSwud16CU3EBijRrLkcGEVY=">
         <field:display field="userId" id="s_com_ug_domain_Loan_userId" object="${loan}" z="15WFy1Bj9e47y8pwez82AA9pRdE="/>
         <field:display field="loanName" id="s_com_ug_domain_Loan_loanName" object="${loan}" z="w+DKenKEkbdx3Er6VC0egHd2Src="/>
-        <field:display field="loanNaeededFor" id="s_com_ug_domain_Loan_loanNaeededFor" object="${loan}" z="UG5AwvzUK6FKtFBshsYMRy+R8p0="/>
         <field:display date="true" dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="s_com_ug_domain_Loan_loanNeededBy" object="${loan}" z="ucMfb5nWw5hD+NMpc1t2W/uJ0ow="/>
         <field:display field="loanAmount" id="s_com_ug_domain_Loan_loanAmount" object="${loan}" z="0K2KUqsd/vcRnBo/BQOVU2kqb50="/>
         <field:display field="comments" id="s_com_ug_domain_Loan_comments" object="${loan}" z="+zkQudb3MxeEcBVgWxUAPiUee8g="/>
         <field:display field="loanStatusId" id="s_com_ug_domain_Loan_loanStatusId" object="${loan}" z="2GD9OeYNjmqulqG4RKVwUjt/SkI="/>
+   <!--  <field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> -->
+    <field:display field="grantNeededFor" id="s_com_ug_domain_Loan_grantNeededFor" object="${loan}" z="Wgkovbziuaa3w7A8+UJIDATX8+4="/>
     </page:show>
 </div>

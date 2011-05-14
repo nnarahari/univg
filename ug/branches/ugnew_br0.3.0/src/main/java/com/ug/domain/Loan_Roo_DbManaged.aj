@@ -3,16 +3,18 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Grantneededfor;
+import com.ug.domain.Loanstatus;
+import com.ug.domain.User;
+import java.lang.String;
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 privileged aspect Loan_Roo_DbManaged {
@@ -20,6 +22,10 @@ privileged aspect Loan_Roo_DbManaged {
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private User Loan.userId;
+    
+    @ManyToOne
+    @JoinColumn(name = "grantNeededFor", referencedColumnName = "id", nullable = false)
+    private Grantneededfor Loan.grantNeededFor;
     
     @ManyToOne
     @JoinColumn(name = "loanStatusId", referencedColumnName = "id", nullable = false)
@@ -32,9 +38,6 @@ privileged aspect Loan_Roo_DbManaged {
     @NotNull
     private BigDecimal Loan.loanAmount;
     
-    @Column(name = "loan_naeeded_for", columnDefinition = "VARCHAR", length = 200)
-    private String Loan.loanNaeededFor;
-    
     @Column(name = "loan_needed_by", columnDefinition = "DATETIME")
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -46,15 +49,6 @@ privileged aspect Loan_Roo_DbManaged {
     
     @Column(name = "supportDocumentName", columnDefinition = "VARCHAR", length = 75)
     private String Loan.supportDocumentName;
-
-    public String Loan.getSupportDocumentName() {
-        return this.supportDocumentName;
-    }
-    
-    public void Loan.setSupportDocumentName(String supportDocumentName) {
-        this.supportDocumentName = supportDocumentName;
-    }
-
     
     public User Loan.getUserId() {
         return this.userId;
@@ -62,6 +56,14 @@ privileged aspect Loan_Roo_DbManaged {
     
     public void Loan.setUserId(User userId) {
         this.userId = userId;
+    }
+    
+    public Grantneededfor Loan.getGrantNeededFor() {
+        return this.grantNeededFor;
+    }
+    
+    public void Loan.setGrantNeededFor(Grantneededfor grantNeededFor) {
+        this.grantNeededFor = grantNeededFor;
     }
     
     public Loanstatus Loan.getLoanStatusId() {
@@ -88,14 +90,6 @@ privileged aspect Loan_Roo_DbManaged {
         this.loanAmount = loanAmount;
     }
     
-    public String Loan.getLoanNaeededFor() {
-        return this.loanNaeededFor;
-    }
-    
-    public void Loan.setLoanNaeededFor(String loanNaeededFor) {
-        this.loanNaeededFor = loanNaeededFor;
-    }
-    
     public Date Loan.getLoanNeededBy() {
         return this.loanNeededBy;
     }
@@ -110,6 +104,14 @@ privileged aspect Loan_Roo_DbManaged {
     
     public void Loan.setComments(String comments) {
         this.comments = comments;
+    }
+    
+    public String Loan.getSupportDocumentName() {
+        return this.supportDocumentName;
+    }
+    
+    public void Loan.setSupportDocumentName(String supportDocumentName) {
+        this.supportDocumentName = supportDocumentName;
     }
     
 }

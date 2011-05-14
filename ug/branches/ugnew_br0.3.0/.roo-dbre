@@ -139,6 +139,19 @@
             <unique-column name="id"/>
         </unique>
     </table>
+    <table name="grantneededfor">
+        <column name="id" primaryKey="true" required="true" size="19" type="-5,BIGINT"/>
+        <column name="grantNeed" primaryKey="false" required="true" size="255" type="12,VARCHAR"/>
+        <column name="grantNeedDescription" primaryKey="false" required="false" size="200" type="12,VARCHAR"/>
+        <column name="version" primaryKey="false" required="false" size="10" type="4,INT"/>
+        <foreign-key foreignTable="loan" name="loan_ibfk_2" onDelete="none" onUpdate="none">
+            <option key="exported" value="true"/>
+            <reference foreign="grantNeededFor" local="id"/>
+        </foreign-key>
+        <unique name="PRIMARY">
+            <unique-column name="id"/>
+        </unique>
+    </table>
     <table name="guarantor">
         <column name="id" primaryKey="true" required="true" size="19" type="-5,BIGINT"/>
         <column name="userId" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
@@ -176,10 +189,6 @@
             <option key="exported" value="false"/>
             <reference foreign="id" local="genderId"/>
         </foreign-key>
-        <foreign-key foreignTable="loan" name="loan_ibfk_2" onDelete="none" onUpdate="none">
-            <option key="exported" value="true"/>
-            <reference foreign="guarantorId" local="id"/>
-        </foreign-key>
         <unique name="PRIMARY">
             <unique-column name="id"/>
         </unique>
@@ -199,21 +208,20 @@
     <table name="loan">
         <column name="id" primaryKey="true" required="true" size="19" type="-5,BIGINT"/>
         <column name="userId" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
-        <column name="guarantorId" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
         <column name="loan_name" primaryKey="false" required="false" size="20" type="12,VARCHAR"/>
         <column name="loan_amount" primaryKey="false" required="true" size="10,2" type="3,DECIMAL"/>
-        <column name="loan_naeeded_for" primaryKey="false" required="false" size="200" type="12,VARCHAR"/>
+        <column name="grantNeededFor" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
         <column name="loan_needed_by" primaryKey="false" required="true" size="19" type="93,DATETIME"/>
-        <column name="loan_period" primaryKey="false" required="true" size="10" type="4,INT"/>
-        <column name="loanStatusId" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
         <column name="comments" primaryKey="false" required="false" size="2000" type="12,VARCHAR"/>
+        <column name="supportDocumentName" primaryKey="false" required="false" size="75" type="12,VARCHAR"/>
+        <column name="loanStatusId" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
         <foreign-key foreignTable="user" name="loan_ibfk_1" onDelete="none" onUpdate="none">
             <option key="exported" value="false"/>
             <reference foreign="id" local="userId"/>
         </foreign-key>
-        <foreign-key foreignTable="guarantor" name="loan_ibfk_2" onDelete="none" onUpdate="none">
+        <foreign-key foreignTable="grantneededfor" name="loan_ibfk_2" onDelete="none" onUpdate="none">
             <option key="exported" value="false"/>
-            <reference foreign="id" local="guarantorId"/>
+            <reference foreign="id" local="grantNeededFor"/>
         </foreign-key>
         <foreign-key foreignTable="loanstatus" name="loan_ibfk_3" onDelete="none" onUpdate="none">
             <option key="exported" value="false"/>
@@ -225,8 +233,8 @@
         <index name="userId">
             <index-column name="userId"/>
         </index>
-        <index name="guarantorId">
-            <index-column name="guarantorId"/>
+        <index name="grantNeededFor">
+            <index-column name="grantNeededFor"/>
         </index>
         <index name="loanStatusId">
             <index-column name="loanStatusId"/>
@@ -258,6 +266,9 @@
         <column name="home_phone" primaryKey="false" required="true" size="10" type="12,VARCHAR"/>
         <column name="linked_in_profile" primaryKey="false" required="false" size="75" type="12,VARCHAR"/>
         <column name="mobile" primaryKey="false" required="true" size="10" type="12,VARCHAR"/>
+        <column name="photoIdentifier" primaryKey="false" required="false" size="75" type="12,VARCHAR"/>
+        <column name="resumeIdentifier" primaryKey="false" required="false" size="75" type="12,VARCHAR"/>
+        <column name="universityEmail" primaryKey="false" required="false" size="255" type="12,VARCHAR"/>
         <foreign-key foreignTable="user" name="profile_ibfk_1" onDelete="none" onUpdate="none">
             <option key="exported" value="false"/>
             <reference foreign="id" local="userId"/>

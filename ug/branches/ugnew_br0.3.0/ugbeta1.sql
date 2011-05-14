@@ -1,3 +1,11 @@
+CREATE TABLE grantNeededFor (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	grantNeed VARCHAR(255) NOT NULL,
+	grantNeedDescription VARCHAR(200),
+	version INT,
+	PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
 CREATE TABLE state (
 	id BIGINT NOT NULL AUTO_INCREMENT,
 	stateName VARCHAR(255) NOT NULL,
@@ -183,13 +191,14 @@ CREATE TABLE loan (
 	userId bigint not null,
 	loan_name VARCHAR(20),
 	loan_amount DECIMAL(10 , 2) NOT NULL,
-	loan_naeeded_for VARCHAR(200),
+	grantNeededFor bigint not null,
 	loan_needed_by DATETIME NOT NULL,
 	comments VARCHAR(2000),
 	supportDocumentName VARCHAR(75),
 	loanStatusId BIGINT not null,
 	PRIMARY KEY (id),
 	FOREIGN KEY (userId) REFERENCES user(id),
+	FOREIGN KEY (grantNeededFor) REFERENCES grantNeededFor(id),
 	FOREIGN KEY (loanStatusId) REFERENCES loanStatus(id)	
 ) ENGINE=InnoDB;
 
@@ -225,3 +234,5 @@ CREATE TABLE corporate_loan_amount (
 	PRIMARY KEY (id),
 	FOREIGN KEY (corporateId) REFERENCES corporate(id) 
 ) ENGINE=InnoDB;
+
+
