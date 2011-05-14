@@ -67,15 +67,14 @@ privileged aspect Profile_Roo_DbManaged {
     @NotNull
     private String Profile.mobile;
     
-    //@Column(name = "mobile", columnDefinition = "VARCHAR", length = 10)
-    //@NotNull
-    @Transient
+    @Column(name = "universityEmail", columnDefinition = "VARCHAR", length = 255)
     private String Profile.universityEmail;
 
-    @Transient
+    @Column(name = "photoIdentifier", columnDefinition = "VARCHAR", length = 75)
     private String Profile.photoIdentifier;
     
-    @Transient
+
+    @Column(name = "resumeIdentifier", columnDefinition = "VARCHAR", length = 75)
     private String Profile.resumeIdentifier;
     
     

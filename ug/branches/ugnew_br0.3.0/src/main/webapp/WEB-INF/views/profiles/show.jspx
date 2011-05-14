@@ -9,6 +9,7 @@
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:scriptlet>
+        String contextRoot = request.getContextPath();
 		User loggedInUser = UgUtil.getLoggedInUser();
 		String loggedInUserId = loggedInUser.getId()+"";
 		request.setAttribute("loggedInUserId", loggedInUserId);
@@ -18,14 +19,14 @@
 		
 		if(!profiles.isEmpty())
 		{
-			request.setAttribute("PhotoIdentifier",firstProfile.getPhotoIdentifier() );
-			request.setAttribute("ResumeIdentifier",firstProfile.getResumeIdentifier() );
+			request.setAttribute("PhotoIdentifier",contextRoot+firstProfile.getPhotoIdentifier() );
+			request.setAttribute("ResumeIdentifier",contextRoot+firstProfile.getResumeIdentifier() );
 		}
 	</jsp:scriptlet>
     
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_ug_domain_Profile" object="${profile}" path="/profiles" z="pQKHv9iYgpOl5Optq7ztM3tGfx8=">
-        Photograph(2*2 inch):<img src="${PhotoIdentifier}" height="150px" width="150px" />
+        <img src="${PhotoIdentifier}" height="150px" width="150px" />
         <field:display field="userId" id="s_com_ug_domain_Profile_userId" object="${profile}" z="APZqCVRPtPwBGVW05JhTxI80/CU="/>
         <field:display field="citizenship" id="s_com_ug_domain_Profile_citizenship" object="${profile}" z="JcnrWlM6e3OsoJDopDDTnotc8fs="/>
         <field:display field="genderId" id="s_com_ug_domain_Profile_genderId" object="${profile}" z="K5idHtckXn/MjO+PBINzwsOKgbc="/>

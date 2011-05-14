@@ -21,6 +21,8 @@ privileged aspect Profile_Roo_ToString {
         sb.append("HomePhone: ").append(getHomePhone()).append(", ");
         sb.append("LinkedInProfile: ").append(getLinkedInProfile()).append(", ");
         sb.append("Mobile: ").append(getMobile());
+        sb.append("PhotoIdentifier: ").append(getPhotoIdentifier());
+        sb.append("ResumeIdentifier: ").append(getResumeIdentifier());
         return sb.toString();
     }
     

@@ -227,14 +227,16 @@ public class UgUtil {
 		// long size = file.getSize();
 		String fileNameToReturn = null;
 		try {
+
+			String ffname = (userId
+			+ "-"
+			+ type
+			+ file.getOriginalFilename().substring(
+					file.getOriginalFilename().indexOf('.'))).toUpperCase();
+					
 			fileNameToReturn = "/app/"
 					+ type
-					+ "/"
-					+ userId
-					+ "-"
-					+ type
-					+ file.getOriginalFilename().substring(
-							file.getOriginalFilename().indexOf('.'));
+					+ "/"+ffname;
 			String fileMe = fileLocation + fileNameToReturn;
 			System.out.println(">>>> Created file Location:" + fileMe);
 			InputStream in = file.getInputStream();

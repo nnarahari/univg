@@ -14,12 +14,15 @@ import org.joda.time.format.DateTimeFormat;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -35,6 +38,11 @@ import com.ug.util.UgUtil;
 
 privileged aspect ProfileController_Roo_Controller {
 	
+	@InitBinder
+    public void initBinder(WebDataBinder binder)
+    {
+        binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
+    }
 
     
     @RequestMapping(method = RequestMethod.POST)
@@ -56,7 +64,8 @@ privileged aspect ProfileController_Roo_Controller {
 
     	saveProfileImage(content, "/ug",profile.getUserId().getId()+"");
         saveResume(resumeContent, "/ug",profile.getUserId().getId()+"");
-       
+        System.out.println("Profile:"+profile.toString());
+        
         uiModel.asMap().clear();
         profile.persist();
         
