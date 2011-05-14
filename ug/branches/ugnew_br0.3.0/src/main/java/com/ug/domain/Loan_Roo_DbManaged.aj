@@ -3,6 +3,7 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Address;
 import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loanstatus;
 import com.ug.domain.User;
@@ -22,6 +23,10 @@ privileged aspect Loan_Roo_DbManaged {
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private User Loan.userId;
+    
+    @ManyToOne
+    @JoinColumn(name = "address", referencedColumnName = "id", nullable = false)
+    private Address Loan.address;
     
     @ManyToOne
     @JoinColumn(name = "grantNeededFor", referencedColumnName = "id", nullable = false)
@@ -56,6 +61,14 @@ privileged aspect Loan_Roo_DbManaged {
     
     public void Loan.setUserId(User userId) {
         this.userId = userId;
+    }
+    
+    public Address Loan.getAddress() {
+        return this.address;
+    }
+    
+    public void Loan.setAddress(Address address) {
+        this.address = address;
     }
     
     public Grantneededfor Loan.getGrantNeededFor() {

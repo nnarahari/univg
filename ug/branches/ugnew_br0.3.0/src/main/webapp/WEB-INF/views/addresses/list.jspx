@@ -9,7 +9,7 @@
             <table:column id="c_com_ug_domain_Address_address1" property="address1" z="UmGMejQt2z0yZrnE4sIbXpk4nHw="/>
             <table:column id="c_com_ug_domain_Address_dateFrom" property="dateFrom" z="e73ebT6i6cfI7Jqo/4J+u9t1SsM="/>
             <table:column id="c_com_ug_domain_Address_stateId" property="stateId" z="AhO8nP4qmLuG7gwDFSDbUtyPBLQ="/>
-            <table:column id="c_com_ug_domain_Address_displayIdentifier" property="displayIdentifier" z="RtjbKMmif6P1ZTiOcMDBYReN/Ns="/>
+            <table:column id="c_com_ug_domain_Address_loans" property="loans" z="g00jDhRy1jgE+OnUi+6oekarVFU="/>
         </table:table>
     </page:list>
 </div>

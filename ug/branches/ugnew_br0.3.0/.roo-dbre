@@ -27,6 +27,10 @@
             <option key="exported" value="false"/>
             <reference foreign="id" local="addressTypeId"/>
         </foreign-key>
+        <foreign-key foreignTable="loan" name="loan_ibfk_2" onDelete="none" onUpdate="none">
+            <option key="exported" value="true"/>
+            <reference foreign="address" local="id"/>
+        </foreign-key>
         <unique name="PRIMARY">
             <unique-column name="id"/>
         </unique>
@@ -144,7 +148,7 @@
         <column name="grantNeed" primaryKey="false" required="true" size="255" type="12,VARCHAR"/>
         <column name="grantNeedDescription" primaryKey="false" required="false" size="200" type="12,VARCHAR"/>
         <column name="version" primaryKey="false" required="false" size="10" type="4,INT"/>
-        <foreign-key foreignTable="loan" name="loan_ibfk_2" onDelete="none" onUpdate="none">
+        <foreign-key foreignTable="loan" name="loan_ibfk_3" onDelete="none" onUpdate="none">
             <option key="exported" value="true"/>
             <reference foreign="grantNeededFor" local="id"/>
         </foreign-key>
@@ -214,16 +218,21 @@
         <column name="loan_needed_by" primaryKey="false" required="true" size="19" type="93,DATETIME"/>
         <column name="comments" primaryKey="false" required="false" size="2000" type="12,VARCHAR"/>
         <column name="supportDocumentName" primaryKey="false" required="false" size="75" type="12,VARCHAR"/>
+        <column name="address" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
         <column name="loanStatusId" primaryKey="false" required="true" size="19" type="-5,BIGINT"/>
         <foreign-key foreignTable="user" name="loan_ibfk_1" onDelete="none" onUpdate="none">
             <option key="exported" value="false"/>
             <reference foreign="id" local="userId"/>
         </foreign-key>
-        <foreign-key foreignTable="grantneededfor" name="loan_ibfk_2" onDelete="none" onUpdate="none">
+        <foreign-key foreignTable="address" name="loan_ibfk_2" onDelete="none" onUpdate="none">
+            <option key="exported" value="false"/>
+            <reference foreign="id" local="address"/>
+        </foreign-key>
+        <foreign-key foreignTable="grantneededfor" name="loan_ibfk_3" onDelete="none" onUpdate="none">
             <option key="exported" value="false"/>
             <reference foreign="id" local="grantNeededFor"/>
         </foreign-key>
-        <foreign-key foreignTable="loanstatus" name="loan_ibfk_3" onDelete="none" onUpdate="none">
+        <foreign-key foreignTable="loanstatus" name="loan_ibfk_4" onDelete="none" onUpdate="none">
             <option key="exported" value="false"/>
             <reference foreign="id" local="loanStatusId"/>
         </foreign-key>
@@ -232,6 +241,9 @@
         </unique>
         <index name="userId">
             <index-column name="userId"/>
+        </index>
+        <index name="address">
+            <index-column name="address"/>
         </index>
         <index name="grantNeededFor">
             <index-column name="grantNeededFor"/>
@@ -245,7 +257,7 @@
         <column name="loanStatusName" primaryKey="false" required="true" size="255" type="12,VARCHAR"/>
         <column name="loanStatusDescription" primaryKey="false" required="false" size="200" type="12,VARCHAR"/>
         <column name="version" primaryKey="false" required="false" size="10" type="4,INT"/>
-        <foreign-key foreignTable="loan" name="loan_ibfk_3" onDelete="none" onUpdate="none">
+        <foreign-key foreignTable="loan" name="loan_ibfk_4" onDelete="none" onUpdate="none">
             <option key="exported" value="true"/>
             <reference foreign="loanStatusId" local="id"/>
         </foreign-key>

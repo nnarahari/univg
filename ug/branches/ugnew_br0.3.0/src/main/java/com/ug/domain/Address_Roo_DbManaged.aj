@@ -4,19 +4,25 @@
 package com.ug.domain;
 
 import com.ug.domain.Addresstype;
+import com.ug.domain.Loan;
 import com.ug.domain.State;
 import com.ug.domain.User;
 import java.lang.String;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 privileged aspect Address_Roo_DbManaged {
+    
+    @OneToMany(mappedBy = "address")
+    private Set<Loan> Address.loans;
     
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
@@ -60,6 +66,14 @@ privileged aspect Address_Roo_DbManaged {
     @Column(name = "zip", columnDefinition = "VARCHAR", length = 10)
     @NotNull
     private String Address.zip;
+    
+    public Set<Loan> Address.getLoans() {
+        return this.loans;
+    }
+    
+    public void Address.setLoans(Set<Loan> loans) {
+        this.loans = loans;
+    }
     
     public User Address.getUserId() {
         return this.userId;

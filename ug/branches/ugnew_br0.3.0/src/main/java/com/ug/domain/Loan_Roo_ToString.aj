@@ -17,6 +17,7 @@ privileged aspect Loan_Roo_ToString {
         sb.append("LoanNeededBy: ").append(getLoanNeededBy()).append(", ");
         sb.append("Comments: ").append(getComments()).append(", ");
         sb.append("SupportDocumentName: ").append(getSupportDocumentName());
+        sb.append("Address: ").append(getAddress()).append(", ");
         return sb.toString();
     }
     

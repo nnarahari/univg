@@ -29,6 +29,7 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
+import com.ug.domain.Address;
 import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
@@ -223,6 +224,11 @@ privileged aspect LoanController_Roo_Controller {
 			users.add(com.ug.util.UgUtil.getLoggedInUser());
 			return users;
 		}
+    }
+     
+    @ModelAttribute("addresses")
+    public Collection<Address> LoanController.populateAddresses() {
+        return Address.findAllAddresses();
     }
       
     @ModelAttribute("grantneededfors")

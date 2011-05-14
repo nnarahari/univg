@@ -20,6 +20,7 @@ privileged aspect Address_Roo_ToString {
         sb.append("City: ").append(getCity()).append(", ");
         sb.append("Country: ").append(getCountry()).append(", ");
         sb.append("Zip: ").append(getZip());
+        sb.append("Loans: ").append(getLoans() == null ? "null" : getLoans().size()).append(", ");
         return sb.toString();
     }
     

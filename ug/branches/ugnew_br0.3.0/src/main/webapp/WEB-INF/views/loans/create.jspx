@@ -7,9 +7,9 @@
         <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" z="bvGO4FhtYErSLN7vv1dR68M2xWs="/>
         <field:input field="loanAmount" id="c_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="sRpq/u7od98yZXyVfBV8wFXZHaY="/>
         <field:select field="grantNeededFor" id="c_com_ug_domain_Loan_grantNeededFor" itemValue="id" items="${grantneededfors}" path="/grantneededfors" z="1fXMU2spfyWeBHa6dv4VjfPvBDI="/>
-       <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
+        <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
         <field:input field="comments" id="c_com_ug_domain_Loan_comments" z="wk1O+gzyRH+qTVfstqOrsD1pF5w="/>
-        <!--  <field:input field="loanPeriod" id="c_com_ug_domain_Loan_loanPeriod" required="true" validationMessageCode="field_invalid_integer" z="q+KuUqDOY8ZsIkJJyaSWxU8EdTI="/>  -->
+	    <field:select field="address" id="c_com_ug_domain_Loan_address" itemValue="id" items="${addresses}" path="/addresses" z="XhH1V/OytyW4R7o3j06kXZY4ksY="/>
         <field:select field="loanStatusId" id="c_com_ug_domain_Loan_loanStatusId" itemValue="id" items="${loanstatuses}" path="/loanstatuses" z="5GkkK0wPaYGsgo2G+0VfkeYWNUw="/>
     </form:create-loan>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Loan" render="${not empty dependencies}" z="Wvh3Eg7q2lCLSg9SpW0vjG+50oA="/>

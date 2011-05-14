@@ -24,6 +24,7 @@ import org.springframework.web.util.WebUtils;
 
 import com.ug.domain.Address;
 import com.ug.domain.Addresstype;
+import com.ug.domain.Loan;
 import com.ug.domain.State;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
@@ -126,7 +127,12 @@ privileged aspect AddressController_Roo_Controller {
     public java.util.Collection<State> AddressController.populateStates() {
         return State.findAllStates();
     }
-    
+      
+    @ModelAttribute("loans")
+    public java.util.Collection<Loan> AddressController.populateLoans() {
+        return Loan.findAllLoans();
+    }
+  
     @ModelAttribute("users")
     public java.util.Collection<User> AddressController.populateUsers() {
 		UserRole userRole = UgUtil.getLoggedInUserRole();

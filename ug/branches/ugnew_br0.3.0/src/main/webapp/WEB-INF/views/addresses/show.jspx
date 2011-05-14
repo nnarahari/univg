@@ -14,5 +14,6 @@
         <field:display field="stateId" id="s_com_ug_domain_Address_stateId" object="${address}" z="ASwAhjP/IV692ejWMCLpc/X3joE="/>
         <field:display field="zip" id="s_com_ug_domain_Address_zip" object="${address}" z="PLi0bf/nW8yUmX+AyFeeZGmMnIY="/>
         <field:display field="country" id="s_com_ug_domain_Address_country" object="${address}" z="SmmtojupIPX3SaLPWwbJyFxea20="/>
+        <field:display field="loans" id="s_com_ug_domain_Address_loans" object="${address}" z="beea0xeWGzKD//Yr9MWueztWxUg="/>
     </page:show>
 </div>

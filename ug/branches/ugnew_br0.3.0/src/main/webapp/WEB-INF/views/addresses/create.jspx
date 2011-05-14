@@ -14,6 +14,7 @@
         <field:select field="stateId" id="c_com_ug_domain_Address_stateId" itemValue="id" items="${states}" path="/states" z="DhJvGEuh7W15rBCtySMmonIkiAc="/>
         <field:input field="country" id="c_com_ug_domain_Address_country" z="oAcHIGcdKZEFOMHRR905EEMsT9I="/>
         <field:input field="zip" id="c_com_ug_domain_Address_zip" required="true" z="MIDZ+6auNT9R8DA2MiqPVchPdow="/>
+        <field:simple field="loans" id="c_com_ug_domain_Address_loans" messageCode="entity_reference_not_managed" messageCodeAttribute="Loan" z="YrXbM54v9SGgkdkxbCZ+SWW9DsU="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Address" render="${not empty dependencies}" z="9mwAKOtm6iaAwKEjxcSLZdNqKfA="/>
 </div>
