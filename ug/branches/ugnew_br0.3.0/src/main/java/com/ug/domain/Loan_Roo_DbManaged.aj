@@ -24,9 +24,9 @@ privileged aspect Loan_Roo_DbManaged {
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private User Loan.userId;
     
-    @ManyToOne
-    @JoinColumn(name = "guarantorId", referencedColumnName = "id", nullable = false)
-    private Guarantor Loan.guarantorId;
+//    @ManyToOne
+//    @JoinColumn(name = "guarantorId", referencedColumnName = "id", nullable = false)
+//    private Guarantor Loan.guarantorId;
     
     @ManyToOne
     @JoinColumn(name = "loanStatusId", referencedColumnName = "id", nullable = false)
@@ -63,13 +63,13 @@ privileged aspect Loan_Roo_DbManaged {
         this.userId = userId;
     }
     
-    public Guarantor Loan.getGuarantorId() {
-        return this.guarantorId;
-    }
-    
-    public void Loan.setGuarantorId(Guarantor guarantorId) {
-        this.guarantorId = guarantorId;
-    }
+//    public Guarantor Loan.getGuarantorId() {
+//        return this.guarantorId;
+//    }
+//    
+//    public void Loan.setGuarantorId(Guarantor guarantorId) {
+//        this.guarantorId = guarantorId;
+//    }
     
     public Loanstatus Loan.getLoanStatusId() {
         return this.loanStatusId;

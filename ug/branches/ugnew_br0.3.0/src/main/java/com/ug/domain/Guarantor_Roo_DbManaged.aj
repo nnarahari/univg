@@ -19,9 +19,9 @@ import javax.validation.constraints.NotNull;
 
 privileged aspect Guarantor_Roo_DbManaged {
     
-    @OneToMany(mappedBy = "guarantorId")
-    private Set<Loan> Guarantor.loans;
-    
+//    @OneToMany(mappedBy = "guarantorId")
+//    private Set<Loan> Guarantor.loans;
+//    
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private User Guarantor.userId;
@@ -88,13 +88,13 @@ privileged aspect Guarantor_Roo_DbManaged {
     @NotNull
     private String Guarantor.zip;
     
-    public Set<Loan> Guarantor.getLoans() {
-        return this.loans;
-    }
-    
-    public void Guarantor.setLoans(Set<Loan> loans) {
-        this.loans = loans;
-    }
+//    public Set<Loan> Guarantor.getLoans() {
+//        return this.loans;
+//    }
+//    
+//    public void Guarantor.setLoans(Set<Loan> loans) {
+//        this.loans = loans;
+//    }
     
     public User Guarantor.getUserId() {
         return this.userId;

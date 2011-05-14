@@ -129,10 +129,10 @@ privileged aspect GuarantorController_Roo_Controller {
         return Guarantor.findAllGuarantors();
     }
     
-    @ModelAttribute("loans")
-    public java.util.Collection<Loan> GuarantorController.populateLoans() {
-        return Loan.findAllLoans();
-    }
+//    @ModelAttribute("loans")
+//    public java.util.Collection<Loan> GuarantorController.populateLoans() {
+//        return Loan.findAllLoans();
+//    }
     
     @ModelAttribute("states")
     public java.util.Collection<State> GuarantorController.populateStates() {

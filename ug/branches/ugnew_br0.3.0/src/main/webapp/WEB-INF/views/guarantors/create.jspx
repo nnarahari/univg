@@ -22,7 +22,7 @@
         <field:input field="homePage" id="c_com_ug_domain_Guarantor_homePage" z="jypmUXtEHD4bKG+8yjW5OA+BFRw="/>
         <field:checkbox field="locked" id="c_com_ug_domain_Guarantor_locked" z="WMaq1a5nYRpbvd9Q/eFTUlwTRJc="/>
         <field:checkbox field="enabled" id="c_com_ug_domain_Guarantor_enabled" z="vwTYmi6DXM3oYRh5RcFDbPNORZ4="/>
-        <field:simple field="loans" id="c_com_ug_domain_Guarantor_loans" messageCode="entity_reference_not_managed" messageCodeAttribute="Loan" z="rdWgLkhhIYufhVclpz+/Ni7vmP0="/>
+        <!--  <field:simple field="loans" id="c_com_ug_domain_Guarantor_loans" messageCode="entity_reference_not_managed" messageCodeAttribute="Loan" z="rdWgLkhhIYufhVclpz+/Ni7vmP0="/>  -->
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Guarantor" render="${not empty dependencies}" z="fga0R+TMywBs164r1bQ3w1PDJKo="/>
 </div>

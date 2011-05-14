@@ -182,7 +182,6 @@ CREATE TABLE address (
 CREATE TABLE loan (
 	id BIGINT NOT NULL AUTO_INCREMENT,
 	userId bigint not null,
-	guarantorId BIGINT not null,
 	loan_name VARCHAR(20),
 	loan_amount DECIMAL(10 , 2) NOT NULL,
 	loan_naeeded_for VARCHAR(200),
@@ -192,7 +191,6 @@ CREATE TABLE loan (
 	comments VARCHAR(2000),
 	PRIMARY KEY (id),
 	FOREIGN KEY (userId) REFERENCES user(id),
-	FOREIGN KEY (guarantorId) REFERENCES guarantor(id),
 	FOREIGN KEY (loanStatusId) REFERENCES loanStatus(id)	
 
 ) ENGINE=InnoDB;

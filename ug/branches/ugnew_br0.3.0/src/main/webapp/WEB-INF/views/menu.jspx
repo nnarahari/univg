@@ -110,13 +110,13 @@
 				z="YWIO6zh/b+VbGwIhvPcLFKO3I94=" />
 				
 		</menu:category>
-		<menu:category id="c_guarantor" z="48v0rYVmUXF5cYVu+KGklNC8tkI=">
+		<!--  <menu:category id="c_guarantor" z="48v0rYVmUXF5cYVu+KGklNC8tkI=">
 			<menu:item id="i_guarantor_new" messageCode="global_menu_new"
 				url="/guarantors?form" z="z4wazHWv0gG+keM3cWqbsD/dCu0=" />
 			<menu:item id="fi_guarantor_userid" messageCode="student_menu_find_guaranter"
 				url="/guarantors?find=ByUserIduserId=${loggedInUserId}"
 				z="OpTPKNBWmC6+RKVyM0iNgWnKpnM=" />
-		</menu:category>
+		</menu:category>  -->
 		<menu:category id="c_address" z="my5R1aInTRohGzWz9TL4j8LX/vE=">
 			<menu:item id="i_address_new" messageCode="global_menu_new"
 				url="/addresses?form" z="vg+UZ0neKcizSzKiVzXeI3oY1BA=" />

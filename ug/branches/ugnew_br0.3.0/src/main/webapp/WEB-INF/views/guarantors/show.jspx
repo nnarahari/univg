@@ -22,6 +22,6 @@
         <field:display field="homePage" id="s_com_ug_domain_Guarantor_homePage" object="${guarantor}" z="2v3gEuv/McdJSy78vs7bUvIcSYI="/>
         <field:display field="locked" id="s_com_ug_domain_Guarantor_locked" object="${guarantor}" z="+oXoxY/aQ57UID9YnitBO9OCTwU="/>
         <field:display field="enabled" id="s_com_ug_domain_Guarantor_enabled" object="${guarantor}" z="PKhuFcKZSiAWsGNelVrPBA4Qs8g="/>
-        <field:display field="loans" id="s_com_ug_domain_Guarantor_loans" object="${guarantor}" z="kV35Jtkxm+cMlvY/bLTZxwsBQUE="/>
+        <!--  <field:display field="loans" id="s_com_ug_domain_Guarantor_loans" object="${guarantor}" z="kV35Jtkxm+cMlvY/bLTZxwsBQUE="/>  -->
     </page:show>
 </div>

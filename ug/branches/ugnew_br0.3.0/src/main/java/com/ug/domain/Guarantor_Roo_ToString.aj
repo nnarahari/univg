@@ -9,7 +9,7 @@ privileged aspect Guarantor_Roo_ToString {
     
     public String Guarantor.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Loans: ").append(getLoans() == null ? "null" : getLoans().size()).append(", ");
+       // sb.append("Loans: ").append(getLoans() == null ? "null" : getLoans().size()).append(", ");
         sb.append("UserId: ").append(getUserId()).append(", ");
         sb.append("UniversityId: ").append(getUniversityId()).append(", ");
         sb.append("StateId: ").append(getStateId()).append(", ");

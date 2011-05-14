@@ -20,8 +20,8 @@
         <field:input field="workPhone" id="c_com_ug_domain_Guarantor_workPhone" z="VKQHCzj2iei81ERFXHVaMzwRmO8="/>
         <field:input field="mobile" id="c_com_ug_domain_Guarantor_mobile" z="C59ymgPWWhV3OjtiTvhP41WqD+M="/>
         <field:input field="homePage" id="c_com_ug_domain_Guarantor_homePage" z="jypmUXtEHD4bKG+8yjW5OA+BFRw="/>
-1`        <field:checkbox field="locked" id="c_com_ug_domain_Guarantor_locked" z="WMaq1a5nYRpbvd9Q/eFTUlwTRJc="/>
+        <field:checkbox field="locked" id="c_com_ug_domain_Guarantor_locked" z="WMaq1a5nYRpbvd9Q/eFTUlwTRJc="/>
         <field:checkbox field="enabled" id="c_com_ug_domain_Guarantor_enabled" z="vwTYmi6DXM3oYRh5RcFDbPNORZ4="/>
-        <field:simple field="loans" id="c_com_ug_domain_Guarantor_loans" messageCode="entity_reference_not_managed" messageCodeAttribute="Loan" z="rdWgLkhhIYufhVclpz+/Ni7vmP0="/>
+       <!--  <field:simple field="loans" id="c_com_ug_domain_Guarantor_loans" messageCode="entity_reference_not_managed" messageCodeAttribute="Loan" z="rdWgLkhhIYufhVclpz+/Ni7vmP0="/>  -->
     </form:update>
 </div>

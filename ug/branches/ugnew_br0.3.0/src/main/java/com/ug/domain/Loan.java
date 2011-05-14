@@ -8,6 +8,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooDbManaged(automaticallyDelete = true)
-@RooEntity(versionField = "", table = "loan", finders = { "findLoansByUserId", "findLoansByGuarantorId", "findLoansByLoanAmount", "findLoansByLoanNeededBy", "findLoansByLoanNeededByBetween", "findLoansByLoanStatusId" })
+@RooEntity(versionField = "", table = "loan", finders = { "findLoansByUserId", "findLoansByLoanAmount", "findLoansByLoanNeededBy", "findLoansByLoanNeededByBetween", "findLoansByLoanStatusId" })
 public class Loan {
 }

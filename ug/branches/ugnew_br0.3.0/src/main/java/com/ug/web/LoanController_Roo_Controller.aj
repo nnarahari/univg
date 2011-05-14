@@ -123,17 +123,17 @@ privileged aspect LoanController_Roo_Controller {
         return "redirect:/loans";
     }
     
-    @RequestMapping(params = { "find=ByGuarantorId", "form" }, method = RequestMethod.GET)
-    public String LoanController.findLoansByGuarantorIdForm(Model uiModel) {
-        uiModel.addAttribute("guarantors", Guarantor.findAllGuarantors());
-        return "loans/findLoansByGuarantorId";
-    }
+//    @RequestMapping(params = { "find=ByGuarantorId", "form" }, method = RequestMethod.GET)
+//    public String LoanController.findLoansByGuarantorIdForm(Model uiModel) {
+//        uiModel.addAttribute("guarantors", Guarantor.findAllGuarantors());
+//        return "loans/findLoansByGuarantorId";
+//    }
     
-    @RequestMapping(params = "find=ByGuarantorId", method = RequestMethod.GET)
-    public String LoanController.findLoansByGuarantorId(@RequestParam("guarantorId") Guarantor guarantorId, Model uiModel) {
-        uiModel.addAttribute("loans", Loan.findLoansByGuarantorId(guarantorId).getResultList());
-        return "loans/list";
-    }
+//    @RequestMapping(params = "find=ByGuarantorId", method = RequestMethod.GET)
+//    public String LoanController.findLoansByGuarantorId(@RequestParam("guarantorId") Guarantor guarantorId, Model uiModel) {
+//        uiModel.addAttribute("loans", Loan.findLoansByGuarantorId(guarantorId).getResultList());
+//        return "loans/list";
+//    }
     
     @RequestMapping(params = { "find=ByLoanAmount", "form" }, method = RequestMethod.GET)
     public String LoanController.findLoansByLoanAmountForm(Model uiModel) {

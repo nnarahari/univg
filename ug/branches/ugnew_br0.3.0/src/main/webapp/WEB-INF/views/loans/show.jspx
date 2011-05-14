@@ -9,7 +9,7 @@
         <field:display date="true" dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="s_com_ug_domain_Loan_loanNeededBy" object="${loan}" z="ucMfb5nWw5hD+NMpc1t2W/uJ0ow="/>
         <field:display field="loanAmount" id="s_com_ug_domain_Loan_loanAmount" object="${loan}" z="0K2KUqsd/vcRnBo/BQOVU2kqb50="/>
         <field:display field="loanPeriod" id="s_com_ug_domain_Loan_loanPeriod" object="${loan}" z="bZWTC0jMhYZOj01uxt8ZgtGw/KE="/>
-        <field:display field="guarantorId" id="s_com_ug_domain_Loan_guarantorId" object="${loan}" z="9A1bvQrgO/Yfhxwo3EgzqJytUQs="/>
+        <!--  <field:display field="guarantorId" id="s_com_ug_domain_Loan_guarantorId" object="${loan}" z="9A1bvQrgO/Yfhxwo3EgzqJytUQs="/>  -->
         <field:display field="comments" id="s_com_ug_domain_Loan_comments" object="${loan}" z="+zkQudb3MxeEcBVgWxUAPiUee8g="/>
         <field:display field="loanStatusId" id="s_com_ug_domain_Loan_loanStatusId" object="${loan}" z="2GD9OeYNjmqulqG4RKVwUjt/SkI="/>
     </page:show>

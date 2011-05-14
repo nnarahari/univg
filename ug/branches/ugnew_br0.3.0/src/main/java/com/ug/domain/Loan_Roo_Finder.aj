@@ -14,13 +14,13 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Loan_Roo_Finder {
     
-    public static TypedQuery<Loan> Loan.findLoansByGuarantorId(Guarantor guarantorId) {
-        if (guarantorId == null) throw new IllegalArgumentException("The guarantorId argument is required");
-        EntityManager em = Loan.entityManager();
-        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.guarantorId = :guarantorId", Loan.class);
-        q.setParameter("guarantorId", guarantorId);
-        return q;
-    }
+//    public static TypedQuery<Loan> Loan.findLoansByGuarantorId(Guarantor guarantorId) {
+//        if (guarantorId == null) throw new IllegalArgumentException("The guarantorId argument is required");
+//        EntityManager em = Loan.entityManager();
+//        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.guarantorId = :guarantorId", Loan.class);
+//        q.setParameter("guarantorId", guarantorId);
+//        return q;
+//    }
     
     public static TypedQuery<Loan> Loan.findLoansByLoanAmount(BigDecimal loanAmount) {
         if (loanAmount == null) throw new IllegalArgumentException("The loanAmount argument is required");

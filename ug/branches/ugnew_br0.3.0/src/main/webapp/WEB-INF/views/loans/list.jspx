@@ -7,7 +7,7 @@
             <table:column id="c_com_ug_domain_Loan_loanPeriod" property="loanPeriod" z="h4VNCjy5ewaCQ2cdzb/EWS1urAU="/>
             <table:column id="c_com_ug_domain_Loan_comments" property="comments" z="z+GdTClgY0cVM2Yz0elLdSN4eZE="/>
             <table:column id="c_com_ug_domain_Loan_loanNaeededFor" property="loanNaeededFor" z="3cKMS+9dOv/YupLIU3EKyNp6eOg="/>
-            <table:column id="c_com_ug_domain_Loan_guarantorId" property="guarantorId" z="9T2rG2ttDZ50ve6BwAO2eacUrCo="/>
+            <!--  <table:column id="c_com_ug_domain_Loan_guarantorId" property="guarantorId" z="9T2rG2ttDZ50ve6BwAO2eacUrCo="/>  -->
             <table:column id="c_com_ug_domain_Loan_loanNeededBy" property="loanNeededBy" z="xlBCH4QNHe3cvURzFbLkWYPiPrE="/>
             <table:column id="c_com_ug_domain_Loan_loanAmount" property="loanAmount" z="Yz6YI8KmHZpTmBJpsJ+77dccaJA="/>
         </table:table>
