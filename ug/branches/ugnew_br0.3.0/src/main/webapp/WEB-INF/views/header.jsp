@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page import="com.ug.domain.User,com.ug.domain.UserRole,com.ug.util.UgUtil;" %>
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
 <head profile="http://gmpg.org/xfn/11">
 <link rel="shortcut icon" href="images/demo/univ_giggle_logo_v6.gif" />
@@ -13,15 +15,31 @@
 <script type="text/javascript" src="scripts/jquery.hslides.setup.js"></script>
 </head>
 <body id="top">
+<%
 
+String loggedInUserRole = UgUtil.getLoggedInUserRoleName();
+request.setAttribute("loggedInUserRole",loggedInUserRole);
+User user = UgUtil.getLoggedInUser();
+System.out.println("user details iiiiiiiiiiiiiiiiiiiiiiiiii"+user);
+%>
          
 <!-- 
 ####################################################################################################### -->
+<body id="top">
+<div id="header">
+  <div class="wrapper">
+    <div class="fl_left">
+      <h1><a href="#"><img src="images/demo/final_logo1.jpg" alt="" width="137" /></a></h1>
+    </div>
+    <div class="fl_right"> 
+	
+	<strong>Welcome</strong> </a>|<a href="/ugbeta1/resources/j_spring_security_logout">SIGN OUT</a>
+  </div>
+</div>
+</div>
+
 <div id="topbar">
   <div class="wrapper">
-   <div class="fl_left">
-      <a href="#"><img src="images/demo/final_logo1.jpg" alt="" width="120" /></a>
-    </div>
     <div id="topnav">
    
       <ul>
@@ -31,11 +49,9 @@
 		<li><a href="#">P2P</a></li>
 		<li><a href="#">MENTORSHIP</a></li>
 		<li><a href="#">CONTACT US</a></li>
-		<li><a href="/ugbeta1/resources/j_spring_security_logout">SIGN OUT</a></li>
+<!-- 		<li><a href="/ugbeta1/resources/j_spring_security_logout">SIGN OUT</a></li> -->
       </ul>
     </div>
    
   </div>
 </div>
-
-</body>
