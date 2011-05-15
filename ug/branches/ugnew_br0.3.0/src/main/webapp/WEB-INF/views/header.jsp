@@ -25,7 +25,7 @@
     <div id="topnav">
    
       <ul>
-        <li class="active"><a href="index.html">Home</a></li>
+        <li class="active"><a href="main.jsp">Home</a></li>
         <li><a href="/ugbeta1/login/success.htm">STUDENT</a></li>
         <li><a href="/ugbeta1/login/success.htm">CORPORATES</a></li>
 		<li><a href="#">P2P</a></li>
