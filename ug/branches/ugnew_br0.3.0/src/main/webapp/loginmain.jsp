@@ -107,11 +107,12 @@ input.groovybutton
     <br class="clear" />
   </div>
 </div><!-- ####################################################################################################### -->
-<div class="wrapper col2">
-  <div id="featured_slide">
-    <h1>General User page</h1>
-
-  <p>
+<div id="container">
+  <div class="wrapper">
+    <ul>
+      <li>
+        <h2>General User page</h2>
+      	<p>
 	    <li>If you are a student looking for loans and collaborating with corporations in your field of interest <a href="profiles?form">click here</a>.  To create student profile. Alternately click on the student tab above to be redirected. </li>
 		
 		<li>If you represent a corporation and would like to be a UnivGiggle corporate partner <a href="corporates?form">click here </a>.  To create corporate profile. Alternately click on Corporate tab above to be redirected.</li>
@@ -119,22 +120,26 @@ input.groovybutton
 		<li>If you are someone looking to invest in students and provide them with loans to meet their immediate university requirements please click here or click on the P2P tab above to be redirected.</li>
 		
 	  </p>
+      </li>
+    </ul>
+    <br class="clear" />
+  </div>
 </div>
 <!-- ####################################################################################################### -->
-<div>
 <div id="homecontent">
+  <div class="wrapper">
     <ul>
       <li>
         <h2 class="title"><img src="images/Corporate.jpg" alt="" />Our Corporate Partners</h2>
      <!--    <p>Students of verious University such as Standford University, UC, SJSU brings to build the network between Corporates and Students.</p> -->
      <p><img src="images/Corporate-box-home-page.jpg" alt="" /></p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        <p class="readmore"><a href="continueReadingCorporate.jsp">Continue Reading &raquo;</a></p>
       </li>
       <li>
         <h2 class="title"><img src="images/Student.jpg" alt="" />Students</h2>
        <!--  <p>Students of verious University such as Standford University, UC, SJSU brings to build the network between Corporates and Students.</p> -->
         <p><img src="images/Student-box-home-page.jpg" alt="" /></p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        <p class="readmore"><a href="continueReadingStudent.jsp">Continue Reading &raquo;</a></p>
       </li>
       <li class="last">
         <h2 class="title"><img src="images/P2P.jpg" alt="" />P2P Lenders</h2>
@@ -145,7 +150,7 @@ input.groovybutton
     </ul>
     <br class="clear" />
   </div>
-  </div>
+</div>
 <!-- ####################################################################################################### -->
 <div id="container">
   <div class="wrapper">
