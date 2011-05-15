@@ -16,11 +16,7 @@
 </head>
 <body id="top">
 <%
-
-String loggedInUserRole = UgUtil.getLoggedInUserRoleName();
-request.setAttribute("loggedInUserRole",loggedInUserRole);
 User user = UgUtil.getLoggedInUser();
-System.out.println("user details iiiiiiiiiiiiiiiiiiiiiiiiii"+user);
 %>
          
 <!-- 
@@ -33,7 +29,7 @@ System.out.println("user details iiiiiiiiiiiiiiiiiiiiiiiiii"+user);
     </div>
     <div class="fl_right"> 
 	
-	<strong>Welcome</strong> </a>|<a href="/ugbeta1/resources/j_spring_security_logout">SIGN OUT</a>
+	<strong>Welcome  <%=user.getFirstName()%> <%=user.getLastName()%></strong> </a>|<a href="/ugbeta1/resources/j_spring_security_logout">SIGN OUT</a>
   </div>
 </div>
 </div>
