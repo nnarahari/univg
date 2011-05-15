@@ -5,16 +5,38 @@
 <title>UnivGiggle - Connect World Together.</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="imagetoolbar" content="no" />
-<link rel="stylesheet" href="styles/layout.css" type="text/css" />
+<link rel="stylesheet" href="styles/layout_template.css" type="text/css" />
+<link rel="stylesheet" href="styles/tables_template.css" type="text/css" />
+<link rel="stylesheet" href="styles/navi_template.css" type="text/css" />
+<link rel="stylesheet" href="styles/forms_template.css" type="text/css" />
+<link rel="stylesheet" href="styles/featured_slide_template.css" type="text/css" />
+<style type="text/css">
+
+input.groovybutton
+{
+	font-size:12px;
+	font-weight:bold;
+	color:#330000;
+	background-color:#0099FF;
+	border-style:outset;
+	border-color:#0099FF;
+}
+
+</style>
+
 <script type="text/javascript" src="scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.jcarousel.pack.js"></script>
+<script type="text/javascript" src="scripts/jquery.jcarousel.setup.js"></script>
+<script type="text/javascript" src="scripts/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="scripts/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="scripts/jquery.hslides.1.0.js"></script>
+<script type="text/javascript" src="scripts/jquery.hslides.setup.js"></script>
 <script type="text/javascript" src="scripts/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="scripts/jquery.hoverIntent.js"></script>
 <script type="text/javascript" src="scripts/jquery.hslides.1.0.js"></script>
 <script type="text/javascript" src="scripts/jquery.hslides.setup.js"></script>
 </head>
 <body id="top">
-
-<!-- ####################################################################################################### -->
 <div id="footer">
   <div class="wrapper">
     <div id="newsletter">
@@ -27,11 +49,13 @@
     <div class="footbox">
       <h2>Follow US !!</h2>
       <ul><li>
-        <a href="http://www.facebook.com/sudesh.gadewar" target="_TOP" title="Sudesh Gadewar"><img src="images/demo/facebook_findus.gif"/></a>
+        <p><a href="http://www.facebook.com/sudesh.gadewar" target="_TOP" title="Sudesh Gadewar"><img src="images/demo/facebook_findus.gif"/></a><!-- Facebook Badge END --></a></p>
       </li>
+        <li></li>
         <li>
           <a href="http://twitter.com/sudeshgadewar"><img src="images/demo/FollowUsOnFacebook_Button.jpg"/></a><br /><a href="http://www.twitterbuttons.com"></a>
         </li>
+       
       </ul>
     </div>
     <div class="footbox">
@@ -50,7 +74,7 @@
         <li class="last"><a href="#">User Solutions</a></li>
       </ul>
     </div>
- 
+    <br class="clear" />
   </div>
 </div>
 <!-- ####################################################################################################### -->
@@ -61,5 +85,3 @@
     <br class="clear" />
   </div>
 </div>
-</body>
-</html>
