@@ -12,8 +12,8 @@
         <field:select field="programStudyId" id="c_com_ug_domain_Profile_programStudyId" itemValue="id" items="${programstudys}" path="/programstudys" z="p9IRNc6RTmbcbiH0oD5nZPZs2B8="/>
         <field:input field="universityEmail" id="c_com_ug_domain_Profile_universityemail" min="1" required="true" validationMessageCode="field_invalid_email" validationRegex="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.edu" z="TGUZZAO/bcy8+d/SrMBtV3A7ZKs="/>
         <field:datetime dateTimePattern="${profile_expectedgraduationdate_date_format}" field="expectedGraduationDate" id="c_com_ug_domain_Profile_expectedGraduationDate" z="c1O5X3VQGS/zukm2c83XXuf+Qeo="/>
-        <field:input field="mobile" id="c_com_ug_domain_Profile_mobile" required="true" validationRegex="[0-9]" z="jyT/x1ZvYudrwdOsJOENLxgpCto="/>
-        <field:input field="homePhone" id="c_com_ug_domain_Profile_homePhone" validationRegex="[0-9]" required="true" z="kvS7JTpw+IiH3MWAETh68wIssAM="/>
+        <field:input field="mobile" id="c_com_ug_domain_Profile_mobile" required="true" validationRegex="[0-9]{9,10}" z="jyT/x1ZvYudrwdOsJOENLxgpCto="/>
+        <field:input field="homePhone" id="c_com_ug_domain_Profile_homePhone" validationRegex="[0-9]{9,10}" required="true" z="kvS7JTpw+IiH3MWAETh68wIssAM="/>
         <field:input field="linkedInProfile" id="c_com_ug_domain_Profile_linkedInProfile" z="OPp+lziYxaCPqQ6kJQw5Ubsgblc="/>
     </form:create-profile>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Profile" render="${not empty dependencies}" z="Wa7RFIYyQG196wDDCEdbIkfgMWM="/>
