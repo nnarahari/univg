@@ -23,7 +23,7 @@
             <menu:item id="fi_corporate_industry" messageCode="global_menu_find" url="/corporates?find=ByIndustry&amp;form" z="mdoCwOVVBLeIxArIBGMgltz/Quc="/>
             <menu:item id="fi_corporate_industrylike" messageCode="global_menu_find" url="/corporates?find=ByIndustryLike&amp;form" z="TFLFfBNNA9MPNx+NzRqp5nrpoSM="/>
             <menu:item id="fi_corporate_mobile" messageCode="global_menu_find" url="/corporates?find=ByMobile&amp;form" z="LrbJe2XUmgIyucJil3qABT2t7cI="/>
-            <menu:item id="fi_corporate_userid" messageCode="global_menu_find" url="/corporates?find=ByUserId&amp;form" z="tTqg90rGogj2bglnEmGOlJhEyBo="/>
+            <menu:item id="fi_corporate_userid" messageCode="global_menu_find" url="/corporates?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
             <menu:item id="fi_corporate_workphone" messageCode="global_menu_find" url="/corporates?find=ByWorkPhone&amp;form" z="GoXg3SSHOtmkPlEt/THiZee1Ddw="/>
             <menu:item id="fi_corporate_zip" messageCode="global_menu_find" url="/corporates?find=ByZip&amp;form" z="rQf9oX8oy7Azb8CLbYLE4ZvLGIU="/>
             </menu:category>
