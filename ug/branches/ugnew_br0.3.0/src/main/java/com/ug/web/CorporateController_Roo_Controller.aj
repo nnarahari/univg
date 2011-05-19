@@ -5,18 +5,14 @@ package com.ug.web;
 
 import com.ug.domain.Corporate;
 import com.ug.domain.CorporateLoanAmount;
-import com.ug.domain.Role;
 import com.ug.domain.State;
 import com.ug.domain.User;
-import com.ug.domain.UserRole;
-import com.ug.util.UgUtil;
-
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.ui.Model;
@@ -39,22 +35,6 @@ privileged aspect CorporateController_Roo_Controller {
         }
         uiModel.asMap().clear();
         corporate.persist();
-        
-        System.out.println("profile crreated.. associating corporate role to the user..");
-        UserRole userRole = new UserRole();
-        
-        User user = UgUtil.getLoggedInUser();
-        System.out.println("user ==>"+ user);
-        
-        Role role = Role.findRole(3L);//3 is for coporate
-        
-        System.out.println("role ==>"+ role);
-        userRole.setUserEntry(user);
-        userRole.setRoleEntry(role);
-        
-        userRole.persist();       
-        System.out.println( "Done");
-        
         return "redirect:/corporates/" + encodeUrlPathSegment(corporate.getId().toString(), httpServletRequest);
     }
     
@@ -110,6 +90,128 @@ privileged aspect CorporateController_Roo_Controller {
         return "redirect:/corporates";
     }
     
+    @RequestMapping(params = { "find=ByCorporateLoanAmounts", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporateLoanAmountsForm(Model uiModel) {
+        return "corporates/findCorporatesByCorporateLoanAmounts";
+    }
+    
+    @RequestMapping(params = "find=ByCorporateLoanAmounts", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporateLoanAmounts(@RequestParam("corporateLoanAmounts") Set<CorporateLoanAmount> corporateLoanAmounts, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByCorporateLoanAmounts(corporateLoanAmounts).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCorporateName", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporateNameForm(Model uiModel) {
+        return "corporates/findCorporatesByCorporateName";
+    }
+    
+    @RequestMapping(params = "find=ByCorporateName", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporateName(@RequestParam("corporateName") String corporateName, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByCorporateName(corporateName).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCorporateNameLike", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporateNameLikeForm(Model uiModel) {
+        return "corporates/findCorporatesByCorporateNameLike";
+    }
+    
+    @RequestMapping(params = "find=ByCorporateNameLike", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporateNameLike(@RequestParam("corporateName") String corporateName, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByCorporateNameLike(corporateName).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCorporatePrimaryContact", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporatePrimaryContactForm(Model uiModel) {
+        return "corporates/findCorporatesByCorporatePrimaryContact";
+    }
+    
+    @RequestMapping(params = "find=ByCorporatePrimaryContact", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporatePrimaryContact(@RequestParam("corporatePrimaryContact") String corporatePrimaryContact, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByCorporatePrimaryContact(corporatePrimaryContact).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCorporatePrimaryContactLike", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporatePrimaryContactLikeForm(Model uiModel) {
+        return "corporates/findCorporatesByCorporatePrimaryContactLike";
+    }
+    
+    @RequestMapping(params = "find=ByCorporatePrimaryContactLike", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByCorporatePrimaryContactLike(@RequestParam("corporatePrimaryContact") String corporatePrimaryContact, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByCorporatePrimaryContactLike(corporatePrimaryContact).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByIndustry", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByIndustryForm(Model uiModel) {
+        return "corporates/findCorporatesByIndustry";
+    }
+    
+    @RequestMapping(params = "find=ByIndustry", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByIndustry(@RequestParam("industry") String industry, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByIndustry(industry).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByIndustryLike", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByIndustryLikeForm(Model uiModel) {
+        return "corporates/findCorporatesByIndustryLike";
+    }
+    
+    @RequestMapping(params = "find=ByIndustryLike", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByIndustryLike(@RequestParam("industry") String industry, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByIndustryLike(industry).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByMobile", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByMobileForm(Model uiModel) {
+        return "corporates/findCorporatesByMobile";
+    }
+    
+    @RequestMapping(params = "find=ByMobile", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByMobile(@RequestParam("mobile") String mobile, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByMobile(mobile).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByUserId", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByUserIdForm(Model uiModel) {
+        uiModel.addAttribute("users", User.findAllUsers());
+        return "corporates/findCorporatesByUserId";
+    }
+    
+    @RequestMapping(params = "find=ByUserId", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByUserId(@RequestParam("userId") User userId, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByUserId(userId).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByWorkPhone", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByWorkPhoneForm(Model uiModel) {
+        return "corporates/findCorporatesByWorkPhone";
+    }
+    
+    @RequestMapping(params = "find=ByWorkPhone", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByWorkPhone(@RequestParam("workPhone") String workPhone, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByWorkPhone(workPhone).getResultList());
+        return "corporates/list";
+    }
+    
+    @RequestMapping(params = { "find=ByZip", "form" }, method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByZipForm(Model uiModel) {
+        return "corporates/findCorporatesByZip";
+    }
+    
+    @RequestMapping(params = "find=ByZip", method = RequestMethod.GET)
+    public String CorporateController.findCorporatesByZip(@RequestParam("zip") String zip, Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findCorporatesByZip(zip).getResultList());
+        return "corporates/list";
+    }
+    
     @ModelAttribute("corporates")
     public Collection<Corporate> CorporateController.populateCorporates() {
         return Corporate.findAllCorporates();
@@ -127,15 +229,7 @@ privileged aspect CorporateController_Roo_Controller {
     
     @ModelAttribute("users")
     public java.util.Collection<User> CorporateController.populateUsers() {
-		UserRole userRole = com.ug.util.UgUtil.getLoggedInUserRole();
-		if (userRole != null
-				&& "admin".equals(userRole.getRoleEntry().getRoleName())) {
-			return User.findAllUsers();
-		} else {
-			java.util.List<User> users = new ArrayList<User>();
-			users.add(com.ug.util.UgUtil.getLoggedInUser());
-			return users;
-		}
+        return User.findAllUsers();
     }
     
     String CorporateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

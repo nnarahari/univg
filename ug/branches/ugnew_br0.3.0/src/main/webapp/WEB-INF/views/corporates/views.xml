@@ -13,4 +13,37 @@
 <definition extends="default" name="corporates/update">
         <put-attribute name="body" value="/WEB-INF/views/corporates/update.jspx"/>
     </definition>
+<definition extends="default" name="corporates/findCorporatesByCorporateLoanAmounts">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByCorporateLoanAmounts.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByCorporateName">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByCorporateName.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByCorporateNameLike">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByCorporateNameLike.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByCorporatePrimaryContact">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByCorporatePrimaryContact.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByCorporatePrimaryContactLike">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByCorporatePrimaryContactLike.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByIndustry">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByIndustry.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByIndustryLike">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByIndustryLike.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByMobile">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByMobile.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByUserId.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByWorkPhone">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByWorkPhone.jspx"/>
+    </definition>
+<definition extends="default" name="corporates/findCorporatesByZip">
+        <put-attribute name="body" value="/WEB-INF/views/corporates/findCorporatesByZip.jspx"/>
+    </definition>
 </tiles-definitions>

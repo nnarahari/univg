@@ -7,7 +7,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooEntity(versionField = "", table = "corporate")
 @RooDbManaged(automaticallyDelete = true)
+@RooEntity(versionField = "", table = "corporate", finders = { "findCorporatesByCorporateLoanAmounts", "findCorporatesByCorporateName", "findCorporatesByCorporateNameLike", "findCorporatesByCorporatePrimaryContact", "findCorporatesByCorporatePrimaryContactLike", "findCorporatesByIndustry", "findCorporatesByIndustryLike", "findCorporatesByMobile", "findCorporatesByUserId", "findCorporatesByWorkPhone", "findCorporatesByZip" })
 public class Corporate {
 }

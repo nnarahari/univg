@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ug.domain.Address;
+import com.ug.domain.Corporate;
 import com.ug.domain.Guarantor;
 import com.ug.domain.Loan;
 import com.ug.domain.Profile;
@@ -23,7 +24,7 @@ import com.ug.domain.User;
 import com.ug.domain.UserRole;
 
 public class UgUtil {
-
+	
 	public static User getLoggedInUser() {
 		try {
 			SecurityContext securityContext = SecurityContextHolder
