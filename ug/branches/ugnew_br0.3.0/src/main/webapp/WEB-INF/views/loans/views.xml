@@ -28,4 +28,22 @@
 <definition extends="default" name="loans/findLoansByLoanStatusId">
         <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanStatusId.jspx"/>
     </definition>
+<definition extends="default" name="loans/findLoansByGrantNeededFor">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByGrantNeededFor.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanName">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanName.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNameLike">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNameLike.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNeededByGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededByGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNeededByGreaterThanEquals">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededByGreaterThanEquals.jspx"/>
+    </definition>
+<definition extends="default" name="loans/findLoansByLoanNeededByLessThan">
+        <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededByLessThan.jspx"/>
+    </definition>
 </tiles-definitions>

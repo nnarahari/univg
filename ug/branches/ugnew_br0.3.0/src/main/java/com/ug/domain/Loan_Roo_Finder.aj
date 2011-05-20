@@ -3,9 +3,11 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
 import com.ug.domain.User;
+import java.lang.String;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.EntityManager;
@@ -13,11 +15,42 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Loan_Roo_Finder {
     
+    public static TypedQuery<Loan> Loan.findLoansByGrantNeededFor(Grantneededfor grantNeededFor) {
+        if (grantNeededFor == null) throw new IllegalArgumentException("The grantNeededFor argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.grantNeededFor = :grantNeededFor", Loan.class);
+        q.setParameter("grantNeededFor", grantNeededFor);
+        return q;
+    }
+    
     public static TypedQuery<Loan> Loan.findLoansByLoanAmount(BigDecimal loanAmount) {
         if (loanAmount == null) throw new IllegalArgumentException("The loanAmount argument is required");
         EntityManager em = Loan.entityManager();
         TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.loanAmount = :loanAmount", Loan.class);
         q.setParameter("loanAmount", loanAmount);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLoanName(String loanName) {
+        if (loanName == null || loanName.length() == 0) throw new IllegalArgumentException("The loanName argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.loanName = :loanName", Loan.class);
+        q.setParameter("loanName", loanName);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLoanNameLike(String loanName) {
+        if (loanName == null || loanName.length() == 0) throw new IllegalArgumentException("The loanName argument is required");
+        loanName = loanName.replace('*', '%');
+        if (loanName.charAt(0) != '%') {
+            loanName = "%" + loanName;
+        }
+        if (loanName.charAt(loanName.length() - 1) != '%') {
+            loanName = loanName + "%";
+        }
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE LOWER(loan.loanName) LIKE LOWER(:loanName)", Loan.class);
+        q.setParameter("loanName", loanName);
         return q;
     }
     
@@ -36,6 +69,30 @@ privileged aspect Loan_Roo_Finder {
         TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.loanNeededBy BETWEEN :minLoanNeededBy AND :maxLoanNeededBy", Loan.class);
         q.setParameter("minLoanNeededBy", minLoanNeededBy);
         q.setParameter("maxLoanNeededBy", maxLoanNeededBy);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLoanNeededByGreaterThan(Date loanNeededBy) {
+        if (loanNeededBy == null) throw new IllegalArgumentException("The loanNeededBy argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.loanNeededBy > :loanNeededBy", Loan.class);
+        q.setParameter("loanNeededBy", loanNeededBy);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLoanNeededByGreaterThanEquals(Date loanNeededBy) {
+        if (loanNeededBy == null) throw new IllegalArgumentException("The loanNeededBy argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.loanNeededBy >= :loanNeededBy", Loan.class);
+        q.setParameter("loanNeededBy", loanNeededBy);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLoanNeededByLessThan(Date loanNeededBy) {
+        if (loanNeededBy == null) throw new IllegalArgumentException("The loanNeededBy argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.loanNeededBy < :loanNeededBy", Loan.class);
+        q.setParameter("loanNeededBy", loanNeededBy);
         return q;
     }
     

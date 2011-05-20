@@ -122,3 +122,15 @@ finder add findProfilesByUniversityEmail
 finder add findProfilesByUniversityEmailLike
 finder add findProfilesByUniversityId
 finder add findProfilesByUserId
+finder list --class ~.domain.Loan
+finder add findLoansByGrantNeededFor --class ~.domain.Loan
+finder add  findLoansByLoanAmount
+finder add  findLoansByLoanName
+finder add  findLoansByLoanNameLike
+finder add findLoansByLoanNeededBy
+finder add findLoansByLoanNeededByBetween
+finder add findLoansByLoanNeededByGreaterThan
+finder add findLoansByLoanNeededByGreaterThanEquals
+finder add findLoansByLoanNeededByLessThan
+finder add findLoansByLoanStatusId
+finder add findLoansByUserId

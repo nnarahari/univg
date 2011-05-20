@@ -10,6 +10,7 @@ privileged aspect Loan_Roo_ToString {
     public String Loan.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("UserId: ").append(getUserId()).append(", ");
+        sb.append("Address: ").append(getAddress()).append(", ");
         sb.append("GrantNeededFor: ").append(getGrantNeededFor()).append(", ");
         sb.append("LoanStatusId: ").append(getLoanStatusId()).append(", ");
         sb.append("LoanName: ").append(getLoanName()).append(", ");
@@ -17,7 +18,6 @@ privileged aspect Loan_Roo_ToString {
         sb.append("LoanNeededBy: ").append(getLoanNeededBy()).append(", ");
         sb.append("Comments: ").append(getComments()).append(", ");
         sb.append("SupportDocumentName: ").append(getSupportDocumentName());
-        sb.append("Address: ").append(getAddress()).append(", ");
         return sb.toString();
     }
     

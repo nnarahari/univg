@@ -100,8 +100,14 @@
         <menu:item id="fi_loan_loanneededbybetween" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByBetween&amp;form" z="hx8zmfKc5aMCSu0qJAqZs7y81bg="/>
         
         <menu:item id="fi_loan_loanstatusid" messageCode="global_menu_find" url="/loans?find=ByLoanStatusId&amp;form" z="m78MheoLWRfME4rEqyJyw7Znn1c="/>
-        </menu:category>
-    <menu:category id="c_gender" z="rs6Edo9pdk6gqZx5Augnd7P/lu0=">
+        <menu:item id="fi_loan_grantneededfor" messageCode="global_menu_find" url="/loans?find=ByGrantNeededFor&amp;form" z="l8eSxHFX8Mm5RhzbirlkJ3Hd5zU="/>
+        <menu:item id="fi_loan_loanname" messageCode="global_menu_find" url="/loans?find=ByLoanName&amp;form" z="sakQUYLGkMTSPhlSo1kuVrPbA4I="/>
+        <menu:item id="fi_loan_loannamelike" messageCode="global_menu_find" url="/loans?find=ByLoanNameLike&amp;form" z="M0GlfunAg5IieLP4RNyks7JGUmg="/>
+        <menu:item id="fi_loan_loanneededbygreaterthan" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByGreaterThan&amp;form" z="Gs6/7VutkQijFBEFwga84o+El2g="/>
+        <menu:item id="fi_loan_loanneededbygreaterthanequals" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByGreaterThanEquals&amp;form" z="7oaVqiuepCgHGUQE0ykHzK1LZQc="/>
+        <menu:item id="fi_loan_loanneededbylessthan" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByLessThan&amp;form" z="uteIS501efljkrGvSd8mvUtOE5I="/>
+   </menu:category>
+   <menu:category id="c_gender" z="rs6Edo9pdk6gqZx5Augnd7P/lu0=">
             <menu:item id="i_gender_new" messageCode="global_menu_new" url="/genders?form" z="FOZA/tkKuZU8kcWIe8OiMaP5CiA="/>
         <menu:item id="i_gender_list" messageCode="global_menu_list" url="/genders?page=1&amp;size=${empty param.size ? 10 : param.size}" z="OlI2PsbrQB3JpnCZPVE5DRB+iN4="/>
         </menu:category>
@@ -187,6 +193,9 @@
 		    <menu:item id="fi_profile_programstudyid" messageCode="global_menu_find" url="/profiles?find=ByProgramStudyId&amp;form" z="MtabTldRiVfjpBPo1V+ayagIk7w="/>
 		    <menu:item id="fi_profile_departmentid" messageCode="global_menu_find" url="/profiles?find=ByDepartmentId&amp;form" z="ngTMDBLXNwsIwZOKyqHNyV1Bans="/>
 		    <menu:item id="fi_profile_expectedgraduationdate" messageCode="global_menu_find" url="/profiles?find=ByExpectedGraduationDate&amp;form" z="hYns5ZzHolTy/WpVkQ0iHsrItNk="/>
+	        <menu:item id="fi_loan_loanamount" messageCode="global_menu_find" url="/loans?find=ByLoanAmount&amp;form" z="tSyBu//pJHMmx/1vELgP+q7QhIg="/>
+	        <menu:item id="fi_loan_loanneededby" messageCode="global_menu_find" url="/loans?find=ByLoanNeededBy&amp;form" z="1O/7TFFCnto79pVBP+elP2PC7i8="/>
+	        <menu:item id="fi_loan_loanneededbybetween" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByBetween&amp;form" z="hx8zmfKc5aMCSu0qJAqZs7y81bg="/>
 		</menu:category>
 		
 	</menu:menu>
