@@ -22,3 +22,23 @@ finder add findLoansByLoanNeededBy --class ~.domain.Loan
 finder add findLoansByLoanNeededByBetween --class ~.domain.Loan
 finder add findLoansByLoanOriginDateBetween --class ~.domain.Loan
 finder add findLoansByLoanStatusId --class ~.domain.Loan
+
+
+mysql> CREATE TABLE loan (
+    ->  id BIGINT NOT NULL AUTO_INCREMENT,
+    ->  userId bigint not null,
+    ->  loan_name VARCHAR(20),
+    ->  loan_amount DECIMAL(10 , 2) NOT NULL,
+    ->  grantNeededFor bigint not null,
+    ->  loan_needed_by DATETIME NOT NULL,
+    ->  comments VARCHAR(2000),
+    ->  supportDocumentName VARCHAR(75),
+    ->  address bigint not null,
+    ->  loanStatusId BIGINT not null,
+    ->  PRIMARY KEY (id),
+    ->  FOREIGN KEY (userId) REFERENCES user(id),
+    ->  FOREIGN KEY (address) REFERENCES address(id),
+    ->  FOREIGN KEY (grantNeededFor) REFERENCES grantNeededFor(id),
+    ->  FOREIGN KEY (loanStatusId) REFERENCES loanStatus(id)
+    -> ) ENGINE=InnoDB;
+Query OK, 0 rows affected (0.02 sec)

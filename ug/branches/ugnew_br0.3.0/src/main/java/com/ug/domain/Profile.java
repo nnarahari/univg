@@ -17,8 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RooJavaBean
 @RooToString
 @RooDbManaged(automaticallyDelete = true)
-@RooEntity(versionField = "", table = "profile", finders = { "findProfilesByUserId", "findProfilesByUniversityId" })
-public class Profile {
+@RooEntity(versionField = "", table = "profile", finders = { "findProfilesByUserId", "findProfilesByUniversityId", "findProfilesByCitizenship", "findProfilesByCitizenshipLike", "findProfilesByDateOfBirth", "findProfilesByDateOfBirthBetween", "findProfilesByDateOfBirthGreaterThan", "findProfilesByDateOfBirthLessThan", "findProfilesByDepartmentId", "findProfilesByExpectedGraduationDate", "findProfilesByExpectedGraduationDateBetween", "findProfilesByGenderId", "findProfilesByHomePhone", "findProfilesByHomePhoneLike", "findProfilesByMobile", "findProfilesByMobileLike", "findProfilesByMobileNotEquals", "findProfilesByPhotoIdentifier", "findProfilesByPhotoIdentifierLike", "findProfilesByProgramStudyId", "findProfilesByResumeIdentifier", "findProfilesByResumeIdentifierLike", "findProfilesByUniversityEmail", "findProfilesByUniversityEmailLike" })
+public class Profile  {
 
 //    @Transient
 //    private CommonsMultipartFile file;

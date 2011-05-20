@@ -3,22 +3,20 @@
 
 package com.ug.domain;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import com.ug.domain.Department;
+import com.ug.domain.Gender;
+import com.ug.domain.Programstudy;
+import com.ug.domain.University;
+import com.ug.domain.User;
+import java.lang.String;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 privileged aspect Profile_Roo_DbManaged {
     
@@ -67,45 +65,15 @@ privileged aspect Profile_Roo_DbManaged {
     @NotNull
     private String Profile.mobile;
     
-    @Column(name = "universityEmail", columnDefinition = "VARCHAR", length = 255)
-    private String Profile.universityEmail;
-
     @Column(name = "photoIdentifier", columnDefinition = "VARCHAR", length = 75)
     private String Profile.photoIdentifier;
     
-
     @Column(name = "resumeIdentifier", columnDefinition = "VARCHAR", length = 75)
     private String Profile.resumeIdentifier;
     
+    @Column(name = "universityEmail", columnDefinition = "VARCHAR", length = 255)
+    private String Profile.universityEmail;
     
-    public String Profile.getResumeIdentifier() {
-        return this.resumeIdentifier;
-    }
-    
-    public void Profile.setResumeIdentifier(String resumeIdentifier) {
-        this.resumeIdentifier = resumeIdentifier;
-    }
- 
-    public String Profile.getPhotoIdentifier() {
-    	return this.photoIdentifier;
-    	 //return "/ugbeta1/app/profile/2-profile.jpg";
-    }
-    
-    public void Profile.setPhotoIdentifier(String photoIdentifier) {
-        this.photoIdentifier = photoIdentifier;
-    }
- 
-    
-    public String Profile.getUniversityEmail() {
-        return this.universityEmail;
-    }
-    
-    public void Profile.setUniversityEmail(String universityEmail) {
-        this.universityEmail = universityEmail;
-    }
- 
-    
-
     public User Profile.getUserId() {
         return this.userId;
     }
@@ -192,6 +160,30 @@ privileged aspect Profile_Roo_DbManaged {
     
     public void Profile.setMobile(String mobile) {
         this.mobile = mobile;
+    }
+    
+    public String Profile.getPhotoIdentifier() {
+        return this.photoIdentifier;
+    }
+    
+    public void Profile.setPhotoIdentifier(String photoIdentifier) {
+        this.photoIdentifier = photoIdentifier;
+    }
+    
+    public String Profile.getResumeIdentifier() {
+        return this.resumeIdentifier;
+    }
+    
+    public void Profile.setResumeIdentifier(String resumeIdentifier) {
+        this.resumeIdentifier = resumeIdentifier;
+    }
+    
+    public String Profile.getUniversityEmail() {
+        return this.universityEmail;
+    }
+    
+    public void Profile.setUniversityEmail(String universityEmail) {
+        this.universityEmail = universityEmail;
     }
     
 }

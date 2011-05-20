@@ -6,12 +6,13 @@ package com.ug.web;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.joda.time.format.DateTimeFormat;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -35,6 +36,7 @@ import com.ug.domain.University;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
 import com.ug.util.UgUtil;
+
 
 privileged aspect ProfileController_Roo_Controller {
 	
@@ -205,6 +207,263 @@ privileged aspect ProfileController_Roo_Controller {
         return University.findAllUniversitys();
     }
     
+    @RequestMapping(params = { "find=ByCitizenship", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByCitizenshipForm(Model uiModel) {
+        return "profiles/findProfilesByCitizenship";
+    }
+    
+    @RequestMapping(params = "find=ByCitizenship", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByCitizenship(@RequestParam("citizenship") String citizenship, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByCitizenship(citizenship).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCitizenshipLike", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByCitizenshipLikeForm(Model uiModel) {
+        return "profiles/findProfilesByCitizenshipLike";
+    }
+    
+    @RequestMapping(params = "find=ByCitizenshipLike", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByCitizenshipLike(@RequestParam("citizenship") String citizenship, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByCitizenshipLike(citizenship).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByDateOfBirth", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirthForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/findProfilesByDateOfBirth";
+    }
+    
+    @RequestMapping(params = "find=ByDateOfBirth", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirth(@RequestParam("dateOfBirth") @DateTimeFormat(style = "S-") Date dateOfBirth, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByDateOfBirth(dateOfBirth).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByDateOfBirthBetween", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirthBetweenForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/findProfilesByDateOfBirthBetween";
+    }
+    
+    @RequestMapping(params = "find=ByDateOfBirthBetween", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirthBetween(@RequestParam("minDateOfBirth") @DateTimeFormat(style = "S-") Date minDateOfBirth, @RequestParam("maxDateOfBirth") @DateTimeFormat(style = "S-") Date maxDateOfBirth, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByDateOfBirthBetween(minDateOfBirth, maxDateOfBirth).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByDateOfBirthGreaterThan", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirthGreaterThanForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/findProfilesByDateOfBirthGreaterThan";
+    }
+    
+    @RequestMapping(params = "find=ByDateOfBirthGreaterThan", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirthGreaterThan(@RequestParam("dateOfBirth") @DateTimeFormat(style = "S-") Date dateOfBirth, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByDateOfBirthGreaterThan(dateOfBirth).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByDateOfBirthLessThan", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirthLessThanForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/findProfilesByDateOfBirthLessThan";
+    }
+    
+    @RequestMapping(params = "find=ByDateOfBirthLessThan", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDateOfBirthLessThan(@RequestParam("dateOfBirth") @DateTimeFormat(style = "S-") Date dateOfBirth, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByDateOfBirthLessThan(dateOfBirth).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByDepartmentId", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDepartmentIdForm(Model uiModel) {
+        uiModel.addAttribute("departments", Department.findAllDepartments());
+        return "profiles/findProfilesByDepartmentId";
+    }
+    
+    @RequestMapping(params = "find=ByDepartmentId", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByDepartmentId(@RequestParam("departmentId") Department departmentId, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByDepartmentId(departmentId).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByExpectedGraduationDate", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByExpectedGraduationDateForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/findProfilesByExpectedGraduationDate";
+    }
+    
+    @RequestMapping(params = "find=ByExpectedGraduationDate", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByExpectedGraduationDate(@RequestParam("expectedGraduationDate") @DateTimeFormat(style = "S-") Date expectedGraduationDate, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByExpectedGraduationDate(expectedGraduationDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByExpectedGraduationDateBetween", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByExpectedGraduationDateBetweenForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/findProfilesByExpectedGraduationDateBetween";
+    }
+    
+    @RequestMapping(params = "find=ByExpectedGraduationDateBetween", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByExpectedGraduationDateBetween(@RequestParam("minExpectedGraduationDate") @DateTimeFormat(style = "S-") Date minExpectedGraduationDate, @RequestParam("maxExpectedGraduationDate") @DateTimeFormat(style = "S-") Date maxExpectedGraduationDate, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByExpectedGraduationDateBetween(minExpectedGraduationDate, maxExpectedGraduationDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByGenderId", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByGenderIdForm(Model uiModel) {
+        uiModel.addAttribute("genders", Gender.findAllGenders());
+        return "profiles/findProfilesByGenderId";
+    }
+    
+    @RequestMapping(params = "find=ByGenderId", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByGenderId(@RequestParam("genderId") Gender genderId, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByGenderId(genderId).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByHomePhone", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByHomePhoneForm(Model uiModel) {
+        return "profiles/findProfilesByHomePhone";
+    }
+    
+    @RequestMapping(params = "find=ByHomePhone", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByHomePhone(@RequestParam("homePhone") String homePhone, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByHomePhone(homePhone).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByHomePhoneLike", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByHomePhoneLikeForm(Model uiModel) {
+        return "profiles/findProfilesByHomePhoneLike";
+    }
+    
+    @RequestMapping(params = "find=ByHomePhoneLike", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByHomePhoneLike(@RequestParam("homePhone") String homePhone, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByHomePhoneLike(homePhone).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByMobile", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByMobileForm(Model uiModel) {
+        return "profiles/findProfilesByMobile";
+    }
+    
+    @RequestMapping(params = "find=ByMobile", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByMobile(@RequestParam("mobile") String mobile, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByMobile(mobile).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByMobileLike", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByMobileLikeForm(Model uiModel) {
+        return "profiles/findProfilesByMobileLike";
+    }
+    
+    @RequestMapping(params = "find=ByMobileLike", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByMobileLike(@RequestParam("mobile") String mobile, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByMobileLike(mobile).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByMobileNotEquals", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByMobileNotEqualsForm(Model uiModel) {
+        return "profiles/findProfilesByMobileNotEquals";
+    }
+    
+    @RequestMapping(params = "find=ByMobileNotEquals", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByMobileNotEquals(@RequestParam("mobile") String mobile, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByMobileNotEquals(mobile).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByPhotoIdentifier", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByPhotoIdentifierForm(Model uiModel) {
+        return "profiles/findProfilesByPhotoIdentifier";
+    }
+    
+    @RequestMapping(params = "find=ByPhotoIdentifier", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByPhotoIdentifier(@RequestParam("photoIdentifier") String photoIdentifier, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByPhotoIdentifier(photoIdentifier).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByPhotoIdentifierLike", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByPhotoIdentifierLikeForm(Model uiModel) {
+        return "profiles/findProfilesByPhotoIdentifierLike";
+    }
+    
+    @RequestMapping(params = "find=ByPhotoIdentifierLike", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByPhotoIdentifierLike(@RequestParam("photoIdentifier") String photoIdentifier, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByPhotoIdentifierLike(photoIdentifier).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByProgramStudyId", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByProgramStudyIdForm(Model uiModel) {
+        uiModel.addAttribute("programstudys", Programstudy.findAllProgramstudys());
+        return "profiles/findProfilesByProgramStudyId";
+    }
+    
+    @RequestMapping(params = "find=ByProgramStudyId", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByProgramStudyId(@RequestParam("programStudyId") Programstudy programStudyId, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByProgramStudyId(programStudyId).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByResumeIdentifier", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByResumeIdentifierForm(Model uiModel) {
+        return "profiles/findProfilesByResumeIdentifier";
+    }
+    
+    @RequestMapping(params = "find=ByResumeIdentifier", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByResumeIdentifier(@RequestParam("resumeIdentifier") String resumeIdentifier, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByResumeIdentifier(resumeIdentifier).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByResumeIdentifierLike", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByResumeIdentifierLikeForm(Model uiModel) {
+        return "profiles/findProfilesByResumeIdentifierLike";
+    }
+    
+    @RequestMapping(params = "find=ByResumeIdentifierLike", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByResumeIdentifierLike(@RequestParam("resumeIdentifier") String resumeIdentifier, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByResumeIdentifierLike(resumeIdentifier).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByUniversityEmail", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUniversityEmailForm(Model uiModel) {
+        return "profiles/findProfilesByUniversityEmail";
+    }
+    
+    @RequestMapping(params = "find=ByUniversityEmail", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUniversityEmail(@RequestParam("universityEmail") String universityEmail, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByUniversityEmail(universityEmail).getResultList());
+        return "profiles/list";
+    }
+    
+    @RequestMapping(params = { "find=ByUniversityEmailLike", "form" }, method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUniversityEmailLikeForm(Model uiModel) {
+        return "profiles/findProfilesByUniversityEmailLike";
+    }
+    
+    @RequestMapping(params = "find=ByUniversityEmailLike", method = RequestMethod.GET)
+    public String ProfileController.findProfilesByUniversityEmailLike(@RequestParam("universityEmail") String universityEmail, Model uiModel) {
+        uiModel.addAttribute("profiles", Profile.findProfilesByUniversityEmailLike(universityEmail).getResultList());
+        return "profiles/list";
+    }
+    
     @ModelAttribute("users")
     public java.util.Collection<User> ProfileController.populateUsers() {
     	UserRole userRole = UgUtil.getLoggedInUserRole();
@@ -217,10 +476,15 @@ privileged aspect ProfileController_Roo_Controller {
 			return users;
 		}   
     }
+ 
     
     void ProfileController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("profile_dateofbirth_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("profile_expectedgraduationdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("profile_dateofbirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("profile_minexpectedgraduationdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("profile_expectedgraduationdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("profile_maxexpectedgraduationdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("profile_mindateofbirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("profile_maxdateofbirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
     }
     
     String ProfileController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

@@ -14,15 +14,15 @@ privileged aspect Profile_Roo_ToString {
         sb.append("DepartmentId: ").append(getDepartmentId()).append(", ");
         sb.append("ProgramStudyId: ").append(getProgramStudyId()).append(", ");
         sb.append("GenderId: ").append(getGenderId()).append(", ");
-        sb.append("UniversityEmail: ").append(getUniversityEmail()).append(", ");
         sb.append("ExpectedGraduationDate: ").append(getExpectedGraduationDate()).append(", ");
         sb.append("Citizenship: ").append(getCitizenship()).append(", ");
         sb.append("DateOfBirth: ").append(getDateOfBirth()).append(", ");
         sb.append("HomePhone: ").append(getHomePhone()).append(", ");
         sb.append("LinkedInProfile: ").append(getLinkedInProfile()).append(", ");
-        sb.append("Mobile: ").append(getMobile());
-        sb.append("PhotoIdentifier: ").append(getPhotoIdentifier());
-        sb.append("ResumeIdentifier: ").append(getResumeIdentifier());
+        sb.append("Mobile: ").append(getMobile()).append(", ");
+        sb.append("PhotoIdentifier: ").append(getPhotoIdentifier()).append(", ");
+        sb.append("ResumeIdentifier: ").append(getResumeIdentifier()).append(", ");
+        sb.append("UniversityEmail: ").append(getUniversityEmail());
         return sb.toString();
     }
     

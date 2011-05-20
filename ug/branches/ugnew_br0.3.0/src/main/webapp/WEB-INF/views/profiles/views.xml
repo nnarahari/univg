@@ -19,4 +19,70 @@
 <definition extends="default" name="profiles/findProfilesByUniversityId">
         <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByUniversityId.jspx"/>
     </definition>
+<definition extends="default" name="profiles/findProfilesByCitizenship">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByCitizenship.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByCitizenshipLike">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByCitizenshipLike.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByDateOfBirth">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByDateOfBirth.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByDateOfBirthBetween">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByDateOfBirthBetween.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByDateOfBirthGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByDateOfBirthGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByDateOfBirthLessThan">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByDateOfBirthLessThan.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByDepartmentId">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByDepartmentId.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByExpectedGraduationDate">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByExpectedGraduationDate.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByExpectedGraduationDateBetween">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByExpectedGraduationDateBetween.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByGenderId">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByGenderId.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByHomePhone">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByHomePhone.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByHomePhoneLike">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByHomePhoneLike.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByMobile">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByMobile.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByMobileLike">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByMobileLike.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByMobileNotEquals">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByMobileNotEquals.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByPhotoIdentifier">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByPhotoIdentifier.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByPhotoIdentifierLike">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByPhotoIdentifierLike.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByProgramStudyId">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByProgramStudyId.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByResumeIdentifier">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByResumeIdentifier.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByResumeIdentifierLike">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByResumeIdentifierLike.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByUniversityEmail">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByUniversityEmail.jspx"/>
+    </definition>
+<definition extends="default" name="profiles/findProfilesByUniversityEmailLike">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByUniversityEmailLike.jspx"/>
+    </definition>
 </tiles-definitions>

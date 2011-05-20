@@ -3,13 +3,240 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Department;
+import com.ug.domain.Gender;
 import com.ug.domain.Profile;
+import com.ug.domain.Programstudy;
 import com.ug.domain.University;
 import com.ug.domain.User;
+import java.lang.String;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 privileged aspect Profile_Roo_Finder {
+    
+    public static TypedQuery<Profile> Profile.findProfilesByCitizenship(String citizenship) {
+        if (citizenship == null || citizenship.length() == 0) throw new IllegalArgumentException("The citizenship argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.citizenship = :citizenship", Profile.class);
+        q.setParameter("citizenship", citizenship);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByCitizenshipLike(String citizenship) {
+        if (citizenship == null || citizenship.length() == 0) throw new IllegalArgumentException("The citizenship argument is required");
+        citizenship = citizenship.replace('*', '%');
+        if (citizenship.charAt(0) != '%') {
+            citizenship = "%" + citizenship;
+        }
+        if (citizenship.charAt(citizenship.length() - 1) != '%') {
+            citizenship = citizenship + "%";
+        }
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE LOWER(profile.citizenship) LIKE LOWER(:citizenship)", Profile.class);
+        q.setParameter("citizenship", citizenship);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByDateOfBirth(Date dateOfBirth) {
+        if (dateOfBirth == null) throw new IllegalArgumentException("The dateOfBirth argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.dateOfBirth = :dateOfBirth", Profile.class);
+        q.setParameter("dateOfBirth", dateOfBirth);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByDateOfBirthBetween(Date minDateOfBirth, Date maxDateOfBirth) {
+        if (minDateOfBirth == null) throw new IllegalArgumentException("The minDateOfBirth argument is required");
+        if (maxDateOfBirth == null) throw new IllegalArgumentException("The maxDateOfBirth argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.dateOfBirth BETWEEN :minDateOfBirth AND :maxDateOfBirth", Profile.class);
+        q.setParameter("minDateOfBirth", minDateOfBirth);
+        q.setParameter("maxDateOfBirth", maxDateOfBirth);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByDateOfBirthGreaterThan(Date dateOfBirth) {
+        if (dateOfBirth == null) throw new IllegalArgumentException("The dateOfBirth argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.dateOfBirth > :dateOfBirth", Profile.class);
+        q.setParameter("dateOfBirth", dateOfBirth);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByDateOfBirthLessThan(Date dateOfBirth) {
+        if (dateOfBirth == null) throw new IllegalArgumentException("The dateOfBirth argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.dateOfBirth < :dateOfBirth", Profile.class);
+        q.setParameter("dateOfBirth", dateOfBirth);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByDepartmentId(Department departmentId) {
+        if (departmentId == null) throw new IllegalArgumentException("The departmentId argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.departmentId = :departmentId", Profile.class);
+        q.setParameter("departmentId", departmentId);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByExpectedGraduationDate(Date expectedGraduationDate) {
+        if (expectedGraduationDate == null) throw new IllegalArgumentException("The expectedGraduationDate argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.expectedGraduationDate = :expectedGraduationDate", Profile.class);
+        q.setParameter("expectedGraduationDate", expectedGraduationDate);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByExpectedGraduationDateBetween(Date minExpectedGraduationDate, Date maxExpectedGraduationDate) {
+        if (minExpectedGraduationDate == null) throw new IllegalArgumentException("The minExpectedGraduationDate argument is required");
+        if (maxExpectedGraduationDate == null) throw new IllegalArgumentException("The maxExpectedGraduationDate argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.expectedGraduationDate BETWEEN :minExpectedGraduationDate AND :maxExpectedGraduationDate", Profile.class);
+        q.setParameter("minExpectedGraduationDate", minExpectedGraduationDate);
+        q.setParameter("maxExpectedGraduationDate", maxExpectedGraduationDate);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByGenderId(Gender genderId) {
+        if (genderId == null) throw new IllegalArgumentException("The genderId argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.genderId = :genderId", Profile.class);
+        q.setParameter("genderId", genderId);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByHomePhone(String homePhone) {
+        if (homePhone == null || homePhone.length() == 0) throw new IllegalArgumentException("The homePhone argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.homePhone = :homePhone", Profile.class);
+        q.setParameter("homePhone", homePhone);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByHomePhoneLike(String homePhone) {
+        if (homePhone == null || homePhone.length() == 0) throw new IllegalArgumentException("The homePhone argument is required");
+        homePhone = homePhone.replace('*', '%');
+        if (homePhone.charAt(0) != '%') {
+            homePhone = "%" + homePhone;
+        }
+        if (homePhone.charAt(homePhone.length() - 1) != '%') {
+            homePhone = homePhone + "%";
+        }
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE LOWER(profile.homePhone) LIKE LOWER(:homePhone)", Profile.class);
+        q.setParameter("homePhone", homePhone);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByMobile(String mobile) {
+        if (mobile == null || mobile.length() == 0) throw new IllegalArgumentException("The mobile argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.mobile = :mobile", Profile.class);
+        q.setParameter("mobile", mobile);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByMobileLike(String mobile) {
+        if (mobile == null || mobile.length() == 0) throw new IllegalArgumentException("The mobile argument is required");
+        mobile = mobile.replace('*', '%');
+        if (mobile.charAt(0) != '%') {
+            mobile = "%" + mobile;
+        }
+        if (mobile.charAt(mobile.length() - 1) != '%') {
+            mobile = mobile + "%";
+        }
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE LOWER(profile.mobile) LIKE LOWER(:mobile)", Profile.class);
+        q.setParameter("mobile", mobile);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByMobileNotEquals(String mobile) {
+        if (mobile == null || mobile.length() == 0) throw new IllegalArgumentException("The mobile argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.mobile != :mobile", Profile.class);
+        q.setParameter("mobile", mobile);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByPhotoIdentifier(String photoIdentifier) {
+        if (photoIdentifier == null || photoIdentifier.length() == 0) throw new IllegalArgumentException("The photoIdentifier argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.photoIdentifier = :photoIdentifier", Profile.class);
+        q.setParameter("photoIdentifier", photoIdentifier);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByPhotoIdentifierLike(String photoIdentifier) {
+        if (photoIdentifier == null || photoIdentifier.length() == 0) throw new IllegalArgumentException("The photoIdentifier argument is required");
+        photoIdentifier = photoIdentifier.replace('*', '%');
+        if (photoIdentifier.charAt(0) != '%') {
+            photoIdentifier = "%" + photoIdentifier;
+        }
+        if (photoIdentifier.charAt(photoIdentifier.length() - 1) != '%') {
+            photoIdentifier = photoIdentifier + "%";
+        }
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE LOWER(profile.photoIdentifier) LIKE LOWER(:photoIdentifier)", Profile.class);
+        q.setParameter("photoIdentifier", photoIdentifier);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByProgramStudyId(Programstudy programStudyId) {
+        if (programStudyId == null) throw new IllegalArgumentException("The programStudyId argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.programStudyId = :programStudyId", Profile.class);
+        q.setParameter("programStudyId", programStudyId);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByResumeIdentifier(String resumeIdentifier) {
+        if (resumeIdentifier == null || resumeIdentifier.length() == 0) throw new IllegalArgumentException("The resumeIdentifier argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.resumeIdentifier = :resumeIdentifier", Profile.class);
+        q.setParameter("resumeIdentifier", resumeIdentifier);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByResumeIdentifierLike(String resumeIdentifier) {
+        if (resumeIdentifier == null || resumeIdentifier.length() == 0) throw new IllegalArgumentException("The resumeIdentifier argument is required");
+        resumeIdentifier = resumeIdentifier.replace('*', '%');
+        if (resumeIdentifier.charAt(0) != '%') {
+            resumeIdentifier = "%" + resumeIdentifier;
+        }
+        if (resumeIdentifier.charAt(resumeIdentifier.length() - 1) != '%') {
+            resumeIdentifier = resumeIdentifier + "%";
+        }
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE LOWER(profile.resumeIdentifier) LIKE LOWER(:resumeIdentifier)", Profile.class);
+        q.setParameter("resumeIdentifier", resumeIdentifier);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByUniversityEmail(String universityEmail) {
+        if (universityEmail == null || universityEmail.length() == 0) throw new IllegalArgumentException("The universityEmail argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.universityEmail = :universityEmail", Profile.class);
+        q.setParameter("universityEmail", universityEmail);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByUniversityEmailLike(String universityEmail) {
+        if (universityEmail == null || universityEmail.length() == 0) throw new IllegalArgumentException("The universityEmail argument is required");
+        universityEmail = universityEmail.replace('*', '%');
+        if (universityEmail.charAt(0) != '%') {
+            universityEmail = "%" + universityEmail;
+        }
+        if (universityEmail.charAt(universityEmail.length() - 1) != '%') {
+            universityEmail = universityEmail + "%";
+        }
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE LOWER(profile.universityEmail) LIKE LOWER(:universityEmail)", Profile.class);
+        q.setParameter("universityEmail", universityEmail);
+        return q;
+    }
     
     public static TypedQuery<Profile> Profile.findProfilesByUniversityId(University universityId) {
         if (universityId == null) throw new IllegalArgumentException("The universityId argument is required");

@@ -74,3 +74,51 @@ controller all --package ~.web
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-14 16:09:15
 database reverse engineer --schema unable-to-obtain-connection --package ~.domain
 controller all --package ~.web
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-05-15 01:07:32
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-17 00:30:24
+finder add findCorporateByUserId --class ~.domain.Corporate
+finder list --class ~.domain.Corporate
+finder add findCorporatesByCorporateLoanAmounts
+finder add findCorporatesByCorporateName
+finder add findCorporatesByCorporateNameLike
+finder add findCorporatesByCorporatePrimaryContact
+finder add findCorporatesByCorporatePrimaryContactLike
+finder add findCorporatesByIndustry
+finder add findCorporatesByIndustryLike
+finder add findCorporatesByMobile
+finder add findCorporatesByUserId
+finder add findCorporatesByWorkPhone
+finder add findCorporatesByWorkPhone
+finder add findCorporatesByZip
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-05-18 20:30:15
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-19 11:11:41
+finder list --class ~.domain.Profile
+finder add findProfilesByCitizenship --class ~.domain.Profile
+finder add findProfilesByCitizenshipLike
+// [failed] finder add findProfilesByDateOfBirth
+finder add findProfilesByDateOfBirth
+finder add findProfilesByDateOfBirthBetween
+finder add findProfilesByDateOfBirthGreaterThan
+finder add findProfilesByDateOfBirthLessThan
+finder add findProfilesByDepartmentId
+finder add findProfilesByExpectedGraduationDate
+finder add findProfilesByExpectedGraduationDateBetween
+finder add findProfilesByGenderId
+finder add findProfilesByHomePhone
+finder add findProfilesByHomePhoneLike
+finder add findProfilesByMobile
+finder add findProfilesByMobileLike
+finder add findProfilesByMobileLike
+finder add findProfilesByMobileNotEquals
+finder add findProfilesByPhotoIdentifier
+finder add findProfilesByPhotoIdentifierLike
+finder add findProfilesByMobileLike
+finder add findProfilesByMobileLike
+finder add findProfilesByPhotoIdentifierLike
+finder add findProfilesByProgramStudyId
+finder add findProfilesByResumeIdentifier
+finder add findProfilesByResumeIdentifierLike
+finder add findProfilesByUniversityEmail
+finder add findProfilesByUniversityEmailLike
+finder add findProfilesByUniversityId
+finder add findProfilesByUserId

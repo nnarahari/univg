@@ -40,7 +40,51 @@
         <menu:item id="i_profile_list" messageCode="global_menu_list" url="/profiles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Xn953x2DUSQIcljOjuowLDd1gRc="/>
         <menu:item id="fi_profile_userid" messageCode="student_menu_find_profile" url="/profiles?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
         <menu:item id="fi_profile_universityid" messageCode="global_menu_find" url="/profiles?find=ByUniversityId&amp;form" z="XWsNTP1zAcAKovoco1BbHiwNdY4="/>
-        </menu:category>
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <menu:item id="fi_profile_citizenshiplike" messageCode="global_menu_find" url="/profiles?find=ByCitizenshipLike&amp;form" z="cJk0GNhWk91WE3+rUF80Mhs3CEw="/>
+            <menu:item id="fi_profile_photoidentifier" messageCode="global_menu_find" url="/profiles?find=ByPhotoIdentifier&amp;form" z="69bMXovCgL5uT9sgBdusllgCMGE="/>
+            <menu:item id="fi_profile_expectedgraduationdatebetween" messageCode="global_menu_find" url="/profiles?find=ByExpectedGraduationDateBetween&amp;form" z="BE/m5Agz0KUZd/aETlyrIDP+cOI="/>
+            <menu:item id="fi_profile_dateofbirth" messageCode="global_menu_find" url="/profiles?find=ByDateOfBirth&amp;form" z="7ieug9P3UvRt/80I3AW4ZAQnAZo="/>
+            <menu:item id="fi_profile_universityemaillike" messageCode="global_menu_find" url="/profiles?find=ByUniversityEmailLike&amp;form" z="bcnI2qYACbjBfOoVBOSMPgjSJhU="/>
+            <menu:item id="fi_profile_universityemail" messageCode="global_menu_find" url="/profiles?find=ByUniversityEmail&amp;form" z="micLqm9SY1oK1RrS4a0FTP9u9VA="/>
+            <menu:item id="fi_profile_departmentid" messageCode="global_menu_find" url="/profiles?find=ByDepartmentId&amp;form" z="ngTMDBLXNwsIwZOKyqHNyV1Bans="/>
+            <menu:item id="fi_profile_mobilelike" messageCode="global_menu_find" url="/profiles?find=ByMobileLike&amp;form" z="fttPU4bcQAClpilzUH/Oo8rFhus="/>
+            <menu:item id="fi_profile_genderid" messageCode="global_menu_find" url="/profiles?find=ByGenderId&amp;form" z="VR9DOPARJ3qt+kK3sK76O/NP9lY="/>
+            <menu:item id="fi_profile_resumeidentifier" messageCode="global_menu_find" url="/profiles?find=ByResumeIdentifier&amp;form" z="QH4z//cl3Y6TR2+qz8VbQZb30ko="/>
+            <menu:item id="fi_profile_homephone" messageCode="global_menu_find" url="/profiles?find=ByHomePhone&amp;form" z="92yeu43+DSIk8sb945+Qq2bpX7I="/>
+            <menu:item id="fi_profile_dateofbirthgreaterthan" messageCode="global_menu_find" url="/profiles?find=ByDateOfBirthGreaterThan&amp;form" z="LbXf45vi6IN0JdKWYV7vet0BXyM="/>
+            <menu:item id="fi_profile_mobilenotequals" messageCode="global_menu_find" url="/profiles?find=ByMobileNotEquals&amp;form" z="zDhBV3dXPQEE83o5OGT18zsDcpY="/>
+            <menu:item id="fi_profile_resumeidentifierlike" messageCode="global_menu_find" url="/profiles?find=ByResumeIdentifierLike&amp;form" z="q259EUMuNwOWwh/9ScDG7VyNd7c="/>
+            <menu:item id="fi_profile_dateofbirthlessthan" messageCode="global_menu_find" url="/profiles?find=ByDateOfBirthLessThan&amp;form" z="Zl/3atU+GJtVt8Pi3QG8JzM2whk="/>
+            <menu:item id="fi_profile_programstudyid" messageCode="global_menu_find" url="/profiles?find=ByProgramStudyId&amp;form" z="MtabTldRiVfjpBPo1V+ayagIk7w="/>
+            <menu:item id="fi_profile_homephonelike" messageCode="global_menu_find" url="/profiles?find=ByHomePhoneLike&amp;form" z="GkkEMGjpnR/+dWplFlgQ4YvdzRQ="/>
+            <menu:item id="fi_profile_citizenship" messageCode="global_menu_find" url="/profiles?find=ByCitizenship&amp;form" z="gSGFwHPThklGXOFb6L04a2Nyi9c="/>
+            <menu:item id="fi_profile_dateofbirthbetween" messageCode="global_menu_find" url="/profiles?find=ByDateOfBirthBetween&amp;form" z="6g+4b158swWG/65xXJfg1I1Dyi8="/>
+            <menu:item id="fi_profile_photoidentifierlike" messageCode="global_menu_find" url="/profiles?find=ByPhotoIdentifierLike&amp;form" z="7br9kYMPdw35DOINZZ5OFNK9i9Y="/>
+            <menu:item id="fi_profile_mobile" messageCode="global_menu_find" url="/profiles?find=ByMobile&amp;form" z="U+R/UobBu8Jelxg4XkIiSTiKKrU="/>
+            <menu:item id="fi_profile_expectedgraduationdate" messageCode="global_menu_find" url="/profiles?find=ByExpectedGraduationDate&amp;form" z="hYns5ZzHolTy/WpVkQ0iHsrItNk="/>
+            </menu:category>
     <menu:category id="c_university" z="BKAmptBGIXfVmWi9r315z/BHEN0=">
             <menu:item id="i_university_new" messageCode="global_menu_new" url="/universitys?form" z="pj8UUH5TTpxGaAO3E1gz24kR52o="/>
         <menu:item id="i_university_list" messageCode="global_menu_list" url="/universitys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="m68ElcrJnWhWpbSPOSBsQl/HQtI="/>
