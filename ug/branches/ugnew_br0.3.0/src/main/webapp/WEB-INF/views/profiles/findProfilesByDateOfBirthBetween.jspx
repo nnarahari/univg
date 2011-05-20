@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:find finderName="ByDateOfBirthBetween" id="ff_com_ug_domain_Profile" path="/profiles" z="FJG81PfPd9QRh0JvOIjJ2kHqthY=">
+        <field:datetime dateTimePattern="${profile_mindateofbirth_date_format}" disableFormBinding="true" field="minDateOfBirth" id="f_com_ug_domain_Profile_minDateOfBirth" z="0OzUE29THrR/3oe2JRVY4jVjij4="/>
+        <field:datetime dateTimePattern="${profile_maxdateofbirth_date_format}" disableFormBinding="true" field="maxDateOfBirth" id="f_com_ug_domain_Profile_maxDateOfBirth" z="LhA7O2cRgAjIy2tAqApG+70oPOA="/>
+    </form:find>
+</div>
