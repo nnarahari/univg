@@ -254,4 +254,19 @@ privileged aspect Profile_Roo_Finder {
         return q;
     }
     
+    public static TypedQuery<Profile> Profile.findProfilesByState(State stateId) {
+        if (stateId == null) throw new IllegalArgumentException("The stateId argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.universityId in (SELECT University FROM University as university WHERE university.stateId = :stateId)", Profile.class);
+        q.setParameter("stateId", stateId);
+        return q;
+    }
+    
+    public static TypedQuery<Profile> Profile.findProfilesByCountry(String country) {
+        if (country == null) throw new IllegalArgumentException("The country argument is required");
+        EntityManager em = Profile.entityManager();
+        TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.universityId in (SELECT University FROM University as university WHERE university.country = :country)", Profile.class);
+        q.setParameter("country", country);
+        return q;
+    }
 }

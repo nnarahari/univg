@@ -108,6 +108,11 @@ privileged aspect State_Roo_Entity {
         return entityManager().find(State.class, id);
     }
     
+    public static State State.findStateByName(String stateName) {
+        if (stateName == null) return null;
+        return entityManager().createQuery("select o from State o where o.stateName='"+stateName+"'",State.class ).getSingleResult();
+    }
+    
     public static List<State> State.findStateEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("select o from State o", State.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }

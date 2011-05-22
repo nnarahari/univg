@@ -36,6 +36,10 @@ privileged aspect University_Roo_Entity {
     @Column(name = "version")
     private Integer University.version;
     
+    
+    @Column(name = "university_name")
+    private String universityName;
+    
     public Long University.getId() {
         return this.id;
     }
@@ -110,6 +114,11 @@ privileged aspect University_Roo_Entity {
     
     public static List<University> University.findUniversityEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("select o from University o", University.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static University University.findUniversityByName(String univName) {
+        if (univName == null) return null;
+        return entityManager().createQuery("select o from University o where o.universityName='"+univName+"'",University.class ).getSingleResult();
     }
     
 }
