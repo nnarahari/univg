@@ -179,13 +179,13 @@
 	<sec:authorize ifAllGranted="corporate">
 	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
 		<menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
-			<menu:item id="i_corporate_list" messageCode="global_menu_list" url="/corporates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="w0/pNyFp2tR+ecZpHeCYWzvaV4I="/>
             <menu:item id="fi_corporate_userid" messageCode="global_menu_find" url="/corporates?find=ByUserId&amp;userId=${loggedInUserId}" z="tTqg90rGogj2bglnEmGOlJhEyBo="/>
+			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?find=ByUserId&amp;userId=${loggedInUserId}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
 		</menu:category>
-		<menu:category id="c_corporateloanamount" z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
-			<menu:item id="i_corporateloanamount_new" messageCode="global_menu_new" url="/corporateloanamounts?form" z="tLT912vXYJne7+0Ha12szO0UN4A="/>
+<!-- 		<menu:category id="c_corporateloanamount" z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
 			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
-		</menu:category>
+			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?find=ByUserId&amp;userId=${loggedInUserId}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
+		</menu:category>  -->
 		
 		<menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
 			<menu:item id="i_corporate_new" messageCode="student_search" url="/corporates/searchStudent" z="2B378xTDeK85UzqNloDvE7GLwuY="/>
