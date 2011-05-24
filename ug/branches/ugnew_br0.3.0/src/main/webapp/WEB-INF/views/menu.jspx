@@ -181,6 +181,8 @@
 		<menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
             <menu:item id="fi_corporate_userid" messageCode="global_menu_find" url="/corporates?find=ByUserId&amp;userId=${loggedInUserId}" z="tTqg90rGogj2bglnEmGOlJhEyBo="/>
 			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?find=ByUserId&amp;userId=${loggedInUserId}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
+			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts/addamount?form" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
+
 		</menu:category>
 <!-- 		<menu:category id="c_corporateloanamount" z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
 			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
@@ -189,10 +191,10 @@
 		
 		<menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
 			<menu:item id="i_corporate_new" messageCode="student_search" url="/corporates/searchStudent" z="2B378xTDeK85UzqNloDvE7GLwuY="/>
-			<menu:item id="fi_profile_universityid" messageCode="global_menu_find" url="/profiles?find=ByUniversityId&amp;form" z="XWsNTP1zAcAKovoco1BbHiwNdY4="/>
-		    <menu:item id="fi_profile_programstudyid" messageCode="global_menu_find" url="/profiles?find=ByProgramStudyId&amp;form" z="MtabTldRiVfjpBPo1V+ayagIk7w="/>
-		    <menu:item id="fi_profile_departmentid" messageCode="global_menu_find" url="/profiles?find=ByDepartmentId&amp;form" z="ngTMDBLXNwsIwZOKyqHNyV1Bans="/>
-		    <menu:item id="fi_profile_expectedgraduationdate" messageCode="global_menu_find" url="/profiles?find=ByExpectedGraduationDate&amp;form" z="hYns5ZzHolTy/WpVkQ0iHsrItNk="/>
+			<menu:item id="fi_profile_universityid" messageCode="corporate_menu_find_profile_by_universiry" url="/profiles?find=ByUniversityId&amp;form" z="XWsNTP1zAcAKovoco1BbHiwNdY4="/>
+		    <menu:item id="fi_profile_programstudyid" messageCode="corporate_menu_find_profile_by_programstudy" url="/profiles?find=ByProgramStudyId&amp;form" z="MtabTldRiVfjpBPo1V+ayagIk7w="/>
+		    <menu:item id="fi_profile_departmentid" messageCode="corporate_menu_find_profile_by_department" url="/profiles?find=ByDepartmentId&amp;form" z="ngTMDBLXNwsIwZOKyqHNyV1Bans="/>
+		    <menu:item id="fi_profile_expectedgraduationdate" messageCode="corporate_menu_find_profile_by_graduationdate" url="/profiles?find=ByExpectedGraduationDate&amp;form" z="hYns5ZzHolTy/WpVkQ0iHsrItNk="/>
 	        <menu:item id="fi_loan_loanamount" messageCode="global_menu_find" url="/loans?find=ByLoanAmount&amp;form" z="tSyBu//pJHMmx/1vELgP+q7QhIg="/>
 	        <menu:item id="fi_loan_loanneededby" messageCode="global_menu_find" url="/loans?find=ByLoanNeededBy&amp;form" z="1O/7TFFCnto79pVBP+elP2PC7i8="/>
 	        <menu:item id="fi_loan_loanneededbybetween" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByBetween&amp;form" z="hx8zmfKc5aMCSu0qJAqZs7y81bg="/>
