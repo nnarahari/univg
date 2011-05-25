@@ -6,13 +6,9 @@
     
         <sec:authorize ifAllGranted="student">
     		<table:table data="${loans}" id="l_com_ug_domain_Loan" create="true" delete="false" update="true" path="/loans" z="e1nnxdYw9yAfcQe8djJqeRHB2vM=">
-			<table:column id="c_com_ug_domain_Loan_userId" property="userId" z="Q8gnFZKhH8zB5eXBvEDvL6JsChg="/>
 			<table:column id="c_com_ug_domain_Loan_loanNeededBy" property="loanNeededBy" z="xlBCH4QNHe3cvURzFbLkWYPiPrE="/>
 			<table:column id="c_com_ug_domain_Loan_loanAmount" property="loanAmount" z="Yz6YI8KmHZpTmBJpsJ+77dccaJA="/>
-			<table:column id="c_com_ug_domain_Loan_supportDocumentName" property="supportDocumentName" z="45Zkn6TKO+UG6gnVqwL/wvddj8A="/>
 			<table:column id="c_com_ug_domain_Loan_grantNeededFor" property="grantNeededFor" z="ubZYGlvfVb9zNqK9fSQgcaMIMHg="/>
-			<table:column id="c_com_ug_domain_Loan_comments" property="comments" z="z+GdTClgY0cVM2Yz0elLdSN4eZE="/>
-			<table:column id="c_com_ug_domain_Loan_address" property="address" z="Zvfsmhm09MIYJb8qAkd0RHaeBuo="/>
         </table:table>
 	    </sec:authorize>
 	    

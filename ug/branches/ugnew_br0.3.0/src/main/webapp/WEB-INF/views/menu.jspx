@@ -195,6 +195,7 @@
 		    <menu:item id="fi_profile_programstudyid" messageCode="corporate_menu_find_profile_by_programstudy" url="/profiles?find=ByProgramStudyId&amp;form" z="MtabTldRiVfjpBPo1V+ayagIk7w="/>
 		    <menu:item id="fi_profile_departmentid" messageCode="corporate_menu_find_profile_by_department" url="/profiles?find=ByDepartmentId&amp;form" z="ngTMDBLXNwsIwZOKyqHNyV1Bans="/>
 		    <menu:item id="fi_profile_expectedgraduationdate" messageCode="corporate_menu_find_profile_by_graduationdate" url="/profiles?find=ByExpectedGraduationDate&amp;form" z="hYns5ZzHolTy/WpVkQ0iHsrItNk="/>
+        	<menu:item id="fi_loan_loanstatusid" messageCode="global_menu_find" url="/loans?find=ByLoanStatusId&amp;form" z="m78MheoLWRfME4rEqyJyw7Znn1c="/>
 	        <menu:item id="fi_loan_loanamount" messageCode="global_menu_find" url="/loans?find=ByLoanAmount&amp;form" z="tSyBu//pJHMmx/1vELgP+q7QhIg="/>
 	        <menu:item id="fi_loan_loanneededby" messageCode="global_menu_find" url="/loans?find=ByLoanNeededBy&amp;form" z="1O/7TFFCnto79pVBP+elP2PC7i8="/>
 	        <menu:item id="fi_loan_loanneededbybetween" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByBetween&amp;form" z="hx8zmfKc5aMCSu0qJAqZs7y81bg="/>

@@ -134,3 +134,6 @@ finder add findLoansByLoanNeededByGreaterThanEquals
 finder add findLoansByLoanNeededByLessThan
 finder add findLoansByLoanStatusId
 finder add findLoansByUserId
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-05-19 21:47:24
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-20 13:04:31
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-20 21:13:01
