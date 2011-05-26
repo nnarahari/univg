@@ -14,8 +14,8 @@
         <field:input field="country" id="c_com_ug_domain_Corporate_country" z="9DjzbvrqapqvHB+Yqes10VM5rZg="/>
         <field:input field="zip" id="c_com_ug_domain_Corporate_zip" required="true" z="aLtekT0nFdNEUki/316r92i6vH8="/>
         <field:input field="corporatePrimaryContact" id="c_com_ug_domain_Corporate_corporatePrimaryContact" required="true" z="dIJpq/TbCY2uIHwRiSvEwe/Pb8E="/>
-        <field:input field="mobile" id="c_com_ug_domain_Corporate_mobile" z="55QwCBGmcDVeI6qlIDakQ3jMl+I="/>
-        <field:input field="workPhone" id="c_com_ug_domain_Corporate_workPhone" required="true" z="TSOm3sFsl1Qqcd8UEjFXygAVEmY="/>
+        <field:input field="mobile" id="c_com_ug_domain_Corporate_mobile" validationRegex="[0-9]{9,10}" z="55QwCBGmcDVeI6qlIDakQ3jMl+I="/>
+        <field:input field="workPhone" id="c_com_ug_domain_Corporate_workPhone" validationRegex="[0-9]{9,10}" required="true" z="TSOm3sFsl1Qqcd8UEjFXygAVEmY="/>
         <field:input field="corporateLinkedInProfile" id="c_com_ug_domain_Corporate_corporateLinkedInProfile" z="YfFyrv6dr6FOtShLbeQMSeoVUHY="/>
         <field:checkbox field="enabled" id="c_com_ug_domain_Corporate_enabled" z="EGvxJCAL8ANoLhPDxsm3p9CrYig="/>
         <field:checkbox field="locked" id="c_com_ug_domain_Corporate_locked" z="nQaFUbr5xcNf1Guw/13p0YmDqMc="/>

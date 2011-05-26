@@ -19,10 +19,12 @@ privileged aspect Profile_Roo_ToString {
         sb.append("DateOfBirth: ").append(getDateOfBirth()).append(", ");
         sb.append("HomePhone: ").append(getHomePhone()).append(", ");
         sb.append("LinkedInProfile: ").append(getLinkedInProfile()).append(", ");
+        sb.append("YoutubeUrl: ").append(getYoutubeUrl()).append(", ");
         sb.append("Mobile: ").append(getMobile()).append(", ");
         sb.append("PhotoIdentifier: ").append(getPhotoIdentifier()).append(", ");
         sb.append("ResumeIdentifier: ").append(getResumeIdentifier()).append(", ");
         sb.append("UniversityEmail: ").append(getUniversityEmail());
+        sb.append("BriefDescription: ").append(getBriefDescription());
         return sb.toString();
     }
     

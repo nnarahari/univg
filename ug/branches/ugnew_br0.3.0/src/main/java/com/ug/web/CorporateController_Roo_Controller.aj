@@ -3,18 +3,14 @@
 
 package com.ug.web;
 
-import com.ug.domain.Corporate;
-import com.ug.domain.CorporateLoanAmount;
-import com.ug.domain.State;
-import com.ug.domain.User;
 import java.io.UnsupportedEncodingException;
-import java.lang.Integer;
-import java.lang.Long;
-import java.lang.String;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
+
+import com.ug.domain.Corporate;
+import com.ug.domain.CorporateLoanAmount;
+import com.ug.domain.State;
+import com.ug.domain.User;
+import com.ug.domain.UserRole;
+import com.ug.util.UgUtil;
 
 privileged aspect CorporateController_Roo_Controller {
     
@@ -229,7 +232,16 @@ privileged aspect CorporateController_Roo_Controller {
     
     @ModelAttribute("users")
     public java.util.Collection<User> CorporateController.populateUsers() {
-        return User.findAllUsers();
+    	UserRole userRole = UgUtil.getLoggedInUserRole();
+		if (userRole != null
+				&& "admin".equals(userRole.getRoleEntry().getRoleName())) {
+			return User.findAllUsers();
+		} else {
+			java.util.List<User> users = new ArrayList<User>();
+			users.add(UgUtil.getLoggedInUser());
+			return users;
+		}   
+
     }
     
     String CorporateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

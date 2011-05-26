@@ -38,6 +38,7 @@
         <field:display field="mobile" id="s_com_ug_domain_Profile_mobile" object="${profile}" z="/qIheCg9klMTSFQgCtu1tl2bXZo="/>
         <field:display field="homePhone" id="s_com_ug_domain_Profile_homePhone" object="${profile}" z="ZOVVcLzwAoDDcYqejtmO2WAR7QU="/>
         <field:display field="linkedInProfile" id="s_com_ug_domain_Profile_linkedInProfile" object="${profile}" z="E+OeeLb4rrKs4GKriyFpHD7PJaI="/>
-       
+        <field:display field="youtubeUrl" id="s_com_ug_domain_Profile_youtubeUrl" object="${profile}" z="user-managed"/>
+        <field:display field="briefDescription" id="s_com_ug_domain_Profile_briefDescription" object="${profile}" z="user-managed"/>
     </page:show>
 </div>

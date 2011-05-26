@@ -58,8 +58,11 @@ privileged aspect Profile_Roo_DbManaged {
     @NotNull
     private String Profile.homePhone;
     
-    @Column(name = "linked_in_profile", columnDefinition = "VARCHAR", length = 75)
+    @Column(name = "linked_in_profile", columnDefinition = "VARCHAR", length = 255)
     private String Profile.linkedInProfile;
+    
+    @Column(name = "youtubeUrl", columnDefinition = "VARCHAR", length = 255)
+    private String Profile.youtubeUrl;
     
     @Column(name = "mobile", columnDefinition = "VARCHAR", length = 10)
     @NotNull
@@ -73,6 +76,10 @@ privileged aspect Profile_Roo_DbManaged {
     
     @Column(name = "universityEmail", columnDefinition = "VARCHAR", length = 255)
     private String Profile.universityEmail;
+    
+    
+    @Column(name = "briefDescription", columnDefinition = "VARCHAR", length = 500)
+    private String Profile.briefDescription;
     
     public User Profile.getUserId() {
         return this.userId;
@@ -154,6 +161,15 @@ privileged aspect Profile_Roo_DbManaged {
         this.linkedInProfile = linkedInProfile;
     }
     
+    public String Profile.getYoutubeUrl() {
+        return this.youtubeUrl;
+    }
+    
+    public void Profile.setYoutubeUrl(String youtubeUrl) {
+        this.youtubeUrl = youtubeUrl;
+    }
+    
+    
     public String Profile.getMobile() {
         return this.mobile;
     }
@@ -186,4 +202,12 @@ privileged aspect Profile_Roo_DbManaged {
         this.universityEmail = universityEmail;
     }
     
+    public String Profile.getBriefDescription() {
+        return this.briefDescription;
+    }
+    
+    public void Profile.setBriefDescription(String briefDescription) {
+        this.briefDescription = briefDescription;
+    }
+   
 }

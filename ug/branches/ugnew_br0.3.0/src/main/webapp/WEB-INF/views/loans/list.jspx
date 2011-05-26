@@ -19,8 +19,6 @@
 			<table:column id="c_com_ug_domain_Loan_loanAmount" property="loanAmount" z="Yz6YI8KmHZpTmBJpsJ+77dccaJA="/>
 			<table:column id="c_com_ug_domain_Loan_supportDocumentName" property="supportDocumentName" z="45Zkn6TKO+UG6gnVqwL/wvddj8A="/>
 			<table:column id="c_com_ug_domain_Loan_grantNeededFor" property="grantNeededFor" z="ubZYGlvfVb9zNqK9fSQgcaMIMHg="/>
-			<table:column id="c_com_ug_domain_Loan_comments" property="comments" z="z+GdTClgY0cVM2Yz0elLdSN4eZE="/>
-			<table:column id="c_com_ug_domain_Loan_address" property="address" z="Zvfsmhm09MIYJb8qAkd0RHaeBuo="/>
         </table:table>
 	    </sec:authorize>
         
