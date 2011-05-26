@@ -12,6 +12,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.ug.domain.Department;
+import com.ug.domain.Gender;
 import com.ug.domain.Grantneededfor;
 import com.ug.domain.Programstudy;
 import com.ug.domain.State;
@@ -28,6 +29,7 @@ public class LoadFirstTimeData {
 		// loadUniversities("C:/ug/xml/univ.xml");
 		// loadDepartment("C:/ug/xml/department.xml");
 		// loadProgramStrudy("C:/ug/xml/studyprogram.xml");
+		loadGender("C:/ug/xml/gender.xml");
 
 	}
 
@@ -193,5 +195,33 @@ public class LoadFirstTimeData {
 		dept.setGrantNeedDescription(deptName);
 		return dept;
 	}
+	
+	public static void loadGender(String fileName) {
+		// get the root element
+		Document docEle = parseXmlFile(fileName);
+
+		// get a nodelist of elements
+		NodeList nl = docEle.getElementsByTagName("program");
+		if (nl != null && nl.getLength() > 0) {
+			for (int i = 0; i < nl.getLength(); i++) {
+
+				// get the employee element
+				Element el = (Element) nl.item(i);
+
+				// get the Employee object
+				Gender e = getGender(el);
+
+				e.persist();
+			}
+		}
+	}
+
+	private static Gender getGender(Element el) {
+		Gender dept = new Gender();
+		String deptName = el.getAttribute("name");
+		dept.setGenderName(deptName);
+		return dept;
+	}
+
 
 }
