@@ -57,6 +57,11 @@ privileged aspect LoanController_Roo_Controller {
 			addDateTimeFormatPatterns(uiModel);
 			return "loans/create";
 		}
+		String loggedInUserRole = UgUtil.getLoggedInUserRoleName();
+		if(loggedInUserRole!=null && "student".equalsIgnoreCase(loggedInUserRole))
+		{
+			loan.setLoanStatusId(Loanstatus.findLoanstatus(1L));
+		}
 		uiModel.asMap().clear();
 		loan.persist();
 
