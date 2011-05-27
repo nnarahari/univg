@@ -20,7 +20,7 @@ LoadFirstTimeData.loadProgramStrudy("C:/ug/xml/studyprogram.xml");
 out.println("Loading ProgramStrudy:Complete");
 LoadFirstTimeData.loadLoanNeeds("C:/ug/xml/grantrequest.xml");
 out.println("Loading GrantNeeds:Complete");
-LoadFirstTimeData.loadLoanNeeds("C:/ug/xml/gender.xml");
+LoadFirstTimeData.loadGender("C:/ug/xml/gender.xml");
 out.println("Loading Gender Details:Complete");
 %>
 </body>
