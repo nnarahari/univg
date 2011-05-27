@@ -5,8 +5,8 @@
     
     <sec:authorize ifAllGranted="student"> 
     <form:create-loan id="fc_com_ug_domain_Loan" modelAttribute="loan" path="/loans" render="${empty dependencies}" z="user-managed">
-        <field:select field="userId" id="c_com_ug_domain_Loan_userId" itemValue="id" items="${users}" path="/users" z="x0JzZuJEQ1w737ARcsdxKBp/keI="/>
-        <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" z="bvGO4FhtYErSLN7vv1dR68M2xWs="/>
+        <!--  <field:select disabled="true" field="userId" id="c_com_ug_domain_Loan_userId" itemValue="id" items="${users}" path="/users" z="x0JzZuJEQ1w737ARcsdxKBp/keI="/>  -->
+         <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" z="bvGO4FhtYErSLN7vv1dR68M2xWs="/>
         <field:input field="loanAmount" id="c_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="sRpq/u7od98yZXyVfBV8wFXZHaY="/>
         <field:select field="grantNeededFor" id="c_com_ug_domain_Loan_grantNeededFor" itemValue="id" items="${grantneededfors}" path="/grantneededfors" z="1fXMU2spfyWeBHa6dv4VjfPvBDI="/>
         <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
