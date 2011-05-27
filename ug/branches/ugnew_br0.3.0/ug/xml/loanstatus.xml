@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<programs>
+	<program name="Submitted" />
+	<program name="Under Review" />
+	<program name="Approved Under Processing" />
+	<program name="Fulfilled and Closed" />
+	<program name="Rejected" />
+	<program name="Incomplete" />
+</programs>

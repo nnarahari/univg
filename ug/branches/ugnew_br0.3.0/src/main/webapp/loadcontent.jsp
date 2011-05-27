@@ -10,8 +10,8 @@
 <body>
 
 <%
-//LoadFirstTimeData.loadSates("C:/ug/xml/univ.xml");
-//out.println("Loading States:Complete");
+LoadFirstTimeData.loadSates("C:/ug/xml/univ.xml");
+out.println("Loading States:Complete");
 LoadFirstTimeData.loadUniversities("C:/ug/xml/univ.xml");
 out.println("Loading Universities:Complete");
 LoadFirstTimeData.loadDepartment("C:/ug/xml/department.xml");
@@ -22,6 +22,9 @@ LoadFirstTimeData.loadLoanNeeds("C:/ug/xml/grantrequest.xml");
 out.println("Loading GrantNeeds:Complete");
 LoadFirstTimeData.loadGender("C:/ug/xml/gender.xml");
 out.println("Loading Gender Details:Complete");
+LoadFirstTimeData.loadLoanstatus("C:/ug/xml/loanstatus.xml");
+out.println("Loading Loanstatus Details:Complete");
+
 %>
 </body>
 </html>
