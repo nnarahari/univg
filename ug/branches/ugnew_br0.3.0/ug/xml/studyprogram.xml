@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<programs>
+	<program name="Undergraduate Program" />
+	<program name="Masters Program" />
+	<program name="Doctorate Program" />
+	<program name="Others" />
+</programs>

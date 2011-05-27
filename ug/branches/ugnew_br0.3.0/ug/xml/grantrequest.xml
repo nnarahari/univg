@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requests>
+	<request name="Academic Fees" />
+	<request name="Books" />
+	<request name="Lab Equipment" />
+	<request name="Living Expense" />
+	<request name="Miscellaneous" />
+	<request name="Research Expenditure" />
+	<request name="Travel" />
+</requests>

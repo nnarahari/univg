@@ -1,0 +1,4 @@
+Undergraduate Program, Under Graduate Program
+Masters Program, Masters Program
+Doctorate Program, Doctorate
+Others, All other
