@@ -27,7 +27,7 @@ privileged aspect University_Roo_DbManaged {
     @JoinColumn(name = "stateId", referencedColumnName = "id", nullable = false)
     private State University.stateId;
     
-    @Column(name = "university_name", columnDefinition = "VARCHAR", length = 20)
+    @Column(name = "university_name", columnDefinition = "VARCHAR", length = 90)
     @NotNull
     private String University.universityName;
     
@@ -35,28 +35,28 @@ privileged aspect University_Roo_DbManaged {
     private String University.universityWebsite;
     
     @Column(name = "address1", columnDefinition = "VARCHAR", length = 50)
-    @NotNull
+    //@NotNull
     private String University.address1;
     
     @Column(name = "address2", columnDefinition = "VARCHAR", length = 50)
     private String University.address2;
     
     @Column(name = "city", columnDefinition = "VARCHAR", length = 50)
-    @NotNull
+    //@NotNull
     private String University.city;
     
     @Column(name = "country", columnDefinition = "VARCHAR", length = 20)
     private String University.country;
     
     @Column(name = "zip", columnDefinition = "VARCHAR", length = 10)
-    @NotNull
+    //@NotNull
     private String University.zip;
     
     @Column(name = "mobile", columnDefinition = "VARCHAR", length = 255)
     private String University.mobile;
     
     @Column(name = "phone", columnDefinition = "VARCHAR", length = 255)
-    @NotNull
+    //@NotNull
     private String University.phone;
     
     @Column(name = "enabled", columnDefinition = "BIT")

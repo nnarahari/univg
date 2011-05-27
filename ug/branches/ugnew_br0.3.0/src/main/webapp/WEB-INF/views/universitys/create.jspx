@@ -11,8 +11,8 @@
         <field:select field="stateId" id="c_com_ug_domain_University_stateId" itemValue="id" items="${states}" path="/states" z="jTYS72T7lS2fm5GSYTr/zQ0kBvk="/>
         <field:input field="country" id="c_com_ug_domain_University_country" z="aUIEhgi4L98hNSRKUhHrOmpNgME="/>
         <field:input field="zip" id="c_com_ug_domain_University_zip" required="true" z="/nKzSqOOS/dWS/lRHjj5MP26Ong="/>
-        <field:input field="phone" id="c_com_ug_domain_University_phone" required="true" z="9tK3DiCANIhtrDQCa2OWV2AhJrE="/>
-        <field:input field="mobile" id="c_com_ug_domain_University_mobile" z="/y973E2RGHIpIlAp5AgtBE0HiK4="/>
+        <field:input field="phone" id="c_com_ug_domain_University_phone" validationRegex="[0-9]{9,10}" required="true" z="9tK3DiCANIhtrDQCa2OWV2AhJrE="/>
+        <field:input field="mobile" id="c_com_ug_domain_University_mobile" validationRegex="[0-9]{9,10}" z="/y973E2RGHIpIlAp5AgtBE0HiK4="/>
         <field:simple field="profiles" id="c_com_ug_domain_University_profiles" messageCode="entity_reference_not_managed" messageCodeAttribute="Profile" z="i8KdMenbWnTS9mMAP3S7p6AsCXU="/>
         <field:simple field="guarantors" id="c_com_ug_domain_University_guarantors" messageCode="entity_reference_not_managed" messageCodeAttribute="Guarantor" z="g9PSiR0GVTcuV/vbXe6oCdEhBtA="/>
         <field:checkbox field="enabled" id="c_com_ug_domain_University_enabled" z="XTH+Yh7WY+ReLTILLsj/7lfSBRw="/>

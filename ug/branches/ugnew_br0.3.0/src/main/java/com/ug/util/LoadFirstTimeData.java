@@ -162,6 +162,7 @@ public class LoadFirstTimeData {
 	}
 
 	private static University getUniversity(Element el) {
+		//System.out.println("University");
 		University dept = new University();
 		String deptName = el.getAttribute("name");
 		dept.setUniversityName(deptName);

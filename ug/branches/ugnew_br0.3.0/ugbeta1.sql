@@ -95,22 +95,21 @@ CREATE INDEX FK143BF46A3124AD9A ON user_role (roleEntry ASC);
 
 CREATE TABLE university (
 	id BIGINT NOT NULL AUTO_INCREMENT,
-	university_name VARCHAR(20) NOT NULL,
+	university_name VARCHAR(90) NOT NULL,
 	university_website VARCHAR(30),
-	address1 VARCHAR(50) NOT NULL,
+	address1 VARCHAR(50),
 	address2 VARCHAR(50),
-	city VARCHAR(50) NOT NULL,
-	stateId bigint not null,
+	city VARCHAR(50),
+	stateId bigint,
 	country VARCHAR(20),
-	zip VARCHAR(10) NOT NULL,
+	zip VARCHAR(10),
 	mobile VARCHAR(255),
-	phone VARCHAR(255) NOT NULL,
+	phone VARCHAR(255),
 	enabled BIT,
 	locked BIT,
 	version INT,
 	PRIMARY KEY (id),
-	FOREIGN KEY (stateId) REFERENCES state(id)
-
+	
 ) ENGINE=InnoDB;
 
 CREATE TABLE guarantor (
