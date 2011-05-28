@@ -3,7 +3,7 @@
 
 	<!-- HTTP security configurations -->
     <http auto-config="true" use-expressions="true" >
-    	<form-login authentication-failure-url="/login?login_error=t" login-page="/main.jsp" login-processing-url="/resources/j_spring_security_check" default-target-url="/login/success.htm"/>
+    	<form-login authentication-failure-url="/login?login_error=t" login-page="/main.jsp" login-processing-url="/resources/j_spring_security_check" default-target-url="/login/success"/>
         <logout logout-url="/resources/j_spring_security_logout"/>
         
         <!-- Configure these elements to secure URIs in your application -->
@@ -11,7 +11,9 @@
         <intercept-url pattern="*/roles/**" access="hasRole('admin')"/>
         <intercept-url pattern="*/loanstatus/**" access="hasRole('admin')"/>
         <intercept-url pattern="*/universitys/**" access="hasRole('admin')"/>
-        <intercept-url pattern="/login/success.htm" access="isAuthenticated()"/>
+        <intercept-url pattern="/login/success" access="isAuthenticated()"/>
+        <intercept-url pattern="/profile" access="isAuthenticated()"/>
+        <intercept-url pattern="/corporate" access="isAuthenticated()"/>
 
         <intercept-url access="hasRole('admin')" pattern="/choices/**"/>
         <intercept-url access="isAuthenticated()" pattern="/member/**"/>

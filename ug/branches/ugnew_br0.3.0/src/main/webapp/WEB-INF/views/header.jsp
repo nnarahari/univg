@@ -40,8 +40,8 @@ User user = UgUtil.getLoggedInUser();
    
       <ul>
         <li class="active"><a href="main.jsp">Home</a></li>
-        <li><a href="<%=request.getContextPath()%>/login/success.htm">STUDENT</a></li>
-        <li><a href="<%=request.getContextPath()%>/login/success.htm">CORPORATES</a></li>
+        <li><a href="<%=request.getContextPath()%>/login/success">STUDENT</a></li>
+        <li><a href="<%=request.getContextPath()%>/login/success">CORPORATES</a></li>
 		<li><a href="#">P2P</a></li>
 		<li><a href="#">MENTORSHIP</a></li>
 		<li><a href="#">CONTACT US</a></li>

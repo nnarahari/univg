@@ -25,7 +25,7 @@ public class LoginController {
 	
 	private Logger logger = Logger.getLogger(LoginController.class);
 	
-	@RequestMapping ( value="/success.htm")
+	@RequestMapping ( value="/success")
 	public String loginSuccess(HttpServletRequest req, Model uiModel){
 		logger.debug("loginSuccess ....");
 		String displayPage = "loginmain.jsp";
