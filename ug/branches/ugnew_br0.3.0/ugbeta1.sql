@@ -14,6 +14,13 @@ CREATE TABLE state (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
+CREATE TABLE country (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	countryName VARCHAR(255) NOT NULL,
+	countryDescription VARCHAR(200),
+	version INT,
+	PRIMARY KEY (id)
+) ENGINE=InnoDB;
 
 CREATE TABLE department (
 	id BIGINT NOT NULL AUTO_INCREMENT,
