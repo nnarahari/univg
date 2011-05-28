@@ -1,11 +1,11 @@
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-04-14 18:45:21
-project --topLevelPackage com.ug --projectName ugbeta1 --java 6
+project --topLevelPackage com.ug --projectName ugbeta --java 6
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-04-14 18:45:23
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-04-14 18:45:39
 persistence setup --provider HIBERNATE --database MYSQL
 database properties set --key database.password --value password
 database properties set --key database.username --value root
-database properties set --key database.url --value jdbc:mysql://localhost:3306/ugbeta1
+database properties set --key database.url --value jdbc:mysql://localhost:3306/ugbeta
 osgi obr url add --url http://spring-roo-repository.springsource.org/repository.xml
 osgi obr start --bundleSymbolicName org.springframework.roo.wrapping.mysql-connector-java
 osgi obr url remove --url http://spring-roo-repository.springsource.org/repository.xml
@@ -53,11 +53,11 @@ finder add findLoansByLoanNeededBy --class ~.domain.Loan
 finder add findLoansByLoanNeededByBetween --class ~.domain.Loan
 finder add findLoansByLoanOriginDateBetween --class ~.domain.Loan
 finder add findLoansByLoanStatusId --class ~.domain.Loan
-// script --file C:\springsource\ugbeta1.roo
+// script --file C:\springsource\ugbeta.roo
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-04-19 09:42:09
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-13 22:16:17
 database reverse engineer --schema unable-to-obtain-connection --package ~.domain --includeTables "grantNeededFor"
-database reverse engineer --schema ugbeta1 --package ~.domain --includeTables "grantNeededFor"
+database reverse engineer --schema ugbeta --package ~.domain --includeTables "grantNeededFor"
 database reverse engineer --schema no-schema-required --package ~.domain --includeTables "grantNeededFor"
 database reverse engineer --schema no-schema-required --includeTables "grantNeededFor" --package ~.domain
 addon install bundle --bundleSymbolicName org.springframework.roo.wrapping.mysql-connector-java

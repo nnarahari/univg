@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ug</groupId>
-	<artifactId>ugbeta1</artifactId>
+	<artifactId>ugbeta</artifactId>
 	<packaging>war</packaging>
 	<version>0.1.0.BUILD-SNAPSHOT</version>
-	<name>ugbeta1</name>
+	<name>ugbeta</name>
 	<properties>
 		<roo.version>1.1.2.RELEASE</roo.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
@@ -407,7 +407,7 @@
         </dependency>
     </dependencies>
 	<build>
-		<finalName>ugbeta1</finalName>
+		<finalName>ugbeta</finalName>
 		<plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

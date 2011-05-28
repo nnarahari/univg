@@ -55,7 +55,7 @@
         <spring:message code="button_reset" htmlEscape="false" var="reset_label"/>
         <input id="reset" type="reset" value="${fn:escapeXml(reset_label)}"/>
       </div>
-    <div>&lt;br/&gt;&lt;a href ="/ugbeta1/forgotpassword/index"&gt;Forgot Password&lt;/a&gt; | Not a User Yet? &lt;a href ="/ugbeta1/signup?form"&gt;Sign Up&lt;/a&gt;</div>
+    <div>&lt;br/&gt;&lt;a href ="<%=request.getContextPath()%>/forgotpassword/index"&gt;Forgot Password&lt;/a&gt; | Not a User Yet? &lt;a href ="/ugbeta1/signup?form"&gt;Sign Up&lt;/a&gt;</div>
         </form>
   </util:panel>
 </div>

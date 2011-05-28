@@ -29,7 +29,7 @@ User user = UgUtil.getLoggedInUser();
     </div>
     <div class="fl_right"> 
 	
-	<strong>Welcome  <%=user.getFirstName()%> <%=user.getLastName()%></strong> </a>|<a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a>
+	<strong>Welcome  </strong> </a>|<a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a>
   </div>
 </div>
 </div>

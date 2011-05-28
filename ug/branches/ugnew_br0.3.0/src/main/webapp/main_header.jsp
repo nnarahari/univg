@@ -33,7 +33,7 @@ input.groovybutton
     </div>
     <div class="fl_right"> 
 	<div id="">
-	  <form id="form1" name="form1" method="post" action="/ugbeta1/resources/j_spring_security_check"><label>Username:</label>
+	  <form id="form1" name="form1" method="post" action="<%=request.getContextPath()%>/resources/j_spring_security_check"><label>Username:</label>
 	    <label for="username"></label>
 	    <input name="j_username" type="text" id="j_username" size="20" maxlength="256" />
 <label>Password:<input name="j_password" id="j_password"  type="password" size="20" maxlength="20" /></label>
@@ -49,7 +49,7 @@ input.groovybutton
          });
        </script>
       <fb:login-button>Login with Facebook</fb:login-button>
-      <a href="/ugbeta1/forgotpassword/index">Forgot Password??</a>| <a href="/ugbeta1/signup?form"> New User Sign Up</a>
+      <a href="<%=request.getContextPath()%>/forgotpassword/index">Forgot Password??</a>| <a href="/ugbeta1/signup?form"> New User Sign Up</a>
 <div class="fl_right"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     </div>
             
