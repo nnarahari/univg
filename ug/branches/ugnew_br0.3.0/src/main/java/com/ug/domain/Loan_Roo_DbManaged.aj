@@ -3,19 +3,17 @@
 
 package com.ug.domain;
 
-import com.ug.domain.Address;
-import com.ug.domain.Grantneededfor;
-import com.ug.domain.Loanstatus;
-import com.ug.domain.User;
-import java.lang.String;
 import java.math.BigDecimal;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 privileged aspect Loan_Roo_DbManaged {
@@ -47,6 +45,7 @@ privileged aspect Loan_Roo_DbManaged {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
+    @Future
     private Date Loan.loanNeededBy;
     
     @Column(name = "comments", columnDefinition = "VARCHAR", length = 2000)

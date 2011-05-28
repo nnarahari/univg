@@ -15,7 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 privileged aspect Profile_Roo_DbManaged {
@@ -43,6 +46,7 @@ privileged aspect Profile_Roo_DbManaged {
     @Column(name = "expected_graduation_date", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
+    @Future
     private Date Profile.expectedGraduationDate;
     
     @Column(name = "citizenship", columnDefinition = "VARCHAR", length = 255)
@@ -52,6 +56,7 @@ privileged aspect Profile_Roo_DbManaged {
     @Column(name = "date_of_birth", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
+    @Past
     private Date Profile.dateOfBirth;
     
     @Column(name = "home_phone", columnDefinition = "VARCHAR", length = 10)
