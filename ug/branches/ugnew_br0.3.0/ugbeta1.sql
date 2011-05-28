@@ -115,7 +115,7 @@ CREATE TABLE university (
 	enabled BIT,
 	locked BIT,
 	version INT,
-	PRIMARY KEY (id),
+	PRIMARY KEY (id)
 	
 ) ENGINE=InnoDB;
 
