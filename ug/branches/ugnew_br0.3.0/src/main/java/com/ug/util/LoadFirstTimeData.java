@@ -32,7 +32,7 @@ public class LoadFirstTimeData {
 		// loadDepartment("C:/ug/xml/department.xml");
 		// loadProgramStrudy("C:/ug/xml/studyprogram.xml");
 		//loadGender("C:/ug/xml/gender.xml");
-		loadCountry("C:/ug/xml/country.xml");
+		//loadCountry("C:/ug/xml/country.xml");
 
 	}
 
@@ -88,7 +88,7 @@ public class LoadFirstTimeData {
 		return dept;
 	}
 	
-	public static void loadCountry(String fileName){
+	/*public static void loadCountry(String fileName){
 		Document docEle = parseXmlFile(fileName);
 		NodeList nl = docEle.getElementsByTagName("country");
 		if (nl != null && nl.getLength() > 0) {
@@ -109,10 +109,10 @@ public class LoadFirstTimeData {
 		Country country = new Country();
 		String countryName = el.getAttribute("name");
 		
-		/*country.setCountryName(countryName);
-		country.setCountryDescription(countryName);*/
+		country.setCountryName(countryName);
+		country.setCountryDescription(countryName);
 		return country;
-	}
+	}*/
 	
 
 	public static void loadProgramStrudy(String fileName) {
