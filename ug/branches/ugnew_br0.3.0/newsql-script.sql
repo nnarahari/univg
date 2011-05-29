@@ -1,127 +1,127 @@
 --<ScriptOptions statementTerminator=";"/>
 
-ALTER TABLE `ugbeta1`.`corporate` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`corporate` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`corporate_loan_amount` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`corporate_loan_amount` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`user` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`user` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`address` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`address` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`department` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`department` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`university` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`university` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`state` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`state` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`gender` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`gender` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`user_role` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`user_role` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`guarantor` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`guarantor` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`country` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`country` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`programstudy` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`programstudy` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`role` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`role` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`grantneededfor` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`grantneededfor` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`addresstype` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`addresstype` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`loan` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`loan` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`profile` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`profile` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`loanstatus` DROP PRIMARY KEY;
+ALTER TABLE `ugbeta`.`loanstatus` DROP PRIMARY KEY;
 
-ALTER TABLE `ugbeta1`.`profile` DROP INDEX `ugbeta1`.`genderId`;
+ALTER TABLE `ugbeta`.`profile` DROP INDEX `ugbeta`.`genderId`;
 
-ALTER TABLE `ugbeta1`.`role` DROP INDEX `ugbeta1`.`roleName`;
+ALTER TABLE `ugbeta`.`role` DROP INDEX `ugbeta`.`roleName`;
 
-ALTER TABLE `ugbeta1`.`profile` DROP INDEX `ugbeta1`.`departmentId`;
+ALTER TABLE `ugbeta`.`profile` DROP INDEX `ugbeta`.`departmentId`;
 
-ALTER TABLE `ugbeta1`.`guarantor` DROP INDEX `ugbeta1`.`universityId`;
+ALTER TABLE `ugbeta`.`guarantor` DROP INDEX `ugbeta`.`universityId`;
 
-ALTER TABLE `ugbeta1`.`loan` DROP INDEX `ugbeta1`.`grantNeededFor`;
+ALTER TABLE `ugbeta`.`loan` DROP INDEX `ugbeta`.`grantNeededFor`;
 
-ALTER TABLE `ugbeta1`.`corporate` DROP INDEX `ugbeta1`.`stateId`;
+ALTER TABLE `ugbeta`.`corporate` DROP INDEX `ugbeta`.`stateId`;
 
-ALTER TABLE `ugbeta1`.`university` DROP INDEX `ugbeta1`.`university_ibfk_1`;
+ALTER TABLE `ugbeta`.`university` DROP INDEX `ugbeta`.`university_ibfk_1`;
 
-ALTER TABLE `ugbeta1`.`loan` DROP INDEX `ugbeta1`.`loanStatusId`;
+ALTER TABLE `ugbeta`.`loan` DROP INDEX `ugbeta`.`loanStatusId`;
 
-ALTER TABLE `ugbeta1`.`user_role` DROP INDEX `ugbeta1`.`FK143BF46A3124AD9A`;
+ALTER TABLE `ugbeta`.`user_role` DROP INDEX `ugbeta`.`FK143BF46A3124AD9A`;
 
-ALTER TABLE `ugbeta1`.`loan` DROP INDEX `ugbeta1`.`userId`;
+ALTER TABLE `ugbeta`.`loan` DROP INDEX `ugbeta`.`userId`;
 
-ALTER TABLE `ugbeta1`.`profile` DROP INDEX `ugbeta1`.`universityId`;
+ALTER TABLE `ugbeta`.`profile` DROP INDEX `ugbeta`.`universityId`;
 
-ALTER TABLE `ugbeta1`.`user` DROP INDEX `ugbeta1`.`emailAddress`;
+ALTER TABLE `ugbeta`.`user` DROP INDEX `ugbeta`.`emailAddress`;
 
-ALTER TABLE `ugbeta1`.`profile` DROP INDEX `ugbeta1`.`programStudyId`;
+ALTER TABLE `ugbeta`.`profile` DROP INDEX `ugbeta`.`programStudyId`;
 
-ALTER TABLE `ugbeta1`.`address` DROP INDEX `ugbeta1`.`userId`;
+ALTER TABLE `ugbeta`.`address` DROP INDEX `ugbeta`.`userId`;
 
-ALTER TABLE `ugbeta1`.`address` DROP INDEX `ugbeta1`.`stateId`;
+ALTER TABLE `ugbeta`.`address` DROP INDEX `ugbeta`.`stateId`;
 
-ALTER TABLE `ugbeta1`.`address` DROP INDEX `ugbeta1`.`addressTypeId`;
+ALTER TABLE `ugbeta`.`address` DROP INDEX `ugbeta`.`addressTypeId`;
 
-ALTER TABLE `ugbeta1`.`profile` DROP INDEX `ugbeta1`.`userId`;
+ALTER TABLE `ugbeta`.`profile` DROP INDEX `ugbeta`.`userId`;
 
-ALTER TABLE `ugbeta1`.`guarantor` DROP INDEX `ugbeta1`.`genderId`;
+ALTER TABLE `ugbeta`.`guarantor` DROP INDEX `ugbeta`.`genderId`;
 
-ALTER TABLE `ugbeta1`.`loan` DROP INDEX `ugbeta1`.`address`;
+ALTER TABLE `ugbeta`.`loan` DROP INDEX `ugbeta`.`address`;
 
-ALTER TABLE `ugbeta1`.`guarantor` DROP INDEX `ugbeta1`.`userId`;
+ALTER TABLE `ugbeta`.`guarantor` DROP INDEX `ugbeta`.`userId`;
 
-ALTER TABLE `ugbeta1`.`corporate` DROP INDEX `ugbeta1`.`userId`;
+ALTER TABLE `ugbeta`.`corporate` DROP INDEX `ugbeta`.`userId`;
 
-ALTER TABLE `ugbeta1`.`corporate_loan_amount` DROP INDEX `ugbeta1`.`corporateId`;
+ALTER TABLE `ugbeta`.`corporate_loan_amount` DROP INDEX `ugbeta`.`corporateId`;
 
-ALTER TABLE `ugbeta1`.`user_role` DROP INDEX `ugbeta1`.`FK143BF46A379CF084`;
+ALTER TABLE `ugbeta`.`user_role` DROP INDEX `ugbeta`.`FK143BF46A379CF084`;
 
-ALTER TABLE `ugbeta1`.`guarantor` DROP INDEX `ugbeta1`.`stateId`;
+ALTER TABLE `ugbeta`.`guarantor` DROP INDEX `ugbeta`.`stateId`;
 
-DROP TABLE `ugbeta1`.`department`;
+DROP TABLE `ugbeta`.`department`;
 
-DROP TABLE `ugbeta1`.`programstudy`;
+DROP TABLE `ugbeta`.`programstudy`;
 
-DROP TABLE `ugbeta1`.`country`;
+DROP TABLE `ugbeta`.`country`;
 
-DROP TABLE `ugbeta1`.`profile`;
+DROP TABLE `ugbeta`.`profile`;
 
-DROP TABLE `ugbeta1`.`user_role`;
+DROP TABLE `ugbeta`.`user_role`;
 
-DROP TABLE `ugbeta1`.`user`;
+DROP TABLE `ugbeta`.`user`;
 
-DROP TABLE `ugbeta1`.`loanstatus`;
+DROP TABLE `ugbeta`.`loanstatus`;
 
-DROP TABLE `ugbeta1`.`gender`;
+DROP TABLE `ugbeta`.`gender`;
 
-DROP TABLE `ugbeta1`.`loan`;
+DROP TABLE `ugbeta`.`loan`;
 
-DROP TABLE `ugbeta1`.`university`;
+DROP TABLE `ugbeta`.`university`;
 
-DROP TABLE `ugbeta1`.`role`;
+DROP TABLE `ugbeta`.`role`;
 
-DROP TABLE `ugbeta1`.`guarantor`;
+DROP TABLE `ugbeta`.`guarantor`;
 
-DROP TABLE `ugbeta1`.`corporate`;
+DROP TABLE `ugbeta`.`corporate`;
 
-DROP TABLE `ugbeta1`.`address`;
+DROP TABLE `ugbeta`.`address`;
 
-DROP TABLE `ugbeta1`.`corporate_loan_amount`;
+DROP TABLE `ugbeta`.`corporate_loan_amount`;
 
-DROP TABLE `ugbeta1`.`addresstype`;
+DROP TABLE `ugbeta`.`addresstype`;
 
-DROP TABLE `ugbeta1`.`grantneededfor`;
+DROP TABLE `ugbeta`.`grantneededfor`;
 
-DROP TABLE `ugbeta1`.`state`;
+DROP TABLE `ugbeta`.`state`;
 
-CREATE TABLE `ugbeta1`.`university` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`university` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`university_name` VARCHAR(90) NOT NULL,
 	`university_website` VARCHAR(30),
 	`address1` VARCHAR(50),
@@ -138,40 +138,40 @@ CREATE TABLE `ugbeta1`.`university` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`role` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`role` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`roleDescription` VARCHAR(200) NOT NULL,
 	`roleName` VARCHAR(255) NOT NULL,
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`department` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`department` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`departmentName` VARCHAR(255) NOT NULL,
 	`departmentDescription` VARCHAR(200),
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`programstudy` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`programstudy` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`programStudyName` VARCHAR(255) NOT NULL,
 	`programStudyDescription` VARCHAR(200),
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`country` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`country` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`countryName` VARCHAR(255) NOT NULL,
 	`countryDescription` VARCHAR(200),
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`guarantor` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`guarantor` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`userId` BIGINT NOT NULL,
 	`universityId` BIGINT NOT NULL,
 	`address1` VARCHAR(50) NOT NULL,
@@ -194,8 +194,8 @@ CREATE TABLE `ugbeta1`.`guarantor` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`corporate` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`corporate` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`userId` BIGINT NOT NULL,
 	`address1` VARCHAR(50) NOT NULL,
 	`address2` VARCHAR(50),
@@ -215,8 +215,8 @@ CREATE TABLE `ugbeta1`.`corporate` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`profile` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`profile` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`userId` BIGINT NOT NULL,
 	`universityId` BIGINT NOT NULL,
 	`departmentId` BIGINT NOT NULL,
@@ -236,8 +236,8 @@ CREATE TABLE `ugbeta1`.`profile` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`address` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`address` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`userId` BIGINT NOT NULL,
 	`addressTypeId` BIGINT NOT NULL,
 	`display_identifier` VARCHAR(25),
@@ -252,8 +252,8 @@ CREATE TABLE `ugbeta1`.`address` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`corporate_loan_amount` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`corporate_loan_amount` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`corporateId` BIGINT NOT NULL,
 	`available_loan_amount` DECIMAL(10 , 2) NOT NULL,
 	`committed_loan_amount` DECIMAL(10 , 2) NOT NULL,
@@ -261,16 +261,16 @@ CREATE TABLE `ugbeta1`.`corporate_loan_amount` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`user_role` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`user_role` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`version` INT,
 	`roleEntry` BIGINT NOT NULL,
 	`userEntry` BIGINT NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`user` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`user` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`activationDate` DATETIME,
 	`activationKey` VARCHAR(255),
 	`emailAddress` VARCHAR(255) NOT NULL,
@@ -283,47 +283,47 @@ CREATE TABLE `ugbeta1`.`user` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`addresstype` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`addresstype` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`addressTypeName` VARCHAR(255) NOT NULL,
 	`addressTypeDescription` VARCHAR(200),
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`loanstatus` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`loanstatus` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`loanStatusName` VARCHAR(255) NOT NULL,
 	`loanStatusDescription` VARCHAR(200),
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`grantneededfor` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`grantneededfor` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`grantNeed` VARCHAR(255) NOT NULL,
 	`grantNeedDescription` VARCHAR(200),
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`state` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`state` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`stateName` VARCHAR(255) NOT NULL,
 	`stateDescription` VARCHAR(200),
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`gender` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`gender` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`genderName` VARCHAR(6) NOT NULL,
 	`version` INT,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `ugbeta1`.`loan` (
-	`id` BIGINT NOT NULL,
+CREATE TABLE `ugbeta`.`loan` (
+	`id` BIGINT NOT NULL  AUTO_INCREMENT,
 	`userId` BIGINT NOT NULL,
 	`loan_name` VARCHAR(20),
 	`loan_amount` DECIMAL(10 , 2) NOT NULL,
@@ -336,51 +336,51 @@ CREATE TABLE `ugbeta1`.`loan` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE INDEX `universityId` ON `ugbeta1`.`profile` (`universityId` ASC);
+CREATE INDEX `universityId` ON `ugbeta`.`profile` (`universityId` ASC);
 
-CREATE UNIQUE INDEX `emailAddress` ON `ugbeta1`.`user` (`emailAddress` ASC);
+CREATE UNIQUE INDEX `emailAddress` ON `ugbeta`.`user` (`emailAddress` ASC);
 
-CREATE INDEX `genderId` ON `ugbeta1`.`profile` (`genderId` ASC);
+CREATE INDEX `genderId` ON `ugbeta`.`profile` (`genderId` ASC);
 
-CREATE UNIQUE INDEX `roleName` ON `ugbeta1`.`role` (`roleName` ASC);
+CREATE UNIQUE INDEX `roleName` ON `ugbeta`.`role` (`roleName` ASC);
 
-CREATE INDEX `programStudyId` ON `ugbeta1`.`profile` (`programStudyId` ASC);
+CREATE INDEX `programStudyId` ON `ugbeta`.`profile` (`programStudyId` ASC);
 
-CREATE INDEX `userId` ON `ugbeta1`.`address` (`userId` ASC);
+CREATE INDEX `userId` ON `ugbeta`.`address` (`userId` ASC);
 
-CREATE INDEX `stateId` ON `ugbeta1`.`address` (`stateId` ASC);
+CREATE INDEX `stateId` ON `ugbeta`.`address` (`stateId` ASC);
 
-CREATE INDEX `departmentId` ON `ugbeta1`.`profile` (`departmentId` ASC);
+CREATE INDEX `departmentId` ON `ugbeta`.`profile` (`departmentId` ASC);
 
-CREATE INDEX `universityId` ON `ugbeta1`.`guarantor` (`universityId` ASC);
+CREATE INDEX `universityId` ON `ugbeta`.`guarantor` (`universityId` ASC);
 
-CREATE INDEX `addressTypeId` ON `ugbeta1`.`address` (`addressTypeId` ASC);
+CREATE INDEX `addressTypeId` ON `ugbeta`.`address` (`addressTypeId` ASC);
 
-CREATE INDEX `userId` ON `ugbeta1`.`profile` (`userId` ASC);
+CREATE INDEX `userId` ON `ugbeta`.`profile` (`userId` ASC);
 
-CREATE INDEX `grantNeededFor` ON `ugbeta1`.`loan` (`grantNeededFor` ASC);
+CREATE INDEX `grantNeededFor` ON `ugbeta`.`loan` (`grantNeededFor` ASC);
 
-CREATE INDEX `genderId` ON `ugbeta1`.`guarantor` (`genderId` ASC);
+CREATE INDEX `genderId` ON `ugbeta`.`guarantor` (`genderId` ASC);
 
-CREATE INDEX `address` ON `ugbeta1`.`loan` (`address` ASC);
+CREATE INDEX `address` ON `ugbeta`.`loan` (`address` ASC);
 
-CREATE INDEX `stateId` ON `ugbeta1`.`corporate` (`stateId` ASC);
+CREATE INDEX `stateId` ON `ugbeta`.`corporate` (`stateId` ASC);
 
-CREATE INDEX `university_ibfk_1` ON `ugbeta1`.`university` (`stateId` ASC);
+CREATE INDEX `university_ibfk_1` ON `ugbeta`.`university` (`stateId` ASC);
 
-CREATE INDEX `loanStatusId` ON `ugbeta1`.`loan` (`loanStatusId` ASC);
+CREATE INDEX `loanStatusId` ON `ugbeta`.`loan` (`loanStatusId` ASC);
 
-CREATE INDEX `userId` ON `ugbeta1`.`guarantor` (`userId` ASC);
+CREATE INDEX `userId` ON `ugbeta`.`guarantor` (`userId` ASC);
 
-CREATE INDEX `FK143BF46A3124AD9A` ON `ugbeta1`.`user_role` (`roleEntry` ASC);
+CREATE INDEX `FK143BF46A3124AD9A` ON `ugbeta`.`user_role` (`roleEntry` ASC);
 
-CREATE INDEX `userId` ON `ugbeta1`.`corporate` (`userId` ASC);
+CREATE INDEX `userId` ON `ugbeta`.`corporate` (`userId` ASC);
 
-CREATE INDEX `userId` ON `ugbeta1`.`loan` (`userId` ASC);
+CREATE INDEX `userId` ON `ugbeta`.`loan` (`userId` ASC);
 
-CREATE INDEX `corporateId` ON `ugbeta1`.`corporate_loan_amount` (`corporateId` ASC);
+CREATE INDEX `corporateId` ON `ugbeta`.`corporate_loan_amount` (`corporateId` ASC);
 
-CREATE INDEX `FK143BF46A379CF084` ON `ugbeta1`.`user_role` (`userEntry` ASC);
+CREATE INDEX `FK143BF46A379CF084` ON `ugbeta`.`user_role` (`userEntry` ASC);
 
-CREATE INDEX `stateId` ON `ugbeta1`.`guarantor` (`stateId` ASC);
+CREATE INDEX `stateId` ON `ugbeta`.`guarantor` (`stateId` ASC);
 
