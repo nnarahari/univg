@@ -3,6 +3,7 @@
  */
 package com.ug.web;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -45,11 +46,15 @@ public class LoginController {
 		}
 		if(loggedInUserRole != null){
 			if(loggedInUserRole.equalsIgnoreCase("student")){
-				uiModel.addAttribute("profile", Profile.findProfile(userId));
+				TypedQuery<Profile> query = Profile.findProfilesByUserId(user);	
+				Profile profile = query.getSingleResult();
+				uiModel.addAttribute("profile", profile);
 				uiModel.addAttribute("itemId", userId);
 				displayPage = "profiles/show";
 			}else if(loggedInUserRole.equalsIgnoreCase("corporate")){
-				uiModel.addAttribute("corporate", Corporate.findCorporate(userId));
+				TypedQuery<Corporate> query = Corporate.findCorporatesByUserId(user);	
+				Corporate corporate = query.getSingleResult();
+				uiModel.addAttribute("corporate", corporate);
 				uiModel.addAttribute("itemId", userId);
 				displayPage= "corporates/show";
 			}else{
@@ -64,9 +69,6 @@ public class LoginController {
 		return displayPage;
 	}
 	
-	
-	
-	
 	/*@RequestMapping ( value="/studentBefore.htm")
 	public String studentBeforeLogin(HttpServletRequest req, Model uiModel){
 		logger.debug("studentBeforeLogin() started...");
@@ -80,6 +82,5 @@ public class LoginController {
 		String displayPage = "corporateBeforelogin";
 		return displayPage;
 	}*/
-	
 	
 }
