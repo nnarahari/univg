@@ -11,6 +11,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.ug.domain.Country;
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Grantneededfor;
@@ -26,11 +27,12 @@ public class LoadFirstTimeData {
 	 */
 	public static void main(String[] args) {
 
-		loadSates("C:/ug/xml/univ.xml");
+		//loadSates("C:/ug/xml/univ.xml");
 		// loadUniversities("C:/ug/xml/univ.xml");
 		// loadDepartment("C:/ug/xml/department.xml");
 		// loadProgramStrudy("C:/ug/xml/studyprogram.xml");
-		loadGender("C:/ug/xml/gender.xml");
+		//loadGender("C:/ug/xml/gender.xml");
+		loadCountry("C:/ug/xml/country.xml");
 
 	}
 
@@ -85,6 +87,33 @@ public class LoadFirstTimeData {
 
 		return dept;
 	}
+	
+	public static void loadCountry(String fileName){
+		Document docEle = parseXmlFile(fileName);
+		NodeList nl = docEle.getElementsByTagName("country");
+		if (nl != null && nl.getLength() > 0) {
+			for (int i = 0; i < nl.getLength(); i++) {
+
+				// get the employee element
+				Element el = (Element) nl.item(i);
+
+				// get the Employee object
+				Country c = getCountry(el);
+
+				c.persist();
+			}
+		}
+	}
+	
+	private static Country getCountry(Element el) {
+		Country country = new Country();
+		String countryName = el.getAttribute("name");
+		
+		/*country.setCountryName(countryName);
+		country.setCountryDescription(countryName);*/
+		return country;
+	}
+	
 
 	public static void loadProgramStrudy(String fileName) {
 		// get the root element
