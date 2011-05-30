@@ -85,7 +85,6 @@ input.btn {
 	} 
 /*------------------------*/
 
-
 #header h1, #header p{
 	margin:0;
 	padding:0;
@@ -102,6 +101,7 @@ input.btn {
 #header .fl_right{
 	display:block;
 	float:right;
+	width:500px;
 	}
 
 #header h1{
@@ -119,7 +119,7 @@ input.btn {
 
 #topbar .wrapper{
 	padding:0 10px;
-	width:940px;
+	
 	
 	}
 
@@ -127,7 +127,7 @@ input.btn {
 	display:block;
 	float:right;
 	width:251px;
-	height:34px;
+	height:36px;
 	margin:0;
 	padding:10px 0 0 8px;
 	color:#FFFFFF;
