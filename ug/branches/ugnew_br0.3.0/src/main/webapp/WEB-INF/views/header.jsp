@@ -14,8 +14,8 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery.hslides.1.0.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery.hslides.setup.js"></script>
 </head>
-<body id="top">
 <%
+
 User user = UgUtil.getLoggedInUser();
 %>
          
@@ -28,26 +28,33 @@ User user = UgUtil.getLoggedInUser();
       <h1><a href="#"><img src="<%=request.getContextPath()%>/images/demo/final_logo1.jpg" alt="" width="137" /></a></h1>
     </div>
     <div class="fl_right"> 
-	
-	<strong><%=(user!=null && user.getFirstName()!=null) ? "Welcome  "+user.getFirstName():""%> <%=user.getLastName()!=null?user.getLastName():""%>  </strong> </a>|<a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a>
-  </div>
-</div>
+
+<%
+	if (user !=null) {
+	 %>
+	 	<strong><%=(user.getFirstName()!=null) ? "Welcome  "+user.getFirstName():""%> <%=user.getLastName()!=null?user.getLastName():""%>  </strong>|<a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a>
+
+	<%} %>
+	 </div>
+        <br class="clear" />
+       
+</div> 
 </div>
 
 <div id="topbar">
   <div class="wrapper">
     <div id="topnav">
-   
       <ul>
         <li class="active"><a href="main.jsp">Home</a></li>
-        <li><a href="<%=request.getContextPath()%>/login/success">STUDENT</a></li>
-        <li><a href="<%=request.getContextPath()%>/login/success">CORPORATES</a></li>
+        <li><a href="studentBeforelogin">STUDENT</a></li>
+        <li><a href="corporateBeforelogin">CORPORATES</a></li>
 		<li><a href="#">P2P</a></li>
 		<li><a href="#">MENTORSHIP</a></li>
 		<li><a href="#">CONTACT US</a></li>
-<!-- 		<li><a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a></li> -->
       </ul>
-    </div>
-   
-  </div>
+   </div>
+    
+    <br class="clear" />
+ </div> 
 </div>
+</body>
