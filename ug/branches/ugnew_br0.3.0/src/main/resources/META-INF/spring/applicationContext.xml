@@ -78,4 +78,12 @@
             </props>
         </property>
     </bean>
+    
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+   		<property name="customArgumentResolver" ref="facebookWebArgResolver"/>
+    </bean>
+	<bean id="facebookWebArgResolver" class="org.springframework.social.facebook.web.FacebookWebArgumentResolver">
+        <constructor-arg value="120877611282582"/>
+        <constructor-arg value="04cf2a4f8fb4dd21ac473af41d966297"/>
+    </bean>
 </beans>

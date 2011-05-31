@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page import="com.ug.domain.User,com.ug.domain.UserRole,com.ug.util.UgUtil;" %>
+<%@ taglib uri="http://www.springframework.org/spring-social/facebook/tags" prefix="facebook" %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
 <head profile="http://gmpg.org/xfn/11">
 <link rel="shortcut icon" href="images/demo/univ_giggle_logo_v6.gif" />
@@ -51,14 +52,16 @@ input.groovybutton
             <br/>
 <div class="fl_left">
  
-     <script src="http://connect.facebook.net/en_US/all.js"></script>
-        <script>
-         FB.init({ 
-            appId:'203642089654188', cookie:true, 
-            status:true, xfbml:true 
-         });
-       </script>
-      <fb:login-button>Login with Facebook</fb:login-button>
+     <form id="fb_signin" action="auth.do" method="post">
+			<div class="formInfo">
+	    	</div>
+		    <div id="fb-root"></div>	
+		    <p><fb:login-button onlogin="$('#fb_signin').submit();" v="2" length="long">Connect to Facebook</fb:login-button></p>
+		</form>
+		
+		<facebook:init appId="120877611282582"/>
+      
+      
       <a href="<%=request.getContextPath()%>/forgotpassword/index">Forgot Password??</a>| <a href="/ugbeta1/signup?form"> New User Sign Up</a>
 <div class="fl_right"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     </div>

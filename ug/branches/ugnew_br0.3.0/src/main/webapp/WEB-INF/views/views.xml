@@ -34,4 +34,12 @@
         <put-attribute name="body" value="/WEB-INF/views/loans/learnAboutLoan.jspx"/>
     </definition>
     
+    <definition extends="public" name="authfail">
+        <put-attribute name="body" value="/WEB-INF/views/authfail.jsp"/>
+    </definition>
+    
+    <definition extends="public" name="authenticated">
+        <put-attribute name="body" value="/WEB-INF/views/authenticated.jsp"/>
+    </definition>
+    
 </tiles-definitions>
