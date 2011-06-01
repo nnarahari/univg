@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -15,6 +16,9 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,7 +54,17 @@ privileged aspect ProfileController_Roo_Controller {
     @RequestMapping(method = RequestMethod.POST)
     public String ProfileController.create(@Valid Profile profile, BindingResult bindingResult, Model uiModel, @RequestParam("file") MultipartFile content,@RequestParam("resume") MultipartFile resumeContent,HttpServletRequest httpServletRequest) {
        
-   	
+    	Date dob = profile.getDateOfBirth();
+    	long noOfDaysDiff = UgUtil.noOfDaysPast(dob);
+    	if(noOfDaysDiff/(365*18) < 18){
+    		System.out.println("DOB is lessthan 18 years old");
+    		FieldError fieldErr = new FieldError("profile", "dateOfBirth", "Minimum 18 years should be completed to create student profile.");
+        	bindingResult.addError(fieldErr);
+    	}else{
+    		System.out.println("DOB is greater than 18 years...");
+    	}
+    	
+    	
     	if (bindingResult.hasErrors()) {
         	System.out.println("Binding Errors:"+ bindingResult.getAllErrors().toString());
             uiModel.addAttribute("profile", profile);

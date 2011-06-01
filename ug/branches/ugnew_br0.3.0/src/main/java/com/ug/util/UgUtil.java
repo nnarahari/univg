@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -310,4 +312,20 @@ public class UgUtil {
 		return isValid;
 	}
 
+	public static long noOfDaysPast(Date d){
+		Date currentDate = new Date();
+		Calendar now = Calendar.getInstance();
+
+		Calendar givenDate = Calendar.getInstance();
+		givenDate.setTime(d);
+
+		long milliseconds1 = now.getTimeInMillis();
+		long milliseconds2 = givenDate.getTimeInMillis();
+		long diff = milliseconds1 - milliseconds2;
+		
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		//long days = (currentDate.getTime() - d.getTime())/ (24 * 60 * 60 * 1000);
+		System.out.println("diff in days ==>"+ diffDays);
+		return diffDays;
+	}
 }
