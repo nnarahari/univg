@@ -56,7 +56,7 @@ privileged aspect ProfileController_Roo_Controller {
        
     	Date dob = profile.getDateOfBirth();
     	long noOfDaysDiff = UgUtil.noOfDaysPast(dob);
-    	if(noOfDaysDiff/(365*18) < 18){
+    	if(noOfDaysDiff/365 < 18){
     		System.out.println("DOB is lessthan 18 years old");
     		FieldError fieldErr = new FieldError("profile", "dateOfBirth", "Minimum 18 years should be completed to create student profile.");
         	bindingResult.addError(fieldErr);
