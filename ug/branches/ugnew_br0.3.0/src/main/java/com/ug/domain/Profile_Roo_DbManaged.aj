@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -82,7 +83,7 @@ privileged aspect Profile_Roo_DbManaged {
     @Column(name = "universityEmail", columnDefinition = "VARCHAR", length = 255)
     private String Profile.universityEmail;
     
-    
+    @Size(min = 100, max = 500)
     @Column(name = "briefDescription", columnDefinition = "VARCHAR", length = 500)
     private String Profile.briefDescription;
     
