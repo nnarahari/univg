@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page"  xmlns:sec="http://www.springframework.org/security/tags" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <sec:authorize ifAllGranted="corporate">
+    <page:show id="ps_com_ug_domain_Corporate" object="${corporate}" create="false" delete="false" list="false" path="/corporates" z="g55YvSYGghaZAjY3iQtL1XTjTRM=">
+        <field:display field="userId" id="s_com_ug_domain_Corporate_userId" object="${corporate}" z="lqu0ty4Q0WQOo6qBiVpOWBF5yAI="/>
+        <field:display field="country" id="s_com_ug_domain_Corporate_country" object="${corporate}" z="YLT7i1DdnnPztLZSSq6CcwiVWrk="/>
+        <field:display field="corporateName" id="s_com_ug_domain_Corporate_corporateName" object="${corporate}" z="gfHbsYytYu9iedKcXbIu8fm5QjI="/>
+        <field:display field="corporateWebsite" id="s_com_ug_domain_Corporate_corporateWebsite" object="${corporate}" z="Nbp80uGaQXb8yoLS4ytJnN6oh0M="/>
+        <field:display field="industry" id="s_com_ug_domain_Corporate_industry" object="${corporate}" z="dTgQz/I/mYElJ1JBk/wtKX0GtYI="/>
+        <field:display field="city" id="s_com_ug_domain_Corporate_city" object="${corporate}" z="mEgh14TnPDiUMa1uHoo2yc48aII="/>
+        <field:display field="address2" id="s_com_ug_domain_Corporate_address2" object="${corporate}" z="960OXKxFSuUG+iObNYEVTwp1q2g="/>
+        <field:display field="stateId" id="s_com_ug_domain_Corporate_stateId" object="${corporate}" z="thsJhOAsEgxDVlx62BuXnke63OE="/>
+        <field:display field="address1" id="s_com_ug_domain_Corporate_address1" object="${corporate}" z="YrE+C+RMYxc018Xhgr4drfqwAQQ="/>
+        <field:display field="zip" id="s_com_ug_domain_Corporate_zip" object="${corporate}" z="ku90BzpEIZXaoEIRXd7O8USdWs0="/>
+        <field:display field="corporatePrimaryContact" id="s_com_ug_domain_Corporate_corporatePrimaryContact" object="${corporate}" z="gOtJxvq60OqPXWLmUHf8yvaN3hs="/>
+        <field:display field="workPhone" id="s_com_ug_domain_Corporate_workPhone" object="${corporate}" z="UAsr1wAAvajiJftw29TifFKJM44="/>
+        <field:display field="mobile" id="s_com_ug_domain_Corporate_mobile" object="${corporate}" z="VipQWdrDqSPVjLhplilggRJLMm8="/>
+        <field:display field="corporateLinkedInProfile" id="s_com_ug_domain_Corporate_corporateLinkedInProfile" object="${corporate}" z="qkt1SZk18vKTmM1SXBZ5sgfTnZM="/>
+        <field:display field="corporateLoanAmounts" id="s_com_ug_domain_Corporate_corporateLoanAmounts" object="${corporate}" z="vAsT0MWlHUffVRFQCLCcb1+ZKYU="/>
+    </page:show>
+     </sec:authorize>
+      <sec:authorize ifAllGranted="admin">
     <page:show id="ps_com_ug_domain_Corporate" object="${corporate}" path="/corporates" z="g55YvSYGghaZAjY3iQtL1XTjTRM=">
         <field:display field="userId" id="s_com_ug_domain_Corporate_userId" object="${corporate}" z="lqu0ty4Q0WQOo6qBiVpOWBF5yAI="/>
         <field:display field="country" id="s_com_ug_domain_Corporate_country" object="${corporate}" z="YLT7i1DdnnPztLZSSq6CcwiVWrk="/>
@@ -20,5 +40,8 @@
         <field:display field="corporateLoanAmounts" id="s_com_ug_domain_Corporate_corporateLoanAmounts" object="${corporate}" z="vAsT0MWlHUffVRFQCLCcb1+ZKYU="/>
         <field:display field="enabled" id="s_com_ug_domain_Corporate_enabled" object="${corporate}" z="EyqXMC47zDHdvFTGn6QWQX9DpjY="/>
         <field:display field="locked" id="s_com_ug_domain_Corporate_locked" object="${corporate}" z="fGQ/tAi+7BXt/yi4ySEeDlqmX6o="/>
+        
     </page:show>
+     </sec:authorize>
+     
 </div>

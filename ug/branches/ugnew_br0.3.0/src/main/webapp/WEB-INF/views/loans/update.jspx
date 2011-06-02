@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"  xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <form:update id="fu_com_ug_domain_Loan" modelAttribute="loan" path="/loans" versionField="none" z="zUs4dDk7PjH2QDf8JCoKtbOKvLI=">
-        <field:select field="userId" id="c_com_ug_domain_Loan_userId" itemValue="id" items="${users}" path="/users" z="x0JzZuJEQ1w737ARcsdxKBp/keI="/>
-        <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" z="bvGO4FhtYErSLN7vv1dR68M2xWs="/>
-        <field:input field="loanAmount" id="c_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="sRpq/u7od98yZXyVfBV8wFXZHaY="/>
-        <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
-    <!-- <field:input field="supportDocumentName" id="c_com_ug_domain_Loan_supportDocumentName" z="wYSg8tNjH3lBYR73BlMOurhovfE="/> 
-	    <field:input field="supportDocumentName" id="c_com_ug_domain_Loan_supportDocumentName" z="wYSg8tNjH3lBYR73BlMOurhovfE="/>	-->
-		<field:select field="grantNeededFor" id="c_com_ug_domain_Loan_grantNeededFor" itemValue="id" items="${grantneededfors}" path="/grantneededfors" z="1fXMU2spfyWeBHa6dv4VjfPvBDI="/>
-		<field:select field="address" id="c_com_ug_domain_Loan_address" itemValue="id" items="${addresses}" path="/addresses" z="XhH1V/OytyW4R7o3j06kXZY4ksY="/>
-        <field:input field="comments" id="c_com_ug_domain_Loan_comments" z="wk1O+gzyRH+qTVfstqOrsD1pF5w="/>
-        <field:select field="loanStatusId" id="c_com_ug_domain_Loan_loanStatusId" itemValue="id" items="${loanstatuses}" path="/loanstatuses" z="5GkkK0wPaYGsgo2G+0VfkeYWNUw="/>
-    </form:update>
+    <sec:authorize ifAllGranted="student"> 
+	    <form:update id="fu_com_ug_domain_Loan" modelAttribute="loan" path="/loans" versionField="none" z="zUs4dDk7PjH2QDf8JCoKtbOKvLI=">
+			<field:display field="userId" id="s_com_ug_domain_Loan_userId" object="${loan}" z="15WFy1Bj9e47y8pwez82AA9pRdE="/>
+	        <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" z="bvGO4FhtYErSLN7vv1dR68M2xWs="/>
+	        <field:input field="loanAmount" id="c_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="sRpq/u7od98yZXyVfBV8wFXZHaY="/>
+	        <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
+	    <!-- <field:input field="supportDocumentName" id="c_com_ug_domain_Loan_supportDocumentName" z="wYSg8tNjH3lBYR73BlMOurhovfE="/> 
+		    <field:input field="supportDocumentName" id="c_com_ug_domain_Loan_supportDocumentName" z="wYSg8tNjH3lBYR73BlMOurhovfE="/>	-->
+			<field:select field="grantNeededFor" id="c_com_ug_domain_Loan_grantNeededFor" itemValue="id" items="${grantneededfors}" path="/grantneededfors" z="1fXMU2spfyWeBHa6dv4VjfPvBDI="/>
+			<field:select field="address" id="c_com_ug_domain_Loan_address" itemValue="id" items="${addresses}" path="/addresses" z="XhH1V/OytyW4R7o3j06kXZY4ksY="/>
+	        <field:input field="comments" id="c_com_ug_domain_Loan_comments" z="wk1O+gzyRH+qTVfstqOrsD1pF5w="/>
+	        <field:select field="loanStatusId" id="c_com_ug_domain_Loan_loanStatusId" itemValue="id" items="${loanstatuses}" path="/loanstatuses" z="5GkkK0wPaYGsgo2G+0VfkeYWNUw="/>
+	    </form:update>
+       </sec:authorize>
+     <sec:authorize ifAllGranted="corporate"> 
+	    <form:update id="fu_com_ug_domain_Loan" modelAttribute="loan" path="/loans" versionField="none" z="zUs4dDk7PjH2QDf8JCoKtbOKvLI=">
+		<field:display field="userId" id="s_com_ug_domain_Loan_userId" object="${loan}" z="15WFy1Bj9e47y8pwez82AA9pRdE="/>
+		<field:display field="loanName" id="s_com_ug_domain_Loan_loanName" object="${loan}" z="w+DKenKEkbdx3Er6VC0egHd2Src="/>
+		<field:display date="true" dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="s_com_ug_domain_Loan_loanNeededBy" object="${loan}" z="ucMfb5nWw5hD+NMpc1t2W/uJ0ow="/>
+		<field:display field="loanAmount" id="s_com_ug_domain_Loan_loanAmount" object="${loan}" z="0K2KUqsd/vcRnBo/BQOVU2kqb50="/>
+		<field:display field="comments" id="s_com_ug_domain_Loan_comments" object="${loan}" z="+zkQudb3MxeEcBVgWxUAPiUee8g="/>
+		<field:display field="grantNeededFor" id="s_com_ug_domain_Loan_grantNeededFor" object="${loan}" z="Wgkovbziuaa3w7A8+UJIDATX8+4="/>
+		<!--  <field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> 
+		<field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> -->
+	        <field:select field="loanStatusId" id="c_com_ug_domain_Loan_loanStatusId" itemValue="id" items="${loanstatuses}" path="/loanstatuses" z="5GkkK0wPaYGsgo2G+0VfkeYWNUw="/>
+	    </form:update>
+     </sec:authorize>
+     <sec:authorize ifAllGranted="admin">
+	    <form:update id="fu_com_ug_domain_Loan" modelAttribute="loan" path="/loans" versionField="none" z="zUs4dDk7PjH2QDf8JCoKtbOKvLI=">
+		<field:display field="userId" id="s_com_ug_domain_Loan_userId" object="${loan}" z="15WFy1Bj9e47y8pwez82AA9pRdE="/>
+	        <field:input field="loanName" id="c_com_ug_domain_Loan_loanName" z="bvGO4FhtYErSLN7vv1dR68M2xWs="/>
+	        <field:input field="loanAmount" id="c_com_ug_domain_Loan_loanAmount" required="true" validationMessageCode="field_invalid_number" z="sRpq/u7od98yZXyVfBV8wFXZHaY="/>
+	        <field:datetime dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="c_com_ug_domain_Loan_loanNeededBy" required="true" z="np/NA4g/y1fEkZL4QLNeZBdp7ks="/>
+	    <!-- <field:input field="supportDocumentName" id="c_com_ug_domain_Loan_supportDocumentName" z="wYSg8tNjH3lBYR73BlMOurhovfE="/> 
+		    <field:input field="supportDocumentName" id="c_com_ug_domain_Loan_supportDocumentName" z="wYSg8tNjH3lBYR73BlMOurhovfE="/>	-->
+			<field:select field="grantNeededFor" id="c_com_ug_domain_Loan_grantNeededFor" itemValue="id" items="${grantneededfors}" path="/grantneededfors" z="1fXMU2spfyWeBHa6dv4VjfPvBDI="/>
+			<field:select field="address" id="c_com_ug_domain_Loan_address" itemValue="id" items="${addresses}" path="/addresses" z="XhH1V/OytyW4R7o3j06kXZY4ksY="/>
+	        <field:input field="comments" id="c_com_ug_domain_Loan_comments" z="wk1O+gzyRH+qTVfstqOrsD1pF5w="/>
+	        <field:select field="loanStatusId" id="c_com_ug_domain_Loan_loanStatusId" itemValue="id" items="${loanstatuses}" path="/loanstatuses" z="5GkkK0wPaYGsgo2G+0VfkeYWNUw="/>
+	    </form:update>
+     </sec:authorize>
+    
 </div>
