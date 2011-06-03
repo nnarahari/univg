@@ -46,30 +46,20 @@ input.groovybutton
    	  <form id="form1" name="form1" method="post" action="<%=request.getContextPath()%>/resources/j_spring_security_check"><label>Username:</label>
 	    <label for="username"></label>
 	    <input name="j_username" type="text" id="j_username" size="20" maxlength="256" />
-<label>Password:<input name="j_password" id="j_password"  type="password" size="20" maxlength="20" /></label>
-<input type="submit" value="Login" class="groovybutton" /> 
+		<label>Password:<input name="j_password" id="j_password"  type="password" size="20" maxlength="20" /></label>
+		<input type="submit" value="Login" class="groovybutton" /> 
       </form> 
             <br/>
-<div class="fl_left">
- 
-     <form id="fb_signin" action="auth.do" method="post">
-			<div class="formInfo">
-	    	</div>
+	<div class="fl_left">
+        <form id="fb_signin" action="auth.do" method="post">
 		    <div id="fb-root"></div>	
 		    <p><fb:login-button onlogin="$('#fb_signin').submit();" v="2" length="long">Connect to Facebook</fb:login-button></p>
 		</form>
-		
 		<facebook:init appId="120877611282582"/>
-      
-      
-      <a href="<%=request.getContextPath()%>/forgotpassword/index">Forgot Password??</a>| <a href="/ugbeta1/signup?form"> New User Sign Up</a>
-<div class="fl_right"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    </div>
-            
-             
+         <a href="<%=request.getContextPath()%>/forgotpassword/index">Forgot Password??</a>| <a href="/ugbeta1/signup?form"> New User Sign Up</a>
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
         </div>
         <%} %>
-      
        </div>
 	</div>
 	<br class="clear" />

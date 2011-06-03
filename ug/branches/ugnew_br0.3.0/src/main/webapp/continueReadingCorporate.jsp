@@ -198,7 +198,7 @@ input.groovybutton
             <p>UniveGiggle Released online, Video released in techcrunch.</p>
           </li>
             <p><strong>
-            <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="www.SUDESH.com" show_faces="true" width="200" action="recommend" font=""></fb:like></p>
+            <fb:like href="www.SUDESH.com" show_faces="true" width="200" action="recommend" font=""></fb:like></p>
           </li>
         </ul>
       </div>
