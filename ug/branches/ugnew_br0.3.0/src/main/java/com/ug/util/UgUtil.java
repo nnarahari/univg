@@ -5,13 +5,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Collection;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.persistence.TypedQuery;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.multipart.MultipartFile;
@@ -48,15 +49,18 @@ public class UgUtil {
 		try {
 
 			System.out.println("Authentication:"+SecurityContextHolder.getContext().getAuthentication());
-			Object principal = SecurityContextHolder.getContext()
-					.getAuthentication().getPrincipal();
 
-			if (principal instanceof org.springframework.security.core.userdetails.User) {
-				org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) principal;
-				String userName = u.getUsername();
-				TypedQuery<User> query = User.findUsersByEmailAddress(userName);
-				User targetUser = (User) query.getSingleResult();
-				return targetUser;
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			if(auth != null){
+				Object principal = auth.getPrincipal();
+
+				if (principal instanceof org.springframework.security.core.userdetails.User) {
+					org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) principal;
+					String userName = u.getUsername();
+					TypedQuery<User> query = User.findUsersByEmailAddress(userName);
+					User targetUser = (User) query.getSingleResult();
+					return targetUser;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,13 +77,6 @@ public class UgUtil {
 
 	public static UserRole getLoggedInUserRole() {
 		try {
-//			SecurityContext securityContext = SecurityContextHolder
-//					.getContext();
-//			org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) securityContext
-//					.getAuthentication().getPrincipal();
-//			String userName = u.getUsername();
-//			TypedQuery<User> query = User.findUsersByEmailAddress(userName);
-//			User targetUser = (User) query.getSingleResult();
 			
 			User targetUser = getCurrentUser();
 
@@ -96,29 +93,27 @@ public class UgUtil {
 
 	public static String getLoggedInUserRoleName() {
 		try {
-			SecurityContext securityContext = SecurityContextHolder
-					.getContext();
-			org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) securityContext
-					.getAuthentication().getPrincipal();
-			String userName = u.getUsername();
-			TypedQuery<User> query = User.findUsersByEmailAddress(userName);
-			User targetUser = (User) query.getSingleResult();
+			SecurityContext securityContext = SecurityContextHolder.getContext();
 
-			TypedQuery<UserRole> roleQuery = UserRole
-					.findUserRolesByUserEntry(targetUser);
+			if(securityContext.getAuthentication() != null){
+				org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) securityContext
+				.getAuthentication().getPrincipal();
+				String userName = u.getUsername();
+				TypedQuery<User> query = User.findUsersByEmailAddress(userName);
+				User targetUser = (User) query.getSingleResult();
 
-			UserRole role = (UserRole) roleQuery.getSingleResult();
-			return role.getRoleEntry().getRoleName();
+				TypedQuery<UserRole> roleQuery = UserRole
+				.findUserRolesByUserEntry(targetUser);
 
-			// for (UserRole userRole : userRoles) {
-			// // authorities.add(new
-			// // GrantedAuthorityImpl(userRole.getRoleEntry().getRoleName()));
-			// }
+				UserRole role = (UserRole) roleQuery.getSingleResult();
+				return role.getRoleEntry().getRoleName();
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
+		return null;
 
 	}
 
