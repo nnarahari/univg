@@ -85,4 +85,8 @@
 <definition extends="default" name="profiles/findProfilesByUniversityEmailLike">
         <put-attribute name="body" value="/WEB-INF/views/profiles/findProfilesByUniversityEmailLike.jspx"/>
     </definition>
+    
+    <definition extends="default" name="profiles/error">
+        <put-attribute name="body" value="/WEB-INF/views/profiles/error.jsp"/>
+    </definition>
 </tiles-definitions>

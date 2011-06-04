@@ -12,6 +12,8 @@ import java.util.regex.Pattern;
 
 import javax.persistence.TypedQuery;
 
+import org.apache.log4j.Logger;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,23 +28,10 @@ import com.ug.domain.UserRole;
 
 public class UgUtil {
 
+	private static Logger logger = Logger.getLogger(UgUtil.class);
+	
 	public static User getLoggedInUser() {
 		return getCurrentUser();
-//		try {
-//			SecurityContext securityContext = SecurityContextHolder
-//					.getContext();
-//			org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) securityContext
-//					.getAuthentication().getPrincipal();
-//			String userName = u.getUsername();
-//			TypedQuery<User> query = User.findUsersByEmailAddress(userName);
-//			User targetUser = (User) query.getSingleResult();
-//			return targetUser;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			System.out.println("*** LoggedInUser: null");
-//
-//			return null;
-//		}
 	}
 
 	public static User getCurrentUser() {
@@ -109,7 +98,11 @@ public class UgUtil {
 				return role.getRoleEntry().getRoleName();
 			}
 
-		} catch (Exception e) {
+		}catch(EmptyResultDataAccessException e){
+			logger.info("No role associated with this user...returning null..");
+			return null;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}

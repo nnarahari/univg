@@ -9,9 +9,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
@@ -43,6 +45,8 @@ import com.ug.util.UgUtil;
 
 
 privileged aspect ProfileController_Roo_Controller {
+	
+	private static Logger logger = Logger.getLogger(ProfileController_Roo_Controller.class);
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder)
@@ -122,11 +126,32 @@ privileged aspect ProfileController_Roo_Controller {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String ProfileController.show(@PathVariable("id") Long id, Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("profile", Profile.findProfile(id));
-        uiModel.addAttribute("itemId", id);
-        return "profiles/show";
+    public String ProfileController.show(@PathVariable("id") Long id, Model uiModel, HttpServletRequest req) {
+
+    	Profile requestedProfile = Profile.findProfile(id);
+    	try{
+    		User user = UgUtil.getLoggedInUser();
+    		TypedQuery<Profile> query = Profile.findProfilesByUserId(user);	
+    		Profile userProfile = query.getSingleResult();
+
+    		if(userProfile.getUserId() == requestedProfile.getUserId()){
+    			logger.debug("requested id matches logged in user's id...");
+    			addDateTimeFormatPatterns(uiModel);
+    			uiModel.addAttribute("profile",requestedProfile );
+    			uiModel.addAttribute("itemId", id);
+    		}else{
+    			logger.debug("######## requested id not matches logged in user's id... returning loggedin users profile");
+    			addDateTimeFormatPatterns(uiModel);
+    			uiModel.addAttribute("profile",userProfile );
+    			uiModel.addAttribute("itemId", userProfile.getUserId());
+    		}
+
+    	}catch(Exception ex){
+    		logger.error("Error while displaying profile page...", ex);
+    		return "profiles/error";
+    	}
+    	return "profiles/show";
+
     }
     
     @RequestMapping(method = RequestMethod.GET)
