@@ -56,7 +56,7 @@ input.groovybutton
 		    <p><fb:login-button onlogin="$('#fb_signin').submit();" v="2" length="long">Connect to Facebook</fb:login-button></p>
 		</form>
 		<facebook:init appId="120877611282582"/>
-         <a href="<%=request.getContextPath()%>/forgotpassword/index">Forgot Password??</a>| <a href="/ugbeta1/signup?form"> New User Sign Up</a>
+         <a href="<%=request.getContextPath()%>/forgotpassword/index">Forgot Password??</a>| <a href="/ugbeta/signup?form"> New User Sign Up</a>
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
         </div>
         <%} %>
