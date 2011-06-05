@@ -102,6 +102,7 @@
             <p><strong><a href="#">News !!</a></strong></p>
             <p>UniveGiggle Released online, Video released in techcrunch.</p>
           </li>
+		  <li>
             <p><strong>
             <fb:like href="www.SUDESH.com" show_faces="true" width="200" action="recommend" font=""></fb:like></strong></p>
           </li>
