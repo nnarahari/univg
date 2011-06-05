@@ -23,6 +23,17 @@
 		</layout>
 	</appender>
 	
+	<appender name="UG_AUDIT_LOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="INFO"/>
+		<param name="File" value="${catalina.base}/logs/ug-audit.log"/>
+		<param name="Append" value="true"/>
+		<param name="MaxFileSize" value="5120KB"/>
+		<param name="MaxBackupIndex" value="3"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+		</layout>
+	</appender>
+	
 	<root>
 		<priority value="INFO" />
 		<appender-ref ref="console" />
@@ -31,6 +42,12 @@
 		<priority value="DEBUG" />
 		<appender-ref ref="console" />
 	</category>
+	
+	<category name="com.ug.util.AuditLogger" additivity="false">
+		<priority value="DEBUG" />
+		<appender-ref ref="UG_AUDIT_LOG" />
+	</category>
+	
 	<category name="org.springframework.jdbc" additivity="false">
 		<priority value="DEBUG" />
 		<appender-ref ref="console" />

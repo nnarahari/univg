@@ -41,6 +41,7 @@ import com.ug.domain.Role;
 import com.ug.domain.University;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
+import com.ug.util.AuditLogger;
 import com.ug.util.UgUtil;
 
 
@@ -104,6 +105,7 @@ privileged aspect ProfileController_Roo_Controller {
         userRole.persist();       
         System.out.println( "Done");
         
+        AuditLogger.log(httpServletRequest.getRemoteUser(), "Student Profile Created", null);
         
         return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), httpServletRequest);
     }
