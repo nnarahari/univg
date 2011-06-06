@@ -7,20 +7,21 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Random;
 
 import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,6 +50,9 @@ privileged aspect ProfileController_Roo_Controller {
 	
 	private static Logger logger = Logger.getLogger(ProfileController_Roo_Controller.class);
 	
+	@Autowired
+    private transient static MailSender mailSender;
+	
 	@InitBinder
     public void initBinder(WebDataBinder binder)
     {
@@ -57,7 +61,7 @@ privileged aspect ProfileController_Roo_Controller {
 
     
     @RequestMapping(method = RequestMethod.POST)
-    public String ProfileController.create(@Valid Profile profile, BindingResult bindingResult, Model uiModel, @RequestParam("file") MultipartFile content,@RequestParam("resume") MultipartFile resumeContent,HttpServletRequest httpServletRequest) {
+    public String ProfileController.create(@Valid Profile profile, BindingResult bindingResult, Model uiModel, @RequestParam("file") MultipartFile content,@RequestParam("resume") MultipartFile resumeContent,HttpServletRequest request) {
        
     	Date dob = profile.getDateOfBirth();
     	long noOfDaysDiff = UgUtil.noOfDaysPast(dob);
@@ -77,8 +81,8 @@ privileged aspect ProfileController_Roo_Controller {
             return "profiles/create";
         }
 
-    	String photoIdentifier = saveProfileImage(content, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
-		String resumeIdentifier = saveResume(resumeContent, httpServletRequest.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
+    	String photoIdentifier = saveProfileImage(content, request.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
+		String resumeIdentifier = saveResume(resumeContent, request.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
 						
 		profile.setPhotoIdentifier(photoIdentifier);
     	profile.setResumeIdentifier(resumeIdentifier);
@@ -105,9 +109,25 @@ privileged aspect ProfileController_Roo_Controller {
         userRole.persist();       
         System.out.println( "Done");
         
-        AuditLogger.log(httpServletRequest.getRemoteUser(), "Student Profile Created", null);
+        AuditLogger.log(request.getRemoteUser(), "Student Profile Created", null);
         
-        return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), httpServletRequest);
+        //sending mail to university mail for verification.
+        logger.debug("Sending email to verify university email id...");
+        SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(profile.getUniversityEmail());
+		mail.setSubject("UnivG :: University email verification");
+		
+		StringBuffer message = new StringBuffer();
+		message.append("Hi " + user.getFirstName() + " "+ user.getLastName() + ", \n");
+		message.append("You had registered with us a student. Please click on the following link to validate your university email account \n \n");
+		Random random = new Random(System.currentTimeMillis());
+		message.append("http://"+ request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath()+"/profiles/univEmailValid?profileId="+profile.getId()+"&activationCode="+random.nextInt() + "\n\n");
+		message.append("- Team UnivGiggle.");
+		
+        mailSender.send(mail);
+        logger.debug("After sent the mail....");
+        
+        return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), request);
     }
     
     private static String saveResume(MultipartFile content,  String realPath, String id) {
@@ -126,6 +146,19 @@ privileged aspect ProfileController_Roo_Controller {
         addDateTimeFormatPatterns(uiModel);
         return "profiles/create";
     }
+	
+	@RequestMapping(value="univEmailValid")
+	public String ProfileController.univEmailValid(@RequestParam(value = "activationCode", required = true) String activationCode, 
+												@RequestParam(value="profileId") Long profileId,Model uiModel,HttpServletRequest req){
+		logger.debug("University email id validation started...activationCode ==>"+ activationCode + ", profileId==>"+ profileId);
+		//TODO update the univEmailValidated field of profile object.
+		Profile profile = Profile.findProfile(profileId);
+		logger.debug("Profile ==>"+ profile);
+		addDateTimeFormatPatterns(uiModel);
+		uiModel.addAttribute("profile",profile );
+		uiModel.addAttribute("itemId", profileId);
+		return "profiles/show";
+	}
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String ProfileController.show(@PathVariable("id") Long id, Model uiModel, HttpServletRequest req) {

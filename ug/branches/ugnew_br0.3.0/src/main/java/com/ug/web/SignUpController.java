@@ -93,7 +93,7 @@ public class SignUpController {
     		mail.setTo(User.getEmailAddress());
     		mail.setSubject("User Activaton");
     		
-    		mail.setText("Hi "+User.getFirstName()+",\n. You had registered with us. Please click on this link to activate your account - <a href=\"http://__BASE_URL__/signup?emailAddress="+User.getEmailAddress()+"&activate="+activationKey+"\">Activate Link</a>. \n Thanks Tyical Security Admin");
+    		mail.setText("Hi "+User.getFirstName()+",\n. You had registered with us. Please click on this link to activate your account - <a href=\"http://"+request.getServerName()+":"+request.getServerPort()+"/signup?emailAddress="+User.getEmailAddress()+"&activate="+activationKey+"\">Activate Link</a>. \n Thanks Tyical Security Admin");
             mailSender.send(mail);
             return "signup/thanks";
         }
