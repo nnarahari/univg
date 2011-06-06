@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6{
 #header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #footer, #copyright{
 	margin:0 auto 0;
 	display:block;
-	width:960px;
+	width:980px;
 	}
 
 .wrapper{
