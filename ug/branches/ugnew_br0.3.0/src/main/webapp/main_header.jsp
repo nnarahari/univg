@@ -7,11 +7,11 @@
 <title>UnivGiggle - Connect World Together.</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="imagetoolbar" content="no" />
-<link rel="stylesheet" href="styles/layout_template.css" type="text/css" />
-<link rel="stylesheet" href="styles/tables_template.css" type="text/css" />
-<link rel="stylesheet" href="styles/navi_template.css" type="text/css" />
-<link rel="stylesheet" href="styles/forms_template.css" type="text/css" />
-<link rel="stylesheet" href="styles/featured_slide_template.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/layout_template.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/tables_template.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navi_template.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/forms_template.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/featured_slide_template.css" type="text/css" />
 <style type="text/css">
 
 input.groovybutton
@@ -31,7 +31,7 @@ input.groovybutton
 <div id="header">
   <div class="wrapper">
     <div class="fl_left">
-      <h1><a href="#"><img src="images/demo/final_logo1.jpg" alt="" width="137" /></a></h1>
+      <h1><a href="#"><img src="<%=request.getContextPath()%>/images/demo/final_logo1.jpg" alt="" width="137" /></a></h1>
     </div>
     <div class="fl_right"> 
 	<div id="">

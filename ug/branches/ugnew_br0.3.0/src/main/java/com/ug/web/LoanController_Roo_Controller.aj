@@ -35,6 +35,7 @@ import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
+import com.ug.util.UGConstants;
 import com.ug.util.UgUtil;
 
 
@@ -127,13 +128,20 @@ privileged aspect LoanController_Roo_Controller {
 
 	@RequestMapping(method = RequestMethod.PUT)
 	public String LoanController.update(@Valid Loan loan,
-			BindingResult bindingResult, Model uiModel,
+			BindingResult bindingResult, @RequestParam(value = "hiddenUserId", required = false) Long hiddenId, Model uiModel,
 			HttpServletRequest httpServletRequest) {
 		if (bindingResult.hasErrors()) {
 			uiModel.addAttribute("loan", loan);
 			addDateTimeFormatPatterns(uiModel);
 			return "loans/update";
 		}
+		
+		if(UGConstants.CORPORATE_ROLE.equalsIgnoreCase(UgUtil.getLoggedInUserRoleName()))
+		{
+			User user = User.findUser(hiddenId);
+			loan.setUserId(user);
+		}
+		
 		uiModel.asMap().clear();
 		loan.merge();
 		return "redirect:/loans/"

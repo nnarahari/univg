@@ -43,6 +43,7 @@ import com.ug.domain.University;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
 import com.ug.util.AuditLogger;
+import com.ug.util.UGConstants;
 import com.ug.util.UgUtil;
 
 
@@ -160,32 +161,36 @@ privileged aspect ProfileController_Roo_Controller {
 		return "profiles/show";
 	}
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String ProfileController.show(@PathVariable("id") Long id, Model uiModel, HttpServletRequest req) {
+   public String ProfileController.show(@PathVariable("id") Long id, Model uiModel, HttpServletRequest req) {
 
-    	Profile requestedProfile = Profile.findProfile(id);
-    	try{
-    		User user = UgUtil.getLoggedInUser();
-    		TypedQuery<Profile> query = Profile.findProfilesByUserId(user);	
-    		Profile userProfile = query.getSingleResult();
+    	//Profile requestedProfile = Profile.findProfile(id);
+		try {
 
-    		if(userProfile.getUserId() == requestedProfile.getUserId()){
-    			logger.debug("requested id matches logged in user's id...");
-    			addDateTimeFormatPatterns(uiModel);
-    			uiModel.addAttribute("profile",requestedProfile );
-    			uiModel.addAttribute("itemId", id);
-    		}else{
-    			logger.debug("######## requested id not matches logged in user's id... returning loggedin users profile");
-    			addDateTimeFormatPatterns(uiModel);
-    			uiModel.addAttribute("profile",userProfile );
-    			uiModel.addAttribute("itemId", userProfile.getUserId());
-    		}
+			if (UGConstants.STUDENT_ROLE.equalsIgnoreCase(UgUtil
+					.getLoggedInUserRoleName())) {
+				User user = UgUtil.getLoggedInUser();
+				TypedQuery<Profile> query = Profile.findProfilesByUserId(user);
+				Profile userProfile = query.getSingleResult();
+				//if (userProfile.getUserId() == requestedProfile.getUserId()) {
+					logger.debug("requested id matches logged in user's id...");
+					addDateTimeFormatPatterns(uiModel);
+					uiModel.addAttribute("profile", userProfile);
+					uiModel.addAttribute("itemId", id);
+				//}
 
-    	}catch(Exception ex){
-    		logger.error("Error while displaying profile page...", ex);
-    		return "profiles/error";
-    	}
-    	return "profiles/show";
+			} else if(UGConstants.ADMIN_ROLE.equalsIgnoreCase(UgUtil
+					.getLoggedInUserRoleName()) || UGConstants.CORPORATE_ROLE.equalsIgnoreCase(UgUtil
+							.getLoggedInUserRoleName())){
+			       addDateTimeFormatPatterns(uiModel);
+			       uiModel.addAttribute("profile", Profile.findProfile(id));
+			       uiModel.addAttribute("itemId", id);
+			}
+
+		} catch (Exception ex) {
+			logger.error("Error while displaying profile page...", ex);
+			return "profiles/error";
+		}
+		return "profiles/show";
 
     }
     
@@ -205,12 +210,18 @@ privileged aspect ProfileController_Roo_Controller {
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String ProfileController.update(@Valid Profile profile, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String ProfileController.update(@Valid Profile profile, BindingResult bindingResult, @RequestParam(value = "hiddenUserId", required = false) Long hiddenId,Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("profile", profile);
             addDateTimeFormatPatterns(uiModel);
             return "profiles/update";
         }
+		if(UGConstants.STUDENT_ROLE.equalsIgnoreCase(UgUtil.getLoggedInUserRoleName()))
+		{
+			User user = User.findUser(hiddenId);
+			profile.setUserId(user);
+		}
+
         uiModel.asMap().clear();
         profile.merge();
         return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), httpServletRequest);
