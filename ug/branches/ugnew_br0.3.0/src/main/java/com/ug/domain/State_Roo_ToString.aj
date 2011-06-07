@@ -12,7 +12,7 @@ privileged aspect State_Roo_ToString {
         sb.append("Addresses: ").append(getAddresses() == null ? "null" : getAddresses().size()).append(", ");
         sb.append("Corporates: ").append(getCorporates() == null ? "null" : getCorporates().size()).append(", ");
         sb.append("Guarantors: ").append(getGuarantors() == null ? "null" : getGuarantors().size()).append(", ");
-        sb.append("Universities: ").append(getUniversities() == null ? "null" : getUniversities().size()).append(", ");
+//        sb.append("Universities: ").append(getUniversities() == null ? "null" : getUniversities().size()).append(", ");
         sb.append("StateName: ").append(getStateName()).append(", ");
         sb.append("StateDescription: ").append(getStateDescription());
         return sb.toString();

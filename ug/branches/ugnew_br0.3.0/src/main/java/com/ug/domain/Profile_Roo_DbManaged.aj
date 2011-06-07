@@ -175,7 +175,6 @@ privileged aspect Profile_Roo_DbManaged {
         this.youtubeUrl = youtubeUrl;
     }
     
-    
     public String Profile.getMobile() {
         return this.mobile;
     }
@@ -215,5 +214,5 @@ privileged aspect Profile_Roo_DbManaged {
     public void Profile.setBriefDescription(String briefDescription) {
         this.briefDescription = briefDescription;
     }
-   
+    
 }

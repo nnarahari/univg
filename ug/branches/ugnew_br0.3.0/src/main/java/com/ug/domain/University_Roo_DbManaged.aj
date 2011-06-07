@@ -5,13 +5,11 @@ package com.ug.domain;
 
 import com.ug.domain.Guarantor;
 import com.ug.domain.Profile;
-import com.ug.domain.State;
 import java.lang.Boolean;
+import java.lang.Long;
 import java.lang.String;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -23,10 +21,6 @@ privileged aspect University_Roo_DbManaged {
     @OneToMany(mappedBy = "universityId")
     private java.util.Set<Profile> University.profiles;
     
-    @ManyToOne
-    @JoinColumn(name = "stateId", referencedColumnName = "id", nullable = false)
-    private State University.stateId;
-    
     @Column(name = "university_name", columnDefinition = "VARCHAR", length = 90)
     @NotNull
     private String University.universityName;
@@ -35,28 +29,27 @@ privileged aspect University_Roo_DbManaged {
     private String University.universityWebsite;
     
     @Column(name = "address1", columnDefinition = "VARCHAR", length = 50)
-    //@NotNull
     private String University.address1;
     
     @Column(name = "address2", columnDefinition = "VARCHAR", length = 50)
     private String University.address2;
     
     @Column(name = "city", columnDefinition = "VARCHAR", length = 50)
-    //@NotNull
     private String University.city;
+    
+    @Column(name = "stateId", columnDefinition = "BIGINT")
+    private Long University.stateId;
     
     @Column(name = "country", columnDefinition = "VARCHAR", length = 20)
     private String University.country;
     
     @Column(name = "zip", columnDefinition = "VARCHAR", length = 10)
-    //@NotNull
     private String University.zip;
     
     @Column(name = "mobile", columnDefinition = "VARCHAR", length = 255)
     private String University.mobile;
     
     @Column(name = "phone", columnDefinition = "VARCHAR", length = 255)
-    //@NotNull
     private String University.phone;
     
     @Column(name = "enabled", columnDefinition = "BIT")
@@ -64,6 +57,9 @@ privileged aspect University_Roo_DbManaged {
     
     @Column(name = "locked", columnDefinition = "BIT")
     private Boolean University.locked;
+    
+    @Column(name = "domain", columnDefinition = "VARCHAR", length = 50)
+    private String University.domain;
     
     public Set<Guarantor> University.getGuarantors() {
         return this.guarantors;
@@ -79,14 +75,6 @@ privileged aspect University_Roo_DbManaged {
     
     public void University.setProfiles(java.util.Set<Profile> profiles) {
         this.profiles = profiles;
-    }
-    
-    public State University.getStateId() {
-        return this.stateId;
-    }
-    
-    public void University.setStateId(State stateId) {
-        this.stateId = stateId;
     }
     
     public String University.getUniversityName() {
@@ -127,6 +115,14 @@ privileged aspect University_Roo_DbManaged {
     
     public void University.setCity(String city) {
         this.city = city;
+    }
+    
+    public Long University.getStateId() {
+        return this.stateId;
+    }
+    
+    public void University.setStateId(Long stateId) {
+        this.stateId = stateId;
     }
     
     public String University.getCountry() {
@@ -183,6 +179,14 @@ privileged aspect University_Roo_DbManaged {
     
     public void University.setLocked(Boolean locked) {
         this.locked = locked;
+    }
+    
+    public String University.getDomain() {
+        return this.domain;
+    }
+    
+    public void University.setDomain(String domain) {
+        this.domain = domain;
     }
     
 }

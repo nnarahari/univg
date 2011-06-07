@@ -93,7 +93,7 @@ privileged aspect CorporateLoanAmountController_Roo_Controller {
     }
     
     @ModelAttribute("corporateloanamounts")
-    public java.util.Collection<CorporateLoanAmount> CorporateLoanAmountController.populateCorporateLoanAmounts() {
+    public Collection<CorporateLoanAmount> CorporateLoanAmountController.populateCorporateLoanAmounts() {
         return CorporateLoanAmount.findAllCorporateLoanAmounts();
     }
     

@@ -116,23 +116,23 @@ privileged aspect AddressController_Roo_Controller {
     @ModelAttribute("addresses")
     public Collection<Address> AddressController.populateAddresses() {
        	return UgUtil.getAddresses();
-            }
+    }
     
     @ModelAttribute("addresstypes")
     public java.util.Collection<Addresstype> AddressController.populateAddresstypes() {
         return Addresstype.findAllAddresstypes();
     }
     
-    @ModelAttribute("states")
-    public java.util.Collection<State> AddressController.populateStates() {
-        return State.findAllStates();
-    }
-      
     @ModelAttribute("loans")
     public java.util.Collection<Loan> AddressController.populateLoans() {
         return Loan.findAllLoans();
     }
-  
+    
+    @ModelAttribute("states")
+    public java.util.Collection<State> AddressController.populateStates() {
+        return State.findAllStates();
+    }
+    
     @ModelAttribute("users")
     public java.util.Collection<User> AddressController.populateUsers() {
 		UserRole userRole = UgUtil.getLoggedInUserRole();

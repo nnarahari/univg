@@ -7,6 +7,7 @@ import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
 import com.ug.domain.User;
+import java.lang.Long;
 import java.lang.String;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -20,6 +21,60 @@ privileged aspect Loan_Roo_Finder {
         EntityManager em = Loan.entityManager();
         TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.grantNeededFor = :grantNeededFor", Loan.class);
         q.setParameter("grantNeededFor", grantNeededFor);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLastupdatedby(Long lastupdatedby) {
+        if (lastupdatedby == null) throw new IllegalArgumentException("The lastupdatedby argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.lastupdatedby = :lastupdatedby", Loan.class);
+        q.setParameter("lastupdatedby", lastupdatedby);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLastupdatedtimestamp(Date lastupdatedtimestamp) {
+        if (lastupdatedtimestamp == null) throw new IllegalArgumentException("The lastupdatedtimestamp argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.lastupdatedtimestamp = :lastupdatedtimestamp", Loan.class);
+        q.setParameter("lastupdatedtimestamp", lastupdatedtimestamp);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLastupdatedtimestampBetween(Date minLastupdatedtimestamp, Date maxLastupdatedtimestamp) {
+        if (minLastupdatedtimestamp == null) throw new IllegalArgumentException("The minLastupdatedtimestamp argument is required");
+        if (maxLastupdatedtimestamp == null) throw new IllegalArgumentException("The maxLastupdatedtimestamp argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.lastupdatedtimestamp BETWEEN :minLastupdatedtimestamp AND :maxLastupdatedtimestamp", Loan.class);
+        q.setParameter("minLastupdatedtimestamp", minLastupdatedtimestamp);
+        q.setParameter("maxLastupdatedtimestamp", maxLastupdatedtimestamp);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLastupdatedtimestampGreaterThan(Date lastupdatedtimestamp) {
+        if (lastupdatedtimestamp == null) throw new IllegalArgumentException("The lastupdatedtimestamp argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.lastupdatedtimestamp > :lastupdatedtimestamp", Loan.class);
+        q.setParameter("lastupdatedtimestamp", lastupdatedtimestamp);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLastupdatedtimestampIsNotNull() {
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.lastupdatedtimestamp IS NOT NULL", Loan.class);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLastupdatedtimestampIsNull() {
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.lastupdatedtimestamp IS NULL", Loan.class);
+        return q;
+    }
+    
+    public static TypedQuery<Loan> Loan.findLoansByLastupdatedtimestampLessThan(Date lastupdatedtimestamp) {
+        if (lastupdatedtimestamp == null) throw new IllegalArgumentException("The lastupdatedtimestamp argument is required");
+        EntityManager em = Loan.entityManager();
+        TypedQuery<Loan> q = em.createQuery("SELECT Loan FROM Loan AS loan WHERE loan.lastupdatedtimestamp < :lastupdatedtimestamp", Loan.class);
+        q.setParameter("lastupdatedtimestamp", lastupdatedtimestamp);
         return q;
     }
     

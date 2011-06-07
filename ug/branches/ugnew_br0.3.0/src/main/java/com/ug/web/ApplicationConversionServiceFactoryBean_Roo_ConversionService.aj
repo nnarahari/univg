@@ -7,6 +7,7 @@ import com.ug.domain.Address;
 import com.ug.domain.Addresstype;
 import com.ug.domain.Corporate;
 import com.ug.domain.CorporateLoanAmount;
+import com.ug.domain.Country;
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Grantneededfor;
@@ -53,6 +54,14 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<CorporateLoanAmount, String>() {
             public String convert(CorporateLoanAmount corporateloanamount) {
                 return new StringBuilder().append(corporateloanamount.getAvailableLoanAmount()).append(" ").append(corporateloanamount.getCommittedLoanAmount()).append(" ").append(corporateloanamount.getLoanedAmount()).toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<Country, String> ApplicationConversionServiceFactoryBean.getCountryConverter() {
+        return new org.springframework.core.convert.converter.Converter<Country, String>() {
+            public String convert(Country country) {
+                return new StringBuilder().append(country.getCountryName()).toString();
             }
         };
     }
@@ -158,6 +167,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getAddresstypeConverter());
         registry.addConverter(getCorporateConverter());
         registry.addConverter(getCorporateLoanAmountConverter());
+        registry.addConverter(getCountryConverter());
         registry.addConverter(getDepartmentConverter());
         registry.addConverter(getGenderConverter());
         registry.addConverter(getGrantneededforConverter());

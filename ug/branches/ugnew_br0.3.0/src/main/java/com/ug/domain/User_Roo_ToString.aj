@@ -9,14 +9,20 @@ privileged aspect User_Roo_ToString {
     
     public String User.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("ActivationDate: ").append(getActivationDate()).append(", ");
-        sb.append("ActivationKey: ").append(getActivationKey()).append(", ");
-        sb.append("EmailAddress: ").append(getEmailAddress()).append(", ");
-        sb.append("Enabled: ").append(getEnabled()).append(", ");
         sb.append("FirstName: ").append(getFirstName()).append(", ");
         sb.append("LastName: ").append(getLastName()).append(", ");
-        sb.append("Locked: ").append(getLocked()).append(", ");
-        sb.append("Password: ").append(getPassword());
+        sb.append("EmailAddress: ").append(getEmailAddress()).append(", ");
+        sb.append("Password: ").append(getPassword()).append(", ");
+        sb.append("ActivationDate: ").append(getActivationDate()).append(", ");
+        sb.append("ActivationKey: ").append(getActivationKey()).append(", ");
+        sb.append("Enabled: ").append(getEnabled()).append(", ");
+        sb.append("Locked: ").append(getLocked());
+        //sb.append("Profiles: ").append(getProfiles() == null ? "null" : getProfiles().size()).append(", ");
+        //sb.append("Addresses: ").append(getAddresses() == null ? "null" : getAddresses().size()).append(", ");
+        //sb.append("Corporates: ").append(getCorporates() == null ? "null" : getCorporates().size()).append(", ");
+        //sb.append("Guarantors: ").append(getGuarantors() == null ? "null" : getGuarantors().size()).append(", ");
+        //sb.append("Loans: ").append(getLoans() == null ? "null" : getLoans().size()).append(", ");
+
         return sb.toString();
     }
     

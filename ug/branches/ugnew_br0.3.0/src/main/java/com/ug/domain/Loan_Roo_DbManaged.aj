@@ -3,9 +3,14 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Address;
+import com.ug.domain.Grantneededfor;
+import com.ug.domain.Loanstatus;
+import com.ug.domain.User;
+import java.lang.Long;
+import java.lang.String;
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,7 +18,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 privileged aspect Loan_Roo_DbManaged {
@@ -53,6 +57,14 @@ privileged aspect Loan_Roo_DbManaged {
     
     @Column(name = "supportDocumentName", columnDefinition = "VARCHAR", length = 75)
     private String Loan.supportDocumentName;
+    
+    @Column(name = "lastupdatedby", columnDefinition = "BIGINT")
+    private Long Loan.lastupdatedby;
+    
+    @Column(name = "lastupdatedtimestamp", columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
+    private Date Loan.lastupdatedtimestamp;
     
     public User Loan.getUserId() {
         return this.userId;
@@ -124,6 +136,22 @@ privileged aspect Loan_Roo_DbManaged {
     
     public void Loan.setSupportDocumentName(String supportDocumentName) {
         this.supportDocumentName = supportDocumentName;
+    }
+    
+    public Long Loan.getLastupdatedby() {
+        return this.lastupdatedby;
+    }
+    
+    public void Loan.setLastupdatedby(Long lastupdatedby) {
+        this.lastupdatedby = lastupdatedby;
+    }
+    
+    public Date Loan.getLastupdatedtimestamp() {
+        return this.lastupdatedtimestamp;
+    }
+    
+    public void Loan.setLastupdatedtimestamp(Date lastupdatedtimestamp) {
+        this.lastupdatedtimestamp = lastupdatedtimestamp;
     }
     
 }

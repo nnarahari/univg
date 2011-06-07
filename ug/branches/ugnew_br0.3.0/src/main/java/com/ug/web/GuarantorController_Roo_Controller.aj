@@ -125,7 +125,7 @@ privileged aspect GuarantorController_Roo_Controller {
     }
     
     @ModelAttribute("guarantors")
-    public java.util.Collection<Guarantor> GuarantorController.populateGuarantors() {
+    public Collection<Guarantor> GuarantorController.populateGuarantors() {
         return Guarantor.findAllGuarantors();
     }
     

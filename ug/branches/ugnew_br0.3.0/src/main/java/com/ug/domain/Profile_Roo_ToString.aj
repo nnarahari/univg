@@ -23,7 +23,7 @@ privileged aspect Profile_Roo_ToString {
         sb.append("Mobile: ").append(getMobile()).append(", ");
         sb.append("PhotoIdentifier: ").append(getPhotoIdentifier()).append(", ");
         sb.append("ResumeIdentifier: ").append(getResumeIdentifier()).append(", ");
-        sb.append("UniversityEmail: ").append(getUniversityEmail());
+        sb.append("UniversityEmail: ").append(getUniversityEmail()).append(", ");
         sb.append("BriefDescription: ").append(getBriefDescription());
         return sb.toString();
     }

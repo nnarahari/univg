@@ -137,3 +137,17 @@ finder add findLoansByUserId
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-05-19 21:47:24
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-20 13:04:31
 // Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-05-20 21:13:01
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-06-06 18:20:49
+// [failed] database reverse engineer --schema no-schema-required --includeTables "loan" --package ~.domain
+// [failed] database reverse engineer --schema no-schema-required --includeTables "university" --package ~.domain
+// [failed] database reverse engineer --schema no-schema-required --includeTables "country" --package ~.domain
+database reverse engineer --schema no-schema-required
+finder list --class ~.domain.Loan
+finder add findLoansByLastupdatedby --class ~.domain.Loan
+finder add findLoansByLastupdatedtimestamp
+finder add findLoansByLastupdatedtimestampBetween
+finder add findLoansByLastupdatedtimestampGreaterThan
+finder add findLoansByLastupdatedtimestampIsNotNull
+finder add findLoansByLastupdatedtimestampIsNull
+finder add findLoansByLastupdatedtimestampLessThan
+controller all --package ~.web

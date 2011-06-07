@@ -3,14 +3,16 @@
 
 package com.ug.web;
 
+import com.ug.domain.Corporate;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.lang.Long;
+import java.lang.String;
 import java.util.Collection;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;

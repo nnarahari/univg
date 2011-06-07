@@ -93,7 +93,7 @@ privileged aspect AddresstypeController_Roo_Controller {
     }
     
     @ModelAttribute("addresstypes")
-    public java.util.Collection<Addresstype> AddresstypeController.populateAddresstypes() {
+    public Collection<Addresstype> AddresstypeController.populateAddresstypes() {
         return Addresstype.findAllAddresstypes();
     }
     
