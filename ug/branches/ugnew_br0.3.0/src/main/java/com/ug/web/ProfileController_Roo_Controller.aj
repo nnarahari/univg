@@ -63,72 +63,79 @@ privileged aspect ProfileController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
     public String ProfileController.create(@Valid Profile profile, BindingResult bindingResult, Model uiModel, @RequestParam("file") MultipartFile content,@RequestParam("resume") MultipartFile resumeContent,HttpServletRequest request) {
-       
+
     	Date dob = profile.getDateOfBirth();
     	long noOfDaysDiff = UgUtil.noOfDaysPast(dob);
     	if(noOfDaysDiff/365 < 18){
     		System.out.println("DOB is lessthan 18 years old");
     		FieldError fieldErr = new FieldError("profile", "dateOfBirth", "Minimum 18 years should be completed to create student profile.");
-        	bindingResult.addError(fieldErr);
+    		bindingResult.addError(fieldErr);
     	}else{
     		System.out.println("DOB is greater than 18 years...");
     	}
-    	
-    	
+
+
     	if (bindingResult.hasErrors()) {
-        	System.out.println("Binding Errors:"+ bindingResult.getAllErrors().toString());
-            uiModel.addAttribute("profile", profile);
-            addDateTimeFormatPatterns(uiModel);
-            return "profiles/create";
-        }
+    		System.out.println("Binding Errors:"+ bindingResult.getAllErrors().toString());
+    		uiModel.addAttribute("profile", profile);
+    		addDateTimeFormatPatterns(uiModel);
+    		return "profiles/create";
+    	}
 
     	String photoIdentifier = saveProfileImage(content, request.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
-		String resumeIdentifier = saveResume(resumeContent, request.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
-						
-		profile.setPhotoIdentifier(photoIdentifier);
+    	String resumeIdentifier = saveResume(resumeContent, request.getSession().getServletContext().getRealPath("/"),profile.getUserId().getId()+"");
+
+    	profile.setPhotoIdentifier(photoIdentifier);
     	profile.setResumeIdentifier(resumeIdentifier);
 
     	saveProfileImage(content, "/ug",profile.getUserId().getId()+"");
-        saveResume(resumeContent, "/ug",profile.getUserId().getId()+"");
-        System.out.println("Profile:"+profile.toString());
-        
-        uiModel.asMap().clear();
-        profile.persist();
-        
-        System.out.println("profile crreated.. associating student role to the user..");
-        UserRole userRole = new UserRole();
-        
-        User user = UgUtil.getLoggedInUser();
-        System.out.println("user ==>"+ user);
-        
-        Role role = Role.findRole(2L);//2 is for student
-        
-        System.out.println("role ==>"+ role);
-        userRole.setUserEntry(user);
-        userRole.setRoleEntry(role);
-        
-        userRole.persist();       
-        System.out.println( "Done");
-        
-        AuditLogger.log(request.getRemoteUser(), "Student Profile Created", null);
-        
-        //sending mail to university mail for verification.
-        logger.debug("Sending email to verify university email id...");
-        SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setTo(profile.getUniversityEmail());
-		mail.setSubject("UnivG :: University email verification");
-		
-		StringBuffer message = new StringBuffer();
-		message.append("Hi " + user.getFirstName() + " "+ user.getLastName() + ", \n");
-		message.append("You had registered with us a student. Please click on the following link to validate your university email account \n \n");
-		Random random = new Random(System.currentTimeMillis());
-		message.append("http://"+ request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath()+"/profiles/univEmailValid?profileId="+profile.getId()+"&activationCode="+random.nextInt() + "\n\n");
-		message.append("- Team UnivGiggle.");
-		
-        mailSender.send(mail);
-        logger.debug("After sent the mail....");
-        
-        return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), request);
+    	saveResume(resumeContent, "/ug",profile.getUserId().getId()+"");
+    	System.out.println("Profile:"+profile.toString());
+
+    	uiModel.asMap().clear();
+    	profile.persist();
+
+    	System.out.println("profile crreated.. associating student role to the user..");
+    	UserRole userRole = new UserRole();
+
+    	User user = UgUtil.getLoggedInUser();
+    	System.out.println("user ==>"+ user);
+
+    	Role role = Role.findRole(2L);//2 is for student
+
+    	System.out.println("role ==>"+ role);
+    	userRole.setUserEntry(user);
+    	userRole.setRoleEntry(role);
+
+    	userRole.persist();       
+    	System.out.println( "Done");
+
+    	AuditLogger.log(request.getRemoteUser(), "Student Profile Created", null);
+
+    	try{
+    		//sending mail to university mail for verification.
+    		logger.debug("Sending email to verify university email id...");
+    		SimpleMailMessage mail = new SimpleMailMessage();
+    		logger.debug("Univ email ==>"+profile.getUniversityEmail() );
+    		//mail.setTo(profile.getUniversityEmail());
+    		mail.setTo("seeni.vasan@gmail.com");
+    		mail.setSubject("UnivG :: University email verification");
+
+    		StringBuffer message = new StringBuffer();
+    		message.append("Hi " + user.getFirstName() + " "+ user.getLastName() + ", \n");
+    		message.append("You had registered with us a student. Please click on the following link to validate your university email account \n \n");
+    		Random random = new Random(System.currentTimeMillis());
+    		message.append("http://"+ request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath()+"/profiles/univEmailValid?profileId="+profile.getId()+"&activationCode="+random.nextInt() + "\n\n");
+    		message.append("- Team UnivGiggle.");
+    		mail.setText(message.toString());
+
+    		mailSender.send(mail);
+    		logger.debug("After sent the mail....");
+    	}catch(Exception ex){
+    		logger.error("Error while sending the university validation email..", ex);
+    	}
+
+    	return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), request);
     }
     
     private static String saveResume(MultipartFile content,  String realPath, String id) {

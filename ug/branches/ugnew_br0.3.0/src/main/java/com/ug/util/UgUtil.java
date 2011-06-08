@@ -72,7 +72,10 @@ public class UgUtil {
 
 			UserRole role = (UserRole) roleQuery.getSingleResult();
 			return role;
-		} catch (Exception e) {
+		}catch(EmptyResultDataAccessException e){
+			logger.info("No records found.. returning null");
+			return null;
+		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -99,8 +102,7 @@ public class UgUtil {
 		}catch(EmptyResultDataAccessException e){
 			logger.info("No role associated with this user...returning null..");
 			return null;
-		}
-		catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -167,7 +169,11 @@ public class UgUtil {
 
 			}
 
-		} catch (Exception e) {
+		}catch(EmptyResultDataAccessException e){
+			logger.info("No records found..returning null...");
+			return null;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
