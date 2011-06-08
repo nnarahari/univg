@@ -7,9 +7,12 @@ Licence: <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commo
 */
 
 #topnav{
+	
+	
 	display:block;
 	float:left;
 	width:660px;
+	height:auto;
 	margin:0;
 	padding:0;
 	list-style:none;
