@@ -33,6 +33,7 @@ import com.ug.domain.Address;
 import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
+import com.ug.domain.Profile;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
 import com.ug.util.UGConstants;
@@ -135,12 +136,15 @@ privileged aspect LoanController_Roo_Controller {
 			addDateTimeFormatPatterns(uiModel);
 			return "loans/update";
 		}
-		
 		if(UGConstants.CORPORATE_ROLE.equalsIgnoreCase(UgUtil.getLoggedInUserRoleName()))
 		{
-			User user = User.findUser(hiddenId);
-			loan.setUserId(user);
+			User hideenUser = User.findUser(hiddenId);
+			loan.setUserId(hideenUser);
 		}
+
+		User user = UgUtil.getLoggedInUser();
+		loan.setLastupdatedby(user.getId());
+		loan.setLastupdatedtimestamp(new Date());
 		
 		uiModel.asMap().clear();
 		loan.merge();

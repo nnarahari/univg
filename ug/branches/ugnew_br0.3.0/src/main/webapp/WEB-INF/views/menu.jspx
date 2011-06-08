@@ -130,6 +130,10 @@
                 <menu:item id="i_grantneededfor_new" messageCode="global_menu_new" url="/grantneededfors?form" z="TzQbrsLPleIYSrpTV78KUy/Zt2E="/>
             <menu:item id="i_grantneededfor_list" messageCode="global_menu_list" url="/grantneededfors?page=1&amp;size=${empty param.size ? 10 : param.size}" z="z8pjE3cHXRvoJOEhiFugGy29ePQ="/>
             </menu:category>
+        <menu:category id="c_country" z="+9IFFFqXHr5bWdYjx7upDibmQfo=">
+                <menu:item id="i_country_new" messageCode="global_menu_new" url="/countrys?form" z="OnEHsuvR46cQji6jmcBL0pJOBMc="/>
+            <menu:item id="i_country_list" messageCode="global_menu_list" url="/countrys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="AwKhjnZH+dOj0X4glIoj4SVuHNY="/>
+            </menu:category>
         </menu:menu>
 	</sec:authorize>
 	<jsp:scriptlet>
