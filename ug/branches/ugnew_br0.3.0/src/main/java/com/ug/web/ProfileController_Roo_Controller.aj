@@ -112,7 +112,20 @@ privileged aspect ProfileController_Roo_Controller {
 
     	AuditLogger.log(request.getRemoteUser(), "Student Profile Created", null);
 
-    	try{
+    	sendMailForUnivMailConfirmation(request, profile, user);
+
+    	return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), request);
+    }
+
+
+	/**
+	 * @param request
+	 * @param profile
+	 * @param user
+	 */
+	private static void sendMailForUnivMailConfirmation(HttpServletRequest request,
+			Profile profile, User user) {
+		try{
     		//sending mail to university mail for verification.
     		logger.debug("Sending email to verify university email id...");
     		SimpleMailMessage mail = new SimpleMailMessage();
@@ -131,12 +144,10 @@ privileged aspect ProfileController_Roo_Controller {
 
     		mailSender.send(mail);
     		logger.debug("After sent the mail....");
-    	}catch(Exception ex){
-    		logger.error("Error while sending the university validation email..", ex);
+    	}catch(Throwable ex){
+    		logger.error("Error while sending the university validation email..", ex.getCause());
     	}
-
-    	return "redirect:/profiles/" + encodeUrlPathSegment(profile.getId().toString(), request);
-    }
+	}
     
     private static String saveResume(MultipartFile content,  String realPath, String id) {
     	return UgUtil.createFile("resume",content, realPath,id);
