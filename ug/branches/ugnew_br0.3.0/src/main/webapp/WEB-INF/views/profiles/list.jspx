@@ -27,7 +27,7 @@
          </sec:authorize>
         
         <sec:authorize ifAllGranted="admin">
-        <table:table data="${profiles}" id="l_com_ug_domain_Profile" create="false" delete="false" update="true" path="/profiles" z="GzYHEl6VzAygLJjMSyLQvcsTnIU=">
+        <table:table data="${profiles}" id="l_com_ug_domain_Profile" path="/profiles" z="GzYHEl6VzAygLJjMSyLQvcsTnIU=">
              <table:column id="c_com_ug_domain_Profile_dateOfBirth" property="dateOfBirth" z="5+n0OBB+MZBkYuKHX+ptFX4TIxI="/>
             <table:column id="c_com_ug_domain_Profile_citizenship" property="citizenship" z="rqrkgjx2haeMAyaz65v0fXcQEKc="/>
             <table:column id="c_com_ug_domain_Profile_linkedInProfile" property="linkedInProfile" z="YcYkSElmMVMp/yrSr4XwUZY9o2Q="/>
