@@ -5,11 +5,11 @@
 <title>UnivGiggle - Connect World Together.</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="imagetoolbar" content="no" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/layout_template.css" type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/tables_template.css" type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navi_template.css" type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/forms_template.css" type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/featured_slide_template.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/layout.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/tables.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navi.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/forms.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/featured_slide.css" type="text/css" />
 <style type="text/css">
 
 input.groovybutton
