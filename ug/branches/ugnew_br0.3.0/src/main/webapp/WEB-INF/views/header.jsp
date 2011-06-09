@@ -8,16 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="imagetoolbar" content="no" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/layout.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navi.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/forms.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/tables.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery-1.4.1.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery.hoverIntent.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery.hslides.1.0.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery.hslides.setup.js"></script>
 </head>
-<%
 
-User user = UgUtil.getLoggedInUser();
-%>
          
 <!-- 
 ####################################################################################################### -->
@@ -30,7 +30,7 @@ User user = UgUtil.getLoggedInUser();
     <div class="fl_right"> 
 
 <%
-	if (user !=null) {
+	if (UgUtil.getLoggedInUser() !=null) { User user = UgUtil.getLoggedInUser();
 	 %>
 	 	<strong><%=(user.getFirstName()!=null) ? "Welcome  "+user.getFirstName():""%> <%=user.getLastName()!=null?user.getLastName():""%>  </strong>|<a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a>
 
