@@ -45,9 +45,9 @@
   <div class="wrapper">
     <div id="topnav">
       <ul>
-        <li class="active"><a href="main.jsp">Home</a></li>
-        <li><a href="studentBeforelogin">STUDENT</a></li>
-        <li><a href="corporateBeforelogin">CORPORATES</a></li>
+        <li class="active"><a href="<%=request.getContextPath()%>/main.jsp">Home</a></li>
+        <li><a href="<%=request.getContextPath()%>/studentBeforelogin">STUDENT</a></li>
+        <li><a href="<%=request.getContextPath()%>/corporateBeforelogin">CORPORATES</a></li>
 		<li><a href="#">P2P</a></li>
 		<li><a href="#">MENTORSHIP</a></li>
 		<li><a href="#">CONTACT US</a></li>
