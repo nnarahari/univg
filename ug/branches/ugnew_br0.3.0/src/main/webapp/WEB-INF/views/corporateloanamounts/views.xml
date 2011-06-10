@@ -2,26 +2,33 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 	<definition extends="default" name="corporateloanamounts/list">
-		<put-attribute name="body"
-			value="/WEB-INF/views/corporateloanamounts/list.jspx" />
+		<put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/list.jspx"/>
 	</definition>
 	<definition extends="default" name="corporateloanamounts/show">
-		<put-attribute name="body"
-			value="/WEB-INF/views/corporateloanamounts/show.jspx" />
+		<put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/show.jspx"/>
 	</definition>
 	<definition extends="default" name="corporateloanamounts/create">
-		<put-attribute name="body"
-			value="/WEB-INF/views/corporateloanamounts/create.jspx" />
+		<put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/create.jspx"/>
 	</definition>
 	<definition extends="default" name="corporateloanamounts/update">
-		<put-attribute name="body"
-			value="/WEB-INF/views/corporateloanamounts/update.jspx" />
+		<put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/update.jspx"/>
 	</definition>
 	
 	<definition extends="default" name="addamount">
-		<put-attribute name="body"
-			value="/WEB-INF/views/corporateloanamounts/addamount.jspx" />
+		<put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/addamount.jspx"/>
 	</definition>
 	
 	
+<definition extends="default" name="corporateloanamounts/findCorporateLoanAmountsByAvailableLoanAmount">
+        <put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/findCorporateLoanAmountsByAvailableLoanAmount.jspx"/>
+    </definition>
+<definition extends="default" name="corporateloanamounts/findCorporateLoanAmountsByCommittedLoanAmount">
+        <put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/findCorporateLoanAmountsByCommittedLoanAmount.jspx"/>
+    </definition>
+<definition extends="default" name="corporateloanamounts/findCorporateLoanAmountsByCorporateId">
+        <put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/findCorporateLoanAmountsByCorporateId.jspx"/>
+    </definition>
+<definition extends="default" name="corporateloanamounts/findCorporateLoanAmountsByLoanedAmount">
+        <put-attribute name="body" value="/WEB-INF/views/corporateloanamounts/findCorporateLoanAmountsByLoanedAmount.jspx"/>
+    </definition>
 </tiles-definitions>

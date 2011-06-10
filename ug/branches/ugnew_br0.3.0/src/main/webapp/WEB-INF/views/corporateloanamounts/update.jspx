@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+	<sec:authorize ifAllGranted="admin"> 
     <form:update id="fu_com_ug_domain_CorporateLoanAmount" modelAttribute="corporateLoanAmount" path="/corporateloanamounts" versionField="none" z="qW/wdhlQps1sJQuNPhkmB9e8PM4=">
         <field:select field="corporateId" id="c_com_ug_domain_CorporateLoanAmount_corporateId" itemValue="id" items="${corporates}" path="/corporates" z="eJq3IsnmCiOJflpQfl/29SYGLYk="/>
         <field:input field="loanedAmount" id="c_com_ug_domain_CorporateLoanAmount_loanedAmount" required="true" validationMessageCode="field_invalid_number" z="saG7EqPBBaLgiHQbsXHZPi/GPp0="/>
         <field:input field="committedLoanAmount" id="c_com_ug_domain_CorporateLoanAmount_committedLoanAmount" required="true" validationMessageCode="field_invalid_number" z="54EqoXMJEN+M3GODh98MBn2Lqec="/>
         <field:input field="availableLoanAmount" id="c_com_ug_domain_CorporateLoanAmount_availableLoanAmount" required="true" validationMessageCode="field_invalid_number" z="61uvZyAKVxKg9NHYcpjQs3gYeb4="/>
     </form:update>
+    </sec:authorize>    
 </div>

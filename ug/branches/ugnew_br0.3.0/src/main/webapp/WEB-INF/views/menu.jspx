@@ -8,10 +8,14 @@
 	<jsp:output omit-xml-declaration="yes"/>
 	<sec:authorize ifAllGranted="admin"> 
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-        <menu:category id="c_corporateloanamount" z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
-            <menu:item id="i_corporateloanamount_new" messageCode="global_menu_new" url="/corporateloanamounts?form" z="tLT912vXYJne7+0Ha12szO0UN4A="/>
-        <menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
-        </menu:category>
+	<menu:category id="c_corporateloanamount" z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
+		<menu:item id="i_corporateloanamount_new" messageCode="global_menu_new" url="/corporateloanamounts?form" z="tLT912vXYJne7+0Ha12szO0UN4A="/>
+		<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
+		<menu:item id="fi_corporateloanamount_availableloanamount" messageCode="global_menu_find" url="/corporateloanamounts?find=ByAvailableLoanAmount&amp;form" z="GCedYF7pDjrV1P/jrpy0iCdFA8w="/>
+		<menu:item id="fi_corporateloanamount_committedloanamount" messageCode="global_menu_find" url="/corporateloanamounts?find=ByCommittedLoanAmount&amp;form" z="WgKTLvkpnWCqgBkzQr1GXfEnLR8="/>
+		<menu:item id="fi_corporateloanamount_corporateid" messageCode="global_menu_find" url="/corporateloanamounts?find=ByCorporateId&amp;form" z="m0mY9ox71QX7YKlXTSdX/GMsQYM="/>
+		<menu:item id="fi_corporateloanamount_loanedamount" messageCode="global_menu_find" url="/corporateloanamounts?find=ByLoanedAmount&amp;form" z="V0znoTrPi2VUbjnQZDVJIg5etDM="/>
+    </menu:category>
     <menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
             <menu:item id="i_corporate_new" messageCode="student_search" url="/corporates/searchStudent" z="user-managed"/>
         <menu:item id="i_corporate_list" messageCode="global_menu_list" url="/corporates/${corpId}" z="user-managed"/>
@@ -185,9 +189,9 @@
 		<menu:category id="c_corporate" z="sf3bEGYTJWUr6VZNBERS1fE5D64=">
             <menu:item id="fi_corporate_userid" messageCode="global_menu_find" url="/corporates?find=ByUserId&amp;userId=${loggedInUserId}" z="tTqg90rGogj2bglnEmGOlJhEyBo="/>
 			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?find=ByUserId&amp;userId=${loggedInUserId}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
-			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts/addamount?form" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>
-
+			<menu:item id="menu_item_corporateloanamount_new_corporate_label" label="Add Loan amount" messageCode="global_menu_new" url="/corporateloanamounts?form" z="tLT912vXYJne7+0Ha12szO0UN4A="/>
 		</menu:category>
+
 		<!-- 		In Progress
 			<menu:category id="c_corporateloanamount" z="Z51YSqNN/9dqKpt5NlH/4ZRLjTI=">
 			<menu:item id="i_corporateloanamount_list" messageCode="global_menu_list" url="/corporateloanamounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JIFaxrCmi7oHU/i0prsY07si1+Y="/>

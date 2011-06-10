@@ -5,10 +5,14 @@ package com.ug.web;
 
 import com.ug.domain.Corporate;
 import com.ug.domain.CorporateLoanAmount;
+import com.ug.util.UGConstants;
+import com.ug.util.UgUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.math.BigDecimal;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -25,13 +29,47 @@ import org.springframework.web.util.WebUtils;
 privileged aspect CorporateLoanAmountController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String CorporateLoanAmountController.create(@Valid CorporateLoanAmount corporateLoanAmount, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("corporateLoanAmount", corporateLoanAmount);
-            return "corporateloanamounts/create";
+    public String CorporateLoanAmountController.create(CorporateLoanAmount corporateLoanAmount, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+//        if (bindingResult.hasErrors()) {
+//            uiModel.addAttribute("corporateLoanAmount", corporateLoanAmount);
+//            System.out.println(bindingResult.getAllErrors().toString());
+//            return "corporateloanamounts/create";
+//        }
+        
+        String loggedInUserRole = UgUtil.getLoggedInUserRoleName();
+        if(UGConstants.ADMIN_ROLE.equalsIgnoreCase(loggedInUserRole))
+        {
+            uiModel.asMap().clear();
+            corporateLoanAmount.persist();
+            	
+        }else if(UGConstants.CORPORATE_ROLE.equalsIgnoreCase(loggedInUserRole))
+        {
+        	Corporate loggedInCorporate = Corporate.findCorporatesByUserId(UgUtil.getLoggedInUser()).getSingleResult();
+        	BigDecimal commitedAcoumt = corporateLoanAmount.getCommittedLoanAmount();
+        	CorporateLoanAmount cla = CorporateLoanAmount.findCorporateLoanAmountsByCorporateId(loggedInCorporate).getSingleResult();
+        	if(cla != null)
+        	{
+        		
+        		BigDecimal existingCommitedAcoumt = cla.getCommittedLoanAmount();
+        		long bd = existingCommitedAcoumt.longValue() + commitedAcoumt.longValue() ;
+        		BigDecimal newVal = new BigDecimal(bd);
+        		System.out.println("Finally the amount is:"+existingCommitedAcoumt.longValue());
+        		cla.setCommittedLoanAmount(newVal);
+                uiModel.asMap().clear();
+                cla.merge();
+                corporateLoanAmount = cla;
+       		
+        	}else
+        	{
+                uiModel.asMap().clear();
+                corporateLoanAmount.setAvailableLoanAmount(new BigDecimal(0));
+                corporateLoanAmount.setLoanedAmount(new BigDecimal(0));
+
+                corporateLoanAmount.persist();
+           		
+        	}
+            	
         }
-        uiModel.asMap().clear();
-        corporateLoanAmount.persist();
         return "redirect:/corporateloanamounts/" + encodeUrlPathSegment(corporateLoanAmount.getId().toString(), httpServletRequest);
     }
     
@@ -87,13 +125,58 @@ privileged aspect CorporateLoanAmountController_Roo_Controller {
         return "redirect:/corporateloanamounts";
     }
     
+    @RequestMapping(params = { "find=ByAvailableLoanAmount", "form" }, method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByAvailableLoanAmountForm(Model uiModel) {
+        return "corporateloanamounts/findCorporateLoanAmountsByAvailableLoanAmount";
+    }
+    
+    @RequestMapping(params = "find=ByAvailableLoanAmount", method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByAvailableLoanAmount(@RequestParam("availableLoanAmount") BigDecimal availableLoanAmount, Model uiModel) {
+        uiModel.addAttribute("corporateloanamounts", CorporateLoanAmount.findCorporateLoanAmountsByAvailableLoanAmount(availableLoanAmount).getResultList());
+        return "corporateloanamounts/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCommittedLoanAmount", "form" }, method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByCommittedLoanAmountForm(Model uiModel) {
+        return "corporateloanamounts/findCorporateLoanAmountsByCommittedLoanAmount";
+    }
+    
+    @RequestMapping(params = "find=ByCommittedLoanAmount", method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByCommittedLoanAmount(@RequestParam("committedLoanAmount") BigDecimal committedLoanAmount, Model uiModel) {
+        uiModel.addAttribute("corporateloanamounts", CorporateLoanAmount.findCorporateLoanAmountsByCommittedLoanAmount(committedLoanAmount).getResultList());
+        return "corporateloanamounts/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCorporateId", "form" }, method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByCorporateIdForm(Model uiModel) {
+        uiModel.addAttribute("corporates", Corporate.findAllCorporates());
+        return "corporateloanamounts/findCorporateLoanAmountsByCorporateId";
+    }
+    
+    @RequestMapping(params = "find=ByCorporateId", method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByCorporateId(@RequestParam("corporateId") Corporate corporateId, Model uiModel) {
+        uiModel.addAttribute("corporateloanamounts", CorporateLoanAmount.findCorporateLoanAmountsByCorporateId(corporateId).getResultList());
+        return "corporateloanamounts/list";
+    }
+    
+    @RequestMapping(params = { "find=ByLoanedAmount", "form" }, method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByLoanedAmountForm(Model uiModel) {
+        return "corporateloanamounts/findCorporateLoanAmountsByLoanedAmount";
+    }
+    
+    @RequestMapping(params = "find=ByLoanedAmount", method = RequestMethod.GET)
+    public String CorporateLoanAmountController.findCorporateLoanAmountsByLoanedAmount(@RequestParam("loanedAmount") BigDecimal loanedAmount, Model uiModel) {
+        uiModel.addAttribute("corporateloanamounts", CorporateLoanAmount.findCorporateLoanAmountsByLoanedAmount(loanedAmount).getResultList());
+        return "corporateloanamounts/list";
+    }
+    
     @ModelAttribute("corporates")
     public Collection<Corporate> CorporateLoanAmountController.populateCorporates() {
         return Corporate.findAllCorporates();
     }
     
     @ModelAttribute("corporateloanamounts")
-    public Collection<CorporateLoanAmount> CorporateLoanAmountController.populateCorporateLoanAmounts() {
+    public java.util.Collection<CorporateLoanAmount> CorporateLoanAmountController.populateCorporateLoanAmounts() {
         return CorporateLoanAmount.findAllCorporateLoanAmounts();
     }
     
