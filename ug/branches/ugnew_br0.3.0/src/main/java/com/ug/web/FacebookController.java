@@ -2,17 +2,32 @@ package com.ug.web;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.social.facebook.api.FacebookApi;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.social.facebook.web.FacebookCookieValue;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.ug.domain.Corporate;
+import com.ug.domain.Profile;
+import com.ug.domain.User;
+import com.ug.util.UgUtil;
 
 /**
  * Handles requests for the application home page.
@@ -21,8 +36,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class FacebookController {
 	private Logger logger = Logger.getLogger(FacebookController.class);
 	
+	
 	@RequestMapping(value="auth.do")
-	public ModelAndView authenticate(@FacebookCookieValue(required=false, value="access_token") String cookie, HttpServletRequest req){
+	public String authenticate(@FacebookCookieValue(required=false, value="access_token") String cookie, HttpServletRequest req, Model uiModel){
 		logger.debug("Auth Started... user" + req.getRemoteUser());
 		logger.debug("req ==>"+ req);
 		String value ="";
@@ -50,11 +66,82 @@ public class FacebookController {
 
 		logger.debug("cookie ==>"+ cookie);
 		FacebookApi facebook = new FacebookTemplate(cookie);
-		ModelAndView mav = new ModelAndView("authenticated");
-		System.out.println("FB Authentication success..." + facebook.userOperations().getUserProfile().getEmail());
-		mav.addObject("picture", facebook.userOperations().getUserProfile().getId());
+		//ModelAndView mav = new ModelAndView("authenticated");
+		String userEmail = facebook.userOperations().getUserProfile().getEmail();
+		System.out.println("FB Authentication success..." + userEmail );
+		
+		String displayPage = "";
+		User targetUser = null;
+		
+		req.setAttribute("picture", facebook.userOperations().getUserProfile().getId());
+		Set<GrantedAuthority> authorities =new HashSet<GrantedAuthority>();
+		org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(userEmail, "fbpwd", true, true, true, true, authorities); 
+		
+		Authentication authentication = new UsernamePasswordAuthenticationToken(user, "fbpassword");
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		
+		try{
+			TypedQuery<User> query = User.findUsersByEmailAddress(userEmail);
+			targetUser = (User) query.getSingleResult();
+		}catch(EmptyResultDataAccessException e){
+			logger.debug("No user account match with facebook email.. creating user and redirecting to login page.....");
+			
+			Random random = new Random(System.currentTimeMillis());
+            String activationKey = "activationKey:" + random.nextInt();
+
+            User User = new User();
+            User.setActivationDate(new Date());
+            User.setEmailAddress(userEmail);
+            User.setFirstName(facebook.userOperations().getUserProfile().getFirstName());
+            User.setLastName(facebook.userOperations().getUserProfile().getLastName());
+            User.setPassword("password123");
+            User.setActivationKey(activationKey);
+            User.setEnabled(true);
+            User.setLocked(true);
+            User.persist();
+			logger.debug("User created...");
+			displayPage = "redirect:/loginmain.jsp";
+			return displayPage;
+		}
+		
+		
+		if(targetUser != null){
+			logger.debug("setting authentication....");
+			
+	        long userId = targetUser.getId();
+	        String userRole = UgUtil.getLoggedInUserRoleName();
+	        logger.debug("userRole ==>"+ userRole);
+	        
+	        
+	        if(userRole != null){
+				if(userRole.equalsIgnoreCase("student")){
+					TypedQuery<Profile> query = Profile.findProfilesByUserId(targetUser);	
+					Profile profile = query.getSingleResult();
+					uiModel.addAttribute("profile", profile);
+					uiModel.addAttribute("itemId", userId);
+					displayPage = "profiles/show";
+				}else if(userRole.equalsIgnoreCase("corporate")){
+					TypedQuery<Corporate> query = Corporate.findCorporatesByUserId(targetUser);	
+					Corporate corporate = query.getSingleResult();
+					uiModel.addAttribute("corporate", corporate);
+					uiModel.addAttribute("itemId", userId);
+					displayPage= "corporates/show";
+				}else{
+					displayPage = "redirect:/loginmain.jsp";
+				}
+			}else{
+				logger.debug("No Roles associated with the user...");
+				displayPage = "redirect:/loginmain.jsp";
+			}
+		
+			logger.debug("displayPage ==>"+displayPage );
+			
+		}
+		/*mav.addObject("picture", facebook.userOperations().getUserProfile().getId());
 		mav.addObject("userProfile",facebook.userOperations().getUserProfile());
-		return mav;
+		return mav;*/
+		return displayPage;
 	}
 }
 
