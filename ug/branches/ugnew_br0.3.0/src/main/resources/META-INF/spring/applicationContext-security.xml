@@ -17,6 +17,7 @@
 
         <intercept-url access="hasRole('admin')" pattern="/choices/**"/>
         <intercept-url access="isAuthenticated()" pattern="/member/**"/>
+<!--         <intercept-url access="auth.do" pattern="/**"/> -->
         <intercept-url access="permitAll" pattern="/resources/**"/>
         <intercept-url access="permitAll" pattern="/**"/>
         
