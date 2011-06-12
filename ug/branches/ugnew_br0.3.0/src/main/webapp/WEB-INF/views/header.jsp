@@ -32,7 +32,6 @@
 <%
 	if (UgUtil.getLoggedInUser() !=null) { User user = UgUtil.getLoggedInUser();
 	 %>
-	 	<img src="https://graph.facebook.com/${picture}/picture?type=large" alt="" width="50"/>
 	 	<strong><%=(user.getFirstName()!=null) ? "Welcome  "+user.getFirstName():""%> <%=user.getLastName()!=null?user.getLastName():""%>  </strong>|<a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a>
 
 	<%} %>
