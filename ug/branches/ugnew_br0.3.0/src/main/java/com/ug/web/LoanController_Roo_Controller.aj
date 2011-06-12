@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -33,7 +34,6 @@ import com.ug.domain.Address;
 import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
-import com.ug.domain.Profile;
 import com.ug.domain.User;
 import com.ug.domain.UserRole;
 import com.ug.util.UGConstants;
@@ -41,6 +41,8 @@ import com.ug.util.UgUtil;
 
 
 privileged aspect LoanController_Roo_Controller {
+	
+	private static Logger logger = Logger.getLogger(LoanController_Roo_Controller.class);
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -106,6 +108,9 @@ privileged aspect LoanController_Roo_Controller {
 		return "loans/show";
 	}
 
+	
+	
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String LoanController.list(
 			@RequestParam(value = "page", required = false) Integer page,

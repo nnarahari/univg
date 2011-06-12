@@ -13,7 +13,12 @@ import java.util.regex.Pattern;
 import javax.persistence.TypedQuery;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,6 +34,9 @@ import com.ug.domain.UserRole;
 public class UgUtil {
 
 	private static Logger logger = Logger.getLogger(UgUtil.class);
+	
+	/*@Autowired
+    private transient static MailSender mailSender;*/
 	
 	public static User getLoggedInUser() {
 		return getCurrentUser();
@@ -276,6 +284,19 @@ public class UgUtil {
 		return fileNameToReturn;
 	}
 
+	public static void sendEmail(SimpleMailMessage mail){
+		try{
+			//classpath*:META-INF/spring/applicationContext*.xml
+			ClassPathResource res = new ClassPathResource("META-INF/spring/applicationContext.xml");
+			XmlBeanFactory factory = new XmlBeanFactory(res);
+			MailSender mailSender = (MailSender)factory.getBean("mailSender");
+			logger.debug("sendEmail.....");
+			mailSender.send(mail);
+		}catch(Exception e){
+			logger.error("Error in send email...",e);
+		}
+	}
+	
 	public static boolean validatePhone(String phone) {
 		return phone.matches("^\\d{10}$");
 	}

@@ -12,8 +12,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,6 +37,9 @@ import com.ug.util.UgUtil;
 @Controller
 public class FacebookController {
 	private Logger logger = Logger.getLogger(FacebookController.class);
+	
+	@Autowired
+	private MessageDigestPasswordEncoder messageDigestPasswordEncoder;
 	
 	
 	@RequestMapping(value="auth.do")
@@ -66,7 +71,6 @@ public class FacebookController {
 
 		logger.debug("cookie ==>"+ cookie);
 		FacebookApi facebook = new FacebookTemplate(cookie);
-		//ModelAndView mav = new ModelAndView("authenticated");
 		String userEmail = facebook.userOperations().getUserProfile().getEmail();
 		System.out.println("FB Authentication success..." + userEmail );
 		
@@ -77,7 +81,7 @@ public class FacebookController {
 		Set<GrantedAuthority> authorities =new HashSet<GrantedAuthority>();
 		org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(userEmail, "fbpwd", true, true, true, true, authorities); 
 		
-		Authentication authentication = new UsernamePasswordAuthenticationToken(user, "fbpassword");
+		Authentication authentication = new UsernamePasswordAuthenticationToken(user, "password123");
         SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		
@@ -95,7 +99,7 @@ public class FacebookController {
             User.setEmailAddress(userEmail);
             User.setFirstName(facebook.userOperations().getUserProfile().getFirstName());
             User.setLastName(facebook.userOperations().getUserProfile().getLastName());
-            User.setPassword("password123");
+            User.setPassword(messageDigestPasswordEncoder.encodePassword("password123",null));
             User.setActivationKey(activationKey);
             User.setEnabled(true);
             User.setLocked(true);
@@ -138,9 +142,6 @@ public class FacebookController {
 			logger.debug("displayPage ==>"+displayPage );
 			
 		}
-		/*mav.addObject("picture", facebook.userOperations().getUserProfile().getId());
-		mav.addObject("userProfile",facebook.userOperations().getUserProfile());
-		return mav;*/
 		return displayPage;
 	}
 }

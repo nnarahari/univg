@@ -85,11 +85,10 @@ public class DatabaseAuthenticationProvider extends
 	 * )
 	 */
 	@Override
-	protected UserDetails retrieveUser(String username,
-		      UsernamePasswordAuthenticationToken authentication)
-			throws AuthenticationException {
+	protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)throws AuthenticationException {
 		logger.log(Priority.DEBUG, "Inside retrieveUser");
 		String password = (String) authentication.getCredentials();
+	//	logger.log(Priority.DEBUG, "password ==>"+password);
 	    if (! StringUtils.hasText(password)) {
 	      throw new BadCredentialsException("Please enter password");
 	    }
@@ -113,6 +112,8 @@ public class DatabaseAuthenticationProvider extends
 	        User targetUser = (User) query.getSingleResult();
 	        // authenticate the person
 	        expectedPassword = targetUser.getPassword();
+	       // logger.log(Priority.DEBUG, "expectedPassword  ==>"+ expectedPassword);
+	      //  logger.log(Priority.DEBUG, "encryptedPassword  ==>"+ encryptedPassword);
 	        if (! StringUtils.hasText(expectedPassword)) {
 	          throw new BadCredentialsException("No password for " + username + 
 	            " set in database, contact administrator");
@@ -120,12 +121,13 @@ public class DatabaseAuthenticationProvider extends
 	        if (! encryptedPassword.equals(expectedPassword)) {
 	          throw new BadCredentialsException("Invalid Password");
 	        }
-	        
+	        logger.log(Priority.DEBUG, "targetUser  ==>"+ targetUser);
 	        TypedQuery<UserRole> roleQuery=UserRole.findUserRolesByUserEntry(targetUser);
 	        List<UserRole> userRoles = roleQuery.getResultList();
 	        for(UserRole userRole:userRoles){
 	        	authorities.add(new GrantedAuthorityImpl(userRole.getRoleEntry().getRoleName()));
 	        }
+	        logger.log(Priority.DEBUG,"authorities ==>"+ authorities);
 	      } catch (EmptyResultDataAccessException e) {
 		        throw new BadCredentialsException("Invalid user");
 	      } catch (EntityNotFoundException e) {
@@ -133,8 +135,12 @@ public class DatabaseAuthenticationProvider extends
 	      } catch (NonUniqueResultException e) {
 	        throw new BadCredentialsException(
 	          "Non-unique user, contact administrator");
+	      }catch(Exception e){
+	    	  logger.log(Priority.DEBUG,"Error...");
+	    	  logger.log(Priority.ERROR, e);
 	      }
 	    }
+	    logger.log(Priority.DEBUG,"Returning user....");
 	    return new org.springframework.security.core.userdetails.User(
 	      username,
 	      password,

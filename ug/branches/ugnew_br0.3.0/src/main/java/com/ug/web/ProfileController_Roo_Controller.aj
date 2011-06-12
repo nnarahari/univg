@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,8 +49,6 @@ privileged aspect ProfileController_Roo_Controller {
 	
 	private static Logger logger = Logger.getLogger(ProfileController_Roo_Controller.class);
 	
-	@Autowired
-    private transient static MailSender mailSender;
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder)
@@ -130,8 +126,8 @@ privileged aspect ProfileController_Roo_Controller {
     		logger.debug("Sending email to verify university email id...");
     		SimpleMailMessage mail = new SimpleMailMessage();
     		logger.debug("Univ email ==>"+profile.getUniversityEmail() );
-    		//mail.setTo(profile.getUniversityEmail());
-    		mail.setTo("seeni.vasan@gmail.com");
+    		mail.setTo(profile.getUniversityEmail());
+    		//mail.setTo("seeni.vasan@gmail.com");
     		mail.setSubject("UnivG :: University email verification");
 
     		StringBuffer message = new StringBuffer();
@@ -141,11 +137,12 @@ privileged aspect ProfileController_Roo_Controller {
     		message.append("http://"+ request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath()+"/profiles/univEmailValid?profileId="+profile.getId()+"&activationCode="+random.nextInt() + "\n\n");
     		message.append("- Team UnivGiggle.");
     		mail.setText(message.toString());
-
-    		mailSender.send(mail);
+    		UgUtil.sendEmail(mail);
+    		//mailSender.send(mail);
     		logger.debug("After sent the mail....");
     	}catch(Throwable ex){
     		logger.error("Error while sending the university validation email..", ex.getCause());
+    		ex.printStackTrace();
     	}
 	}
     
@@ -601,5 +598,7 @@ privileged aspect ProfileController_Roo_Controller {
         catch (UnsupportedEncodingException uee) {}
         return pathSegment;
     }
+
+
     
 }
