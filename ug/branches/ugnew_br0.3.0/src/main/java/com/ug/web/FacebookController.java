@@ -77,13 +77,8 @@ public class FacebookController {
 		String displayPage = "";
 		User targetUser = null;
 		
-		req.setAttribute("picture", facebook.userOperations().getUserProfile().getId());
+		//req.setAttribute("picture", facebook.userOperations().getUserProfile().getId());
 		Set<GrantedAuthority> authorities =new HashSet<GrantedAuthority>();
-		org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(userEmail, "fbpwd", true, true, true, true, authorities); 
-		
-		Authentication authentication = new UsernamePasswordAuthenticationToken(user, "password123");
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-		
 		
 		try{
 			TypedQuery<User> query = User.findUsersByEmailAddress(userEmail);
@@ -104,19 +99,21 @@ public class FacebookController {
             User.setEnabled(true);
             User.setLocked(true);
             User.persist();
-			logger.debug("User created...");
+            logger.debug("User created...");
+            
+            setManulAuth(userEmail,authorities );
+            
 			displayPage = "redirect:/loginmain.jsp";
 			return displayPage;
 		}
 		
 		
 		if(targetUser != null){
-			logger.debug("setting authentication....");
-			
 	        long userId = targetUser.getId();
+	        logger.debug("userId ==>"+ userId);
+	        setManulAuth(userEmail,authorities );
 	        String userRole = UgUtil.getLoggedInUserRoleName();
 	        logger.debug("userRole ==>"+ userRole);
-	        
 	        
 	        if(userRole != null){
 				if(userRole.equalsIgnoreCase("student")){
@@ -124,25 +121,52 @@ public class FacebookController {
 					Profile profile = query.getSingleResult();
 					uiModel.addAttribute("profile", profile);
 					uiModel.addAttribute("itemId", userId);
+					GrantedAuthority ga = new GrantedAuthority() {
+						@Override
+						public String getAuthority() {
+							return "student";
+						}
+					};
+					authorities.add(ga);
+					setManulAuth(userEmail,authorities );
+					
 					displayPage = "profiles/show";
 				}else if(userRole.equalsIgnoreCase("corporate")){
 					TypedQuery<Corporate> query = Corporate.findCorporatesByUserId(targetUser);	
 					Corporate corporate = query.getSingleResult();
 					uiModel.addAttribute("corporate", corporate);
 					uiModel.addAttribute("itemId", userId);
+					
+					GrantedAuthority ga = new GrantedAuthority() {
+						@Override
+						public String getAuthority() {
+							return "corporate";
+						}
+					};
+					authorities.add(ga);
+					setManulAuth(userEmail,authorities );
+					
 					displayPage= "corporates/show";
 				}else{
+					setManulAuth(userEmail,authorities );
 					displayPage = "redirect:/loginmain.jsp";
 				}
 			}else{
 				logger.debug("No Roles associated with the user...");
 				displayPage = "redirect:/loginmain.jsp";
 			}
-		
 			logger.debug("displayPage ==>"+displayPage );
-			
 		}
 		return displayPage;
 	}
+	
+	
+	private void setManulAuth(String userEmail, Set<GrantedAuthority> authorities){
+		logger.debug("setting authentication....");
+		org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(userEmail, "fbpwd", true, true, true, true, authorities); 
+		Authentication authentication = new UsernamePasswordAuthenticationToken(user, "password123", user.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+	}
+	
 }
 

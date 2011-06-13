@@ -30,9 +30,9 @@
         <put-attribute name="body" value="/WEB-INF/views/corporateBeforelogin.jspx"/>
     </definition>
     
-    <definition extends="default" name="learnAboutLoan">
+   <!--  <definition extends="default" name="learnAboutLoan">
         <put-attribute name="body" value="/WEB-INF/views/loans/learnAboutLoan.jspx"/>
-    </definition>
+    </definition> -->
     
     <definition extends="public" name="authfail">
         <put-attribute name="body" value="/WEB-INF/views/authfail.jsp"/>

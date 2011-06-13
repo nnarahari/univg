@@ -46,4 +46,7 @@
 <definition extends="default" name="loans/findLoansByLoanNeededByLessThan">
         <put-attribute name="body" value="/WEB-INF/views/loans/findLoansByLoanNeededByLessThan.jspx"/>
     </definition>
+    <definition extends="default" name="loans/learnAboutLoan">
+        <put-attribute name="body" value="/WEB-INF/views/loans/learnAboutLoan.jspx"/>
+    </definition>
 </tiles-definitions>

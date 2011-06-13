@@ -35,19 +35,33 @@ input.groovybutton
     </div>
     <div class="fl_right"> 
 	<div id="">
+	
 	<%
 	if (UgUtil.getLoggedInUser() !=null) {
 	 User user = UgUtil.getLoggedInUser();%>
+	 	
+	 	
+	 	
 	 	<strong><%=(user.getFirstName()!=null) ? "Welcome  "+user.getFirstName():""%> <%=user.getLastName()!=null?user.getLastName():""%>  </strong>|<a href="<%=request.getContextPath()%>/resources/j_spring_security_logout">SIGN OUT</a>
 
 	<%} %>
  
  <% if (UgUtil.getLoggedInUser() == null) { %>
+ 
+ 	 
    	  <form id="form1" name="form1" method="post" action="<%=request.getContextPath()%>/resources/j_spring_security_check"><label>Username:</label>
 	    <label for="username"></label>
 	    <input name="j_username" type="text" id="j_username" size="20" maxlength="256" />
 		<label>Password:<input name="j_password" id="j_password"  type="password" size="20" maxlength="20" /></label>
 		<input type="submit" value="Login" class="groovybutton" /> 
+		 <%
+	 	  	if("t".equals(request.getParameter("login_error"))){
+	 	  %>
+	 	  	<font color="red"> Invalid user name or password. Please try again.</font>
+	 	  <%		
+	 	  	}
+	 	  %>
+		
       </form> 
             <br/>
 	<div class="fl_left">

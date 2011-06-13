@@ -12,6 +12,7 @@ import com.ug.domain.Loan;
 import org.apache.log4j.Logger;
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -47,6 +48,16 @@ public class LoanController {
 			logger.error("Error during file dowonload.....",e);
 		}
 		return null;
+		
+	}
+	
+	
+	@RequestMapping(value = "/learnAboutLoan",method=RequestMethod.GET)
+	public String getLearnAbtLoan(HttpServletRequest req, HttpServletResponse res, Model uiModel){
+		logger.debug("getLearnAbtLoan() started...");
+		
+		uiModel.addAttribute("loans", null);
+		return "loans/learnAboutLoan";
 		
 	}
 

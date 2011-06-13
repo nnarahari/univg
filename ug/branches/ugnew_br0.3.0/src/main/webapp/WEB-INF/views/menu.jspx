@@ -95,7 +95,7 @@
         <menu:item id="i_loanstatus_list" messageCode="global_menu_list" url="/loanstatuses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="DD5CwHRM7BMeMEsurM4kZTbo0JE="/>
         </menu:category>
     <menu:category id="c_loan" z="S+w7sxbJV/kGsRBzpM6sxIvlUrs=">
-            <menu:item id="i_loan_new" messageCode="learn_about_loan" url="/learnAboutLoan" z="user-managed"/>
+            <menu:item id="i_loan_new" messageCode="learn_about_loan" url="/loans/learnAboutLoan" z="user-managed"/>
         <menu:item id="i_loan_list" messageCode="global_menu_list" url="/loans?page=1&amp;size=${empty param.size ? 10 : param.size}" z="T1OUmbBUiEvZna/Ykv4qqBTNaE4="/>
         <menu:item id="fi_loan_userid" messageCode="student_menu_find_loan" url="/loans?find=ByUserId&amp;userId=${loggedInUserId}" z="user-managed"/>
         
@@ -140,11 +140,11 @@
             </menu:category>
         </menu:menu>
 	</sec:authorize>
-	<jsp:scriptlet>
-		User loggedInUser = UgUtil.getLoggedInUser();
-		String loggedInUserId = loggedInUser.getId()+"";
-		request.setAttribute("loggedInUserId", loggedInUserId);
-	</jsp:scriptlet>
+	<jsp:scriptlet>User loggedInUser = UgUtil.getLoggedInUser();
+			if (loggedInUser != null) {
+				String loggedInUserId = loggedInUser.getId() + "";
+				request.setAttribute("loggedInUserId", loggedInUserId);
+			}</jsp:scriptlet>
 	<sec:authorize ifAllGranted="student">
 	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
 	
@@ -156,7 +156,7 @@
 		
 		<menu:category id="c_loan" z="S+w7sxbJV/kGsRBzpM6sxIvlUrs=">
 			
-			<menu:item id="i_loan_new" messageCode="learn_about_loan" url="/learnAboutLoan" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
+			<menu:item id="i_loan_new" messageCode="learn_about_loan" url="/loans/learnAboutLoan" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
 			<menu:item id="i_loan_new" messageCode="global_menu_new" url="/loans?form" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
 			<menu:item id="fi_loan_userid" messageCode="student_menu_find_loan" url="/loans?find=ByUserId&amp;userId=${loggedInUserId}" z="Mf2HBIWjX0XjNj6JjM4pQmSFbzY="/>
 		
@@ -178,11 +178,9 @@
 	</menu:menu>
 	</sec:authorize>
 
-	<jsp:scriptlet>
-		//Corporate corporate = UgUtil.getCorporateProfile();
-		//long corpid = corporate.getId();
-        //request.setAttribute("corpId", 1);
-	</jsp:scriptlet>
+	<jsp:scriptlet>//Corporate corporate = UgUtil.getCorporateProfile();
+			//long corpid = corporate.getId();
+			//request.setAttribute("corpId", 1);</jsp:scriptlet>
 
 	<sec:authorize ifAllGranted="corporate">
 	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
