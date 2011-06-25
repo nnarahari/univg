@@ -71,7 +71,9 @@ public class FacebookController {
 
 		logger.debug("cookie ==>"+ cookie);
 		FacebookApi facebook = new FacebookTemplate(cookie);
-		String userEmail = facebook.userOperations().getUserProfile().getEmail();
+		String userEmail = facebook.userOperations().getUserProfile().getUsername();
+		
+		//facebook.userOperations().getUserProfile().getUsername()
 		System.out.println("FB Authentication success..." + userEmail );
 		
 		String displayPage = "";
