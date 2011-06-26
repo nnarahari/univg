@@ -3,6 +3,7 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Country;
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Programstudy;
@@ -23,196 +24,195 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 privileged aspect Profile_Roo_DbManaged {
-    
-    @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
-    private User Profile.userId;
-    
-    @ManyToOne
-    @JoinColumn(name = "universityId", referencedColumnName = "id", nullable = false)
-    private University Profile.universityId;
-    
-    @ManyToOne
-    @JoinColumn(name = "departmentId", referencedColumnName = "id", nullable = false)
-    private Department Profile.departmentId;
-    
-    @ManyToOne
-    @JoinColumn(name = "programStudyId", referencedColumnName = "id", nullable = false)
-    private Programstudy Profile.programStudyId;
-    
-    @ManyToOne
-    @JoinColumn(name = "genderId", referencedColumnName = "id", nullable = false)
-    private Gender Profile.genderId;
-    
-    @Column(name = "expected_graduation_date", columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
-    @Future
-    private Date Profile.expectedGraduationDate;
-    
-    @Column(name = "citizenship", columnDefinition = "VARCHAR", length = 255)
-    @NotNull
-    private String Profile.citizenship;
-    
-    @Column(name = "date_of_birth", columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
-    @Past
-    private Date Profile.dateOfBirth;
-    
-    @Column(name = "home_phone", columnDefinition = "VARCHAR", length = 10)
-    @NotNull
-    private String Profile.homePhone;
-    
-    @Column(name = "linked_in_profile", columnDefinition = "VARCHAR", length = 255)
-    private String Profile.linkedInProfile;
-    
-    @Column(name = "youtubeUrl", columnDefinition = "VARCHAR", length = 255)
-    private String Profile.youtubeUrl;
-    
-    @Column(name = "mobile", columnDefinition = "VARCHAR", length = 10)
-    @NotNull
-    private String Profile.mobile;
-    
-    @Column(name = "photoIdentifier", columnDefinition = "VARCHAR", length = 75)
-    private String Profile.photoIdentifier;
-    
-    @Column(name = "resumeIdentifier", columnDefinition = "VARCHAR", length = 75)
-    private String Profile.resumeIdentifier;
-    
-    @Column(name = "universityEmail", columnDefinition = "VARCHAR", length = 255)
-    private String Profile.universityEmail;
-    
-    @Size(min = 100, max = 500)
-    @Column(name = "briefDescription", columnDefinition = "VARCHAR", length = 500)
-    private String Profile.briefDescription;
-    
-    public User Profile.getUserId() {
-        return this.userId;
-    }
-    
-    public void Profile.setUserId(User userId) {
-        this.userId = userId;
-    }
-    
-    public University Profile.getUniversityId() {
-        return this.universityId;
-    }
-    
-    public void Profile.setUniversityId(University universityId) {
-        this.universityId = universityId;
-    }
-    
-    public Department Profile.getDepartmentId() {
-        return this.departmentId;
-    }
-    
-    public void Profile.setDepartmentId(Department departmentId) {
-        this.departmentId = departmentId;
-    }
-    
-    public Programstudy Profile.getProgramStudyId() {
-        return this.programStudyId;
-    }
-    
-    public void Profile.setProgramStudyId(Programstudy programStudyId) {
-        this.programStudyId = programStudyId;
-    }
-    
-    public Gender Profile.getGenderId() {
-        return this.genderId;
-    }
-    
-    public void Profile.setGenderId(Gender genderId) {
-        this.genderId = genderId;
-    }
-    
-    public Date Profile.getExpectedGraduationDate() {
-        return this.expectedGraduationDate;
-    }
-    
-    public void Profile.setExpectedGraduationDate(Date expectedGraduationDate) {
-        this.expectedGraduationDate = expectedGraduationDate;
-    }
-    
-    public String Profile.getCitizenship() {
-        return this.citizenship;
-    }
-    
-    public void Profile.setCitizenship(String citizenship) {
-        this.citizenship = citizenship;
-    }
-    
-    public Date Profile.getDateOfBirth() {
-        return this.dateOfBirth;
-    }
-    
-    public void Profile.setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-    
-    public String Profile.getHomePhone() {
-        return this.homePhone;
-    }
-    
-    public void Profile.setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
-    }
-    
-    public String Profile.getLinkedInProfile() {
-        return this.linkedInProfile;
-    }
-    
-    public void Profile.setLinkedInProfile(String linkedInProfile) {
-        this.linkedInProfile = linkedInProfile;
-    }
-    
-    public String Profile.getYoutubeUrl() {
-        return this.youtubeUrl;
-    }
-    
-    public void Profile.setYoutubeUrl(String youtubeUrl) {
-        this.youtubeUrl = youtubeUrl;
-    }
-    
-    public String Profile.getMobile() {
-        return this.mobile;
-    }
-    
-    public void Profile.setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-    
-    public String Profile.getPhotoIdentifier() {
-        return this.photoIdentifier;
-    }
-    
-    public void Profile.setPhotoIdentifier(String photoIdentifier) {
-        this.photoIdentifier = photoIdentifier;
-    }
-    
-    public String Profile.getResumeIdentifier() {
-        return this.resumeIdentifier;
-    }
-    
-    public void Profile.setResumeIdentifier(String resumeIdentifier) {
-        this.resumeIdentifier = resumeIdentifier;
-    }
-    
-    public String Profile.getUniversityEmail() {
-        return this.universityEmail;
-    }
-    
-    public void Profile.setUniversityEmail(String universityEmail) {
-        this.universityEmail = universityEmail;
-    }
-    
-    public String Profile.getBriefDescription() {
-        return this.briefDescription;
-    }
-    
-    public void Profile.setBriefDescription(String briefDescription) {
-        this.briefDescription = briefDescription;
-    }
-    
+
+	@ManyToOne
+	@JoinColumn(name = "citizenship", referencedColumnName = "id", nullable = false)
+	private Country Profile.citizenship;
+	@ManyToOne
+	@JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
+	private User Profile.userId;
+
+	@ManyToOne
+	@JoinColumn(name = "universityId", referencedColumnName = "id", nullable = false)
+	private University Profile.universityId;
+
+	@ManyToOne
+	@JoinColumn(name = "departmentId", referencedColumnName = "id", nullable = false)
+	private Department Profile.departmentId;
+
+	@ManyToOne
+	@JoinColumn(name = "programStudyId", referencedColumnName = "id", nullable = false)
+	private Programstudy Profile.programStudyId;
+
+	@ManyToOne
+	@JoinColumn(name = "genderId", referencedColumnName = "id", nullable = false)
+	private Gender Profile.genderId;
+
+	@Column(name = "expected_graduation_date", columnDefinition = "DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(style = "S-")
+	@Future
+	private Date Profile.expectedGraduationDate;
+
+	@Column(name = "date_of_birth", columnDefinition = "DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(style = "S-")
+	@Past
+	private Date Profile.dateOfBirth;
+
+	@Column(name = "home_phone", columnDefinition = "VARCHAR", length = 10)
+	@NotNull
+	private String Profile.homePhone;
+
+	@Column(name = "linked_in_profile", columnDefinition = "VARCHAR", length = 255)
+	private String Profile.linkedInProfile;
+
+	@Column(name = "youtubeUrl", columnDefinition = "VARCHAR", length = 255)
+	private String Profile.youtubeUrl;
+
+	@Column(name = "mobile", columnDefinition = "VARCHAR", length = 10)
+	@NotNull
+	private String Profile.mobile;
+
+	@Column(name = "photoIdentifier", columnDefinition = "VARCHAR", length = 75)
+	private String Profile.photoIdentifier;
+
+	@Column(name = "resumeIdentifier", columnDefinition = "VARCHAR", length = 75)
+	private String Profile.resumeIdentifier;
+
+	@Column(name = "universityEmail", columnDefinition = "VARCHAR", length = 255)
+	private String Profile.universityEmail;
+
+	@Size(min = 100, max = 500)
+	@Column(name = "briefDescription", columnDefinition = "VARCHAR", length = 500)
+	private String Profile.briefDescription;
+
+	public Country Profile.getCitizenship() {
+		return this.citizenship;
+	}
+
+	public void Profile.setCitizenship(Country citizenship) {
+		this.citizenship = citizenship;
+	}
+
+	public User Profile.getUserId() {
+		return this.userId;
+	}
+
+	public void Profile.setUserId(User userId) {
+		this.userId = userId;
+	}
+
+	public University Profile.getUniversityId() {
+		return this.universityId;
+	}
+
+	public void Profile.setUniversityId(University universityId) {
+		this.universityId = universityId;
+	}
+
+	public Department Profile.getDepartmentId() {
+		return this.departmentId;
+	}
+
+	public void Profile.setDepartmentId(Department departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public Programstudy Profile.getProgramStudyId() {
+		return this.programStudyId;
+	}
+
+	public void Profile.setProgramStudyId(Programstudy programStudyId) {
+		this.programStudyId = programStudyId;
+	}
+
+	public Gender Profile.getGenderId() {
+		return this.genderId;
+	}
+
+	public void Profile.setGenderId(Gender genderId) {
+		this.genderId = genderId;
+	}
+
+	public Date Profile.getExpectedGraduationDate() {
+		return this.expectedGraduationDate;
+	}
+
+	public void Profile.setExpectedGraduationDate(Date expectedGraduationDate) {
+		this.expectedGraduationDate = expectedGraduationDate;
+	}
+
+	public Date Profile.getDateOfBirth() {
+		return this.dateOfBirth;
+	}
+
+	public void Profile.setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String Profile.getHomePhone() {
+		return this.homePhone;
+	}
+
+	public void Profile.setHomePhone(String homePhone) {
+		this.homePhone = homePhone;
+	}
+
+	public String Profile.getLinkedInProfile() {
+		return this.linkedInProfile;
+	}
+
+	public void Profile.setLinkedInProfile(String linkedInProfile) {
+		this.linkedInProfile = linkedInProfile;
+	}
+
+	public String Profile.getYoutubeUrl() {
+		return this.youtubeUrl;
+	}
+
+	public void Profile.setYoutubeUrl(String youtubeUrl) {
+		this.youtubeUrl = youtubeUrl;
+	}
+
+	public String Profile.getMobile() {
+		return this.mobile;
+	}
+
+	public void Profile.setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String Profile.getPhotoIdentifier() {
+		return this.photoIdentifier;
+	}
+
+	public void Profile.setPhotoIdentifier(String photoIdentifier) {
+		this.photoIdentifier = photoIdentifier;
+	}
+
+	public String Profile.getResumeIdentifier() {
+		return this.resumeIdentifier;
+	}
+
+	public void Profile.setResumeIdentifier(String resumeIdentifier) {
+		this.resumeIdentifier = resumeIdentifier;
+	}
+
+	public String Profile.getUniversityEmail() {
+		return this.universityEmail;
+	}
+
+	public void Profile.setUniversityEmail(String universityEmail) {
+		this.universityEmail = universityEmail;
+	}
+
+	public String Profile.getBriefDescription() {
+		return this.briefDescription;
+	}
+
+	public void Profile.setBriefDescription(String briefDescription) {
+		this.briefDescription = briefDescription;
+	}
+
 }

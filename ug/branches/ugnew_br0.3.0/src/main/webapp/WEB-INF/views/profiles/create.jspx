@@ -4,7 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create-profile id="fc_com_ug_domain_Profile" modelAttribute="profile" path="/profiles" render="${empty dependencies}" z="lN5QADtrnVZHs52Fjd7WMrREpQE=">
         <field:select field="userId" id="c_com_ug_domain_Profile_userId" itemValue="id" items="${users}" path="/users" z="USJ+RRhdKf7gFOT+CnNlB0Wrd3k="/>
-        <field:input field="citizenship" id="c_com_ug_domain_Profile_citizenship" required="true" z="V5cgbanvfb93Rv4YezNeLabnun8="/>
+        <field:select field="citizenship" id="c_com_ug_domain_Profile_citizenship" itemValue="id" items="${countrys}" path="/countrys" z="sYViFPIOIwLGQMq7s5aGpQ3S6BU="/>
         <field:select field="genderId" id="c_com_ug_domain_Profile_genderId" itemValue="id" items="${genders}" path="/genders" z="AxX/6cl0JFnmVGYCXkxewD763W4="/>
         <field:datetime dateTimePattern="${profile_dateofbirth_date_format}" field="dateOfBirth" id="c_com_ug_domain_Profile_dateOfBirth" past="true" z="Em7kmK0aj6x3E1AFjONdzq8u+Q4="/>
         <field:select field="universityId" id="c_com_ug_domain_Profile_universityId" itemValue="id" items="${universitys}" path="/universitys" z="LH8iqA4KVf89kk0Sxwjuw0FpDNA="/>

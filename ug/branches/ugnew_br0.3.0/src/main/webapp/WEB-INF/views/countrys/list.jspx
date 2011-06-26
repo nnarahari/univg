@@ -6,6 +6,7 @@
         <table:table data="${countrys}" id="l_com_ug_domain_Country" path="/countrys" z="+5lkGVOm+RMdKQ1f+2GMo9N2iMs=">
             <table:column id="c_com_ug_domain_Country_countryName" property="countryName" z="43mji5IpnLUStf1fCa1UNLVp3sY="/>
             <table:column id="c_com_ug_domain_Country_countryDescription" property="countryDescription" z="Fb+EdMjU9ZuYN0QBgFuevOlq93s="/>
+            <table:column id="c_com_ug_domain_Country_profiles" property="profiles" z="VNuv7A8BxUbEbkE35VB2r/dbBpM="/>
         </table:table>
     </page:list>
 </div>

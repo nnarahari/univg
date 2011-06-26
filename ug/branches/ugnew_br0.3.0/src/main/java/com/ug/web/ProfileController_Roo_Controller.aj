@@ -32,6 +32,7 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
+import com.ug.domain.Country;
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Profile;
@@ -281,7 +282,12 @@ privileged aspect ProfileController_Roo_Controller {
         uiModel.addAttribute("profiles", Profile.findProfilesByUserId(userId).getResultList());
         return "profiles/list";
     }
-    
+ 
+    @ModelAttribute("countrys")
+    public Collection<Country> ProfileController.populateCountrys() {
+        return Country.findAllCountrys();
+    }
+
     @ModelAttribute("departments")
     public Collection<Department> ProfileController.populateDepartments() {
         return Department.findAllDepartments();
@@ -313,7 +319,7 @@ privileged aspect ProfileController_Roo_Controller {
     }
     
     @RequestMapping(params = "find=ByCitizenship", method = RequestMethod.GET)
-    public String ProfileController.findProfilesByCitizenship(@RequestParam("citizenship") String citizenship, Model uiModel) {
+    public String ProfileController.findProfilesByCitizenship(@RequestParam("citizenship") Country citizenship, Model uiModel) {
         uiModel.addAttribute("profiles", Profile.findProfilesByCitizenship(citizenship).getResultList());
         return "profiles/list";
     }
@@ -324,7 +330,7 @@ privileged aspect ProfileController_Roo_Controller {
     }
     
     @RequestMapping(params = "find=ByCitizenshipLike", method = RequestMethod.GET)
-    public String ProfileController.findProfilesByCitizenshipLike(@RequestParam("citizenship") String citizenship, Model uiModel) {
+    public String ProfileController.findProfilesByCitizenshipLike(@RequestParam("citizenship") Country citizenship, Model uiModel) {
         uiModel.addAttribute("profiles", Profile.findProfilesByCitizenshipLike(citizenship).getResultList());
         return "profiles/list";
     }

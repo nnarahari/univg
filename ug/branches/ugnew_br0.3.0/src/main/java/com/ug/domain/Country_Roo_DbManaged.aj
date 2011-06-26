@@ -3,11 +3,17 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Profile;
 import java.lang.String;
+import java.util.Set;
 import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 privileged aspect Country_Roo_DbManaged {
+    
+    @OneToMany(mappedBy = "citizenship")
+    private Set<Profile> Country.profiles;
     
     @Column(name = "countryName", columnDefinition = "VARCHAR", length = 255)
     @NotNull
@@ -15,6 +21,14 @@ privileged aspect Country_Roo_DbManaged {
     
     @Column(name = "countryDescription", columnDefinition = "VARCHAR", length = 200)
     private String Country.countryDescription;
+    
+    public Set<Profile> Country.getProfiles() {
+        return this.profiles;
+    }
+    
+    public void Country.setProfiles(Set<Profile> profiles) {
+        this.profiles = profiles;
+    }
     
     public String Country.getCountryName() {
         return this.countryName;

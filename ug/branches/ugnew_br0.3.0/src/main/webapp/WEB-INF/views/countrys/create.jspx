@@ -5,6 +5,7 @@
     <form:create id="fc_com_ug_domain_Country" modelAttribute="country" path="/countrys" render="${empty dependencies}" z="iDNU+r8JWI93ojYNq+4Ir078+i4=">
         <field:input field="countryName" id="c_com_ug_domain_Country_countryName" required="true" z="9LTBGYlRwHRCmNqXtgQ73hGsVpM="/>
         <field:input field="countryDescription" id="c_com_ug_domain_Country_countryDescription" z="bsqR1p3HR0kHj0S2YTx+iknqL54="/>
+        <field:simple field="profiles" id="c_com_ug_domain_Country_profiles" messageCode="entity_reference_not_managed" messageCodeAttribute="Profile" z="l81GZy2T6CNDdyl7Kpe3p+VxjTY="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_ug_domain_Country" render="${not empty dependencies}" z="XG/VbOWqfagtrgdj7xMTJzZbYgM="/>
 </div>

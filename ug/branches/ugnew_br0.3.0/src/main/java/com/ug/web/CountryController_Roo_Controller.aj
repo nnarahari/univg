@@ -4,6 +4,7 @@
 package com.ug.web;
 
 import com.ug.domain.Country;
+import com.ug.domain.Profile;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -89,6 +90,11 @@ privileged aspect CountryController_Roo_Controller {
     @ModelAttribute("countrys")
     public Collection<Country> CountryController.populateCountrys() {
         return Country.findAllCountrys();
+    }
+    
+    @ModelAttribute("profiles")
+    public java.util.Collection<Profile> CountryController.populateProfiles() {
+        return Profile.findAllProfiles();
     }
     
     String CountryController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

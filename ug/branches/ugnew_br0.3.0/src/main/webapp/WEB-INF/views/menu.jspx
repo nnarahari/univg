@@ -110,7 +110,14 @@
         <menu:item id="fi_loan_loanneededbygreaterthan" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByGreaterThan&amp;form" z="Gs6/7VutkQijFBEFwga84o+El2g="/>
         <menu:item id="fi_loan_loanneededbygreaterthanequals" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByGreaterThanEquals&amp;form" z="7oaVqiuepCgHGUQE0ykHzK1LZQc="/>
         <menu:item id="fi_loan_loanneededbylessthan" messageCode="global_menu_find" url="/loans?find=ByLoanNeededByLessThan&amp;form" z="uteIS501efljkrGvSd8mvUtOE5I="/>
-   </menu:category>
+		<menu:item id="fi_loan_lastupdatedtimestampisnull" messageCode="global_menu_find" url="/loans?find=ByLastupdatedtimestampIsNull&amp;form" z="t7dXv3PeLEzlzDFCnzM+eEqrdEA="/>
+		<menu:item id="fi_loan_lastupdatedtimestampisnotnull" messageCode="global_menu_find" url="/loans?find=ByLastupdatedtimestampIsNotNull&amp;form" z="4jVoMOBErCD8Ak4vfiJyTpaBmhk="/>
+		<menu:item id="fi_loan_lastupdatedtimestampgreaterthan" messageCode="global_menu_find" url="/loans?find=ByLastupdatedtimestampGreaterThan&amp;form" z="HM+o1HihMN2u6E9gpjIvneobG8k="/>
+		<menu:item id="fi_loan_lastupdatedtimestamplessthan" messageCode="global_menu_find" url="/loans?find=ByLastupdatedtimestampLessThan&amp;form" z="Jtg0DLCnIy5rcj+62o4iiCJ/hq0="/>
+		<menu:item id="fi_loan_lastupdatedtimestampbetween" messageCode="global_menu_find" url="/loans?find=ByLastupdatedtimestampBetween&amp;form" z="hZy7tq7TwqZ7PkT2k77LwRBSWQQ="/>
+		<menu:item id="fi_loan_lastupdatedtimestamp" messageCode="global_menu_find" url="/loans?find=ByLastupdatedtimestamp&amp;form" z="nSoAPZDIlgY8buBjl3P0A14Y+wA="/>
+		<menu:item id="fi_loan_lastupdatedby" messageCode="global_menu_find" url="/loans?find=ByLastupdatedby&amp;form" z="1FxK7aauVf0fa8x6HIn55SJFvHo="/>
+	</menu:category>
    <menu:category id="c_gender" z="rs6Edo9pdk6gqZx5Augnd7P/lu0=">
             <menu:item id="i_gender_new" messageCode="global_menu_new" url="/genders?form" z="FOZA/tkKuZU8kcWIe8OiMaP5CiA="/>
         <menu:item id="i_gender_list" messageCode="global_menu_list" url="/genders?page=1&amp;size=${empty param.size ? 10 : param.size}" z="OlI2PsbrQB3JpnCZPVE5DRB+iN4="/>

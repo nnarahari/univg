@@ -3,6 +3,7 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Country;
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Profile;
@@ -16,23 +17,16 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Profile_Roo_Finder {
     
-    public static TypedQuery<Profile> Profile.findProfilesByCitizenship(String citizenship) {
-        if (citizenship == null || citizenship.length() == 0) throw new IllegalArgumentException("The citizenship argument is required");
+    public static TypedQuery<Profile> Profile.findProfilesByCitizenship(Country citizenship) {
+        if (citizenship == null) throw new IllegalArgumentException("The citizenship argument is required");
         EntityManager em = Profile.entityManager();
         TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE profile.citizenship = :citizenship", Profile.class);
         q.setParameter("citizenship", citizenship);
         return q;
     }
     
-    public static TypedQuery<Profile> Profile.findProfilesByCitizenshipLike(String citizenship) {
-        if (citizenship == null || citizenship.length() == 0) throw new IllegalArgumentException("The citizenship argument is required");
-        citizenship = citizenship.replace('*', '%');
-        if (citizenship.charAt(0) != '%') {
-            citizenship = "%" + citizenship;
-        }
-        if (citizenship.charAt(citizenship.length() - 1) != '%') {
-            citizenship = citizenship + "%";
-        }
+    public static TypedQuery<Profile> Profile.findProfilesByCitizenshipLike(Country citizenship) {
+        if (citizenship == null) throw new IllegalArgumentException("The citizenship argument is required");
         EntityManager em = Profile.entityManager();
         TypedQuery<Profile> q = em.createQuery("SELECT Profile FROM Profile AS profile WHERE LOWER(profile.citizenship) LIKE LOWER(:citizenship)", Profile.class);
         q.setParameter("citizenship", citizenship);
