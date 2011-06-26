@@ -149,31 +149,40 @@ CREATE TABLE guarantor (
 
 ) ENGINE=InnoDB;
 
-CREATE TABLE profile (
-	id BIGINT NOT NULL AUTO_INCREMENT,
-	userId bigint not null,
-	universityId bigint not null,
-	departmentId bigint not null,
-	programStudyId bigint not null,
-	expected_graduation_date DATETIME,
-	citizenship VARCHAR(255) NOT NULL,
-	date_of_birth DATETIME,
-	genderId bigint not null,
-	home_phone VARCHAR(10) NOT NULL,
-	linked_in_profile VARCHAR(255),
-	youtubeurl VARCHAR(255),
-	mobile VARCHAR(10) NOT NULL,
-	photoIdentifier VARCHAR(75),
-	resumeIdentifier VARCHAR(75),
-	universityEmail VARCHAR(255),
-	briefDescription VARCHAR(500),
-	PRIMARY KEY (id),
-	FOREIGN KEY (userId) REFERENCES user(id),
-	FOREIGN KEY (universityId) REFERENCES university(id),
-	FOREIGN KEY (departmentId) REFERENCES department(id),
-	FOREIGN KEY (programStudyId) REFERENCES programStudy(id),
-	FOREIGN KEY (genderId) REFERENCES gender(id)
-) ENGINE=InnoDB;
+CREATE TABLE `profile` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `userId` bigint(20) NOT NULL,
+  `universityId` bigint(20) NOT NULL,
+  `departmentId` bigint(20) NOT NULL,
+  `programStudyId` bigint(20) NOT NULL,
+  `expected_graduation_date` datetime DEFAULT NULL,
+  `citizenship` bigint(20) NOT NULL,
+  `date_of_birth` datetime DEFAULT NULL,
+  `genderId` bigint(20) NOT NULL,
+  `home_phone` varchar(10) NOT NULL,
+  `linked_in_profile` varchar(255) DEFAULT NULL,
+  `youtubeurl` varchar(255) DEFAULT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `photoIdentifier` varchar(75) DEFAULT NULL,
+  `resumeIdentifier` varchar(75) DEFAULT NULL,
+  `universityEmail` varchar(255) DEFAULT NULL,
+  `briefDescription` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`),
+  KEY `universityId` (`universityId`),
+  KEY `departmentId` (`departmentId`),
+  KEY `programStudyId` (`programStudyId`),
+  KEY `genderId` (`genderId`),
+  KEY `profile_ibfk_6` (`citizenship`),
+  CONSTRAINT `profile_ibfk_6` FOREIGN KEY (`citizenship`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+  CONSTRAINT `profile_ibfk_2` FOREIGN KEY (`universityId`) REFERENCES `university` (`id`),
+  CONSTRAINT `profile_ibfk_3` FOREIGN KEY (`departmentId`) REFERENCES `department` (`id`),
+  CONSTRAINT `profile_ibfk_4` FOREIGN KEY (`programStudyId`) REFERENCES `programstudy` (`id`),
+  CONSTRAINT `profile_ibfk_5` FOREIGN KEY (`genderId`) REFERENCES `gender` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1$$
+
+
 
 CREATE TABLE address (
 	id BIGINT NOT NULL AUTO_INCREMENT,
