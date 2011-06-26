@@ -10,6 +10,8 @@
 <body>
 
 <%
+LoadFirstTimeData.loadCountry("C:/ug/xml/country.xml");
+out.println("Loading Country:Complete");
 LoadFirstTimeData.loadSates("C:/ug/xml/univ.xml");
 out.println("Loading States:Complete");
 LoadFirstTimeData.loadUniversities("C:/ug/xml/univ.xml");

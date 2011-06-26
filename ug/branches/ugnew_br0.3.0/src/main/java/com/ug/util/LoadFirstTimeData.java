@@ -11,6 +11,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.ug.domain.Country;
 import com.ug.domain.Department;
 import com.ug.domain.Gender;
 import com.ug.domain.Grantneededfor;
@@ -87,7 +88,7 @@ public class LoadFirstTimeData {
 		return dept;
 	}
 	
-	/*public static void loadCountry(String fileName){
+	public static void loadCountry(String fileName){
 		Document docEle = parseXmlFile(fileName);
 		NodeList nl = docEle.getElementsByTagName("country");
 		if (nl != null && nl.getLength() > 0) {
@@ -111,7 +112,7 @@ public class LoadFirstTimeData {
 		country.setCountryName(countryName);
 		country.setCountryDescription(countryName);
 		return country;
-	}*/
+	}
 	
 
 	public static void loadProgramStrudy(String fileName) {
