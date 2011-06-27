@@ -24,20 +24,18 @@
     <ul>
       <li>
         <h2 class="title"><img src="images/Corporate.jpg" alt="" />Our Corporate Partners</h2>
-     <!--    <p>Students of verious University such as Standford University, UC, SJSU brings to build the network between Corporates and Students.</p> -->
      <p><img src="images/Corporate-box-home-page.jpg" alt="" /></p>
         <p class="readmore"><a href="continueReadingCorporate.jsp">Continue Reading &raquo;</a></p>
       </li>
       <li>
         <h2 class="title"><img src="images/Student.jpg" alt="" />Students</h2>
-       <!--  <p>Students of verious University such as Standford University, UC, SJSU brings to build the network between Corporates and Students.</p> -->
         <p><img src="images/Student-box-home-page.jpg" alt="" /></p>
         <p class="readmore"><a href="continueReadingStudent.jsp">Continue Reading &raquo;</a></p>
       </li>
       <li class="last">
         <h2 class="title"><img src="images/P2P.jpg" alt="" />P2P Lenders</h2>
-        <p>Students of verious University such as Standford University, UC, SJSU brings to build the network between Corporates and Students.</p>
-        <p>Through P2P lending people from belonging to different aspects of the society with different backgrounds, group together to work as peers and help invest in the future of society through education</p>
+        <p>Students from various Universities such as Stanford, UC Berkeley, SJSU come together to build the network between Corporations and Students.</p>
+        <p>Through P2P lending people from different sections of the society with different backgrounds group together to work as peers and help invest in the future of society through education</p>
         <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
       </li>
     </ul>
@@ -49,15 +47,14 @@
   <div class="wrapper">
     <div id="content">
       <h2>About UnivGiggle</h2>
-      <p></a>Univgiggle is a portal for student to meet day to day,immediate financical needs related to education.An example of such a need can be travel expenses for attending a conference or for that matter fees for credit hours in a perticular semesters.</p>
-      <p>It is important that we invest in our socity's future by catering to needs of student community in a efficient way so that they can grow and are prepared to make positive contribution to the socity once they graduate.Further,in the current situation of global economic crises,this is an attempt to optimize a portion of corporate advertising to meet twofold requirement.</p>
-      <p>UnivGiggle is a virgin idea to meet these requirements in an efficient way.In economic terms,the borrowers would be the current students and the lenders can be fellow students,
-        alumini's,and other individual contributor or for that matter the corporate world.In caseof the fellow students and other individual contributors it works as a &quot;University
-        Microfinance System hunt for new talents with the economic requirements of the budding university talents.</p>
-      <p>UnivGiggle would provide a platform to enable these transactions.</p>
-      <p>Finally,UnivGiggle rises high and above this to meet the other requirements of the campus by providing campus related classifieds laid out in University architecture and Mentor
-        Program through which students from any cornor of the world would be able to pick a mentor residing in any part of the world who they admire and would to like to learn from 
-        them.Ultimately we aim to become the one stop portal for the students answering all their needs with no-nonsense applications.</p>
+      <p></a>UnivGiggle is a Collaboration Platform for University Students and Corporations. It helps students meet their day to day,immediate financial needs related to education. An example of such a need can be travel expense for attending a conference or for that matter fees for credit hours in a particular semester.</p>
+      <p>It is important that we invest in our socity's future by catering to needs of student community in an efficient way so that they can grow and are prepared to make positive contribution to the society once they graduate.Further,in the current situation of global economic crises, this is an attempt to optimize a portion of corporate advertising to meet twofold requirement.</p>
+      <p>UnivGiggle is a virgin idea to meet these requirements in an efficient way.In economic terms, the borrowers would be the current students and the lenders can be fellow students,
+        alumini's, and other individual contributors or for that matter the corporate world.In case of the fellow students and other individual contributors it works as a University
+        Microfinance System.</p>
+      <p>Finally, UnivGiggle rises high and above this to meet the other requirements of the campus by providing Mentor
+        Program through which students from any corner of the world would be able to pick a mentor residing in any part of the world who they admire and would to like to learn from 
+        them. Ultimately we aim to become the one stop collaboration platform between the students and corporations answering all their needs with no-nonsense applications.</p>
     </div>
     <div id="column">
       <div class="holder">
@@ -65,14 +62,15 @@
         <ul id="latestnews">
           <li>
             <p><strong><a href="#">Press Releases !!</a></strong></p>
-            <p>UniveGiggle Released online, Video released in techcrunch.</p>
+            <p>UnivGiggle goes online, TechCrunch covers UnivGiggle.</p>
           </li>
           <li>
             <p><strong><a href="#">News !!</a></strong></p>
-            <p>UniveGiggle Released online, Video released in techcrunch.</p>
+            <p>TechCrunch news for UnivGiggle, which is helping Universities and Corporations to come to one platform.</p>
           </li>
+		  <li>
             <p><strong>
-            <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="www.SUDESH.com" show_faces="true" width="200" action="recommend" font=""></fb:like></p>
+            <fb:like href="www.SUDESH.com" show_faces="true" width="200" action="recommend" font=""></fb:like></strong></p>
           </li>
         </ul>
       </div>
