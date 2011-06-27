@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<categories>
+	<category name="Housing">
+		<subcategory code="Room sharing" name="Room sharing" />
+		<subcategory code="Apt/housing" name="Apt/housing" />
+		<subcategory code="Sublet/temporary" name="Sublet/temporary" />
+		<subcategory code="Parking/storage" name="Parking/storage" />
+		<subcategory code="Commercial/office" name="Commercial/office" />
+	</category>
+	<category name="For sale">
+		<subcategory code="Free/barter" name="Free/barter" />
+		<subcategory code="Books" name="Books" />
+		<subcategory code="Sporting" name="Sporting" />
+		<subcategory code="Electronics" name="Electronics" />
+		<subcategory code="Furniture" name="Furniture" />
+		<subcategory code="Automobile" name="Automobile" />
+		<subcategory code="Household" name="Household" />
+	</category>
+	<category name="Services">
+		<subcategory code="Legal" name="Legal" />
+		<subcategory code="Accounting" name="Accounting" />
+		<subcategory code="Automobile" name="Automobile" />
+		<subcategory code="Household" name="Household" />
+		<subcategory code="Travel" name="Travel" />
+		<subcategory code="Electronics" name="Electronics" />
+		<subcategory code="Salon/beauty" name="Salon/beauty" />
+	</category>
+	<category name="Job">
+		<subcategory code="Part time" name="Part time" />
+		<subcategory code="Full time" name="Full time" />
+		<subcategory code="Non-profit" name="Non-profit" />
+	</category>
+	<category name="Campus">
+		<subcategory code="Volunteer" name="Volunteer" />
+		<subcategory code="Lost/found" name="Lost/found" />
+		<subcategory code="Local news" name="Local news" />
+		<subcategory code="Classes" name="Classes" />
+		<subcategory code="Groups*" name="Groups*" />
+		<subcategory code="Relationships" name="Relationships" />
+		<subcategory code="Rideshare" name="Rideshare" />
+		<subcategory code="pets" name="pets" />
+	</category>
+	<category name="Discussion forums">
+		<subcategory code="Discussion forums" name="Discussion forums" />
+	</category>
+	<category name="Campus Events">
+		<subcategory code="Campus Events" name="Campus Events" />
+	</category>
+</categories>

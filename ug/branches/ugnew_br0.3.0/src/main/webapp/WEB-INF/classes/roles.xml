@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<programs>
+	<program name="admin" />
+	<program name="student" />
+	<program name="corporate" />
+	<program name="p2p" />
+	<program name="mentor" />
+</programs>

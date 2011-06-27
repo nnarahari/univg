@@ -17,6 +17,7 @@ import com.ug.domain.Gender;
 import com.ug.domain.Grantneededfor;
 import com.ug.domain.Loanstatus;
 import com.ug.domain.Programstudy;
+import com.ug.domain.Role;
 import com.ug.domain.State;
 import com.ug.domain.University;
 
@@ -43,7 +44,8 @@ public class LoadFirstTimeData {
 		try {
 			// Using factory get an instance of document builder
 			DocumentBuilder db = dbf.newDocumentBuilder();
-
+			
+			ClassLoader.getSystemClassLoader();
 			// parse using builder to get DOM representation of the XML file
 			dom = db.parse(fileLocation);
 
@@ -251,6 +253,34 @@ public class LoadFirstTimeData {
 		Gender dept = new Gender();
 		String deptName = el.getAttribute("name");
 		dept.setGenderName(deptName);
+		return dept;
+	}
+	
+	
+	public static void loadRoles(String fileName) {
+		// get the root element
+		Document docEle = parseXmlFile(fileName);
+
+		// get a nodelist of elements
+		NodeList nl = docEle.getElementsByTagName("program");
+		if (nl != null && nl.getLength() > 0) {
+			for (int i = 0; i < nl.getLength(); i++) {
+
+				// get the employee element
+				Element el = (Element) nl.item(i);
+
+				// get the Employee object
+				Role e = getRole(el);
+
+				e.persist();
+			}
+		}
+	}
+
+	private static Role getRole(Element el) {
+		Role dept = new Role();
+		String deptName = el.getAttribute("name");
+		dept.setRoleName(deptName);
 		return dept;
 	}
 	

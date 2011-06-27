@@ -10,21 +10,23 @@
 <body>
 
 <%
-LoadFirstTimeData.loadCountry("C:/ug/xml/country.xml");
+LoadFirstTimeData.loadRoles(getServletContext().getRealPath("")+"/WEB-INF/classes/roles.xml");
 out.println("Loading Country:Complete");
-LoadFirstTimeData.loadSates("C:/ug/xml/univ.xml");
+LoadFirstTimeData.loadCountry(getServletContext().getRealPath("")+"/WEB-INF/classes/country.xml");
+out.println("Loading Country:Complete");
+LoadFirstTimeData.loadSates(getServletContext().getRealPath("")+"/WEB-INF/classes/univ.xml");
 out.println("Loading States:Complete");
-LoadFirstTimeData.loadUniversities("C:/ug/xml/univ.xml");
+LoadFirstTimeData.loadUniversities(getServletContext().getRealPath("")+"/WEB-INF/classes/univ.xml");
 out.println("Loading Universities:Complete");
-LoadFirstTimeData.loadDepartment("C:/ug/xml/department.xml");
+LoadFirstTimeData.loadDepartment(getServletContext().getRealPath("")+"/WEB-INF/classes/department.xml");
 out.println("Loading Department:Complete");
-LoadFirstTimeData.loadProgramStrudy("C:/ug/xml/studyprogram.xml");
+LoadFirstTimeData.loadProgramStrudy(getServletContext().getRealPath("")+"/WEB-INF/classes/studyprogram.xml");
 out.println("Loading ProgramStrudy:Complete");
-LoadFirstTimeData.loadLoanNeeds("C:/ug/xml/grantrequest.xml");
+LoadFirstTimeData.loadLoanNeeds(getServletContext().getRealPath("")+"/WEB-INF/classes/grantrequest.xml");
 out.println("Loading GrantNeeds:Complete");
-LoadFirstTimeData.loadGender("C:/ug/xml/gender.xml");
+LoadFirstTimeData.loadGender(getServletContext().getRealPath("")+"/WEB-INF/classes/gender.xml");
 out.println("Loading Gender Details:Complete");
-LoadFirstTimeData.loadLoanstatus("C:/ug/xml/loanstatus.xml");
+LoadFirstTimeData.loadLoanstatus(getServletContext().getRealPath("")+"/WEB-INF/classes/loanstatus.xml");
 out.println("Loading Loanstatus Details:Complete");
 
 %>
