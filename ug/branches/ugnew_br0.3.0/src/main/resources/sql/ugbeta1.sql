@@ -329,7 +329,7 @@ DROP TABLE IF EXISTS `role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `roleDescription` varchar(200) NOT NULL,
   `roleName` varchar(255) NOT NULL,
   `version` int(11) DEFAULT NULL,
@@ -442,7 +442,9 @@ CREATE TABLE `user_role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'Admin Role','admin',1),(2,'Student Role','student',2),(3,'Corporate Role','corporate',3);
+INSERT INTO `role` VALUES (1,'admin','admin',1);
+INSERT INTO `role` VALUES (2,'student','student',2);
+INSERT INTO `role` VALUES (3,'corporate','corporate',3);;
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
