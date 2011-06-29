@@ -25,11 +25,11 @@
     <div class="footbox">
       <h2>Follow US !!</h2>
       <ul><li>
-        <p><a href="http://www.facebook.com/sudesh.gadewar" target="_TOP" title="Sudesh Gadewar"><img src="<%=request.getContextPath()%>/images/demo/facebook_findus.gif"/></a><!-- Facebook Badge END --></a></p>
+        <p><a href="http://www.facebook.com/apps/application.php?id=120877611282582" target="_TOP" title="Sudesh Gadewar"><img src="<%=request.getContextPath()%>/images/demo/facebook_findus.gif"/></a><!-- Facebook Badge END --></a></p>
       </li>
         <li></li>
         <li>
-          <a href="http://twitter.com/sudeshgadewar"><img src="<%=request.getContextPath()%>/images/demo/FollowUsOnFacebook_Button.jpg"/></a><br /><a href="http://www.twitterbuttons.com"></a>
+          <a href="http://twitter.com/univgiggle"><img src="<%=request.getContextPath()%>/images/demo/FollowUsOnFacebook_Button.jpg"/></a><br /><a href="http://www.twitterbuttons.com"></a>
         </li>
       </ul>
     </div>
