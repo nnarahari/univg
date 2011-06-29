@@ -101,7 +101,8 @@
           </li>
 		  <li>
             <p><strong>
-            <fb:like href="www.SUDESH.com" show_faces="true" width="200" action="recommend" font=""></fb:like></strong></p>
+        <fb:like href="http://ugbeta.cloudfoundry.com/" send="true" action="like" width="300" show_faces="true" font="verdana"></fb:like>
+          </strong></p>
           </li>
         </ul>
       </div>
