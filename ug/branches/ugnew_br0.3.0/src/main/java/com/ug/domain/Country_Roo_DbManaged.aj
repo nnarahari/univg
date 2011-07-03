@@ -3,6 +3,8 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Mentee;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profile;
 import java.lang.String;
 import java.util.Set;
@@ -13,7 +15,13 @@ import javax.validation.constraints.NotNull;
 privileged aspect Country_Roo_DbManaged {
     
     @OneToMany(mappedBy = "citizenship")
-    private Set<Profile> Country.profiles;
+    private Set<Mentee> Country.mentees;
+    
+    @OneToMany(mappedBy = "citizenship")
+    private java.util.Set<Mentor> Country.mentors;
+    
+    @OneToMany(mappedBy = "citizenship")
+    private java.util.Set<Profile> Country.profiles;
     
     @Column(name = "countryName", columnDefinition = "VARCHAR", length = 255)
     @NotNull
@@ -22,11 +30,27 @@ privileged aspect Country_Roo_DbManaged {
     @Column(name = "countryDescription", columnDefinition = "VARCHAR", length = 200)
     private String Country.countryDescription;
     
-    public Set<Profile> Country.getProfiles() {
+    public Set<Mentee> Country.getMentees() {
+        return this.mentees;
+    }
+    
+    public void Country.setMentees(Set<Mentee> mentees) {
+        this.mentees = mentees;
+    }
+    
+    public java.util.Set<Mentor> Country.getMentors() {
+        return this.mentors;
+    }
+    
+    public void Country.setMentors(java.util.Set<Mentor> mentors) {
+        this.mentors = mentors;
+    }
+    
+    public java.util.Set<Profile> Country.getProfiles() {
         return this.profiles;
     }
     
-    public void Country.setProfiles(Set<Profile> profiles) {
+    public void Country.setProfiles(java.util.Set<Profile> profiles) {
         this.profiles = profiles;
     }
     

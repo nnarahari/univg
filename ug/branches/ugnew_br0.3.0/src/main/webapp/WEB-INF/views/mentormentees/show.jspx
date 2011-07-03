@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_MentorMentee" object="${mentormentee}" path="/mentormentees" z="Wcz/QTQnBIErlvf4FAVtP3JN7yg=">
+        <field:display field="deleted" id="s_com_ug_domain_MentorMentee_deleted" object="${mentormentee}" z="Suq72k2RzcpP35btXzE07i2BZDI="/>
+        <field:display date="true" dateTimePattern="${mentorMentee_deactivationdate_date_format}" field="deactivationDate" id="s_com_ug_domain_MentorMentee_deactivationDate" object="${mentormentee}" z="9/sRHzqAWVITuHsERv6mEqyxk2Q="/>
+        <field:display field="mentor" id="s_com_ug_domain_MentorMentee_mentor" object="${mentormentee}" z="R1F1knsdcSmNL0z2SEeGYIbJiKk="/>
+        <field:display date="true" dateTimePattern="${mentorMentee_fromdate_date_format}" field="fromDate" id="s_com_ug_domain_MentorMentee_fromDate" object="${mentormentee}" z="v1kLbFn4VLQWh1iINVCQQFDOcFY="/>
+        <field:display field="mentee" id="s_com_ug_domain_MentorMentee_mentee" object="${mentormentee}" z="4fZfMGg6HAH2KQ+c4utZB5tPEJE="/>
+    </page:show>
+</div>

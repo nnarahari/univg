@@ -10,8 +10,8 @@
 <body>
 
 <%
-LoadFirstTimeData.loadRoles(getServletContext().getRealPath("")+"/WEB-INF/classes/roles.xml");
-out.println("Loading Country:Complete");
+//LoadFirstTimeData.loadRoles(getServletContext().getRealPath("")+"/WEB-INF/classes/roles.xml");
+//out.println("Loading Roles:Complete");
 LoadFirstTimeData.loadCountry(getServletContext().getRealPath("")+"/WEB-INF/classes/country.xml");
 out.println("Loading Country:Complete");
 LoadFirstTimeData.loadSates(getServletContext().getRealPath("")+"/WEB-INF/classes/univ.xml");

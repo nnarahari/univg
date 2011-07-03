@@ -7,6 +7,8 @@ import com.ug.domain.Address;
 import com.ug.domain.Corporate;
 import com.ug.domain.Guarantor;
 import com.ug.domain.Loan;
+import com.ug.domain.Mentee;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profile;
 import java.util.Set;
 import javax.persistence.OneToMany;
@@ -24,6 +26,12 @@ privileged aspect User_Roo_DbManaged {
     
     @OneToMany(mappedBy = "userId")
     private java.util.Set<Loan> User.loans;
+    
+    @OneToMany(mappedBy = "userId")
+    private java.util.Set<Mentee> User.mentees;
+    
+    @OneToMany(mappedBy = "userId")
+    private java.util.Set<Mentor> User.mentors;
     
     @OneToMany(mappedBy = "userId")
     private java.util.Set<Profile> User.profiles;
@@ -58,6 +66,22 @@ privileged aspect User_Roo_DbManaged {
     
     public void User.setLoans(java.util.Set<Loan> loans) {
         this.loans = loans;
+    }
+    
+    public java.util.Set<Mentee> User.getMentees() {
+        return this.mentees;
+    }
+    
+    public void User.setMentees(java.util.Set<Mentee> mentees) {
+        this.mentees = mentees;
+    }
+    
+    public java.util.Set<Mentor> User.getMentors() {
+        return this.mentors;
+    }
+    
+    public void User.setMentors(java.util.Set<Mentor> mentors) {
+        this.mentors = mentors;
     }
     
     public java.util.Set<Profile> User.getProfiles() {

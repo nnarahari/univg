@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Testimonial" object="${testimonial}" path="/testimonials" z="304s8rUmT/cb5IFaNDYwzWXvMLQ=">
+        <field:display field="deleted" id="s_com_ug_domain_Testimonial_deleted" object="${testimonial}" z="OodMTiayBhF7dldV0DZd33F1Fw0="/>
+        <field:display field="validated" id="s_com_ug_domain_Testimonial_validated" object="${testimonial}" z="QcKqyHI3C6TI3bfzEvplZ/gZ00E="/>
+        <field:display date="true" dateTimePattern="${testimonial_date_date_format}" field="date" id="s_com_ug_domain_Testimonial_date" object="${testimonial}" z="hbdYXbtHKEzX4GEY6vFWG7J1kvM="/>
+        <field:display field="role" id="s_com_ug_domain_Testimonial_role" object="${testimonial}" z="C7EYDzABxjZoXdPAYE8ztuOfkWw="/>
+        <field:display field="userId" id="s_com_ug_domain_Testimonial_userId" object="${testimonial}" z="i3JxPXOXSG1VNQtL9iMj1LtzKMY="/>
+    </page:show>
+</div>

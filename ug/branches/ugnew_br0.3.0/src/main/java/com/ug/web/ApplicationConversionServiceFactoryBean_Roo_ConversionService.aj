@@ -14,10 +14,13 @@ import com.ug.domain.Grantneededfor;
 import com.ug.domain.Guarantor;
 import com.ug.domain.Loan;
 import com.ug.domain.Loanstatus;
+import com.ug.domain.Mentee;
+import com.ug.domain.Mentor;
+import com.ug.domain.MentorMentee;
 import com.ug.domain.Profile;
-import com.ug.domain.Programstudy;
 import com.ug.domain.Role;
 import com.ug.domain.State;
+import com.ug.domain.Testimonial;
 import com.ug.domain.University;
 import com.ug.domain.User;
 import java.lang.String;
@@ -114,18 +117,34 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    org.springframework.core.convert.converter.Converter<Profile, String> ApplicationConversionServiceFactoryBean.getProfileConverter() {
-        return new org.springframework.core.convert.converter.Converter<Profile, String>() {
-            public String convert(Profile profile) {
-                return new StringBuilder().append(profile.getUserId().getFirstName()).append(" ").append(profile.getUserId().getFirstName()).toString();
+    org.springframework.core.convert.converter.Converter<Mentee, String> ApplicationConversionServiceFactoryBean.getMenteeConverter() {
+        return new org.springframework.core.convert.converter.Converter<Mentee, String>() {
+            public String convert(Mentee mentee) {
+                return new StringBuilder().append(mentee.getDateOfBirth()).append(" ").append(mentee.getAttended()).append(" ").append(mentee.getHomePhone()).append(" ").append(mentee.getMobile()).toString();
             }
         };
     }
     
-    org.springframework.core.convert.converter.Converter<Programstudy, String> ApplicationConversionServiceFactoryBean.getProgramstudyConverter() {
-        return new org.springframework.core.convert.converter.Converter<Programstudy, String>() {
-            public String convert(Programstudy programstudy) {
-                return new StringBuilder().append(programstudy.getProgramStudyName()).toString();
+    org.springframework.core.convert.converter.Converter<Mentor, String> ApplicationConversionServiceFactoryBean.getMentorConverter() {
+        return new org.springframework.core.convert.converter.Converter<Mentor, String>() {
+            public String convert(Mentor mentor) {
+                return new StringBuilder().append(mentor.getDateOfBirth()).append(" ").append(mentor.getHomePhone()).append(" ").append(mentor.getMobile()).append(" ").append(mentor.getLinkedInProfile()).toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<MentorMentee, String> ApplicationConversionServiceFactoryBean.getMentorMenteeConverter() {
+        return new org.springframework.core.convert.converter.Converter<MentorMentee, String>() {
+            public String convert(MentorMentee mentormentee) {
+                return new StringBuilder().append(mentormentee.getMentor()).append(" ").append(mentormentee.getMentee()).append(" ").append(mentormentee.getFromDate()).append(" ").append(mentormentee.getDeactivationDate()).toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<Profile, String> ApplicationConversionServiceFactoryBean.getProfileConverter() {
+        return new org.springframework.core.convert.converter.Converter<Profile, String>() {
+            public String convert(Profile profile) {
+                return new StringBuilder().append(profile.getExpectedGraduationDate()).append(" ").append(profile.getDateOfBirth()).append(" ").append(profile.getHomePhone()).append(" ").append(profile.getLinkedInProfile()).toString();
             }
         };
     }
@@ -142,6 +161,14 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<State, String>() {
             public String convert(State state) {
                 return new StringBuilder().append(state.getStateName()).append(" ").toString();
+            }
+        };
+    }
+    
+    org.springframework.core.convert.converter.Converter<Testimonial, String> ApplicationConversionServiceFactoryBean.getTestimonialConverter() {
+        return new org.springframework.core.convert.converter.Converter<Testimonial, String>() {
+            public String convert(Testimonial testimonial) {
+                return new StringBuilder().append(testimonial.getUserId()).append(" ").append(testimonial.getRole()).append(" ").append(testimonial.getDate()).toString();
             }
         };
     }
@@ -174,10 +201,13 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getGuarantorConverter());
         registry.addConverter(getLoanConverter());
         registry.addConverter(getLoanstatusConverter());
+        registry.addConverter(getMenteeConverter());
+        registry.addConverter(getMentorConverter());
+        registry.addConverter(getMentorMenteeConverter());
         registry.addConverter(getProfileConverter());
-        registry.addConverter(getProgramstudyConverter());
         registry.addConverter(getRoleConverter());
         registry.addConverter(getStateConverter());
+        registry.addConverter(getTestimonialConverter());
         registry.addConverter(getUniversityConverter());
         registry.addConverter(getUserConverter());
     }

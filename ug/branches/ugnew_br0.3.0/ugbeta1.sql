@@ -255,3 +255,96 @@ CREATE TABLE corporate_loan_amount (
 ) ENGINE=InnoDB;
 
 
+
+CREATE TABLE profession (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	professionName VARCHAR(200) NOT NULL,
+	professionDescription VARCHAR(255),
+	version INT,
+	PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE `mentor` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `userId` bigint(20) NOT NULL,
+  `citizenship` bigint(20) NOT NULL,
+  `date_of_birth` datetime DEFAULT NULL,
+  `genderId` bigint(20) NOT NULL,
+  `currentProfession` bigint(20) NOT NULL,
+  `home_phone` varchar(10) NOT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `linked_in_profile` varchar(255) DEFAULT NULL,
+  `youtubeurl` varchar(255) DEFAULT NULL,
+  `photoIdentifier` varchar(75) DEFAULT NULL,
+  `why` varchar(2000) DEFAULT NULL,
+   openToAcceptMentee BIT,
+   enabled BIT,
+   loacked BIT,
+  PRIMARY KEY (`id`),
+  KEY `mentor_ibfk_1` (`userId`),
+  KEY `mentor_ibfk_2` (`genderId`),
+  KEY `mentee_ibfk_4` (`currentProfession`),
+  KEY `mentor_ibfk_3` (`citizenship`),
+  CONSTRAINT `mentor_ibfk_3` FOREIGN KEY (`citizenship`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mentor_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+  CONSTRAINT `mentor_ibfk_2` FOREIGN KEY (`genderId`) REFERENCES `gender` (`id`),
+  CONSTRAINT `mentee_ibfk_4` FOREIGN KEY (`currentProfession`) REFERENCES `profession` (`id`)
+) ENGINE=InnoDB;
+
+delimiter $$
+
+CREATE TABLE `mentee` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `userId` bigint(20) NOT NULL,
+  `citizenship` bigint(20) NOT NULL,
+  `date_of_birth` datetime DEFAULT NULL,
+  `genderId` bigint(20) NOT NULL,
+  `programStudyId` bigint(20) NOT NULL,
+  `currentProfession` bigint(20) NOT NULL,
+  `attended` varchar(200) DEFAULT NULL,
+  `home_phone` varchar(10) NOT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `linked_in_profile` varchar(255) DEFAULT NULL,
+  `youtubeurl` varchar(255) DEFAULT NULL,
+  `photoIdentifier` varchar(75) DEFAULT NULL,
+  `why` varchar(250) DEFAULT NULL,
+  `lookingForMentor` bit(1) DEFAULT NULL,
+  `enabled` bit(1) DEFAULT NULL,
+  `locked` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mentee_ibfk_11` (`userId`),
+  KEY `mentee_ibfk_22` (`genderId`),
+  KEY `mentee_ibfk_33` (`citizenship`),
+  KEY `mentee_ibfk_55` (`currentProfession`),
+  KEY `mentee_ibfk_44` (`programStudyId`),
+  CONSTRAINT `mentee_ibfk_11` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mentee_ibfk_22` FOREIGN KEY (`genderId`) REFERENCES `gender` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mentee_ibfk_33` FOREIGN KEY (`citizenship`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mentee_ibfk_55` FOREIGN KEY (`currentProfession`) REFERENCES `profession` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mentee_ibfk_44` FOREIGN KEY (`programStudyId`) REFERENCES `programstudy` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1$$
+
+
+CREATE TABLE mentor_mentee (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	version INT,
+	mentor BIGINT NOT NULL,
+	mentee BIGINT NOT NULL,
+	fromDate DATETIME DEFAULT NULL,
+	deactivationDate DATETIME DEFAULT NULL,
+	deleted BIT,
+	PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE testimonial (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	userId BIGINT NOT NULL,
+	role BIGINT NOT NULL,
+	Date DATETIME DEFAULT NULL,
+	deleted BIT,
+	validated BIT,
+	version INT,
+	PRIMARY KEY (id)
+) ENGINE=InnoDB;

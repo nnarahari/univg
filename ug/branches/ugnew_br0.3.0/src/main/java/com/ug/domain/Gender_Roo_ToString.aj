@@ -10,6 +10,8 @@ privileged aspect Gender_Roo_ToString {
     public String Gender.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Guarantors: ").append(getGuarantors() == null ? "null" : getGuarantors().size()).append(", ");
+        sb.append("Mentees: ").append(getMentees() == null ? "null" : getMentees().size()).append(", ");
+        sb.append("Mentors: ").append(getMentors() == null ? "null" : getMentors().size()).append(", ");
         sb.append("Profiles: ").append(getProfiles() == null ? "null" : getProfiles().size()).append(", ");
         sb.append("GenderName: ").append(getGenderName());
         return sb.toString();

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_MentorMentee" items="${mentormentees}" z="ManYe3IEz3AsuGm1cluux/v3oKk=">
+        <table:table data="${mentormentees}" id="l_com_ug_domain_MentorMentee" path="/mentormentees" z="9zcy023QMI+NSB3tC6ovqNQJuTk=">
+            <table:column id="c_com_ug_domain_MentorMentee_deleted" property="deleted" z="gIi5fs2s3ASLP99OnJ0/G1c26TA="/>
+            <table:column id="c_com_ug_domain_MentorMentee_deactivationDate" property="deactivationDate" z="PSpQYHcSfSChoV4t2k2ZT0oQszM="/>
+            <table:column id="c_com_ug_domain_MentorMentee_mentor" property="mentor" z="41Ue/fYpmRFcUXzrzCHkN4kMjfg="/>
+            <table:column id="c_com_ug_domain_MentorMentee_fromDate" property="fromDate" z="42IJDru6ZiIVkpF8571BMYXrctw="/>
+            <table:column id="c_com_ug_domain_MentorMentee_mentee" property="mentee" z="ivjlbDLLh1R6iV6hlWSo4Qc74Kc="/>
+        </table:table>
+    </page:list>
+</div>

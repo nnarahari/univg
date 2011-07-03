@@ -6,5 +6,7 @@
         <field:display field="profiles" id="s_com_ug_domain_Gender_profiles" object="${gender}" z="P9+S/WQ7jDealxoxIIyHn0YrXH0="/>
         <field:display field="guarantors" id="s_com_ug_domain_Gender_guarantors" object="${gender}" z="wA6iyTSXr4IbNbBclDL7tJuCTgI="/>
         <field:display field="genderName" id="s_com_ug_domain_Gender_genderName" object="${gender}" z="LlRHY2R3mkVxQ+99RM+6bn8xv+8="/>
+    <field:display field="mentees" id="s_com_ug_domain_Gender_mentees" object="${gender}" z="oVw3xK+SJzLSufLe0IbdRruPRWA="/>
+        <field:display field="mentors" id="s_com_ug_domain_Gender_mentors" object="${gender}" z="OI7WTj0SFJGCbZ2CfaaPO+hSj9s="/>
     </page:show>
 </div>

@@ -5,6 +5,8 @@ package com.ug.web;
 
 import com.ug.domain.Gender;
 import com.ug.domain.Guarantor;
+import com.ug.domain.Mentee;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profile;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
@@ -96,6 +98,16 @@ privileged aspect GenderController_Roo_Controller {
     @ModelAttribute("guarantors")
     public java.util.Collection<Guarantor> GenderController.populateGuarantors() {
         return Guarantor.findAllGuarantors();
+    }
+    
+    @ModelAttribute("mentees")
+    public java.util.Collection<Mentee> GenderController.populateMentees() {
+        return Mentee.findAllMentees();
+    }
+    
+    @ModelAttribute("mentors")
+    public java.util.Collection<Mentor> GenderController.populateMentors() {
+        return Mentor.findAllMentors();
     }
     
     @ModelAttribute("profiles")

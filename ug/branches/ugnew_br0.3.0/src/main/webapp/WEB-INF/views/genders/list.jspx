@@ -7,6 +7,8 @@
             <table:column id="c_com_ug_domain_Gender_profiles" property="profiles" z="zU/iRiNtlMvWBRU441v87Zn+R7c="/>
             <table:column id="c_com_ug_domain_Gender_guarantors" property="guarantors" z="PV1ucbVHUC/r+Xd5VjaKYeAe/FU="/>
             <table:column id="c_com_ug_domain_Gender_genderName" property="genderName" z="0PFw4ICLrmH+yWCE9CiD7d+5ANQ="/>
+        <table:column id="c_com_ug_domain_Gender_mentees" property="mentees" z="WPUJyXvrX7r5FkkUn4DgGRcI8Sk="/>
+            <table:column id="c_com_ug_domain_Gender_mentors" property="mentors" z="zqZF1euSpGM37PcB3TzUj89luR8="/>
         </table:table>
     </page:list>
 </div>

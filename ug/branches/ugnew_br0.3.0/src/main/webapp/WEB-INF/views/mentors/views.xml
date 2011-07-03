@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="mentors/list">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/list.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/show">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/show.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/create">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/create.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/update">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/update.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByOpenToAcceptMentee">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByOpenToAcceptMentee.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByUserId.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByHomePhoneEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByHomePhoneEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByOpenToAcceptMenteeNot">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByOpenToAcceptMenteeNot.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByMobileLike">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByMobileLike.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByLoacked">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByLoacked.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByEnabled">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByEnabled.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByDateOfBirth">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByDateOfBirth.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByMobile">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByMobile.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByCitizenship">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByCitizenship.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByDateOfBirthBetween">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByDateOfBirthBetween.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByDateOfBirthGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByDateOfBirthGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByEnabledNot">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByEnabledNot.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByLoackedNot">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByLoackedNot.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByHomePhone">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByHomePhone.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByGenderId">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByGenderId.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByHomePhoneLike">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByHomePhoneLike.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByDateOfBirthLessThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByDateOfBirthLessThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentors/findMentorsByCurrentProfession">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByCurrentProfession.jspx"/>
+    </definition>
+</tiles-definitions>

@@ -7,6 +7,8 @@ import com.ug.domain.Address;
 import com.ug.domain.Corporate;
 import com.ug.domain.Guarantor;
 import com.ug.domain.Loan;
+import com.ug.domain.Mentee;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profile;
 import com.ug.domain.User;
 import java.io.UnsupportedEncodingException;
@@ -127,6 +129,16 @@ privileged aspect UserController_Roo_Controller {
     @ModelAttribute("loans")
     public java.util.Collection<Loan> UserController.populateLoans() {
         return Loan.findAllLoans();
+    }
+    
+    @ModelAttribute("mentees")
+    public java.util.Collection<Mentee> UserController.populateMentees() {
+        return Mentee.findAllMentees();
+    }
+    
+    @ModelAttribute("mentors")
+    public java.util.Collection<Mentor> UserController.populateMentors() {
+        return Mentor.findAllMentors();
     }
     
     @ModelAttribute("profiles")

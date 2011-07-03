@@ -24,5 +24,7 @@
     <field:input field="activationKey" id="c_com_ug_domain_User_activationKey" z="/uk9GuEezgCaOiAMUptLcofXRCY="/>
     <field:checkbox field="enabled" id="c_com_ug_domain_User_enabled" z="g7J4EBegTazd7HG/gzYtSC68ErA="/>
     <field:checkbox field="locked" id="c_com_ug_domain_User_locked" z="HRmbLbyw+NOdz4MaPs8ytDXzJS0="/>
+    <field:simple field="mentees" id="c_com_ug_domain_User_mentees" messageCode="entity_reference_not_managed" messageCodeAttribute="Mentee" z="gE4A7sHKlsYf1XR8n5Rg0jJ0pyo="/>
+        <field:simple field="mentors" id="c_com_ug_domain_User_mentors" messageCode="entity_reference_not_managed" messageCodeAttribute="Mentor" z="xwhMWWunbypVj1Pq4L+OfqD3K5Y="/>
     </form:update>
 </div>

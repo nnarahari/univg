@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Mentee" object="${mentee}" path="/mentees" z="Y/mBoIGFILJUGrdthgtuXC+INrA=">
+        <field:display field="enabled" id="s_com_ug_domain_Mentee_enabled" object="${mentee}" z="z3qwzJHNxF5TrmsApBA3IhXVFIg="/>
+        <field:display field="why" id="s_com_ug_domain_Mentee_why" object="${mentee}" z="a1R3gl6qWlXC6rpoLpvJ+G/SxB4="/>
+        <field:display field="citizenship" id="s_com_ug_domain_Mentee_citizenship" object="${mentee}" z="RvRxP3mTb08uju+h5RJ6c+GxZU4="/>
+        <field:display field="attended" id="s_com_ug_domain_Mentee_attended" object="${mentee}" z="Om9x0tpV1swY31e5DRxz9SDBi4A="/>
+        <field:display field="youtubeurl" id="s_com_ug_domain_Mentee_youtubeurl" object="${mentee}" z="mqvM6ejvtewKNS/LbcIXvOe8XkY="/>
+        <field:display field="userId" id="s_com_ug_domain_Mentee_userId" object="${mentee}" z="5Mp5iWqlF/1mwbhT1XOHAIokUu4="/>
+        <field:display field="genderId" id="s_com_ug_domain_Mentee_genderId" object="${mentee}" z="M92TKrAd5HBJ3sOYarmgAGfV4+c="/>
+        <field:display field="homePhone" id="s_com_ug_domain_Mentee_homePhone" object="${mentee}" z="K4UUwnJtMEeDi3qqTritFc0//JM="/>
+        <field:display date="true" dateTimePattern="${mentee_dateofbirth_date_format}" field="dateOfBirth" id="s_com_ug_domain_Mentee_dateOfBirth" object="${mentee}" z="S5iYuXBuFRwSrDycJj7+oDJd3rk="/>
+        <field:display field="linkedInProfile" id="s_com_ug_domain_Mentee_linkedInProfile" object="${mentee}" z="d7ztJaV+DBofytlgJVCi50TofyE="/>
+        <field:display field="programStudyId" id="s_com_ug_domain_Mentee_programStudyId" object="${mentee}" z="dwoh2auMYpIWNpagRazh4DHKulE="/>
+        <field:display field="lookingForMentor" id="s_com_ug_domain_Mentee_lookingForMentor" object="${mentee}" z="tkJVkaQGaFPRlRZJT521gfCwKmE="/>
+        <field:display field="mobile" id="s_com_ug_domain_Mentee_mobile" object="${mentee}" z="5GjZReyjfKGZygranP3to/EwWp0="/>
+        <field:display field="photoIdentifier" id="s_com_ug_domain_Mentee_photoIdentifier" object="${mentee}" z="lmngYMNGPhxpvmfB93cBRzPcN6s="/>
+        <field:display field="locked" id="s_com_ug_domain_Mentee_locked" object="${mentee}" z="MzaRxwpdoKtN4Exzl8W9qCzmn9s="/>
+        <field:display field="currentProfession" id="s_com_ug_domain_Mentee_currentProfession" object="${mentee}" z="WWO/l7rNkvoThpu+B6ETTNH3kLs="/>
+    </page:show>
+</div>

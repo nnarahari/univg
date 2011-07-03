@@ -18,18 +18,13 @@ privileged aspect ProfileDataOnDemand_Roo_DataOnDemand {
     
     public Profile ProfileDataOnDemand.getNewTransientProfile(int index) {
         com.ug.domain.Profile obj = new com.ug.domain.Profile();
-        obj.setCitizenship(null);
         obj.setUserId(null);
         obj.setUniversityId(null);
         obj.setDepartmentId(null);
         obj.setProgramStudyId(null);
         obj.setGenderId(null);
+        obj.setCitizenship(null);
         obj.setExpectedGraduationDate(new java.util.GregorianCalendar(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR), java.util.Calendar.getInstance().get(java.util.Calendar.MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), java.util.Calendar.getInstance().get(java.util.Calendar.MINUTE), java.util.Calendar.getInstance().get(java.util.Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime());
-        java.lang.String citizenship = "citizenship_" + index;
-        if (citizenship.length() > 255) {
-            citizenship  = citizenship.substring(0, 255);
-        }
-        //obj.setCitizenship(citizenship);
         obj.setDateOfBirth(new java.util.GregorianCalendar(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR), java.util.Calendar.getInstance().get(java.util.Calendar.MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), java.util.Calendar.getInstance().get(java.util.Calendar.MINUTE), java.util.Calendar.getInstance().get(java.util.Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime());
         java.lang.String homePhone = "homePhon_" + index;
         if (homePhone.length() > 10) {
@@ -45,7 +40,7 @@ privileged aspect ProfileDataOnDemand_Roo_DataOnDemand {
         if (youtubeurl.length() > 255) {
             youtubeurl  = youtubeurl.substring(0, 255);
         }
-        obj.setYoutubeUrl(youtubeurl);
+        //obj.setYoutubeurl(youtubeurl);
         java.lang.String mobile = "mobile_" + index;
         if (mobile.length() > 10) {
             mobile  = mobile.substring(0, 10);

@@ -6,5 +6,7 @@
         <field:display field="countryName" id="s_com_ug_domain_Country_countryName" object="${country}" z="E3kW9teN/360Q4jTrFCqlZXXFro="/>
         <field:display field="countryDescription" id="s_com_ug_domain_Country_countryDescription" object="${country}" z="HwxPk4hEDgAPIAkJia1zZnx/ZfE="/>
     <field:display field="profiles" id="s_com_ug_domain_Country_profiles" object="${country}" z="JP6W+bToTnih7ecYZ3T/wHQeYVw="/>
+    <field:display field="mentees" id="s_com_ug_domain_Country_mentees" object="${country}" z="xPMRlBgYxFyKt/gbeNvh4PlqWI8="/>
+        <field:display field="mentors" id="s_com_ug_domain_Country_mentors" object="${country}" z="LaNNFnSBqfswjyZUXw/FgzNl/rQ="/>
     </page:show>
 </div>

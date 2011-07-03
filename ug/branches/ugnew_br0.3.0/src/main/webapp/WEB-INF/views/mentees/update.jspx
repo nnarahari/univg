@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_ug_domain_Mentee" modelAttribute="mentee" path="/mentees" versionField="none" z="WB0YCLokbzYbU3046J23mxnKp8k=">
+        <field:checkbox field="enabled" id="c_com_ug_domain_Mentee_enabled" z="r8X8AV7u0qrFPTu4kvW3+mJ6DrE="/>
+        <field:input field="why" id="c_com_ug_domain_Mentee_why" z="jsylGFG1ZJscS7mbzSicgtlvZ5A="/>
+        <field:select field="citizenship" id="c_com_ug_domain_Mentee_citizenship" itemValue="id" items="${countrys}" path="/countrys" z="nCgjVrMG9aOrl+46zNit7CjU2X0="/>
+        <field:input field="attended" id="c_com_ug_domain_Mentee_attended" z="Hw3eQVL21sO5uBlRWR9PWGLcPls="/>
+        <field:input field="youtubeurl" id="c_com_ug_domain_Mentee_youtubeurl" z="XugyKDOWHM9m4RFB3Y+Sggj+344="/>
+        <field:select field="userId" id="c_com_ug_domain_Mentee_userId" itemValue="id" items="${users}" path="/users" z="hfaOkrNXcN4IGXk7KMWgcZR/0sE="/>
+        <field:select field="genderId" id="c_com_ug_domain_Mentee_genderId" itemValue="id" items="${genders}" path="/genders" z="s2JjiysO7gHjdxs8umOyZDexPlE="/>
+        <field:input field="homePhone" id="c_com_ug_domain_Mentee_homePhone" required="true" z="sdDmKqj88N8+RHO1/Rn52ZHPjAw="/>
+        <field:datetime dateTimePattern="${mentee_dateofbirth_date_format}" field="dateOfBirth" id="c_com_ug_domain_Mentee_dateOfBirth" z="qkpG1vXMwg6PEPzWbciXKN87h+0="/>
+        <field:input field="linkedInProfile" id="c_com_ug_domain_Mentee_linkedInProfile" z="C3dCme102Yp3IHHzdjHJwKPcV88="/>
+        <field:select field="programStudyId" id="c_com_ug_domain_Mentee_programStudyId" itemValue="id" items="${programstudys}" path="/programstudys" z="pGDCFhVfU8GbOsE4zkuycGSxBcs="/>
+        <field:checkbox field="lookingForMentor" id="c_com_ug_domain_Mentee_lookingForMentor" z="GsUpUEzHMBQUqgQJ3QFYZ50vYk0="/>
+        <field:input field="mobile" id="c_com_ug_domain_Mentee_mobile" required="true" z="fGnMS3s5k9kNd1HzTgf69iRWGXg="/>
+        <field:input field="photoIdentifier" id="c_com_ug_domain_Mentee_photoIdentifier" z="PMZdEXMuo16eFLuwTDfYBo5mgcA="/>
+        <field:checkbox field="locked" id="c_com_ug_domain_Mentee_locked" z="fkC++avMrNcU5BUvkvK6Z7PRPkM="/>
+        <field:select field="currentProfession" id="c_com_ug_domain_Mentee_currentProfession" itemValue="id" items="${professions}" path="/professions" z="r/ceisn33xlHfJRvs5mznqwTwTI="/>
+    </form:update>
+</div>

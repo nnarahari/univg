@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="mentormentees/list">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/list.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/show">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/show.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/create">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/create.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/update">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/update.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByDeactivationDate">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByDeactivationDate.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByDeactivationDateBetween">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByDeactivationDateBetween.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByDeactivationDateEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByDeactivationDateEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByDeactivationDateGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByDeactivationDateGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByDeactivationDateGreaterThanEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByDeactivationDateGreaterThanEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByDeleted">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByDeleted.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByDeletedNot">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByDeletedNot.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByFromDate">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByFromDate.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByFromDateBetween">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByFromDateBetween.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByFromDateEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByFromDateEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByFromDateGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByFromDateGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByFromDateLessThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByFromDateLessThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentee">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentee.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMenteeBetween">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMenteeBetween.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMenteeEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMenteeEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMenteeGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMenteeGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMenteeLessThanEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMenteeLessThanEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMenteeNotEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMenteeNotEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentor">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentor.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentorBetween">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentorBetween.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentorEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentorEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentorGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentorGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentorGreaterThanEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentorGreaterThanEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentorLessThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentorLessThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentormentees/findMentorMenteesByMentorLessThanEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentormentees/findMentorMenteesByMentorLessThanEquals.jspx"/>
+    </definition>
+</tiles-definitions>

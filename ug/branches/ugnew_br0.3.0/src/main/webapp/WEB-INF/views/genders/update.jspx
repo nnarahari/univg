@@ -6,5 +6,7 @@
         <field:simple field="profiles" id="c_com_ug_domain_Gender_profiles" messageCode="entity_reference_not_managed" messageCodeAttribute="Profile" z="i4YIt1E1mMZ8A0/hMcuDILE3vOc="/>
         <field:simple field="guarantors" id="c_com_ug_domain_Gender_guarantors" messageCode="entity_reference_not_managed" messageCodeAttribute="Guarantor" z="oaTgId9pnKxRwpRzGrQKOLAKjEo="/>
         <field:input field="genderName" id="c_com_ug_domain_Gender_genderName" required="true" z="XaJMbAj45CvfxsyH5KjlsHiHIlE="/>
+    <field:simple field="mentees" id="c_com_ug_domain_Gender_mentees" messageCode="entity_reference_not_managed" messageCodeAttribute="Mentee" z="z5VxIhucD49L13otfHgIIZJ06mU="/>
+        <field:simple field="mentors" id="c_com_ug_domain_Gender_mentors" messageCode="entity_reference_not_managed" messageCodeAttribute="Mentor" z="CYVdJuxZZjAIVQqYAmvmJjjh0ME="/>
     </form:update>
 </div>

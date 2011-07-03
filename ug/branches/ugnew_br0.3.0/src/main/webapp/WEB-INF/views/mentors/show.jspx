@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Mentor" object="${mentor}" path="/mentors" z="1AJ104+vOzYkM6+b2I/MP1lIKr0=">
+        <field:display field="why" id="s_com_ug_domain_Mentor_why" object="${mentor}" z="ASsJLNJbQ3iElQHQZaGeA/142gs="/>
+        <field:display field="enabled" id="s_com_ug_domain_Mentor_enabled" object="${mentor}" z="If4bB31u4otZpoEygZjQc1L+sYQ="/>
+        <field:display field="citizenship" id="s_com_ug_domain_Mentor_citizenship" object="${mentor}" z="0S7AJ81oGpEMjCwed8nRxKnG1M8="/>
+        <field:display field="youtubeurl" id="s_com_ug_domain_Mentor_youtubeurl" object="${mentor}" z="OzNk4tanOW3oOYbRTiuu9tHC41s="/>
+        <field:display field="userId" id="s_com_ug_domain_Mentor_userId" object="${mentor}" z="+KDQ/ZWBL7QjQ2oZLjnO2DdIdZg="/>
+        <field:display field="genderId" id="s_com_ug_domain_Mentor_genderId" object="${mentor}" z="5YQ6MQtmA7y0C3xqXzMHfRoDMWo="/>
+        <field:display field="homePhone" id="s_com_ug_domain_Mentor_homePhone" object="${mentor}" z="oOqLqbzeC9mNahB3rmSuz/zECcQ="/>
+        <field:display date="true" dateTimePattern="${mentor_dateofbirth_date_format}" field="dateOfBirth" id="s_com_ug_domain_Mentor_dateOfBirth" object="${mentor}" z="g5N3/r+BvfOUipe4ESdOkNLB4GY="/>
+        <field:display field="linkedInProfile" id="s_com_ug_domain_Mentor_linkedInProfile" object="${mentor}" z="G8Bhzk6HnKKdc/MFKkMo3s13TZA="/>
+        <field:display field="mobile" id="s_com_ug_domain_Mentor_mobile" object="${mentor}" z="ukmSQrWCBoV4Em7rW+n/UX1345k="/>
+        <field:display field="photoIdentifier" id="s_com_ug_domain_Mentor_photoIdentifier" object="${mentor}" z="uflPJi3oGPpx/wxAygut0a1/1F4="/>
+        <field:display field="currentProfession" id="s_com_ug_domain_Mentor_currentProfession" object="${mentor}" z="opxsaIJmwe/v8bLwnYkJ8PlELqs="/>
+        <field:display field="loacked" id="s_com_ug_domain_Mentor_loacked" object="${mentor}" z="AJhIo2Nr2TvdPeF3rWfZfvONYgI="/>
+        <field:display field="openToAcceptMentee" id="s_com_ug_domain_Mentor_openToAcceptMentee" object="${mentor}" z="3Mi6YnmNoC7LKj9yxwM3YCKWJiQ="/>
+    </page:show>
+</div>

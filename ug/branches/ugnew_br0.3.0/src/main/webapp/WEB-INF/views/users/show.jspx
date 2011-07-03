@@ -24,5 +24,7 @@
     <field:display field="activationKey" id="s_com_ug_domain_User_activationKey" object="${user}" z="eixc1vEUxNolujWyxlo7kcJ8+kI="/>
     <field:display field="enabled" id="s_com_ug_domain_User_enabled" object="${user}" z="CXUa2M7cGGqBRmm/NzQubgF4ags="/>
     <field:display field="locked" id="s_com_ug_domain_User_locked" object="${user}" z="IGs2JF7JFu9LeT70NfKqMzvQutY="/>
+    <field:display field="mentees" id="s_com_ug_domain_User_mentees" object="${user}" z="9E7Z/wqAQHFTofdhQDiuLjti1R0="/>
+        <field:display field="mentors" id="s_com_ug_domain_User_mentors" object="${user}" z="ivE2BbZaOhh/T2W9HY4x9udcpy0="/>
     </page:show>
 </div>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="mentees/list">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/list.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/show">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/show.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/create">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/create.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/update">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/update.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByAttendedLike">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByAttendedLike.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByDateOfBirthBetween">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByDateOfBirthBetween.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByAttended">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByAttended.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByLocked">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByLocked.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByMobileIsNull">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByMobileIsNull.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByHomePhoneIsNull">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByHomePhoneIsNull.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByMobileEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByMobileEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByGenderId">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByGenderId.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByCurrentProfession">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByCurrentProfession.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByCitizenship">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByCitizenship.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByDateOfBirthGreaterThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByDateOfBirthGreaterThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByMobileIsNotNull">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByMobileIsNotNull.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByEnabled">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByEnabled.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByMobile">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByMobile.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByLockedNot">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByLockedNot.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByLookingForMentor">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByLookingForMentor.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByProgramStudyId">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByProgramStudyId.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByUserId.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByHomePhoneIsNotNull">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByHomePhoneIsNotNull.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByDateOfBirth">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByDateOfBirth.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByMobileLike">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByMobileLike.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByHomePhoneLike">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByHomePhoneLike.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByEnabledNot">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByEnabledNot.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByDateOfBirthLessThanEquals">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByDateOfBirthLessThanEquals.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByHomePhone">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByHomePhone.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByDateOfBirthLessThan">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByDateOfBirthLessThan.jspx"/>
+    </definition>
+<definition extends="default" name="mentees/findMenteesByLookingForMentorNot">
+        <put-attribute name="body" value="/WEB-INF/views/mentees/findMenteesByLookingForMentorNot.jspx"/>
+    </definition>
+</tiles-definitions>

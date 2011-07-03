@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Mentor" items="${mentors}" z="qilGa/XEhJiGoNteRvsRQwg/LnM=">
+        <table:table data="${mentors}" id="l_com_ug_domain_Mentor" path="/mentors" z="Ahcvl46XwCfKYBklCxyfXbI6bGI=">
+            <table:column id="c_com_ug_domain_Mentor_why" property="why" z="sdKcryfqVzyaUrbBxoXvIu0PK0s="/>
+            <table:column id="c_com_ug_domain_Mentor_enabled" property="enabled" z="oDPTiTHj42uUODJ+SWwwNJf9CRQ="/>
+            <table:column id="c_com_ug_domain_Mentor_citizenship" property="citizenship" z="xVWVQymjoE7imJODr53oLd/k+38="/>
+            <table:column id="c_com_ug_domain_Mentor_youtubeurl" property="youtubeurl" z="qzvXci+u+TSQ+FrovlwLhIQyjD4="/>
+            <table:column id="c_com_ug_domain_Mentor_userId" property="userId" z="I+TCXmlTe0k/h+4vQsHl3PHOpZE="/>
+            <table:column id="c_com_ug_domain_Mentor_genderId" property="genderId" z="nme0FIbFPRTqnOS/Xf7MNbMa6wA="/>
+        </table:table>
+    </page:list>
+</div>

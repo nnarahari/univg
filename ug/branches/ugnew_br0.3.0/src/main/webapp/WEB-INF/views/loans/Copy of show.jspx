@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" mlns:sec="http://www.springframework.org/security/tags" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+	<sec:authorize ifAllGranted="student"> 
+    <page:show id="ps_com_ug_domain_Loan" object="${loan}" delete="false" update="false" path="/loans" z="gZgkQSwud16CU3EBijRrLkcGEVY=">
+		<field:display field="userId" id="s_com_ug_domain_Loan_userId" object="${loan}" z="15WFy1Bj9e47y8pwez82AA9pRdE="/>
+		<field:display field="loanName" id="s_com_ug_domain_Loan_loanName" object="${loan}" z="w+DKenKEkbdx3Er6VC0egHd2Src="/>
+		<field:display date="true" dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="s_com_ug_domain_Loan_loanNeededBy" object="${loan}" z="ucMfb5nWw5hD+NMpc1t2W/uJ0ow="/>
+		<field:display field="loanAmount" id="s_com_ug_domain_Loan_loanAmount" object="${loan}" z="0K2KUqsd/vcRnBo/BQOVU2kqb50="/>
+		<field:display field="comments" id="s_com_ug_domain_Loan_comments" object="${loan}" z="+zkQudb3MxeEcBVgWxUAPiUee8g="/>
+		<field:display field="grantNeededFor" id="s_com_ug_domain_Loan_grantNeededFor" object="${loan}" z="Wgkovbziuaa3w7A8+UJIDATX8+4="/>
+		<field:display field="loanStatusId" id="s_com_ug_domain_Loan_loanStatusId" object="${loan}" z="2GD9OeYNjmqulqG4RKVwUjt/SkI="/>
+		<!--  <field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> 
+		<field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> -->
+		<field:display field="address" id="s_com_ug_domain_Loan_address" object="${loan}" z="P3Z26tDQT/9T8PjGUY0P4MMZqqk="/>
+    </page:show>
+	</sec:authorize>
+    
+    <sec:authorize ifAllGranted="corporate"> 
+    <page:show id="ps_com_ug_domain_Loan" object="${loan}" delete="false" create="false" path="/loans" z="gZgkQSwud16CU3EBijRrLkcGEVY=">
+		<field:display field="userId" id="s_com_ug_domain_Loan_userId" object="${loan}" z="15WFy1Bj9e47y8pwez82AA9pRdE="/>
+		<field:display field="loanName" id="s_com_ug_domain_Loan_loanName" object="${loan}" z="w+DKenKEkbdx3Er6VC0egHd2Src="/>
+		<field:display date="true" dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="s_com_ug_domain_Loan_loanNeededBy" object="${loan}" z="ucMfb5nWw5hD+NMpc1t2W/uJ0ow="/>
+		<field:display field="loanAmount" id="s_com_ug_domain_Loan_loanAmount" object="${loan}" z="0K2KUqsd/vcRnBo/BQOVU2kqb50="/>
+		<field:display field="comments" id="s_com_ug_domain_Loan_comments" object="${loan}" z="+zkQudb3MxeEcBVgWxUAPiUee8g="/>
+		<field:display field="grantNeededFor" id="s_com_ug_domain_Loan_grantNeededFor" object="${loan}" z="Wgkovbziuaa3w7A8+UJIDATX8+4="/>
+		<field:display field="loanStatusId" id="s_com_ug_domain_Loan_loanStatusId" object="${loan}" z="2GD9OeYNjmqulqG4RKVwUjt/SkI="/>
+		<!--  <field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> 
+		<field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> -->
+		<field:display field="address" id="s_com_ug_domain_Loan_address" object="${loan}" z="P3Z26tDQT/9T8PjGUY0P4MMZqqk="/>
+    </page:show>
+	</sec:authorize>
+	
+	<sec:authorize ifAllGranted="admin"> 
+	    <page:show id="ps_com_ug_domain_Loan" object="${loan}" path="/loans" z="gZgkQSwud16CU3EBijRrLkcGEVY=">
+		<field:display field="userId" id="s_com_ug_domain_Loan_userId" object="${loan}" z="15WFy1Bj9e47y8pwez82AA9pRdE="/>
+		<field:display field="loanName" id="s_com_ug_domain_Loan_loanName" object="${loan}" z="w+DKenKEkbdx3Er6VC0egHd2Src="/>
+		<field:display date="true" dateTimePattern="${loan_loanneededby_date_format}" field="loanNeededBy" id="s_com_ug_domain_Loan_loanNeededBy" object="${loan}" z="ucMfb5nWw5hD+NMpc1t2W/uJ0ow="/>
+		<field:display field="loanAmount" id="s_com_ug_domain_Loan_loanAmount" object="${loan}" z="0K2KUqsd/vcRnBo/BQOVU2kqb50="/>
+		<field:display field="comments" id="s_com_ug_domain_Loan_comments" object="${loan}" z="+zkQudb3MxeEcBVgWxUAPiUee8g="/>
+		<field:display field="grantNeededFor" id="s_com_ug_domain_Loan_grantNeededFor" object="${loan}" z="Wgkovbziuaa3w7A8+UJIDATX8+4="/>
+		<field:display field="loanStatusId" id="s_com_ug_domain_Loan_loanStatusId" object="${loan}" z="2GD9OeYNjmqulqG4RKVwUjt/SkI="/>
+		<!--  <field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> 
+		<field:display field="supportDocumentName" id="s_com_ug_domain_Loan_supportDocumentName" object="${loan}" z="DeikQb22N1oVpMJctWrT77QxCQw="/> -->
+		<field:display field="address" id="s_com_ug_domain_Loan_address" object="${loan}" z="P3Z26tDQT/9T8PjGUY0P4MMZqqk="/>
+    </page:show>
+	</sec:authorize>
+    
+</div>

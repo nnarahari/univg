@@ -168,3 +168,82 @@ finder add findCorporateLoanAmountsByLoanedAmount
 database reverse engineer --schema unable-to-obtain-connection --package ~.domain
 database reverse engineer --schema unable-to-obtain-connection --package ~.domain
 // [failed] addon install bundle --bundleSymbolicName org.springframework.roo.wrapping.mysql-connector-java
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log closed at 2011-06-26 00:30:11
+// Spring Roo 1.1.2.RELEASE [rev fbc33bb] log opened at 2011-07-03 10:38:26
+// [failed] database reverse engineer --schema unable-to-obtain-connection --package ~.domain
+database reverse engineer --schema unable-to-obtain-connection --package ~.domain
+finder list --class ~.domain.Mentor
+finder add findMentorsByCitizenship
+finder add findMentorsByCurrentProfession
+finder add findMentorsByDateOfBirth
+finder add findMentorsByDateOfBirthBetween
+finder add findMentorsByDateOfBirthGreaterThan
+finder add findMentorsByDateOfBirthLessThan
+finder add findMentorsByEnabled
+finder add findMentorsByEnabledNot
+finder add findMentorsByGenderId
+finder add findMentorsByHomePhone
+finder add findMentorsByHomePhoneEquals
+finder add findMentorsByHomePhoneLike
+finder add findMentorsByLoacked
+finder add findMentorsByLoackedNot
+finder add findMentorsByMobile
+finder add findMentorsByMobileLike
+finder add findMentorsByOpenToAcceptMentee
+finder add findMentorsByOpenToAcceptMenteeNot
+finder add findMentorsByUserId
+finder list --class ~.domain.Mentee
+finder add findMenteesByAttended 
+finder add findMenteesByAttendedLike
+finder add findMenteesByCitizenship
+finder add findMenteesByCurrentProfession
+finder add findMenteesByDateOfBirth
+finder add findMenteesByDateOfBirthBetween
+finder add findMenteesByDateOfBirthGreaterThan
+finder add findMenteesByDateOfBirthLessThan
+finder add findMenteesByDateOfBirthLessThanEquals
+finder add findMenteesByEnabled
+finder add findMenteesByEnabledNot
+finder add findMenteesByGenderId
+finder add findMenteesByHomePhone
+finder add findMenteesByHomePhoneIsNotNull
+finder add findMenteesByHomePhoneIsNull
+finder add findMenteesByHomePhoneLike
+finder add findMenteesByLocked
+finder add findMenteesByLockedNot
+finder add findMenteesByLookingForMentor
+finder add findMenteesByLookingForMentorNot
+finder add findMenteesByMobile
+finder add findMenteesByMobileEquals
+finder add findMenteesByMobileIsNotNull
+finder add findMenteesByMobileIsNull
+finder add findMenteesByMobileLike
+finder add findMenteesByProgramStudyId
+finder add findMenteesByUserId
+controller all --package ~.web
+finder list --class ~.domain.MentorMentee
+finder add  findMentorMenteesByDeactivationDate
+finder add  findMentorMenteesByDeactivationDateBetween
+finder add  findMentorMenteesByDeactivationDateEquals
+finder add  findMentorMenteesByDeactivationDateGreaterThan
+finder add  findMentorMenteesByDeactivationDateGreaterThanEquals
+finder add  findMentorMenteesByDeleted
+finder add  findMentorMenteesByDeletedNot
+finder add  findMentorMenteesByFromDate
+finder add  findMentorMenteesByFromDateBetween
+finder add  findMentorMenteesByFromDateEquals
+finder add  findMentorMenteesByFromDateGreaterThan
+finder add  findMentorMenteesByFromDateLessThan
+finder add  findMentorMenteesByMentee
+finder add  findMentorMenteesByMenteeBetween
+finder add  findMentorMenteesByMenteeEquals
+finder add  findMentorMenteesByMenteeGreaterThan
+finder add  findMentorMenteesByMenteeLessThanEquals
+finder add  findMentorMenteesByMenteeNotEquals
+finder add  findMentorMenteesByMentor
+finder add  findMentorMenteesByMentorBetween
+finder add  findMentorMenteesByMentorEquals
+finder add  findMentorMenteesByMentorGreaterThan
+finder add  findMentorMenteesByMentorGreaterThanEquals
+finder add  findMentorMenteesByMentorLessThan
+finder add  findMentorMenteesByMentorLessThanEquals

@@ -4,6 +4,8 @@
 package com.ug.domain;
 
 import com.ug.domain.Guarantor;
+import com.ug.domain.Mentee;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profile;
 import java.lang.String;
 import java.util.Set;
@@ -15,6 +17,12 @@ privileged aspect Gender_Roo_DbManaged {
     
     @OneToMany(mappedBy = "genderId")
     private Set<Guarantor> Gender.guarantors;
+    
+    @OneToMany(mappedBy = "genderId")
+    private java.util.Set<Mentee> Gender.mentees;
+    
+    @OneToMany(mappedBy = "genderId")
+    private java.util.Set<Mentor> Gender.mentors;
     
     @OneToMany(mappedBy = "genderId")
     private java.util.Set<Profile> Gender.profiles;
@@ -29,6 +37,22 @@ privileged aspect Gender_Roo_DbManaged {
     
     public void Gender.setGuarantors(Set<Guarantor> guarantors) {
         this.guarantors = guarantors;
+    }
+    
+    public java.util.Set<Mentee> Gender.getMentees() {
+        return this.mentees;
+    }
+    
+    public void Gender.setMentees(java.util.Set<Mentee> mentees) {
+        this.mentees = mentees;
+    }
+    
+    public java.util.Set<Mentor> Gender.getMentors() {
+        return this.mentors;
+    }
+    
+    public void Gender.setMentors(java.util.Set<Mentor> mentors) {
+        this.mentors = mentors;
     }
     
     public java.util.Set<Profile> Gender.getProfiles() {
