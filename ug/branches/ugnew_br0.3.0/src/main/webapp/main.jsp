@@ -64,10 +64,10 @@
         <p class="readmore"><a href="continueReadingStudent.jsp">Continue Reading &raquo;</a></p>
       </li>
       <li class="last">
-        <h2 class="title"><img src="images/P2P.jpg" alt="" />P2P Lenders</h2>
+        <h2 class="title"><img src="images/P2P.jpg" alt="" />Mentor/Mentee and P2P Lenders</h2>
         <p>Students from various Universities such as Stanford, UC Berkeley, SJSU come together to build the network between Corporations and Students.</p>
         <p>Through P2P lending people from different sections of the society with different backgrounds group together to work as peers and help invest in the future of society through education</p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        <p class="readmore"><a href="continueReadingMent.jsp">Continue Reading &raquo;</a></p>
       </li>
     </ul>
     <br class="clear" />
