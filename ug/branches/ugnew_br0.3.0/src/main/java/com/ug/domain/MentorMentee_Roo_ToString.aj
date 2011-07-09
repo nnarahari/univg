@@ -11,9 +11,12 @@ privileged aspect MentorMentee_Roo_ToString {
         StringBuilder sb = new StringBuilder();
         sb.append("Mentor: ").append(getMentor()).append(", ");
         sb.append("Mentee: ").append(getMentee()).append(", ");
-        sb.append("FromDate: ").append(getFromDate()).append(", ");
+        sb.append("AcceptedDate: ").append(getAcceptedDate()).append(", ");
         sb.append("DeactivationDate: ").append(getDeactivationDate()).append(", ");
-        sb.append("Deleted: ").append(getDeleted());
+        sb.append("Deleted: ").append(getDeleted()).append(", ");
+        sb.append("Accepted: ").append(getAccepted()).append(", ");
+        sb.append("RequestInitiatedBy: ").append(getRequestInitiatedBy()).append(", ");
+        sb.append("CreatedDate: ").append(getCreatedDate());
         return sb.toString();
     }
     

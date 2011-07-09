@@ -21,8 +21,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 privileged aspect Mentor_Roo_DbManaged {
     
     @ManyToOne
-    @JoinColumn(name = "citizenship", referencedColumnName = "id", nullable = false)
-    private Country Mentor.citizenship;
+    @JoinColumn(name = "currentProfession", referencedColumnName = "id", nullable = false)
+    private Profession Mentor.currentProfession;
     
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
@@ -33,8 +33,8 @@ privileged aspect Mentor_Roo_DbManaged {
     private Gender Mentor.genderId;
     
     @ManyToOne
-    @JoinColumn(name = "currentProfession", referencedColumnName = "id", nullable = false)
-    private Profession Mentor.currentProfession;
+    @JoinColumn(name = "citizenship", referencedColumnName = "id", nullable = false)
+    private Country Mentor.citizenship;
     
     @Column(name = "date_of_birth", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
@@ -70,12 +70,12 @@ privileged aspect Mentor_Roo_DbManaged {
     @Column(name = "loacked", columnDefinition = "BIT")
     private Boolean Mentor.loacked;
     
-    public Country Mentor.getCitizenship() {
-        return this.citizenship;
+    public Profession Mentor.getCurrentProfession() {
+        return this.currentProfession;
     }
     
-    public void Mentor.setCitizenship(Country citizenship) {
-        this.citizenship = citizenship;
+    public void Mentor.setCurrentProfession(Profession currentProfession) {
+        this.currentProfession = currentProfession;
     }
     
     public User Mentor.getUserId() {
@@ -94,12 +94,12 @@ privileged aspect Mentor_Roo_DbManaged {
         this.genderId = genderId;
     }
     
-    public Profession Mentor.getCurrentProfession() {
-        return this.currentProfession;
+    public Country Mentor.getCitizenship() {
+        return this.citizenship;
     }
     
-    public void Mentor.setCurrentProfession(Profession currentProfession) {
-        this.currentProfession = currentProfession;
+    public void Mentor.setCitizenship(Country citizenship) {
+        this.citizenship = citizenship;
     }
     
     public Date Mentor.getDateOfBirth() {

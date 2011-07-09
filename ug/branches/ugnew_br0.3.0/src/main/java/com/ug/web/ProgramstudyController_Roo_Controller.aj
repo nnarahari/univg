@@ -3,6 +3,7 @@
 
 package com.ug.web;
 
+import com.ug.domain.Mentee;
 import com.ug.domain.Profile;
 import com.ug.domain.Programstudy;
 import java.io.UnsupportedEncodingException;
@@ -87,8 +88,13 @@ privileged aspect ProgramstudyController_Roo_Controller {
         return "redirect:/programstudys";
     }
     
+    @ModelAttribute("mentees")
+    public Collection<Mentee> ProgramstudyController.populateMentees() {
+        return Mentee.findAllMentees();
+    }
+    
     @ModelAttribute("profiles")
-    public Collection<Profile> ProgramstudyController.populateProfiles() {
+    public java.util.Collection<Profile> ProgramstudyController.populateProfiles() {
         return Profile.findAllProfiles();
     }
     

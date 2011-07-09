@@ -96,6 +96,108 @@ privileged aspect MentorMenteeController_Roo_Controller {
         return "redirect:/mentormentees";
     }
     
+    @RequestMapping(params = { "find=ByAccepted", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedForm(Model uiModel) {
+        return "mentormentees/findMentorMenteesByAccepted";
+    }
+    
+    @RequestMapping(params = "find=ByAccepted", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAccepted(@RequestParam(value = "accepted", required = false) Boolean accepted, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByAccepted(accepted == null ? new Boolean(false) : accepted).getResultList());
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByAcceptedDate", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDateForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/findMentorMenteesByAcceptedDate";
+    }
+    
+    @RequestMapping(params = "find=ByAcceptedDate", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDate(@RequestParam("acceptedDate") @DateTimeFormat(style = "S-") Date acceptedDate, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByAcceptedDate(acceptedDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByAcceptedDateBetween", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDateBetweenForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/findMentorMenteesByAcceptedDateBetween";
+    }
+    
+    @RequestMapping(params = "find=ByAcceptedDateBetween", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDateBetween(@RequestParam("minAcceptedDate") @DateTimeFormat(style = "S-") Date minAcceptedDate, @RequestParam("maxAcceptedDate") @DateTimeFormat(style = "S-") Date maxAcceptedDate, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByAcceptedDateBetween(minAcceptedDate, maxAcceptedDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByAcceptedDateGreaterThan", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDateGreaterThanForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/findMentorMenteesByAcceptedDateGreaterThan";
+    }
+    
+    @RequestMapping(params = "find=ByAcceptedDateGreaterThan", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDateGreaterThan(@RequestParam("acceptedDate") @DateTimeFormat(style = "S-") Date acceptedDate, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByAcceptedDateGreaterThan(acceptedDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByAcceptedDateLessThan", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDateLessThanForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/findMentorMenteesByAcceptedDateLessThan";
+    }
+    
+    @RequestMapping(params = "find=ByAcceptedDateLessThan", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByAcceptedDateLessThan(@RequestParam("acceptedDate") @DateTimeFormat(style = "S-") Date acceptedDate, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByAcceptedDateLessThan(acceptedDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCreatedDate", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByCreatedDateForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/findMentorMenteesByCreatedDate";
+    }
+    
+    @RequestMapping(params = "find=ByCreatedDate", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByCreatedDate(@RequestParam("createdDate") @DateTimeFormat(style = "S-") Date createdDate, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByCreatedDate(createdDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCreatedDateBetween", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByCreatedDateBetweenForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/findMentorMenteesByCreatedDateBetween";
+    }
+    
+    @RequestMapping(params = "find=ByCreatedDateBetween", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByCreatedDateBetween(@RequestParam("minCreatedDate") @DateTimeFormat(style = "S-") Date minCreatedDate, @RequestParam("maxCreatedDate") @DateTimeFormat(style = "S-") Date maxCreatedDate, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByCreatedDateBetween(minCreatedDate, maxCreatedDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByCreatedDateGreaterThan", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByCreatedDateGreaterThanForm(Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/findMentorMenteesByCreatedDateGreaterThan";
+    }
+    
+    @RequestMapping(params = "find=ByCreatedDateGreaterThan", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByCreatedDateGreaterThan(@RequestParam("createdDate") @DateTimeFormat(style = "S-") Date createdDate, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByCreatedDateGreaterThan(createdDate).getResultList());
+        addDateTimeFormatPatterns(uiModel);
+        return "mentormentees/list";
+    }
+    
     @RequestMapping(params = { "find=ByDeactivationDate", "form" }, method = RequestMethod.GET)
     public String MentorMenteeController.findMentorMenteesByDeactivationDateForm(Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
@@ -180,71 +282,6 @@ privileged aspect MentorMenteeController_Roo_Controller {
     @RequestMapping(params = "find=ByDeletedNot", method = RequestMethod.GET)
     public String MentorMenteeController.findMentorMenteesByDeletedNot(@RequestParam(value = "deleted", required = false) Boolean deleted, Model uiModel) {
         uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByDeletedNot(deleted == null ? new Boolean(false) : deleted).getResultList());
-        return "mentormentees/list";
-    }
-    
-    @RequestMapping(params = { "find=ByFromDate", "form" }, method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateForm(Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/findMentorMenteesByFromDate";
-    }
-    
-    @RequestMapping(params = "find=ByFromDate", method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDate(@RequestParam("fromDate") @DateTimeFormat(style = "S-") Date fromDate, Model uiModel) {
-        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByFromDate(fromDate).getResultList());
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/list";
-    }
-    
-    @RequestMapping(params = { "find=ByFromDateBetween", "form" }, method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateBetweenForm(Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/findMentorMenteesByFromDateBetween";
-    }
-    
-    @RequestMapping(params = "find=ByFromDateBetween", method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateBetween(@RequestParam("minFromDate") @DateTimeFormat(style = "S-") Date minFromDate, @RequestParam("maxFromDate") @DateTimeFormat(style = "S-") Date maxFromDate, Model uiModel) {
-        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByFromDateBetween(minFromDate, maxFromDate).getResultList());
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/list";
-    }
-    
-    @RequestMapping(params = { "find=ByFromDateEquals", "form" }, method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateEqualsForm(Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/findMentorMenteesByFromDateEquals";
-    }
-    
-    @RequestMapping(params = "find=ByFromDateEquals", method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateEquals(@RequestParam("fromDate") @DateTimeFormat(style = "S-") Date fromDate, Model uiModel) {
-        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByFromDateEquals(fromDate).getResultList());
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/list";
-    }
-    
-    @RequestMapping(params = { "find=ByFromDateGreaterThan", "form" }, method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateGreaterThanForm(Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/findMentorMenteesByFromDateGreaterThan";
-    }
-    
-    @RequestMapping(params = "find=ByFromDateGreaterThan", method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateGreaterThan(@RequestParam("fromDate") @DateTimeFormat(style = "S-") Date fromDate, Model uiModel) {
-        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByFromDateGreaterThan(fromDate).getResultList());
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/list";
-    }
-    
-    @RequestMapping(params = { "find=ByFromDateLessThan", "form" }, method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateLessThanForm(Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
-        return "mentormentees/findMentorMenteesByFromDateLessThan";
-    }
-    
-    @RequestMapping(params = "find=ByFromDateLessThan", method = RequestMethod.GET)
-    public String MentorMenteeController.findMentorMenteesByFromDateLessThan(@RequestParam("fromDate") @DateTimeFormat(style = "S-") Date fromDate, Model uiModel) {
-        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByFromDateLessThan(fromDate).getResultList());
-        addDateTimeFormatPatterns(uiModel);
         return "mentormentees/list";
     }
     
@@ -391,18 +428,43 @@ privileged aspect MentorMenteeController_Roo_Controller {
         return "mentormentees/list";
     }
     
+    @RequestMapping(params = { "find=ByMentorNotEquals", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByMentorNotEqualsForm(Model uiModel) {
+        return "mentormentees/findMentorMenteesByMentorNotEquals";
+    }
+    
+    @RequestMapping(params = "find=ByMentorNotEquals", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByMentorNotEquals(@RequestParam("mentor") Long mentor, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByMentorNotEquals(mentor).getResultList());
+        return "mentormentees/list";
+    }
+    
+    @RequestMapping(params = { "find=ByRequestInitiatedBy", "form" }, method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByRequestInitiatedByForm(Model uiModel) {
+        return "mentormentees/findMentorMenteesByRequestInitiatedBy";
+    }
+    
+    @RequestMapping(params = "find=ByRequestInitiatedBy", method = RequestMethod.GET)
+    public String MentorMenteeController.findMentorMenteesByRequestInitiatedBy(@RequestParam("requestInitiatedBy") Long requestInitiatedBy, Model uiModel) {
+        uiModel.addAttribute("mentormentees", MentorMentee.findMentorMenteesByRequestInitiatedBy(requestInitiatedBy).getResultList());
+        return "mentormentees/list";
+    }
+    
     @ModelAttribute("mentormentees")
     public Collection<MentorMentee> MentorMenteeController.populateMentorMentees() {
         return MentorMentee.findAllMentorMentees();
     }
     
     void MentorMenteeController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("mentorMentee_accepteddate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("mentorMentee_maxdeactivationdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("mentorMentee_mindeactivationdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("mentorMentee_fromdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("mentorMentee_maxcreateddate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("mentorMentee_maxaccepteddate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("mentorMentee_deactivationdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("mentorMentee_maxfromdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("mentorMentee_minfromdate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("mentorMentee_mincreateddate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("mentorMentee_minaccepteddate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("mentorMentee_createddate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
     }
     
     String MentorMenteeController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

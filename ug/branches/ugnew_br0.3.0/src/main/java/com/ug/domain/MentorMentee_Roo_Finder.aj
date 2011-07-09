@@ -12,6 +12,74 @@ import javax.persistence.TypedQuery;
 
 privileged aspect MentorMentee_Roo_Finder {
     
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByAccepted(Boolean accepted) {
+        if (accepted == null) throw new IllegalArgumentException("The accepted argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.accepted = :accepted", MentorMentee.class);
+        q.setParameter("accepted", accepted);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByAcceptedDate(Date acceptedDate) {
+        if (acceptedDate == null) throw new IllegalArgumentException("The acceptedDate argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.acceptedDate = :acceptedDate", MentorMentee.class);
+        q.setParameter("acceptedDate", acceptedDate);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByAcceptedDateBetween(Date minAcceptedDate, Date maxAcceptedDate) {
+        if (minAcceptedDate == null) throw new IllegalArgumentException("The minAcceptedDate argument is required");
+        if (maxAcceptedDate == null) throw new IllegalArgumentException("The maxAcceptedDate argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.acceptedDate BETWEEN :minAcceptedDate AND :maxAcceptedDate", MentorMentee.class);
+        q.setParameter("minAcceptedDate", minAcceptedDate);
+        q.setParameter("maxAcceptedDate", maxAcceptedDate);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByAcceptedDateGreaterThan(Date acceptedDate) {
+        if (acceptedDate == null) throw new IllegalArgumentException("The acceptedDate argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.acceptedDate > :acceptedDate", MentorMentee.class);
+        q.setParameter("acceptedDate", acceptedDate);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByAcceptedDateLessThan(Date acceptedDate) {
+        if (acceptedDate == null) throw new IllegalArgumentException("The acceptedDate argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.acceptedDate < :acceptedDate", MentorMentee.class);
+        q.setParameter("acceptedDate", acceptedDate);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByCreatedDate(Date createdDate) {
+        if (createdDate == null) throw new IllegalArgumentException("The createdDate argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.createdDate = :createdDate", MentorMentee.class);
+        q.setParameter("createdDate", createdDate);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByCreatedDateBetween(Date minCreatedDate, Date maxCreatedDate) {
+        if (minCreatedDate == null) throw new IllegalArgumentException("The minCreatedDate argument is required");
+        if (maxCreatedDate == null) throw new IllegalArgumentException("The maxCreatedDate argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.createdDate BETWEEN :minCreatedDate AND :maxCreatedDate", MentorMentee.class);
+        q.setParameter("minCreatedDate", minCreatedDate);
+        q.setParameter("maxCreatedDate", maxCreatedDate);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByCreatedDateGreaterThan(Date createdDate) {
+        if (createdDate == null) throw new IllegalArgumentException("The createdDate argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.createdDate > :createdDate", MentorMentee.class);
+        q.setParameter("createdDate", createdDate);
+        return q;
+    }
+    
     public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByDeactivationDate(Date deactivationDate) {
         if (deactivationDate == null) throw new IllegalArgumentException("The deactivationDate argument is required");
         EntityManager em = MentorMentee.entityManager();
@@ -67,48 +135,6 @@ privileged aspect MentorMentee_Roo_Finder {
         EntityManager em = MentorMentee.entityManager();
         TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.deleted IS NOT :deleted", MentorMentee.class);
         q.setParameter("deleted", deleted);
-        return q;
-    }
-    
-    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByFromDate(Date fromDate) {
-        if (fromDate == null) throw new IllegalArgumentException("The fromDate argument is required");
-        EntityManager em = MentorMentee.entityManager();
-        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.fromDate = :fromDate", MentorMentee.class);
-        q.setParameter("fromDate", fromDate);
-        return q;
-    }
-    
-    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByFromDateBetween(Date minFromDate, Date maxFromDate) {
-        if (minFromDate == null) throw new IllegalArgumentException("The minFromDate argument is required");
-        if (maxFromDate == null) throw new IllegalArgumentException("The maxFromDate argument is required");
-        EntityManager em = MentorMentee.entityManager();
-        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.fromDate BETWEEN :minFromDate AND :maxFromDate", MentorMentee.class);
-        q.setParameter("minFromDate", minFromDate);
-        q.setParameter("maxFromDate", maxFromDate);
-        return q;
-    }
-    
-    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByFromDateEquals(Date fromDate) {
-        if (fromDate == null) throw new IllegalArgumentException("The fromDate argument is required");
-        EntityManager em = MentorMentee.entityManager();
-        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.fromDate = :fromDate", MentorMentee.class);
-        q.setParameter("fromDate", fromDate);
-        return q;
-    }
-    
-    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByFromDateGreaterThan(Date fromDate) {
-        if (fromDate == null) throw new IllegalArgumentException("The fromDate argument is required");
-        EntityManager em = MentorMentee.entityManager();
-        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.fromDate > :fromDate", MentorMentee.class);
-        q.setParameter("fromDate", fromDate);
-        return q;
-    }
-    
-    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByFromDateLessThan(Date fromDate) {
-        if (fromDate == null) throw new IllegalArgumentException("The fromDate argument is required");
-        EntityManager em = MentorMentee.entityManager();
-        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.fromDate < :fromDate", MentorMentee.class);
-        q.setParameter("fromDate", fromDate);
         return q;
     }
     
@@ -217,6 +243,22 @@ privileged aspect MentorMentee_Roo_Finder {
         EntityManager em = MentorMentee.entityManager();
         TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.mentor <= :mentor", MentorMentee.class);
         q.setParameter("mentor", mentor);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByMentorNotEquals(Long mentor) {
+        if (mentor == null) throw new IllegalArgumentException("The mentor argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.mentor != :mentor", MentorMentee.class);
+        q.setParameter("mentor", mentor);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByRequestInitiatedBy(Long requestInitiatedBy) {
+        if (requestInitiatedBy == null) throw new IllegalArgumentException("The requestInitiatedBy argument is required");
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.requestInitiatedBy = :requestInitiatedBy", MentorMentee.class);
+        q.setParameter("requestInitiatedBy", requestInitiatedBy);
         return q;
     }
     

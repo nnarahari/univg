@@ -9,10 +9,10 @@ privileged aspect Mentor_Roo_ToString {
     
     public String Mentor.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Citizenship: ").append(getCitizenship()).append(", ");
+        sb.append("CurrentProfession: ").append(getCurrentProfession()).append(", ");
         sb.append("UserId: ").append(getUserId()).append(", ");
         sb.append("GenderId: ").append(getGenderId()).append(", ");
-        sb.append("CurrentProfession: ").append(getCurrentProfession()).append(", ");
+        sb.append("Citizenship: ").append(getCitizenship()).append(", ");
         sb.append("DateOfBirth: ").append(getDateOfBirth()).append(", ");
         sb.append("HomePhone: ").append(getHomePhone()).append(", ");
         sb.append("Mobile: ").append(getMobile()).append(", ");

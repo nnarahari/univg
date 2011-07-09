@@ -34,12 +34,12 @@ privileged aspect Mentee_Roo_DbManaged {
     private Country Mentee.citizenship;
     
     @ManyToOne
-    @JoinColumn(name = "currentProfession", referencedColumnName = "id", nullable = false)
-    private Profession Mentee.currentProfession;
-    
-    @ManyToOne
     @JoinColumn(name = "programStudyId", referencedColumnName = "id", nullable = false)
     private Programstudy Mentee.programStudyId;
+    
+    @ManyToOne
+    @JoinColumn(name = "currentProfession", referencedColumnName = "id", nullable = false)
+    private Profession Mentee.currentProfession;
     
     @Column(name = "date_of_birth", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
@@ -102,20 +102,20 @@ privileged aspect Mentee_Roo_DbManaged {
         this.citizenship = citizenship;
     }
     
-    public Profession Mentee.getCurrentProfession() {
-        return this.currentProfession;
-    }
-    
-    public void Mentee.setCurrentProfession(Profession currentProfession) {
-        this.currentProfession = currentProfession;
-    }
-    
     public Programstudy Mentee.getProgramStudyId() {
         return this.programStudyId;
     }
     
     public void Mentee.setProgramStudyId(Programstudy programStudyId) {
         this.programStudyId = programStudyId;
+    }
+    
+    public Profession Mentee.getCurrentProfession() {
+        return this.currentProfession;
+    }
+    
+    public void Mentee.setCurrentProfession(Profession currentProfession) {
+        this.currentProfession = currentProfession;
     }
     
     public Date Mentee.getDateOfBirth() {

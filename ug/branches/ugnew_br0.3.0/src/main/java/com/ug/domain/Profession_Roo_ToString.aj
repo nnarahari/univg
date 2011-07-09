@@ -5,14 +5,14 @@ package com.ug.domain;
 
 import java.lang.String;
 
-privileged aspect Programstudy_Roo_ToString {
+privileged aspect Profession_Roo_ToString {
     
-    public String Programstudy.toString() {
+    public String Profession.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Mentees: ").append(getMentees() == null ? "null" : getMentees().size()).append(", ");
-        sb.append("Profiles: ").append(getProfiles() == null ? "null" : getProfiles().size()).append(", ");
-        sb.append("ProgramStudyName: ").append(getProgramStudyName()).append(", ");
-        sb.append("ProgramStudyDescription: ").append(getProgramStudyDescription());
+        sb.append("Mentors: ").append(getMentors() == null ? "null" : getMentors().size()).append(", ");
+        sb.append("ProfessionName: ").append(getProfessionName()).append(", ");
+        sb.append("ProfessionDescription: ").append(getProfessionDescription());
         return sb.toString();
     }
     

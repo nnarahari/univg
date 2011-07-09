@@ -12,8 +12,8 @@ privileged aspect Mentee_Roo_ToString {
         sb.append("UserId: ").append(getUserId()).append(", ");
         sb.append("GenderId: ").append(getGenderId()).append(", ");
         sb.append("Citizenship: ").append(getCitizenship()).append(", ");
-        sb.append("CurrentProfession: ").append(getCurrentProfession()).append(", ");
         sb.append("ProgramStudyId: ").append(getProgramStudyId()).append(", ");
+        sb.append("CurrentProfession: ").append(getCurrentProfession()).append(", ");
         sb.append("DateOfBirth: ").append(getDateOfBirth()).append(", ");
         sb.append("Attended: ").append(getAttended()).append(", ");
         sb.append("HomePhone: ").append(getHomePhone()).append(", ");

@@ -3,6 +3,8 @@
 
 package com.ug.web;
 
+import com.ug.domain.Mentee;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profession;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
@@ -86,8 +88,18 @@ privileged aspect ProfessionController_Roo_Controller {
         return "redirect:/professions";
     }
     
+    @ModelAttribute("mentees")
+    public Collection<Mentee> ProfessionController.populateMentees() {
+        return Mentee.findAllMentees();
+    }
+    
+    @ModelAttribute("mentors")
+    public java.util.Collection<Mentor> ProfessionController.populateMentors() {
+        return Mentor.findAllMentors();
+    }
+    
     @ModelAttribute("professions")
-    public Collection<Profession> ProfessionController.populateProfessions() {
+    public java.util.Collection<Profession> ProfessionController.populateProfessions() {
         return Profession.findAllProfessions();
     }
     

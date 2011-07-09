@@ -3,6 +3,7 @@
 
 package com.ug.domain;
 
+import com.ug.domain.Mentee;
 import com.ug.domain.Profile;
 import java.lang.String;
 import java.util.Set;
@@ -13,7 +14,10 @@ import javax.validation.constraints.NotNull;
 privileged aspect Programstudy_Roo_DbManaged {
     
     @OneToMany(mappedBy = "programStudyId")
-    private Set<Profile> Programstudy.profiles;
+    private Set<Mentee> Programstudy.mentees;
+    
+    @OneToMany(mappedBy = "programStudyId")
+    private java.util.Set<Profile> Programstudy.profiles;
     
     @Column(name = "programStudyName", columnDefinition = "VARCHAR", length = 255)
     @NotNull
@@ -22,11 +26,19 @@ privileged aspect Programstudy_Roo_DbManaged {
     @Column(name = "programStudyDescription", columnDefinition = "VARCHAR", length = 200)
     private String Programstudy.programStudyDescription;
     
-    public Set<Profile> Programstudy.getProfiles() {
+    public Set<Mentee> Programstudy.getMentees() {
+        return this.mentees;
+    }
+    
+    public void Programstudy.setMentees(Set<Mentee> mentees) {
+        this.mentees = mentees;
+    }
+    
+    public java.util.Set<Profile> Programstudy.getProfiles() {
         return this.profiles;
     }
     
-    public void Programstudy.setProfiles(Set<Profile> profiles) {
+    public void Programstudy.setProfiles(java.util.Set<Profile> profiles) {
         this.profiles = profiles;
     }
     

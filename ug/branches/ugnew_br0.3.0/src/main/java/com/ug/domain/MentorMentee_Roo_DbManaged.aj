@@ -22,10 +22,10 @@ privileged aspect MentorMentee_Roo_DbManaged {
     @NotNull
     private Long MentorMentee.mentee;
     
-    @Column(name = "fromDate", columnDefinition = "DATETIME")
+    @Column(name = "acceptedDate", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
-    private Date MentorMentee.fromDate;
+    private Date MentorMentee.acceptedDate;
     
     @Column(name = "deactivationDate", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
@@ -34,6 +34,17 @@ privileged aspect MentorMentee_Roo_DbManaged {
     
     @Column(name = "deleted", columnDefinition = "BIT")
     private Boolean MentorMentee.deleted;
+    
+    @Column(name = "accepted", columnDefinition = "BIT")
+    private Boolean MentorMentee.accepted;
+    
+    @Column(name = "requestInitiatedBy", columnDefinition = "BIGINT")
+    private Long MentorMentee.requestInitiatedBy;
+    
+    @Column(name = "createdDate", columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
+    private Date MentorMentee.createdDate;
     
     public Long MentorMentee.getMentor() {
         return this.mentor;
@@ -51,12 +62,12 @@ privileged aspect MentorMentee_Roo_DbManaged {
         this.mentee = mentee;
     }
     
-    public Date MentorMentee.getFromDate() {
-        return this.fromDate;
+    public Date MentorMentee.getAcceptedDate() {
+        return this.acceptedDate;
     }
     
-    public void MentorMentee.setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
+    public void MentorMentee.setAcceptedDate(Date acceptedDate) {
+        this.acceptedDate = acceptedDate;
     }
     
     public Date MentorMentee.getDeactivationDate() {
@@ -77,6 +88,34 @@ privileged aspect MentorMentee_Roo_DbManaged {
     
     public void MentorMentee.setDeleted(Boolean deleted) {
         this.deleted = deleted;
+    }
+    
+    public Boolean MentorMentee.getAccepted() {
+        return this.accepted;
+    }
+    
+    public boolean MentorMentee.isAccepted() {
+        return this.accepted != null && this.accepted;
+    }
+    
+    public void MentorMentee.setAccepted(Boolean accepted) {
+        this.accepted = accepted;
+    }
+    
+    public Long MentorMentee.getRequestInitiatedBy() {
+        return this.requestInitiatedBy;
+    }
+    
+    public void MentorMentee.setRequestInitiatedBy(Long requestInitiatedBy) {
+        this.requestInitiatedBy = requestInitiatedBy;
+    }
+    
+    public Date MentorMentee.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void MentorMentee.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
     
 }
