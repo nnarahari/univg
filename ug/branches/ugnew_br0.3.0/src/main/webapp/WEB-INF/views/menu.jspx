@@ -154,7 +154,7 @@
             <menu:item id="i_profession_list" messageCode="global_menu_list" url="/professions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fFWwdgw0GlkPXovru00KyOJjlJU="/>
             </menu:category>
         <menu:category id="c_mentor" z="Wt+ikLMVr5+Z6/9uPPjqbBtM7RA=">
-                <menu:item id="i_mentor_new" messageCode="global_menu_new" url="/mentors?form" z="5KotX1WKG3d3XGZyMzmxxIzIN0U="/>
+            <menu:item id="i_mentor_new" messageCode="global_menu_new" url="/mentors?form" z="5KotX1WKG3d3XGZyMzmxxIzIN0U="/>
             <menu:item id="i_mentor_list" messageCode="global_menu_list" url="/mentors?page=1&amp;size=${empty param.size ? 10 : param.size}" z="W7eEhFCM7PUYoPsHlDHeyB2M/A8="/>
             <menu:item id="fi_mentor_opentoacceptmentee" messageCode="global_menu_find" url="/mentors?find=ByOpenToAcceptMentee&amp;form" z="j7XcsEAGJyLF/2R2gYUaFHhLJF0="/>
             <menu:item id="fi_mentor_userid" messageCode="global_menu_find" url="/mentors?find=ByUserId&amp;form" z="GEDNGodfeJ/Y0z9t5mu5K1XxXy4="/>
@@ -217,11 +217,11 @@
             <menu:item id="fi_mentormentee_deactivationdategreaterthanequals" messageCode="global_menu_find" url="/mentormentees?find=ByDeactivationDateGreaterThanEquals&amp;form" z="Cal7T1MxvXIdQGpx4BOTx755bfw="/>
             <menu:item id="fi_mentormentee_deleted" messageCode="global_menu_find" url="/mentormentees?find=ByDeleted&amp;form" z="d5NKcZ4Nr436IrPJWslvMcM86h4="/>
             <menu:item id="fi_mentormentee_deletednot" messageCode="global_menu_find" url="/mentormentees?find=ByDeletedNot&amp;form" z="JF8SfA64Dw0emDSUw1U3weSg+3s="/>
-            <menu:item id="fi_mentormentee_fromdate" messageCode="global_menu_find" url="/mentormentees?find=ByFromDate&amp;form" z="S0Z1/0EHVZF+ZtJZAoHdqPMYx6I="/>
-            <menu:item id="fi_mentormentee_fromdatebetween" messageCode="global_menu_find" url="/mentormentees?find=ByFromDateBetween&amp;form" z="pcDP0uuqu/6hH78/U9IIcdsZpEk="/>
-            <menu:item id="fi_mentormentee_fromdateequals" messageCode="global_menu_find" url="/mentormentees?find=ByFromDateEquals&amp;form" z="DwKge/oFe0cUduYcmrORrwxhpLM="/>
-            <menu:item id="fi_mentormentee_fromdategreaterthan" messageCode="global_menu_find" url="/mentormentees?find=ByFromDateGreaterThan&amp;form" z="+dqWY3sJfV2EYfeVYa0LD8nZ844="/>
-            <menu:item id="fi_mentormentee_fromdatelessthan" messageCode="global_menu_find" url="/mentormentees?find=ByFromDateLessThan&amp;form" z="D4lE20+NfpnVacIViNSU6A4NZmg="/>
+            
+            
+            
+            
+            
             <menu:item id="fi_mentormentee_mentee" messageCode="global_menu_find" url="/mentormentees?find=ByMentee&amp;form" z="ybz7RF79bg2cUZ4mQODrVAFQLV8="/>
             <menu:item id="fi_mentormentee_menteebetween" messageCode="global_menu_find" url="/mentormentees?find=ByMenteeBetween&amp;form" z="L4sOsXi7qH9/9MP3sVSsM/v0MBQ="/>
             <menu:item id="fi_mentormentee_menteeequals" messageCode="global_menu_find" url="/mentormentees?find=ByMenteeEquals&amp;form" z="hEu4MuJzZidOI+9Cm6cm+Eb8ujU="/>
@@ -235,6 +235,16 @@
             <menu:item id="fi_mentormentee_mentorgreaterthanequals" messageCode="global_menu_find" url="/mentormentees?find=ByMentorGreaterThanEquals&amp;form" z="a5dUPGXotpXG9DeMtxKXhq6kaW4="/>
             <menu:item id="fi_mentormentee_mentorlessthan" messageCode="global_menu_find" url="/mentormentees?find=ByMentorLessThan&amp;form" z="5D9MaWaiV5H8nLrjpO9hcjJ9lzw="/>
             <menu:item id="fi_mentormentee_mentorlessthanequals" messageCode="global_menu_find" url="/mentormentees?find=ByMentorLessThanEquals&amp;form" z="CxiksiwWfSEGXlPKXxKYLgK1VrA="/>
+            <menu:item id="fi_mentormentee_accepted" messageCode="global_menu_find" url="/mentormentees?find=ByAccepted&amp;form" z="67475qLw7DZ1i4uFvy2FYMxpGtA="/>
+            <menu:item id="fi_mentormentee_accepteddate" messageCode="global_menu_find" url="/mentormentees?find=ByAcceptedDate&amp;form" z="Y/z40e7x7A6oTH7e/KOvlR54mU8="/>
+            <menu:item id="fi_mentormentee_accepteddatebetween" messageCode="global_menu_find" url="/mentormentees?find=ByAcceptedDateBetween&amp;form" z="PZ2CXUTJ4JSlL71CwZ4HRwaubvo="/>
+            <menu:item id="fi_mentormentee_accepteddategreaterthan" messageCode="global_menu_find" url="/mentormentees?find=ByAcceptedDateGreaterThan&amp;form" z="tAMV+vhrHI+KDzFjMi0oD8c9jEw="/>
+            <menu:item id="fi_mentormentee_accepteddatelessthan" messageCode="global_menu_find" url="/mentormentees?find=ByAcceptedDateLessThan&amp;form" z="XLHBOdPXUHwAa9RZzEYxsDJmay4="/>
+            <menu:item id="fi_mentormentee_createddate" messageCode="global_menu_find" url="/mentormentees?find=ByCreatedDate&amp;form" z="K7oWJ7cfUWDm4KZnfIXd6jAeyzU="/>
+            <menu:item id="fi_mentormentee_createddatebetween" messageCode="global_menu_find" url="/mentormentees?find=ByCreatedDateBetween&amp;form" z="9o73P2VXHZjEOyf42nbL1wHpNz8="/>
+            <menu:item id="fi_mentormentee_createddategreaterthan" messageCode="global_menu_find" url="/mentormentees?find=ByCreatedDateGreaterThan&amp;form" z="Pe52H5H58jzrXzutI5GnGwTF1Sg="/>
+            <menu:item id="fi_mentormentee_mentornotequals" messageCode="global_menu_find" url="/mentormentees?find=ByMentorNotEquals&amp;form" z="fFNL8xg8mf3bdU+VTNVjZitlHR8="/>
+            <menu:item id="fi_mentormentee_requestinitiatedby" messageCode="global_menu_find" url="/mentormentees?find=ByRequestInitiatedBy&amp;form" z="UFFBJ/yNvvSN2vh/bLRdDVNimQw="/>
             </menu:category>
         </menu:menu>
 	</sec:authorize>
