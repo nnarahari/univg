@@ -3,6 +3,11 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_ug_domain_Profession" items="${professions}" z="QEjtBukvMN8rXBeSWXk/P6teAxc=">
-        <table:table data="${professions}" id="l_com_ug_domain_Profession" path="/professions" z="h+4G5uAc3dNt3Ra4cW6JdXQKsq0="/>
+        <table:table data="${professions}" id="l_com_ug_domain_Profession" path="/professions" z="h+4G5uAc3dNt3Ra4cW6JdXQKsq0=">
+            <table:column id="c_com_ug_domain_Profession_professionName" property="professionName" z="6GkkyB1oYKo9I39kp4nvEYtwDSM="/>
+            <table:column id="c_com_ug_domain_Profession_professionDescription" property="professionDescription" z="S7YLKoXn2kLJLTOUD+SVPuo97Ms="/>
+            <table:column id="c_com_ug_domain_Profession_mentees" property="mentees" z="n2kHpUEZijGTYlimtkYQXlSxvZI="/>
+            <table:column id="c_com_ug_domain_Profession_mentors" property="mentors" z="3J0ofVOSogV/an2q5B29w557QJc="/>
+        </table:table>
     </page:list>
 </div>

@@ -6,5 +6,6 @@
         <field:simple field="profiles" id="c_com_ug_domain_Programstudy_profiles" messageCode="entity_reference_not_managed" messageCodeAttribute="Profile" z="c4COssbcIENe49Ow/ZYA9zXh3NM="/>
         <field:input field="programStudyDescription" id="c_com_ug_domain_Programstudy_programStudyDescription" z="DgXSnkygv1ElFuiVVAzB2ABOuLY="/>
         <field:input field="programStudyName" id="c_com_ug_domain_Programstudy_programStudyName" required="true" z="8xhC1sEVRwDGP047iIB+rgpCLHc="/>
+    <field:simple field="mentees" id="c_com_ug_domain_Programstudy_mentees" messageCode="entity_reference_not_managed" messageCodeAttribute="Mentee" z="ggS1O8ryrsQ5cgl2VrL0vIJBe40="/>
     </form:update>
 </div>

@@ -6,7 +6,11 @@
         <field:display field="deleted" id="s_com_ug_domain_MentorMentee_deleted" object="${mentormentee}" z="Suq72k2RzcpP35btXzE07i2BZDI="/>
         <field:display date="true" dateTimePattern="${mentorMentee_deactivationdate_date_format}" field="deactivationDate" id="s_com_ug_domain_MentorMentee_deactivationDate" object="${mentormentee}" z="9/sRHzqAWVITuHsERv6mEqyxk2Q="/>
         <field:display field="mentor" id="s_com_ug_domain_MentorMentee_mentor" object="${mentormentee}" z="R1F1knsdcSmNL0z2SEeGYIbJiKk="/>
-        <field:display date="true" dateTimePattern="${mentorMentee_fromdate_date_format}" field="fromDate" id="s_com_ug_domain_MentorMentee_fromDate" object="${mentormentee}" z="v1kLbFn4VLQWh1iINVCQQFDOcFY="/>
+        
         <field:display field="mentee" id="s_com_ug_domain_MentorMentee_mentee" object="${mentormentee}" z="4fZfMGg6HAH2KQ+c4utZB5tPEJE="/>
+    <field:display date="true" dateTimePattern="${mentorMentee_accepteddate_date_format}" field="acceptedDate" id="s_com_ug_domain_MentorMentee_acceptedDate" object="${mentormentee}" z="sOXh4Ixe+tFapsWtwdVAchqaQx0="/>
+        <field:display field="requestInitiatedBy" id="s_com_ug_domain_MentorMentee_requestInitiatedBy" object="${mentormentee}" z="qcs0UCJpnILQz52/a5/HnGr6mys="/>
+        <field:display field="accepted" id="s_com_ug_domain_MentorMentee_accepted" object="${mentormentee}" z="TCxW6y5JYROLPZzBnsUKdBeS0oE="/>
+        <field:display date="true" dateTimePattern="${mentorMentee_createddate_date_format}" field="createdDate" id="s_com_ug_domain_MentorMentee_createdDate" object="${mentormentee}" z="9WwhRMwju2sd4iTQodudjryDZo8="/>
     </page:show>
 </div>

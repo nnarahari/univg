@@ -7,6 +7,7 @@
             <table:column id="c_com_ug_domain_Programstudy_profiles" property="profiles" z="4DWURBdvSdQsxFxOMe5Mwdl+BLA="/>
             <table:column id="c_com_ug_domain_Programstudy_programStudyDescription" property="programStudyDescription" z="aA3uAYkEZV90z8i7UfjpDzG1zhs="/>
             <table:column id="c_com_ug_domain_Programstudy_programStudyName" property="programStudyName" z="pWFstHthU8Lmfbdg3plpgz8EJW4="/>
+        <table:column id="c_com_ug_domain_Programstudy_mentees" property="mentees" z="UEMFhDlweTAX/+ZOz6IrcK/ll2M="/>
         </table:table>
     </page:list>
 </div>

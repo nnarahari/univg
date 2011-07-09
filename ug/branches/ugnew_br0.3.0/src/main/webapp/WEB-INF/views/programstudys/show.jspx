@@ -6,5 +6,6 @@
         <field:display field="profiles" id="s_com_ug_domain_Programstudy_profiles" object="${programstudy}" z="5ikoWxvhoUiIylX4oycmAtlcIcE="/>
         <field:display field="programStudyDescription" id="s_com_ug_domain_Programstudy_programStudyDescription" object="${programstudy}" z="23QlRFmhPq3hrsWLaRf+TtopsIs="/>
         <field:display field="programStudyName" id="s_com_ug_domain_Programstudy_programStudyName" object="${programstudy}" z="qhxEhZjpPZON+jvuGkUi1POiSMU="/>
+    <field:display field="mentees" id="s_com_ug_domain_Programstudy_mentees" object="${programstudy}" z="6YaUdUMmyj/vruUTzOt3TQGqE7I="/>
     </page:show>
 </div>

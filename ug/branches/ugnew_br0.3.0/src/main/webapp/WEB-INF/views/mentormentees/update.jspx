@@ -6,7 +6,11 @@
         <field:checkbox field="deleted" id="c_com_ug_domain_MentorMentee_deleted" z="C4+I5Hnuk7qkdC5MWZh0tJwb4sk="/>
         <field:datetime dateTimePattern="${mentorMentee_deactivationdate_date_format}" field="deactivationDate" id="c_com_ug_domain_MentorMentee_deactivationDate" z="5DTyW+aDPbB3tmJinfxrGMEMZyg="/>
         <field:input field="mentor" id="c_com_ug_domain_MentorMentee_mentor" required="true" validationMessageCode="field_invalid_integer" z="j3QBewsThnhZEz6JKH1xToQlnEs="/>
-        <field:datetime dateTimePattern="${mentorMentee_fromdate_date_format}" field="fromDate" id="c_com_ug_domain_MentorMentee_fromDate" z="KQImtJK36XsVq4/vPhCo0K4gNjA="/>
+        
         <field:input field="mentee" id="c_com_ug_domain_MentorMentee_mentee" required="true" validationMessageCode="field_invalid_integer" z="HV9Ph6VBSfimnCuwS8GnIzryQzA="/>
+    <field:datetime dateTimePattern="${mentorMentee_accepteddate_date_format}" field="acceptedDate" id="c_com_ug_domain_MentorMentee_acceptedDate" z="x7UUqUiwLaYhlINcdgFXLPeQck8="/>
+        <field:input field="requestInitiatedBy" id="c_com_ug_domain_MentorMentee_requestInitiatedBy" validationMessageCode="field_invalid_integer" z="gbjRMoquT4dgeWakBbFs+2MD74Y="/>
+        <field:checkbox field="accepted" id="c_com_ug_domain_MentorMentee_accepted" z="HD2PEqHmi6iYURZi2niT4rIcVR8="/>
+        <field:datetime dateTimePattern="${mentorMentee_createddate_date_format}" field="createdDate" id="c_com_ug_domain_MentorMentee_createdDate" z="yasyxjI4xjI8RVq0QvvIxfJlxcA="/>
     </form:update>
 </div>
