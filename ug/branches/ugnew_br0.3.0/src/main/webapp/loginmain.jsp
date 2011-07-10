@@ -12,7 +12,7 @@
 		
 		<li>If you are someone looking to invest in students and provide them with loans to meet their immediate university requirements please <a href="p2p?form">click here </a>. or click on the P2P tab above to be redirected.</li>
 		
-		<li>If you are someone looking to Mentor Student across globe with their career decisions please <a href="mentor?form">click here </a>. or click on the Mentorship tab above to be redirected.</li>
+		<li>If you are someone looking to Mentor Student across globe with their career decisions please <a href="mentors?form">click here </a>. or click on the Mentorship tab above to be redirected.</li>
 	  </p>
       </li>
     </ul>
