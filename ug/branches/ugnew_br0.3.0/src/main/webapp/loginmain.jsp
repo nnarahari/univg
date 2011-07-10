@@ -10,8 +10,9 @@
 		
 		<li>If you represent a corporation and would like to be a UnivGiggle corporate partner <a href="corporates?form">click here </a>.  To create corporate profile. Alternately click on Corporate tab above to be redirected.</li>
 		
-		<li>If you are someone looking to invest in students and provide them with loans to meet their immediate university requirements please click here or click on the P2P tab above to be redirected.</li>
+		<li>If you are someone looking to invest in students and provide them with loans to meet their immediate university requirements please <a href="p2p?form">click here </a>. or click on the P2P tab above to be redirected.</li>
 		
+		<li>If you are someone looking to Mentor Student across globe with their career decisions please <a href="mentor?form">click here </a>. or click on the Mentorship tab above to be redirected.</li>
 	  </p>
       </li>
     </ul>
