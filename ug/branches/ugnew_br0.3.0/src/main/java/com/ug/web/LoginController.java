@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ug.domain.Corporate;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profile;
 import com.ug.domain.User;
 import com.ug.util.UgUtil;
@@ -57,6 +58,12 @@ public class LoginController {
 				uiModel.addAttribute("corporate", corporate);
 				uiModel.addAttribute("itemId", userId);
 				displayPage= "corporates/show";
+			}else if(loggedInUserRole.equalsIgnoreCase("mentor")){
+				TypedQuery<Mentor> query = Mentor.findMentorsByUserId(user);
+				Mentor mentor = query.getSingleResult();
+				uiModel.addAttribute("mentor", mentor);
+				uiModel.addAttribute("itemId", userId);
+				displayPage= "mentors/show";
 			}else{
 				displayPage = "redirect:/loginmain.jsp";
 			}
