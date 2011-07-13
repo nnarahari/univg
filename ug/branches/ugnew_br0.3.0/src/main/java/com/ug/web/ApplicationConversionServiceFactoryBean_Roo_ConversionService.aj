@@ -136,7 +136,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     org.springframework.core.convert.converter.Converter<MentorMentee, String> ApplicationConversionServiceFactoryBean.getMentorMenteeConverter() {
         return new org.springframework.core.convert.converter.Converter<MentorMentee, String>() {
             public String convert(MentorMentee mentormentee) {
-                return new StringBuilder().append(mentormentee.getMentor()).append(" ").append(mentormentee.getMentee()).append(" ").append(mentormentee.getFromDate()).append(" ").append(mentormentee.getDeactivationDate()).toString();
+                return new StringBuilder().append(mentormentee.getMentor()).append(" ").append(mentormentee.getMentee()).toString();
             }
         };
     }

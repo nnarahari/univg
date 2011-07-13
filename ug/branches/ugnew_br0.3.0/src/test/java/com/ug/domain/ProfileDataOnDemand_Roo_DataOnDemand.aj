@@ -40,7 +40,7 @@ privileged aspect ProfileDataOnDemand_Roo_DataOnDemand {
         if (youtubeurl.length() > 255) {
             youtubeurl  = youtubeurl.substring(0, 255);
         }
-        //obj.setYoutubeurl(youtubeurl);
+        obj.setYoutubeUrl(youtubeurl);
         java.lang.String mobile = "mobile_" + index;
         if (mobile.length() > 10) {
             mobile  = mobile.substring(0, 10);
