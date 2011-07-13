@@ -14,6 +14,7 @@
         <intercept-url pattern="/login/success/**" access="isAuthenticated()"/>
         <intercept-url pattern="/profile" access="isAuthenticated()"/>
         <intercept-url pattern="/corporate" access="isAuthenticated()"/>
+        <intercept-url pattern="/mentors" access="isAuthenticated()"/>
 
         <intercept-url access="hasRole('admin')" pattern="/choices/**"/>
         <intercept-url access="isAuthenticated()" pattern="/member/**"/>
