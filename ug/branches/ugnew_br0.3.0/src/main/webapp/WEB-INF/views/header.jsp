@@ -48,8 +48,8 @@
         <li class="active"><a href="<%=request.getContextPath()%>/main.jsp">Home</a></li>
         <li><a href="<%=request.getContextPath()%>/studentBeforelogin">STUDENT</a></li>
         <li><a href="<%=request.getContextPath()%>/corporateBeforelogin">CORPORATES</a></li>
-		<li><a href="#">P2P</a></li>
-		<li><a href="#">MENTORSHIP</a></li>
+	<!-- 	<li><a href="#">P2P</a></li> -->
+		<li><a href="#">MENTORSHIP/P2P</a></li>
 		<li><a href="#">CONTACT US</a></li>
       </ul>
    </div>
