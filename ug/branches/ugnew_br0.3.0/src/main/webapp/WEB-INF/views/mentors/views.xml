@@ -70,4 +70,7 @@
 <definition extends="default" name="mentors/findMentorsByCurrentProfession">
         <put-attribute name="body" value="/WEB-INF/views/mentors/findMentorsByCurrentProfession.jspx"/>
     </definition>
+    <definition extends="default" name="mentors/mentorForStudent">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/mentorForStudent.jspx"/>
+    </definition>
 </tiles-definitions>

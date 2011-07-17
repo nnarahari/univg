@@ -263,18 +263,20 @@
 		</menu:category>
 		
 		<menu:category id="c_loan" z="S+w7sxbJV/kGsRBzpM6sxIvlUrs=">
-			
 			<menu:item id="i_loan_new" messageCode="learn_about_loan" url="/loans/learnAboutLoan" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
 			<menu:item id="i_loan_new" messageCode="global_menu_new" url="/loans?form" z="r5Vq6HpbfxRK4ixJmQ4cQcXnDTs="/>
 			<menu:item id="fi_loan_userid" messageCode="student_menu_find_loan" url="/loans?find=ByUserId&amp;userId=${loggedInUserId}" z="Mf2HBIWjX0XjNj6JjM4pQmSFbzY="/>
-		
 		</menu:category>
+		
 		<menu:category id="c_profile" z="7+DSGeUy45gwkQx/NptxyQe7XpY=">
 			<!-- <menu:item id="i_profile_new" messageCode="global_menu_new"
 				url="/profiles?form" z="5CN+Gy9le00bCK9RJj72N/fBXsM=" /> -->
 			<menu:item id="fi_profile_userid" messageCode="student_menu_find_profile" url="/profiles?find=ByUserId&amp;userId=${loggedInUserId}" z="YWIO6zh/b+VbGwIhvPcLFKO3I94="/>
-				
 		</menu:category>
+		<menu:category id="c_mentor" z="user-managed">
+			<menu:item id="i_mentor_1" messageCode="mentor" url="/mentors/mentorForStudent" z="user-managed"/>
+		</menu:category>
+		
 		<!--  <menu:category id="c_guarantor" z="48v0rYVmUXF5cYVu+KGklNC8tkI=">
 			<menu:item id="i_guarantor_new" messageCode="global_menu_new"
 				url="/guarantors?form" z="z4wazHWv0gG+keM3cWqbsD/dCu0=" />
