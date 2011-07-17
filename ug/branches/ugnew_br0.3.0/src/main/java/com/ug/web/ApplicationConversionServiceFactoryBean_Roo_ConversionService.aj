@@ -18,6 +18,7 @@ import com.ug.domain.Mentee;
 import com.ug.domain.Mentor;
 import com.ug.domain.MentorMentee;
 import com.ug.domain.Profile;
+import com.ug.domain.Programstudy;
 import com.ug.domain.Role;
 import com.ug.domain.State;
 import com.ug.domain.Testimonial;
@@ -44,6 +45,16 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
             }
         };
     }
+    
+    
+    org.springframework.core.convert.converter.Converter<Programstudy, String> ApplicationConversionServiceFactoryBean.getProgramstudyConverter() {
+        return new org.springframework.core.convert.converter.Converter<Programstudy, String>() {
+            public String convert(Programstudy programstudy) {
+                return new StringBuilder().append(programstudy.getProgramStudyName()).toString();
+            }
+        };
+    }
+    
     
     org.springframework.core.convert.converter.Converter<Corporate, String> ApplicationConversionServiceFactoryBean.getCorporateConverter() {
         return new org.springframework.core.convert.converter.Converter<Corporate, String>() {
@@ -210,6 +221,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getTestimonialConverter());
         registry.addConverter(getUniversityConverter());
         registry.addConverter(getUserConverter());
+        registry.addConverter(getProgramstudyConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {
