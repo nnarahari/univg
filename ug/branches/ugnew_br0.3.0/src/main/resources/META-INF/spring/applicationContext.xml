@@ -69,16 +69,16 @@
         <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>
     
-    <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+      <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
         <property name="driverClassName" value="${database.driverClassName}"/>
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
         <property name="password" value="${database.password}"/>
         <property name="validationQuery" value="SELECT 1 FROM DUAL"/>
         <property name="testOnBorrow" value="true"/>
-    </bean>
-<!--     <cloud:data-source id="dataSource" /> -->
+    </bean>  
     
+     <!-- <cloud:data-source id="dataSource" />  -->
     
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
@@ -115,8 +115,9 @@
         <constructor-arg value="04cf2a4f8fb4dd21ac473af41d966297"/>
     </bean>
 
- 	<!-- <jdbc:initialize-database data-source="dataSource">
+    <!-- <jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:sql/ugbeta1.sql" />
-	</jdbc:initialize-database> --> 
+	</jdbc:initialize-database>  --> 
+ 
     
 </beans>

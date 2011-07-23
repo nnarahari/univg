@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Add" items="${adds}" z="+O3o+DEXw8gYAygNIzgPNnqWHwk=">
+        <table:table data="${adds}" id="l_com_ug_domain_Add" path="/adds" z="Rj3z/KBuFkiJJ4nHyA0db/9Y7VU=">
+            <table:column id="c_com_ug_domain_Add_addDescription" property="addDescription" z="+FC0Sga77zssIF7dgJ6EsEjYM8k="/>
+            <table:column id="c_com_ug_domain_Add_createtimestamp" property="createtimestamp" z="+0IsOi1EW6rnZLcasw9kvGXD588="/>
+            <table:column id="c_com_ug_domain_Add_addTypeId" property="addTypeId" z="4rD8Y+J+iO3VN7m0H+cEaGB+F04="/>
+            <table:column id="c_com_ug_domain_Add_corporateId" property="corporateId" z="/7rGXetNQLcGDiL3Lv8ztoMivPM="/>
+            <table:column id="c_com_ug_domain_Add_lastupdatedtimestamp" property="lastupdatedtimestamp" z="zlaAlx1TgFlSyPnpTZ1RHMB921w="/>
+            <table:column id="c_com_ug_domain_Add_content" property="content" z="Xa9RHkyR5FTAau+1SiA+nerwtYI="/>
+        </table:table>
+    </page:list>
+</div>

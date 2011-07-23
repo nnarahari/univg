@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Addtype" object="${addtype}" path="/addtypes" z="JQ9O245ZZNEfSWZQQBdU1+QO4ik=">
+        <field:display field="addtypeName" id="s_com_ug_domain_Addtype_addtypeName" object="${addtype}" z="eYAPTHKkkm5ZgaiV/1RnJ6B0XQY="/>
+        <field:display field="addtypeDesc" id="s_com_ug_domain_Addtype_addtypeDesc" object="${addtype}" z="JSvhk0vjtFMgWKR0+6kUkRz6x4g="/>
+    </page:show>
+</div>

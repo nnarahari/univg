@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ug_domain_Joblisting" items="${joblistings}" z="prtzC44VSV0JYtyxDYL/QPlx/+0=">
+        <table:table data="${joblistings}" id="l_com_ug_domain_Joblisting" path="/joblistings" z="bv23USbfhBHHJfvVu+DINX3Wv5Q=">
+            <table:column id="c_com_ug_domain_Joblisting_jobTypeId" property="jobTypeId" z="tt7xty7ddzla/oe68602CcpEXfY="/>
+            <table:column id="c_com_ug_domain_Joblisting_createtimestamp" property="createtimestamp" z="lO7ENjCYiUxLSXw3dAz/NCg216c="/>
+            <table:column id="c_com_ug_domain_Joblisting_corporateId" property="corporateId" z="SABBMdJJxNLvXTKiTfA+foFJr68="/>
+            <table:column id="c_com_ug_domain_Joblisting_jobContent" property="jobContent" z="lUqd3LDZ9iUT5ptZysQwu3Z5+aM="/>
+            <table:column id="c_com_ug_domain_Joblisting_lastupdatedtimestamp" property="lastupdatedtimestamp" z="U0V771k7WVnbxllMhcUa7GCT6gQ="/>
+            <table:column id="c_com_ug_domain_Joblisting_jobTitle" property="jobTitle" z="TyXsch6WXSOcmnfCJtbHdrL8wKQ="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Joblisting" object="${joblisting}" path="/joblistings" z="qFBUXnZnbRyQnAtoUI1300KeZeg=">
+        <field:display field="jobTypeId" id="s_com_ug_domain_Joblisting_jobTypeId" object="${joblisting}" z="kJ2OaatAJy3ECnSPakgGlkenYZw="/>
+        <field:display date="true" dateTimePattern="${joblisting_createtimestamp_date_format}" field="createtimestamp" id="s_com_ug_domain_Joblisting_createtimestamp" object="${joblisting}" z="Sk02IT68yQ5K5sTdaT2jRZtTpHQ="/>
+        <field:display field="corporateId" id="s_com_ug_domain_Joblisting_corporateId" object="${joblisting}" z="VUBdE4WfJ+xOGXlBSQxp0yWdDMQ="/>
+        <field:display field="jobContent" id="s_com_ug_domain_Joblisting_jobContent" object="${joblisting}" z="AShujAOoS18KdzOPHu4HX3aZbgE="/>
+        <field:display date="true" dateTimePattern="${joblisting_lastupdatedtimestamp_date_format}" field="lastupdatedtimestamp" id="s_com_ug_domain_Joblisting_lastupdatedtimestamp" object="${joblisting}" z="7AuS4ETXPJNq0x60xRGDtPXEGiA="/>
+        <field:display field="jobTitle" id="s_com_ug_domain_Joblisting_jobTitle" object="${joblisting}" z="cub02/l0oKOg37K72TnJUtCN6Nw="/>
+    </page:show>
+</div>

@@ -246,6 +246,34 @@
             <menu:item id="fi_mentormentee_mentornotequals" messageCode="global_menu_find" url="/mentormentees?find=ByMentorNotEquals&amp;form" z="fFNL8xg8mf3bdU+VTNVjZitlHR8="/>
             <menu:item id="fi_mentormentee_requestinitiatedby" messageCode="global_menu_find" url="/mentormentees?find=ByRequestInitiatedBy&amp;form" z="UFFBJ/yNvvSN2vh/bLRdDVNimQw="/>
             </menu:category>
+        <menu:category id="c_joblisting" z="Bxz439RlYcP7YUB8WplRV1MpnH0=">
+                <menu:item id="i_joblisting_new" messageCode="global_menu_new" url="/joblistings?form" z="ebRGTVD2rI8j9DS5sTSJbeHKxcE="/>
+            <menu:item id="i_joblisting_list" messageCode="global_menu_list" url="/joblistings?page=1&amp;size=${empty param.size ? 10 : param.size}" z="r6TY5jGGVNRiROf61qoZ9TLk3XU="/>
+            </menu:category>
+        <menu:category id="c_weblog" z="+BTA38jXROnnyySXngsBhdgQeVQ=">
+                <menu:item id="i_weblog_new" messageCode="global_menu_new" url="/weblogs?form" z="8SX+eMYpdhjt+OVL8KF7MsnxP+s="/>
+            <menu:item id="i_weblog_list" messageCode="global_menu_list" url="/weblogs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="epzc/iyua3ohNTsOQbTytnKUjOk="/>
+            </menu:category>
+        <menu:category id="c_addmappings" z="267FWEzyGW6JT6jChhRlZ91XAZs=">
+                <menu:item id="i_addmappings_new" messageCode="global_menu_new" url="/addmappingses?form" z="BN7by1RBoIQKjW9qm0lb8cA387s="/>
+            <menu:item id="i_addmappings_list" messageCode="global_menu_list" url="/addmappingses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="EBtErar0m6rllPOQpfDIFb2cPfU="/>
+            </menu:category>
+        <menu:category id="c_add" z="8dcgZitltYktJbhMHpYQedolqWA=">
+                <menu:item id="i_add_new" messageCode="global_menu_new" url="/adds?form" z="xc1G4D4Yygkq7YnrkWnU3DP3G4w="/>
+            <menu:item id="i_add_list" messageCode="global_menu_list" url="/adds?page=1&amp;size=${empty param.size ? 10 : param.size}" z="7C7e5PnzcO05a/t9FVuA8qDKc+8="/>
+            </menu:category>
+        <menu:category id="c_jobtype" z="a0/bkqS52uK1wCxHtD/qbYuI5FM=">
+                <menu:item id="i_jobtype_new" messageCode="global_menu_new" url="/jobtypes?form" z="ZF6VVQcIMmLyAYTrJR6MRLQtW1A="/>
+            <menu:item id="i_jobtype_list" messageCode="global_menu_list" url="/jobtypes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="kD033HH5Rh7XAzswL6NSS0WLaiM="/>
+            </menu:category>
+        <menu:category id="c_pagesection" z="CgtGyC0BUegCQyS08V2qbjMrnxI=">
+                <menu:item id="i_pagesection_new" messageCode="global_menu_new" url="/pagesections?form" z="7aZtA3GXvpuQNKXVSYU9AZFwrjw="/>
+            <menu:item id="i_pagesection_list" messageCode="global_menu_list" url="/pagesections?page=1&amp;size=${empty param.size ? 10 : param.size}" z="wFfnP677rNdsI3hts8q1XI5HOk0="/>
+            </menu:category>
+        <menu:category id="c_addtype" z="vsR5CzHcgpicRamBpu75uYOT/Ro=">
+                <menu:item id="i_addtype_new" messageCode="global_menu_new" url="/addtypes?form" z="5s2Yakyg8ZT4BXo/1oymvSjYMdw="/>
+            <menu:item id="i_addtype_list" messageCode="global_menu_list" url="/addtypes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="pV/q5PRFv0BZLvVyG3TRpr6H0ZQ="/>
+            </menu:category>
         </menu:menu>
 	</sec:authorize>
 	<jsp:scriptlet>User loggedInUser = UgUtil.getLoggedInUser();

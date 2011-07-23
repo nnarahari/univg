@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ug_domain_Add" object="${add}" path="/adds" z="uZ2H+GM/WeanxCMpcyWtmFp3Tj4=">
+        <field:display field="addDescription" id="s_com_ug_domain_Add_addDescription" object="${add}" z="3mUOFVIlCI/aSw1Nf+zaG6eaVwQ="/>
+        <field:display date="true" dateTimePattern="${add_createtimestamp_date_format}" field="createtimestamp" id="s_com_ug_domain_Add_createtimestamp" object="${add}" z="eF3C+OR788p1ougRLy3u65Z2rUA="/>
+        <field:display field="addTypeId" id="s_com_ug_domain_Add_addTypeId" object="${add}" z="Z2/2XGYvVayZOXd4jYbSnadeVBQ="/>
+        <field:display field="corporateId" id="s_com_ug_domain_Add_corporateId" object="${add}" z="8jIJhZP4uei9Sa+V273manGI5jo="/>
+        <field:display date="true" dateTimePattern="${add_lastupdatedtimestamp_date_format}" field="lastupdatedtimestamp" id="s_com_ug_domain_Add_lastupdatedtimestamp" object="${add}" z="BNWFmzp7a0WKYipuCMDYO6YDJok="/>
+        <field:display field="content" id="s_com_ug_domain_Add_content" object="${add}" z="bn3ev8b0FoKVNksemBGzdN3VZ2w="/>
+    </page:show>
+</div>
