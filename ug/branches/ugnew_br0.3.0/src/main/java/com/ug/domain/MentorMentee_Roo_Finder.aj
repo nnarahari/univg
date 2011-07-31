@@ -20,6 +20,19 @@ privileged aspect MentorMentee_Roo_Finder {
         return q;
     }
     
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findAllMentors() {
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.mentor is not null", MentorMentee.class);
+        return q;
+    }
+    
+    public static TypedQuery<MentorMentee> MentorMentee.findAllMentees() {
+        EntityManager em = MentorMentee.entityManager();
+        TypedQuery<MentorMentee> q = em.createQuery("SELECT MentorMentee FROM MentorMentee AS mentormentee WHERE mentormentee.mentee is not null", MentorMentee.class);
+        return q;
+    }
+    
     public static TypedQuery<MentorMentee> MentorMentee.findMentorMenteesByAcceptedDate(Date acceptedDate) {
         if (acceptedDate == null) throw new IllegalArgumentException("The acceptedDate argument is required");
         EntityManager em = MentorMentee.entityManager();

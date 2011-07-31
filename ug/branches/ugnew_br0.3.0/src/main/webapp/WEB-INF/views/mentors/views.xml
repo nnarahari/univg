@@ -73,4 +73,18 @@
     <definition extends="default" name="mentors/mentorForStudent">
         <put-attribute name="body" value="/WEB-INF/views/mentors/mentorForStudent.jspx"/>
     </definition>
+    
+    <definition extends="default" name="mentors/mentorStatusMessages">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/mentorStatusMessages.jsp"/>
+    </definition>
+    <definition extends="default" name="mentors/searchForMentor">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/searchForMentor.jsp"/>
+    </definition>
+    <definition extends="default" name="mentors/showTestimonials">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/showTestimonials.jsp"/>
+    </definition>
+    <definition extends="default" name="mentors/mentorshipHistory">
+        <put-attribute name="body" value="/WEB-INF/views/mentors/mentorshipHistory.jsp"/>
+    </definition>
+    
 </tiles-definitions>

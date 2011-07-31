@@ -302,7 +302,10 @@
 			<menu:item id="fi_profile_userid" messageCode="student_menu_find_profile" url="/profiles?find=ByUserId&amp;userId=${loggedInUserId}" z="YWIO6zh/b+VbGwIhvPcLFKO3I94="/>
 		</menu:category>
 		<menu:category id="c_mentor" z="user-managed">
-			<menu:item id="i_mentor_1" messageCode="mentor" url="/mentors/mentorForStudent" z="user-managed"/>
+			<menu:item id="i_mentor_1" messageCode="mentor1" url="/mentors/mentorStatusMessages" z="user-managed"/>
+			<menu:item id="i_mentor_2" messageCode="mentor2" url="/mentors/searchForMentor" z="user-managed"/>
+			<menu:item id="i_mentor_3" messageCode="mentor3" url="/mentors/showTestimonials" z="user-managed"/>
+			<menu:item id="i_mentor_4" messageCode="mentor4" url="/mentors/mentorshipHistory" z="user-managed"/>
 		</menu:category>
 		
 		<!--  <menu:category id="c_guarantor" z="48v0rYVmUXF5cYVu+KGklNC8tkI=">
