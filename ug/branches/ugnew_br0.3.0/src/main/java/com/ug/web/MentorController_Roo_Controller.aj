@@ -7,7 +7,12 @@ import com.ug.domain.Country;
 import com.ug.domain.Gender;
 import com.ug.domain.Mentor;
 import com.ug.domain.Profession;
+import com.ug.domain.Role;
 import com.ug.domain.User;
+import com.ug.domain.UserRole;
+import com.ug.util.AuditLogger;
+import com.ug.util.UgUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -17,6 +22,8 @@ import java.util.Collection;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import org.apache.log4j.Logger;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
@@ -31,8 +38,10 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect MentorController_Roo_Controller {
     
+	private Logger logger = Logger.getLogger(MentorController_Roo_Controller.class);
+	
     @RequestMapping(method = RequestMethod.POST)
-    public String MentorController.create(@Valid Mentor mentor, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String MentorController.create(@Valid Mentor mentor, BindingResult bindingResult, Model uiModel, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("mentor", mentor);
             addDateTimeFormatPatterns(uiModel);
@@ -40,7 +49,28 @@ privileged aspect MentorController_Roo_Controller {
         }
         uiModel.asMap().clear();
         mentor.persist();
-        return "redirect:/mentors/" + encodeUrlPathSegment(mentor.getId().toString(), httpServletRequest);
+        /*****/
+        
+        System.out.println("Mentor crreated.. associating mentor role to the user..");
+    	UserRole userRole = new UserRole();
+
+    	User user = UgUtil.getLoggedInUser();
+    	logger.debug("user ==>"+ user);
+
+    	Role role = Role.findRole(4L);//4 is for Mentor
+
+    	System.out.println("role ==>"+ role);
+    	userRole.setUserEntry(user);
+    	userRole.setRoleEntry(role);
+
+    	userRole.persist();       
+    	logger.debug( "Done");
+
+    	AuditLogger.log(request.getRemoteUser(), "Mentor Profile Created", null);
+
+    	//sendMailForUnivMailConfirmation(request, profile, user);
+
+        return "redirect:/mentors/" + encodeUrlPathSegment(mentor.getId().toString(), request);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)

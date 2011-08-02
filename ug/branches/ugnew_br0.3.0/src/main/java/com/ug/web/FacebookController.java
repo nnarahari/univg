@@ -27,6 +27,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ug.domain.Corporate;
+import com.ug.domain.Mentor;
 import com.ug.domain.Profile;
 import com.ug.domain.User;
 import com.ug.util.UgUtil;
@@ -149,6 +150,22 @@ public class FacebookController {
 					setManulAuth(userEmail,authorities );
 					
 					displayPage= "corporates/show";
+				}else if(userRole.equalsIgnoreCase("mentor")){
+					TypedQuery<Mentor> query = Mentor.findMentorsByUserId(targetUser);
+					Mentor mentor = query.getSingleResult();
+					uiModel.addAttribute("mentor", mentor);
+					uiModel.addAttribute("itemId", userId);
+					
+					GrantedAuthority ga = new GrantedAuthority() {
+						@Override
+						public String getAuthority() {
+							return "mentor";
+						}
+					};
+					authorities.add(ga);
+					setManulAuth(userEmail,authorities );
+					
+					displayPage= "mentors/show";
 				}else{
 					setManulAuth(userEmail,authorities );
 					displayPage = "redirect:/loginmain.jsp";

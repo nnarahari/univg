@@ -357,5 +357,18 @@
 	</menu:menu>
 	
 	</sec:authorize>
+	
+	<sec:authorize ifAllGranted="mentor">
+		<menu:menu id="_menu" z="user-managed">
+			<menu:category id="c_mentor" z="user-managed">
+				<menu:item id="i_mentor_1" messageCode="mentor1" url="/mentors/mentorStatusMessages" z="user-managed"/>
+				<menu:item id="i_mentor_3" messageCode="mentor3" url="/mentors/showTestimonials" z="user-managed"/>
+				<menu:item id="i_mentor_4" messageCode="mentor4" url="/mentors/mentorshipHistory" z="user-managed"/>
+			</menu:category>
+			<menu:category id="c_P2P" z="user-managed">
+			
+			</menu:category>
+		</menu:menu>
+	</sec:authorize>
      
 </div>
